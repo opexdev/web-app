@@ -1,13 +1,186 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+*{
+    margin: 0;
+    padding: 0;
+    outline: 0;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+@font-face {
+    font-family: "IRANYekan";
+    src: url("assets/fonts/IRANYekan/IRANYekanWebFaNum.eot"),
+    url("assets/fonts/IRANYekan/IRANYekanWebFaNum.eot?#iefix") format("embedded-opentype"),
+    url("assets/fonts/IRANYekan/IRANYekanWebFaNum.woff2") format("woff2"),
+    url("assets/fonts/IRANYekan/IRANYekanWebFaNum.woff") format("woff"),
+    url("assets/fonts/IRANYekan/IRANYekanWebFaNum.ttf") format("truetype"),
+    url("assets/fonts/IRANYekan/IRANYekanWebFaNum.svg#svgFontName") format("svg");
+}
+html,body{
+    font-family: 'IRANYekan', serif !important;
+    font-size: 0.9vw;
+    box-sizing: border-box;
+    direction: rtl;
+    background-color: #EBF5FF;
+}
+a{
+    color: #282c34;
+    text-decoration: none;
+}
+
+
+
+
+
+
+
+.container{
+    width: 100%;
+    margin-right: auto;
+    margin-left: auto;
+}
+.flex{
+    display: flex;
+}
+.row{
+    display: flex;
+    flex-direction: row;
+}
+.column{
+    display: flex;
+    flex-direction: column;
+}
+.jc-start{
+    justify-content: flex-start;
+}
+.jc-center{
+    justify-content: center;
+}
+.jc-end{
+    justify-content: flex-end;
+}
+.jc-between{
+    justify-content: space-between;
+}
+.jc-around{
+    justify-content: space-around;
+}
+.ai-start{
+    align-items: flex-start;
+}
+.ai-center{
+    align-items: center;
+}
+.ai-end{
+    align-items: flex-end;
+}
+
+.img-sm{
+    width: 1.5vw;
+}
+.img-md{
+    width: 2.5vw;
+}
+.img-lg{
+    width: 3.5vw;
+}
+.mb-05{
+    margin-bottom: 0.5vh
+}
+.ml-05{
+    margin-left: 0.5vw;
+}
+
+.content{
+    width: 73%;
+}
+.col-30{
+    flex: 0.3;
+}
+.col-70{
+    flex: 0.7;
+}
+
+.card-border{
+    border: 0.3vh solid #868383;
+    border-radius: 9px;
+}
+.border-bottom{
+    border-bottom: 0.01vh solid #505050;
+}
+.border-left{
+    border-left: 0.0001vh solid #505050;
+}
+.border-right{
+    border-right: 0.0001vh solid #505050;
+}
+
+.text-red{
+    color: red;
+}
+.text-green{
+    color: green;
+}
+
+.text-center{
+    text-align: center;
+}
+
+
+.hide-scrollBar::-webkit-scrollbar {
+    display: none;
+}
+.hide-scrollBar{
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.scrollView::-webkit-scrollbar {
+    display: none;
+}
+.scrollView{
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    margin: 0 !important;
+}
+.thumb-vertical{
+    background-color: #b5b1b1;
+    border-radius: 50vw;
+
+}
+table{
+    width: 100%;
+    max-height: 100%;
+}
+.position-absolute{
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    background-color: #F58634;
+}
+tr{
+    position: relative;
+}
+.px-1{
+    padding-right: 1vw;
+    padding-left: 1vw;
+}
+.py-1{
+    padding-top: 1vh;
+    padding-bottom: 1vh;
+}
+.pl-1{
+    padding-left: 1vw;
+}
+.pt-1{
+    padding-top: 1vh;
+}
+.mt-1{
+    margin-top: 1vh;
 }

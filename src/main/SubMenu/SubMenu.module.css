@@ -1,0 +1,9 @@
+.container{
+    width: 22%;
+    height: 100vh;
+    background-color: #fcfeff;
+    font-size: 2vw;
+    border-left: 0.2vh solid #505050;
+    margin-right: 5%;
+    position: fixed;
+}
