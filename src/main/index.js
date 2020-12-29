@@ -4,22 +4,40 @@ import SubMenu from "./SubMenu/SubMenu";
 import ScrollBar from "../components/ScrollBar";
 import Header from "./Header/Header";
 import Footer from "./Footer/footer";
+import {connect} from "react-redux";
+import {BrowserRouter as Router, Switch, Route} from "react-router-dom";
 
-const App = () => {
+const App = (props) => {
     return (
-        <div className="container">
-            <div className="row">
-                <MainMenu/>
-                <SubMenu/>
-                <div className="column content" style={{marginRight: "27%", height: "100vh"}}>
-                    <ScrollBar>
-                        <Header/>
-                        <Footer/>
-                    </ScrollBar>
+        <Router>
+            <div className={`container ${props.isDark ? 'dark' : ''}`}>
+                <div className="row">
+                    <MainMenu/>
+                    <SubMenu/>
+                    <div className="column content" style={{marginRight: "27%", height: "100vh"}}>
+                        <ScrollBar>
+                            <Header/>
+                            <Switch>
+                                <Route exact path="/">
+
+                                </Route>
+                                <Route path="*">
+                                    "404"
+                                </Route>
+                            </Switch>
+                            <Footer/>
+                        </ScrollBar>
+                    </div>
                 </div>
             </div>
-        </div>
+        </Router>
     );
 };
 
-export default App;
+const mapStateToProps = state => {
+    return {
+        isDark: state.isDark
+    }
+}
+
+export default connect(mapStateToProps, null)(App);

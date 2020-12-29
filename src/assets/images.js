@@ -13,7 +13,7 @@ import plus from "./images/plus.svg";
 
 
 
-export const  Images = {
+export const  images = {
     'opexLogo_light' : opexLogo_light,
     'darkTheme' : darkTheme,
     'brightTheme' : brightTheme,

@@ -1,6 +1,6 @@
 import React from "react";
 import Styles from "./Header.module.css";
-import {Images} from "../../assets/images"
+import {images} from "../../assets/images"
 
 const Header = (props) => {
     return (
@@ -14,14 +14,14 @@ const Header = (props) => {
                     <p className="mb-05">موجودی قابل معامله</p>
                     <div className={`row ai-center ${Styles.inventory}`}>
                         <div className="flex">
-                            <img className="img-sm" src={Images.plus} alt="plus"/>
+                            <img className="img-sm" src={images.plus} alt="plus"/>
                             <span>0.003 </span>
                             <span>بیتکوین</span>
                         </div>
                         <div className="flex">
                             <span>0.12،350،000 </span>
                             <span>تومان</span>
-                            <img className="img-sm" src={Images.plus} alt="plus"/>
+                            <img className="img-sm" src={images.plus} alt="plus"/>
                         </div>
                     </div>
                 </div>
@@ -31,7 +31,7 @@ const Header = (props) => {
                 </div>
             </div>
             <div className={`flex jc-center ai-center ${Styles.signOut}`}>
-                <img className="img-md" src={Images.signOut} alt="signOut" title="signOut"/>
+                <img className="img-md" src={images.signOut} alt="signOut" title="signOut"/>
 
             </div>
         </div>

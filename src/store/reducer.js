@@ -1,7 +1,7 @@
 import * as actionTypes from './action';
 
 const  initialState = {
-    isDark : true,
+    isDark : false,
     isLogin: false
 }
 

@@ -2,9 +2,9 @@
     display: flex;
     flex-direction: column;
     height: 20vh;
-    background-color: #EBF5FF;
+    background-color: var(--primary-color);
+    color: var(--alternative-color);
     font-size: 0.8vw;
-    /*margin-top: 80vh;*/
     margin-top: 4vh;
     border-top: 0.01vh solid #505050;
     padding: 2vh 5vw;

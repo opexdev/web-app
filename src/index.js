@@ -18,7 +18,7 @@ const store = createStore(
 
 ReactDOM.render(
     <React.StrictMode>
-        <Suspense fallback={App}>
+        <Suspense fallback={"loading"}>
             <Provider store={store}>
                 <App/>
             </Provider>

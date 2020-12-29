@@ -1,12 +1,20 @@
 {
-  "title": "ورود",
+  "title": "اپکس",
   "description": {
     "part1": "To get started, edit <1>src/App.js</1> and save to reload.",
     "part2": "Switch language between english and german using buttons above."
   },
   "footer" : {
-    "AboutUs" : "درباره ما",
-    "ContactUS" : "تماس باما",
-    "Blog" : "بلاگ"
+    "aboutUs" : "درباره ما",
+    "contactUS" : "تماس باما",
+    "blog" : "بلاگ",
+    "guide": "راهنمای استفاده",
+    "rules": "قوانین استفاده",
+    "wage": "کارمزدها",
+    "api": "وب سرویس ها",
+    "addCoin": "درخواست افزودن سکه یا توکن",
+    "demo": "بازار نمایشی (ویژه تمرین رایگان)",
+    "errorReport": "گزارش خطا و مشکل",
+    "copyright": "1400-کلیه حقوق برای اوپکس گستر خاورمیانه محفوظ است."
   }
 }
