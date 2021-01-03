@@ -1,8 +1,38 @@
 {
   "title": "اپکس",
-  "description": {
-    "part1": "To get started, edit <1>src/App.js</1> and save to reload.",
-    "part2": "Switch language between english and german using buttons above."
+  "signIn":"ورود",
+  "signOut":"خروج",
+  "currency": {
+    "IRT" : "تومان",
+    "Euro" : "یورو",
+    "USD" : "دلار",
+    "BTC" : "بیتکوین",
+    "ETH" : "اتریوم"
+  },
+  "pair": {
+    "BTC/IRT" : "بیتکوین/تومان",
+    "ETH/IRT" : "اتریوم/تومان"
+  },
+  "header": {
+    "lastPrice" : "آخرین قیمت",
+    "availableBalance" : "موجودی قابل معامله"
+  },
+  "overview": {
+    "title": "نمای کلی",
+    "change": "تغییر",
+    "min": "حداقل",
+    "max": "حداکثر",
+    "volume": "حجم معاملات",
+    "lastDay": "24ساعت",
+    "lastWeek": "7روز",
+    "lastMonth": "30روز"
+  },
+  "LastTrades": {
+    "title": "معامله های اخیر",
+    "date": "زمان",
+    "volume": "مقدار",
+    "price": "قیمت",
+    "totalPrice": "قیمت کل"
   },
   "footer" : {
     "aboutUs" : "درباره ما",

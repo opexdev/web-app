@@ -37,7 +37,6 @@ html,body{
     font-size: 0.9vw;
     box-sizing: border-box;
     direction: rtl;
-    background-color: #EBF5FF;
 }
 .container{
     width: 100%;
@@ -98,6 +97,9 @@ html,body{
 
 .content{
     width: 73%;
+    background-color: var(--primary-color);
+    color: var(--alternative-color);
+    transition: color 0.7s ,background-color 0.4s;
 }
 .col-30{
     flex: 0.3;

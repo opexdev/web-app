@@ -3,7 +3,7 @@ import classes from "./footer.module.css";
 import {images} from "../../assets/images";
 import {useTranslation} from "react-i18next";
 import {connect} from "react-redux";
-import {CHANGE_THEME} from "../../store/action";
+import {setThemeInitiate} from "../../store/actions/";
 
 const Footer = (props) => {
     const {t} = useTranslation();
@@ -22,7 +22,7 @@ const Footer = (props) => {
                         { props.isDark ? "dark" : "light"}
                         <div>
                             <div className="toggle toggle--daynight">
-                                <input type="checkbox" id="toggle--daynight" className="toggle--checkbox" onChange={props.onThemeChange}/>
+                                <input type="checkbox" id="toggle--daynight" className="toggle--checkbox" onChange={e => props.onThemeChange(e.target.checked)} checked={props.isDark}/>
                                 <label className="toggle--btn" htmlFor="toggle--daynight">
                                     <span className="toggle--feature"/>
                                 </label>
@@ -63,12 +63,12 @@ const Footer = (props) => {
 
 const mapStateToProps = state => {
     return {
-        isDark: state.isDark
+        isDark: state.global.isDark
     }
 }
 const mapDispatchToProps = dispatch => {
     return {
-        onThemeChange :  () => dispatch({type:CHANGE_THEME})
+        onThemeChange :  (isDark) => dispatch(setThemeInitiate(isDark))
     }
 }
 

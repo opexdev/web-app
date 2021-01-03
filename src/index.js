@@ -2,19 +2,28 @@ import React, {Suspense} from 'react';
 import ReactDOM from 'react-dom';
 import './i18n/i18n';
 import {Provider} from 'react-redux';
-import {createStore , applyMiddleware} from "redux";
+import {createStore, applyMiddleware, combineReducers } from "redux";
 import createSagaMiddleware from 'redux-saga';
-import reducer from "./store/reducer";
+import globalReducer from "./store/reducers/globalReducer";
 import reportWebVitals from './reportWebVitals';
 import App from "./main";
 import './index.css';
+import authReducer from "./store/reducers/authReducer";
+import {watchGlobal} from "./store/sagas";
 
 
 const sagaMiddleware = createSagaMiddleware();
+const rootReducer = combineReducers({
+    global: globalReducer,
+    auth : authReducer,
+})
+
 const store = createStore(
-    reducer ,
+    rootReducer,
     applyMiddleware(sagaMiddleware)
 );
+
+sagaMiddleware.run(watchGlobal)
 
 ReactDOM.render(
     <React.StrictMode>
