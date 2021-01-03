@@ -1,0 +1,28 @@
+.input-group {
+    display: flex;
+    flex-direction: row;
+    border:1px solid gray;
+    border-radius: 11px;
+}
+
+.input-group span {
+    background: #f2f5f8;
+    padding: 10px 26px;
+    color: #6f6e70;
+    flex: 0.2;
+}
+
+.input-group input {
+    display: flex;
+    flex: 0.2;
+    border: none;
+    padding-right: 10px;
+}
+.input-group span.lead {
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+.input-group span.after {
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
