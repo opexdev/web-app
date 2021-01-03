@@ -6,11 +6,18 @@ const OrderBookTable = (props) => {
 
     let id = 1;
     const trItems = props.tableDetailes;
-    let header = <tr>
+    let header = /*<tr>
         <th>قیمت کل</th>
         <th>مقدار</th>
         <th>قیمت</th>
-    </tr>
+    </tr>*/
+
+    <div className="row jc-around font-weight-bold">
+        <span>قیمت کل</span>
+        <span>مقدار</span>
+        <span>قیمت</span>
+    </div>
+
     let tdItems = trItems.map((tr) =>
         <tr key={id++} style={{background: "linear-gradient( to right, #FAAFB1 "+(tr.Percent)+ "%,   transparent  "+(tr.Percent)+ "%) no-repeat"}}>
           {/*  <span className="position-absolute" style={{width: tr.Percent+ '%' }}/>*/}
@@ -21,11 +28,19 @@ const OrderBookTable = (props) => {
 
 
     if( props.type === "buy"){
-        header = <tr>
+        header = /*<tr>
             <th>قیمت</th>
             <th>مقدار</th>
             <th>قیمت کل</th>
-        </tr>
+        </tr>*/
+
+        <div className="row jc-around font-weight-bold">
+            <span>قیمت</span>
+            <span>مقدار</span>
+            <span>قیمت کل</span>
+
+        </div>
+
         tdItems = trItems.map((tr) => <tr key={id++} style={{background: "linear-gradient(to left , #A4E0C4   "+(tr.Percent)+ "%, transparent   "+(tr.Percent)+ "%) no-repeat"}}>
             <td>{tr.Count}</td><td>{tr.Amount}</td><td>{tr.totalPrice}</td></tr>);
 
@@ -34,10 +49,14 @@ const OrderBookTable = (props) => {
 
     return (
         <div className={`column container ${Styles.container}`}>
+
+            {header}
             <ScrollBar >
                 <table className="text-center" cellSpacing="0" cellPadding="0">
-                    {header}
+
+                    <tbody>
                     {tdItems}
+                    </tbody>
 
                 </table>
             </ScrollBar>

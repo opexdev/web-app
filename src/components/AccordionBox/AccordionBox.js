@@ -50,7 +50,7 @@ const AccordionBox = (props) => {
     return (
         <div className={`${customClass} ${classes.container}`}>
             <div className={classes.header}>
-                <h3 style={{ fontSize: TitleFontSize? TitleFontSize : ''}}>{title}</h3>
+                <h3 className={props.headerClassName}>{title}</h3>
                 <div className={classes.items} style={{ borderTop: ItemsBorderTop === true ? setBorderTop==true : ''  }}>
                     <span className={`${classes.leftBtn} ${btn.left ? classes.active : null}`} onClick={()=>scrollHandler(ulRef, "left")}/>
                     <span className={`${classes.rightBtn} ${btn.right ? classes.active : null}`}  onClick={()=>scrollHandler(ulRef, "right")}/>

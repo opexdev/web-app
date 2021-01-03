@@ -1,11 +1,12 @@
 import React from "react";
 import Styles from "./SubMenu.module.css";
+import Market from "../../pages/Dashboard/Market/Market";
 
 const SubMenu = (props) => {
 
     return (
         <div className={Styles.container}>
-            <p>بازار</p>
+            <Market/>
         </div>
     )
 };

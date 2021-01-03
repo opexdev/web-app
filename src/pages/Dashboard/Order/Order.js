@@ -1,29 +1,34 @@
 import React from 'react';
 import classes from "./Order.module.css"
+import AccordionBox from "../../../components/AccordionBox/AccordionBox";
 
-const Overview = (props) => {
+const Order = (props) => {
+
+    const bodyBuilder =(data)=> {
+        return <div className={classes.content}>
+            <p>موجودی قابل معامله: <span >{data.CurrencyBalance}</span> </p>
+            <p>بهترین پیشنهاد: <span>{data.BestOffer}</span> </p>
+        </div>
+    }
+
+    const data = [
+        {id: 1 , title: "خرید" , body: bodyBuilder(props.data.Buy)},
+        {id: 2 , title: "فروش" , body: bodyBuilder(props.data.sale)},
+
+    ]
 
     return (
-        <div className={`${classes.container}`}>
-            <div className={classes.header}>
+        <div className="py-2">
 
-                <div className={classes.title}>
-                    <h4>سفارش</h4>
-                </div>
-                <div className={classes.subTitle}>
-                    <span className={classes.activeSubTitle}>خرید</span>
-                    <span>فروش</span>
+            <div className={`container card-background card-border ${classes.container}`}>
 
-                </div>
+                <AccordionBox title="سفارش" content={data}/>
 
             </div>
-            <div className={classes.content}>
-                <p>موجودی قابل معامله: <span >12،350،000</span> تومان</p>
-                <p>بهترین پیشنهاد: <span>450،000،000</span> تومان</p>
-            </div>
+
 
         </div>
     );
 };
 
-export default Overview;
+export default Order;

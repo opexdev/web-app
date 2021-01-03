@@ -13,7 +13,8 @@
     max-height: 35%;*/
     display: flex;
     flex-direction: column;
-    flex: 0.17;
+    /*flex: 0.17;*/
+    flex: 0.1;
     padding: 1vh 1vw;
     border-bottom: 0.01vh solid #505050;
     border-top-left-radius: 9px;
@@ -24,7 +25,8 @@
     /*min-height: 65%;
     max-height: 80%;*/
     /*height: 80%;*/
-    flex: 0.83;
+    /*flex: 0.83;*/
+    flex: 0.9;
     border-bottom-left-radius: 9px;
     border-bottom-right-radius: 9px;
 }
@@ -49,8 +51,8 @@
     padding: 2vh 0;
 
     /*background: #d4e987;*/
-   /* background: #fcfeff;*/
-   /* transition: all 1s ease-in-out;*/
+    /* background: #fcfeff;*/
+    /* transition: all 1s ease-in-out;*/
 
 }
 .items li::after{
@@ -86,9 +88,9 @@
     scrollbar-width: none;  /* Firefox */
 }
 .leftBtn{
-   /* position: absolute;
-    left: 0;
-    top: 0;*/
+    /* position: absolute;
+     left: 0;
+     top: 0;*/
     background: red;
     display: none;
 }

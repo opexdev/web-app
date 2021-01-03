@@ -13,7 +13,7 @@ const Header = (props) => {
             <div className={`row jc-between ai-center ${classes.content}`}>
                 <div className={`column ai-start`}>
                     <h2 className="mb-05">{t(`pair.${props.activePair}`)}</h2>
-                    <p>{t('header.lastPrice')}<span>410,130,000</span> تومان</p>
+                    <p>{t('header.lastPrice')}<span>410,130,000</span> {t('currency.'+p2)}</p>
                 </div>
                 <div className={`column ai-center`}>
                     <p className="mb-05">{t('header.availableBalance')}</p>

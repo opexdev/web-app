@@ -1,9 +1,6 @@
 .container{
     height: 30vh;
     width: 100%;
-    /*margin: 2vh 1vw;*/
-    border: 0.3vh solid #868383;
-    border-radius: 9px;
 
 }
 .content{

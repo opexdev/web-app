@@ -5,34 +5,32 @@ import Order from "./Order/Order";
 import OrderBook from "./OrderBook/OrderBook";
 import MyOrders from "./MyOrders/MyOrders";
 import LastTrades from "./LastTrades/LastTrades";
+import {OrderData, OverViewData} from "../../FakeData/FakeData";
+import TradingView from "./TradingView/TradingView";
 
 const Dashboard = (props) => {
-    const OverViewData = {
-        lastDay: {change: "5%", min: 100, max: 10000, volume: 500000, type: true},
-        lastWeek: {change: "2.3%", min: 50, max: 20000, volume: 500000, type: true},
-        lastMonth: {change: "1.4%", min: 300, max: 10000, volume: 5050000, type: false},
-    }
+
     return (
-        <Fragment>
+        <div className="px-1 py-1">
             <div className="row">
-                <div className="column px-1 py-1 col-35">
+                <div className="column col-35 pl-05">
                     <Overview data={OverViewData} activePair={props.activePair}/>
-                    <Order/>
+                    <Order data={OrderData}/>
                 </div>
-                <div className="column pl-1 py-1 col-65">
-                    <OrderBook/>
+                <div className="column col-65 pr-05">
+                    <TradingView/>
                     <OrderBook/>
                 </div>
             </div>
             <div className="row">
-                <div className="column px-1 py-1 col-65">
+                <div className="column col-65 pl-05">
                     <MyOrders/>
                 </div>
-                <div className="column pl-1 py-1 col-35">
+                <div className="column col-35 pr-05">
                     <LastTrades/>
                 </div>
             </div>
-        </Fragment>
+        </div>
     )
 }
 const mapStateToProps = state => {

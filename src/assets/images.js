@@ -13,6 +13,9 @@ import remove from "./images/delete.svg";
 import down from "./images/down.svg";
 import up from "./images/up.svg";
 import favoriteCurrency from "./images/favoriteCurrency.svg";
+import bitcoin from "./images/bitcoin.svg";
+import ethereum from "./images/ethereum.svg";
+import ethereumLight from "./images/ethereumLight.svg";
 
 
 
@@ -21,7 +24,6 @@ export const  images = {
     'opexLogo_light' : opexLogo_light,
     'darkTheme' : darkTheme,
     'brightTheme' : brightTheme,
-    'favoriteCurrency' : favoriteCurrency,
     'languages' : languages,
     'market' : market,
     'wallet' : wallet,
@@ -33,5 +35,9 @@ export const  images = {
     'remove' : remove,
     'down' : down,
     'up' : up,
+    'favoriteCurrency' : favoriteCurrency,
+    'bitcoin' : bitcoin,
+    'ethereum' : ethereum,
+    'ethereumLight' : ethereumLight,
 };
 

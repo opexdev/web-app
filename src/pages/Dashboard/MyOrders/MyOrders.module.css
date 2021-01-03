@@ -1,7 +1,7 @@
-.container{
-    height: 50vh;
-    width: 100%;
-    /*margin: 2vh 1vw;*/
-    border: 0.3vh solid #868383;
+.container {
+    height: 100%;
     border-radius: 9px;
+}
+.container tr:nth-child(even) td{
+    background-color: rgba(191, 186, 176, 0.23);
 }

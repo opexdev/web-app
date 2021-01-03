@@ -24,10 +24,12 @@
 :root {
     --primary-color: #EBF5FF;
     --alternative-color: #444;
+    --background: #fcfeff;
 }
 .dark {
-    --primary-color: #444;
+    --primary-color: #403f4d;
     --alternative-color: #eee;
+    --background: #31303e;
 }
 
 html,body{
@@ -79,6 +81,9 @@ html,body{
     align-items: flex-end;
 }
 
+.img-vsm{
+    width: 1vw;
+}
 .img-sm{
     width: 1.5vw;
 }
@@ -88,6 +93,8 @@ html,body{
 .img-lg{
     width: 3.5vw;
 }
+
+
 .mb-05{
     margin-bottom: 0.5vh
 }
@@ -103,6 +110,12 @@ html,body{
 }
 .col-30{
     flex: 0.3;
+}
+.col-35{
+    flex: 0.35;
+}
+.col-65{
+    flex: 0.65;
 }
 .col-70{
     flex: 0.7;
@@ -133,6 +146,13 @@ html,body{
     text-align: center;
 }
 
+/**::-webkit-scrollbar {
+    display: none;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+
+}*/
+
 
 .hide-scrollBar::-webkit-scrollbar {
     display: none;
@@ -150,11 +170,19 @@ html,body{
     scrollbar-width: none;
     margin: 0 !important;
 }
+
+
+
+
 .thumb-vertical{
     background-color: #b5b1b1;
     border-radius: 50vw;
-
 }
+
+.position-absolute{
+    position: absolute;
+}
+
 table{
     width: 100%;
     max-height: 100%;
@@ -170,8 +198,26 @@ tr{
     padding-top: 1vh;
     padding-bottom: 1vh;
 }
+.py-2{
+    padding-top: 2vh;
+    padding-bottom: 2vh;
+}
+.px-05{
+    padding-right: 0.5vw;
+    padding-left: 0.5vw;
+}
+.py-05{
+    padding-top: 0.5vh;
+    padding-bottom: 0.5vh;
+}
 .pl-1{
     padding-left: 1vw;
+}
+.pl-05{
+    padding-left: 0.5vw;
+}
+.pr-05{
+    padding-right: 0.5vw;
 }
 .pt-1{
     padding-top: 1vh;
@@ -179,7 +225,46 @@ tr{
 .mt-1{
     margin-top: 1vh;
 }
+.mt-2{
+    margin-top: 2vh;
+}
+
 a{
     color: var(--alternative-color);
     text-decoration: none;
+
+    /*color: #282c34;*/
+}
+
+
+.font-size-sm{
+    font-size: 0.75vw;
+}
+
+.card-background{
+    background: var(--background);
+}
+
+.active{
+    border-bottom: 0.65vh solid green;
+    font-weight: bold;
+    z-index: 10;
+}
+
+.font-weight-bold{
+    font-weight: bold;
+}
+
+
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+    -moz-appearance: textfield;
 }

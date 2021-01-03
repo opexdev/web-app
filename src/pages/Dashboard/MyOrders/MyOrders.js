@@ -1,11 +1,14 @@
-import React,{Fragment} from 'react';
-import Styles from "./MyOrders.module.css"
+import React,{Fragment, useState,useEffect} from 'react';
+import classes from "./MyOrders.module.css"
 import ScrollBar from "../../../components/ScrollBar";
 import {images} from "../../../assets/images"
 import AccordionBox from "../../../components/AccordionBox/AccordionBox";
 
 
+
 const MyOrders = (props) => {
+
+    const [openItem,setOpenItem] = useState(null)
 
     const CurrentOrdersData = [
         {
@@ -217,7 +220,7 @@ const MyOrders = (props) => {
     const TradesData = [
         {
             Moment: "11/1، 01:10",
-            AmountBTC: "0.01",
+            AmountBTC: "0.02",
             CountIRRT: "413،990،000",
             totalPrice: '413،990،000',
             TradesID:'67Gj2Acx9043',
@@ -342,14 +345,14 @@ const MyOrders = (props) => {
 
     let TradesTdItems = TradesData.map((tr) =>
         <Fragment>
-            <tr key={id++} style={{color: (tr.Type === "buy" ? "green" : "red" )}}>
+            <tr key={++id} style={{color: (tr.Type === "buy" ? "green" : "red" )}}>
                 <td>{tr.Moment}</td>
                 <td>{tr.AmountBTC}</td>
                 <td>{tr.CountIRRT}</td>
                 <td>{tr.totalPrice}</td>
-                <td><img className={`img-vsm flex`} src={images.down} alt="down" title="down"/></td>
+                <td><img className={`img-vsm flex`} src={images.down} alt="down" title="down" onClick={()=>setOpenItem(tr.AmountBTC)}/></td>
             </tr>
-            <tr>
+            <tr className={ (openItem) ? "open":"sss"}>
                 <td colSpan="4">
                     <div className={`row jc-around  ai-center`} style={{width:"100%"}}>
                         <p>شناسه معامله: <span style={{color: (tr.Type === "buy" ? "green" : "red" )}}>{tr.TradesID}</span></p>
@@ -378,10 +381,10 @@ const MyOrders = (props) => {
     ]
 
     return (
-        <div className={`container ${Styles.container}`}>
-            <div className={`container card-background ${Styles.container}`}>
+        <div className={`container card-background card-border column ${classes.container}`}>
+
                 <AccordionBox title="سفارش ها و معامله های من" content={data}/>
-            </div>
+
         </div>
     );
 };
