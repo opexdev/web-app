@@ -34,7 +34,7 @@ const OrderBookTable = (props) => {
             <th>قیمت کل</th>
         </tr>*/
 
-        <div className="row jc-around font-weight-bold">
+        <div className="row jc-around">
             <span>قیمت</span>
             <span>مقدار</span>
             <span>قیمت کل</span>

@@ -21,6 +21,7 @@
     url("assets/fonts/IRANYekan/IRANYekanWebFaNum.ttf") format("truetype"),
     url("assets/fonts/IRANYekan/IRANYekanWebFaNum.svg#svgFontName") format("svg");
 }
+
 :root {
     /*--primary-color: #EBF5FF;
     --alternative-color: #444;
@@ -38,6 +39,8 @@
 
     --textGreen: #18A979;
     --textRed: #D73E36;
+    --textBlue: #0E4095;
+
     --textGreenAlpha: #18A97978;
     --textRedAlpha: #d73e3678;
     --activeTab: #007BFF;
@@ -61,10 +64,23 @@
     --textColor: #c3c3c3;
     --textGreen: #18A979;
     --textRed: #D73E36;
+
+    --textBlue: #0E409578;
+
     --textGreenAlpha: #18A97978;
     --textRedAlpha: #d73e3678;
     --activeTab: #007BFF;
 }
+.text-green{
+    color: var(--textGreen)
+}
+.text-red{
+    color: var(--textRed)
+}
+.text-blue{
+    color: var(--textBlue)
+}
+
 
 .card-background{
     background: var(--cardBody);
@@ -297,6 +313,12 @@ tr{
 
 .font-size-sm{
     font-size: 0.75vw;
+}
+.font-size-md{
+    font-size: 1vw;
+}
+.font-size-lg{
+    font-size: 1.2vw;
 }
 
 

@@ -5,6 +5,10 @@ import {useTranslation} from "react-i18next";
 import {connect} from "react-redux";
 import moment from "moment-jalaali";
 
+
+
+
+
 const Header = (props) => {
     const {t} = useTranslation();
     const [p1,p2]= props.activePair.split("/")
@@ -18,15 +22,17 @@ const Header = (props) => {
                 <div className={`column ai-center`}>
                     <p className="mb-05">{t('header.availableBalance')}</p>
                     <div className={`row ai-center ${classes.inventory}`}>
-                        <div className="flex">
-                            <img className="img-sm" src={images.plus} alt="plus"/>
+                        <div className="flex ai-center">
+                            {/*<img className="img-sm" src={images.plus} alt="plus"/>*/}
+                            <i className="icon-plus text-green font-size-lg"/>
                             <span>{props.auth.wallet[p1]}</span>
                             <span>{t('currency.'+p1)}</span>
                         </div>
-                        <div className="flex">
+                        <div className="flex ai-center">
                             <span>{props.auth.wallet[p2]}</span>
                             <span>{t('currency.'+p2)}</span>
-                            <img className="img-sm" src={images.plus} alt="plus"/>
+                            <i className="icon-plus text-green font-size-lg"/>
+                            {/*<img className="img-sm" src={images.plus} alt="plus"/>*/}
                         </div>
                     </div>
                 </div>

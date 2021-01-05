@@ -9,6 +9,8 @@ import AccordionBox from "../../../components/AccordionBox/AccordionBox";
 const MyOrders = (props) => {
 
     const [openItem,setOpenItem] = useState(null)
+    const [ttttt,setttt] = useState(null)
+
 
     const CurrentOrdersData = [
         {
@@ -239,146 +241,156 @@ const MyOrders = (props) => {
     ]
 
     let id = 1;
-    let CurrentOrdersHeader = <tr>
-        <th>زمان</th>
-        <th>مقدار(BTC)</th>
-        <th>قیمت واحد(IRRT)</th>
-        <th>قیمت کل</th>
-        <th>%انجام</th>
-        <th> </th>
-        <th> </th>
-    </tr>
-
-    let CurrentOrdersTdItems = CurrentOrdersData.map((tr) =>
-
-        <tr key={id++} style={{color: (tr.Type === "buy" ? "var(--textGreen)" : "var(--textRed)" )}}>
-            <td>{tr.Moment}</td>
-            <td>{tr.AmountBTC}</td>
-            <td>{tr.CountIRRT}</td>
-            <td>{tr.totalPrice}</td>
-            <td>{tr.percentageDone}</td>
-            <td><img className={`img-vsm flex`} src={images.remove} alt="remove" title="remove"/></td>
-            <td><img className={`img-vsm flex`} src={images.down} alt="down" title="down"/></td>
-        </tr>);
 
 
-    const CurrentOrdersTable =
-        <ScrollBar>
-            <table className="text-center pt-1" cellSpacing="0" cellPadding="0">
+        let CurrentOrdersHeader = <tr>
+            <th>زمان</th>
+            <th>مقدار(BTC)</th>
+            <th>قیمت واحد(IRRT)</th>
+            <th>قیمت کل</th>
+            <th>%انجام</th>
+            <th> </th>
+            <th> </th>
+        </tr>
 
-                {CurrentOrdersHeader}
-                {CurrentOrdersTdItems}
+        let CurrentOrdersTdItems = CurrentOrdersData.map((tr) =>
 
-            </table>
-        </ScrollBar>
-
-    let StopTableHeader = <tr>
-        <th>زمان</th>
-        <th>مقدار(BTC)</th>
-        <th>قیمت واحد(IRRT)</th>
-        <th>قیمت کل</th>
-        <th>ق توقف</th>
-        <th> </th>
-    </tr>
-
-    let StopTableTdItems = stopData.map((tr) =>
-
-        <tr key={id++} style={{color: (tr.Type === "buy" ? "var(--textGreen)" : "var(--textRed)" )}}>
-            <td>{tr.Moment}</td>
-            <td>{tr.AmountBTC}</td>
-            <td>{tr.CountIRRT}</td>
-            <td>{tr.totalPrice}</td>
-            <td>{tr.stopPrice}</td>
-            <td><img className={`img-vsm flex`} src={images.remove} alt="remove" title="remove"/></td>
-        </tr>);
-
-
-    const StopTable =
-        <ScrollBar>
-            <table className="text-center pt-1" cellSpacing="0" cellPadding="0">
-
-                {StopTableHeader}
-                {StopTableTdItems}
-
-            </table>
-        </ScrollBar>
-
-    let OrderhistoryHeader = <tr>
-        <th>زمان</th>
-        <th>مقدار(BTC)</th>
-        <th>قیمت واحد(IRRT)</th>
-        <th>قیمت کل</th>
-        <th>وضعیت</th>
-        <th> </th>
-    </tr>
-
-    let OrderhistoryTdItems = OrderhistoryData.map((tr) =>
-
-        <tr key={id++} style={{color: (tr.Type === "buy" ? "var(--textGreen)" : "var(--textRed)" )}}>
-            <td>{tr.Moment}</td>
-            <td>{tr.AmountBTC}</td>
-            <td>{tr.CountIRRT}</td>
-            <td>{tr.totalPrice}</td>
-            <td>{tr.status}</td>
-            <td><img className={`img-vsm flex`} src={images.down} alt="down" title="down"/></td>
-        </tr>);
-
-
-    const OrderhistoryTable =
-        <ScrollBar>
-            <table className="text-center pt-1" cellSpacing="0" cellPadding="0">
-
-                {OrderhistoryHeader}
-                {OrderhistoryTdItems}
-
-            </table>
-        </ScrollBar>
-
-
-    let TradesHeader = <tr>
-        <th>زمان</th>
-        <th>مقدار(BTC)</th>
-        <th>قیمت واحد(IRRT)</th>
-        <th>قیمت کل</th>
-        <th> </th>
-    </tr>
-
-    let TradesTdItems = TradesData.map((tr) =>
-        <Fragment>
-            <tr key={++id} style={{color: (tr.Type === "buy" ? "var(--textGreen)" : "var(--textRed)" )}}>
+            <tr key={id++} style={{color: (tr.Type === "buy" ? "var(--textGreen)" : "var(--textRed)" )}}>
                 <td>{tr.Moment}</td>
                 <td>{tr.AmountBTC}</td>
                 <td>{tr.CountIRRT}</td>
                 <td>{tr.totalPrice}</td>
-                <td><img className={`img-vsm flex`} src={images.down} alt="down" title="down" onClick={()=>setOpenItem(tr.AmountBTC)}/></td>
-            </tr>
-            <tr className={ (openItem) ? "open":"sss"}>
-                <td colSpan="4">
-                    <div className={`row jc-around  ai-center`} style={{width:"100%"}}>
-                        <p>شناسه معامله: <span style={{color: (tr.Type === "buy" ? "var(--textGreen)" : "var(--textRed)" )}}>{tr.TradesID}</span></p>
-                        <p>شناسه سفارش: <span style={{color: (tr.Type === "buy" ? "var(--textGreen)" : "var(--textRed)" )}}>{tr.OrderID}</span></p>
-                    </div>
-                </td>
-            </tr>
-        </Fragment>);
+                <td>{tr.percentageDone}</td>
+                {/*<td><img className={`img-vsm flex`} src={images.remove} alt="remove" title="remove"/></td>
+            <td><img className={`img-vsm flex`} src={images.down} alt="down" title="down"/></td>*/}
+                <td><i className="icon-delete text-red font-size-md"/></td>
+                <td><i className="icon-down text-blue font-size-md"/></td>
+            </tr>);
 
 
-    const TradesTable =
-        <ScrollBar>
-            <table className="text-center pt-1" cellSpacing="0" cellPadding="0">
-                {TradesHeader}
-                {TradesTdItems}
-            </table>
-        </ScrollBar>
+        const CurrentOrdersTable =
+            <ScrollBar>
+                <table className="text-center pt-1" cellSpacing="0" cellPadding="0">
+
+                    {CurrentOrdersHeader}
+                    {CurrentOrdersTdItems}
+
+                </table>
+            </ScrollBar>
+
+        let StopTableHeader = <tr>
+            <th>زمان</th>
+            <th>مقدار(BTC)</th>
+            <th>قیمت واحد(IRRT)</th>
+            <th>قیمت کل</th>
+            <th>ق توقف</th>
+            <th> </th>
+        </tr>
+
+        let StopTableTdItems = stopData.map((tr) =>
+
+            <tr key={id++} style={{color: (tr.Type === "buy" ? "var(--textGreen)" : "var(--textRed)" )}}>
+                <td>{tr.Moment}</td>
+                <td>{tr.AmountBTC}</td>
+                <td>{tr.CountIRRT}</td>
+                <td>{tr.totalPrice}</td>
+                <td>{tr.stopPrice}</td>
+                <td><img className={`img-vsm flex`} src={images.remove} alt="remove" title="remove"/></td>
+            </tr>);
+
+
+        const StopTable =
+            <ScrollBar>
+                <table className="text-center pt-1" cellSpacing="0" cellPadding="0">
+
+                    {StopTableHeader}
+                    {StopTableTdItems}
+
+                </table>
+            </ScrollBar>
+
+        let OrderhistoryHeader = <tr>
+            <th>زمان</th>
+            <th>مقدار(BTC)</th>
+            <th>قیمت واحد(IRRT)</th>
+            <th>قیمت کل</th>
+            <th>وضعیت</th>
+            <th> </th>
+        </tr>
+
+        let OrderhistoryTdItems = OrderhistoryData.map((tr) =>
+
+            <tr key={id++} style={{color: (tr.Type === "buy" ? "var(--textGreen)" : "var(--textRed)" )}}>
+                <td>{tr.Moment}</td>
+                <td>{tr.AmountBTC}</td>
+                <td>{tr.CountIRRT}</td>
+                <td>{tr.totalPrice}</td>
+                <td>{tr.status}</td>
+                <td><img className={`img-vsm flex`} src={images.down} alt="down" title="down"/></td>
+            </tr>);
+
+
+        const OrderhistoryTable =
+            <ScrollBar>
+                <table className="text-center pt-1" cellSpacing="0" cellPadding="0">
+
+                    {OrderhistoryHeader}
+                    {OrderhistoryTdItems}
+
+                </table>
+            </ScrollBar>
+
+
+        let TradesHeader = <tr>
+            <th>زمان</th>
+            <th>مقدار(BTC)</th>
+            <th>قیمت واحد(IRRT)</th>
+            <th>قیمت کل</th>
+            <th> </th>
+        </tr>
+
+        let TradesTdItems = TradesData.map((tr) =>
+
+            <Fragment>
+                {console.log(openItem)}
+                <tr key={++id} style={{color: (tr.Type === "buy" ? "var(--textGreen)" : "var(--textRed)" )}}>
+                    <td>{tr.Moment}</td>
+                    <td>{tr.AmountBTC}</td>
+                    <td>{tr.CountIRRT}</td>
+                    <td>{tr.totalPrice}</td>
+                    <td><img className={`img-vsm flex`} src={images.down} alt="down" title="down" onClick={()=>{setOpenItem(tr.AmountBTC); console.log(tr.AmountBTC)}}/></td>
+                </tr>
+                <tr className={ `${console.log(openItem == tr.AmountBTC) ? "open" : "sss"} `}>
+                    <td colSpan="4">
+                        <div className={`row jc-around  ai-center`} style={{width:"100%"}}>
+                            <p>شناسه معامله: <span style={{color: (tr.Type === "buy" ? "var(--textGreen)" : "var(--textRed)" )}}>{tr.TradesID}</span></p>
+                            <p>شناسه سفارش: <span style={{color: (tr.Type === "buy" ? "var(--textGreen)" : "var(--textRed)" )}}>{tr.OrderID}</span></p>
+                        </div>
+                    </td>
+                </tr>
+            </Fragment>);
+
+
+        const TradesTable =
+            <ScrollBar>
+                <table className="text-center pt-1" cellSpacing="0" cellPadding="0">
+                    {TradesHeader}
+                    {TradesTdItems}
+                </table>
+            </ScrollBar>
+
+        const data = [
+            {id: 1 , title: "سفارش های جاری" , body: CurrentOrdersTable },
+            {id: 2 , title: "متوقف" , body: StopTable},
+            {id: 3 , title: "تاریخچه سفارش ها" , body: OrderhistoryTable},
+            {id: 4 , title: "معامله ها" , body: TradesTable},
+        ]
 
 
 
-    const data = [
-        {id: 1 , title: "سفارش های جاری" , body: CurrentOrdersTable },
-        {id: 2 , title: "متوقف" , body: StopTable},
-        {id: 3 , title: "تاریخچه سفارش ها" , body: OrderhistoryTable},
-        {id: 4 , title: "معامله ها" , body: TradesTable},
-    ]
+
+
+
 
     return (
         <div className={`container card-background card-border column ${classes.container}`}>
