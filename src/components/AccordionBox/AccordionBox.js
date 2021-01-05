@@ -49,9 +49,9 @@ const AccordionBox = (props) => {
 
     return (
         <div className={`${customClass} ${classes.container}`}>
-            <div className={classes.header}>
-                <h3 className={props.headerClassName}>{title}</h3>
-                <div className={classes.items} style={{ borderTop: ItemsBorderTop === true ? setBorderTop==true : ''  }}>
+            <div className={`card-header-bg ${classes.header}`}>
+                <h3 className={`${props.titleClassName} ${classes.title}`}>{title}</h3>
+                <div className={`${classes.items} ${props.headerClassName}`} style={{ borderTop: ItemsBorderTop === true ? setBorderTop==true : ''  }}>
                     <span className={`${classes.leftBtn} ${btn.left ? classes.active : null}`} onClick={()=>scrollHandler(ulRef, "left")}/>
                     <span className={`${classes.rightBtn} ${btn.right ? classes.active : null}`}  onClick={()=>scrollHandler(ulRef, "right")}/>
                     <ul style={{ maxWidth:  UlMaxWidth ? UlMaxWidth : " "}} ref={ulRef}>

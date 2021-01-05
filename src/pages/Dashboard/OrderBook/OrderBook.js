@@ -9,8 +9,8 @@ const OrderBook = () => {
 
     return (
         <div className=" py-2">
-            <div className={`container card-background card-border column ${classes.container}`}>
-                <div className={`column border-bottom jc-between ${classes.header}`}>
+            <div className={`container card-background card-border  column ${classes.container}`}>
+                <div className={`column border-bottom jc-between header-radius card-header-bg ${classes.header}`}>
                     <div className="row jc-start">
                         <h3>دفتر پیشنهادها (بیتکوین/تومان)</h3>
                     </div>

@@ -214,7 +214,7 @@ const Market = (props) => {
 
 
     return (
-        <div className={`container ${Styles.container}`}>
+        <div className={`container card-background  ${Styles.container}`}>
 
             <AccordionBox
                 title="بازار"
@@ -223,7 +223,7 @@ const Market = (props) => {
                 ItemsBorderTop= 'true'
                 content={data}
                 titleClassName={Styles.TitleFontSize}
-                headerClassName={Styles.TitleFontSize}
+                headerClassName={Styles.listBorder}
                 headerListClassName={Styles.UlMaxWidth}
             />
 

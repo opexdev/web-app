@@ -18,7 +18,7 @@ const MarketCard = (props) => {
             <div className={`column`}>
                 <span>{it.MarketName}</span>
                 <div className={`row jc-between ai-center`}>
-                    <span><img className={`img-vsm ${classes.marketCardImg}`} src={images.favoriteCurrency} alt="favoriteCurrency"/></span>
+                    <span><img className={`img-vsm ${classes.marketCardImg}`} src={images.starWithout} alt="favoriteCurrency"/></span>
                     <span className="font-size-sm " style={{color: (it.Type) === 'increase' ? "green": "red"}}>{it.Change}</span>
                 </div>
             </div>

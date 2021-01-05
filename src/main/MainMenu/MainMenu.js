@@ -4,7 +4,7 @@ import {images} from "../../assets/images"
 
 const MainMenu = (props) => {
     return (
-        <div className={`column ai-center jc-between ${Styles.container}`}>
+        <div className={`column ai-center jc-between mainMenu-background ${Styles.container}`}>
            <div className={`column jc-start ai-center`}>
                <span className="flex"><img className="img-lg" src={images.opexLogo_light} alt="opexLogo_light" title="اوپکس"/></span>
                <span className="flex"><img className="img-md" src={images.market} alt="market" title="بازار"/></span>

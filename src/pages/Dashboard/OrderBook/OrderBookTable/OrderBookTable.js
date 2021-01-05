@@ -12,14 +12,14 @@ const OrderBookTable = (props) => {
         <th>قیمت</th>
     </tr>*/
 
-    <div className="row jc-around font-weight-bold">
+    <div className="row jc-around ">
         <span>قیمت کل</span>
         <span>مقدار</span>
         <span>قیمت</span>
     </div>
 
     let tdItems = trItems.map((tr) =>
-        <tr key={id++} style={{background: "linear-gradient( to right, #FAAFB1 "+(tr.Percent)+ "%,   transparent  "+(tr.Percent)+ "%) no-repeat"}}>
+        <tr key={id++} style={{background: "linear-gradient( to right, var(--textRedAlpha) "+(tr.Percent)+ "%,   transparent  "+(tr.Percent)+ "%) no-repeat"}}>
           {/*  <span className="position-absolute" style={{width: tr.Percent+ '%' }}/>*/}
             <td>{tr.totalPrice}</td>
             <td>{tr.Amount}</td>
@@ -41,7 +41,7 @@ const OrderBookTable = (props) => {
 
         </div>
 
-        tdItems = trItems.map((tr) => <tr key={id++} style={{background: "linear-gradient(to left , #A4E0C4   "+(tr.Percent)+ "%, transparent   "+(tr.Percent)+ "%) no-repeat"}}>
+        tdItems = trItems.map((tr) => <tr key={id++} style={{background: "linear-gradient(to left , var(--textGreenAlpha)   "+(tr.Percent)+ "%, transparent   "+(tr.Percent)+ "%) no-repeat"}}>
             <td>{tr.Count}</td><td>{tr.Amount}</td><td>{tr.totalPrice}</td></tr>);
 
     }

@@ -3,5 +3,5 @@
     border-radius: 9px;
 }
 .container tr:nth-child(even) td{
-    background-color: rgba(191, 186, 176, 0.23);
+    background-color: var(--tableRow);
 }

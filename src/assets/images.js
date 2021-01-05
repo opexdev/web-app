@@ -16,6 +16,8 @@ import favoriteCurrency from "./images/favoriteCurrency.svg";
 import bitcoin from "./images/bitcoin.svg";
 import ethereum from "./images/ethereum.svg";
 import ethereumLight from "./images/ethereumLight.svg";
+import starwith from "./images/starwith.svg";
+import starWithout from "./images/starWithout.svg";
 
 
 
@@ -39,5 +41,7 @@ export const  images = {
     'bitcoin' : bitcoin,
     'ethereum' : ethereum,
     'ethereumLight' : ethereumLight,
+    'starwith' : starwith,
+    'starWithout' : starWithout,
 };
 

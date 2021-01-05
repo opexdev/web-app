@@ -251,7 +251,7 @@ const MyOrders = (props) => {
 
     let CurrentOrdersTdItems = CurrentOrdersData.map((tr) =>
 
-        <tr key={id++} style={{color: (tr.Type === "buy" ? "green" : "red" )}}>
+        <tr key={id++} style={{color: (tr.Type === "buy" ? "var(--textGreen)" : "var(--textRed)" )}}>
             <td>{tr.Moment}</td>
             <td>{tr.AmountBTC}</td>
             <td>{tr.CountIRRT}</td>
@@ -283,7 +283,7 @@ const MyOrders = (props) => {
 
     let StopTableTdItems = stopData.map((tr) =>
 
-        <tr key={id++} style={{color: (tr.Type === "buy" ? "green" : "red" )}}>
+        <tr key={id++} style={{color: (tr.Type === "buy" ? "var(--textGreen)" : "var(--textRed)" )}}>
             <td>{tr.Moment}</td>
             <td>{tr.AmountBTC}</td>
             <td>{tr.CountIRRT}</td>
@@ -314,7 +314,7 @@ const MyOrders = (props) => {
 
     let OrderhistoryTdItems = OrderhistoryData.map((tr) =>
 
-        <tr key={id++} style={{color: (tr.Type === "buy" ? "green" : "red" )}}>
+        <tr key={id++} style={{color: (tr.Type === "buy" ? "var(--textGreen)" : "var(--textRed)" )}}>
             <td>{tr.Moment}</td>
             <td>{tr.AmountBTC}</td>
             <td>{tr.CountIRRT}</td>
@@ -345,7 +345,7 @@ const MyOrders = (props) => {
 
     let TradesTdItems = TradesData.map((tr) =>
         <Fragment>
-            <tr key={++id} style={{color: (tr.Type === "buy" ? "green" : "red" )}}>
+            <tr key={++id} style={{color: (tr.Type === "buy" ? "var(--textGreen)" : "var(--textRed)" )}}>
                 <td>{tr.Moment}</td>
                 <td>{tr.AmountBTC}</td>
                 <td>{tr.CountIRRT}</td>
@@ -355,8 +355,8 @@ const MyOrders = (props) => {
             <tr className={ (openItem) ? "open":"sss"}>
                 <td colSpan="4">
                     <div className={`row jc-around  ai-center`} style={{width:"100%"}}>
-                        <p>شناسه معامله: <span style={{color: (tr.Type === "buy" ? "green" : "red" )}}>{tr.TradesID}</span></p>
-                        <p>شناسه سفارش: <span style={{color: (tr.Type === "buy" ? "green" : "red" )}}>{tr.OrderID}</span></p>
+                        <p>شناسه معامله: <span style={{color: (tr.Type === "buy" ? "var(--textGreen)" : "var(--textRed)" )}}>{tr.TradesID}</span></p>
+                        <p>شناسه سفارش: <span style={{color: (tr.Type === "buy" ? "var(--textGreen)" : "var(--textRed)" )}}>{tr.OrderID}</span></p>
                     </div>
                 </td>
             </tr>
