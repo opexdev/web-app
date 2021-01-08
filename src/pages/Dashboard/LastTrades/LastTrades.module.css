@@ -2,7 +2,7 @@
     height: 50vh;
 }
 .header{
-    height: 10%;
+    height: 12%;
     padding: 1vh 1vw;
 
 }
@@ -11,7 +11,7 @@
     text-align: center;
 }
 .content{
-    height: 90%;
+    height: 88%;
 }
 .content:nth-child(n){
     /* width: 50%;*/

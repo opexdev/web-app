@@ -2,7 +2,7 @@
     width: 22%;
     height: 100vh;
     background-color: #fcfeff;
-    border-left: 0.2vh solid #505050;
+    /*border-left: 0.2vh solid #505050;*/
     margin-right: 5%;
     position: fixed;
 }

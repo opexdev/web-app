@@ -243,15 +243,15 @@ const MyOrders = (props) => {
     let id = 1;
 
 
-        let CurrentOrdersHeader = <tr>
-            <th>زمان</th>
-            <th>مقدار(BTC)</th>
-            <th>قیمت واحد(IRRT)</th>
-            <th>قیمت کل</th>
-            <th>%انجام</th>
-            <th> </th>
-            <th> </th>
-        </tr>
+        let CurrentOrdersHeader = <div className="row jc-around py-05">
+            <span>زمان</span>
+            <span>مقدار(BTC)</span>
+            <span>قیمت واحد(IRRT)</span>
+            <span>قیمت کل</span>
+            <span>%انجام</span>
+            <span> </span>
+            <span> </span>
+        </div>
 
         let CurrentOrdersTdItems = CurrentOrdersData.map((tr) =>
 
@@ -263,20 +263,27 @@ const MyOrders = (props) => {
                 <td>{tr.percentageDone}</td>
                 {/*<td><img className={`img-vsm flex`} src={images.remove} alt="remove" title="remove"/></td>
             <td><img className={`img-vsm flex`} src={images.down} alt="down" title="down"/></td>*/}
-                <td><i className="icon-delete text-red font-size-md"/></td>
-                <td><i className="icon-down text-blue font-size-md"/></td>
+                <td><i className="icon-delete flex jc-center text-red font-size-md"/></td>
+                <td><i className="icon-down flex jc-center  text-blue font-size-md"/></td>
             </tr>);
 
 
+
+
         const CurrentOrdersTable =
+            <Fragment>
+            {CurrentOrdersHeader}
             <ScrollBar>
                 <table className="text-center pt-1" cellSpacing="0" cellPadding="0">
 
-                    {CurrentOrdersHeader}
+
+                    <tbody>
                     {CurrentOrdersTdItems}
+                    </tbody>
 
                 </table>
             </ScrollBar>
+            </Fragment>
 
         let StopTableHeader = <tr>
             <th>زمان</th>
@@ -295,7 +302,11 @@ const MyOrders = (props) => {
                 <td>{tr.CountIRRT}</td>
                 <td>{tr.totalPrice}</td>
                 <td>{tr.stopPrice}</td>
-                <td><img className={`img-vsm flex`} src={images.remove} alt="remove" title="remove"/></td>
+
+                {/*<td><img className={`img-vsm flex`} src={images.remove} alt="remove" title="remove"/></td>*/}
+
+                <td><i className="icon-delete flex jc-center  text-red font-size-md"/></td>
+
             </tr>);
 
 
@@ -326,7 +337,12 @@ const MyOrders = (props) => {
                 <td>{tr.CountIRRT}</td>
                 <td>{tr.totalPrice}</td>
                 <td>{tr.status}</td>
-                <td><img className={`img-vsm flex`} src={images.down} alt="down" title="down"/></td>
+
+                {/*<td><img className={`img-vsm flex`} src={images.down} alt="down" title="down"/></td>*/}
+
+
+                <td><i className="icon-down flex jc-center  text-blue font-size-md"/></td>
+
             </tr>);
 
 
@@ -358,7 +374,8 @@ const MyOrders = (props) => {
                     <td>{tr.AmountBTC}</td>
                     <td>{tr.CountIRRT}</td>
                     <td>{tr.totalPrice}</td>
-                    <td><img className={`img-vsm flex`} src={images.down} alt="down" title="down" onClick={()=>{setOpenItem(tr.AmountBTC); console.log(tr.AmountBTC)}}/></td>
+                    {/*<td><img className={`img-vsm flex`} src={images.down} alt="down" title="down" onClick={()=>{setOpenItem(tr.AmountBTC); console.log(tr.AmountBTC)}}/></td>*/}
+                    <td><i className="icon-down flex jc-center  text-blue font-size-md" onClick={()=>{setOpenItem(tr.AmountBTC); console.log(tr.AmountBTC)}}/></td>
                 </tr>
                 <tr className={ `${console.log(openItem == tr.AmountBTC) ? "open" : "sss"} `}>
                     <td colSpan="4">

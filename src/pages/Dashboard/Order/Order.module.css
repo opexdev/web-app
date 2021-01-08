@@ -5,3 +5,16 @@
     height: 100%;
     padding: 1.8vh 1vw;
 }
+.button{
+    width: 100%;
+    padding: 0.8vh 0vw;
+    border: none;
+    background: var(--textGreen);
+    border-radius: 4px;
+    font-family: 'IRANYekan';
+    font-size: 0.8vw;
+    /* justify-content: flex-end; */
+    color: white;
+    bottom: 0;
+    margin-top: 40vh;
+}

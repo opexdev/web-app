@@ -12,7 +12,7 @@ const OrderBookTable = (props) => {
         <th>قیمت</th>
     </tr>*/
 
-    <div className="row jc-around ">
+    <div className="row jc-around py-05">
         <span>قیمت کل</span>
         <span>مقدار</span>
         <span>قیمت</span>
@@ -34,7 +34,7 @@ const OrderBookTable = (props) => {
             <th>قیمت کل</th>
         </tr>*/
 
-        <div className="row jc-around">
+        <div className="row jc-around py-05">
             <span>قیمت</span>
             <span>مقدار</span>
             <span>قیمت کل</span>

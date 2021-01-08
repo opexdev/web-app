@@ -8,6 +8,7 @@ const Order = (props) => {
         return <div className={classes.content}>
             <p>موجودی قابل معامله: <span >{data.CurrencyBalance}</span> </p>
             <p>بهترین پیشنهاد: <span>{data.BestOffer}</span> </p>
+            <button type="submit" className={` ${classes.button}`}>خرید</button>
         </div>
     }
 

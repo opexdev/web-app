@@ -9,7 +9,7 @@ const LastTradesTable = (props) => {
     let id = 1;
     const trItems = props.tableDetailes;
 
-    let header = <div className="row jc-around ">
+    let header = <div className="row jc-around py-05">
         <span>{t('LastTrades.date')}</span>
         <span>{t('LastTrades.volume')}(BTC)</span>
         <span>{t('LastTrades.price')}(IRRT)</span>

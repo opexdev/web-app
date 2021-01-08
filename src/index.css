@@ -44,6 +44,10 @@
     --textGreenAlpha: #18A97978;
     --textRedAlpha: #d73e3678;
     --activeTab: #007BFF;
+    --CardBorder: #d3cdcd;
+    --borderBottom: #dcdcdc;
+    --scrollBar: #0707073b;
+    --activeLi: #3030300d;
 
 }
 .dark {
@@ -53,23 +57,47 @@
 
     --menu: #24242E;
     --subMenu: #24242E;
-    --mainContent: #403F4D;
+
+    /*--mainContent: #403F4D;
     --cardBody: #31303E;
-    /*--cardHeader: #3E3D4A;*/
     --cardHeader: #2a2933;
-    --deActive: #2E2E39;
-    --tableRow: #38384678;
-    /*--textColor: #F4F4F5;*/
-    /*--textColor: #ebf5ff;*/
     --textColor: #c3c3c3;
     --textGreen: #18A979;
-    --textRed: #D73E36;
+    --textRed: #D73E36;*/
 
-    --textBlue: #0E409578;
+
+    --deActive: #2E2E39;
+    --tableRow: #38384678;
+
+
+    /* --cardHeader: #3E3D4A;*/
+    /*--textColor: #F4F4F5;*/
+    /*--textColor: #ebf5ff;*/
+
+
+
+    /*darkula*/
+
+    --mainContent: #383A59;
+    --cardBody: #282a36;
+    --textColor: rgba(203, 203, 203, 0.8);
+    --cardHeader: #242633fa;
+    --textGreen: #50fa7ba1;
+    --textRed: #ff5555;
+
+
+    --textBlue: #f3f7ff78;
 
     --textGreenAlpha: #18A97978;
     --textRedAlpha: #d73e3678;
     --activeTab: #007BFF;
+    --CardBorder: #22232a;
+    --borderBottom: #080606;
+    --scrollBar: #a9a9a936;
+    --activeLi: #d0d0d01a;
+
+    /*darkula*/
+    /*--activeTab: #ff79c6;*/
 }
 .text-green{
     color: var(--textGreen)
@@ -162,7 +190,7 @@ html,body{
     width: 1.5vw;
 }
 .img-md{
-    width: 2.5vw;
+    width: 2.3vw;
 }
 .img-lg{
     width: 3.5vw;
@@ -196,8 +224,12 @@ html,body{
 }
 
 .card-border{
-    border: 0.3vh solid #868383;
+    border: 0.3vh solid var(--CardBorder);
     border-radius: 9px;
+
+    transition: border 0.4s;
+
+    /*transition: border 0.4s;*/
 }
 
 .header-radius{
@@ -205,7 +237,8 @@ html,body{
     border-top-right-radius: 9px;
 }
 .border-bottom{
-    border-bottom: 0.01vh solid #505050;
+    border-bottom: 0.01vh solid var(--borderBottom);
+    transition: border-bottom 0.4s;
 }
 .border-left{
     border-left: 0.0001vh solid #505050;
@@ -254,7 +287,8 @@ html,body{
 
 
 .thumb-vertical{
-    background-color: #b5b1b1;
+    background-color: var(--scrollBar);
+    transition: background-color 0.4s;
     border-radius: 50vw;
 }
 
@@ -268,6 +302,7 @@ table{
 }
 tr{
     position: relative;
+    line-height: 3.4vh;
 }
 .px-1{
     padding-right: 1vw;
@@ -329,6 +364,12 @@ tr{
     z-index: 10;
     color: var(--activeTab);
 }
+.active:hover{
+    background-color: var(--activeLi);
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+}
+
 
 .font-weight-bold{
     font-weight: bold;
