@@ -10,6 +10,7 @@ const ScrollBar = (props) => {
             autoHideDuration={200}
             renderThumbHorizontal={props => <div {...props} className="thumb-horizontal"/>}
             renderThumbVertical={props => <div {...props} className="thumb-vertical"/>}
+            renderView={props => <div {...props} className="scrollView"/>}
             style={style}>
             {props.children}
         </Scrollbars>
