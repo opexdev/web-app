@@ -1,12 +1,50 @@
 {
-  "title": "Enter",
-  "description": {
-    "part1": "To get started, edit <1>src/App.js</1> and save to reload.",
-    "part2": "Switch language between english and german using buttons above."
+  "title": "اپکس",
+  "signIn":"ورود",
+  "signOut":"خروج",
+  "currency": {
+    "IRT" : "تومان",
+    "Euro" : "یورو",
+    "USD" : "دلار",
+    "BTC" : "بیتکوین",
+    "ETH" : "اتریوم"
+  },
+  "pair": {
+    "BTC/IRT" : "بیتکوین/تومان",
+    "ETH/IRT" : "اتریوم/تومان"
+  },
+  "header": {
+    "lastPrice" : "Last Price",
+    "availableBalance" : "Available Balance"
+  },
+  "overview": {
+    "title": "overview",
+    "change": "تغییر",
+    "min": "حداقل",
+    "max": "حداکثر",
+    "volume": "حجم معاملات",
+    "lastDay": "24 Hour",
+    "lastWeek": "7 Week",
+    "lastMonth": "30 Day"
+  },
+  "LastTrades": {
+    "title": "LastTrades",
+    "date": "Time",
+    "volume": "مقدار",
+    "price": "Price",
+    "totalPrice": "Total Price"
   },
   "footer" : {
-    "AboutUs" : "About Us",
-    "ContactUS" : "Contact Us",
-    "Blog" : "Blog"
+    "aboutUs" : "About Us",
+    "contactUS" : "Contact Us",
+    "blog" : "Blog",
+    "guide": "Guide",
+    "rules": "Rules",
+    "wage": "Wage",
+    "api": "Api",
+    "addCoin": "Add Coin",
+    "demo": "Market Demo",
+    "errorReport": "Error Report",
+    "copyright": "1400-کلیه حقوق برای اوپکس گستر خاورمیانه محفوظ است."
   }
 }
