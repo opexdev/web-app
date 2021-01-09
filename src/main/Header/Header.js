@@ -4,9 +4,7 @@ import {images} from "../../assets/images"
 import {useTranslation} from "react-i18next";
 import {connect} from "react-redux";
 import moment from "moment-jalaali";
-
-
-
+import ShimmerEffect from "../../components/ShimmerEffect";
 
 
 const Header = (props) => {
@@ -37,7 +35,7 @@ const Header = (props) => {
                     </div>
                 </div>
                 <div className={`column ai-end`}>
-                    <p className="mb-05">{props.auth.firstName+" "+props.auth.lastName}</p>
+                    { props.auth.firstName === null ? <ShimmerEffect/> : <p className="mb-05">{props.auth.firstName+" "+props.auth.lastName}</p>}
                     <p style={{direction:"ltr"}}>{moment().format('jYYYY/jM/jD - HH:mm:ss')}</p>
                 </div>
             </div>

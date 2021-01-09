@@ -9,7 +9,6 @@ const TextInput = (props) => {
             <span className="after">{props.after}</span>
         </div>
     )
-
 }
 
 export default TextInput;
