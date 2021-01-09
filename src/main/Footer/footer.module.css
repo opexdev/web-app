@@ -1,19 +1,13 @@
 .container{
-    display: flex;
-    flex-direction: column;
-    height: 20vh;
+    height: 22vh;
     font-size: 0.8vw;
     margin-top: 4vh;
-    border-top: 0.01vh solid #505050;
     padding: 2vh 5vw;
 }
 .content{
     width: 100%;
     height: 88%;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
+
 }
 .navbar{
     width: 100%;
@@ -25,14 +19,29 @@
 .footerLogo{
     width: 5vw;
 }
-.footerSetting .row{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
+.languages span:first-child{
+    border-left: 0.01vh solid #F58634;
+    padding-left: 1vw;
 }
-.footerSetting .row img{
+:global(.ltr) .languages span:first-child{
+    border-right: 0.01vh solid #F58634;
+    padding-right: 1vw;
+    border-left: initial;
+    padding-left: initial;
+}
+.languages span:last-child{
+    border-right: 0.01vh solid #F58634;
+    padding-right: 1vw;
+}
+:global(.ltr) .languages span:last-child{
+    border-left: 0.01vh solid #F58634;
+    padding-left: 1vw;
+    border-right: initial;
+    padding-right: initial;
+}
+/*.footerSetting .row img{
     width: 2.25vw;
-}
+}*/
 .changeTheme{
     width: 4vw;
     height: 4.5vh;
@@ -51,169 +60,9 @@
     left: 0;
 }
 
-
-.toggle {
-    display: block;
-    text-align: center;
-    margin-top: 40px;
-    user-select: none;
-}
-
-.toggle--checkbox {
-    display: none;
-}
-
-.toggle--btn {
-    display: block;
-    margin: 0 auto;
-    font-size: 1.4em;
-    transition: all 350ms ease-in;
-}
-.toggle--btn:hover {
-    cursor: pointer;
-}
-
-.toggle--btn, .toggle--btn:before, .toggle--btn:after,
-.toggle--checkbox,
-.toggle--checkbox:before,
-.toggle--checkbox:after,
-.toggle--feature,
-.toggle--feature:before,
-.toggle--feature:after {
-    transition: all 250ms ease-in;
-}
-.toggle--btn:before, .toggle--btn:after,
-.toggle--checkbox:before,
-.toggle--checkbox:after,
-.toggle--feature:before,
-.toggle--feature:after {
-    content: '';
-    display: block;
-}
-.toggle--daynight .toggle--btn,
-.toggle--like .toggle--btn {
-    position: relative;
-    height: 70px;
-    width: 125px;
-    border-radius: 70px;
-}
-.toggle--daynight .toggle--btn:before,
-.toggle--like .toggle--btn:before {
-    position: absolute;
-    top: 2px;
-    left: 4px;
-    width: 56px;
-    height: 56px;
-    border-radius: 50%;
-}
-
-.toggle--daynight .toggle--btn {
-    border: 5px solid #1c1c1c;
-    background-color: #3c4145;
-}
-.toggle--daynight .toggle--btn:before {
-    background-color: #fff;
-    border: 5px solid #e3e3c7;
-}
-.toggle--daynight .toggle--btn:after {
-    position: absolute;
-    top: 62%;
-    left: 39px;
-    z-index: 10;
-    width: 11.2px;
-    height: 11.2px;
-    opacity: 0;
-    background-color: #fff;
-    border-radius: 50%;
-    box-shadow: #fff 0 0, #fff 3px 0, #fff 6px 0, #fff 9px 0, #fff 11px 0, #fff 14px 0, #fff 16px 0, #fff 21px -1px 0 1px, #fff 16px -7px 0 -2px, #fff 7px -7px 0 1px, #d3d3d3 0 0 0 4px, #d3d3d3 6px 0 0 4px, #d3d3d3 11px 0 0 4px, #d3d3d3 16px 0 0 4px, #d3d3d3 21px -1px 0 5px, #d3d3d3 16px -7px 0 1px, #d3d3d3 7px -7px 0 5px;
-    transition: opacity 100ms ease-in;
-}
-@keyframes starry_star {
-    50% {
-        background-color: rgba(255, 255, 255, 0.1);
-        box-shadow: #fff 30px -3px 0 0, #fff 12px 10px 0 -1px, rgba(255, 255, 255, 0.1) 38px 18px 0 1px, #fff 32px 34px 0 0, rgba(255, 255, 255, 0.1) 20px 24px 0 -1.5px, #fff 5px 38px 0 1px;
-    }
-}
-@keyframes bounceIn {
-    0% {
-        opacity: 0;
-        transform: scale(0.3);
-    }
-    50% {
-        opacity: 100;
-        transform: scale(1.1);
-    }
-    55% {
-        transform: scale(1.1);
-    }
-    75% {
-        transform: scale(0.9);
-    }
-    100% {
-        opacity: 100;
-        transform: scale(1);
-    }
-}
-.toggle--daynight .toggle--feature {
-    display: block;
-    position: absolute;
-    top: 9px;
-    left: 52.5%;
-    z-index: 20;
-    width: 4px;
-    height: 4px;
-    border-radius: 50%;
-    background-color: #fff;
-    box-shadow: rgba(255, 255, 255, 0.1) 30px -3px 0 0, rgba(255, 255, 255, 0.1) 12px 10px 0 -1px, #fff 38px 18px 0 1px, rgba(255, 255, 255, 0.1) 32px 34px 0 0, #fff 20px 24px 0 -1.5px, rgba(255, 255, 255, 0.1) 5px 38px 0 1px;
-    animation: starry_star 5s ease-in-out infinite;
-}
-.toggle--daynight .toggle--feature:before {
-    position: absolute;
-    top: -2px;
-    left: -25px;
-    width: 18px;
-    height: 18px;
-    background-color: #fff;
-    border-radius: 50%;
-    border: 5px solid #e3e3c7;
-    box-shadow: #e3e3c7 -28px 0 0 -3px, #e3e3c7 -8px 24px 0 -2px;
-    transform-origin: -6px 130%;
-}
-.toggle--daynight .toggle--checkbox:checked + .toggle--btn {
-    background-color: #9ee3fb;
-    border: 5px solid #86c3d7;
-}
-.toggle--daynight .toggle--checkbox:checked + .toggle--btn:before {
-    left: 55px;
-    background-color: #ffdf6d;
-    border: 5px solid #e1c348;
-}
-.toggle--daynight .toggle--checkbox:checked + .toggle--btn:after {
-    opacity: 100;
-    animation-name: bounceIn;
-    animation-duration: 0.60s;
-    animation-delay: 0.10s;
-    animation-fill-mode: backwards;
-    animation-timing-function: ease-in-out;
-}
-.toggle--daynight .toggle--checkbox:checked + .toggle--btn > .toggle--feature {
-    opacity: 0;
-    box-shadow: rgba(255, 255, 255, 0.1) 30px -3px 0 -4px, rgba(255, 255, 255, 0.1) 12px 10px 0 -5px, #fff 38px 18px 0 -3px, rgba(255, 255, 255, 0.1) 32px 34px 0 -4px, #fff 20px 24px 0 -5.5px, rgba(255, 255, 255, 0.1) 5px 38px 0 -3px;
-    animation: none;
-}
-.toggle--daynight .toggle--checkbox:checked + .toggle--btn > .toggle--feature:before {
-    left: 25px;
-    transform: rotate(70deg);
-}
+/*:global(.ltr) .container :global(.row){
+    flex-direction: row-reverse;
+}*/
 
 
 
-.list{
-    display: flex;
-    flex-direction: row;
-}
-.column{
-    display: flex;
-    flex-direction: column;
-    padding: 0 1vw;
-}

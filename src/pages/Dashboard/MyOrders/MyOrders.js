@@ -16,7 +16,7 @@ const MyOrders = (props) => {
         {
             Moment: "11/1، 01:10",
             AmountBTC: "0.01",
-            CountIRRT: "413،990،000",
+            CountIRRT: "423،990،000",
             totalPrice: '413،990،000',
             percentageDone: 10,
             Type: 'buy'
@@ -77,7 +77,7 @@ const MyOrders = (props) => {
             percentageDone: 10,
             Type: 'sell'
         },
-        {
+  /*      {
             Moment: "11/1، 01:10",
             AmountBTC: "0.01",
             CountIRRT: "413،990،000",
@@ -140,7 +140,7 @@ const MyOrders = (props) => {
             totalPrice: '413،990،000',
             percentageDone: 10,
             Type: 'sell'
-        },
+        },*/
     ];
     const stopData = [
         {

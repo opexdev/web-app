@@ -25,7 +25,7 @@ const App = (props) => {
                 <div className="row">
                     <MainMenu/>
                     <SubMenu/>
-                    <div className="column content" style={{marginRight: "27%", height: "100vh"}}>
+                    <div className="column content">
                         <ScrollBar>
                             <Header/>
                             <Switch>

@@ -10,9 +10,21 @@
     border-left: 0.01vh solid #F58634;
     padding: 0 0.2vw;
 }
+:global(.ltr) .inventory div:first-child{
+    border-right: 0.01vh solid #F58634;
+    padding-right: 1vw;
+    border-left: initial;
+    padding-left: initial;
+}
 .inventory div:last-child{
     border-right: 0.01vh solid #F58634;
     padding: 0 0.2vw;
+}
+:global(.ltr) .inventory div:last-child{
+    border-left: 0.01vh solid #F58634;
+    padding-left: 1vw;
+    border-right: initial;
+    padding-right: initial;
 }
 .inventory div *{
     padding: 0 0.2vw;

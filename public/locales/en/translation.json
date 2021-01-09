@@ -3,11 +3,11 @@
   "signIn":"ورود",
   "signOut":"خروج",
   "currency": {
-    "IRT" : "تومان",
-    "Euro" : "یورو",
-    "USD" : "دلار",
-    "BTC" : "بیتکوین",
-    "ETH" : "اتریوم"
+    "IRT" : "IRI",
+    "Euro" : "Euro",
+    "USD" : "USD",
+    "BTC" : "BTC",
+    "ETH" : "ETH"
   },
   "pair": {
     "BTC/IRT" : "بیتکوین/تومان",
@@ -19,10 +19,10 @@
   },
   "overview": {
     "title": "overview",
-    "change": "تغییر",
-    "min": "حداقل",
-    "max": "حداکثر",
-    "volume": "حجم معاملات",
+    "change": "change",
+    "min": "minimum",
+    "max": "maximum",
+    "volume": "turnover",
     "lastDay": "24 Hour",
     "lastWeek": "7 Week",
     "lastMonth": "30 Day"
@@ -30,7 +30,7 @@
   "LastTrades": {
     "title": "LastTrades",
     "date": "Time",
-    "volume": "مقدار",
+    "volume": "Amount",
     "price": "Price",
     "totalPrice": "Total Price"
   },

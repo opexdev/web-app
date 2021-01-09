@@ -6,3 +6,7 @@
     margin-right: 5%;
     position: fixed;
 }
+:global(.ltr) .container{
+    margin-left: 5%;
+    margin-right: 0%
+}

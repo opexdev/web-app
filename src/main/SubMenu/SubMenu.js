@@ -1,11 +1,11 @@
 import React from "react";
-import Styles from "./SubMenu.module.css";
+import classes from "./SubMenu.module.css";
 import Market from "../../pages/Dashboard/Market/Market";
 
 const SubMenu = (props) => {
 
     return (
-        <div className={Styles.container}>
+        <div className={classes.container} >
             <Market/>
         </div>
     )
