@@ -1,9 +1,27 @@
 import Faker from 'faker';
 
 export const OverViewData = {
-    lastDay: {change: "5%", min: 100, max: 10000, volume: 500000, type: true},
-    lastWeek: {change: "2.3%", min: 50, max: 20000, volume: 500000, type: true},
-    lastMonth: {change: "1.4%", min: 300, max: 10000, volume: 5050000, type: false},
+    lastDay: {
+        change: Faker.random.number({'min': 0, 'max': 10}),
+        min: Faker.random.number({'min': 413990000, 'max': 513990000}),
+        max: Faker.random.number({'min': 513990000, 'max': 613990000}),
+        volume: Faker.random.number({'min': 513990000, 'max': 613990000}),
+        type: Faker.random.boolean()
+    },
+    lastWeek: {
+        change: Faker.random.number({'min': 0, 'max': 10}),
+        min: Faker.random.number({'min': 413990000, 'max': 513990000}),
+        max: Faker.random.number({'min': 513990000, 'max': 613990000}),
+        volume: Faker.random.number({'min': 513990000, 'max': 613990000}),
+        type: Faker.random.boolean()
+    },
+    lastMonth: {
+        change: Faker.random.number({'min': 0, 'max': 10}),
+        min: Faker.random.number({'min': 413990000, 'max': 513990000}),
+        max: Faker.random.number({'min': 513990000, 'max': 613990000}),
+        volume: Faker.random.number({'min': 513990000, 'max': 613990000}),
+        type: Faker.random.boolean()
+    },
 }
 
 export const OrderData = {

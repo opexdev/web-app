@@ -5,7 +5,7 @@ import Order from "./Order/Order";
 import OrderBook from "./OrderBook/OrderBook";
 import MyOrders from "./MyOrders/MyOrders";
 import LastTrades from "./LastTrades/LastTrades";
-import {OrderData, OverViewData} from "../../FakeData/FakeData";
+import {OrderData} from "../../FakeData/FakeData";
 import TradingView from "./TradingView/TradingView";
 
 const Dashboard = (props) => {
@@ -14,7 +14,7 @@ const Dashboard = (props) => {
         <div className="px-1 py-1">
             <div className="row">
                 <div className="column col-35 pl-05">
-                    <Overview data={OverViewData} activePair={props.activePair}/>
+                    <Overview/>
                     <Order data={OrderData}/>
                 </div>
                 <div className="column col-65 pr-05">

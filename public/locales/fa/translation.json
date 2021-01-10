@@ -29,7 +29,8 @@
   },
   "LastTrades": {
     "title": "معامله های اخیر",
-    "date": "زمان",
+    "date": "تاریخ",
+    "time": "زمان",
     "volume": "مقدار",
     "price": "قیمت",
     "totalPrice": "قیمت کل"

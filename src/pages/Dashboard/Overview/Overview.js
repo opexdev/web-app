@@ -2,25 +2,28 @@ import React from 'react';
 import classes from "./Overview.module.css"
 import AccordionBox from "../../../components/AccordionBox/AccordionBox";
 import {useTranslation} from "react-i18next";
+import {OverViewData} from "../../../FakeData/FakeData";
+import {connect} from "react-redux";
 
 const Overview = (props) => {
     const {t} = useTranslation();
     const [p1,p2]= props.activePair.split("/")
+
     const bodyBuilder =(data)=> {
         return <div className={classes.content}>
-            <p>{t('overview.change')}: <span style={{color:"var(--textGreen)"}}>{data.change}</span></p>
-            <p>{t('overview.min')}: <span style={{color:"var(--textRed)"}}>{data.min}</span> {t(`currency.${p2}`)}</p>
-            <p>{t('overview.max')}: <span style={{color:"var(--textGreen)"}}>{data.max}</span> {t(`currency.${p2}`)}</p>
-            <p>{t('overview.volume')}: <span>{data.volume} </span>{ t(`currency.${p2}`)}</p>
+            <p>{t('overview.change')}: <span className={data.type ? "text-green":"text-red"}>%{data.change}{data.type ? "+":"-"}</span></p>
+            <p>{t('overview.min')}: <span className="text-red">{(data.min).toLocaleString()}</span> {t(`currency.${p2}`)}</p>
+            <p>{t('overview.max')}: <span className="text-green">{(data.max).toLocaleString()}</span> {t(`currency.${p2}`)}</p>
+            <p>{t('overview.volume')}: <span>{(data.volume).toLocaleString()} </span>{ t(`currency.${p2}`)}</p>
         </div>
     }
 
     const data = [
-        {id: 1 , title: t('overview.lastDay') , body: bodyBuilder(props.data.lastDay)},
-        {id: 2 , title: t('overview.lastWeek') , body: bodyBuilder(props.data.lastWeek)},
-        {id: 3 , title: t('overview.lastMonth') , body: bodyBuilder(props.data.lastMonth)},
+        {title: t('overview.lastDay') , body: bodyBuilder(OverViewData.lastDay)},
+        {title: t('overview.lastWeek') , body: bodyBuilder(OverViewData.lastWeek)},
+        {title: t('overview.lastMonth') , body: bodyBuilder(OverViewData.lastMonth)},
     ]
-    
+
     return (
         <div className={`container card-background card-border ${classes.container}`}>
             <AccordionBox title={t('overview.title')} content={data} />
@@ -28,4 +31,10 @@ const Overview = (props) => {
     );
 };
 
-export default Overview;
+const mapStateToProps = state => {
+    return {
+        activePair: state.global.activePair
+    }
+}
+
+export default connect(mapStateToProps, null)(Overview);
