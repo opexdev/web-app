@@ -2,36 +2,31 @@ import React from 'react';
 import classes from "./LastTradesTable.module.css"
 import ScrollBar from "../../../../components/ScrollBar";
 import {useTranslation} from "react-i18next";
+import moment from "moment-jalaali";
+import {connect} from "react-redux";
 
 
 const LastTradesTable = (props) => {
     const {t} = useTranslation();
-    let id = 1;
-    const trItems = props.tableDetailes;
-
-    let header = <div className="row jc-around py-05">
-        <span>{t('LastTrades.date')}</span>
-        <span>{t('LastTrades.volume')}(BTC)</span>
-        <span>{t('LastTrades.price')}(IRRT)</span>
-        <span>{t('LastTrades.totalPrice')}</span>
-    </div>
-
-    let tdItems = trItems.map((tr) =>
-        <tr key={id++} style={{color: (tr.Type === "buy" ? "var(--textGreen)" : "var(--textRed)")}}>
-            <td>{tr.Moment}</td>
-            <td>{tr.AmountBTC}</td>
-            <td>{tr.CountIRRT}</td>
-            <td>{tr.totalPrice}</td>
-        </tr>);
-
+    const [p1,p2]= props.activePair.split("/")
     return (
         <div className={`column container ${classes.container}`}>
-            {header}
             <ScrollBar>
                 <table className="text-center" cellSpacing="0" cellPadding="0">
-
+                    <thead>
+                    <th>{t('LastTrades.date')}</th>
+                    <th>{t('LastTrades.volume')}({p1})</th>
+                    <th>{t('LastTrades.price')}({p2})</th>
+                    <th>{t('LastTrades.totalPrice')}</th>
+                    </thead>
                     <tbody>
-                    {tdItems}
+                    {props.data.map((tr) =>
+                    <tr key={tr.id} style={{color: (tr.Type === "buy" ? "var(--textGreen)" : "var(--textRed)")}}>
+                        <td style={{direction:"ltr",textAlign:"left"}}>{moment(tr.timestamp).format('jYY/jMM/jDD HH:mm:ss')}</td>
+                        <td>{tr.AmountBTC}</td>
+                        <td>{tr.CountIRRT}</td>
+                        <td>{tr.totalPrice}</td>
+                    </tr>)}
                     </tbody>
                 </table>
             </ScrollBar>
@@ -39,4 +34,10 @@ const LastTradesTable = (props) => {
     );
 };
 
-export default LastTradesTable;
+const mapStateToProps = state => {
+    return {
+        activePair : state.global.activePair,
+    }
+}
+
+export default  connect( mapStateToProps , null )(LastTradesTable);
