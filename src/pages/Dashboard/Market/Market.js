@@ -214,7 +214,7 @@ const Market = (props) => {
 
 
     return (
-        <div className={`container card-background  ${Styles.container}`}>
+        <div className={`container card-background ${Styles.container}`}>
 
             <AccordionBox
                 title="بازار"

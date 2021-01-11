@@ -206,6 +206,83 @@ const MyOrders = (props) => {
             totalPrice: '413،990،000',
             stopPrice: '413،990،000',
             Type: 'buy'
+        },{
+            Moment: "11/1، 01:10",
+            AmountBTC: "0.01",
+            CountIRRT: "413،990،000",
+            totalPrice: '413،990،000',
+            stopPrice: '413،990،000',
+            Type: 'buy'
+        },{
+            Moment: "11/1، 01:10",
+            AmountBTC: "0.01",
+            CountIRRT: "413،990،000",
+            totalPrice: '413،990،000',
+            stopPrice: '413،990،000',
+            Type: 'buy'
+        },{
+            Moment: "11/1، 01:10",
+            AmountBTC: "0.01",
+            CountIRRT: "413،990،000",
+            totalPrice: '413،990،000',
+            stopPrice: '413،990،000',
+            Type: 'buy'
+        },{
+            Moment: "11/1، 01:10",
+            AmountBTC: "0.01",
+            CountIRRT: "413،990،000",
+            totalPrice: '413،990،000',
+            stopPrice: '413،990،000',
+            Type: 'buy'
+        },{
+            Moment: "11/1، 01:10",
+            AmountBTC: "0.01",
+            CountIRRT: "413،990،000",
+            totalPrice: '413،990،000',
+            stopPrice: '413،990،000',
+            Type: 'buy'
+        },{
+            Moment: "11/1، 01:10",
+            AmountBTC: "0.01",
+            CountIRRT: "413،990،000",
+            totalPrice: '413،990،000',
+            stopPrice: '413،990،000',
+            Type: 'buy'
+        },{
+            Moment: "11/1، 01:10",
+            AmountBTC: "0.01",
+            CountIRRT: "413،990،000",
+            totalPrice: '413،990،000',
+            stopPrice: '413،990،000',
+            Type: 'buy'
+        },{
+            Moment: "11/1، 01:10",
+            AmountBTC: "0.01",
+            CountIRRT: "413،990،000",
+            totalPrice: '413،990،000',
+            stopPrice: '413،990،000',
+            Type: 'buy'
+        },{
+            Moment: "11/1، 01:10",
+            AmountBTC: "0.01",
+            CountIRRT: "413،990،000",
+            totalPrice: '413،990،000',
+            stopPrice: '413،990،000',
+            Type: 'buy'
+        },{
+            Moment: "11/1، 01:10",
+            AmountBTC: "0.01",
+            CountIRRT: "413،990،000",
+            totalPrice: '413،990،000',
+            stopPrice: '413،990،000',
+            Type: 'buy'
+        },{
+            Moment: "11/1، 01:10",
+            AmountBTC: "0.01",
+            CountIRRT: "413،990،000",
+            totalPrice: '413،990،000',
+            stopPrice: '413،990،000',
+            Type: 'buy'
         },
 
     ]

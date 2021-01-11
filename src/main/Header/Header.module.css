@@ -6,6 +6,9 @@
     height: 100%;
     padding: 0 1.5vw 0 0.5vw;
 }
+:global(.ltr) .content{
+    padding: 0 0.5vw 0 1.5vw;
+}
 .inventory div:first-child{
     border-left: 0.01vh solid #F58634;
     padding: 0 0.2vw;

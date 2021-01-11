@@ -23,10 +23,10 @@ const Dashboard = (props) => {
                 </div>
             </div>
             <div className="row">
-                <div className="column col-65 pl-05">
+                <div className="column col-55 pl-05">
                     <MyOrders/>
                 </div>
-                <div className="column col-35 pr-05">
+                <div className="column col-45 pr-05">
                     <LastTrades/>
                 </div>
             </div>

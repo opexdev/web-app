@@ -53,6 +53,9 @@ const OrderBookTable = (props) => {
             {header}
             <ScrollBar >
                 <table className="text-center" cellSpacing="0" cellPadding="0">
+                    <thead>
+
+                    </thead>
 
                     <tbody>
                     {tdItems}

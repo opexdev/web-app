@@ -120,6 +120,7 @@
     --scrollBar: #0707073b;
     --activeLi: #3030300d;
     --footerBackground: #e1e9f3;
+    --tableHeader: #f9f9f9;
 
 }
 .dark {
@@ -168,6 +169,7 @@
     --scrollBar: #a9a9a936;
     --activeLi: #d0d0d01a;
     --footerBackground: #252531;
+    --tableHeader: #262938;
 
     /*darkula*/
     /*--activeTab: #ff79c6;*/
@@ -306,6 +308,12 @@ html,body{
 }
 .col-70{
     flex: 0.7;
+}
+.col-45{
+    flex: 0.45;
+}
+.col-55{
+    flex: 0.55;
 }
 
 .card-border{
@@ -498,10 +506,84 @@ h1,h2,h3,h4,h5,h6{
 .ltr{
     direction: ltr;
     font-family: 'Segoe UI', serif;
+
 }
+/*
+.ltr html,body{
+    font-family: 'Segoe UI', serif !important;
+}
+*/
+
 
 /*
 .ltr .row{
     flex-direction: row-reverse;
 
 }*/
+
+
+table th {
+    position:sticky;
+    top: 0;
+    font-weight: normal;
+    background-color: var(--tableHeader);
+}
+
+
+
+
+
+
+
+
+
+.mobile-view{
+    width: 100%;
+    height: 96vh;
+    padding: 2vh 2vw;
+    border: 0.7vw dotted #4a5eab;
+    border-radius: 9px;
+    font-size: 1.9vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    line-height: 4.5vh;
+
+}
+.mobile-view img{
+    width: 22vw;
+}
+.mobile-view h1{
+    padding: 10vh 0;
+}
+
+@media screen and (orientation:landscape){
+    .mobile-view{
+        font-size: 1vw;
+        line-height: 14vh;
+        border: 0.4vw dotted #4a5eab;
+    }
+    .mobile-view img{
+        width: 12vw;
+    }
+    .mobile-view h1{
+        padding: 5vh 0;
+    }
+}
+.flashit{
+    -webkit-animation: flash linear 1s infinite;
+    animation: flash linear 1s infinite;
+}
+@-webkit-keyframes flash {
+    0% { opacity: 1; }
+    50% { opacity: .1; }
+    100% { opacity: 1; }
+}
+@keyframes flash {
+    0% { opacity: 1; }
+    50% { opacity: .1; }
+    100% { opacity: 1; }
+}
+

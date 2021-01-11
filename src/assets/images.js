@@ -19,6 +19,7 @@ import ethereumLight from "./images/ethereumLight.svg";
 import starwithfill from "./images/starwithfill.svg";
 import starWithoutfill from "./images/starWithoutfill.svg";
 import Sun from "./images/Sun.svg";
+import bit from "./images/bit.gif";
 
 
 
@@ -45,5 +46,6 @@ export const  images = {
     'starwithfill' : starwithfill,
     'starWithoutfill' : starWithoutfill,
     'Sun' : Sun,
+    'bit' : bit,
 };
 

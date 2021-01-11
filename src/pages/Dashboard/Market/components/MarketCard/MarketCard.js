@@ -2,6 +2,7 @@ import React, {Fragment} from 'react';
 import classes from "./MarketCard.module.css"
 import {images} from "../../../../../assets/images"
 import ScrollBar from "../../../../../components/ScrollBar";
+import PriceChart from "../../../../../components/PriceChart/PriceChart";
 
 
 
@@ -28,7 +29,10 @@ const MarketCard = (props) => {
                 </div>
 
                 <div className={`column ai-center`}>
+
                     <span>چارت</span>
+                    {/*<PriceChart/>*/}
+
                 </div>
 
                 <div className={`column  ai-end`}>
