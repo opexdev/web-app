@@ -521,7 +521,21 @@ h1,h2,h3,h4,h5,h6{
 
 }*/
 
-
+/*
+    Table Style
+*/
+.striped tr:nth-child(even) td{
+    background-color: var(--tableRow);
+    transition: background-color 0.4s;
+}
+.double-striped tr:nth-child(4n) td{
+    background-color: var(--tableRow);
+    transition: background-color 0.4s;
+}
+.double-striped tr:nth-child(4n-1) td{
+    background-color: var(--tableRow);
+    transition: background-color 0.4s;
+}
 table th {
     position:sticky;
     top: 0;

@@ -1,21 +1,21 @@
 {
   "title": "اپکس",
-  "signIn":"ورود",
-  "signOut":"خروج",
+  "signIn": "ورود",
+  "signOut": "خروج",
   "currency": {
-    "IRT" : "تومان",
-    "Euro" : "یورو",
-    "USD" : "دلار",
-    "BTC" : "بیتکوین",
-    "ETH" : "اتریوم"
+    "IRT": "تومان",
+    "Euro": "یورو",
+    "USD": "دلار",
+    "BTC": "بیتکوین",
+    "ETH": "اتریوم"
   },
   "pair": {
-    "BTC/IRT" : "بیتکوین/تومان",
-    "ETH/IRT" : "اتریوم/تومان"
+    "BTC/IRT": "بیتکوین/تومان",
+    "ETH/IRT": "اتریوم/تومان"
   },
   "header": {
-    "lastPrice" : "آخرین قیمت",
-    "availableBalance" : "موجودی قابل معامله"
+    "lastPrice": "آخرین قیمت",
+    "availableBalance": "موجودی قابل معامله"
   },
   "overview": {
     "title": "نمای کلی",
@@ -35,10 +35,21 @@
     "price": "قیمت",
     "totalPrice": "قیمت کل"
   },
-  "footer" : {
-    "aboutUs" : "درباره ما",
-    "contactUS" : "تماس باما",
-    "blog" : "بلاگ",
+  "orderBook": {
+    "title": "دفتر پیشنهادها",
+    "buy": "خرید",
+    "sell": "فروش",
+    "totalPrice": "قیمت کل",
+    "volume": "مقدار",
+    "price": "قیمت"
+  },
+  "myOrders": {
+    "title": "سفارش ها و معامله های من"
+  },
+  "footer": {
+    "aboutUs": "درباره ما",
+    "contactUS": "تماس باما",
+    "blog": "بلاگ",
     "guide": "راهنمای استفاده",
     "rules": "قوانین استفاده",
     "wage": "کارمزدها",

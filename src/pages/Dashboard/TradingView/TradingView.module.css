@@ -11,3 +11,15 @@
     height: 100%!important;
     border-radius: 9px;
 }
+:global(.highcharts-point-up) {
+    fill: var(--textGreen);
+    stroke: var(--textGreen);
+}
+:global(.highcharts-point-down) {
+    fill: var(--textRed);
+    stroke: var(--textRed);
+}
+:global(.highcharts-color-1) {
+    fill: var(--activeTab);
+    stroke: var(--activeTab);
+}

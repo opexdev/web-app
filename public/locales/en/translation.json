@@ -3,7 +3,7 @@
   "signIn":"ورود",
   "signOut":"خروج",
   "currency": {
-    "IRT" : "IRI",
+    "IRT" : "IRT",
     "Euro" : "Euro",
     "USD" : "USD",
     "BTC" : "BTC",
@@ -28,12 +28,23 @@
     "lastMonth": "30 Day"
   },
   "LastTrades": {
-    "title": "LastTrades",
+    "title": "Last Trades",
     "date": "Date",
     "time": "Time",
     "volume": "Amount",
     "price": "Price",
     "totalPrice": "Total Price"
+  },
+  "orderBook": {
+    "title": "Order Book",
+    "buy": "Buy",
+    "sell": "Sell",
+    "totalPrice": "Total Price",
+    "volume": "Volume",
+    "price": "Price"
+  },
+  "myOrders": {
+
   },
   "footer" : {
     "aboutUs" : "About Us",
@@ -46,6 +57,6 @@
     "addCoin": "Add Coin",
     "demo": "Market Demo",
     "errorReport": "Error Report",
-    "copyright": "1400-کلیه حقوق برای اوپکس گستر خاورمیانه محفوظ است."
+    "copyright": "© 2021 Ope. All rights reserved"
   }
 }

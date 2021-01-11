@@ -7,7 +7,7 @@ import classes from "./TradingView.module.css"
 
 const TradingView = (props) => {
 
-    var data = [
+    let data = [
         [1491226200000, 143.71, 144.12, 143.05, 143.7, 19985700],
         [1491312600000, 143.25, 144.89, 143.17, 144.77, 19891400],
         [1491399000000, 144.22, 145.46, 143.81, 144.02, 27717900],
@@ -538,6 +538,9 @@ const TradingView = (props) => {
         ]);
     }
     const options = {
+        chart:{
+            backgroundColor:"var(--cardBody)"
+        },
         scrollbar: {
             enabled: false
         },
@@ -553,29 +556,15 @@ const TradingView = (props) => {
         },
         yAxis: [
             {
-                labels: {
-                    align: "right",
-                    x: -3
-                },
-                title: {
-                    text: "OHLC"
-                },
-                height: "60%",
+                height: "90%",
                 lineWidth: 2,
                 resize: {
                     enabled: true
                 }
             },
             {
-                labels: {
-                    align: "right",
-                    x: -3
-                },
-                title: {
-                    text: "Volume"
-                },
-                top: "65%",
-                height: "35%",
+                top: "90%",
+                height: "10%",
                 offset: 0,
                 lineWidth: 2
             }
@@ -586,7 +575,6 @@ const TradingView = (props) => {
         series: [
             {
                 type: "candlestick",
-                name: "AAPL",
                 data: ohlc,
                 dataGrouping: {
                     units: groupingUnits

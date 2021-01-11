@@ -30,196 +30,41 @@ export const OrderData = {
 
 }
 
-export const OrderBookData = [
+/*export const OrderBookData = [
     {
         totalPrice: '413،990،000',
         Amount: "0.01",
         Count: "413،990،000",
         Percent: 10
-    },
-    {
-        totalPrice: '413،990،000',
-        Amount: "0.5",
-        Count: "413،990،000",
-        Percent: 15
-    },
-    {
-        totalPrice: '413،990،000',
-        Amount: "0.00",
-        Count: "413،990،000",
-        Percent: 25
-    },
-    {
-        totalPrice: '413،990،000',
-        Amount: "0.00",
-        Count: "413،990،000",
-        Percent: 26
-    },
+    }
+];*/
 
-    {
-        totalPrice: '413،990،000',
-        Amount: "0.01",
-        Count: "413،990،000",
-        Percent: 28
-    },
-    {
-        totalPrice: '413،990،000',
-        Amount: "0.5",
-        Count: "413،990،000",
-        Percent: 30
-    },
-    {
-        totalPrice: '413،990،000',
-        Amount: "0.00",
-        Count: "413،990،000",
-        Percent: 38
-    },
-    {
-        totalPrice: '413،990،000',
-        Amount: "0.00",
-        Count: "413،990،000",
-        Percent: 45
-    }, {
-        totalPrice: '413،990،000',
-        Amount: "0.01",
-        Count: "413،990،000",
-        Percent: 47
-    },
-    {
-        totalPrice: '413،990،000',
-        Amount: "0.5",
-        Count: "413،990،000",
-        Percent: 50
-    },
-    {
-        totalPrice: '413،990،000',
-        Amount: "0.00",
-        Count: "413،990،000",
-        Percent: 55
-    },
-    {
-        totalPrice: '413،990،000',
-        Amount: "0.00",
-        Count: "413،990،000",
-        Percent: 54
-    }, {
-        totalPrice: '413،990،000',
-        Amount: "0.01",
-        Count: "413،990،000",
-        Percent: 56
-    },
-    {
-        totalPrice: '413،990،000',
-        Amount: "0.5",
-        Count: "413،990،000",
-        Percent: 60
-    },
-    {
-        totalPrice: '413،990،000',
-        Amount: "0.00",
-        Count: "413،990،000",
-        Percent: 20
-    },
-    {
-        totalPrice: '413،990،000',
-        Amount: "0.00",
-        Count: "413،990،000",
-        Percent: 42
-    }, {
-        totalPrice: '413،990،000',
-        Amount: "0.01",
-        Count: "413،990،000",
-        Percent: 5
-    },
-    {
-        totalPrice: '413،990،000',
-        Amount: "0.5",
-        Count: "413،990،000",
-        Percent: 10
-    },
-    {
-        totalPrice: '413،990،000',
-        Amount: "0.00",
-        Count: "413،990،000",
-        Percent: 20
-    },
-    {
-        totalPrice: '413،990،000',
-        Amount: "0.00",
-        Count: "413،990،000",
-        Percent: 42
-    }, {
-        totalPrice: '413،990،000',
-        Amount: "0.01",
-        Count: "413،990،000",
-        Percent: 5
-    },
-    {
-        totalPrice: '413،990،000',
-        Amount: "0.5",
-        Count: "413،990،000",
-        Percent: 10
-    },
-    {
-        totalPrice: '413،990،000',
-        Amount: "0.00",
-        Count: "413،990،000",
-        Percent: 20
-    },
-    {
-        totalPrice: '413،990،000',
-        Amount: "0.00",
-        Count: "413،990،000",
-        Percent: 42
-    }, {
-        totalPrice: '413،990،000',
-        Amount: "0.01",
-        Count: "413،990،000",
-        Percent: 5
-    },
-    {
-        totalPrice: '413،990،000',
-        Amount: "0.5",
-        Count: "413،990،000",
-        Percent: 10
-    },
-    {
-        totalPrice: '413،990،000',
-        Amount: "0.00",
-        Count: "413،990،000",
-        Percent: 20
-    },
-    {
-        totalPrice: '413،990،000',
-        Amount: "0.00",
-        Count: "413،990،000",
-        Percent: 42
-    }, {
-        totalPrice: '413،990،000',
-        Amount: "0.01",
-        Count: "413،990،000",
-        Percent: 5
-    },
-    {
-        totalPrice: '413،990،000',
-        Amount: "0.5",
-        Count: "413،990،000",
-        Percent: 10
-    },
-    {
-        totalPrice: '413،990،000',
-        Amount: "0.00",
-        Count: "413،990،000",
-        Percent: 20
-    },
-    {
-        totalPrice: '413،990،000',
-        Amount: "0.00",
-        Count: "413،990،000",
-        Percent: 42
-    },
-];
-
+export const OrderBookBuyData = () => {
+    const data = [];
+    for (let i = 0; i < 100; i++) {
+        data.push({
+            id: Faker.random.number,
+            amount: Faker.random.number({'min': 0, 'max': 1.5,precision: 0.0001}),
+            price: Faker.random.number({'min': 4990000, 'max': 3990000}),
+            totalPrice: Faker.random.number({'min': 139900000, 'max': 4139900000}),
+            percent:Faker.random.number({'min': 1, 'max': 70})
+        });
+    }
+    return data;
+}
+export const OrderBookSellData = () => {
+    const data = [];
+    for (let i = 0; i < 100; i++) {
+        data.push({
+            id: Faker.random.number,
+            amount: Faker.random.number({'min': 0, 'max': 1.5,precision: 0.0001}),
+            price: Faker.random.number({'min': 4990000, 'max': 3990000}),
+            totalPrice: Faker.random.number({'min': 139900000, 'max': 4139900000}),
+            percent:Faker.random.number({'min': 1, 'max': 70})
+        });
+    }
+    return data;
+}
 
 export const lastTradesData = () => {
     const data = [];
@@ -227,8 +72,8 @@ export const lastTradesData = () => {
         data.push({
             id: Faker.random.number,
             timestamp: Faker.date.between('2020-01-01', '2021-02-05'),
-            AmountBTC: Faker.random.number({'min': 0, 'max': 1,precision: 0.0001}),
-            CountIRRT: Faker.random.number({'min': 413990000, 'max': 613990000}),
+            amount: Faker.random.number({'min': 0, 'max': 1,precision: 0.0001}),
+            price: Faker.random.number({'min': 413990000, 'max': 613990000}),
             totalPrice: Faker.random.number({'min': 13990000, 'max': 413990000}),
             Type: Faker.random.arrayElement(['buy', 'sell'])
         });
@@ -237,4 +82,22 @@ export const lastTradesData = () => {
     return data;
 }
 
+export const MyOrderCurrentData = () => {
+    const data = [];
+    for (let i = 0; i < 20; i++) {
+        data.push({
+            orderId: Faker.random.number({'min': 11000, 'max': 1000000}),
+            timestamp: Faker.date.between('2020-01-01', '2021-02-05'),
+            amount: Faker.random.number({'min': 0, 'max': 1,precision: 0.0001}),
+            price: Faker.random.number({'min': 413990000, 'max': 613990000}),
+            totalPrice: Faker.random.number({'min': 13990000, 'max': 413990000}),
+            tradedAmount: Faker.random.number({'min': 0, 'max': 1,precision: 0.0001}),
+            avgTradedAmount: Faker.random.number({'min': 0, 'max': 1,precision: 0.0001}),
+            tradedPrice: Faker.random.number({'min': 0, 'max': 1,precision: 0.0001}),
+            type: Faker.random.arrayElement(['buy', 'sell']),
+            progress: Faker.random.number({'min': 0, 'max': 100,precision: 0.5})
+        });
+    }
 
+    return data;
+}

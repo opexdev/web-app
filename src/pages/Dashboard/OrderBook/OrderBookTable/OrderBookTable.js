@@ -1,70 +1,61 @@
 import React from 'react';
-import Styles from "./OrderBookTable.module.css"
+import classes from "./OrderBookTable.module.css"
 import ScrollBar from "../../../../components/ScrollBar";
+import {useTranslation} from "react-i18next";
 
 const OrderBookTable = (props) => {
 
-    let id = 1;
-    const trItems = props.tableDetailes;
-    let header = /*<tr>
-        <th>قیمت کل</th>
-        <th>مقدار</th>
-        <th>قیمت</th>
-    </tr>*/
-
-    <div className="row jc-around py-05">
-        <span>قیمت کل</span>
-        <span>مقدار</span>
-        <span>قیمت</span>
-    </div>
-
-    let tdItems = trItems.map((tr) =>
-        <tr key={id++} style={{background: "linear-gradient( to right, var(--textRedAlpha) "+(tr.Percent)+ "%,   transparent  "+(tr.Percent)+ "%) no-repeat"}}>
-          {/*  <span className="position-absolute" style={{width: tr.Percent+ '%' }}/>*/}
-            <td>{tr.totalPrice}</td>
-            <td>{tr.Amount}</td>
-            <td>{tr.Count}</td>
-    </tr>);
-
-
-    if( props.type === "buy"){
-        header = /*<tr>
-            <th>قیمت</th>
-            <th>مقدار</th>
-            <th>قیمت کل</th>
-        </tr>*/
-
-        <div className="row jc-around py-05">
-            <span>قیمت</span>
-            <span>مقدار</span>
-            <span>قیمت کل</span>
-
-        </div>
-
-        tdItems = trItems.map((tr) => <tr key={id++} style={{background: "linear-gradient(to left , var(--textGreenAlpha)   "+(tr.Percent)+ "%, transparent   "+(tr.Percent)+ "%) no-repeat"}}>
-            <td>{tr.Count}</td><td>{tr.Amount}</td><td>{tr.totalPrice}</td></tr>);
-
+    let header;
+    const {t} = useTranslation();
+    if (props.type === "buy") {
+        header = <tr>
+            <th>{t('orderBook.price')}
+            </th>
+            <th>{t('orderBook.volume')}</th>
+            <th>{t('orderBook.totalPrice')}</th>
+        </tr>
+    } else {
+        header = <tr>
+            <th>{t('orderBook.totalPrice')}</th>
+            <th>{t('orderBook.volume')}</th>
+            <th>{t('orderBook.price')}</th>
+        </tr>
     }
 
-
     return (
-        <div className={`column container ${Styles.container}`}>
-
-            {header}
-            <ScrollBar >
+        <div className={`column container ${classes.container}`}>
+            <ScrollBar>
                 <table className="text-center" cellSpacing="0" cellPadding="0">
                     <thead>
-
+                    {header}
                     </thead>
-
                     <tbody>
-                    {tdItems}
+                    {
+                        props.data.map((tr, index) => {
+                            let barStyle;
+                            if (props.type === "buy") {
+                                barStyle = {background: "linear-gradient(to left , var(--textGreenAlpha)   " + (tr.percent) + "%, transparent   " + (tr.percent) + "%) no-repeat"}
+                            } else {
+                                barStyle = {background: "linear-gradient( to right, var(--textRedAlpha) " + (tr.percent) + "%,   transparent  " + (tr.percent) + "%) no-repeat"};
+                            }
+                            return (props.type === "buy" ?
+                                    <tr key={index} style={barStyle}>
+                                        <td>{tr.price.toLocaleString()}</td>
+                                        <td>{tr.amount}</td>
+                                        <td>{tr.totalPrice.toLocaleString()}</td>
+                                    </tr>
+                                    :
+                                    <tr key={index} style={barStyle}>
+                                        <td>{tr.totalPrice.toLocaleString()}</td>
+                                        <td>{tr.amount}</td>
+                                        <td>{tr.price.toLocaleString()}</td>
+                                    </tr>
+                            )
+                        })
+                    }
                     </tbody>
-
                 </table>
             </ScrollBar>
-
-
         </div>
     );
 };
