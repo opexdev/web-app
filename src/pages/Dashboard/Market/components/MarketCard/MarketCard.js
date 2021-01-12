@@ -3,10 +3,14 @@ import classes from "./MarketCard.module.css"
 import {images} from "../../../../../assets/images"
 import ScrollBar from "../../../../../components/ScrollBar";
 import PriceChart from "../../../../../components/PriceChart/PriceChart";
+import {useTranslation} from "react-i18next";
+
 
 
 
 const MarketCard = (props) => {
+
+    const {t} = useTranslation();
 
     let id = 1;
     const CardData = props.CardData;
@@ -21,7 +25,7 @@ const MarketCard = (props) => {
 
             <div className={` row jc-between ai-center ${classes.marketCardContent}`}>
                 <div className={`column `}>
-                    <span>{it.MarketName}</span>
+                    <span>{t(`pair.${it.MarketName}`)}</span>
                     <div className={`row jc-between ai-center`}>
                         <span><img className={`img-vsm ${classes.marketCardImg}`} src={images.starWithoutfill} alt="favoriteCurrency"/></span>
                         <span className={`font-size-sm ${ (it.Type) === 'increase'? 'text-green' : 'text-red' } `}>{it.Change}</span>

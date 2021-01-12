@@ -36,7 +36,6 @@ const Footer = (props) => {
                             <span/>
                         </div>*/}
 
-                        { props.isDark ? "dark" : "light"}
 
 
                         {/*<div style={{width:"4vw", height:"8vh", position:"relative"}}>
@@ -44,15 +43,24 @@ const Footer = (props) => {
                             <span style={{width:"100%" , height:"50%" ,position: "absolute"}} />
                         </div>*/}
 
+                        <div className={classes.onoffswitch}>
+                            <input type="checkbox" name="onoffswitch" className={classes.onoffswitchCheckbox}  id="myonoffswitch" checked={ props.isDark } onChange={(e)=>props.onThemeChange(e.target.checked)}/>
+                                <label className={classes.onoffswitchLabel} htmlFor="myonoffswitch">
+                                    <span className={classes.onoffswitchInner}/>
+                                    <span className={classes.onoffswitchSwitch}/>
+                                </label>
+                        </div>
 
-                        <div>
+
+
+                        {/*<div>
                             <div className="toggle toggle--daynight">
                                 <input type="checkbox" id="toggle--daynight" className="toggle--checkbox" onChange={e => props.onThemeChange(e.target.checked)} checked={props.isDark}/>
                                 <label className="toggle--btn" htmlFor="toggle--daynight">
                                     <span className="toggle--feature"/>
                                 </label>
                             </div>
-                        </div>
+                        </div>*/}
                         {/*<div><img className="flex img-md" src={images.brightTheme} alt="brightTheme"/></div>*/}
                     </div>
 
