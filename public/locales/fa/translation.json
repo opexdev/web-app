@@ -2,12 +2,33 @@
   "title": "اپکس",
   "signIn": "ورود",
   "signOut": "خروج",
+  "date": "تاریخ",
+  "time": "زمان",
+  "volume": "مقدار",
+  "price": "قیمت",
+  "pricePerUnit": "قیمت واحد",
+  "totalPrice": "قیمت کل",
+  "buy": "خرید",
+  "sell": "فروش",
+  "all": "همه",
+  "orderType": "نوع سفارش",
+  "status" : "وضعیت",
   "currency": {
     "IRT": "تومان",
     "Euro": "یورو",
     "USD": "دلار",
     "BTC": "بیتکوین",
     "ETH": "اتریوم"
+  },
+  "ordersStatus": {
+    "live": "جاری شده",
+    "reject": "رد شده",
+    "done": "انجام شده",
+    "cancel": "لغو شده"
+  },
+  "orderTypes": {
+    "stopLimit" : "متوقف محدود",
+    "stopMarket" : "متوقف بازار"
   },
   "pair": {
     "BTC/IRT": "بیتکوین/تومان",
@@ -16,6 +37,9 @@
   "header": {
     "lastPrice": "آخرین قیمت",
     "availableBalance": "موجودی قابل معامله"
+  },
+  "market": {
+    "title": "بازار"
   },
   "overview": {
     "title": "نمای کلی",
@@ -28,23 +52,26 @@
     "lastMonth": "30روز"
   },
   "LastTrades": {
-    "title": "معامله های اخیر",
-    "date": "تاریخ",
-    "time": "زمان",
-    "volume": "مقدار",
-    "price": "قیمت",
-    "totalPrice": "قیمت کل"
+    "title": "معامله های اخیر"
   },
   "orderBook": {
-    "title": "دفتر پیشنهادها",
-    "buy": "خرید",
-    "sell": "فروش",
-    "totalPrice": "قیمت کل",
-    "volume": "مقدار",
-    "price": "قیمت"
+    "title": "دفتر پیشنهادها"
   },
   "myOrders": {
-    "title": "سفارش ها و معامله های من"
+    "title": "سفارش ها و معامله های من",
+    "donePercentage": "درصد انجام",
+    "stoppedPrice": "قیمت توقف",
+    "orderId": "شناسه سفارش",
+    "tradeId": "شناسه معامله",
+    "tradedAmount": "مقدار معامله شده",
+    "avgTradedAmount": "میانگین قیمت معامله",
+    "tradedPrice": "مبلغ معامله شده",
+    "aliveOrder": "سفارش های جاری",
+    "stoppedOrder": "متوقف",
+    "orderHistory": "تاریخچه سفارش ها",
+    "stopOrderTime": "زمان سفارش توقف",
+    "startOrderTime": "زمان جاری شدن",
+    "orders": "معامله ها"
   },
   "footer": {
     "aboutUs": "درباره ما",

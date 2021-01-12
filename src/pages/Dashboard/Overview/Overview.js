@@ -7,14 +7,13 @@ import {connect} from "react-redux";
 
 const Overview = (props) => {
     const {t} = useTranslation();
-    const [p1,p2]= props.activePair.split("/")
 
     const bodyBuilder =(data)=> {
         return <div className={classes.content}>
             <p>{t('overview.change')}: <span className={data.type ? "text-green":"text-red"}>%{data.change}{data.type ? "+":"-"}</span></p>
-            <p>{t('overview.min')}: <span className="text-red">{(data.min).toLocaleString()}</span> {t(`currency.${p2}`)}</p>
-            <p>{t('overview.max')}: <span className="text-green">{(data.max).toLocaleString()}</span> {t(`currency.${p2}`)}</p>
-            <p>{t('overview.volume')}: <span>{(data.volume).toLocaleString()} </span>{ t(`currency.${p2}`)}</p>
+            <p>{t('overview.min')}: <span className="text-red">{(data.min).toLocaleString()}</span> {t(`currency.${props.activePair.quote}`)}</p>
+            <p>{t('overview.max')}: <span className="text-green">{(data.max).toLocaleString()}</span> {t(`currency.${props.activePair.quote}`)}</p>
+            <p>{t('overview.volume')}: <span>{(data.volume).toLocaleString()} </span>{ t(`currency.${props.activePair.quote}`)}</p>
         </div>
     }
 

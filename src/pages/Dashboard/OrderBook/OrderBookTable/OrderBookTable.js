@@ -9,16 +9,16 @@ const OrderBookTable = (props) => {
     const {t} = useTranslation();
     if (props.type === "buy") {
         header = <tr>
-            <th>{t('orderBook.price')}
+            <th>{t('price')}
             </th>
-            <th>{t('orderBook.volume')}</th>
-            <th>{t('orderBook.totalPrice')}</th>
+            <th>{t('volume')}</th>
+            <th>{t('totalPrice')}</th>
         </tr>
     } else {
         header = <tr>
-            <th>{t('orderBook.totalPrice')}</th>
-            <th>{t('orderBook.volume')}</th>
-            <th>{t('orderBook.price')}</th>
+            <th>{t('totalPrice')}</th>
+            <th>{t('volume')}</th>
+            <th>{t('price')}</th>
         </tr>
     }
 

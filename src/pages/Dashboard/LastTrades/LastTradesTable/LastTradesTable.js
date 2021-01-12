@@ -8,17 +8,16 @@ import {connect} from "react-redux";
 
 const LastTradesTable = (props) => {
     const {t} = useTranslation();
-    const [p1,p2]= props.activePair.split("/")
     return (
         <div className={`column container ${classes.container}`}>
             <ScrollBar>
                 <table className="text-center" cellSpacing="0" cellPadding="0">
                     <thead>
-                    <th>{t('LastTrades.time')}</th>
-                    <th>{t('LastTrades.date')}</th>
-                    <th>{t('LastTrades.volume')}({p1})</th>
-                    <th>{t('LastTrades.price')}({p2})</th>
-                    <th>{t('LastTrades.totalPrice')}</th>
+                    <th>{t('time')}</th>
+                    <th>{t('date')}</th>
+                    <th>{t('volume')}({props.activePair.base})</th>
+                    <th>{t('price')}({props.activePair.quote})</th>
+                    <th>{t('totalPrice')}</th>
                     </thead>
                     <tbody>
                     {props.data.map((tr , index) =>

@@ -1,7 +1,18 @@
 {
   "title": "اپکس",
-  "signIn":"ورود",
-  "signOut":"خروج",
+  "signIn":"Sign in",
+  "signOut":"Sing out",
+  "min": "Min",
+  "max": "Max",
+  "buy": "Buy",
+  "date": "Date",
+  "time": "Time",
+  "sell": "Sell",
+  "totalPrice": "Total Price",
+  "pricePerUnit": "Price Per Unit",
+  "volume": "Volume",
+  "price": "Price",
+  "status" : "Status",
   "currency": {
     "IRT" : "IRT",
     "Euro" : "Euro",
@@ -10,8 +21,8 @@
     "ETH" : "ETH"
   },
   "pair": {
-    "BTC/IRT" : "بیتکوین/تومان",
-    "ETH/IRT" : "اتریوم/تومان"
+    "BTC/IRT" : "BTC/IRT",
+    "ETH/IRT" : "ETH/IRT"
   },
   "header": {
     "lastPrice" : "Last Price",
@@ -20,8 +31,6 @@
   "overview": {
     "title": "Overview",
     "change": "Change",
-    "min": "Min",
-    "max": "Max",
     "volume": "Volume",
     "lastDay": "24 Hour",
     "lastWeek": "7 Week",
@@ -36,15 +45,23 @@
     "totalPrice": "Total Price"
   },
   "orderBook": {
-    "title": "Order Book",
-    "buy": "Buy",
-    "sell": "Sell",
-    "totalPrice": "Total Price",
-    "volume": "Volume",
-    "price": "Price"
+    "title": "Order Book"
   },
   "myOrders": {
-
+    "title": "My Orders",
+    "orderId": "Order id",
+    "stoppedPrice": "Stopped Price",
+    "donePercentage": "% done",
+    "tradedAmount": "Traded",
+    "avgTradedAmount": "Avg Traded Amount",
+    "tradedPrice": "Traded Price",
+    "aliveOrder": "Live",
+    "stoppedOrder": "Stopped",
+    "orderHistory": "History",
+    "orders": "Orders"
+  },
+  "market": {
+    "title": "Market"
   },
   "footer" : {
     "aboutUs" : "About Us",

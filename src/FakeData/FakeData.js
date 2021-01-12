@@ -84,7 +84,8 @@ export const lastTradesData = () => {
 
 export const MyOrderCurrentData = () => {
     const data = [];
-    for (let i = 0; i < 20; i++) {
+    const count = Faker.random.number({'min': 2, 'max': 15})
+    for (let i = 0; i < count; i++) {
         data.push({
             orderId: Faker.random.number({'min': 11000, 'max': 1000000}),
             timestamp: Faker.date.between('2020-01-01', '2021-02-05'),
@@ -98,6 +99,58 @@ export const MyOrderCurrentData = () => {
             progress: Faker.random.number({'min': 0, 'max': 100,precision: 0.5})
         });
     }
+    return data;
+}
 
+export const MyOrderHistoryData = () => {
+    const data = [];
+    const count = Faker.random.number({'min': 2, 'max': 15})
+    for (let i = 0; i < count; i++) {
+        data.push({
+            orderId: Faker.random.number({'min': 11000, 'max': 1000000}),
+            orderType: Faker.random.arrayElement(['stopLimit','stopMarket']),
+            timestamp: Faker.date.between('2020-01-01', '2021-02-05'),
+            stopOrderTime: Faker.date.between('2020-01-01', '2021-02-05'),
+            startOrderTime: Faker.date.between('2020-01-01', '2021-02-05'),
+            amount: Faker.random.number({'min': 0, 'max': 1,precision: 0.0001}),
+            price: Faker.random.number({'min': 413990000, 'max': 613990000}),
+            stoppedPrice: Faker.random.number({'min': 413990000, 'max': 613990000}),
+            totalPrice: Faker.random.number({'min': 13990000, 'max': 413990000}),
+            type: Faker.random.arrayElement(['buy', 'sell']),
+            status: Faker.random.arrayElement(['live', 'reject','done','cancel']),
+        });
+    }
+    return data;
+}
+export const MyOrderStopData = () => {
+    const data = [];
+    const count = Faker.random.number({'min': 2, 'max': 15})
+    for (let i = 0; i < count; i++) {
+        data.push({
+            orderId: Faker.random.number({'min': 11000, 'max': 1000000}),
+            timestamp: Faker.date.between('2020-01-01', '2021-02-05'),
+            amount: Faker.random.number({'min': 0, 'max': 1,precision: 0.0001}),
+            price: Faker.random.number({'min': 413990000, 'max': 613990000}),
+            totalPrice: Faker.random.number({'min': 13990000, 'max': 413990000}),
+            stopPrice: Faker.random.number({'min': 13990000, 'max': 413990000}),
+            type: Faker.random.arrayElement(['buy', 'sell']),
+        });
+    }
+    return data;
+}
+export const MyOrderTradeData = () => {
+    const data = [];
+    const count = Faker.random.number({'min': 2, 'max': 15})
+    for (let i = 0; i < count; i++) {
+        data.push({
+            orderId: Faker.random.number({'min': 11000, 'max': 1000000}),
+            tradeId: Faker.random.number({'min': 11000, 'max': 1000000}),
+            timestamp: Faker.date.between('2020-01-01', '2021-02-05'),
+            amount: Faker.random.number({'min': 0, 'max': 1,precision: 0.0001}),
+            price: Faker.random.number({'min': 413990000, 'max': 613990000}),
+            totalPrice: Faker.random.number({'min': 13990000, 'max': 413990000}),
+            type: Faker.random.arrayElement(['buy', 'sell']),
+        });
+    }
     return data;
 }
