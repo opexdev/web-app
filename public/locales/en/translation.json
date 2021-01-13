@@ -9,8 +9,10 @@
   "time": "Time",
   "sell": "Sell",
   "totalPrice": "Total Price",
+  "averagePrice": "Average Price",
   "pricePerUnit": "Price Per Unit",
   "volume": "Volume",
+  "totalVolume": "Total Volume",
   "price": "Price",
   "status" : "Status",
   "currency": {
@@ -64,6 +66,8 @@
     "title": "Market"
   },
   "footer" : {
+    "changeColor": "Change Color",
+
     "aboutUs" : "About Us",
     "contactUS" : "Contact Us",
     "blog" : "Blog",

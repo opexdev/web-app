@@ -5,9 +5,13 @@
   "date": "تاریخ",
   "time": "زمان",
   "volume": "مقدار",
+  "totalVolume": "مقدار کل",
   "price": "قیمت",
   "pricePerUnit": "قیمت واحد",
   "totalPrice": "قیمت کل",
+  "averagePrice": "قیمت میانگین",
+  "min": "حداقل",
+  "max": "حداکثر",
   "buy": "خرید",
   "sell": "فروش",
   "all": "همه",
@@ -44,8 +48,6 @@
   "overview": {
     "title": "نمای کلی",
     "change": "تغییر",
-    "min": "حداقل",
-    "max": "حداکثر",
     "volume": "حجم معاملات",
     "lastDay": "24ساعت",
     "lastWeek": "7روز",
@@ -74,6 +76,9 @@
     "orders": "معامله ها"
   },
   "footer": {
+
+    "changeColor": "تغییر رنگ",
+
     "aboutUs": "درباره ما",
     "contactUS": "تماس باما",
     "blog": "بلاگ",

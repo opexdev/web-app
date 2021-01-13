@@ -29,8 +29,8 @@ const Footer = (props) => {
                 </div>
 
 
-                <div className={classes.footerSetting}>
-                    <div className={`row ai-center`}>
+                <div className={`${classes.footerSetting} `}>
+                    <div className={`row ai-center py-2`}>
                         {/*<div><img className="img-md" src={images.darkTheme} alt="darkTheme"/></div>
                         <div className={classes.changeTheme}>
                             <span/>
@@ -42,6 +42,7 @@ const Footer = (props) => {
                             <img src={images.Sun} className={`img-md text-blue`} alt=""/>
                             <span style={{width:"100%" , height:"50%" ,position: "absolute"}} />
                         </div>*/}
+                        <span className={`pl-1`}>{t('footer.changeColor')}:</span>
 
                         <div className={classes.onoffswitch}>
                             <input type="checkbox" name="onoffswitch" className={classes.onoffswitchCheckbox}  id="myonoffswitch" checked={ props.isDark } onChange={(e)=>props.onThemeChange(e.target.checked)}/>

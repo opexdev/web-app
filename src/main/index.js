@@ -49,6 +49,12 @@ const App = (props) => {
                                     <Route exact path="/">
                                         <Dashboard/>
                                     </Route>
+                                    <Route exact path="/wallet">
+                                        <customPages name="wallet"/>
+                                    </Route>
+                                    <Route exact path="/counting">
+                                        <customPages name="counting"/>
+                                    </Route>
                                     <Route path="*">
                                         "404"
                                     </Route>
@@ -77,6 +83,7 @@ const App = (props) => {
     );
 };
 
+const customPages = name => <div>{name}</div>
 
 const mapStateToProps = state => {
     return {

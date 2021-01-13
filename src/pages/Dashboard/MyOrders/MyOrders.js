@@ -151,21 +151,21 @@ const MyOrders = (props) => {
                                 </td>
                         }
                     </tr>
-                    <tr style={{display: openItem.history === index ? "revert" : "none"}}>
-                        <td colSpan="8">
-                            <div className="row jc-around  ai-center" style={{width: "100%"}}>
-                                <p>{t('myOrders.orderId')} : <span>{tr.orderId}</span></p>
-                                <p>{t('orderType')} : <span>{t(tr.type) + " " + t('orderTypes.' + tr.orderType)}</span>
+                    <tr className={openItem.history === index ? classes.open : classes.close }>
+                        <td colSpan="8" className={`py-1 px-2`}>
+                            <div className="row jc-between  ai-center" style={{width: "100%" , textAlign: "start"}}>
+                                <p className="col-48 row jc-between">{t('myOrders.orderId')} : <span>{tr.orderId}</span></p>
+                                <p className="col-48 row jc-between">{t('orderType')} : <span>{t(tr.type) + " " + t('orderTypes.' + tr.orderType)}</span>
                                 </p>
                             </div>
-                            <div className="row jc-around  ai-center" style={{width: "100%"}}>
-                                <p>{t('myOrders.stopOrderTime')} : <span>{moment(tr.stopOrderTime).format('jYY/jMM/jDD HH:mm:ss')}</span>
+                            <div className="row  jc-between ai-center" style={{width: "100%" , textAlign: "start"}}>
+                                <p className="col-48 row jc-between">{t('myOrders.stopOrderTime')} : <span>{moment(tr.stopOrderTime).format('jYY/jMM/jDD HH:mm:ss')}</span>
                                 </p>
-                                <p>{t('myOrders.startOrderTime')} : <span>{moment(tr.stopOrderTime).format('jYY/jMM/jDD HH:mm:ss')}</span>
+                                <p className="col-48 row jc-between">{t('myOrders.startOrderTime')} : <span>{moment(tr.stopOrderTime).format('jYY/jMM/jDD HH:mm:ss')}</span>
                                 </p>
                             </div>
-                            <div className="row jc-around  ai-center" style={{width: "100%"}}>
-                                <p>{t('myOrders.stoppedPrice')} : <span>{tr.stoppedPrice}</span></p>
+                            <div className="row jc-between ai-center" style={{width: "100%" , textAlign: "start"}}>
+                                <p className="col-48 row jc-between">{t('myOrders.stoppedPrice')} : <span>{tr.stoppedPrice}</span></p>
                             </div>
                         </td>
                     </tr>
