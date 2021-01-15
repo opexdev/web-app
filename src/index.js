@@ -11,6 +11,7 @@ import './index.css';
 import authReducer from "./store/reducers/authReducer";
 import {watchGlobal} from "./store/sagas";
 import "./assets/fontIcon/fontello-786993dd/css/fontello.css"
+import "./assets/fontIcon/fontello 01/css/info.css"
 
 
 const sagaMiddleware = createSagaMiddleware();

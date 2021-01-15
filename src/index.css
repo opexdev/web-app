@@ -122,6 +122,12 @@
     --footerBackground: #e1e9f3;
     --tableHeader: #f9f9f9;
     --toolTipBG: #d8d8d8c2;
+    --iconWhite: #f7f7f7;
+    --iconBlue: #0E4095;
+    --bgGreen: #18A979;
+    --bgRed: #D73E36;
+    --bgBlue: #0E4095;
+
 
 }
 .dark {
@@ -172,6 +178,12 @@
     --footerBackground: #252531;
     --tableHeader: #262938;
     --toolTipBG: #242433c4;
+    --iconWhite: #444444;
+    --iconBlue: #6f9ffff5;
+    --bgGreen: #18A979;
+    --bgRed: #D73E36;
+    --bgBlue: #6f9ffff5;
+
 
 
     /*darkula*/
@@ -180,13 +192,30 @@
 .text-green{
     color: var(--textGreen)
 }
+.bg-green{
+    background-color: var(--bgGreen)
+}
+.bg-blue{
+    background-color: var(--bgBlue)
+}
+.bg-red{
+    background-color: var(--bgRed)
+}
 .text-red{
     color: var(--textRed)
+}
+.bg-red{
+    background-color: var(--textRed)
 }
 .text-blue{
     color: var(--textBlue)
 }
-
+.icon-white{
+    color: var(--iconWhite);
+}
+.icon-blue{
+    color: var(--iconBlue);
+}
 
 .card-background{
     background: var(--cardBody);
@@ -339,6 +368,9 @@ html,body{
 
     /*transition: border 0.4s;*/
 }
+.icon-border{
+    border: 0.3vh solid var(--bgBlue);
+}
 
 .header-radius{
     border-top-left-radius: 9px;
@@ -470,6 +502,14 @@ tr{
 }
 .mt-2{
     margin-top: 2vh;
+}
+.mx-05{
+    margin-right: 0.5vw;
+    margin-left: 0.5vw;
+}
+.mx-1{
+    margin-right: 1vw;
+    margin-left: 1vw;
 }
 
 

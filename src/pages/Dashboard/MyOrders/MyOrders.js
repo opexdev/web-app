@@ -7,6 +7,7 @@ import {connect} from "react-redux";
 import {useTranslation} from "react-i18next";
 
 import {MyOrderCurrentData, MyOrderStopData, MyOrderHistoryData, MyOrderTradeData} from "../../../FakeData/FakeData";
+import IconBtn from "../../../components/IconBtn/IconBtn";
 
 const MyOrders = (props) => {
 
@@ -41,8 +42,8 @@ const MyOrders = (props) => {
                 <th>{t('pricePerUnit')}({props.activePair.quote})</th>
                 <th>{t('totalPrice')}</th>
                 <th>{t('myOrders.donePercentage')}</th>
-                <th></th>
-                <th></th>
+                <th/>
+                <th/>
             </tr>
             </thead>
             <tbody>
@@ -57,28 +58,32 @@ const MyOrders = (props) => {
                             <td>{tr.totalPrice}</td>
                             <td>{tr.progress}</td>
                             <td>
-                                <i className="icon-delete flex jc-center text-red font-size-md"/>
+                                {/*<i className="icon-delete flex jc-center text-red font-size-md"/>*/}
+                                <IconBtn iconClass="icon-cancel icon-white font-size-sm" iconBG={`bg-red ${classes.iconBG}`}/>
+
                             </td>
                             {
                                 openItem.current === index ?
                                     <td onClick={() => setOpenItem({...openItem, current: null})}>
-                                        <i className="icon-up flex jc-center  text-blue font-size-md"/>
+                                        {/*<i className="icon-up flex jc-center  text-blue font-size-md"/>*/}
+                                        <IconBtn iconClass="icon-up-open icon-blue font-size-sm" iconBG={`icon-border ${classes.iconBG}`}/>
                                     </td>
                                     :
                                     <td onClick={() => setOpenItem({...openItem, current: index})}>
-                                        <i className="icon-down flex jc-center  text-blue font-size-md"/>
+                                        {/*<i className="icon-down flex jc-center  text-blue font-size-md"/>*/}
+                                        <IconBtn iconClass="icon-down-open icon-white font-size-sm" iconBG={`bg-blue ${classes.iconBG}`}/>
                                     </td>
                             }
                         </tr>
                         <tr style={{display: openItem.current === index ? "revert" : "none"}}>
-                            <td colSpan="8">
+                            <td colSpan="8" className={`py-1 px-2`}>
                                 <div className="row jc-around  ai-center" style={{width: "100%"}}>
-                                    <p>{t('myOrders.orderId')} : <span>{tr.orderId}</span></p>
-                                    <p>{t('myOrders.tradedAmount')} : <span>{tr.tradedAmount}</span></p>
+                                    <p className="col-48 row jc-between">{t('myOrders.orderId')} : <span>{tr.orderId}</span></p>
+                                    <p className="col-48 row jc-between">{t('myOrders.tradedAmount')} : <span>{tr.tradedAmount}</span></p>
                                 </div>
                                 <div className="row jc-around  ai-center" style={{width: "100%"}}>
-                                    <p>{t('myOrders.avgTradedAmount')} : <span>{tr.avgTradedAmount}</span></p>
-                                    <p>{t('myOrders.tradedPrice')} : <span>{tr.tradedPrice}</span></p>
+                                    <p className="col-48 row jc-between">{t('myOrders.avgTradedAmount')} : <span>{tr.avgTradedAmount}</span></p>
+                                    <p className="col-48 row jc-between">{t('myOrders.tradedPrice')} : <span>{tr.tradedPrice}</span></p>
                                 </div>
                             </td>
                         </tr>
@@ -110,7 +115,8 @@ const MyOrders = (props) => {
                     <td>{tr.totalPrice}</td>
                     <td>{tr.stopPrice}</td>
                     <td>
-                        <td><i className="icon-delete flex jc-center  text-red font-size-md"/></td>
+                        {/*<td><i className="icon-delete flex jc-center  text-red font-size-md"/></td>*/}
+                        <IconBtn iconClass="icon-cancel icon-white font-size-sm" iconBG={`bg-red ${classes.iconBG}`}/>
                     </td>
                 </tr>
             )}
@@ -143,11 +149,13 @@ const MyOrders = (props) => {
                         {
                             openItem.history === index ?
                                 <td onClick={() => setOpenItem({...openItem, history: null})}>
-                                    <i className="icon-up flex jc-center  text-blue font-size-md"/>
+                                    {/*<i className="icon-up flex jc-center  text-blue font-size-md"/>*/}
+                                    <IconBtn iconClass="icon-up-open icon-blue font-size-sm" iconBG={`icon-border ${classes.iconBG}`}/>
                                 </td>
                                 :
                                 <td onClick={() => setOpenItem({...openItem, history: index})}>
-                                    <i className="icon-down flex jc-center  text-blue font-size-md"/>
+                                    {/*<i className="icon-down flex jc-center  text-blue font-size-md"/>*/}
+                                    <IconBtn iconClass="icon-down-open icon-white font-size-sm" iconBG={`bg-blue ${classes.iconBG}`}/>
                                 </td>
                         }
                     </tr>
@@ -197,19 +205,21 @@ const MyOrders = (props) => {
                         {
                             openItem.trade === index ?
                                 <td onClick={() => setOpenItem({...openItem, trade: null})}>
-                                    <i className="icon-up flex jc-center  text-blue font-size-md"/>
+                                    {/*<i className="icon-up flex jc-center  text-blue font-size-md"/>*/}
+                                    <IconBtn iconClass="icon-up-open icon-blue font-size-sm" iconBG={`icon-border ${classes.iconBG}`}/>
                                 </td>
                                 :
                                 <td onClick={() => setOpenItem({...openItem, trade: index})}>
-                                    <i className="icon-down flex jc-center  text-blue font-size-md"/>
+                                    {/*<i className="icon-down flex jc-center  text-blue font-size-md"/>*/}
+                                    <IconBtn iconClass="icon-down-open icon-white font-size-sm" iconBG={`bg-blue ${classes.iconBG}`}/>
                                 </td>
                         }
                     </tr>
                     <tr style={{display: openItem.trade === index ? "revert" : "none"}}>
-                        <td colSpan="6">
+                        <td colSpan="6" className={`py-1 px-2`}>
                             <div className="row jc-around  ai-center" style={{width: "100%"}}>
-                                <p>{t('myOrders.orderId')} : <span>{tr.orderId}</span></p>
-                                <p>{t('myOrders.tradeId')} : <span>{tr.tradeId}</span></p>
+                                <p className="col-48 row jc-between">{t('myOrders.orderId')} : <span>{tr.orderId}</span></p>
+                                <p className="col-48 row jc-between">{t('myOrders.tradeId')} : <span>{tr.tradeId}</span></p>
                             </div>
                         </td>
                     </tr>

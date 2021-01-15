@@ -5,6 +5,7 @@ import {useTranslation} from "react-i18next";
 import {connect} from "react-redux";
 import moment from "moment-jalaali";
 import ShimmerEffect from "../../components/ShimmerEffect";
+import IconBtn from "../../components/IconBtn/IconBtn";
 
 
 const Header = (props) => {
@@ -21,14 +22,16 @@ const Header = (props) => {
                     <div className={`row ai-center ${classes.inventory}`}>
                         <div className="flex ai-center">
                             {/*<img className="img-sm" src={images.plus} alt="plus"/>*/}
-                            <i className="icon-plus text-green font-size-lg"/>
+                            {/*<i className="icon-plus text-green font-size-lg"/>*/}
+                            <IconBtn iconClass="icon-plus icon-white font-size-sm" iconBG={`bg-green mx-05 ${classes.iconBG}`}/>
                             <span>{props.auth.wallet[props.activePair.base]}</span>
                             <span>{t('currency.'+props.activePair.base)}</span>
                         </div>
                         <div className="flex ai-center">
                             <span>{props.auth.wallet[props.activePair.quote]}</span>
                             <span>{t('currency.'+props.activePair.quote)}</span>
-                            <i className="icon-plus text-green font-size-lg"/>
+                            <IconBtn iconClass="icon-plus icon-white font-size-sm" iconBG={`bg-green mx-05 ${classes.iconBG}`}/>
+                            {/*<i className="icon-plus text-green font-size-lg"/>*/}
                             {/*<img className="img-sm" src={images.plus} alt="plus"/>*/}
                         </div>
                     </div>

@@ -15,7 +15,7 @@
 }
 :global(.ltr) .inventory div:first-child{
     border-right: 0.01vh solid #F58634;
-    padding-right: 1vw;
+    padding-right: 0.3vw;
     border-left: initial;
     padding-left: initial;
 }
@@ -25,7 +25,7 @@
 }
 :global(.ltr) .inventory div:last-child{
     border-left: 0.01vh solid #F58634;
-    padding-left: 1vw;
+    padding-left: 0.3vw;
     border-right: initial;
     padding-right: initial;
 }
@@ -35,5 +35,11 @@
 .signOut{
     width: 5%;
     height: 100%;
+}
+
+.iconBG{
+    width: 1.3vw;
+    height: 1.3vw;
+    border-radius: 50vw;
 }
 

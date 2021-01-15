@@ -2,6 +2,12 @@
     height: 50vh;
     border-radius: 9px;
 }
+
+.iconBG{
+    width: 1vw;
+    height: 1.05vw;
+    border-radius: 50vw;
+}
 /*
 .openDetailes{
     animation-name: expand;

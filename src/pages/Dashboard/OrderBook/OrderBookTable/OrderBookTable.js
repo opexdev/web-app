@@ -53,7 +53,26 @@ const OrderBookTable = (props) => {
                                 barStyle = {background: "linear-gradient( to "+start+", var(--textRedAlpha) " + (tr.percent) + "%,   transparent  " + (tr.percent) + "%) no-repeat"};
                             }
                             return (props.type === "buy" ?
-                                    <tr key={index} style={barStyle} data-tip={`قیمت کل: ${tr.totalPrice.toLocaleString()} `}>
+                                    <tr key={index} style={barStyle}
+                                        data-html={true}
+                                        data-place="bottom"
+                                        data-effect="float"
+                                        data-tip={`
+                                            <div class="column jc-between col-100">
+                                                <div class="row jc-between col-100">
+                                                    <span class="pl-05">${t('averagePrice')}:</span>
+                                                    <span >${tr.price.toLocaleString()}</span>
+                                                </div>
+                                                <div class="row jc-between col-100">
+                                                    <span class="pl-05">${t('totalVolume')}:</span>
+                                                    <span >${tr.amount}</span>
+                                                </div>
+                                                <div class="row jc-between col-100">
+                                                    <span class="pl-05">${t('totalPrice')}:</span>
+                                                    <span >${tr.totalPrice.toLocaleString()}</span>
+                                                </div>
+                                            </div>
+                                        `}>
                                         <td>{tr.price.toLocaleString()}</td>
                                         <td>{tr.amount}</td>
                                         <td>{tr.totalPrice.toLocaleString()}</td>
