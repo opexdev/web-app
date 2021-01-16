@@ -159,17 +159,17 @@ const TradingView = (props) => {
                 }
             })
         })
-
         resizeObserver.current = new ResizeObserver(entries => {
             const {width, height} = entries[0].contentRect;
             chart.current.applyOptions({width, height});
             setTimeout(() => {
-                chart.current.timeScale().fitContent();
+                if (chart.current !== null) {
+                    chart.current.timeScale().fitContent();
+                }
             }, 0);
         });
 
         resizeObserver.current.observe(chartContainerRef.current);
-
         return () => resizeObserver.current.disconnect();
     }, []);
 
