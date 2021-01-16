@@ -7,16 +7,17 @@
 
 .input-group span {
     background: #f2f5f8;
-    padding: 10px 26px;
+    padding: 10px 15px;
     color: #6f6e70;
     flex: 0.2;
 }
 
 .input-group input {
     display: flex;
-    flex: 0.2;
+    flex: 0.6;
     border: none;
     padding-right: 10px;
+    direction: ltr;
 }
 .input-group span.lead {
     border-top-right-radius: 10px;
