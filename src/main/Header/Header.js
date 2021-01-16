@@ -5,7 +5,7 @@ import {useTranslation} from "react-i18next";
 import {connect} from "react-redux";
 import moment from "moment-jalaali";
 import ShimmerEffect from "../../components/ShimmerEffect";
-import IconBtn from "../../components/IconBtn/IconBtn";
+import IconBtn from "../../components/Icon/Icon";
 
 
 const Header = (props) => {
@@ -15,7 +15,7 @@ const Header = (props) => {
             <div className={`row jc-between ai-center ${classes.content}`}>
                 <div className={`column ai-start`}>
                     <h2 className="mb-05">{t(`pair.${props.activePair.pair}`)}</h2>
-                    <p>{t('header.lastPrice')}<span>410,130,000</span> {t('currency.'+props.activePair.quote)}</p>
+                    <p>{t('header.lastPrice')}: <span>410,130,000</span> {t('currency.'+props.activePair.quote)}</p>
                 </div>
                 <div className={`column ai-center`}>
                     <p className="mb-05">{t('header.availableBalance')}</p>
@@ -23,14 +23,14 @@ const Header = (props) => {
                         <div className="flex ai-center">
                             {/*<img className="img-sm" src={images.plus} alt="plus"/>*/}
                             {/*<i className="icon-plus text-green font-size-lg"/>*/}
-                            <IconBtn iconClass="icon-plus icon-white font-size-sm" iconBG={`bg-green mx-05 ${classes.iconBG}`}/>
+                            <IconBtn iconName="icon-plus icon-white font-size-sm" customClass={`mx-05 ${classes.iconBG}`}/>
                             <span>{props.auth.wallet[props.activePair.base]}</span>
                             <span>{t('currency.'+props.activePair.base)}</span>
                         </div>
                         <div className="flex ai-center">
                             <span>{props.auth.wallet[props.activePair.quote]}</span>
                             <span>{t('currency.'+props.activePair.quote)}</span>
-                            <IconBtn iconClass="icon-plus icon-white font-size-sm" iconBG={`bg-green mx-05 ${classes.iconBG}`}/>
+                            <IconBtn iconName="icon-plus icon-white font-size-sm" customClass={`mx-05 ${classes.iconBG}`}/>
                             {/*<i className="icon-plus text-green font-size-lg"/>*/}
                             {/*<img className="img-sm" src={images.plus} alt="plus"/>*/}
                         </div>

@@ -27,7 +27,7 @@ const reducer = (state = initialState, action) => {
         case actionTypes.STORE_USER_DATA :
             return {
                 firstName: "امیرحسین",
-                lastName: "فردوسی",
+                lastName: "فردوسی زاده نائینی",
                 wallet: {
                     IRT: 10000,
                     BTC: 0.005,

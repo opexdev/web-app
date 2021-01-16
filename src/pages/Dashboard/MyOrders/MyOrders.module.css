@@ -4,9 +4,10 @@
 }
 
 .iconBG{
-    width: 1vw;
-    height: 1.05vw;
+    vertical-align: middle;
+
     border-radius: 50vw;
+
 }
 /*
 .openDetailes{

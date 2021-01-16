@@ -4,7 +4,7 @@ import {images} from "../../../../../assets/images"
 import ScrollBar from "../../../../../components/ScrollBar";
 import PriceChart from "../../../../../components/PriceChart/PriceChart";
 import {useTranslation} from "react-i18next";
-import IconBtn from "../../../../../components/IconBtn/IconBtn";
+import IconBtn from "../../../../../components/Icon/Icon";
 
 
 
@@ -29,7 +29,7 @@ const MarketCard = (props) => {
                     <span>{t(`pair.${it.MarketName}`)}</span>
                     <div className={`row jc-between ai-center`}>
                         <span>{/*<img className={`img-vsm ${classes.marketCardImg}`} src={images.starWithoutfill} alt="favoriteCurrency"/>*/}
-                            <IconBtn iconClass="icon-star text-color font-size-md" iconBG={` ${classes.iconBG}`}/>
+                            <IconBtn iconName="icon-star text-color font-size-md" customClass={classes.iconBG}/>
                         </span>
                         <span className={`font-size-sm ${ (it.Type) === 'increase'? 'text-green' : 'text-red' } `}>{it.Change}</span>
                     </div>

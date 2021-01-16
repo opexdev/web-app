@@ -41,5 +41,12 @@
     width: 1.3vw;
     height: 1.3vw;
     border-radius: 50vw;
+    background-color: var(--bgGreen);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.iconBG i:before{
+    vertical-align: middle;
 }
 
