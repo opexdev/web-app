@@ -37,7 +37,7 @@ const OrderBookTable = (props) => {
 
     return (
         <div className={`column container ${classes.container}`}>
-            <ReactTooltip data-html={true} data-place="bottom" data-effect="float"/>
+            <ReactTooltip data-html={true} data-effect="float"/>
             <ScrollBar>
                 <table className="text-center" cellSpacing="0" cellPadding="0">
                     <thead>

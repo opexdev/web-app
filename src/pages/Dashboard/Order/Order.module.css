@@ -18,3 +18,17 @@
     bottom: 0;
     margin-top: 40vh;
 }
+
+.dangerHint span i{
+    background-color: #6619bf;
+    width: 1.1vw;
+    height: 1.1vw;
+    border-radius: 50vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.dangerHint :global(.alert){
+    font-size: 0.7vw;
+    color: #6619bf;
+}

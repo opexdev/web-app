@@ -19,6 +19,7 @@ import {
     isBrowser,
     isMobile
 } from "react-device-detect";
+import ReactTooltip from "react-tooltip";
 
 
 
@@ -39,12 +40,13 @@ const App = (props) => {
             <BrowserView>
                 <div className={`container ${props.isDark ? 'dark' : ''} ${ltr?"ltr":"rtl"}`}>
                     {props.isLoading ? <FullWidthLoading/> : null}
+                    {/*<ReactTooltip data-html={true} data-place="bottom" data-effect="float"/>*/}
                     <div className="row">
                         <MainMenu/>
                         <SubMenu/>
                         <div className="column content">
+                            <Header/>
                             <ScrollBar>
-                                <Header/>
                                 <Switch>
                                     <Route exact path="/">
                                         <Dashboard/>

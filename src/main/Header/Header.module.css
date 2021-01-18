@@ -42,11 +42,18 @@
     height: 1.3vw;
     border-radius: 50vw;
     background-color: var(--bgGreen);
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
     align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
     justify-content: center;
 }
 .iconBG i:before{
     vertical-align: middle;
+    nt: center;
 }
 

@@ -12,5 +12,4 @@
 }
 :global .place-bottom::after{
     border-bottom-color: var(--toolTipBG) !important;
-
 }
