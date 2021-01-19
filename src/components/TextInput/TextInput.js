@@ -1,7 +1,6 @@
 import React, {Fragment} from "react";
 import "./TextInput.css";
 import Icon from "../Icon/Icon";
-import ReactTooltip from "react-tooltip";
 
 
 const TextInput = (props) => {
@@ -11,7 +10,7 @@ const TextInput = (props) => {
             <div className={`input-group ${props.customClass}`}>
 
                 <span className="lead">{props.lead}</span>
-                <input type="number" value={props.value} onChange={props.onchange} disabled={props.disabled}/>
+                <input type="number" value={props.value} onChange={props.onchange} disabled={props.disabled} onBlur={props.onblur}/>
                 <span className="after">{props.after}</span>
             </div>
             {

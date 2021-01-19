@@ -9,7 +9,7 @@ const initialState = {
         BTC: 0.0,
         ETH: 0.0
     },
-    tax:{
+    tradeFee:{
         IRT: 0.0,
         BTC: 0.0,
         ETH: 0.0
@@ -38,7 +38,7 @@ const reducer = (state = initialState, action) => {
                     BTC: 0.005,
                     ETH: 0.2
                 },
-                tax:{
+                tradeFee:{
                     IRT: 0.0001,
                     BTC: 0.0002,
                     ETH: 0.0003

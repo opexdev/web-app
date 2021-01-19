@@ -4,13 +4,15 @@ import AccordionBox from "../../../components/AccordionBox/AccordionBox";
 import TextInput from "../../../components/TextInput/TextInput";
 import {connect} from "react-redux";
 import {useTranslation} from "react-i18next";
+import {decimalChecker} from "../../../utils/utils";
 
 const Order = (props) => {
     const {t} = useTranslation();
 
     const [buyOrder,setBuyOrder]=useState({
-        tax:0.0,
-        type:"limit",
+        tradeFee:0.0,
+        stopLimit: false,
+        stopMarket: false,
         stopPrice:0.0,
         price: 0.0,
         pricePerUnit:0.0,
@@ -20,39 +22,46 @@ const Order = (props) => {
     const buyPriceHandler = (value , key )=>{
         switch (key) {
             case 'price':
-                const price = value;
-
+                if (!decimalChecker( value , props.activePair.baseMaxDecimal)) break
+                const price = parseFloat(value);
                 setBuyOrder({
                     ...buyOrder,
-                    price: price,
-                    totalPrice: price * (buyOrder.pricePerUnit),
-                    tax: price * (props.auth.tax[props.activePair.quote])
+                    price: value,
+                    totalPrice: (price * (buyOrder.pricePerUnit)).toFixed(props.activePair.quoteMaxDecimal),
+                    tradeFee: (price * (props.auth.tradeFee[props.activePair.quote])).toFixed(props.activePair.baseMaxDecimal)
                 });
                 break
             case 'pricePerUnit':
+                if (!decimalChecker( value , props.activePair.quoteMaxDecimal)) break
                 const pricePerUnit = parseFloat(value);
                 setBuyOrder({
                     ...buyOrder,
-                    pricePerUnit: pricePerUnit,
-                    totalPrice: buyOrder.price * (pricePerUnit),
-                    tax: buyOrder.price * (props.auth.tax[props.activePair.quote])
+                    pricePerUnit: value,
+                    totalPrice: (buyOrder.price * (pricePerUnit)).toFixed(props.activePair.quoteMaxDecimal),
+                    tradeFee: (buyOrder.price * (props.auth.tradeFee[props.activePair.quote])).toFixed(props.activePair.baseMaxDecimal)
                 });
                 break
             case 'totalPrice':
+                if (!decimalChecker( value , props.activePair.quoteMaxDecimal)) break
                 const totalPrice = parseFloat(value)
                 setBuyOrder({
                     ...buyOrder,
-                    price: totalPrice / buyOrder.pricePerUnit,
-                    totalPrice: totalPrice,
-                    tax: ( totalPrice / buyOrder.pricePerUnit ) * (props.auth.tax[props.activePair.quote])
+                    price: (totalPrice / buyOrder.pricePerUnit).toFixed(props.activePair.baseMaxDecimal),
+                    totalPrice: value,
+                    tradeFee: (( totalPrice / buyOrder.pricePerUnit ) * (props.auth.tradeFee[props.activePair.quote])).toFixed(props.activePair.baseMaxDecimal)
                 });
                 break
             default:
         }
     }
+
     useEffect(()=>{
-        setBuyOrder(prevState => ({ ...buyOrder, tax: prevState.totalPrice*(props.auth.tax[props.activePair.quote])}));
+        setBuyOrder(prevState => ({ ...buyOrder, tradeFee: prevState.totalPrice*(props.auth.tradeFee[props.activePair.quote])}));
     },[props.auth])
+
+    useEffect(()=>{
+        buyPriceHandler(props.activePairOrders.bestBuyPrice.toString() ,'pricePerUnit')
+    },[buyOrder.stopMarket])
 
     const fillBuyByWallet=()=>{
         if(buyOrder.pricePerUnit === 0 ){
@@ -61,7 +70,7 @@ const Order = (props) => {
                 price: totalPrice / props.activePair.bestBuyPrice,
                 pricePerUnit: props.activePair.bestBuyPrice,
                 totalPrice: totalPrice,
-                tax: totalPrice * (props.auth.tax[props.activePair.quote])
+                tradeFee: totalPrice * (props.auth.tradeFee[props.activePair.quote])
             });
         }else {
             buyPriceHandler(props.auth.wallet[props.activePair.quote] ,'totalPrice')
@@ -72,12 +81,6 @@ const Order = (props) => {
         buyPriceHandler(props.activePair.bestBuyPrice ,'pricePerUnit')
     }
 
-    const stopMarketHandler = (e) => {
-        setBuyOrder({...buyOrder ,type: e.target.checked ? "stopMarket" : "limit" })
-        if(e.target.checked){
-            buyPriceHandler(props.activePairOrders.bestBuyPrice ,'pricePerUnit')
-        }
-    }
 
     let Buy = <div className={classes.content}>
         <p onClick={() => fillBuyByWallet()}> موجودی قابل
@@ -90,12 +93,12 @@ const Order = (props) => {
             <span>سفارش متوقف</span>
             <input
                 type="checkbox"
-                checked={buyOrder.type === "stopLimit"}
-                onChange={(e)=>setBuyOrder({...buyOrder ,type: e.target.checked ? "stopLimit" : "limit" })}
+                checked={buyOrder.stopLimit}
+                onChange={(e)=>setBuyOrder({...buyOrder ,stopLimit: e.target.checked})}
             />
         </div>
         {
-            buyOrder.type === "stopLimit" ?
+            buyOrder.stopLimit  ?
                 <TextInput lead="قیمت توقف" after={t('currency.' + props.activePair.base)}
                            value={buyOrder.stopPrice.toString()}
                            onchange={(e) => setBuyOrder({...buyOrder, stopPrice: e.target.value})}/>
@@ -103,25 +106,34 @@ const Order = (props) => {
         }
 
 
+        <TextInput
+            lead="مقدار"
+            after={t('currency.' + props.activePair.base)}
+            value={buyOrder.price.toString()}
+            onchange={(e) => buyPriceHandler(e.target.value, 'price')}
+            onblur={(e)=>setBuyOrder({...buyOrder,price:parseFloat(e.target.value)})}
+        />
 
-        <TextInput lead="مقدار" after={t('currency.' + props.activePair.base)} value={buyOrder.price.toString()}
-                   onchange={(e) => buyPriceHandler(e.target.value, 'price')}/>
-        <TextInput lead="قیمت واحد" after={t('currency.' + props.activePair.quote)}
-                   value={buyOrder.pricePerUnit.toString()}
-                   onchange={(e) => buyPriceHandler(e.target.value, 'pricePerUnit')}/>
+        <TextInput
+            lead="قیمت واحد"
+            after={t('currency.' + props.activePair.quote)}
+            value={buyOrder.pricePerUnit.toString()}
+            onchange={(e) => buyPriceHandler(e.target.value, 'pricePerUnit')}
+            onblur={(e)=>setBuyOrder({...buyOrder,pricePerUnit:parseFloat(e.target.value)})}
+        />
 
         <div>
             <span>خرید به قیمت بازار</span>
             <input
                 type="checkbox"
-                checked={buyOrder.type === "stopMarket"}
-                onChange={(e)=>stopMarketHandler(e)}
+                checked={buyOrder.stopMarket}
+                onChange={(e)=>setBuyOrder({...buyOrder ,stopMarket: e.target.checked})}
             />
         </div>
         <TextInput lead="قیمت کل" after={t('currency.' + props.activePair.quote)} value={buyOrder.totalPrice.toString()}
                    onchange={(e) => buyPriceHandler(e.target.value, 'totalPrice')}/>
-        <p> کارمزد:{buyOrder.tax} {t('currency.' + props.activePair.base)}</p>
-        <p> دریافتی شما:{buyOrder.price - buyOrder.tax} {t('currency.' + props.activePair.base)}</p>
+        <p> کارمزد:{buyOrder.tradeFee} {t('currency.' + props.activePair.base)}</p>
+        <p> دریافتی شما:{buyOrder.price - buyOrder.tradeFee} {t('currency.' + props.activePair.base)}</p>
         <button type="submit" className={` ${classes.button}`}>خرید</button>
         </div>
 
