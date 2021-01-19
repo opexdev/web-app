@@ -4,7 +4,16 @@ const initialState = {
     activePair: {
         pair : "BTC/IRT",
         base : "BTC",
-        quote :"IRT"
+        quote : "IRT",
+        baseMaxDecimal : 0.000001,
+        quoteMaxDecimal : 0.0001,
+        min : 0.00001,
+        max : 10,
+    },
+    activePairOrders :{
+        bestBuyPrice: 52300.0,
+        bestSellPrice: 52300.0,
+        selectedPrice:1000.0
     },
     isLoading: true,
     isDark: false
@@ -23,7 +32,6 @@ const globalReducer = (state = initialState, action) => {
                 isLoading: action.isLoading
             }
         case actionTypes.SET_ACTIVE_PEER :
-            //const [p1,p2]= action.activePair.split("/")
             const [base,quote]= "ETH/IRR".split("/")
             return {
                 ...state,

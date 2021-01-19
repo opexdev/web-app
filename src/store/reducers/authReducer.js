@@ -5,9 +5,14 @@ const initialState = {
     lastName: null,
     token:null,
     wallet: {
-        IRT: 0,
-        BTC: 0,
-        ETH: 0
+        IRT: 0.0,
+        BTC: 0.0,
+        ETH: 0.0
+    },
+    tax:{
+        IRT: 0.0,
+        BTC: 0.0,
+        ETH: 0.0
     },
     isLogin: false
 }
@@ -29,9 +34,14 @@ const reducer = (state = initialState, action) => {
                 firstName: "امیرحسین",
                 lastName: "فردوسی زاده نائینی",
                 wallet: {
-                    IRT: 10000,
+                    IRT: 100000,
                     BTC: 0.005,
                     ETH: 0.2
+                },
+                tax:{
+                    IRT: 0.0001,
+                    BTC: 0.0002,
+                    ETH: 0.0003
                 },
                 isLogin: true
             }
