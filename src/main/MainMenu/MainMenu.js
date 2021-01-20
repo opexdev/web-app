@@ -1,31 +1,83 @@
-import React from "react";
-import Styles from "./MainMenu.module.css";
+import React , {useEffect} from "react";
+import classes from "./MainMenu.module.css";
 import {images} from "../../assets/images"
 import {Link, NavLink} from "react-router-dom";
+import Icon from "../../components/Icon/Icon";
+import ReactTooltip from "react-tooltip";
+
+
 
 const MainMenu = (props) => {
+    useEffect(() => {
+        ReactTooltip.rebuild();
+    });
+
     return (
-        <div className={`column ai-center jc-between mainMenu-background ${Styles.container}`}>
+        <div className={`column ai-center jc-between mainMenu-background ${classes.container}`}>
+
+
            <div className={`column jc-start ai-center`}>
-               <Link to="/">
+               <Link exact to="/">
                    <span className="flex"><img className="img-lg" src={images.opexLogo_light} alt="opexLogo_light" title="اوپکس"/></span>
                </Link>
-               <NavLink to="/" activeClassName="selected">
-                   <span className="flex"><img className="img-md" src={images.market} alt="market" title="بازار"/></span>
+
+
+               <NavLink exact to="/" activeClassName="selected"
+                        data-html={true}
+                        data-place="left"
+                        data-effect="float"
+                        data-tip={`
+                         <span class="column jc-between col-100">بازار</span>`}>
+                   <Icon iconName="icon-market font-size-lg"/>
                </NavLink>
-               <NavLink to="/wallet" activeClassName="selected">
-                    <span className="flex"><img className="img-md" src={images.wallet} alt="wallet" title="کیف دارایی ها"/></span>
+
+
+
+               <NavLink exact to="/wallet" activeClassName="selected"
+                        data-html={true}
+                        data-place="left"
+                        data-effect="float"
+                        data-tip={`
+                         <span class="column jc-between col-100">کیف دارایی ها</span>`}>
+                   <Icon iconName="icon-wallet font-size-lg"/>
                </NavLink>
-               <NavLink to="/counting" activeClassName="selected">
-                     <span className="flex"><img className="img-md" src={images.counting} alt="counting" title="حساب و کتاب"/></span>
+
+               <NavLink exact to="/counting" activeClassName="selected"
+                        data-html={true}
+                        data-place="left"
+                        data-effect="float"
+                        data-tip={`
+                         <span class="column jc-between col-100">حساب و کتاب</span>`}>
+                   <Icon iconName="icon-counting font-size-lg"/>
+               </NavLink>
+
+               <NavLink exact to="/account" activeClassName="selected"
+                        data-html={true}
+                        data-place="left"
+                        data-effect="float"
+                        data-tip={`
+                         <span class="column jc-between col-100">چارت</span>`}>
+                   <Icon iconName="icon-account font-size-lg"/>
                </NavLink>
            </div>
            <div className={`column jc-end ai-center`}>
-               <NavLink to="/faq" activeClassName="selected">
-                    <span className="flex"><img className="img-md" src={images.messages} alt="messages" title="پیام ها"/></span>
+
+               <NavLink exact to=" " activeClassName="selected"
+                        data-html={true}
+                        data-place="left"
+                        data-effect="float"
+                        data-tip={`
+                         <span class="column jc-between col-100">پیام ها</span>`}>
+                   <Icon iconName="icon-envelope-open font-size-lg"/>
                </NavLink>
-               <NavLink to="/faq" activeClassName="selected">
-                     <span className="flex"><img className="img-md" src={images.settings} alt="settings" title="تنظیمات"/></span>
+
+               <NavLink exact to=" " activeClassName="selected"
+                        data-html={true}
+                        data-place="left"
+                        data-effect="float"
+                        data-tip={`
+                         <span class="column jc-between col-100">تنظیمات</span>`}>
+                   <Icon iconName="icon-settings font-size-lg"/>
                </NavLink>
            </div>
         </div>

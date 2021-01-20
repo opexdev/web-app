@@ -8,8 +8,18 @@
     border: 0.1vh solid transparent;
     border-radius: 5px;
     font-size: 0.8vw;
-    padding: 1vh 1.2vw;
+    padding: 0.5vh 1vw;
+    opacity: 1 !important;
 }
 :global .place-bottom::after{
     border-bottom-color: var(--toolTipBG) !important;
+}
+:global .place-left::after{
+    border-left-color: var(--toolTipBG) !important;
+}
+:global .place-right::after{
+    border-right-color: var(--toolTipBG) !important;
+}
+:global .place-top::after{
+    border-top-color: var(--toolTipBG) !important;
 }

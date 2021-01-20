@@ -14,6 +14,8 @@
   "volume": "Volume",
   "totalVolume": "Total Volume",
   "price": "Price",
+  "all": "All",
+  "orderType": "Order Type",
   "status" : "Status",
   "currency": {
     "IRT" : "IRT",
@@ -21,6 +23,16 @@
     "USD" : "USD",
     "BTC" : "BTC",
     "ETH" : "ETH"
+  },
+  "ordersStatus": {
+    "live": "live",
+    "reject": "Reject",
+    "done": "Done",
+    "cancel": "Cancel"
+  },
+  "orderTypes": {
+    "stopLimit" : "Stop Limit",
+    "stopMarket" : "Stop Market"
   },
   "pair": {
     "BTC/IRT" : "BTC/IRT",
@@ -52,6 +64,7 @@
   "myOrders": {
     "title": "My Orders",
     "orderId": "Order id",
+    "tradeId": "Trade Id",
     "stoppedPrice": "Stopped Price",
     "donePercentage": "% done",
     "tradedAmount": "Traded",
@@ -60,6 +73,8 @@
     "aliveOrder": "Live",
     "stoppedOrder": "Stopped",
     "orderHistory": "History",
+    "stopOrderTime": "Stop Order Time",
+    "startOrderTime": "Start Order Time",
     "orders": "Orders"
   },
   "market": {

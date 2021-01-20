@@ -128,7 +128,7 @@
     --activeLi: #3030300d;
     --footerBackground: #e1e9f3;
     --tableHeader: #f9f9f9;
-    --toolTipBG: #d8d8d8c2;
+    --toolTipBG: #d8d8d8e6;
     --iconWhite: #f7f7f7;
     --iconBlue: #0E4095;
     --bgGreen: #18A979;
@@ -184,7 +184,7 @@
     --activeLi: #d0d0d01a;
     --footerBackground: #252531;
     --tableHeader: #262938;
-    --toolTipBG: #242433c4;
+    --toolTipBG: #242433f0;
     --iconWhite: #444444;
     --iconBlue: #6f9ffff5;
     --bgGreen: #18A979;
@@ -595,7 +595,8 @@ tr{
     font-size: 1vw;
 }
 .font-size-lg{
-    font-size: 1.2vw;
+    /*font-size: 1.2vw;*/
+    font-size: 2.35vw;
 }
 
 

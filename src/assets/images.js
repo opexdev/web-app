@@ -20,6 +20,7 @@ import starwithfill from "./images/starwithfill.svg";
 import starWithoutfill from "./images/starWithoutfill.svg";
 import Sun from "./images/Sun.svg";
 import bit from "./images/bit.gif";
+import account from "./images/account.svg";
 
 
 
@@ -47,5 +48,6 @@ export const  images = {
     'starWithoutfill' : starWithoutfill,
     'Sun' : Sun,
     'bit' : bit,
+    'account' : account,
 };
 

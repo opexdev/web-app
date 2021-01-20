@@ -1,14 +1,19 @@
-import React from 'react';
+import React , {useEffect} from 'react';
 import classes from "./OrderBookTable.module.css"
 import ScrollBar from "../../../../components/ScrollBar";
 import {useTranslation} from "react-i18next";
-import ReactTooltip from 'react-tooltip';
+
 
 import i18n from "i18next";
+import ReactTooltip from "react-tooltip";
 
 
 
 const OrderBookTable = (props) => {
+
+    useEffect(() => {
+        ReactTooltip.rebuild();
+    });
 
     let header;
     const {t} = useTranslation();
@@ -37,7 +42,7 @@ const OrderBookTable = (props) => {
 
     return (
         <div className={`column container ${classes.container}`}>
-            <ReactTooltip data-html={true} data-effect="float"/>
+
             <ScrollBar>
                 <table className="text-center" cellSpacing="0" cellPadding="0">
                     <thead>

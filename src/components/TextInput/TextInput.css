@@ -14,48 +14,53 @@
     flex-direction: row;
     border: 0.3vh solid var(--CardBorder);
     border-radius: 9px;
-    margin: 0.25vh 0;
+    margin: 1vh 0;
     height: 5vh;
 }
 
 .input-group span {
-    background: #f2f5f8;
-
-    color: #6f6e70;
-    -webkit-box-flex: 0.5;
-    -ms-flex: 0.5;
-    flex: 0.5;
+    background: var(--cardHeader);
+    color: var(--textColor);
+    -webkit-box-flex: 0.3;
+    -ms-flex: 0.3;
+    flex: 0.3;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
     -webkit-box-align: center;
     -ms-flex-align: center;
     align-items: center;
-    -webkit-box-pack: center;
+    -webkit-box-pack: center ;
     -ms-flex-pack: center;
     justify-content: center;
     /*height: 4.5vh;*/
-    border: 0.3vh solid #f2f5f8;
+    border: 0.3vh solid var(--cardHeader);
 }
 
 .input-group input {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
-    /*flex: 0.6;*/
+    flex: 0.4;
     border: none;
     /*padding-right: 10px;*/
     direction: ltr;
     text-align: center;
     font-family: iranyekan , serif !important;
+    background: none;
+    color: var(--textColor);
 }
 .input-group span.lead {
-    border-top-right-radius: 9px;
-    border-bottom-right-radius: 9px;
+    border-radius: 0 9px 9px 0;
+}
+.ltr .input-group span.lead{
+    border-radius: 9px 0 0 9px;
 }
 .input-group span.after {
-    border-top-left-radius: 9px;
-    border-bottom-left-radius: 9px;
+    border-radius: 9px 0 0 9px ;
+}
+.ltr .input-group span.after {
+    border-radius: 0 9px 9px 0;
 }
 
 .input-group-hint{

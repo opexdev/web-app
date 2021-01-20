@@ -8,5 +8,5 @@
 }
 :global(.ltr) .container{
     margin-left: 5%;
-    margin-right: 0%
+    margin-right: initial;
 }

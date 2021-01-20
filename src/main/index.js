@@ -11,6 +11,8 @@ import {loadConfig} from "../store/actions";
 import Dashboard from "../pages/Dashboard/dashboard";
 import i18n from "i18next";
 import {images} from "../assets/images";
+import Wallet from "../pages/Wallet/wallet"
+import Counting from "../pages/Counting/counting"
 
 
 import {
@@ -20,6 +22,7 @@ import {
     isMobile
 } from "react-device-detect";
 import ReactTooltip from "react-tooltip";
+import Chart from "../pages/Chart/chart";
 
 
 
@@ -36,11 +39,10 @@ const App = (props) => {
         /*"homepage":"https://opex.dev/demo"*/
 
         <Router basename={"demo"}>
-
             <BrowserView>
                 <div className={`container ${props.isDark ? 'dark' : ''} ${ltr?"ltr":"rtl"}`}>
                     {props.isLoading ? <FullWidthLoading/> : null}
-                    {/*<ReactTooltip data-html={true} data-place="bottom" data-effect="float"/>*/}
+                    <ReactTooltip data-html={true} data-effect="float"/>
                     <div className="row">
                         <MainMenu/>
                         <SubMenu/>
@@ -52,10 +54,13 @@ const App = (props) => {
                                         <Dashboard/>
                                     </Route>
                                     <Route exact path="/wallet">
-                                        <customPages name="wallet"/>
+                                        <Wallet/>
                                     </Route>
                                     <Route exact path="/counting">
-                                        <customPages name="counting"/>
+                                        <Counting/>
+                                    </Route>
+                                    <Route exact path="/chart">
+                                        <Chart/>
                                     </Route>
                                     <Route path="*">
                                         "404"

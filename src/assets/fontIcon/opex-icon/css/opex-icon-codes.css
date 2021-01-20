@@ -10,5 +10,12 @@
 .icon-sun-filled:before { content: '\e808'; } /* '' */
 .icon-sun:before { content: '\e809'; } /* '' */
 .icon-infinity:before { content: '\e80a'; } /* '' */
+.icon-market:before { content: '\e80b'; } /* '' */
+.icon-settings:before { content: '\e80c'; } /* '' */
+.icon-wallet:before { content: '\e80d'; } /* '' */
+.icon-account:before { content: '\e80e'; } /* '' */
+.icon-counting:before { content: '\e80f'; } /* '' */
+.icon-messages:before { content: '\e810'; } /* '' */
 .icon-down-open-1:before { content: '\f004'; } /* '' */
 .icon-up-open-1:before { content: '\f005'; } /* '' */
+.icon-envelope-open:before { content: '\f2b6'; } /* '' */
