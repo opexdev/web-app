@@ -10,3 +10,7 @@ export const decimalChecker = (value, decimal) => {
     const re = new RegExp('^\\d+\\.\\d{0,' + decimal + '}$', "g");
     return re.test(value)
 }
+
+export const parsePriceString = (value) => {
+    return parseFloat(value.replace(/[^0-9\.-]+/g,""));
+}

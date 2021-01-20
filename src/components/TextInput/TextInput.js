@@ -1,16 +1,21 @@
 import React, {Fragment} from "react";
+import NumberFormat from 'react-number-format';
 import "./TextInput.css";
 import Icon from "../Icon/Icon";
 
 
-const TextInput = (props) => {
+const NumberInput = (props) => {
     return (
         <Fragment>
-
             <div className={`input-group ${props.customClass}`}>
-
                 <span className="lead">{props.lead}</span>
-                <input type="number" value={props.value} onChange={props.onchange} disabled={props.disabled} onBlur={props.onblur}/>
+                <NumberFormat
+                    value={props.value}
+                    thousandSeparator={true}
+                    allowNegative={false}
+                    decimalScale={props.maxDecimal}
+                    onChange={props.onchange}
+                />
                 <span className="after">{props.after}</span>
             </div>
             {
@@ -48,4 +53,4 @@ const TextInput = (props) => {
     )
 }
 
-export default TextInput;
+export default NumberInput;

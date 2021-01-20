@@ -145,36 +145,39 @@ const TradingView = (props) => {
 
 
     React.useEffect(() => {
-        i18n.on('languageChanged', (lng) => {
-            chart.current.applyOptions({
-                localization: {
-                    locale: lng === "fa" ? "fa-IR" : "en-US",
-                    dateFormat: 'yyyy/MM/dd',
-                }
+        if (chart.current !== null) {
+            i18n.on('languageChanged', (lng) => {
+                chart.current.applyOptions({
+                    localization: {
+                        locale: lng === "fa" ? "fa-IR" : "en-US",
+                        dateFormat: 'yyyy/MM/dd',
+                    }
+                })
+                chart.current.applyOptions({
+                    localization: {
+                        locale: lng === "fa" ? "fa-IR" : "en-US",
+                        dateFormat: 'yyyy/MM/dd',
+                    }
+                })
             })
-            chart.current.applyOptions({
-                localization: {
-                    locale: lng === "fa" ? "fa-IR" : "en-US",
-                    dateFormat: 'yyyy/MM/dd',
-                }
-            })
-        })
-        resizeObserver.current = new ResizeObserver(entries => {
-            const {width, height} = entries[0].contentRect;
-            chart.current.applyOptions({width, height});
-            setTimeout(() => {
-                if (chart.current !== null) {
-                    chart.current.timeScale().fitContent();
-                }
-            }, 0);
-        });
+            resizeObserver.current = new ResizeObserver(entries => {
+                const {width, height} = entries[0].contentRect;
+                chart.current.applyOptions({width, height});
+                setTimeout(() => {
+                    if (chart.current !== null) {
+                        chart.current.timeScale().fitContent();
+                    }
+                }, 0);
+            });
 
-        resizeObserver.current.observe(chartContainerRef.current);
-        return () => resizeObserver.current.disconnect();
+            resizeObserver.current.observe(chartContainerRef.current);
+            return () => resizeObserver.current.disconnect();
+        }
     }, []);
 
 
     React.useEffect(() => {
+
         if (props.isDark) {
             chart.current.applyOptions({
                 ...chartProperties,
