@@ -16,53 +16,61 @@ const MainMenu = (props) => {
         <div className={`column ai-center jc-between mainMenu-background ${classes.container}`}>
 
 
-           <div className={`column jc-start ai-center`}>
+           <ul className={`column jc-start ai-center ${classes.tabs}`}>
                <Link exact to="/">
                    <span className="flex"><img className="img-lg" src={images.opexLogo_light} alt="opexLogo_light" title="اوپکس"/></span>
                </Link>
 
 
-               <NavLink exact to="/" activeClassName="selected"
-                        data-html={true}
-                        data-place="left"
-                        data-effect="float"
-                        data-tip={`
+               <li>
+                   <NavLink exact to="/" activeClassName={classes.selected}
+                            data-html={true}
+                            data-place="left"
+                            data-effect="float"
+                            data-tip={`
                          <span class="column jc-between col-100">بازار</span>`}>
-                   <Icon iconName="icon-market font-size-lg"/>
-               </NavLink>
+                       <Icon iconName="icon-market font-size-lg"/>
+                   </NavLink>
+               </li>
 
 
 
-               <NavLink exact to="/wallet" activeClassName="selected"
-                        data-html={true}
-                        data-place="left"
-                        data-effect="float"
-                        data-tip={`
+               <li>
+                   <NavLink exact to="/wallet" activeClassName={classes.selected}
+                            data-html={true}
+                            data-place="left"
+                            data-effect="float"
+                            data-tip={`
                          <span class="column jc-between col-100">کیف دارایی ها</span>`}>
-                   <Icon iconName="icon-wallet font-size-lg"/>
-               </NavLink>
+                       <Icon iconName="icon-wallet font-size-lg"/>
+                   </NavLink>
+               </li>
 
-               <NavLink exact to="/counting" activeClassName="selected"
-                        data-html={true}
-                        data-place="left"
-                        data-effect="float"
-                        data-tip={`
+               <li>
+                   <NavLink exact to="/counting" activeClassName={classes.selected}
+                            data-html={true}
+                            data-place="left"
+                            data-effect="float"
+                            data-tip={`
                          <span class="column jc-between col-100">حساب و کتاب</span>`}>
-                   <Icon iconName="icon-counting font-size-lg"/>
-               </NavLink>
+                       <Icon iconName="icon-counting font-size-lg"/>
+                   </NavLink>
+               </li>
 
-               <NavLink exact to="/account" activeClassName="selected"
-                        data-html={true}
-                        data-place="left"
-                        data-effect="float"
-                        data-tip={`
+               <li>
+                   <NavLink exact to="/account" activeClassName={classes.selected}
+                            data-html={true}
+                            data-place="left"
+                            data-effect="float"
+                            data-tip={`
                          <span class="column jc-between col-100">چارت</span>`}>
-                   <Icon iconName="icon-account font-size-lg"/>
-               </NavLink>
-           </div>
+                       <Icon iconName="icon-account font-size-lg"/>
+                   </NavLink>
+               </li>
+           </ul>
            <div className={`column jc-end ai-center`}>
 
-               <NavLink exact to=" " activeClassName="selected"
+               <NavLink exact to=" " activeClassName={classes.selected}
                         data-html={true}
                         data-place="left"
                         data-effect="float"
@@ -71,7 +79,7 @@ const MainMenu = (props) => {
                    <Icon iconName="icon-envelope-open font-size-lg"/>
                </NavLink>
 
-               <NavLink exact to=" " activeClassName="selected"
+               <NavLink exact to=" " activeClassName={classes.selected}
                         data-html={true}
                         data-place="left"
                         data-effect="float"

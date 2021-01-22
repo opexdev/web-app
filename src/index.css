@@ -115,6 +115,8 @@
     --tableRow: #e2e9f978;
     --textColor: #444444;
 
+    --textDark: #0707073b;
+
     --textGreen: #18A979;
     --textRed: #D73E36;
     --textBlue: #0E4095;
@@ -171,6 +173,8 @@
     --cardHeader: #242633fa;
     --textGreen: #50fa7ba1;
     --textRed: #ff5555;
+
+    --textDark: #f9f9f9;
 
 
     --textBlue: #f3f7ff78;
