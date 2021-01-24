@@ -24,8 +24,8 @@
     color: var(--textBlue);
 }
 .container a.selected::after{
-    content: '';
-    background-color: #0e4095;
+    content: '.';
+    background-color: #d26896;
     width: 5vw;
     height: 5vw;
 }

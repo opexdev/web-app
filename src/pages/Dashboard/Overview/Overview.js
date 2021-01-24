@@ -25,7 +25,7 @@ const Overview = (props) => {
 
     return (
         <div className={`container card-background card-border ${classes.container}`}>
-            <AccordionBox title={t('overview.title')} content={data} />
+            <AccordionBox title={t('overview.title')} content={data} safari={classes.safariFlexSize}/>
         </div>
     );
 };

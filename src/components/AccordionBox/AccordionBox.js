@@ -1,6 +1,7 @@
 import React, {useEffect, useRef, useState} from "react";
 import classes from "./AccordionBox.module.css"
 import PropTypes from 'prop-types';
+import {isSafari} from 'react-device-detect'
 
 const AccordionBox = (props) => {
     const {title, customClass, content,} = props;
@@ -45,14 +46,14 @@ const AccordionBox = (props) => {
 
 
     return (
-        <div className={`${customClass} ${classes.container}`}>
-            <div className={`card-header-bg ${classes.header}`}>
+        <div className={`${customClass} ${classes.container} ${isSafari ? props.safari : ""}`}>
+            <div className={`card-header-bg accordion-header ${classes.header}`}>
                 <h3 className={`${props.titleClassName} ${classes.title}`}>{title}</h3>
                 <div className={`${classes.items} ${props.headerClassName}`}>
                     {/*                    <span className={`${classes.leftBtn} ${btn.left ? classes.active : null}`} onClick={()=>scrollHandler(ulRef, "left")}/>
                     <span className={`${classes.rightBtn} ${btn.right ? classes.active : null}`}  onClick={()=>scrollHandler(ulRef, "right")}/>*/}
                     <ul ref={ulRef}>
-                        {content.map(( item ,index) => {
+                        {content.map((item, index) => {
                             return <li className={active === index ? "active" : ""}
                                        onClick={() => itemsClickHandler(index)}
                                        key={index}>{item.title}</li>
@@ -60,7 +61,7 @@ const AccordionBox = (props) => {
                     </ul>
                 </div>
             </div>
-            <div className={classes.body}>
+            <div className={`accordion-body ${classes.body}`}>
                 {content[active].body}
             </div>
         </div>

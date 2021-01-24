@@ -7,3 +7,12 @@
     height: 100%;
     padding: 1.8vh 1vw;
 }
+
+
+
+.safariFlexSize :global(.accordion-header){
+    flex: 4;
+}
+.safariFlexSize :global(.accordion-body){
+    flex: 6;
+}

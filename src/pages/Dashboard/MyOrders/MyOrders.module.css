@@ -52,3 +52,13 @@
 tr{
     transform-origin: top;
 }*/
+
+
+.safariFlexSize :global(.accordion-header){
+    flex: 22;
+
+}
+.safariFlexSize :global(.accordion-body){
+    flex: 77;
+
+}

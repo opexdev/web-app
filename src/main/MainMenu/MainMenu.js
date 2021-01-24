@@ -18,7 +18,7 @@ const MainMenu = (props) => {
 
            <ul className={`column jc-start ai-center ${classes.tabs}`}>
                <Link exact to="/">
-                   <span className="flex"><img className="img-lg" src={images.opexLogo_light} alt="opexLogo_light" title="اوپکس"/></span>
+                   <span className="flex"><img className="img-lg" src={images.opexLogo_light} alt="opexLogo_light" title="اوپکس" style={{height:"7.5vh"}}/></span>
                </Link>
 
 

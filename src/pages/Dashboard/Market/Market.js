@@ -1,10 +1,13 @@
 import React from 'react';
-import Styles from "./Market.module.css"
+
+
+import classes from "../Market/Market.module.css"
 import {images} from "../../../assets/images"
 
 import MarketCard from "./components/MarketCard/MarketCard";
 import AccordionBox from "../../../components/AccordionBox/AccordionBox";
 import {useTranslation} from "react-i18next";
+/*import classes from "../Overview/Overview.module.css";*/
 
 
 const Market = (props) => {
@@ -209,27 +212,25 @@ const Market = (props) => {
         {id: 5 , title: "تتر" , body: "content"},
     ]
 
-    const  styles = [
-        {
-            /*UlMaxWidth:'45%',*/
 
-        }
-        ]
 
 
 
     return (
-        <div className={`container card-background ${Styles.container}`}>
+        <div className={`container card-background ${classes.container}`}>
 
             <AccordionBox
                 title={t('market.title')}
-                style={styles}
+                style={classes}
                 /*UlMaxWidth=''*/
                 ItemsBorderTop= 'true'
                 content={data}
-                titleClassName={Styles.TitleFontSize}
-                headerClassName={Styles.listBorder}
-                headerListClassName={Styles.UlMaxWidth}
+                titleClassName={classes.TitleFontSize}
+                headerClassName={classes.listBorder}
+                headerListClassName={classes.UlMaxWidth}
+                safari={classes.safariFlexSize}
+                /*headerFlex={}
+                bodyFlex={}*/
             />
 
 

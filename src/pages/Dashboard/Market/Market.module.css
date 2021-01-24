@@ -3,6 +3,11 @@
     height:100Vh;
     /*background-color: #fff1ff;*/
 }
+.content{
+    height: 100%;
+    padding: 1.8vh 1vw;
+}
+
 .TitleFontSize{
     font-size:1.8vw;
 }
@@ -13,5 +18,16 @@
     border-top: 0.1vh solid var(--borderBottom);
     border-bottom: 0.1vh solid var(--borderBottom);
     transition: border-top , border-bottom 0.4s;
+
+}
+
+.safariFlexSize :global(.accordion-header){
+    flex: 14;
+    /*background-color: chartreuse !important;*/
+
+}
+.safariFlexSize :global(.accordion-body){
+    flex: 86;
+    /*background-color: #007BFF;*/
 
 }

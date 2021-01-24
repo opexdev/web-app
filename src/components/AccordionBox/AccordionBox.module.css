@@ -1,23 +1,52 @@
+/*
+* Prefixed by https://autoprefixer.github.io
+* PostCSS: v7.0.29,
+* Autoprefixer: v9.7.6
+* Browsers: last 4 version
+*/
+
 .container{
     height: 100%;
     width: 100%;
     /*background-color: #fcfeff;*/
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
     flex-direction: column;
     border-radius: 9px;
+
+    -webkit-box-flex: 10;
+    -ms-flex: 10;
+    flex:10;
 
 }
 .header{
     width: 100%;
     /*min-height: 20%;
     max-height: 35%;*/
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
     flex-direction: column;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
     justify-content: space-between;
-    /*flex: 0.17;*/
-    flex: 0.1;
 
-   /* border-bottom: 0.01vh solid #505050;*/
+    -webkit-box-flex: 1;
+    -ms-flex: 1;
+    flex:1;
+    /*background-color: #F58634 !important;*/
+
+
+
+
+    /* border-bottom: 0.01vh solid #505050;*/
     border-top-left-radius: 9px;
     border-top-right-radius: 9px;
 }
@@ -26,18 +55,25 @@
 }
 .body{
     width: 100%;
-    /*min-height: 65%;
-    max-height: 80%;*/
-    /*height: 80%;*/
-    /*flex: 0.83;*/
-    flex: 0.9;
+    /*background-color: chartreuse;*/
+
+
+    -webkit-box-flex: 9;
+    -ms-flex: 9;
+    flex: 9;
+
+
     border-bottom-left-radius: 9px;
     border-bottom-right-radius: 9px;
 }
 
 
 .items ul {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
     align-items: center;
     /*max-width: 65%;*/
     /*background: #e7b21c;*/
@@ -77,12 +113,27 @@
 .items{
     position: relative;
     /*height: 5vh ;*/
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: row;
     flex-direction: row;
+    -webkit-box-pack: end;
+    -ms-flex-pack: end;
     justify-content: flex-end;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
     align-items: center;
     /*transition: all 1s ease-in-out;*/
 }
+
+/*.header h3{
+    height: 2.5%;
+}.header .items{
+    height: 2.5%;
+}*/
 
 /* Hide scrollbar for Chrome, Safari and Opera */
 .items  ul::-webkit-scrollbar {
@@ -106,6 +157,7 @@
     right: 0;
     top: 0;*/
     background: chartreuse;
+
     display: none;
 }
 /*

@@ -36,7 +36,7 @@ const MyOrders = (props) => {
         <table className="text-center double-striped" cellSpacing="0" cellPadding="0">
             <thead>
             <tr>
-                <th>{t('time')}</th>
+                <th className="pt-1">{t('time')}</th>
                 <th>{t('date')}</th>
                 <th>{t('volume')}({props.activePair.base})</th>
                 <th>{t('pricePerUnit')}({props.activePair.quote})</th>
@@ -78,12 +78,12 @@ const MyOrders = (props) => {
                         <tr style={{display: openItem.current === index ? "revert" : "none"}}>
                             <td colSpan="8" className={`py-1 px-2`}>
                                 <div className="row jc-around  ai-center" style={{width: "100%"}}>
-                                    <p className="col-48 row jc-between">{t('myOrders.orderId')} : <span>{tr.orderId}</span></p>
-                                    <p className="col-48 row jc-between">{t('myOrders.tradedAmount')} : <span>{tr.tradedAmount}</span></p>
+                                    <p className="col-46 row jc-between">{t('myOrders.orderId')} : <span>{tr.orderId}</span></p>
+                                    <p className="col-46 row jc-between">{t('myOrders.tradedAmount')} : <span>{tr.tradedAmount}</span></p>
                                 </div>
                                 <div className="row jc-around  ai-center" style={{width: "100%"}}>
-                                    <p className="col-48 row jc-between">{t('myOrders.avgTradedAmount')} : <span>{tr.avgTradedAmount}</span></p>
-                                    <p className="col-48 row jc-between">{t('myOrders.tradedPrice')} : <span>{tr.tradedPrice}</span></p>
+                                    <p className="col-46 row jc-between">{t('myOrders.avgTradedAmount')} : <span>{tr.avgTradedAmount}</span></p>
+                                    <p className="col-46 row jc-between">{t('myOrders.tradedPrice')} : <span>{tr.tradedPrice}</span></p>
                                 </div>
                             </td>
                         </tr>
@@ -96,7 +96,7 @@ const MyOrders = (props) => {
         <table className="text-center striped" cellSpacing="0" cellPadding="0">
             <thead>
             <tr>
-                <th>{t('time')}</th>
+                <th className="pt-1">{t('time')}</th>
                 <th>{t('date')}</th>
                 <th>{t('volume')}({props.activePair.base})</th>
                 <th>{t('pricePerUnit')}({props.activePair.quote})</th>
@@ -127,7 +127,7 @@ const MyOrders = (props) => {
         <table className="text-center double-striped" cellSpacing="0" cellPadding="0">
             <thead>
             <tr>
-                <th>{t('time')}</th>
+                <th className="pt-1">{t('time')}</th>
                 <th>{t('date')}</th>
                 <th>{t('volume')}({props.activePair.base})</th>
                 <th>{t('pricePerUnit')}({props.activePair.quote})</th>
@@ -159,21 +159,22 @@ const MyOrders = (props) => {
                                 </td>
                         }
                     </tr>
-                    <tr className={openItem.history === index ? classes.open : classes.close }>
+                    {/*<tr className={openItem.history === index ? classes.open : classes.close }>*/}
+                    <tr style={{display: openItem.history === index ? "revert" : "none"}}>
                         <td colSpan="8" className={`py-1 px-2`}>
                             <div className="row jc-between  ai-center" style={{width: "100%" , textAlign: "start"}}>
-                                <p className="col-48 row jc-between">{t('myOrders.orderId')} : <span>{tr.orderId}</span></p>
-                                <p className="col-48 row jc-between">{t('orderType')} : <span>{t(tr.type) + " " + t('orderTypes.' + tr.orderType)}</span>
+                                <p className="col-46 row jc-between">{t('myOrders.orderId')} : <span>{tr.orderId}</span></p>
+                                <p className="col-46 row jc-between">{t('orderType')} : <span>{t(tr.type) + " " + t('orderTypes.' + tr.orderType)}</span>
                                 </p>
                             </div>
                             <div className="row  jc-between ai-center" style={{width: "100%" , textAlign: "start"}}>
-                                <p className="col-48 row jc-between">{t('myOrders.stopOrderTime')} : <span>{moment(tr.stopOrderTime).format('jYY/jMM/jDD HH:mm:ss')}</span>
+                                <p className="col-46 row jc-between">{t('myOrders.stopOrderTime')} : <span>{moment(tr.stopOrderTime).format('jYY/jMM/jDD HH:mm:ss')}</span>
                                 </p>
-                                <p className="col-48 row jc-between">{t('myOrders.startOrderTime')} : <span>{moment(tr.stopOrderTime).format('jYY/jMM/jDD HH:mm:ss')}</span>
+                                <p className="col-46 row jc-between">{t('myOrders.startOrderTime')} : <span>{moment(tr.stopOrderTime).format('jYY/jMM/jDD HH:mm:ss')}</span>
                                 </p>
                             </div>
                             <div className="row jc-between ai-center" style={{width: "100%" , textAlign: "start"}}>
-                                <p className="col-48 row jc-between">{t('myOrders.stoppedPrice')} : <span>{tr.stoppedPrice}</span></p>
+                                <p className="col-46 row jc-between">{t('myOrders.stoppedPrice')} : <span>{tr.stoppedPrice}</span></p>
                             </div>
                         </td>
                     </tr>
@@ -185,7 +186,7 @@ const MyOrders = (props) => {
         <table className="text-center double-striped" cellSpacing="0" cellPadding="0">
             <thead>
             <tr>
-                <th>{t('time')}</th>
+                <th className="pt-1">{t('time')}</th>
                 <th>{t('date')}</th>
                 <th>{t('volume')}({props.activePair.base})</th>
                 <th>{t('pricePerUnit')}({props.activePair.quote})</th>
@@ -218,8 +219,8 @@ const MyOrders = (props) => {
                     <tr style={{display: openItem.trade === index ? "revert" : "none"}}>
                         <td colSpan="6" className={`py-1 px-2`}>
                             <div className="row jc-around  ai-center" style={{width: "100%"}}>
-                                <p className="col-48 row jc-between">{t('myOrders.orderId')} : <span>{tr.orderId}</span></p>
-                                <p className="col-48 row jc-between">{t('myOrders.tradeId')} : <span>{tr.tradeId}</span></p>
+                                <p className="col-46 row jc-between">{t('myOrders.orderId')} : <span>{tr.orderId}</span></p>
+                                <p className="col-46 row jc-between">{t('myOrders.tradeId')} : <span>{tr.tradeId}</span></p>
                             </div>
                         </td>
                     </tr>
@@ -238,7 +239,7 @@ const MyOrders = (props) => {
 
     return (
         <div className={`container card-background card-border column ${classes.container}`}>
-            <AccordionBox title={t('myOrders.title')} content={data}/>
+            <AccordionBox title={t('myOrders.title')} content={data} safari={classes.safariFlexSize}/>
         </div>
     );
 };
