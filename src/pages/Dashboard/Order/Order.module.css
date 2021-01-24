@@ -13,10 +13,16 @@
     border-radius: 4px;
     font-family: 'IRANYekan';
     font-size: 0.8vw;
-    /* justify-content: flex-end; */
     color: white;
     bottom: 0;
-    margin-top: 40vh;
+    margin-top: 5vh;
+}
+
+.button:disabled,
+.button[disabled]{
+    border: 1px solid #999999;
+    background-color: #cccccc;
+    color: #666666;
 }
 
 .dangerHint span i{
@@ -31,4 +37,13 @@
 .dangerHint :global(.alert){
     font-size: 0.7vw;
     color: #6619bf;
+}
+.stopMarket{
+    background: var(--cardHeader);
+}
+.safariFlexSize :global(.accordion-header){
+    flex: 17;
+}
+.safariFlexSize :global(.accordion-body){
+    flex: 83;
 }

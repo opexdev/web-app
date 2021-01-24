@@ -10,11 +10,11 @@ const NumberInput = (props) => {
             <div className={`input-group ${props.customClass}`}>
                 <span className="lead">{props.lead}</span>
                 <NumberFormat
-                    value={props.value}
                     thousandSeparator={true}
                     allowNegative={false}
                     decimalScale={props.maxDecimal}
                     onChange={props.onchange}
+                    {...props}
                 />
                 <span className="after">{props.after}</span>
             </div>

@@ -7,12 +7,20 @@ const initialState = {
         quote : "IRT",
         baseMaxDecimal : 6,
         quoteMaxDecimal : 0,
-        min : 0.00001,
-        max : 10,
+        baseRange:{
+            min : 0.004,
+            max : 10,
+            step: 0.005
+        },
+        quoteRange:{
+            min : 0.004,
+            max : 10,
+            step: 0.005
+        }
     },
     activePairOrders :{
-        bestBuyPrice: 52300.0,
-        bestSellPrice: 52300.0,
+        bestBuyPrice: 765121689.0,
+        bestSellPrice: 765022879.0,
         selectedPrice:1000.0
     },
     isLoading: true,

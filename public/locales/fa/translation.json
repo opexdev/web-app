@@ -53,6 +53,21 @@
     "lastWeek": "7روز",
     "lastMonth": "30روز"
   },
+  "orders": {
+    "title": "سفارش",
+    "minOrder":  "حداقل مقدار سفارش {{min}} {{currency}} میباشد",
+    "maxOrder":  "حداقل مقدار سفارش {{max}} {{currency}} میباشد",
+    "availableAmount": "موجودی قابل معامله",
+    "bestOffer": "بهترین پیشنهاد",
+    "stopLimit": "سفارش متوقف",
+    "stopPrice": "قیمت توقف",
+    "amount": "مقدار",
+    "pricePerUnit": "قیمت واحد",
+    "marketPrice": "خرید به قیمت بازار",
+    "totalPrice": "قیمت کل",
+    "tradeFee": "کارمزد",
+    "getAmount": "دریافتی شما"
+  },
   "LastTrades": {
     "title": "معامله های اخیر"
   },
@@ -76,9 +91,7 @@
     "orders": "معامله ها"
   },
   "footer": {
-
     "changeColor": "تغییر رنگ",
-
     "aboutUs": "درباره ما",
     "contactUS": "تماس باما",
     "blog": "بلاگ",
