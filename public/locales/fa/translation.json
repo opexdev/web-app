@@ -56,14 +56,16 @@
   "orders": {
     "title": "سفارش",
     "minOrder":  "حداقل مقدار سفارش {{min}} {{currency}} میباشد",
-    "maxOrder":  "حداقل مقدار سفارش {{max}} {{currency}} میباشد",
+    "maxOrder":  "حداکثر مقدار سفارش {{max}} {{currency}} میباشد",
+    "divisibility": "بخش پذیری !",
     "availableAmount": "موجودی قابل معامله",
     "bestOffer": "بهترین پیشنهاد",
     "stopLimit": "سفارش متوقف",
     "stopPrice": "قیمت توقف",
     "amount": "مقدار",
     "pricePerUnit": "قیمت واحد",
-    "marketPrice": "خرید به قیمت بازار",
+    "marketBuyPrice": "خرید به قیمت بازار",
+    "marketSellPrice": "فروش به قیمت بازار",
     "totalPrice": "قیمت کل",
     "tradeFee": "کارمزد",
     "getAmount": "دریافتی شما"
@@ -90,6 +92,31 @@
     "startOrderTime": "زمان جاری شدن",
     "orders": "معامله ها"
   },
+
+
+
+  "Deposit": {
+    "title": "واریز/برداشت",
+    "deposit": "واریز",
+    "withdrawal": "برداشت",
+    "transfer": "انتقال"
+  },
+  "DepositTransactions": {
+    "title": "تراکنش های واریز/برداشت",
+    "depositWithdrawal": "واریز/دریافت",
+    "withdrawalTransfer": "برداشت/انتقال"
+  },
+  "OrdersTrades": {
+    "title": "سفارش ها و معامله ها",
+    "aliveOrder": "سفارش های جاری",
+    "stop": "متوقف",
+    "cancelClose": "لغو و بسته شده",
+    "trades": "معامله ها"
+  },
+
+
+
+
   "footer": {
     "changeColor": "تغییر رنگ",
     "aboutUs": "درباره ما",

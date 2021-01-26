@@ -9,67 +9,67 @@
     {
       "uid": "ccddff8e8670dcd130e3cb55fdfc2fd0",
       "css": "down-open",
-      "code": 59396,
+      "code": 59412,
       "src": "fontawesome"
     },
     {
       "uid": "fe6697b391355dec12f3d86d6d490397",
       "css": "up-open",
-      "code": 59397,
+      "code": 59429,
       "src": "fontawesome"
     },
     {
       "uid": "85fda3129wk4amvn25wrq843sbj3yzl0",
       "css": "info",
-      "code": 59392,
+      "code": 59440,
       "src": "typicons"
     },
     {
       "uid": "1gf923f9wvaezxmfon515dglxa3drf0e",
       "css": "plus",
-      "code": 59393,
+      "code": 59457,
       "src": "typicons"
     },
     {
       "uid": "bcdc294bb787b15203b82f2be8096548",
       "css": "star",
-      "code": 59394,
+      "code": 59474,
       "src": "typicons"
     },
     {
       "uid": "vyuzsm6wijlfwtjo4ifkoblfmsepk6g8",
       "css": "star-filled",
-      "code": 59395,
+      "code": 59491,
       "src": "typicons"
     },
     {
       "uid": "1dq4tek4k8ea7zlj4kc3w83itnutaxg5",
       "css": "cancel",
-      "code": 59398,
+      "code": 59510,
       "src": "typicons"
     },
     {
       "uid": "k7sao112253txym1egnte7822irbyphe",
       "css": "eye",
-      "code": 59399,
+      "code": 59527,
       "src": "typicons"
     },
     {
       "uid": "5840fe162df3bcc8e390c58ef4e2acf9",
       "css": "sun-filled",
-      "code": 59400,
+      "code": 59544,
       "src": "typicons"
     },
     {
       "uid": "ivmsk67zo1yb1tthd3ugi4xnb3get418",
       "css": "sun",
-      "code": 59401,
+      "code": 59657,
       "src": "typicons"
     },
     {
       "uid": "2039c86dq3jtfwqmgow2quvuzq3k34bu",
       "css": "infinity",
-      "code": 59402,
+      "code": 59674,
       "src": "typicons"
     },
     {
@@ -93,7 +93,7 @@
     {
       "uid": "2024cb58e2a35b1bb549467fb4618438",
       "css": "market",
-      "code": 59403,
+      "code": 59707,
       "src": "custom_icons",
       "selected": true,
       "svg": {
@@ -107,7 +107,7 @@
     {
       "uid": "3e2cd4960f72717f28a8adfef6364788",
       "css": "settings",
-      "code": 59404,
+      "code": 59724,
       "src": "custom_icons",
       "selected": true,
       "svg": {
@@ -121,7 +121,7 @@
     {
       "uid": "57c35c594cab578b05232e7326818893",
       "css": "wallet",
-      "code": 59405,
+      "code": 59741,
       "src": "custom_icons",
       "selected": true,
       "svg": {
@@ -135,7 +135,7 @@
     {
       "uid": "5f473048f9dccfdeeb0a8c2cce255ed0",
       "css": "account",
-      "code": 59406,
+      "code": 952686,
       "src": "custom_icons",
       "selected": true,
       "svg": {
@@ -149,7 +149,7 @@
     {
       "uid": "af84a042558ed5b4dffd064d17ccc8d4",
       "css": "counting",
-      "code": 59407,
+      "code": 59775,
       "src": "custom_icons",
       "selected": true,
       "svg": {
@@ -163,7 +163,7 @@
     {
       "uid": "7158cc9d7caec04c93b1d2dcd398a09e",
       "css": "messages",
-      "code": 59408,
+      "code": 59792,
       "src": "custom_icons",
       "selected": true,
       "svg": {
@@ -172,6 +172,50 @@
       },
       "search": [
         "messages"
+      ]
+    },
+    {
+      "uid": "474656633f79ea2f1dad59ff63f6bf07",
+      "css": "star-1",
+      "code": 57873,
+      "src": "fontawesome"
+    },
+    {
+      "uid": "21f6a88daf13c62e5a70f5ef6ad9e23f",
+      "css": "chat",
+      "code": 57899,
+      "src": "websymbols"
+    },
+    {
+      "uid": "b52aa05c9c55c41f1768cdaa940401a8",
+      "css": "comment-alt",
+      "code": 57916,
+      "src": "websymbols"
+    },
+    {
+      "uid": "85528017f1e6053b2253785c31047f44",
+      "css": "comment",
+      "code": 57933,
+      "src": "fontawesome"
+    },
+    {
+      "uid": "f85affb51c357be83d187344c8c6e35c",
+      "css": "diamond",
+      "code": 62041,
+      "src": "fontawesome"
+    },
+    {
+      "uid": "e58bd0331afbe67823bcc370f1345030",
+      "css": "messages-dotted",
+      "code": 57982,
+      "src": "custom_icons",
+      "selected": true,
+      "svg": {
+        "path": "M833.3 125H166.7C120.8 125 83.3 162.5 83.3 208.3L83.3 858.3C83.3 895.8 129.2 912.5 154.2 887.5L250 791.7H833.3C879.2 791.7 916.7 754.2 916.7 708.3V208.3C916.7 162.5 879.2 125 833.3 125ZM375 458.3C375 483.3 358.3 500 333.3 500S291.7 483.3 291.7 458.3 308.3 416.7 333.3 416.7 375 433.3 375 458.3ZM541.7 458.3C541.7 483.3 525 500 500 500S458.3 483.3 458.3 458.3 475 416.7 500 416.7 541.7 433.3 541.7 458.3ZM708.3 458.3C708.3 483.3 691.7 500 666.7 500S625 483.3 625 458.3 641.7 416.7 666.7 416.7 708.3 433.3 708.3 458.3Z",
+        "width": 1000
+      },
+      "search": [
+        "messages-dotted"
       ]
     }
   ]

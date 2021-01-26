@@ -35,7 +35,6 @@
 }
 
 
-
 .openDetailes{
     /*display: table-row;*/
     animation: anim 1s ease;
@@ -56,9 +55,7 @@ tr{
 
 .safariFlexSize :global(.accordion-header){
     flex: 22;
-
 }
 .safariFlexSize :global(.accordion-body){
     flex: 77;
-
 }

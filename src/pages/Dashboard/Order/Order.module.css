@@ -7,22 +7,32 @@
 }
 .button{
     width: 100%;
-    padding: 0.8vh 0vw;
+    height: 4.5vh;
+    /*padding: 1vh 0vw;*/
     border: none;
-    background: var(--textGreen);
-    border-radius: 4px;
+    /*background: var(--textGreen);*/
+    border-radius: 7px;
     font-family: 'IRANYekan';
     font-size: 0.8vw;
-    color: white;
+    color: #f2f2f2;
     bottom: 0;
-    margin-top: 5vh;
+    /*margin-top: 1vh;*/
+}
+.button.buyOrder{
+    background-color: var(--bgGreen);
+}
+.button.sellOrder{
+    background-color: var(--bgRed);
 }
 
 .button:disabled,
 .button[disabled]{
-    border: 1px solid #999999;
+    /*border: 1px solid #999999;
     background-color: #cccccc;
-    color: #666666;
+    color: #666666;*/
+    border: 0.3vh solid var(--cardHeader);
+    background: var(--cardHeader);
+    color: var(--textColor);
 }
 
 .dangerHint span i{

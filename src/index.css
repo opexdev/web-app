@@ -137,6 +137,7 @@
     --bgRed: #D73E36;
     --bgBlue: #0E4095;
 
+    --orange: #ff8124;
 
 }
 .dark {
@@ -194,6 +195,8 @@
     --bgGreen: #18A979;
     --bgRed: #D73E36;
     --bgBlue: #6f9ffff5;
+
+    --orange: #ff8124;
 
 
 
@@ -594,7 +597,9 @@ tr{
     margin-left: 1vw;
 }
 
-
+li{
+    list-style: none;
+}
 
 
 .font-size-sm{
@@ -605,22 +610,13 @@ tr{
 }
 .font-size-lg{
     /*font-size: 1.2vw;*/
-    font-size: 2.35vw;
+    /*font-size: 2.35vw;*/
+    font-size: 2.2vw;
 }
 
 
 
-.active{
-    border-bottom: 0.5vh solid var(--activeTab);
-    /*font-weight: bold;*/
-    /*z-index: 1;*/
-    color: var(--activeTab);
-}
-.active:hover{
-    background-color: var(--activeLi);
-    border-top-left-radius: 3px;
-    border-top-right-radius: 3px;
-}
+
 
 
 .font-weight-bold{

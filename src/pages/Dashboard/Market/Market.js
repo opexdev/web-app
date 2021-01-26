@@ -7,6 +7,7 @@ import {images} from "../../../assets/images"
 import MarketCard from "./components/MarketCard/MarketCard";
 import AccordionBox from "../../../components/AccordionBox/AccordionBox";
 import {useTranslation} from "react-i18next";
+import Icon from "../../../components/Icon/Icon";
 /*import classes from "../Overview/Overview.module.css";*/
 
 
@@ -202,10 +203,13 @@ const Market = (props) => {
     ]
 
 
+        /*
+        <img className="img-sm" src={images.favoriteCurrency} alt="favoriteCurrency"/>
+        */
 
 
     const data = [
-        {id: 1 , title: <img className="img-sm" src={images.favoriteCurrency} alt="favoriteCurrency"/> , body: <MarketCard CardData = {CardDataFavoriteCurrency}/> },
+        {id: 1 , title: <Icon iconName="icon-star-1 font-size-md"/> , body: <MarketCard CardData = {CardDataFavoriteCurrency}/> },
         {id: 2 , title: t('all') , body: <MarketCard CardData = {CardDataAll}/>},
         {id: 3 , title: t('currency.BTC') , body: "content"},
         {id: 4 , title: t('currency.IRT') , body: "content"},

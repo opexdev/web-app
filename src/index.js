@@ -14,7 +14,7 @@ import {watchGlobal} from "./store/sagas";
 
 
 import "./assets/fontIcon/opex-icon/css/opex-icon.css";
-import ReactTooltip from "react-tooltip";
+
 
 
 const sagaMiddleware = createSagaMiddleware();

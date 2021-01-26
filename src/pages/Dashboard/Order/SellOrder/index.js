@@ -30,7 +30,7 @@ const SellOrder = (props) => {
             return setAlert({...alert, [key]: <Trans i18nKey="orders.maxOrder" values={{max : props.activePair.baseRange.max ,currency: t('currency.' + props.activePair.base)}}/>})
         }
         if ( !Number.isInteger( val / rule.step )) {
-            return setAlert({...alert, [key]: "بخشپذیری!"})
+            return setAlert({...alert, [key]:  t('orders.divisibility')})
         }
         return setAlert({...alert, [key]: null})
     }
@@ -102,11 +102,13 @@ const SellOrder = (props) => {
     }
 
     return (
-        <div className={classes.content}>
-            <p onClick={() => fillSellByWallet()}>{t('orders.availableAmount')}: {props.auth.wallet[props.activePair.base].toLocaleString()} {t('currency.' + props.activePair.base)}</p>
-            <p onClick={() => fillSellByBestPrice()}>{t('orders.bestOffer')}: {props.activePairOrders.bestSellPrice.toLocaleString()} {t('currency.' + props.activePair.quote)}</p>
+        <div className={`column jc-between ${classes.content}`}>
+            <div className="column jc-center">
+                <p onClick={() => fillSellByWallet()}>{t('orders.availableAmount')}: {props.auth.wallet[props.activePair.base].toLocaleString()} {t('currency.' + props.activePair.base)}</p>
+                <p onClick={() => fillSellByBestPrice()}>{t('orders.bestOffer')}: {props.activePairOrders.bestSellPrice.toLocaleString()} {t('currency.' + props.activePair.quote)}</p>
+            </div>
             <div className="row ai-center">
-                <span className="pl-05">{t('orders.bestOffer')}</span>
+                <span className="pl-05">{t('orders.stopLimit')}</span>
                 <input
                     type="checkbox"
                     checked={order.stopLimit}
@@ -148,7 +150,7 @@ const SellOrder = (props) => {
             }
 
             <div className="row ai-center">
-                <span className="pl-05">{t('orders.marketPrice')}</span>
+                <span className="pl-05">{t('orders.marketSellPrice')}</span>
                 <input
                     type="checkbox"
                     checked={order.stopMarket}
@@ -162,9 +164,12 @@ const SellOrder = (props) => {
                 after={t('currency.' + props.activePair.quote)}
                 onchange={(e) => sellPriceHandler(e.target.value, 'totalPrice')}/>
 
-            <p>{t('orders.tradeFee')}: {order.tradeFee === "NaN" ? 0 : order.tradeFee } {t('currency.' + props.activePair.quote)}</p>
-            <p>{t('orders.getAmount')}: {(order.totalPrice === "NaN" || order.tradeFee === "NaN") ? 0 :(order.totalPrice - order.tradeFee ).toFixed(props.activePair.quoteMaxDecimal).toLocaleString()} {t('currency.' + props.activePair.quote)}</p>
-            <button type="submit" className={classes.button}
+            <div className="column jc-center">
+                <p>{t('orders.tradeFee')}: {order.tradeFee === "NaN" ? 0 : order.tradeFee } {t('currency.' + props.activePair.quote)}</p>
+                <p>{t('orders.getAmount')}: {(order.totalPrice === "NaN" || order.tradeFee === "NaN") ? 0 :(order.totalPrice - order.tradeFee ).toFixed(props.activePair.quoteMaxDecimal).toLocaleString()} {t('currency.' + props.activePair.quote)}</p>
+            </div>
+
+            <button type="submit" className={`${classes.button} ${classes.sellOrder}`}
                     disabled={alert.reqAmount || order.reqAmount === 0}>{t('sell')}
             </button>
         </div>

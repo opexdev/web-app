@@ -13,17 +13,22 @@
     -ms-flex-direction: row;
     flex-direction: row;
     border: 0.3vh solid var(--CardBorder);
-    border-radius: 9px;
-    margin: 1vh 0;
+    border-radius: 7px;
+    /*margin: 0.5vh 0;*/
     height: 5vh;
+    -webkit-box-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+    width: 100%;
 }
 
 .input-group span {
     background: var(--cardHeader);
     color: var(--textColor);
-    -webkit-box-flex: 0.3;
-    -ms-flex: 0.3;
-    flex: 0.3;
+    /*-webkit-box-flex: 0.4;
+    -ms-flex: 0.4;
+    flex: 0.4;*/
+    width: 30%;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -41,26 +46,32 @@
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
-    flex: 0.4;
+    /*-webkit-box-flex: 0.2;
+    -ms-flex: 0.2;
+    flex: 0.2;*/
+    width: 40%;
     border: none;
     /*padding-right: 10px;*/
     direction: ltr;
     text-align: center;
-    font-family: iranyekan , serif !important;
+    font-family: iranyekan , serif;
     background: none;
     color: var(--textColor);
 }
+.ltr .input-group input{
+    font-family: 'Segoe UI', serif;
+}
 .input-group span.lead {
-    border-radius: 0 9px 9px 0;
+    border-radius: 0 7px 7px 0;
 }
 .ltr .input-group span.lead{
-    border-radius: 9px 0 0 9px;
+    border-radius: 7px 0 0 7px;
 }
 .input-group span.after {
-    border-radius: 9px 0 0 9px ;
+    border-radius: 7px 0 0 7px ;
 }
 .ltr .input-group span.after {
-    border-radius: 0 9px 9px 0;
+    border-radius: 0 7px 7px 0;
 }
 
 .input-group-hint{

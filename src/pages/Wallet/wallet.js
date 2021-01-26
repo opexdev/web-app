@@ -1,5 +1,8 @@
 import React, {Fragment} from "react";
 import {connect} from "react-redux";
+import Deposit from "./Deposit/Deposit";
+import DepositTransactions from "./DepositTransactions/DepositTransactions";
+import OrdersTrades from "./OrdersTrades/OrdersTrades";
 
 
 const Wallet = (props) => {
@@ -8,21 +11,19 @@ const Wallet = (props) => {
         <div className="px-1 py-1">
 
             <div className="row">
-                <div className="column col-35 pl-05">
-                    <span>wallet</span>
 
-                </div>
-                <div className="column col-65 pr-05">
+                <Deposit/>
 
-                </div>
             </div>
             <div className="row">
-                <div className="column col-55 pl-05">
 
-                </div>
-                <div className="column col-45 pr-05">
+                <DepositTransactions/>
 
-                </div>
+            </div>
+            <div className="row">
+
+                <OrdersTrades/>
+
             </div>
         </div>
     )

@@ -10,133 +10,74 @@
 .container a{
     margin: 1.2vh 0;
 }
+
+
+/*
 .container ul li{
     margin: 1.2vh 0;
+    position: relative;
+    !*width: 100%;
+    height: 100%;*!
 }
+*/
 
 
 .container a.selected{
     background-color: var(--cardBody);
     width: 5vw;
-    text-align: center;
+    text-align: revert;
+    position: relative;
+    margin-right: 2vw;
+    border-radius: 0 9px 9px 0;
+    padding: 1vh 0.5vw;
+    transition: background-color 0.4s;
+}
+:global(.ltr) .container a.selected{
+    margin-left: 2vw;
+    margin-right: initial;
+    border-radius: 9px 0 0 9px;
+}
+
+
+.selected:before{
+    content: "";
+    position: absolute;
+    background-color: var(--menu);
+    width: 15px;
+    height: 15px;
+    border-top-left-radius: 10px;
+    bottom: -15px;
+    left: 1vw;
+    box-shadow: -3px -7px 0 0 var(--cardBody);
+    transition: background-color 0.4s, box-shadow 0.4s;
+}
+:global(.ltr) .selected:before{
+    right: 1vw;
+    left: initial;
+    border-top-right-radius: 10px;
+    box-shadow: 7px -2px 0 0 var(--cardBody);
+
+}
+.selected:after{
+    content: "";
+    position: absolute;
+    background-color: var(--menu);
+    width: 15px;
+    height: 15px;
+    border-bottom-left-radius: 10px;
+    top: -15px;
+    left: 1vw;
+    box-shadow: -3px 7px 0 0 var(--cardBody);
+    transition: background-color 0.4s, box-shadow 0.4s;
+}
+:global(.ltr) .selected:after{
+    right: 1vw;
+    left: initial;
+    border-bottom-right-radius: 10px;
+    box-shadow: 7px 2px 0 0 var(--cardBody);
+
 }
 .container a.selected span i{
-    color: var(--textBlue);
+    color: var(--orange);
+    transition: color 0.4s;
 }
-.container a.selected::after{
-    content: '.';
-    background-color: #d26896;
-    width: 5vw;
-    height: 5vw;
-}
-
-
-
-
-
-
-
-
-
-
-
-
-/*
-.tabs li {
-    !* Makes a horizontal row *!
-   !* float: left;*!
-
-    !* So the psueudo elements can be
-       abs. positioned inside *!
-    position: relative;
-}
-.tabs a {
-    !* Make them block level
-       and only as wide as they need *!
-    !*float: left;
-    padding: 10px 40px;*!
-    text-decoration: none;
-
-    !* Default colors *!
-    color: black;
-    background: #d6d6d6;
-
-    !* Only round the top corners *!
-    -webkit-border-top-right-radius: 15px;
-    -webkit-border-bottom-right-radius: 15px;
-    -moz-border-radius-topleft: 15px;
-    -moz-border-radius-topright: 15px;
-    border-top-right-radius: 15px;
-    border-bottom-right-radius: 15px;
-}
-.tabs .selected {
-    !* Highest, selected tab is on top *!
-    z-index: 3;
-}
-.tabs .selected a {
-    !* Colors when tab is selected *!
-    background: white;
-    color: black;
-}
-.tabs li:before, .tabs li:after, .tabs li a:before, .tabs li a:after {
-    !* All pseudo elements are
-       abs. positioned and on bottom *!
-    position: absolute;
-    bottom: 0;
-}
-!* Only the first, last, and selected
-   tabs need pseudo elements at all *!
-.tabs li:last-child:after,   .tabs li:last-child a:after,
-.tabs li:first-child:before, .tabs li:first-child a:before,
-.tabs .selected:after,   .tabs .selected:before,
-.tabs .selected a:after, .tabs .selected a:before {
-    content: "";
-}
-.tabs .selected:before, .tabs .selected:after {
-    background: white;
-
-    !* Squares below circles *!
-    z-index: 1;
-}
-!* Squares *!
-.tabs li:before, .tabs li:after {
-    background: #ddc385;
-    width: 10px;
-    height: 10px;
-}
-.tabs li:before {
-    left: -10px;
-}
-.tabs li:after {
-    right: -10px;
-}
-!* Circles *!
-.tabs li a:after, .tabs li a:before {
-    width: 20px;
-    height: 20px;
-    !* Circles are circular *!
-    -webkit-border-radius: 10px;
-    -moz-border-radius:    10px;
-    border-radius:         10px;
-    background: #222;
-
-    !* Circles over squares *!
-    z-index: 2;
-}
-.tabs .selected a:after, .tabs .selected a:before {
-    background: #ddc385;
-}
-!* First and last tabs have different
-   outside color needs *!
-.tabs li:first-child.selected a:before,
-.tabs li:last-child.selected a:after {
-    background: #222;
-}
-.tabs li a:before {
-    left: -20px;
-}
-.tabs li a:after {
-    right: -20px;
-}
-*/
-

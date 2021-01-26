@@ -6,7 +6,7 @@ import Icon from "../Icon/Icon";
 
 const NumberInput = (props) => {
     return (
-        <Fragment>
+        <div>
             <div className={`input-group ${props.customClass}`}>
                 <span className="lead">{props.lead}</span>
                 <NumberFormat
@@ -49,7 +49,7 @@ const NumberInput = (props) => {
                     ""
             }
 
-        </Fragment>
+        </div>
     )
 }
 

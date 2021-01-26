@@ -50,6 +50,23 @@
     "lastWeek": "7 Week",
     "lastMonth": "30 Day"
   },
+  "orders": {
+    "title": "Order",
+    "minOrder":  "Minimum allowed order is {{min}} {{currency}}",
+    "maxOrder":  "Maximum allowed order is {{max}} {{currency}}",
+    "divisibility": "Divisibility !",
+    "availableAmount": "Available Amount",
+    "bestOffer": "Best Offer",
+    "stopLimit": "Stop Limit",
+    "stopPrice": "Stop Price",
+    "amount": "Amount",
+    "pricePerUnit": "Unit Price",
+    "marketBuyPrice": "Market Buy",
+    "marketSellPrice": "Market Sell",
+    "totalPrice": "Total Price",
+    "tradeFee": "Exchange Fee",
+    "getAmount": "Received Amount"
+  },
   "LastTrades": {
     "title": "Last Trades",
     "date": "Date",

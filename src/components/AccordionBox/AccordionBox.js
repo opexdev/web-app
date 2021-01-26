@@ -54,7 +54,7 @@ const AccordionBox = (props) => {
                     <span className={`${classes.rightBtn} ${btn.right ? classes.active : null}`}  onClick={()=>scrollHandler(ulRef, "right")}/>*/}
                     <ul ref={ulRef}>
                         {content.map((item, index) => {
-                            return <li className={active === index ? "active" : ""}
+                            return <li className={active === index ? (classes.active) : ""}
                                        onClick={() => itemsClickHandler(index)}
                                        key={index}>{item.title}</li>
                         })}
