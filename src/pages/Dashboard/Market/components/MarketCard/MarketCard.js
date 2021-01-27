@@ -1,10 +1,9 @@
-import React, {Fragment} from 'react';
+import React from 'react';
 import classes from "./MarketCard.module.css"
-import {images} from "../../../../../assets/images"
 import ScrollBar from "../../../../../components/ScrollBar";
-import PriceChart from "../../../../../components/PriceChart/PriceChart";
 import {useTranslation} from "react-i18next";
 import Icon from "../../../../../components/Icon/Icon";
+import MarketChart from "../MarketChart";
 
 
 
@@ -18,8 +17,6 @@ const MarketCard = (props) => {
 
     let Items = CardData.map((it) =>
         <div key={id++} className={`container row jc-between ai-center px-05 py-05 ${classes.container}`}>
-
-
             <div className={` row jc-between ai-center ${classes.marketCardImage}`}>
                 <img className={`img-md flex`} src={it.MarketImage} alt="bitcoin" title="bitcoin"/>
             </div>
@@ -36,10 +33,7 @@ const MarketCard = (props) => {
                 </div>
 
                 <div className={`column ai-center`}>
-
-                    <span>چارت</span>
-                    {/*<PriceChart/>*/}
-
+                    <MarketChart/>
                 </div>
 
                 <div className={`column  ai-end`}>
