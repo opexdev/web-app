@@ -2,12 +2,12 @@
 
  @font-face {
   font-family: 'opex-icon';
-  src: url('../font/opex-icon.eot?91241632');
-  src: url('../font/opex-icon.eot?91241632#iefix') format('embedded-opentype'),
-       url('../font/opex-icon.woff2?91241632') format('woff2'),
-       url('../font/opex-icon.woff?91241632') format('woff'),
-       url('../font/opex-icon.ttf?91241632') format('truetype'),
-       url('../font/opex-icon.svg?91241632#opex-icon') format('svg');
+  src: url('../font/opex-icon.eot');
+  src: url('../font/opex-icon.eot') format('embedded-opentype'),
+       url('../font/opex-icon.woff2') format('woff2'),
+       url('../font/opex-icon.woff') format('woff'),
+       url('../font/opex-icon.ttf') format('truetype'),
+       url('../font/opex-icon.svg') format('svg');
   font-weight: normal;
   font-style: normal;
 }

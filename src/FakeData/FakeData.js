@@ -154,3 +154,23 @@ export const MyOrderTradeData = () => {
     }
     return data;
 }
+
+
+export const DTAllTransactionsData = () => {
+    const data = [];
+    const count = Faker.random.number({'min': 2, 'max': 15})
+    for (let i = 0; i < count; i++) {
+        data.push({
+            orderId: Faker.random.number({'min': 11000, 'max': 1000000}),
+            timestamp: Faker.date.between('2020-01-01', '2021-02-05'),
+            transactionType: Faker.random.arrayElement(['deposit', 'withdrawal']),
+            price: Faker.random.number({'min': 0.001, 'max': 0.8,precision: 0.001}),
+            currency: Faker.random.arrayElement(['BTC', 'ETH','IRT','USD','Euro']),
+            destination: "009891****"+Faker.random.number({'min': 1000, 'max': 9999}),
+            transactionId: Faker.random.number({'min': 8439201925530, 'max': 8539201925530}),
+            status: Faker.random.arrayElement(['live', 'reject','done','cancel','doing']),
+            progress: Faker.random.number({'min': 0, 'max': 100,precision: 0.5})
+        });
+    }
+    return data;
+}

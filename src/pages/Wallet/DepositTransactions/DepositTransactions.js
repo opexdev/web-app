@@ -6,7 +6,7 @@ import moment from "moment-jalaali";
 import {connect} from "react-redux";
 import {useTranslation} from "react-i18next";
 
-import {MyOrderCurrentData, MyOrderStopData, MyOrderHistoryData, MyOrderTradeData} from "../../../FakeData/FakeData";
+import {DTAllTransactionsData, MyOrderStopData, MyOrderHistoryData, MyOrderTradeData} from "../../../FakeData/FakeData";
 import Icon from "../../../components/Icon/Icon";
 
 const DepositTransactions = (props) => {
@@ -18,50 +18,49 @@ const DepositTransactions = (props) => {
         trade: null
     })
     const [customData, setCustomData] = useState({
-        current: [],
+        allTransactions: [],
         history: [],
         trade: [],
         stop: []
     })
     useEffect(() => {
         setCustomData({
-            current: MyOrderCurrentData(),
+            allTransactions: DTAllTransactionsData(),
             stop: MyOrderStopData(),
             history: MyOrderHistoryData(),
             trade: MyOrderTradeData()
         })
     }, [])
 
-    const CurrentOrdersTable = <ScrollBar>
+    const allTransactionsTable = <ScrollBar>
         <table className="text-center double-striped" cellSpacing="0" cellPadding="0">
             <thead>
             <tr>
                 <th className="pt-1">{t('time')}</th>
                 <th>{t('date')}</th>
-                <th>{t('volume')}({props.activePair.base})</th>
-                <th>{t('pricePerUnit')}({props.activePair.quote})</th>
-                <th>{t('totalPrice')}</th>
-                <th>{t('myOrders.donePercentage')}</th>
-                <th/>
-                <th/>
+                <th>{t('DepositTransactions.transactionType')}</th>
+                <th>{t('DepositTransactions.price')}</th>
+                <th>{t('DepositTransactions.currency')}</th>
+                <th>{t('DepositTransactions.destination')}</th>
+                <th>{t('DepositTransactions.transactionId')}</th>
+                <th>{t('status')}</th>
+                <th>{t('DepositTransactions.details')}</th>
             </tr>
             </thead>
             <tbody>
             {
-                customData.current.map((tr, index) =>
+                customData.allTransactions.map((tr, index) =>
                     <Fragment key={index}>
-                        <tr className={tr.type === "buy" ? "text-green" : "text-red"}>
+                        <tr>
                             <td>{moment(tr.timestamp).format('HH:mm:ss')}</td>
                             <td>{moment(tr.timestamp).format('jYY/jMM/jDD')}</td>
-                            <td>{tr.amount}</td>
+                            <td className={tr.transactionType === "deposit" ? "text-green" : "text-red"}>{tr.transactionType === "deposit" ? t('DepositTransactions.deposit') : t('DepositTransactions.withdrawal')}</td>
                             <td>{tr.price}</td>
-                            <td>{tr.totalPrice}</td>
-                            <td>{tr.progress}</td>
-                            <td>
-                                {/*<i className="icon-delete flex jc-center text-red font-size-md"/>*/}
-                                <Icon iconName="icon-cancel text-red font-size-sm" customClass={classes.iconBG}/>
+                            <td>{t("currency." + tr.currency)}</td>
+                            <td className="direction-ltr">{tr.destination}</td>
+                            <td>{tr.transactionId}</td>
+                            <td>{t("ordersStatus." + tr.status)}</td>
 
-                            </td>
                             {
                                 openItem.current === index ?
                                     <td onClick={() => setOpenItem({...openItem, current: null})}>
@@ -76,7 +75,7 @@ const DepositTransactions = (props) => {
                             }
                         </tr>
                         <tr style={{display: openItem.current === index ? "revert" : "none"}}>
-                            <td colSpan="8" className={`py-1 px-2`}>
+                            <td colSpan="9" className={`py-1 px-2`}>
                                 <div className="row jc-around  ai-center" style={{width: "100%"}}>
                                     <p className="col-46 row jc-between">{t('myOrders.orderId')} : <span>{tr.orderId}</span></p>
                                     <p className="col-46 row jc-between">{t('myOrders.tradedAmount')} : <span>{tr.tradedAmount}</span></p>
@@ -231,7 +230,7 @@ const DepositTransactions = (props) => {
 
 
     const data = [
-        {id: 1, title: t('all'), body: t('all') },
+        {id: 1, title: t('all'), body: allTransactionsTable },
         {id: 2, title: t('DepositTransactions.depositWithdrawal'), body: t('DepositTransactions.depositWithdrawal') },
         {id: 3, title: t('DepositTransactions.withdrawalTransfer'), body: t('DepositTransactions.withdrawalTransfer') },
 

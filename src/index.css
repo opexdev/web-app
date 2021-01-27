@@ -11,12 +11,12 @@
     outline: 0;
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
-    -webkit-tap-highlight-color: transparent;
+    /*-webkit-tap-highlight-color: transparent;
     -webkit-touch-callout: none;
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
-    user-select: none;
+    user-select: none;*/
 }
 
 @font-face {
@@ -612,6 +612,12 @@ li{
     /*font-size: 1.2vw;*/
     /*font-size: 2.35vw;*/
     font-size: 2.2vw;
+}
+.direction-ltr{
+    direction: ltr;
+}
+.direction-rtl{
+    direction: rtl;
 }
 
 

@@ -28,7 +28,8 @@
     "live": "جاری شده",
     "reject": "رد شده",
     "done": "انجام شده",
-    "cancel": "لغو شده"
+    "cancel": "لغو شده",
+    "doing": "در حال انجام"
   },
   "orderTypes": {
     "stopLimit" : "متوقف محدود",
@@ -104,8 +105,18 @@
   "DepositTransactions": {
     "title": "تراکنش های واریز/برداشت",
     "depositWithdrawal": "واریز/دریافت",
-    "withdrawalTransfer": "برداشت/انتقال"
+    "withdrawalTransfer": "برداشت/انتقال",
+    "transactionType": "نوع تراکنش",
+    "transactionId": "شناسه تراکنش",
+    "price": "مبلغ",
+    "currency": "ارز/رمز ارز",
+    "destination": "مقصد",
+    "details": "جزئیات",
+    "deposit": "واریز",
+    "withdrawal": "برداشت"
   },
+
+
   "OrdersTrades": {
     "title": "سفارش ها و معامله ها",
     "aliveOrder": "سفارش های جاری",
