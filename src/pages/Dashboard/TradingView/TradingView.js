@@ -3,8 +3,9 @@ import classes from "./TradingView.module.css"
 import * as LightweightCharts from "lightweight-charts";
 import {connect} from "react-redux";
 import {mock} from "./mockData";
-import i18n from "i18next";
+import i18n from "./../../../i18n/i18n";
 import i18next from "i18next";
+import moment from "moment-jalaali";
 
 
 const TradingView = (props) => {
@@ -45,7 +46,6 @@ const TradingView = (props) => {
         layout: {
             backgroundColor: '#282a36',
             textColor: 'rgba(255, 255, 255, 0.9)',
-            fontFamily: i18next.language === "fa" ? "iranyekan" : "Segoe UI"
         },
         grid: {
             vertLines: {
@@ -66,7 +66,6 @@ const TradingView = (props) => {
         layout: {
             backgroundColor: '#ffffff',
             textColor: '#191919',
-            fontFamily: i18next.language === "fa" ? "iranyekan" : "Segoe UI"
         },
         grid: {
             vertLines: {
@@ -81,38 +80,43 @@ const TradingView = (props) => {
         },
         timeScale: {
             borderColor: '#2b2b43',
-        }
+            tickMarkFormatter: (time, tickMarkType, locale) => {
+                return moment( time * 1000 ).format('jYYYY/jM/jD');
+            }
+        },
+
     }
 
 
     React.useEffect(() => {
         let theme = lightColors;
-
         chartProperties = {
             width: chartContainerRef.current.clientWidth,
             height: chartContainerRef.current.clientHeight,
-            localization: {
-                locale: i18next.language === "fa" ? "fa-IR" : "en-US",
-                dateFormat: 'yyyy/MM/dd',
-            }
+            layout: {...lightTheme.layout,
+                fontFamily: (i18next.language === undefined || i18next.language === "fa") ? "iranyekan" : "Segoe UI"
+            },
+            grid: lightTheme.grid,
+            priceScale: lightTheme.priceScale,
+            timeScale: lightTheme.timeScale,
+
         }
+
 
         if (props.isDark) {
-            theme = darkColors;
+            theme = darkTheme;
             chartProperties = {
                 ...chartProperties,
-                layout: darkTheme.layout,
+                layout: {...lightTheme.layout,
+                    fontFamily: (i18next.language === undefined || i18next.language === "fa") ? "iranyekan" : "Segoe UI"},
                 grid: darkTheme.grid,
                 priceScale: darkTheme.priceScale,
-                timeScale: darkTheme.timeScale
+                timeScale: darkTheme.timeScale,
             }
         }
 
-
         chart.current = LightweightCharts.createChart(chartContainerRef.current, chartProperties);
-
         const candleSeries = chart.current.addCandlestickSeries(theme);
-
         const volumeSeries = chart.current.addHistogramSeries(histogramColors);
 
         fetch(`https://api.binance.com/api/v3/klines?symbol=BTCUSDT&interval=1d&limit=200`)
@@ -135,6 +139,56 @@ const TradingView = (props) => {
                 volumeSeries.setData(cdata);
             })
 
+
+
+
+        /*function businessDayToString(businessDay) {
+            return businessDay.year + '-' + businessDay.month + '-' + businessDay.day;
+        }
+
+        var toolTipWidth = 100;
+        var toolTipHeight = 80;
+        var toolTipMargin = 15;
+
+        var toolTip = document.createElement('div');
+        toolTip.className = 'floating-tooltip-2';
+        chartContainerRef.current.appendChild(toolTip);
+
+        var width = chartContainerRef.current.clientWidth;
+        var height = chartContainerRef.current.clientHeight;
+// update tooltip
+        chart.current.subscribeCrosshairMove(function(param) {
+            if (!param.time || param.point.x < 0 || param.point.x > width || param.point.y < 0 || param.point.y > height) {
+                toolTip.style.display = 'none';
+                return;
+            }
+
+            var dateStr = LightweightCharts.isBusinessDay(param.time)
+                ? businessDayToString(param.time)
+                : new Date(param.time * 1000).toLocaleDateString();
+
+            toolTip.style.display = 'block';
+            var price = param.seriesPrices.get(candleSeries);
+            toolTip.innerHTML = '<div style="color: rgba(255, 70, 70, 1)">Apple Inc.</div>' +
+                '<div style="font-size: 24px; margin: 4px 0px">' + Math.round(price * 100) / 100 + '</div>' +
+                '<div>' + dateStr + '</div>';
+
+            var y = param.point.y;
+
+            var left = param.point.x + toolTipMargin;
+            if (left > width - toolTipWidth) {
+                left = param.point.x - toolTipMargin - toolTipWidth;
+            }
+
+            var top = y + toolTipMargin;
+            if (top > height - toolTipHeight) {
+                top = y - toolTipHeight - toolTipMargin;
+            }
+
+            toolTip.style.left = left + 'px';
+            toolTip.style.top = top + 'px';
+        });
+*/
         return () => {
             if (chart.current !== null) {
                 chart.current.remove();
@@ -145,43 +199,45 @@ const TradingView = (props) => {
 
 
     React.useEffect(() => {
-        if (chart.current !== null) {
-            i18n.on('languageChanged', (lng) => {
+        i18n.on('languageChanged', (lng) => {
+            if (chart.current !== null) {
                 chart.current.applyOptions({
                     localization: {
                         locale: lng === "fa" ? "fa-IR" : "en-US",
-                        dateFormat: 'yyyy/MM/dd',
-                    }
+                        dateFormat:  console.log("rub"),
+                    },
+                    layout: { fontFamily: (i18next.language === undefined || i18next.language === "fa") ? "iranyekan" : "Segoe UI"},
                 })
-                chart.current.applyOptions({
-                    localization: {
-                        locale: lng === "fa" ? "fa-IR" : "en-US",
-                        dateFormat: 'yyyy/MM/dd',
-                    }
-                })
-            })
-            resizeObserver.current = new ResizeObserver(entries => {
-                const {width, height} = entries[0].contentRect;
-                chart.current.applyOptions({width, height});
-                setTimeout(() => {
-                    if (chart.current !== null) {
-                        chart.current.timeScale().fitContent();
-                    }
-                }, 0);
-            });
+                // chart.current.applyOptions({
+                //     localization: {
+                //         locale: lng === "fa" ? "fa-IR" : "en-US",
+                //         dateFormat: moment().format('jYYYY/jM/jD'),
+                //     },
+                //     layout: { fontFamily: (i18next.language === undefined || i18next.language === "fa") ? "iranyekan" : "Segoe UI"},
+                // })
+            }
+        })
 
-            resizeObserver.current.observe(chartContainerRef.current);
-            return () => resizeObserver.current.disconnect();
-        }
+        resizeObserver.current = new ResizeObserver(entries => {
+            const {width, height} = entries[0].contentRect;
+            chart.current.applyOptions({width, height});
+            setTimeout(() => {
+                if (chart.current !== null) {
+                    chart.current.timeScale().fitContent();
+                }
+            }, 0);
+        });
+        resizeObserver.current.observe(chartContainerRef.current);
+        return () => resizeObserver.current.disconnect();
     }, []);
 
 
     React.useEffect(() => {
-
         if (props.isDark) {
             chart.current.applyOptions({
                 ...chartProperties,
-                layout: darkTheme.layout,
+                layout: {...darkTheme.layout,
+                    fontFamily: (i18next.language === undefined || i18next.language === "fa") ? "iranyekan" : "Segoe UI"},
                 grid: darkTheme.grid,
                 priceScale: darkTheme.priceScale,
                 timeScale: darkTheme.timeScale,
@@ -189,7 +245,8 @@ const TradingView = (props) => {
         } else {
             chart.current.applyOptions({
                 ...chartProperties,
-                layout: lightTheme.layout,
+                layout: {...lightTheme.layout,
+                    fontFamily: (i18next.language === undefined || i18next.language === "fa") ? "iranyekan" : "Segoe UI"},
                 grid: lightTheme.grid,
                 priceScale: lightTheme.priceScale,
                 timeScale: lightTheme.timeScale,

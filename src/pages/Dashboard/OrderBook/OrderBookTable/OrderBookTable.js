@@ -6,17 +6,20 @@ import {useTranslation} from "react-i18next";
 
 import i18n from "i18next";
 import ReactTooltip from "react-tooltip";
+import {connect} from "react-redux";
 
 
 
 const OrderBookTable = (props) => {
+
+    const {t} = useTranslation();
 
     useEffect(() => {
         ReactTooltip.rebuild();
     });
 
     let header;
-    const {t} = useTranslation();
+    let avg = {price:0,amount:0,total:0}
     let start= "right"
     let end = "left"
 
@@ -42,7 +45,6 @@ const OrderBookTable = (props) => {
 
     return (
         <div className={`column container ${classes.container}`}>
-
             <ScrollBar>
                 <table className="text-center" cellSpacing="0" cellPadding="0">
                     <thead>
@@ -66,15 +68,15 @@ const OrderBookTable = (props) => {
                                             <div class="column jc-between col-100">
                                                 <div class="row jc-between col-100">
                                                     <span class="pl-05">${t('averagePrice')}:</span>
-                                                    <span >${tr.price.toLocaleString()}</span>
+                                                    <span >${((avg.price =avg.price + tr.price) / (index+1)).toFixed(props.activePair.quoteMaxDecimal).toLocaleString() }</span>
                                                 </div>
                                                 <div class="row jc-between col-100">
                                                     <span class="pl-05">${t('totalVolume')}:</span>
-                                                    <span >${tr.amount}</span>
+                                                    <span >${(avg.amount = avg.amount + tr.amount).toFixed(props.activePair.baseMaxDecimal).toLocaleString()}</span>
                                                 </div>
                                                 <div class="row jc-between col-100">
                                                     <span class="pl-05">${t('totalPrice')}:</span>
-                                                    <span >${tr.totalPrice.toLocaleString()}</span>
+                                                    <span >${(avg.total = avg.total + tr.totalPrice).toLocaleString()}</span>
                                                 </div>
                                             </div>
                                         `}>
@@ -91,15 +93,15 @@ const OrderBookTable = (props) => {
                                             <div class="column jc-between col-100">
                                                 <div class="row jc-between col-100">
                                                     <span class="pl-05">${t('averagePrice')}:</span>
-                                                    <span >${tr.price.toLocaleString()}</span>
+                                                    <span >${((avg.price = avg.price + tr.price) / (index+1)).toFixed(props.activePair.quoteMaxDecimal).toLocaleString() }</span>
                                                 </div>
                                                 <div class="row jc-between col-100">
                                                     <span class="pl-05">${t('totalVolume')}:</span>
-                                                    <span >${tr.amount}</span>
+                                                    <span >${(avg.amount = avg.amount + tr.amount).toFixed(props.activePair.baseMaxDecimal).toLocaleString()}</span>
                                                 </div>
                                                 <div class="row jc-between col-100">
                                                     <span class="pl-05">${t('totalPrice')}:</span>
-                                                    <span >${tr.totalPrice.toLocaleString()}</span>
+                                                    <span >${(avg.total = avg.total + tr.totalPrice).toLocaleString()}</span>
                                                 </div>
                                             </div>
                                         `}>
@@ -118,10 +120,13 @@ const OrderBookTable = (props) => {
     );
 };
 
-/*
-<div style={{...barStyle,position:"absolute",right:0,top:0,bottom:0,width:"0"}}>
+const mapStateToProps = state => {
+    return {
+        activePair : state.global.activePair,
+        activePairOrders : state.global.activePairOrders,
+        auth : state.auth
+    }
+}
 
-                                            </div>{tr.price.toLocaleString()}
-                                            */
+export default  connect( mapStateToProps , null )(OrderBookTable);
 
-export default OrderBookTable;
