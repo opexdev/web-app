@@ -2,9 +2,11 @@ export {
     loadConfig,
     setLoading,
     setThemeInitiate,
-    setTheme
+    setTheme,
 } from "./global"
 
 export {
-    storeUserData
+    storeUserData,
+    login,
+    setLoginInitiate
 } from "./auth"

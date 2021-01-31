@@ -1,4 +1,4 @@
-import React, {useEffect,useState} from "react";
+import React, {useEffect, useState} from "react";
 import MainMenu from "./MainMenu/MainMenu";
 import SubMenu from "./SubMenu/SubMenu";
 import ScrollBar from "../components/ScrollBar";
@@ -13,89 +13,78 @@ import i18n from "i18next";
 import {images} from "../assets/images";
 import Wallet from "../pages/Wallet/wallet"
 import Counting from "../pages/Counting/counting"
-
-
-import {
-    BrowserView,
-    MobileView,
-    isBrowser,
-    isMobile
-} from "react-device-detect";
+import {BrowserView, MobileView} from "react-device-detect";
 import ReactTooltip from "react-tooltip";
 import Chart from "../pages/Chart/chart";
-
+import ProtectedRoute from "../components/ProtectedRoute";
+import Login from "../pages/Login";
 
 
 const App = (props) => {
-    const [ltr , setLtr]= useState(false)
+    const [ltr, setLtr] = useState(false)
     useEffect(() => {
         props.onLoad();
     }, [])
-    i18n.on('languageChanged', (lng) => {lng !== "fa" ? setLtr(true) :setLtr(false)})
+    i18n.on('languageChanged', (lng) => {
+        lng !== "fa" ? setLtr(true) : setLtr(false)
+    })
 
     return (
-
         /*basename={"demo"}*/
         /*"homepage":"https://opex.dev/demo"*/
-
         <Router basename={"demo"}>
+
             <BrowserView>
-                <div className={`container ${props.isDark ? 'dark' : ''} ${ltr?"ltr":"rtl"}`}>
-                    {props.isLoading ? <FullWidthLoading/> : null}
-                    <ReactTooltip data-html={true} data-effect="float"/>
-                    <div className="row">
-                        <MainMenu/>
-                        <SubMenu/>
-                        <div className="column content">
-                            <Header/>
-                            <ScrollBar>
-                                <Switch>
+                <Switch>
+                    <Route exact path="/login">
+                        <Login/>
+                    </Route>
+                    <div className={`container ${props.isDark ? 'dark' : ''} ${ltr ? "ltr" : "rtl"}`}>
+                        {props.isLoading ? <FullWidthLoading/> : null}
+                        <ReactTooltip data-html={true} data-effect="float"/>
+                        <div className="row">
+                            <MainMenu/>
+                            <SubMenu/>
+                            <div className="column content">
+                                <Header/>
+                                <ScrollBar>
                                     <Route exact path="/">
                                         <Dashboard/>
                                     </Route>
-                                    <Route exact path="/wallet">
-                                        <Wallet/>
-                                    </Route>
-                                    <Route exact path="/counting">
-                                        <Counting/>
-                                    </Route>
-                                    <Route exact path="/chart">
-                                        <Chart/>
-                                    </Route>
+                                    <ProtectedRoute component={Wallet} auth={props.isLogin} exact path="/wallet"/>
+                                    <ProtectedRoute component={Counting} auth={props.isLogin} exact path="/accounting"/>
+                                    <ProtectedRoute component={Chart} auth={props.isLogin} exact path="/technical"/>
                                     <Route path="*">
                                         "404"
                                     </Route>
-                                </Switch>
-                                <Footer/>
-                            </ScrollBar>
+                                    <Footer/>
+                                </ScrollBar>
+                            </div>
                         </div>
                     </div>
-                </div>
+                </Switch>
             </BrowserView>
-            <MobileView style={{padding: "2vh 3vw"}} >
+            <MobileView style={{padding: "2vh 3vw"}}>
 
-                    <div className="mobile-view">
+                <div className="mobile-view">
 
-                        <img className={`flashit`} src={images.opexLogo_light} alt="logo"/>
+                    <img className={`flashit`} src={images.opexLogo_light} alt="logo"/>
 
-                        <h1>اوپکس فعلاً برای نمایش در موبایل بهینه نشده است. لطفاً لینک را در کامپیوتر باز کنید! :)</h1>
+                    <h1>اوپکس فعلاً برای نمایش در موبایل بهینه نشده است. لطفاً لینک را در کامپیوتر باز کنید! :)</h1>
 
-                        {/*<img src={images.bit} alt="bit"/>*/}
-                    </div>
+                    {/*<img src={images.bit} alt="bit"/>*/}
+                </div>
 
             </MobileView>
-
-
         </Router>
     );
 };
 
-const customPages = name => <div>{name}</div>
-
 const mapStateToProps = state => {
     return {
         isLoading: state.global.isLoading,
-        isDark: state.global.isDark
+        isDark: state.global.isDark,
+        isLogin: state.auth.isLogin
     }
 }
 const mapDispatchToProps = dispatch => {

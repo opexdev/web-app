@@ -8,6 +8,8 @@ export const LOAD_CONFIG = 'LOAD_CONFIG';
 
 //auth reducer actions
 export const LOGIN = 'LOGIN';
+export const LOGIN_INITIATE = 'LOGIN_INITIATE';
 export const LOGOUT = 'LOGOUT';
+export const LOGOUT_INITIATE = 'LOGOUT_INITIATE';
 export const STORE_USER_DATA = 'STORE_USER_DATA';
 export const CLEAR_USER_DATA = 'CLEAR_USER_DATA';

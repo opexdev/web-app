@@ -50,9 +50,14 @@ const reducer = (state = initialState, action) => {
                 firstName: null,
                 lastName: null,
                 wallet: {
-                    irr: null,
-                    btc: null,
-                    eth: null
+                    IRT: 0.0,
+                    BTC: 0.0,
+                    ETH: 0.0
+                },
+                tradeFee:{
+                    IRT: 0.0,
+                    BTC: 0.0,
+                    ETH: 0.0
                 },
                 isLogin: false
             }
