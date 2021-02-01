@@ -28,7 +28,7 @@
     /*-webkit-box-flex: 0.4;
     -ms-flex: 0.4;
     flex: 0.4;*/
-    width: 50%;
+    width: 30%;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -49,7 +49,7 @@
     /*-webkit-box-flex: 0.2;
     -ms-flex: 0.2;
     flex: 0.2;*/
-    width: 50%;
+    width: 40%;
     height: 100%;
     border: none;
     /*padding-right: 10px;*/
@@ -68,12 +68,12 @@
 .ltr .input-group span.lead{
     border-radius: 7px 0 0 7px;
 }
-/*.input-group span.after {
+.input-group span.after {
     border-radius: 7px 0 0 7px ;
 }
 .ltr .input-group span.after {
     border-radius: 0 7px 7px 0;
-}*/
+}
 
 .input-group-hint{
     display: -webkit-box;

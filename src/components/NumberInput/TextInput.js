@@ -4,12 +4,19 @@ import "./TextInput.css";
 import Icon from "../Icon/Icon";
 
 
-const TextInput = (props) => {
+const NumberInput = (props) => {
     return (
         <div>
             <div className={`input-group ${props.customClass}`}>
                 <span className="lead">{props.lead}</span>
-                <input value={props.value} type={props.type} onChange={props.onchange} />
+                <NumberFormat
+                    thousandSeparator={true}
+                    allowNegative={false}
+                    decimalScale={props.maxDecimal}
+                    onChange={props.onchange}
+                    {...props}
+                />
+                <span className="after">{props.after}</span>
             </div>
             {
                 props.alert != null ?
@@ -46,4 +53,4 @@ const TextInput = (props) => {
     )
 }
 
-export default TextInput;
+export default NumberInput;

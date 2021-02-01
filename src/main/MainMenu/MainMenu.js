@@ -35,7 +35,7 @@ const MainMenu = (props) => {
                          data-place="left"
                          data-effect="float"
                          data-tip={`
-                         <span class="column jc-between col-100">کیف دارایی ها</span>`}>
+                         <span class="column jc-between col-100">دارایی ها</span>`}>
                     <Icon iconName="icon-wallet font-size-lg"/>
                 </NavLink>
                 <NavLink exact to={Routes.Technical} activeClassName={classes.selected}

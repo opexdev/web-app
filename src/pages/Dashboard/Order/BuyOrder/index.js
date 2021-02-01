@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react';
 import {useTranslation,Trans} from "react-i18next";
 import {parsePriceString} from "../../../../utils/utils";
 import classes from "../Order.module.css";
-import NumberInput from "../../../../components/TextInput/TextInput";
+import NumberInput from "../../../../components/NumberInput/TextInput";
 import {connect} from "react-redux";
 
 

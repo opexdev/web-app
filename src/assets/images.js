@@ -21,6 +21,15 @@ import starWithoutfill from "./images/starWithoutfill.svg";
 import Sun from "./images/Sun.svg";
 import bit from "./images/bit.gif";
 import account from "./images/account.svg";
+import loginBG from "./images/loginBG.png";
+import TradeBG from "./images/TradeBG.png";
+import bgbitcoin from "./images/bgbitcoin.jpg";
+import kkk from "./images/1.jpg";
+import ho from "./images/ho.png";
+import cryptoBG from "./images/cryptoBG.jpg";
+import loading from "./images/loading.gif";
+import abstractBG from "./images/abstractBG.png";
+
 
 
 
@@ -49,5 +58,14 @@ export const  images = {
     'Sun' : Sun,
     'bit' : bit,
     'account' : account,
+    'loginBG' : loginBG,
+    'TradeBG' : TradeBG,
+    'bgbitcoin' : bgbitcoin,
+    'kkk' : kkk,
+    'ho' : ho,
+    'cryptoBG' : cryptoBG,
+    'loading' : loading,
+    'abstractBG' : abstractBG,
+
 };
 

@@ -12,12 +12,11 @@ import Dashboard from "../pages/Dashboard/dashboard";
 import i18n from "i18next";
 import {images} from "../assets/images";
 import Wallet from "../pages/Wallet/wallet"
-import Counting from "../pages/Counting/counting"
 import {BrowserView, MobileView} from "react-device-detect";
 import ReactTooltip from "react-tooltip";
 import Chart from "../pages/Chart/chart";
 import ProtectedRoute from "../components/ProtectedRoute";
-import Login from "../pages/Login";
+import Login from "../pages/Login/Login";
 import *  as Routes from '../routes/routes';
 
 

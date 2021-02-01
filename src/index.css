@@ -413,6 +413,16 @@ html,body{
     -ms-flex: 0.50;
     flex: 0.50;
 }
+.col-40{
+    -webkit-box-flex: 0.40;
+    -ms-flex: 0.40;
+    flex: 0.40;
+}
+.col-60{
+    -webkit-box-flex: 0.60;
+    -ms-flex: 0.60;
+    flex: 0.60;
+}
 .col-55{
     -webkit-box-flex: 0.55;
     -ms-flex: 0.55;
@@ -581,6 +591,9 @@ tr{
 }
 .pt-1{
     padding-top: 1vh;
+}
+.pb-1{
+    padding-bottom: 1vh;
 }
 .mt-1{
     margin-top: 1vh;
