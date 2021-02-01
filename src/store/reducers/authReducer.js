@@ -31,6 +31,7 @@ const reducer = (state = initialState, action) => {
             }
         case actionTypes.STORE_USER_DATA :
             return {
+                ...state,
                 firstName: "امیرحسین",
                 lastName: "فردوسی زاده نائینی",
                 wallet: {
@@ -43,10 +44,10 @@ const reducer = (state = initialState, action) => {
                     BTC: 0.0002,
                     ETH: 0.0003
                 },
-                isLogin: true
             }
         case actionTypes.CLEAR_USER_DATA :
             return {
+                ...state,
                 firstName: null,
                 lastName: null,
                 wallet: {
@@ -59,7 +60,6 @@ const reducer = (state = initialState, action) => {
                     BTC: 0.0,
                     ETH: 0.0
                 },
-                isLogin: false
             }
         default:
             return state;

@@ -18,6 +18,7 @@ import ReactTooltip from "react-tooltip";
 import Chart from "../pages/Chart/chart";
 import ProtectedRoute from "../components/ProtectedRoute";
 import Login from "../pages/Login";
+import *  as Routes from '../routes/routes';
 
 
 const App = (props) => {
@@ -33,7 +34,6 @@ const App = (props) => {
         /*basename={"demo"}*/
         /*"homepage":"https://opex.dev/demo"*/
         <Router basename={"demo"}>
-
             <BrowserView>
                 <Switch>
                     <Route exact path="/login">
@@ -48,15 +48,16 @@ const App = (props) => {
                             <div className="column content">
                                 <Header/>
                                 <ScrollBar>
+                                    <Switch>
                                     <Route exact path="/">
                                         <Dashboard/>
                                     </Route>
-                                    <ProtectedRoute component={Wallet} auth={props.isLogin} exact path="/wallet"/>
-                                    <ProtectedRoute component={Counting} auth={props.isLogin} exact path="/accounting"/>
-                                    <ProtectedRoute component={Chart} auth={props.isLogin} exact path="/technical"/>
+                                    <ProtectedRoute component={Wallet} isLogin={props.isLogin} exact path={Routes.Wallet}/>
+                                    <ProtectedRoute component={Chart} isLogin={props.isLogin} exact path={Routes.Technical}/>
                                     <Route path="*">
                                         "404"
                                     </Route>
+                                    </Switch>
                                     <Footer/>
                                 </ScrollBar>
                             </div>
