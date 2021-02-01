@@ -1,8 +1,8 @@
-import React, {Fragment} from "react";
+import React from "react";
 import {connect} from "react-redux";
 
 
-const Chart = (props) => {
+const Chart = () => {
 
     return (
         <div className="px-1 py-1">

@@ -1,4 +1,4 @@
-import React, {useEffect, useRef, useState} from "react";
+import React, {useRef, useState} from "react";
 import classes from "./AccordionBox.module.css"
 import PropTypes from 'prop-types';
 import {isSafari} from 'react-device-detect'

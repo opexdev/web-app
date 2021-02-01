@@ -4,8 +4,10 @@ import {images} from "../../assets/images"
 import {useTranslation} from "react-i18next";
 import {connect} from "react-redux";
 import moment from "moment-jalaali";
-import ShimmerEffect from "../../components/ShimmerEffect";
 import IconBtn from "../../components/Icon/Icon";
+import {setLogoutInitiate} from "../../store/actions";
+import {Link} from "react-router-dom";
+import {Login} from "../../routes/routes";
 
 
 const Header = (props) => {
@@ -37,12 +39,12 @@ const Header = (props) => {
                     </div>
                 </div>
                 <div className={`column ai-end`}>
-                    { props.auth.firstName === null ? <ShimmerEffect/> : <p className="mb-05">{props.auth.firstName+" "+props.auth.lastName}</p>}
+                    { props.auth.firstName === null ? <Link to={Login}><p>{t("pleaseLogin")}</p></Link> : <p className="mb-05">{props.auth.firstName+" "+props.auth.lastName}</p>}
                     <p style={{direction:"ltr"}}>{moment().format('jYYYY/jM/jD - HH:mm:ss')}</p>
                 </div>
             </div>
-            <div className={`flex jc-center ai-center ${classes.signOut}`}>
-                <img className="img-md" src={images.signOut} alt="signOut" title={t("signOut")}/>
+            <div className={`flex jc-center ai-center ${classes.signOut}`} onClick={props.onLogout}>
+                {props.auth.isLogin ? <img className="img-md" src={images.signOut} alt="signOut" title={t("signOut")}/> : " "}
             </div>
         </div>
     )
@@ -54,5 +56,10 @@ const mapStateToProps = state => {
         auth : state.auth
     }
 }
+const mapDispatchToProps = dispatch => {
+    return {
+        onLogout :  () => dispatch(setLogoutInitiate())
+    }
+}
 
-export default  connect( mapStateToProps , null )(Header);
+export default  connect( mapStateToProps , mapDispatchToProps )(Header);

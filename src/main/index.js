@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, {Fragment, useEffect, useState} from "react";
 import MainMenu from "./MainMenu/MainMenu";
 import SubMenu from "./SubMenu/SubMenu";
 import ScrollBar from "../components/ScrollBar";
@@ -22,12 +22,13 @@ import *  as Routes from '../routes/routes';
 
 const App = (props) => {
     const [ltr, setLtr] = useState(false)
+
     useEffect(() => {
         props.onLoad();
+        i18n.on('languageChanged', (lng) => {
+            lng !== "fa" ? setLtr(true) : setLtr(false)
+        })
     }, [])
-    i18n.on('languageChanged', (lng) => {
-        lng !== "fa" ? setLtr(true) : setLtr(false)
-    })
 
     return (
         /*basename={"demo"}*/
@@ -38,6 +39,7 @@ const App = (props) => {
                     <Route exact path="/login">
                         <Login/>
                     </Route>
+                    <Fragment>
                     <div className={`container ${props.isDark ? 'dark' : ''} ${ltr ? "ltr" : "rtl"}`}>
                         {props.isLoading ? <FullWidthLoading/> : null}
                         <ReactTooltip data-html={true} data-effect="float"/>
@@ -48,7 +50,7 @@ const App = (props) => {
                                 <Header/>
                                 <ScrollBar>
                                     <Switch>
-                                    <Route exact path="/">
+                                    <Route exact path={Routes.Dashboard}>
                                         <Dashboard/>
                                     </Route>
                                     <ProtectedRoute component={Wallet} isLogin={props.isLogin} exact path={Routes.Wallet}/>
@@ -62,6 +64,7 @@ const App = (props) => {
                             </div>
                         </div>
                     </div>
+                    </Fragment>
                 </Switch>
             </BrowserView>
             <MobileView style={{padding: "2vh 3vw"}}>

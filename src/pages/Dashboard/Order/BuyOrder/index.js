@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react';
 import {useTranslation,Trans} from "react-i18next";
 import {parsePriceString} from "../../../../utils/utils";
 import classes from "../Order.module.css";
-import NumberInput from "../../../../components/NumberInput/TextInput";
+import NumberInput from "../../../../components/NumberInput/NumberInput";
 import {connect} from "react-redux";
 
 
@@ -173,7 +173,7 @@ const BuyOrder = (props) => {
             </div>
 
             <button type="submit" className={` ${classes.button} ${classes.buyOrder}`}
-                    disabled={alert.reqAmount || order.reqAmount === 0}>{t('buy')}
+                    disabled={alert.reqAmount || order.reqAmount === 0 || !props.auth.isLogin}>{props.auth.isLogin ? t('buy') : t("pleaseLogin")}
             </button>
         </div>
     )

@@ -1,6 +1,6 @@
-import React, {Fragment} from "react";
+import React from "react";
 import NumberFormat from 'react-number-format';
-import "./TextInput.css";
+import "./NumberInput.css";
 import Icon from "../Icon/Icon";
 
 
@@ -14,7 +14,9 @@ const NumberInput = (props) => {
                     allowNegative={false}
                     decimalScale={props.maxDecimal}
                     onChange={props.onchange}
-                    {...props}
+                    isAllowed={props.isAllowed}
+                    prefix={props.prefix}
+                    value={props.value}
                 />
                 <span className="after">{props.after}</span>
             </div>

@@ -13,18 +13,18 @@ const Footer = (props) => {
             <div className={`row jc-between ai-center ${classes.content}`}>
                 <div className="row">
                     <div className="column px-1">
-                        <a href="#" title="about_us" target="_blank"><span>{t('footer.aboutUs')}</span></a>
-                        <a href="#" title="contact_us" target="_blank"><span>{t('footer.contactUS')}</span></a>
-                        <a href="#" title="blog" target="_blank"><span>{t('footer.blog')}</span></a>
-                        <a href="#" title="user_manual" target="_blank"><span>{t('footer.guide')}</span></a>
-                        <a href="#" title="Terms_of_use" target="_blank"><span>{t('footer.rules')}</span></a>
+                        <a href="/" title="about_us" target="_blank"><span>{t('footer.aboutUs')}</span></a>
+                        <a href="/" title="contact_us" target="_blank"><span>{t('footer.contactUS')}</span></a>
+                        <a href="/" title="blog" target="_blank"><span>{t('footer.blog')}</span></a>
+                        <a href="/" title="user_manual" target="_blank"><span>{t('footer.guide')}</span></a>
+                        <a href="/" title="Terms_of_use" target="_blank"><span>{t('footer.rules')}</span></a>
                     </div>
                     <div className="column px-1">
-                        <a href="#" title="Wage" target="_blank"><span>{t('footer.wage')}</span></a>
-                        <a href="#" title="Web_Services" target="_blank"><span>{t('footer.api')}</span></a>
-                        <a href="#" title="Request to add coins or tokens" target="_blank"><span>{t('footer.addCoin')}</span></a>
-                        <a href="#" title="market" target="_blank"><span>{t('footer.demo')}</span></a>
-                        <a href="#" title="Report errors and problems" target="_blank"><span>{t('footer.errorReport')}</span></a>
+                        <a href="/" title="Wage" target="_blank"><span>{t('footer.wage')}</span></a>
+                        <a href="/" title="Web_Services" target="_blank"><span>{t('footer.api')}</span></a>
+                        <a href="/" title="Request to add coins or tokens" target="_blank"><span>{t('footer.addCoin')}</span></a>
+                        <a href="/" title="market" target="_blank"><span>{t('footer.demo')}</span></a>
+                        <a href="/" title="Report errors and problems" target="_blank"><span>{t('footer.errorReport')}</span></a>
                     </div>
                 </div>
 

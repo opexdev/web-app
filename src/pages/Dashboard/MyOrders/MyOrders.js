@@ -53,7 +53,7 @@ const MyOrders = (props) => {
                         <tr className={tr.type === "buy" ? "text-green" : "text-red"}>
                             <td>{moment(tr.timestamp).format('HH:mm:ss')}</td>
                             <td>{moment(tr.timestamp).format('jYY/jMM/jDD')}</td>
-                            <td>{tr.amount}</td>
+                            <td>{tr.volume}</td>
                             <td>{tr.price}</td>
                             <td>{tr.totalPrice}</td>
                             <td>{tr.progress}</td>
@@ -102,7 +102,7 @@ const MyOrders = (props) => {
                 <th>{t('pricePerUnit')}({props.activePair.quote})</th>
                 <th>{t('totalPrice')}</th>
                 <th>{t('myOrders.stoppedPrice')}</th>
-                <th></th>
+                <th/>
             </tr>
             </thead>
             <tbody>
@@ -110,7 +110,7 @@ const MyOrders = (props) => {
                 <tr key={index} className={tr.type === "buy" ? "text-green" : "text-red"}>
                     <td>{moment(tr.timestamp).format('HH:mm:ss')}</td>
                     <td>{moment(tr.timestamp).format('jYY/jMM/jDD')}</td>
-                    <td>{tr.amount}</td>
+                    <td>{tr.volume}</td>
                     <td>{tr.price}</td>
                     <td>{tr.totalPrice}</td>
                     <td>{tr.stopPrice}</td>
@@ -133,7 +133,7 @@ const MyOrders = (props) => {
                 <th>{t('pricePerUnit')}({props.activePair.quote})</th>
                 <th>{t('totalPrice')}</th>
                 <th>{t('status')}</th>
-                <th></th>
+                <th/>
             </tr>
             </thead>
             <tbody>
@@ -142,7 +142,7 @@ const MyOrders = (props) => {
                     <tr className={tr.type === "buy" ? "text-green" : "text-red"}>
                         <td>{moment(tr.timestamp).format('HH:mm:ss')}</td>
                         <td>{moment(tr.timestamp).format('jYY/jMM/jDD')}</td>
-                        <td>{tr.amount}</td>
+                        <td>{tr.volume}</td>
                         <td>{tr.price}</td>
                         <td>{tr.totalPrice}</td>
                         <td>{t("ordersStatus." + tr.status)}</td>
@@ -200,7 +200,7 @@ const MyOrders = (props) => {
                     <tr className={tr.type === "buy" ? "text-green" : "text-red"}>
                         <td>{moment(tr.timestamp).format('HH:mm:ss')}</td>
                         <td>{moment(tr.timestamp).format('jYY/jMM/jDD')}</td>
-                        <td>{tr.amount}</td>
+                        <td>{tr.volume}</td>
                         <td>{tr.price}</td>
                         <td>{tr.totalPrice}</td>
                         {

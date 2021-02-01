@@ -1,21 +1,26 @@
 import * as actionTypes from "./actionTypes";
 
-export const storeUserData = () => {
-    return {
-        type: actionTypes.STORE_USER_DATA,
-    };
-};
-
-export const login = (auth) => {
+export const login = (token) => {
     return {
         type: actionTypes.LOGIN,
-        auth: auth,
+        token: "mytoken",
     };
 };
 
-export const setLoginInitiate = (auth) => {
+export const setLoginInitiate = (token) => {
     return {
         type: actionTypes.LOGIN_INITIATE,
-        auth: auth,
+        token: "mytoken",
+    };
+};
+
+export const logout = () => {
+    return {
+        type: actionTypes.LOGOUT,
+    };
+};
+export const setLogoutInitiate = () => {
+    return {
+        type: actionTypes.LOGOUT_INITIATE,
     };
 };

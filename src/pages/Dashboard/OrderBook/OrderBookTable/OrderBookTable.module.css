@@ -23,3 +23,7 @@
 :global .place-top::after{
     border-top-color: var(--toolTipBG) !important;
 }
+
+:global .selected{
+    background: darkgrey !important;
+}

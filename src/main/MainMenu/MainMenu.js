@@ -15,13 +15,13 @@ const MainMenu = (props) => {
     return (
         <div className={`column ai-center jc-between mainMenu-background ${classes.container}`}>
             <div className={`column jc-start ai-center ${classes.tabs}`}>
-                <Link exact to={Routes.Dashboard}>
+                <Link  to={Routes.Dashboard}>
                     <span className="flex">
                         <img className="img-lg" src={images.opexLogo_light} alt="opexLogo_light" title="اوپکس" style={{height: "7.5vh"}}/>
                     </span>
                 </Link>
                 <NavLink
-                    exact to={Routes.Dashboard}
+                    exact={true} to={Routes.Dashboard}
                     activeClassName={classes.selected}
                     data-html={true}
                     data-place="left"
@@ -30,7 +30,7 @@ const MainMenu = (props) => {
                 >
                     <Icon iconName="icon-market font-size-lg"/>
                 </NavLink>
-                <NavLink exact to={Routes.Wallet} activeClassName={classes.selected}
+                <NavLink exact={true} to={Routes.Wallet} activeClassName={classes.selected}
                          data-html={true}
                          data-place="left"
                          data-effect="float"
@@ -38,7 +38,7 @@ const MainMenu = (props) => {
                          <span class="column jc-between col-100">دارایی ها</span>`}>
                     <Icon iconName="icon-wallet font-size-lg"/>
                 </NavLink>
-                <NavLink exact to={Routes.Technical} activeClassName={classes.selected}
+                <NavLink exact={true} to={Routes.Technical} activeClassName={classes.selected}
                          data-html={true}
                          data-place="left"
                          data-effect="float"
@@ -48,7 +48,7 @@ const MainMenu = (props) => {
                 </NavLink>
             </div>
             <div className={`column jc-end ai-center`}>
-                <NavLink exact to={Routes.Messages} activeClassName={classes.selected}
+                <NavLink exact={true} to={Routes.Messages} activeClassName={classes.selected}
                          data-html={true}
                          data-place="left"
                          data-effect="float"
@@ -57,7 +57,7 @@ const MainMenu = (props) => {
                     <Icon iconName="icon-messages-dotted font-size-lg"/>
                 </NavLink>
 
-                <NavLink exact to={Routes.Settings}  activeClassName={classes.selected}
+                <NavLink exact={true} to={Routes.Settings}  activeClassName={classes.selected}
                          data-html={true}
                          data-place="left"
                          data-effect="float"

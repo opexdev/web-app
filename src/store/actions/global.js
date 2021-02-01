@@ -27,3 +27,16 @@ export const loadConfig = () => {
     };
 };
 
+export const setBuyOrder = (selected) => {
+    return {
+        type: actionTypes.SET_BUY_ORDERS,
+        selected:selected
+    };
+};
+export const setSellOrder = (selected) => {
+    return {
+        type: actionTypes.SET_SELL_ORDERS,
+        selected:selected
+    };
+};
+

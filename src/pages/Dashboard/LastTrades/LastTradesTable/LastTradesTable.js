@@ -13,11 +13,13 @@ const LastTradesTable = (props) => {
             <ScrollBar>
                 <table className="text-center" cellSpacing="0" cellPadding="0">
                     <thead>
-                    <th>{t('time')}</th>
-                    <th>{t('date')}</th>
-                    <th>{t('volume')}({props.activePair.base})</th>
-                    <th>{t('price')}({props.activePair.quote})</th>
-                    <th>{t('totalPrice')}</th>
+                    <tr>
+                        <th>{t('time')}</th>
+                        <th>{t('date')}</th>
+                        <th>{t('volume')}({props.activePair.base})</th>
+                        <th>{t('price')}({props.activePair.quote})</th>
+                        <th>{t('totalPrice')}</th>
+                    </tr>
                     </thead>
                     <tbody>
                     {props.data.map((tr , index) =>

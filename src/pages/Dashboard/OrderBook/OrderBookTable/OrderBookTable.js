@@ -1,25 +1,23 @@
-import React , {useEffect} from 'react';
+import React , {useEffect,useState} from 'react';
 import classes from "./OrderBookTable.module.css"
 import ScrollBar from "../../../../components/ScrollBar";
 import {useTranslation} from "react-i18next";
-
-
 import i18n from "i18next";
 import ReactTooltip from "react-tooltip";
 import {connect} from "react-redux";
-
-
+import {setBuyOrder,  setSellOrder} from "../../../../store/actions";
 
 const OrderBookTable = (props) => {
 
     const {t} = useTranslation();
+    const [selected, setSelected] = useState({buy:-1,sell:-1})
 
     useEffect(() => {
         ReactTooltip.rebuild();
     });
 
     let header;
-    let avg = {price:0,amount:0,total:0}
+    let avg = {pricePerUnit:0,amount:0,total:0}
     let start= "right"
     let end = "left"
 
@@ -30,8 +28,7 @@ const OrderBookTable = (props) => {
 
     if (props.type === "buy") {
         header = <tr>
-            <th>{t('price')}
-            </th>
+            <th>{t('pricePerUnit')}</th>
             <th>{t('volume')}</th>
             <th>{t('totalPrice')}</th>
         </tr>
@@ -39,7 +36,7 @@ const OrderBookTable = (props) => {
         header = <tr>
             <th>{t('totalPrice')}</th>
             <th>{t('volume')}</th>
-            <th>{t('price')}</th>
+            <th>{t('pricePerUnit')}</th>
         </tr>
     }
 
@@ -61,14 +58,16 @@ const OrderBookTable = (props) => {
                             }
                             return (props.type === "buy" ?
                                     <tr key={index} style={barStyle}
-                                        data-html={true}
+                                        onMouseEnter={()=>setSelected({...selected,sell:index})}
+                                        onMouseLeave={()=>setSelected({...selected,sell:-1})}
+                                        data-html={true} className={selected.sell >= index ? "selected":""}
                                         data-place="bottom"
                                         data-effect="float"
                                         data-tip={`
                                             <div class="column jc-between col-100">
                                                 <div class="row jc-between col-100">
                                                     <span class="pl-05">${t('averagePrice')}:</span>
-                                                    <span >${((avg.price =avg.price + tr.price) / (index+1)).toFixed(props.activePair.quoteMaxDecimal).toLocaleString() }</span>
+                                                    <span >${((avg.pricePerUnit =avg.pricePerUnit + tr.pricePerUnit) / (index+1)).toFixed(props.activePair.quoteMaxDecimal).toLocaleString() }</span>
                                                 </div>
                                                 <div class="row jc-between col-100">
                                                     <span class="pl-05">${t('totalVolume')}:</span>
@@ -79,21 +78,26 @@ const OrderBookTable = (props) => {
                                                     <span >${(avg.total = avg.total + tr.totalPrice).toLocaleString()}</span>
                                                 </div>
                                             </div>
-                                        `}>
-                                        <td>{tr.price.toLocaleString()}</td>
+                                        `}
+
+                                        onClick={ ()=>props.onSetBuyOrder([tr.pricePerUnit , avg.pricePerUnit])}
+                                    >
+                                        <td>{tr.pricePerUnit.toLocaleString()}</td>
                                         <td>{tr.amount}</td>
                                         <td>{tr.totalPrice.toLocaleString()}</td>
                                     </tr>
                                     :
                                     <tr key={index} style={barStyle}
-                                        data-html={true}
+                                        onMouseEnter={()=>setSelected({...selected,buy:index})}
+                                        onMouseLeave={()=>setSelected({...selected,buy:-1})}
+                                        data-html={true} className={selected.buy >= index ? "selected":""}
                                         data-place="bottom"
                                         data-effect="float"
                                         data-tip={`
                                             <div class="column jc-between col-100">
                                                 <div class="row jc-between col-100">
                                                     <span class="pl-05">${t('averagePrice')}:</span>
-                                                    <span >${((avg.price = avg.price + tr.price) / (index+1)).toFixed(props.activePair.quoteMaxDecimal).toLocaleString() }</span>
+                                                    <span >${((avg.pricePerUnit = avg.pricePerUnit + tr.pricePerUnit) / (index+1)).toFixed(props.activePair.quoteMaxDecimal).toLocaleString() }</span>
                                                 </div>
                                                 <div class="row jc-between col-100">
                                                     <span class="pl-05">${t('totalVolume')}:</span>
@@ -105,10 +109,9 @@ const OrderBookTable = (props) => {
                                                 </div>
                                             </div>
                                         `}>
-
                                         <td>{tr.totalPrice.toLocaleString()}</td>
                                         <td>{tr.amount}</td>
-                                        <td>{tr.price.toLocaleString()}</td>
+                                        <td>{tr.pricePerUnit.toLocaleString()}</td>
                                     </tr>
                             )
                         })
@@ -128,5 +131,12 @@ const mapStateToProps = state => {
     }
 }
 
-export default  connect( mapStateToProps , null )(OrderBookTable);
+const mapDispatchToProps = dispatch => {
+    return {
+        onSetBuyOrder :  (selected) => dispatch(setBuyOrder(selected)),
+        onSetSellOrder :  (selected) => dispatch(setSellOrder(selected))
+    }
+}
+
+export default  connect( mapStateToProps , mapDispatchToProps )(OrderBookTable);
 

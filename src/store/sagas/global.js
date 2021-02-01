@@ -1,4 +1,4 @@
-import { put ,delay } from "redux-saga/effects";
+import { put } from "redux-saga/effects";
 import * as actions from "../actions/index";
 
 export function* setThemeSaga(action) {
@@ -8,8 +8,8 @@ export function* setThemeSaga(action) {
 
 export function* loadConfig() {
     const isDark = yield localStorage.getItem("isDark");
-    yield put(actions.setTheme(isDark === 'true' ));
+    const token = yield localStorage.getItem("token");
+    yield put(actions.setTheme(isDark === 'true'));
     yield put(actions.setLoading(false));
-    yield delay(5000);
-    yield put(actions.storeUserData())
+    if(token !== "null") return yield put(actions.login(token))
 }

@@ -1,4 +1,4 @@
-import React, {Fragment} from "react";
+import React from "react";
 import Overview from "./Overview/Overview";
 import {connect} from "react-redux";
 import Order from "./Order/Order";
@@ -7,10 +7,8 @@ import MyOrders from "./MyOrders/MyOrders";
 import LastTrades from "./LastTrades/LastTrades";
 import {OrderData} from "../../FakeData/FakeData";
 import TradingView from "./TradingView/TradingView";
-import ReactTooltip from "react-tooltip";
 
-const Dashboard = (props) => {
-
+const Dashboard = () => {
     return (
         <div className="px-1 py-1">
 

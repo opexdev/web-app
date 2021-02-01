@@ -3,10 +3,13 @@ export {
     setLoading,
     setThemeInitiate,
     setTheme,
+    setBuyOrder,
+    setSellOrder
 } from "./global"
 
 export {
-    storeUserData,
     login,
-    setLoginInitiate
+    setLoginInitiate,
+    logout,
+    setLogoutInitiate
 } from "./auth"
