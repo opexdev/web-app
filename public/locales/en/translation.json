@@ -1,5 +1,5 @@
 {
-  "title": "اپکس",
+  "title": "Opex",
   "signIn":"Sign in",
   "signOut":"Sing out",
   "min": "Min",
@@ -17,18 +17,22 @@
   "all": "All",
   "orderType": "Order Type",
   "status" : "Status",
+  "pleaseLogin" : "Please Login!",
+  "comingSoon" : "Coming Soon :)",
   "currency": {
     "IRT" : "IRT",
     "Euro" : "Euro",
     "USD" : "USD",
     "BTC" : "BTC",
-    "ETH" : "ETH"
+    "ETH" : "ETH",
+    "USDT": "USDT"
   },
   "ordersStatus": {
-    "live": "live",
+    "live": "Live",
     "reject": "Reject",
     "done": "Done",
-    "cancel": "Cancel"
+    "cancel": "Canceled",
+    "doing": "Processing"
   },
   "orderTypes": {
     "stopLimit" : "Stop Limit",
@@ -36,7 +40,8 @@
   },
   "pair": {
     "BTC/IRT" : "BTC/IRT",
-    "ETH/IRT" : "ETH/IRT"
+    "ETH/IRT" : "ETH/IRT",
+    "ETH/BTC": "ETH/BTC"
   },
   "header": {
     "lastPrice" : "Last Price",
@@ -49,6 +54,18 @@
     "lastDay": "24 Hour",
     "lastWeek": "7 Week",
     "lastMonth": "30 Day"
+  },
+  "wallet": {
+    "title": "Wallet"
+  },
+  "technical": {
+    "title": "Technical"
+  },
+  "messages": {
+    "title": "Messages"
+  },
+  "settings": {
+    "title": "Settings"
   },
   "orders": {
     "title": "Order",
@@ -80,8 +97,8 @@
   },
   "myOrders": {
     "title": "My Orders",
-    "orderId": "Order id",
-    "tradeId": "Trade Id",
+    "orderId": "Order ID",
+    "tradeId": "Trade ID",
     "stoppedPrice": "Stopped Price",
     "donePercentage": "% done",
     "tradedAmount": "Traded",
@@ -94,12 +111,47 @@
     "startOrderTime": "Start Order Time",
     "orders": "Orders"
   },
+  "Deposit": {
+    "title": "Deposit/Withdrawal",
+    "deposit": "Deposit",
+    "withdrawal": "Withdrawal",
+    "transfer": "Transfer"
+  },
+  "DepositTransactions": {
+    "title": "Deposit/Withdrawal Transactions",
+    "depositWithdrawal": "Deposit/Withdrawal",
+    "withdrawalSend": "Withdrawal/Send",
+    "transactionType": "Transaction Type",
+    "transactionId": "Transaction ID",
+    "blockchainTransactionId": "Transaction Hash",
+    "price": "Price",
+    "destination": "Sender/Recipient",
+    "details": "Details",
+    "inventory": "Account Balance"
+  },
+  "transactionType": {
+    "deposit": "Deposit",
+    "withdrawal": "Withdrawal",
+    "Received": "Received",
+    "send": "Send"
+  },
+  "OrdersTrades": {
+    "title": "Orders/Trades",
+    "aliveOrder": "Alive Order",
+    "stop": "Stop",
+    "cancelClose": "Canceled/Close",
+    "trades": "Trades",
+    "market": "Market",
+    "side": "Side",
+    "order": "Order",
+    "done": "Done",
+    "donePercentage": "Done %"
+  },
   "market": {
     "title": "Market"
   },
   "footer" : {
     "changeColor": "Change Color",
-
     "aboutUs" : "About Us",
     "contactUS" : "Contact Us",
     "blog" : "Blog",
@@ -111,5 +163,10 @@
     "demo": "Market Demo",
     "errorReport": "Error Report",
     "copyright": "© 2021 Ope. All rights reserved"
+  },
+  "junk": {
+    "t": "T",
+    "billionT": "Billion T",
+    "vol": "Vol"
   }
 }

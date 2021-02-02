@@ -13,22 +13,18 @@ const DepositTransactions = (props) => {
 
     const {t} = useTranslation();
     const [openItem, setOpenItem] = useState({
-        current: null,
-        history: null,
-        trade: null
+        all: null,
+        deposit: null,
+        withdrawal: null
     })
     const [customData, setCustomData] = useState({
         allTransactions: [],
-        history: [],
-        trade: [],
-        stop: []
+
     })
     useEffect(() => {
         setCustomData({
             allTransactions: DTAllTransactionsData(),
-            stop: MyOrderStopData(),
-            history: MyOrderHistoryData(),
-            trade: MyOrderTradeData()
+
         })
     }, [])
 
@@ -39,10 +35,9 @@ const DepositTransactions = (props) => {
                 <th className="pt-1">{t('time')}</th>
                 <th>{t('date')}</th>
                 <th>{t('DepositTransactions.transactionType')}</th>
-                <th>{t('DepositTransactions.price')}</th>
-                <th>{t('DepositTransactions.currency')}</th>
                 <th>{t('DepositTransactions.destination')}</th>
-                <th>{t('DepositTransactions.transactionId')}</th>
+                <th>{t('volume')}({props.activePair.base})</th>
+                <th>{t('DepositTransactions.inventory')}({props.activePair.base})</th>
                 <th>{t('status')}</th>
                 <th>{t('DepositTransactions.details')}</th>
             </tr>
@@ -51,38 +46,33 @@ const DepositTransactions = (props) => {
             {
                 customData.allTransactions.map((tr, index) =>
                     <Fragment key={index}>
-                        <tr>
+                        <tr className={(tr.transactionType === "deposit" || tr.transactionType ==="Received") ? "text-green" : "text-red"}>
                             <td>{moment(tr.timestamp).format('HH:mm:ss')}</td>
                             <td>{moment(tr.timestamp).format('jYY/jMM/jDD')}</td>
-                            <td className={tr.transactionType === "deposit" ? "text-green" : "text-red"}>{tr.transactionType === "deposit" ? t('DepositTransactions.deposit') : t('DepositTransactions.withdrawal')}</td>
-                            <td>{tr.price}</td>
-                            <td>{t("currency." + tr.currency)}</td>
+                            <td>{t("transactionType." + tr.transactionType)}</td>
                             <td className="direction-ltr">{tr.destination}</td>
-                            <td>{tr.transactionId}</td>
+                            <td>{tr.volume} {(tr.transactionType === "deposit" || tr.transactionType ==="Received") ? "+" : "-"}</td>
+                            <td>{tr.inventory}</td>
                             <td>{t("ordersStatus." + tr.status)}</td>
 
                             {
-                                openItem.current === index ?
-                                    <td onClick={() => setOpenItem({...openItem, current: null})}>
+                                openItem.all === index ?
+                                    <td onClick={() => setOpenItem({...openItem, all: null})}>
                                         {/*<i className="icon-up flex jc-center  text-blue font-size-md"/>*/}
                                         <Icon iconName="icon-up-open icon-blue font-size-sm" customClass={classes.iconBG}/>
                                     </td>
                                     :
-                                    <td onClick={() => setOpenItem({...openItem, current: index})}>
+                                    <td onClick={() => setOpenItem({...openItem, all: index})}>
                                         {/*<i className="icon-down flex jc-center  text-blue font-size-md"/>*/}
                                         <Icon iconName="icon-down-open icon-blue font-size-sm" customClass={classes.iconBG}/>
                                     </td>
                             }
                         </tr>
-                        <tr style={{display: openItem.current === index ? "revert" : "none"}}>
+                        <tr style={{display: openItem.all === index ? "revert" : "none"}}>
                             <td colSpan="9" className={`py-1 px-2`}>
                                 <div className="row jc-around  ai-center" style={{width: "100%"}}>
-                                    <p className="col-46 row jc-between">{t('myOrders.orderId')} : <span>{tr.orderId}</span></p>
-                                    <p className="col-46 row jc-between">{t('myOrders.tradedAmount')} : <span>{tr.tradedAmount}</span></p>
-                                </div>
-                                <div className="row jc-around  ai-center" style={{width: "100%"}}>
-                                    <p className="col-46 row jc-between">{t('myOrders.avgTradedAmount')} : <span>{tr.avgTradedAmount}</span></p>
-                                    <p className="col-46 row jc-between">{t('myOrders.tradedPrice')} : <span>{tr.tradedPrice}</span></p>
+                                    <p className="col-46 row jc-between">{t('DepositTransactions.transactionId')} : <span>{tr.transactionId}</span></p>
+                                    <p className="col-46 row jc-between">{t('DepositTransactions.blockchainTransactionId')}({props.activePair.base}) : <span>{tr.blockchainTransactionId}</span></p>
                                 </div>
                             </td>
                         </tr>
@@ -91,148 +81,123 @@ const DepositTransactions = (props) => {
             </tbody>
         </table>
     </ScrollBar>
-    const StopTable = <ScrollBar>
-        <table className="text-center striped" cellSpacing="0" cellPadding="0">
-            <thead>
-            <tr>
-                <th className="pt-1">{t('time')}</th>
-                <th>{t('date')}</th>
-                <th>{t('volume')}({props.activePair.base})</th>
-                <th>{t('pricePerUnit')}({props.activePair.quote})</th>
-                <th>{t('totalPrice')}</th>
-                <th>{t('myOrders.stoppedPrice')}</th>
-                <th></th>
-            </tr>
-            </thead>
-            <tbody>
-            {customData.stop.map((tr, index) =>
-                <tr key={index} className={tr.type === "buy" ? "text-green" : "text-red"}>
-                    <td>{moment(tr.timestamp).format('HH:mm:ss')}</td>
-                    <td>{moment(tr.timestamp).format('jYY/jMM/jDD')}</td>
-                    <td>{tr.amount}</td>
-                    <td>{tr.price}</td>
-                    <td>{tr.totalPrice}</td>
-                    <td>{tr.stopPrice}</td>
-                    <td>
-                        {/*<td><i className="icon-delete flex jc-center  text-red font-size-md"/></td>*/}
-                        <Icon iconName="icon-cancel text-red font-size-sm" iconBG={`bg-red ${classes.iconBG}`}/>
-                    </td>
-                </tr>
-            )}
-            </tbody>
-        </table>
-    </ScrollBar>
-    const OrderHistoryTable = <ScrollBar>
+
+    const depositTransactionsTable = <ScrollBar>
         <table className="text-center double-striped" cellSpacing="0" cellPadding="0">
             <thead>
             <tr>
                 <th className="pt-1">{t('time')}</th>
                 <th>{t('date')}</th>
+                <th>{t('DepositTransactions.transactionType')}</th>
+                <th>{t('DepositTransactions.destination')}</th>
                 <th>{t('volume')}({props.activePair.base})</th>
-                <th>{t('pricePerUnit')}({props.activePair.quote})</th>
-                <th>{t('totalPrice')}</th>
+                <th>{t('DepositTransactions.inventory')}({props.activePair.base})</th>
                 <th>{t('status')}</th>
-                <th></th>
+                <th>{t('DepositTransactions.details')}</th>
             </tr>
             </thead>
             <tbody>
-            {customData.history.map((tr, index) =>
-                <Fragment key={index}>
-                    <tr className={tr.type === "buy" ? "text-green" : "text-red"}>
-                        <td>{moment(tr.timestamp).format('HH:mm:ss')}</td>
-                        <td>{moment(tr.timestamp).format('jYY/jMM/jDD')}</td>
-                        <td>{tr.amount}</td>
-                        <td>{tr.price}</td>
-                        <td>{tr.totalPrice}</td>
-                        <td>{t("ordersStatus." + tr.status)}</td>
-                        {
-                            openItem.history === index ?
-                                <td onClick={() => setOpenItem({...openItem, history: null})}>
-                                    {/*<i className="icon-up flex jc-center  text-blue font-size-md"/>*/}
-                                    <Icon iconName="icon-up-open icon-blue font-size-sm" customClass={classes.iconBG}/>
-                                </td>
-                                :
-                                <td onClick={() => setOpenItem({...openItem, history: index})}>
-                                    {/*<i className="icon-down flex jc-center  text-blue font-size-md"/>*/}
-                                    <Icon iconName="icon-down-open icon-blue font-size-sm" customClass={classes.iconBG}/>
-                                </td>
-                        }
-                    </tr>
-                    {/*<tr className={openItem.history === index ? classes.open : classes.close }>*/}
-                    <tr style={{display: openItem.history === index ? "revert" : "none"}}>
-                        <td colSpan="8" className={`py-1 px-2`}>
-                            <div className="row jc-between  ai-center" style={{width: "100%" , textAlign: "start"}}>
-                                <p className="col-46 row jc-between">{t('myOrders.orderId')} : <span>{tr.orderId}</span></p>
-                                <p className="col-46 row jc-between">{t('orderType')} : <span>{t(tr.type) + " " + t('orderTypes.' + tr.orderType)}</span>
-                                </p>
-                            </div>
-                            <div className="row  jc-between ai-center" style={{width: "100%" , textAlign: "start"}}>
-                                <p className="col-46 row jc-between">{t('myOrders.stopOrderTime')} : <span>{moment(tr.stopOrderTime).format('jYY/jMM/jDD HH:mm:ss')}</span>
-                                </p>
-                                <p className="col-46 row jc-between">{t('myOrders.startOrderTime')} : <span>{moment(tr.stopOrderTime).format('jYY/jMM/jDD HH:mm:ss')}</span>
-                                </p>
-                            </div>
-                            <div className="row jc-between ai-center" style={{width: "100%" , textAlign: "start"}}>
-                                <p className="col-46 row jc-between">{t('myOrders.stoppedPrice')} : <span>{tr.stoppedPrice}</span></p>
-                            </div>
-                        </td>
-                    </tr>
-                </Fragment>)}
+            {
+                customData.allTransactions.filter(tx => ((tx.transactionType === "deposit" || tx.transactionType ==="Received") )).map((tr, index) =>
+                    <Fragment key={index}>
+                        <tr className={(tr.transactionType === "deposit" || tr.transactionType ==="Received") ? "text-green" : "text-red"}>
+                            <td>{moment(tr.timestamp).format('HH:mm:ss')}</td>
+                            <td>{moment(tr.timestamp).format('jYY/jMM/jDD')}</td>
+                            <td>{t("transactionType." + tr.transactionType)}</td>
+                            <td className="direction-ltr">{tr.destination}</td>
+                            <td>{tr.volume} {(tr.transactionType === "deposit" || tr.transactionType ==="Received") ? "+" : "-"}</td>
+                            <td>{tr.inventory}</td>
+                            <td>{t("ordersStatus." + tr.status)}</td>
+
+                            {
+                                openItem.deposit === index ?
+                                    <td onClick={() => setOpenItem({...openItem, deposit: null})}>
+                                        {/*<i className="icon-up flex jc-center  text-blue font-size-md"/>*/}
+                                        <Icon iconName="icon-up-open icon-blue font-size-sm" customClass={classes.iconBG}/>
+                                    </td>
+                                    :
+                                    <td onClick={() => setOpenItem({...openItem, deposit: index})}>
+                                        {/*<i className="icon-down flex jc-center  text-blue font-size-md"/>*/}
+                                        <Icon iconName="icon-down-open icon-blue font-size-sm" customClass={classes.iconBG}/>
+                                    </td>
+                            }
+                        </tr>
+                        <tr style={{display: openItem.deposit === index ? "revert" : "none"}}>
+                            <td colSpan="9" className={`py-1 px-2`}>
+                                <div className="row jc-around  ai-center" style={{width: "100%"}}>
+                                    <p className="col-46 row jc-between">{t('DepositTransactions.transactionId')} : <span>{tr.transactionId}</span></p>
+                                    <p className="col-46 row jc-between">{t('DepositTransactions.blockchainTransactionId')}({props.activePair.base}) : <span>{tr.blockchainTransactionId}</span></p>
+                                </div>
+                            </td>
+                        </tr>
+                    </Fragment>)
+            }
             </tbody>
         </table>
     </ScrollBar>
-    const TradesTable = <ScrollBar>
+
+
+    const withdrawalTransactionsTable = <ScrollBar>
         <table className="text-center double-striped" cellSpacing="0" cellPadding="0">
             <thead>
             <tr>
                 <th className="pt-1">{t('time')}</th>
                 <th>{t('date')}</th>
+                <th>{t('DepositTransactions.transactionType')}</th>
+                <th>{t('DepositTransactions.destination')}</th>
                 <th>{t('volume')}({props.activePair.base})</th>
-                <th>{t('pricePerUnit')}({props.activePair.quote})</th>
-                <th>{t('totalPrice')}</th>
-                <th></th>
+                <th>{t('DepositTransactions.inventory')}({props.activePair.base})</th>
+                <th>{t('status')}</th>
+                <th>{t('DepositTransactions.details')}</th>
             </tr>
             </thead>
             <tbody>
-            {customData.trade.map((tr, index) =>
-                <Fragment key={index}>
-                    <tr className={tr.type === "buy" ? "text-green" : "text-red"}>
-                        <td>{moment(tr.timestamp).format('HH:mm:ss')}</td>
-                        <td>{moment(tr.timestamp).format('jYY/jMM/jDD')}</td>
-                        <td>{tr.amount}</td>
-                        <td>{tr.price}</td>
-                        <td>{tr.totalPrice}</td>
-                        {
-                            openItem.trade === index ?
-                                <td onClick={() => setOpenItem({...openItem, trade: null})}>
-                                    {/*<i className="icon-up flex jc-center  text-blue font-size-md"/>*/}
-                                    <Icon iconName="icon-up-open icon-blue font-size-sm" customClass={classes.iconBG}/>
-                                </td>
-                                :
-                                <td onClick={() => setOpenItem({...openItem, trade: index})}>
-                                    {/*<i className="icon-down flex jc-center  text-blue font-size-md"/>*/}
-                                    <Icon iconName="icon-down-open icon-blue font-size-sm" customClass={classes.iconBG}/>
-                                </td>
-                        }
-                    </tr>
-                    <tr style={{display: openItem.trade === index ? "revert" : "none"}}>
-                        <td colSpan="6" className={`py-1 px-2`}>
-                            <div className="row jc-around  ai-center" style={{width: "100%"}}>
-                                <p className="col-46 row jc-between">{t('myOrders.orderId')} : <span>{tr.orderId}</span></p>
-                                <p className="col-46 row jc-between">{t('myOrders.tradeId')} : <span>{tr.tradeId}</span></p>
-                            </div>
-                        </td>
-                    </tr>
-                </Fragment>)}
+            {
+                customData.allTransactions.filter(tx => ((tx.transactionType === "withdrawal" || tx.transactionType ==="send") )).map((tr, index) =>
+                    <Fragment key={index}>
+                        <tr className={(tr.transactionType === "deposit" || tr.transactionType ==="Received") ? "text-green" : "text-red"}>
+                            <td>{moment(tr.timestamp).format('HH:mm:ss')}</td>
+                            <td>{moment(tr.timestamp).format('jYY/jMM/jDD')}</td>
+                            <td>{t("transactionType." + tr.transactionType)}</td>
+                            <td className="direction-ltr">{tr.destination}</td>
+                            <td>{tr.volume} {(tr.transactionType === "deposit" || tr.transactionType ==="Received") ? "+" : "-"}</td>
+                            <td>{tr.inventory}</td>
+                            <td>{t("ordersStatus." + tr.status)}</td>
+
+                            {
+                                openItem.withdrawal === index ?
+                                    <td onClick={() => setOpenItem({...openItem, withdrawal: null})}>
+                                        {/*<i className="icon-up flex jc-center  text-blue font-size-md"/>*/}
+                                        <Icon iconName="icon-up-open icon-blue font-size-sm" customClass={classes.iconBG}/>
+                                    </td>
+                                    :
+                                    <td onClick={() => setOpenItem({...openItem, withdrawal: index})}>
+                                        {/*<i className="icon-down flex jc-center  text-blue font-size-md"/>*/}
+                                        <Icon iconName="icon-down-open icon-blue font-size-sm" customClass={classes.iconBG}/>
+                                    </td>
+                            }
+                        </tr>
+                        <tr style={{display: openItem.withdrawal === index ? "revert" : "none"}}>
+                            <td colSpan="9" className={`py-1 px-2`}>
+                                <div className="row jc-around  ai-center" style={{width: "100%"}}>
+                                    <p className="col-46 row jc-between">{t('DepositTransactions.transactionId')} : <span>{tr.transactionId}</span></p>
+                                    <p className="col-46 row jc-between">{t('DepositTransactions.blockchainTransactionId')}({props.activePair.base}) : <span>{tr.blockchainTransactionId}</span></p>
+                                </div>
+                            </td>
+                        </tr>
+                    </Fragment>)
+            }
             </tbody>
         </table>
     </ScrollBar>
+
+
 
 
     const data = [
         {id: 1, title: t('all'), body: allTransactionsTable },
-        {id: 2, title: t('DepositTransactions.depositWithdrawal'), body: t('DepositTransactions.depositWithdrawal') },
-        {id: 3, title: t('DepositTransactions.withdrawalTransfer'), body: t('DepositTransactions.withdrawalTransfer') },
+        {id: 2, title: t('DepositTransactions.depositWithdrawal'), body: depositTransactionsTable },
+        {id: 3, title: t('DepositTransactions.withdrawalSend'), body: withdrawalTransactionsTable },
 
     ]
 

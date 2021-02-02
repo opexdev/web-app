@@ -17,12 +17,15 @@
   "all": "همه",
   "orderType": "نوع سفارش",
   "status" : "وضعیت",
+  "pleaseLogin" : "لطفا وارد شوید!",
+  "comingSoon" : "به زودی :)",
   "currency": {
     "IRT": "تومان",
     "Euro": "یورو",
     "USD": "دلار",
     "BTC": "بیتکوین",
-    "ETH": "اتریوم"
+    "ETH": "اتریوم",
+    "USDT": "تتر"
   },
   "ordersStatus": {
     "live": "جاری شده",
@@ -37,7 +40,8 @@
   },
   "pair": {
     "BTC/IRT": "بیتکوین/تومان",
-    "ETH/IRT": "اتریوم/تومان"
+    "ETH/IRT": "اتریوم/تومان",
+    "ETH/BTC": "اتریوم/بیتکوین"
   },
   "header": {
     "lastPrice": "آخرین قیمت",
@@ -45,6 +49,18 @@
   },
   "market": {
     "title": "بازار"
+  },
+  "wallet": {
+    "title": "دارایی ها"
+  },
+  "technical": {
+    "title": "تکنیکال"
+  },
+  "messages": {
+    "title": "پیام ها"
+  },
+  "settings": {
+    "title": "تنظیمات"
   },
   "overview": {
     "title": "نمای کلی",
@@ -93,9 +109,6 @@
     "startOrderTime": "زمان جاری شدن",
     "orders": "معامله ها"
   },
-
-
-
   "Deposit": {
     "title": "واریز/برداشت",
     "deposit": "واریز",
@@ -105,29 +118,33 @@
   "DepositTransactions": {
     "title": "تراکنش های واریز/برداشت",
     "depositWithdrawal": "واریز/دریافت",
-    "withdrawalTransfer": "برداشت/انتقال",
+    "withdrawalSend": "برداشت/ارسال",
     "transactionType": "نوع تراکنش",
     "transactionId": "شناسه تراکنش",
+    "blockchainTransactionId": "شناسه بلاکچینی تراکنش",
     "price": "مبلغ",
-    "currency": "ارز/رمز ارز",
-    "destination": "مقصد",
+    "destination": "مبدا/مقصد",
     "details": "جزئیات",
-    "deposit": "واریز",
-    "withdrawal": "برداشت"
+    "inventory": "موجودی بعد تراکنش"
   },
-
-
+  "transactionType": {
+    "deposit": "واریز",
+    "withdrawal": "برداشت",
+    "Received": "دریافت",
+    "send": "ارسال"
+  },
   "OrdersTrades": {
     "title": "سفارش ها و معامله ها",
     "aliveOrder": "سفارش های جاری",
     "stop": "متوقف",
     "cancelClose": "لغو و بسته شده",
-    "trades": "معامله ها"
+    "trades": "معامله ها",
+    "market": "بازار",
+    "side": "سمت",
+    "order": "سفارش",
+    "done": "اجراشده",
+    "donePercentage": "% انجام"
   },
-
-
-
-
   "footer": {
     "changeColor": "تغییر رنگ",
     "aboutUs": "درباره ما",
@@ -141,5 +158,10 @@
     "demo": "بازار نمایشی (ویژه تمرین رایگان)",
     "errorReport": "گزارش خطا و مشکل",
     "copyright": "1400-کلیه حقوق برای اوپکس گستر خاورمیانه محفوظ است."
+  },
+  "junk": {
+    "t": "ت",
+    "billionT": "میلیارد ت",
+    "vol": "ح"
   }
 }

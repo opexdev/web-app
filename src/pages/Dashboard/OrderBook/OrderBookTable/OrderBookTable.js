@@ -80,7 +80,7 @@ const OrderBookTable = (props) => {
                                             </div>
                                         `}
 
-                                        onClick={ ()=>props.onSetBuyOrder([tr.pricePerUnit , avg.pricePerUnit])}
+                                        /*onClick={ ()=>props.onSetBuyOrder([tr.pricePerUnit , avg.pricePerUnit])}*/
                                     >
                                         <td>{tr.pricePerUnit.toLocaleString()}</td>
                                         <td>{tr.amount}</td>

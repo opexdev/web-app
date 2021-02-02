@@ -170,7 +170,7 @@ const SellOrder = (props) => {
             </div>
 
             <button type="submit" className={`${classes.button} ${classes.sellOrder}`}
-                    disabled={alert.reqAmount || order.reqAmount === 0}>{t('sell')}
+                disabled={alert.reqAmount || order.reqAmount === 0 || !props.auth.isLogin}>{props.auth.isLogin ? t('sell') : t("pleaseLogin")}
             </button>
         </div>
     )

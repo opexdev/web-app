@@ -1,10 +1,10 @@
 import React from 'react';
-import classes from "../Market/Market.module.css"
-import {images} from "../../../assets/images"
+import classes from "./Market.module.css"
+import {images} from "../../../../assets/images"
 import MarketCard from "./components/MarketCard/MarketCard";
-import AccordionBox from "../../../components/AccordionBox/AccordionBox";
+import AccordionBox from "../../../../components/AccordionBox/AccordionBox";
 import {useTranslation} from "react-i18next";
-import Icon from "../../../components/Icon/Icon";
+import Icon from "../../../../components/Icon/Icon";
 
 
 
@@ -197,7 +197,7 @@ const Market = (props) => {
         {id: 2 , title: t('all') , body: <MarketCard CardData = {CardDataAll}/>},
         {id: 3 , title: t('currency.BTC') , body: "content"},
         {id: 4 , title: t('currency.IRT') , body: "content"},
-        {id: 5 , title: "تتر" , body: "content"},
+        {id: 5 , title: t('currency.USDT') , body: "content"},
     ]
 
 

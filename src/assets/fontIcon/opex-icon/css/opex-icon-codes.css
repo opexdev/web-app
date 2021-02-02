@@ -6,6 +6,7 @@
 .icon-comment-alt:before { content: '\e23c'; } /* '' */
 .icon-comment:before { content: '\e24d'; } /* '' */
 .icon-messages-dotted:before { content: '\e27e'; } /* '' */
+.icon-safe:before { content: '\e80e'; } /* '' */
 .icon-down-open:before { content: '\e814'; } /* '' */
 .icon-up-open:before { content: '\e825'; } /* '' */
 .icon-info:before { content: '\e830'; } /* '' */

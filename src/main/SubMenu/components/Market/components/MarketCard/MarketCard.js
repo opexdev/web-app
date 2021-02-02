@@ -1,8 +1,8 @@
 import React from 'react';
 import classes from "./MarketCard.module.css"
-import ScrollBar from "../../../../../components/ScrollBar";
+import ScrollBar from "../../../../../../components/ScrollBar";
 import {useTranslation} from "react-i18next";
-import Icon from "../../../../../components/Icon/Icon";
+import Icon from "../../../../../../components/Icon/Icon";
 import MarketChart from "../MarketChart";
 
 
@@ -37,8 +37,8 @@ const MarketCard = (props) => {
                 </div>
 
                 <div className={`column  ai-end`}>
-                    <p><span>{it.Price}</span> ت</p>
-                    <p className="font-size-sm">ح: <span>{it.Amount} ~</span> میلیارد ت</p>
+                    <p><span>{it.Price}</span> {t('junk.t')}</p>
+                    <p className="font-size-sm">{t('junk.vol')}: <span>{it.Amount} ~</span> {t('junk.billionT')}</p>
                 </div>
 
             </div>

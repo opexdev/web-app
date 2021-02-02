@@ -18,9 +18,11 @@ import Chart from "../pages/Chart/chart";
 import ProtectedRoute from "../components/ProtectedRoute";
 import Login from "../pages/Login/Login";
 import *  as Routes from '../routes/routes';
+import {useTranslation} from "react-i18next";
 
 
 const App = (props) => {
+    const {t} = useTranslation();
     const [ltr, setLtr] = useState(false)
 
     useEffect(() => {
@@ -54,9 +56,11 @@ const App = (props) => {
                                         <Dashboard/>
                                     </Route>
                                     <ProtectedRoute component={Wallet} isLogin={props.isLogin} exact path={Routes.Wallet}/>
-                                    <ProtectedRoute component={Chart} isLogin={props.isLogin} exact path={Routes.Technical}/>
+                                    {/*<ProtectedRoute component={Chart} isLogin={props.isLogin} exact path={Routes.Technical}/>*/}
                                     <Route path="*">
-                                        "404"
+                                        <div className="container flex ai-center jc-center" style={{height:"70%"}}>
+                                            <h1>{t('comingSoon')}</h1>
+                                        </div>
                                     </Route>
                                     </Switch>
                                     <Footer/>

@@ -20,7 +20,8 @@ const Login = (props) => {
         register: {username: "", password: ""}
     });
 
-    const submit = () =>{
+    const submit = (e) =>{
+        e.preventDefault();
         setLoading(true)
         if( credential.username === "siavash" && credential.password === "123456789"){
             props.login()
@@ -34,32 +35,27 @@ const Login = (props) => {
         }
     }
 
-
-
     const login =
-        <div className={`column jc-between ${classes.form} `}>
-
-            <span >
-                <TextInput
-                    lead="نام کاربری"
-                    type="text"
-                    value={credential.username}
-                    onchange={(e)=> setCredential({...credential,username: e.target.value})}
-                />
-                <div className="py-1">
+            <form onSubmit={(e)=>submit(e)} className={`column jc-between ${classes.form} `}>
+                <div>
                     <TextInput
-                        lead={"رمز عبور"}
-                        type="password"
-                        value={credential.password}
-                        onchange={(e)=> setCredential({...credential,password: e.target.value})}
+                        lead="نام کاربری"
+                        type="text"
+                        value={credential.username}
+                        onchange={(e)=> setCredential({...credential,username: e.target.value})}
                     />
+                    <div className="py-1">
+                        <TextInput
+                            lead={"رمز عبور"}
+                            type="password"
+                            value={credential.password}
+                            onchange={(e)=> setCredential({...credential,password: e.target.value})}
+                        />
+                    </div>
                 </div>
-            </span>
-
-            <button type="submit" onClick={()=>submit()} className={`flex jc-center ai-center ${classes.button} ${classes.buyOrder}`}>{isLoading ?
-                <img style={{width:"3vw",textAlign:"center"}} src={images.loading}/> :"ورود"}</button>
-
-        </div>
+                <button type="submit"  className={`flex jc-center ai-center ${classes.button} ${classes.buyOrder}`}>{isLoading ?
+                    <img style={{width:"3vw",textAlign:"center"}} src={images.loading}/> :"ورود"}</button>
+            </form>
 
     const signUp =
         <div className={`column jc-between ${classes.form} `}>
@@ -102,18 +98,15 @@ const Login = (props) => {
     const data = [
         {id: 1, title: "ورود", body: login},
         {id: 2, title: "ثبت نام", body: signUp},
-
     ]
 
     return (
         <div className={`container ${classes.container}`}style={{backgroundImage: `url("${images.ho}")`}}>
             <div className={`row ${classes.row}`}>
                 <div className="column col-40 jc-center ai-center px-1" style={{backgroundColor: "#131212d1"}}>
-
                     <span className={` ${classes.content} card-background card-border `}>
                         <AccordionBox title="ورود/ثبت نام" content={data}/>
                     </span>
-
                 </div>
                 <div className={`column col-60 ai-center jc-center px-1 ${classes.intro}`} style={{backgroundColor: "#131212d1"}}>
 
