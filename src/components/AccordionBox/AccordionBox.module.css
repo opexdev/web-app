@@ -170,9 +170,9 @@
     /*font-weight: bold;*/
     /*z-index: 1;*/
     color: var(--activeTab);
-    background: white;
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
+   /* background: white;*/
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
     padding-right: 8px !important;
     padding-left: 8px !important;
 }

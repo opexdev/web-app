@@ -72,7 +72,7 @@ const DepositTransactions = (props) => {
                             <td colSpan="9" className={`py-1 px-2`}>
                                 <div className="row jc-around  ai-center" style={{width: "100%"}}>
                                     <p className="col-46 row jc-between">{t('DepositTransactions.transactionId')} : <span>{tr.transactionId}</span></p>
-                                    <p className="col-46 row jc-between">{t('DepositTransactions.blockchainTransactionId')}({props.activePair.base}) : <span>{tr.blockchainTransactionId}</span></p>
+                                    <p className="col-46 row jc-between">{t('DepositTransactions.blockchainTransactionId')} : <span>{tr.blockchainTransactionId}</span></p>
                                 </div>
                             </td>
                         </tr>
@@ -126,7 +126,7 @@ const DepositTransactions = (props) => {
                             <td colSpan="9" className={`py-1 px-2`}>
                                 <div className="row jc-around  ai-center" style={{width: "100%"}}>
                                     <p className="col-46 row jc-between">{t('DepositTransactions.transactionId')} : <span>{tr.transactionId}</span></p>
-                                    <p className="col-46 row jc-between">{t('DepositTransactions.blockchainTransactionId')}({props.activePair.base}) : <span>{tr.blockchainTransactionId}</span></p>
+                                    <p className="col-46 row jc-between">{t('DepositTransactions.blockchainTransactionId')} : <span>{tr.blockchainTransactionId}</span></p>
                                 </div>
                             </td>
                         </tr>
@@ -181,7 +181,7 @@ const DepositTransactions = (props) => {
                             <td colSpan="9" className={`py-1 px-2`}>
                                 <div className="row jc-around  ai-center" style={{width: "100%"}}>
                                     <p className="col-46 row jc-between">{t('DepositTransactions.transactionId')} : <span>{tr.transactionId}</span></p>
-                                    <p className="col-46 row jc-between">{t('DepositTransactions.blockchainTransactionId')}({props.activePair.base}) : <span>{tr.blockchainTransactionId}</span></p>
+                                    <p className="col-46 row jc-between">{t('DepositTransactions.blockchainTransactionId')} : <span>{tr.blockchainTransactionId}</span></p>
                                 </div>
                             </td>
                         </tr>

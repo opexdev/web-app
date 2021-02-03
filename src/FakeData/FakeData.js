@@ -176,20 +176,79 @@ export const DTAllTransactionsData = () => {
     return data;
 }
 
-export const OrdersTradesAliveOrder = () => {
+export const OrdersTradesAliveOrderData = () => {
     const data = [];
     const count = Faker.random.number({'min': 2, 'max': 15})
     for (let i = 0; i < count; i++) {
         data.push({
             orderId: Faker.random.number({'min': 11000, 'max': 1000000}),
             timestamp: Faker.date.between('2020-01-01', '2021-02-05'),
-            market: Faker.random.arrayElement(['BTC/IRT', 'ETH/BTC']),
+            market: Faker.random.arrayElement(['BTC/IRT','ETH/BTC','BTC/USDT']),
             side: Faker.random.arrayElement(['buy', 'sell']),
             order: Faker.random.number({'min': 0, 'max': 10,precision: 0.0001}),
             done: Faker.random.number({'min': 0, 'max': 0.5,precision: 0.0001}),
             pricePerUnit: Faker.random.number({'min': 0, 'max': 2,precision: 0.0001}),
             totalPrice: Faker.random.number({'min': 0, 'max': 5,precision: 0.0001}),
             donePercentage: Faker.random.number({'min': 0, 'max': 100,precision: 0.5})
+        });
+    }
+    return data;
+}
+
+export const OrdersTradesStopData = () => {
+    const data = [];
+    const count = Faker.random.number({'min': 2, 'max': 15})
+    for (let i = 0; i < count; i++) {
+        data.push({
+            orderId: Faker.random.number({'min': 11000, 'max': 1000000}),
+            timestamp: Faker.date.between('2020-01-01', '2021-02-05'),
+            market: Faker.random.arrayElement(['BTC/IRT', 'ETH/BTC','BTC/USDT']),
+            side: Faker.random.arrayElement(['buy', 'sell']),
+            order: Faker.random.number({'min': 0, 'max': 10,precision: 0.0001}),
+            stoppedPrice: Faker.random.number({'min': 0, 'max': 450000540}),
+            pricePerUnit: Faker.random.number({'min': 0, 'max': 450000540}),
+            totalPrice: Faker.random.number({'min': 0, 'max': 450000540}),
+            donePercentage: Faker.random.number({'min': 0, 'max': 100,precision: 0.5})
+        });
+    }
+    return data;
+}
+
+export const OrdersTradesOrdersHistoryData = () => {
+    const data = [];
+    const count = Faker.random.number({'min': 2, 'max': 15})
+    for (let i = 0; i < count; i++) {
+        data.push({
+            orderId: Faker.random.number({'min': 11000, 'max': 1000000}),
+            timestamp: Faker.date.between('2020-01-01', '2021-02-05'),
+            market: Faker.random.arrayElement(['BTC/IRT', 'ETH/BTC','BTC/USDT']),
+            side: Faker.random.arrayElement(['buy', 'sell']),
+            type: Faker.random.arrayElement(['market', 'limit']),
+            order: Faker.random.number({'min': 0, 'max': 1,precision: 0.0001}),
+            done: Faker.random.number({'min': 0, 'max': 1,precision: 0.0001}),
+            pricePerUnit: Faker.random.number({'min': 0, 'max': 450000540}),
+            paid: Faker.random.number({'min': 0, 'max': 450000540}),
+            status: Faker.random.arrayElement(['reject','done','cancel','incompleted']),
+        });
+    }
+    return data;
+}
+
+export const OrdersTradesTradesData = () => {
+    const data = [];
+    const count = Faker.random.number({'min': 2, 'max': 15})
+    for (let i = 0; i < count; i++) {
+        data.push({
+            orderId: Faker.random.number({'min': 11000, 'max': 1000000}),
+            timestamp: Faker.date.between('2020-01-01', '2021-02-05'),
+            market: Faker.random.arrayElement(['BTC/IRT', 'ETH/BTC','BTC/USDT']),
+            side: Faker.random.arrayElement(['buy', 'sell']),
+            type: Faker.random.arrayElement(['market', 'limit']),
+            order: Faker.random.number({'min': 0, 'max': 1,precision: 0.0001}),
+            stoppedPrice: Faker.random.number({'min': 0, 'max': 450000540}),
+            pricePerUnit: Faker.random.number({'min': 0, 'max': 450000540}),
+            totalPrice: Faker.random.number({'min': 0, 'max': 450000540}),
+
         });
     }
     return data;

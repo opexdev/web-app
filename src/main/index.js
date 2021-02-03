@@ -19,6 +19,7 @@ import ProtectedRoute from "../components/ProtectedRoute";
 import Login from "../pages/Login/Login";
 import *  as Routes from '../routes/routes';
 import {useTranslation} from "react-i18next";
+import {isSafari} from 'react-device-detect'
 
 
 const App = (props) => {
@@ -42,7 +43,7 @@ const App = (props) => {
                         <Login/>
                     </Route>
                     <Fragment>
-                    <div className={`container ${props.isDark ? 'dark' : ''} ${ltr ? "ltr" : "rtl"}`}>
+                    <div className={`container ${props.isDark ? 'dark' : ''} ${ltr ? "ltr" : "rtl"} ${isSafari ? "" : "user-select"}`}>
                         {props.isLoading ? <FullWidthLoading/> : null}
                         <ReactTooltip data-html={true} data-effect="float"/>
                         <div className="row">

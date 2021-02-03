@@ -32,7 +32,8 @@
     "reject": "رد شده",
     "done": "انجام شده",
     "cancel": "لغو شده",
-    "doing": "در حال انجام"
+    "doing": "در حال انجام",
+    "incompleted": "نیمه تمام"
   },
   "orderTypes": {
     "stopLimit" : "متوقف محدود",
@@ -41,7 +42,8 @@
   "pair": {
     "BTC/IRT": "بیتکوین/تومان",
     "ETH/IRT": "اتریوم/تومان",
-    "ETH/BTC": "اتریوم/بیتکوین"
+    "ETH/BTC": "اتریوم/بیتکوین",
+    "BTC/USDT": "بیتکوین/تتر"
   },
   "header": {
     "lastPrice": "آخرین قیمت",
@@ -143,7 +145,15 @@
     "side": "سمت",
     "order": "سفارش",
     "done": "اجراشده",
-    "donePercentage": "% انجام"
+    "donePercentage": "% انجام",
+    "stoppedPrice": "قیمت توقف",
+    "ordersHistory": "تاریخچه سفارش ها",
+    "type": "نوع",
+    "market": "بازار",
+    "limit": "محدود",
+    "paid": "پرداخت شده"
+
+
   },
   "footer": {
     "changeColor": "تغییر رنگ",
