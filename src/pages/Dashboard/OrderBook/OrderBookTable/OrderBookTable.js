@@ -5,7 +5,7 @@ import {useTranslation} from "react-i18next";
 import i18n from "i18next";
 import ReactTooltip from "react-tooltip";
 import {connect} from "react-redux";
-import {setBuyOrder,  setSellOrder} from "../../../../store/actions";
+import {setBestBuyPrice, setBestSellPrice, setBuyOrder, setSellOrder} from "../../../../store/actions";
 
 const OrderBookTable = (props) => {
 
@@ -39,6 +39,9 @@ const OrderBookTable = (props) => {
             <th>{t('pricePerUnit')}</th>
         </tr>
     }
+    useEffect(()=>{
+        props.type === "buy" ?  props.setBestSellPrice(props.data[0].pricePerUnit) : props.setBestBuyPrice(props.data[0].pricePerUnit)
+    },[])
 
     return (
         <div className={`column container ${classes.container}`}>
@@ -79,8 +82,11 @@ const OrderBookTable = (props) => {
                                                 </div>
                                             </div>
                                         `}
-
-                                        /*onClick={ ()=>props.onSetBuyOrder([tr.pricePerUnit , avg.pricePerUnit])}*/
+                                        data-amount={avg.amount}
+                                        onClick={(e) => props.onSetSellOrder({
+                                            pricePerUnit: tr.pricePerUnit,
+                                            amount: parseFloat(e.currentTarget.getAttribute('data-amount'))
+                                        })}
                                     >
                                         <td>{tr.pricePerUnit.toLocaleString()}</td>
                                         <td>{tr.amount}</td>
@@ -108,7 +114,13 @@ const OrderBookTable = (props) => {
                                                     <span >${(avg.total = avg.total + tr.totalPrice).toLocaleString()}</span>
                                                 </div>
                                             </div>
-                                        `}>
+                                        `}
+                                        data-amount={avg.amount}
+                                        onClick={(e) => props.onSetBuyOrder({
+                                            pricePerUnit: tr.pricePerUnit,
+                                            amount: parseFloat(e.currentTarget.getAttribute('data-amount'))
+                                        })}
+                                    >
                                         <td>{tr.totalPrice.toLocaleString()}</td>
                                         <td>{tr.amount}</td>
                                         <td>{tr.pricePerUnit.toLocaleString()}</td>
@@ -134,7 +146,9 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
     return {
         onSetBuyOrder :  (selected) => dispatch(setBuyOrder(selected)),
-        onSetSellOrder :  (selected) => dispatch(setSellOrder(selected))
+        onSetSellOrder :  (selected) => dispatch(setSellOrder(selected)),
+        setBestSellPrice :  (bestSellPrice) => dispatch(setBestSellPrice(bestSellPrice)),
+        setBestBuyPrice :  (bestBuyPrice) => dispatch(setBestBuyPrice(bestBuyPrice)),
     }
 }
 

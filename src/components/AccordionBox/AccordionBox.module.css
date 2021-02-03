@@ -61,8 +61,6 @@
     -webkit-box-flex: 9;
     -ms-flex: 9;
     flex: 9;
-
-
     border-bottom-left-radius: 9px;
     border-bottom-right-radius: 9px;
 }
@@ -168,12 +166,49 @@
 
 .active{
     border-bottom: 0.5vh solid var(--activeTab);
+    position: relative;
     /*font-weight: bold;*/
     /*z-index: 1;*/
     color: var(--activeTab);
+    background: white;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    padding-right: 8px !important;
+    padding-left: 8px !important;
 }
 .active:hover{
     background-color: var(--activeLi);
-    border-top-left-radius: 3px;
-    border-top-right-radius: 3px;
 }
+
+/*
+.active:before{
+    content: "";
+    position: absolute;
+    background-color: #f7f9fc;
+    width: 9px;
+    height: 9px;
+    border-bottom-right-radius: 10px;
+    bottom: 2px;
+    left: -8px;
+    box-shadow: 3px 7px 0 0 white;
+    transition: background-color 0.4s, box-shadow 0.4s;
+}
+:global(.ltr) .active:before{
+    right: 1vw;
+    left: initial;
+    border-top-right-radius: 10px;
+    box-shadow: 7px -2px 0 0 var(--cardBody);
+
+}
+.active:after{
+    content: "";
+    position: absolute;
+    background-color: #f7f9fc;
+    width: 9px;
+    height: 9px;
+    border-bottom-left-radius: 10px;
+    bottom: 0;
+    right: -9px;
+    box-shadow: -3px 4px 0 0 white;
+    transition: background-color 0.4s, box-shadow 0.4s;
+}*/

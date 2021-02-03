@@ -83,6 +83,19 @@ const SellOrder = (props) => {
         sellPriceHandler(props.activePairOrders.bestSellPrice.toString(), 'pricePerUnit')
     }, [order.stopMarket])
 
+    useEffect(() => {
+        const amount = props.activePairOrders.selectedSellOrder.amount;
+        const pricePerUnit = props.activePairOrders.selectedSellOrder.pricePerUnit;
+        setOrder({
+            ...order,
+            reqAmount: amount,
+            pricePerUnit: pricePerUnit,
+            totalPrice: (amount * (pricePerUnit)).toFixed(props.activePair.quoteMaxDecimal),
+            tradeFee: (amount * (props.auth.tradeFee[props.activePair.quote])).toFixed(props.activePair.baseMaxDecimal)
+        });
+        currencyValidator('reqAmount', amount, props.activePair.baseRange)
+    }, [props.activePairOrders.selectedSellOrder])
+
     const fillSellByWallet = () => {
         if (order.pricePerUnit === 0) {
             const totalPrice = props.auth.wallet[props.activePair.quote]
@@ -104,8 +117,8 @@ const SellOrder = (props) => {
     return (
         <div className={`column jc-between ${classes.content}`}>
             <div className="column jc-center">
-                <p onClick={() => fillSellByWallet()}>{t('orders.availableAmount')}: {props.auth.wallet[props.activePair.base].toLocaleString()} {t('currency.' + props.activePair.base)}</p>
-                <p onClick={() => fillSellByBestPrice()}>{t('orders.bestOffer')}: {props.activePairOrders.bestSellPrice.toLocaleString()} {t('currency.' + props.activePair.quote)}</p>
+                <p onClick={() => fillSellByWallet()}>{t('orders.availableAmount')}: <span className="cursor-pointer">{props.auth.wallet[props.activePair.base].toLocaleString()} {t('currency.' + props.activePair.base)}</span></p>
+                <p onClick={() => fillSellByBestPrice()}>{t('orders.bestOffer')}: <span className="cursor-pointer">{props.activePairOrders.bestSellPrice.toLocaleString()} {t('currency.' + props.activePair.quote)}</span></p>
             </div>
             <div className="row ai-center">
                 <span className="pl-05">{t('orders.stopLimit')}</span>

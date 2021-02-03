@@ -9,6 +9,9 @@ export const LOAD_CONFIG = 'LOAD_CONFIG';
 export const SET_BUY_ORDERS = 'SET_BUY_ORDERS';
 export const SET_SELL_ORDERS = 'SET_SELL_ORDERS';
 
+export const SET_BEST_BUY_PRICE = 'SET_BEST_BUY_PRICE';
+export const SET_BEST_SELL_PRICE = 'SET_BEST_SELL_PRICE';
+
 //auth reducer actions
 export const LOGIN = 'LOGIN';
 export const LOGIN_INITIATE = 'LOGIN_INITIATE';

@@ -1,58 +1,29 @@
-import React, {useRef, useState} from "react";
+import React, {useState,useEffect} from "react";
 import classes from "./AccordionBox.module.css"
 import PropTypes from 'prop-types';
 import {isSafari} from 'react-device-detect'
 
 const AccordionBox = (props) => {
-    const {title, customClass, content,} = props;
-
-    // const [btn, setBtn] = useState({left:false, right:false});
+    const {title, customClass, content,activeTab} = props;
 
     const [active, setActive] = useState(0);
-    const ulRef = useRef(null);
 
     const itemsClickHandler = (index) => {
         setActive(index)
     }
 
-    /*    const scrollHandler = (ref,move) => {
-            const clientWidth = ref.current.clientWidth;
-            const scrollWidth = ref.current.scrollWidth;
-            const scrollLeft = ref.current.scrollLeft;
-            if(move === "left"){
-                ref.current.scrollTo({left:scrollLeft-100 ,behavior:"smooth"})
-                if((Math.abs(scrollLeft-100)+clientWidth) > scrollWidth){
-                    setBtn({left: false, right:true})
-                }else {
-                    setBtn({...btn, right:true})
-                }
-            }
-            if(move === "right"){
-                ref.current.scrollTo({left:scrollLeft+100 ,behavior:"smooth"})
-                if(scrollLeft+100 >= 0){
-                    setBtn({right: false, left:true})
-                }else {
-                    setBtn({left:true, right:true})
-                }
-            }
+    useEffect(()=>{
+        if( activeTab !== undefined ){
+            setActive(activeTab)
         }
-        useEffect(() => {
-            const scrollWidth = ulRef.current.scrollWidth;
-            const clientWidth = ulRef.current.clientWidth;
-            if(scrollWidth > clientWidth){
-                setBtn({...btn,left:true})
-            }
-        }, [])*/
-
+    },[activeTab])
 
     return (
         <div className={`${customClass} ${classes.container} ${isSafari ? props.safari : ""}`}>
             <div className={`card-header-bg accordion-header ${classes.header}`}>
                 <h3 className={`${props.titleClassName} ${classes.title}`}>{title}</h3>
                 <div className={`${classes.items} ${props.headerClassName}`}>
-                    {/*                    <span className={`${classes.leftBtn} ${btn.left ? classes.active : null}`} onClick={()=>scrollHandler(ulRef, "left")}/>
-                    <span className={`${classes.rightBtn} ${btn.right ? classes.active : null}`}  onClick={()=>scrollHandler(ulRef, "right")}/>*/}
-                    <ul ref={ulRef}>
+                    <ul>
                         {content.map((item, index) => {
                             return <li className={active === index ? (classes.active) : ""}
                                        onClick={() => itemsClickHandler(index)}

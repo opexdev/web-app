@@ -84,6 +84,20 @@ const BuyOrder = (props) => {
         buyPriceHandler(props.activePairOrders.bestBuyPrice.toString(), 'pricePerUnit')
     }, [order.stopMarket])
 
+    useEffect(() => {
+
+        const amount = props.activePairOrders.selectedBuyOrder.amount;
+        const pricePerUnit = props.activePairOrders.selectedBuyOrder.pricePerUnit;
+        setOrder({
+            ...order,
+            reqAmount: amount,
+            pricePerUnit: pricePerUnit,
+            totalPrice: (amount * (pricePerUnit)).toFixed(props.activePair.quoteMaxDecimal),
+            tradeFee: (amount * (props.auth.tradeFee[props.activePair.quote])).toFixed(props.activePair.baseMaxDecimal)
+        });
+        currencyValidator('reqAmount', amount, props.activePair.baseRange)
+    }, [props.activePairOrders.selectedBuyOrder])
+
     const fillBuyByWallet = () => {
         if (order.pricePerUnit === 0) {
             const totalPrice = props.auth.wallet[props.activePair.quote]
@@ -106,8 +120,8 @@ const BuyOrder = (props) => {
         <div className={`column jc-between ${classes.content}`}>
 
             <div className="column jc-between">
-                <p onClick={() => fillBuyByWallet()}>{t('orders.availableAmount')}: {props.auth.wallet[props.activePair.quote].toLocaleString()} {t('currency.' + props.activePair.quote)}</p>
-                <p onClick={() => fillBuyByBestPrice()}>{t('orders.bestOffer')}: {props.activePairOrders.bestBuyPrice.toLocaleString()} {t('currency.' + props.activePair.quote)}</p>
+                <p onClick={() => fillBuyByWallet()}>{t('orders.availableAmount')}: <span className="cursor-pointer">{props.auth.wallet[props.activePair.quote].toLocaleString()} {t('currency.' + props.activePair.quote)}</span></p>
+                <p onClick={() => fillBuyByBestPrice()}>{t('orders.bestOffer')}: <span className="cursor-pointer">{props.activePairOrders.bestBuyPrice.toLocaleString()} {t('currency.' + props.activePair.quote)}</span></p>
             </div>
 
             <div className="row ai-center">

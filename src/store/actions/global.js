@@ -40,3 +40,17 @@ export const setSellOrder = (selected) => {
     };
 };
 
+export const setBestSellPrice = (bestBuyPrice) => {
+    return {
+        type: actionTypes.SET_BEST_SELL_PRICE,
+        bestSellPrice:bestBuyPrice
+    };
+};
+
+export const setBestBuyPrice = (bestBuyPrice) => {
+    return {
+        type: actionTypes.SET_BEST_BUY_PRICE,
+        bestBuyPrice:bestBuyPrice
+    };
+};
+

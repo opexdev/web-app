@@ -21,8 +21,14 @@ const initialState = {
     activePairOrders: {
         bestBuyPrice: 765121689.0,
         bestSellPrice: 765022879.0,
-        selectedBuyOrder: null,
-        selectedSellOrder: null
+        selectedBuyOrder: {
+            pricePerUnit: null,
+            amount: null
+        },
+        selectedSellOrder: {
+            pricePerUnit: null,
+            amount: null
+        }
     },
     isLoading: true,
     isDark: false
@@ -50,20 +56,42 @@ const globalReducer = (state = initialState, action) => {
                     quote: quote
                 },
             }
-        case actionTypes.SET_SELL_ORDERS:
+        case actionTypes.SET_BEST_BUY_PRICE :
             return {
                 ...state,
                 activePairOrders: {
-                    ...state.activePair,
-                    selectedSellOrder: action.selected
+                    ...state.activePairOrders,
+                    bestBuyPrice : action.bestBuyPrice
+                }
+            }
+        case actionTypes.SET_BEST_SELL_PRICE :
+            return {
+                ...state,
+                activePairOrders: {
+                    ...state.activePairOrders,
+                    bestSellPrice : action.bestSellPrice
                 }
             }
         case actionTypes.SET_BUY_ORDERS:
             return {
                 ...state,
                 activePairOrders: {
-                    ...state.activePair,
-                    selectedBuyOrder: action.selected
+                    ...state.activePairOrders,
+                    selectedBuyOrder: {
+                        pricePerUnit: action.selected.pricePerUnit,
+                        amount: action.selected.amount
+                    }
+                }
+            }
+        case actionTypes.SET_SELL_ORDERS:
+            return {
+                ...state,
+                activePairOrders: {
+                    ...state.activePairOrders,
+                    selectedSellOrder: {
+                        pricePerUnit: action.selected.pricePerUnit,
+                        amount: action.selected.amount
+                    }
                 }
             }
         default:

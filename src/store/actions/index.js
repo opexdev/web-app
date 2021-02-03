@@ -1,10 +1,15 @@
 export {
     loadConfig,
     setLoading,
+
     setThemeInitiate,
     setTheme,
+
     setBuyOrder,
-    setSellOrder
+    setSellOrder,
+
+    setBestBuyPrice,
+    setBestSellPrice
 } from "./global"
 
 export {
