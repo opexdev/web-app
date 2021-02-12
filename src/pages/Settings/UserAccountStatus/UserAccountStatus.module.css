@@ -1,0 +1,18 @@
+.container{
+    height: 50vh;
+}
+.header{
+    height: 12%;
+    padding: 1vh 1vw;
+
+}
+.header span{
+    width: 50%;
+    text-align: center;
+}
+.content{
+    height: 88%;
+}
+.content:nth-child(n){
+    /* width: 50%;*/
+}

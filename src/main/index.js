@@ -20,6 +20,8 @@ import Login from "../pages/Login/Login";
 import *  as Routes from '../routes/routes';
 import {useTranslation} from "react-i18next";
 import {isSafari} from 'react-device-detect'
+import Settings from "../pages/Settings/settings";
+
 
 
 const App = (props) => {
@@ -57,6 +59,7 @@ const App = (props) => {
                                         <Dashboard/>
                                     </Route>
                                     <ProtectedRoute component={Wallet} isLogin={props.isLogin} exact path={Routes.Wallet}/>
+                                    <ProtectedRoute component={Settings} isLogin={props.isLogin} exact path={Routes.Settings}/>
                                     {/*<ProtectedRoute component={Chart} isLogin={props.isLogin} exact path={Routes.Technical}/>*/}
                                     <Route path="*">
                                         <div className="container flex ai-center jc-center" style={{height:"70%"}}>
