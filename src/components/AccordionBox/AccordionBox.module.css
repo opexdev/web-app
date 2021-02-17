@@ -85,8 +85,7 @@
 }
 .items li{
     list-style: none;
-    margin: 0 0.7vw;
-    padding: 0.8vh 0;
+    padding: 0.8vh 0.7vw;
 
     /*background: #d4e987;*/
     /* background: #fcfeff;*/

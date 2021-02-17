@@ -8,9 +8,11 @@ import Wallet from "../../pages/Wallet/wallet";
 import * as Routes from "../../routes/routes";
 import Chart from "../../pages/Chart/chart";
 import SMWallet from "./components/Wallet/SMWallet";
+import {useTranslation} from "react-i18next";
 
 
 const SubMenu = (props) => {
+    const {t} = useTranslation();
 
     return (
         <div className={`card-background  ${classes.container}`} >
@@ -24,7 +26,7 @@ const SubMenu = (props) => {
                 {/*<ProtectedRoute component={Wallet} isLogin={props.isLogin} exact path={Routes.Wallet}/>*/}
 
                 <Route path="*">
-                    "404"
+                    <h3>{t('comingSoon')}</h3>
                 </Route>
             </Switch>
 

@@ -1,8 +1,8 @@
 .container{
-    height: 50vh;
+    height: 30vh;
 }
 .header{
-    height: 12%;
+    height: 20%;
     padding: 1vh 1vw;
 
 }
@@ -11,7 +11,7 @@
     text-align: center;
 }
 .content{
-    height: 88%;
+    height: 80%;
 }
 .content:nth-child(n){
     /* width: 50%;*/

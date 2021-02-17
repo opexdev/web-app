@@ -15,6 +15,10 @@ import up from "./images/up.svg";
 import favoriteCurrency from "./images/favoriteCurrency.svg";
 import bitcoin from "./images/bitcoin.svg";
 import ethereum from "./images/ethereum.svg";
+import dogecoin from "./images/dogecoin.svg";
+import bitcoinCash from "./images/bitcoinCash.svg";
+import litecoin from "./images/litecoin.svg";
+import tether from "./images/tether.svg";
 import ethereumLight from "./images/ethereumLight.svg";
 import starwithfill from "./images/starwithfill.svg";
 import starWithoutfill from "./images/starWithoutfill.svg";
@@ -52,6 +56,10 @@ export const  images = {
     'favoriteCurrency' : favoriteCurrency,
     'bitcoin' : bitcoin,
     'ethereum' : ethereum,
+    'dogecoin' : dogecoin,
+    'bitcoinCash' : bitcoinCash,
+    'litecoin' : litecoin,
+    'tether' : tether,
     'ethereumLight' : ethereumLight,
     'starwithfill' : starwithfill,
     'starWithoutfill' : starWithoutfill,

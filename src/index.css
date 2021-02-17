@@ -450,6 +450,11 @@ html,body{
     -ms-flex: 0.46;
     flex: 0.46;
 }
+.col-98{
+    -webkit-box-flex: 0.98;
+    -ms-flex: 0.98;
+    flex: 0.98;
+}
 .col-100{
     -webkit-box-flex: 1;
     -ms-flex: 1;
