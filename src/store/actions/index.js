@@ -1,6 +1,7 @@
 export {
     loadConfig,
     setLoading,
+    setActivePair,
 
     setThemeInitiate,
     setTheme,

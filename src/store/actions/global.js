@@ -21,6 +21,13 @@ export const setLoading = (isLoading) => {
     };
 };
 
+export const setActivePair = (pair) => {
+    return {
+        type: actionTypes.SET_ACTIVE_PAIR,
+        pair: pair,
+    };
+};
+
 export const loadConfig = () => {
     return {
         type: actionTypes.LOAD_CONFIG,

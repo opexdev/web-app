@@ -1,6 +1,7 @@
 import * as actionTypes from '../actions/actionTypes';
 
 const initialState = {
+
     activePair: {
         pair: "BTC/IRT",
         base: "BTC",
@@ -46,14 +47,15 @@ const globalReducer = (state = initialState, action) => {
                 ...state,
                 isLoading: action.isLoading
             }
-        case actionTypes.SET_ACTIVE_PEER :
-            const [base, quote] = "ETH/IRR".split("/")
+        case actionTypes.SET_ACTIVE_PAIR :
+            const [base, quote] = action.pair.split("/")
             return {
                 ...state,
-                activePeer: {
-                    pair: "ETH/IRR",
+                activePair: {
+                    ...state.activePair,
+                    pair: action.pair,
                     base: base,
-                    quote: quote
+                    quote: quote,
                 },
             }
         case actionTypes.SET_BEST_BUY_PRICE :

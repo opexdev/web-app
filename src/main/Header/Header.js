@@ -4,13 +4,10 @@ import {images} from "../../assets/images"
 import {useTranslation} from "react-i18next";
 import {connect} from "react-redux";
 import moment from "moment-jalaali";
-import IconBtn from "../../components/Icon/Icon";
 import {setLogoutInitiate} from "../../store/actions";
 import {Link, Route, Switch} from "react-router-dom";
 import {Login} from "../../routes/routes";
 import * as Routes from "../../routes/routes";
-import Market from "../SubMenu/components/Market/Market";
-import SMWallet from "../SubMenu/components/Wallet/SMWallet";
 import MarketHeader from "./components/MarketHeader/MarketHeader";
 
 
@@ -36,12 +33,6 @@ const Header = (props) => {
                         <h4>{t('comingSoon')}</h4>
                     </Route>
                 </Switch>
-
-
-
-
-
-
 
                 <div className={`column ai-end`}>
                     { props.auth.firstName === null ? <Link to={Login}><p>{t("pleaseLogin")}</p></Link> : <p className="mb-05">{props.auth.firstName+" "+props.auth.lastName}</p>}

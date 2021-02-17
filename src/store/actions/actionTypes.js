@@ -3,7 +3,7 @@ export const SET_THEME = 'SET_THEME';
 export const SET_LOADING = 'SET_LOADING';
 export const SET_THEME_INITIATE = 'SET_THEME_INITIATE';
 
-export const SET_ACTIVE_PEER = 'SET_ACTIVE_PEER';
+export const SET_ACTIVE_PAIR = 'SET_ACTIVE_PAIR';
 export const LOAD_CONFIG = 'LOAD_CONFIG';
 
 export const SET_BUY_ORDERS = 'SET_BUY_ORDERS';

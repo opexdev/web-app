@@ -1,14 +1,55 @@
 .container{
     height: 8.5vh;
-}
-.marketCardImg{
-    /*
-    filter: invert(29%) sepia(9%) saturate(30%) hue-rotate(339deg) brightness(97%) contrast(89%);
-    */
+    position: relative;
 }
 .marketCardImage{
     width: 14%;
 }
 .marketCardContent{
     width: 86%;
+}
+.selected{
+    background-color: var(--mainContent);
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    transition: 0.4s background-color;
+}
+
+.selected:before{
+    content: "";
+    position: absolute;
+    background-color: var(--cardBody);
+    width: 15px;
+    height: 15px;
+    border-top-left-radius: 10px;
+    bottom: -15px;
+    left: 0;
+    box-shadow: -3px -7px 0 0 var(--mainContent);
+    transition: background-color 0.4s, box-shadow 0.4s;
+}
+:global(.ltr) .selected:before{
+    right: 1vw;
+    left: initial;
+    border-top-right-radius: 10px;
+    box-shadow: 7px -2px 0 0 var(--cardBody);
+
+}
+.selected:after{
+    content: "";
+    position: absolute;
+    background-color: var(--cardBody);
+    width: 15px;
+    height: 15px;
+    border-bottom-left-radius: 10px;
+    top: -15px;
+    left: 0;
+    box-shadow: -3px 7px 0 0 var(--mainContent);
+    transition: background-color 0.4s, box-shadow 0.4s;
+}
+:global(.ltr) .selected:after{
+    right: 1vw;
+    left: initial;
+    border-bottom-right-radius: 10px;
+    box-shadow: 7px 2px 0 0 var(--mainContent);
+
 }

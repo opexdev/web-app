@@ -7,12 +7,20 @@ const initialState = {
     wallet: {
         IRT: 0.0,
         BTC: 0.0,
-        ETH: 0.0
+        ETH: 0.0,
+        LTC: 0.0,
+        DOGE: 0.0,
+        BCH: 0.0,
+        USDT: 0.0,
     },
     tradeFee:{
         IRT: 0.0,
         BTC: 0.0,
-        ETH: 0.0
+        ETH: 0.0,
+        LTC: 0.0,
+        DOGE: 0.0,
+        BCH: 0.0,
+        USDT: 0.0,
     },
     isLogin: false
 }
@@ -26,13 +34,21 @@ const reducer = (state = initialState, action) => {
                 lastName: "تفضلی",
                 wallet: {
                     IRT: 100000,
-                    BTC: 0.005,
-                    ETH: 0.2
+                    BTC: 0.5,
+                    ETH: 10.2,
+                    LTC: 6.0,
+                    DOGE: 50000.0,
+                    BCH: 56.0,
+                    USDT: 100.0,
                 },
                 tradeFee:{
                     IRT: 0.0001,
                     BTC: 0.0002,
-                    ETH: 0.0003
+                    ETH: 0.0003,
+                    LTC: 0.0,
+                    DOGE: 0.0,
+                    BCH: 0.0,
+                    USDT: 0.0,
                 },
                 token: action.token,
                 isLogin: true
