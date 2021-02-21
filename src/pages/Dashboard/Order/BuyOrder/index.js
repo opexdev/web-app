@@ -128,6 +128,7 @@ const BuyOrder = (props) => {
                 <span className="pl-05">{t('orders.stopLimit')}</span>
                 <input
                     type="checkbox"
+                    className="cursor-pointer"
                     checked={order.stopLimit}
                     onChange={(e) => setOrder({...order, stopLimit: e.target.checked})}
                 />
@@ -170,6 +171,7 @@ const BuyOrder = (props) => {
                 <span className="pl-05">{t('orders.marketBuyPrice')}</span>
                 <input
                     type="checkbox"
+                    className="cursor-pointer"
                     checked={order.stopMarket}
                     onChange={(e) => setOrder({...order, stopMarket: e.target.checked})}
                 />

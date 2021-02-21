@@ -63,7 +63,7 @@ const OrderBookTable = (props) => {
                                     <tr key={index} style={barStyle}
                                         onMouseEnter={()=>setSelected({...selected,sell:index})}
                                         onMouseLeave={()=>setSelected({...selected,sell:-1})}
-                                        data-html={true} className={selected.sell >= index ? "selected":""}
+                                        data-html={true} className={`${selected.sell >= index ? "selected":""} cursor-pointer`}
                                         data-place="bottom"
                                         data-effect="float"
                                         data-tip={`
@@ -96,7 +96,7 @@ const OrderBookTable = (props) => {
                                     <tr key={index} style={barStyle}
                                         onMouseEnter={()=>setSelected({...selected,buy:index})}
                                         onMouseLeave={()=>setSelected({...selected,buy:-1})}
-                                        data-html={true} className={selected.buy >= index ? "selected":""}
+                                        data-html={true} className={`${selected.buy >= index ? "selected":""} cursor-pointer `}
                                         data-place="bottom"
                                         data-effect="float"
                                         data-tip={`

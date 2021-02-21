@@ -5,7 +5,7 @@
     height: 12%;
     padding: 1vh 1vw;
 }
-.header h3{
+.header h2{
     color: var(--orange);
 }
 .header span{
@@ -15,4 +15,9 @@
 .content{
     height: 88%;
     /*background-color: #F58634;*/
+}
+.content div{
+    height: 6vh;
+    display: flex;
+    align-items: center;
 }

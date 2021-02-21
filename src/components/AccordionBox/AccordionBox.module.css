@@ -86,7 +86,7 @@
 .items li{
     list-style: none;
     padding: 0.8vh 0.7vw;
-
+    cursor: pointer;
     /*background: #d4e987;*/
     /* background: #fcfeff;*/
     /* transition: all 1s ease-in-out;*/

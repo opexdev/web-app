@@ -51,6 +51,9 @@
 .stopMarket{
     background: var(--cardHeader);
 }
+.stopMarket input{
+    cursor: not-allowed;
+}
 .safariFlexSize :global(.accordion-header){
     flex: 17;
 }

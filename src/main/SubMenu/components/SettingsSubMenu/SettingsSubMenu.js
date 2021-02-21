@@ -12,21 +12,21 @@ const SettingsSubMenu = () => {
         <div className={`container card-background column ${classes.container}`}>
             <div className={`column border-bottom jc-center card-header-bg  ${classes.header}`}>
                 <div className="row jc-start ">
-                    <h3>تنظیمات</h3>
+                    <h2>تنظیمات</h2>
                 </div>
             </div>
-            <div className={`column container ${classes.content}`}>
-                <div className="row">
-                    <Icon iconName="icon-vcard text-color font-size-md" customClass={classes.iconBG}/>
-                    <span>مشخصات کاربری</span>
+            <div className={`column container px-1 py-2 ${classes.content}`}>
+                <div className="row cursor-pointer">
+                    <Icon iconName="icon-vcard text-color font-size-md-plus" customClass={classes.iconBG}/>
+                    <span className="pr-05">مشخصات کاربری</span>
                 </div>
-                <div className="row">
-                    <Icon iconName="icon-lock-3 text-color font-size-md" customClass={classes.iconBG}/>
-                    <span>امنیت</span>
+                <div className="row cursor-pointer">
+                    <Icon iconName="icon-lock-3 text-color font-size-md-plus" customClass={classes.iconBG}/>
+                    <span className="pr-05">امنیت</span>
                 </div>
-                <div className="row">
-                    <Icon iconName="icon-tag text-color font-size-md" customClass={classes.iconBG}/>
-                    <span>شخصی سازی</span>
+                <div className="row cursor-pointer">
+                    <Icon iconName="icon-tag text-color font-size-md-plus" customClass={classes.iconBG}/>
+                    <span className="pr-05">شخصی سازی</span>
                 </div>
 
             </div>

@@ -59,19 +59,19 @@ const MyOrders = (props) => {
                             <td>{tr.progress}</td>
                             <td>
                                 {/*<i className="icon-delete flex jc-center text-red font-size-md"/>*/}
-                                <Icon iconName="icon-cancel text-red font-size-sm" customClass={classes.iconBG}/>
+                                <Icon iconName="icon-cancel text-red font-size-sm" customClass={`${classes.iconBG} cursor-pointer`}/>
 
                             </td>
                             {
                                 openItem.current === index ?
                                     <td onClick={() => setOpenItem({...openItem, current: null})}>
                                         {/*<i className="icon-up flex jc-center  text-blue font-size-md"/>*/}
-                                        <Icon iconName="icon-up-open icon-blue font-size-sm" customClass={classes.iconBG}/>
+                                        <Icon iconName="icon-up-open icon-blue font-size-sm" customClass={`${classes.iconBG} cursor-pointer`}/>
                                     </td>
                                     :
                                     <td onClick={() => setOpenItem({...openItem, current: index})}>
                                         {/*<i className="icon-down flex jc-center  text-blue font-size-md"/>*/}
-                                        <Icon iconName="icon-down-open icon-blue font-size-sm" customClass={classes.iconBG}/>
+                                        <Icon iconName="icon-down-open icon-blue font-size-sm" customClass={`${classes.iconBG} cursor-pointer`}/>
                                     </td>
                             }
                         </tr>
@@ -116,7 +116,7 @@ const MyOrders = (props) => {
                     <td>{tr.stopPrice}</td>
                     <td>
                         {/*<td><i className="icon-delete flex jc-center  text-red font-size-md"/></td>*/}
-                        <Icon iconName="icon-cancel text-red font-size-sm" iconBG={`bg-red ${classes.iconBG}`}/>
+                        <Icon iconName="icon-cancel text-red font-size-sm" iconBG={`bg-red ${classes.iconBG} cursor-pointer`}/>
                     </td>
                 </tr>
             )}
@@ -150,12 +150,12 @@ const MyOrders = (props) => {
                             openItem.history === index ?
                                 <td onClick={() => setOpenItem({...openItem, history: null})}>
                                     {/*<i className="icon-up flex jc-center  text-blue font-size-md"/>*/}
-                                    <Icon iconName="icon-up-open icon-blue font-size-sm" customClass={classes.iconBG}/>
+                                    <Icon iconName="icon-up-open icon-blue font-size-sm" customClass={`${classes.iconBG} cursor-pointer`}/>
                                 </td>
                                 :
                                 <td onClick={() => setOpenItem({...openItem, history: index})}>
                                     {/*<i className="icon-down flex jc-center  text-blue font-size-md"/>*/}
-                                    <Icon iconName="icon-down-open icon-blue font-size-sm" customClass={classes.iconBG}/>
+                                    <Icon iconName="icon-down-open icon-blue font-size-sm" customClass={`${classes.iconBG} cursor-pointer`}/>
                                 </td>
                         }
                     </tr>
@@ -207,12 +207,12 @@ const MyOrders = (props) => {
                             openItem.trade === index ?
                                 <td onClick={() => setOpenItem({...openItem, trade: null})}>
                                     {/*<i className="icon-up flex jc-center  text-blue font-size-md"/>*/}
-                                    <Icon iconName="icon-up-open icon-blue font-size-sm" customClass={classes.iconBG}/>
+                                    <Icon iconName="icon-up-open icon-blue font-size-sm" customClass={`${classes.iconBG} cursor-pointer`}/>
                                 </td>
                                 :
                                 <td onClick={() => setOpenItem({...openItem, trade: index})}>
                                     {/*<i className="icon-down flex jc-center  text-blue font-size-md"/>*/}
-                                    <Icon iconName="icon-down-open icon-blue font-size-sm" customClass={classes.iconBG}/>
+                                    <Icon iconName="icon-down-open icon-blue font-size-sm" customClass={`${classes.iconBG} cursor-pointer`}/>
                                 </td>
                         }
                     </tr>

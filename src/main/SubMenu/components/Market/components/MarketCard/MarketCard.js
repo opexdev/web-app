@@ -22,7 +22,7 @@ const MarketCard = (props) => {
     }
 
     let items = props.pairs.map((pair) =>
-        <div  onClick={()=>props.onSetActivePair(pair.name)} key={pair.name} className={`container row jc-between ai-center px-05 py-05 ${classes.container} ${props.activePair === pair.name ? classes.selected :""} `}>
+        <div  onClick={()=>props.onSetActivePair(pair.name)} key={pair.name} className={`container row jc-between ai-center px-05 py-05 cursor-pointer ${classes.container} ${props.activePair === pair.name ? classes.selected :""} `}>
             <div className={` row jc-between ai-center ${classes.marketCardImage}`}>
                 <img className={`img-md flex`} src={imageHandler(pair.name)} alt="bitcoin" title="bitcoin"/>
             </div>
