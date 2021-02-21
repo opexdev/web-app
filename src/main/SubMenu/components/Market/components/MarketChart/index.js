@@ -31,7 +31,7 @@ const MarketChart = (props) => {
         <div style={{width:'4vw',height:'3vh',display:"block"}}>
             <ResponsiveLine
                 data={data}
-                margin={{ top: 2, right: 2, bottom: 2, left: 2 }}
+                margin={{ top: 3, right: 3, bottom: 3, left: 3 }}
                 xScale={{ type: 'point' }}
                 yScale={{ type: 'linear', min: 'auto', max: 'auto', stacked: true, reverse: false }}
                 yFormat=" >-.2f"

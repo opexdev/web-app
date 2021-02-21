@@ -28,10 +28,10 @@
     transition: background-color 0.4s, box-shadow 0.4s;
 }
 :global(.ltr) .selected:before{
-    right: 1vw;
+    right: 0;
     left: initial;
     border-top-right-radius: 10px;
-    box-shadow: 7px -2px 0 0 var(--cardBody);
+    box-shadow: 5px -10px 0 0 var(--mainContent);
 
 }
 .selected:after{
@@ -47,9 +47,9 @@
     transition: background-color 0.4s, box-shadow 0.4s;
 }
 :global(.ltr) .selected:after{
-    right: 1vw;
+    right: 0;
     left: initial;
     border-bottom-right-radius: 10px;
-    box-shadow: 7px 2px 0 0 var(--mainContent);
+    box-shadow: 5px 10px 0 0 var(--mainContent);
 
 }
