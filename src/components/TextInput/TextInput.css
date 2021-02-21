@@ -106,3 +106,43 @@
     font-size: 0.7vw;
     color: var(--textRed);
 }
+.select-box {
+    width: 50%;
+}
+.select__control {
+    border-color: transparent !important;
+    background-color: transparent !important;
+    box-shadow: none !important;
+}
+.select__control:hover {
+    border-color: transparent !important;
+    background-color: transparent !important;
+    box-shadow: none !important;
+}
+.select__menu{
+    margin-top: 0;
+}
+.select__option--is-focused{
+    color: var(--alternateTextColor) !important;
+    background-color: var(--activeTab);
+}
+.select__option--is-selected{
+    background-color: var(--activeTab);
+}
+.select__indicator-separator {
+    width: 1px !important;
+    webkit-align-self: stretch !important;
+    -ms-flex-item-align: stretch !important;
+    background: hsl(0, 0%, 80%);
+    border: none !important;
+    height: auto !important;
+}
+.select__menu {
+    background-color: var(--cardBody) !important;
+}
+.select__single-value {
+    color: var(--textColor) !important;
+}
+.select__value-container {
+    justify-content: center;
+}

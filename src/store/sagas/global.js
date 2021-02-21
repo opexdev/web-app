@@ -10,6 +10,6 @@ export function* loadConfig() {
     const isDark = yield localStorage.getItem("isDark");
     const token = yield localStorage.getItem("token");
     yield put(actions.setTheme(isDark === 'true'));
-    yield put(actions.setLoading(false));
-    if(token !== "null") return yield put(actions.login(token))
+    if(token !== "null") yield put(actions.login(token));
+    //yield put(actions.setLoading(false));
 }

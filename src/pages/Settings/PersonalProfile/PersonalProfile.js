@@ -1,18 +1,15 @@
-import React, {Fragment, useState, useEffect} from 'react';
+import React, { useState, useEffect} from 'react';
 import classes from "./PersonalProfile.module.css"
-import ScrollBar from "../../../components/ScrollBar";
 import AccordionBox from "../../../components/AccordionBox/AccordionBox";
-import moment from "moment-jalaali";
 import {connect} from "react-redux";
 import {useTranslation} from "react-i18next";
-
 import {MyOrderCurrentData, MyOrderStopData, MyOrderHistoryData, MyOrderTradeData} from "../../../FakeData/FakeData";
-import Icon from "../../../components/Icon/Icon";
 import TextInput from "../../../components/TextInput/TextInput";
+
 
 const PersonalProfile = (props) => {
 
-    const [proile, setProfile] = useState({
+    const [profile, setProfile] = useState({
         firstNameEn:"",
         lastNameEn:"",
         firstNameMain:"",
@@ -52,6 +49,15 @@ const PersonalProfile = (props) => {
         })
     }, [])
 
+    const options = [
+        { value: 'IRAN', label: 'جمهوری اسلامی ایران' },
+        { value: 'Germany', label: 'آلمان' },
+        { value: 'UK', label: 'انگلیس' },
+        { value: 'TR', label: 'ترکیه' },
+        { value: 'UAE', label: 'امارات متحده عربی' }
+    ]
+
+
     const profileContent = <div className={`column jc-between ai-center ${classes.content} `}>
 
         <div className="row jc-between">
@@ -59,16 +65,16 @@ const PersonalProfile = (props) => {
                 <TextInput
                     lead="نام (انگلیسی)"
                     type="text"
-                    value={proile.firstNameEn}
-                    onchange={(e)=> setProfile({...proile,firstNameEn: e.target.value})}
+                    value={profile.firstNameEn}
+                    onchange={(e)=> setProfile({...profile,firstNameEn: e.target.value})}
                 />
             </div>
             <div className="col-49">
                 <TextInput
                     lead="نام خانوادگی (انگلیسی)"
                     type="text"
-                    value={proile.lastNameEn}
-                    onchange={(e)=> setProfile({...proile,lastNameEn: e.target.value})}
+                    value={profile.lastNameEn}
+                    onchange={(e)=> setProfile({...profile,lastNameEn: e.target.value})}
                 />
             </div>
         </div>
@@ -77,34 +83,37 @@ const PersonalProfile = (props) => {
                 <TextInput
                     lead="نام (زبان اصلی)"
                     type="text"
-                    value={proile.firstNameMain}
-                    onchange={(e)=> setProfile({...proile,firstNameMain: e.target.value})}
+                    value={profile.firstNameMain}
+                    onchange={(e)=> setProfile({...profile,firstNameMain: e.target.value})}
                 />
             </div>
             <div className="col-49">
                 <TextInput
                     lead="نام خانوادگی (زبان اصلی)"
                     type="text"
-                    value={proile.lastNameMain}
-                    onchange={(e)=> setProfile({...proile,lastNameMain: e.target.value})}
+                    value={profile.lastNameMain}
+                    onchange={(e)=> setProfile({...profile,lastNameMain: e.target.value})}
                 />
             </div>
         </div>
         <div className="row jc-between">
             <div className="col-49">
                 <TextInput
+                    select={true}
+                    placeholder={"ملیت خود را انتخاب کنید"}
+                    options={options}
                     lead="ملیت"
                     type="text"
-                    value={proile.nationality}
-                    onchange={(e)=> setProfile({...proile,nationality: e.target.value})}
+                    onchange={(e)=> setProfile({...profile,nationality: e.value})}
                 />
             </div>
             <div className="col-49">
                 <TextInput
+                    placeholder="کشور محل اقامت خود را انتخاب کنید"
                     lead="محل اقامت"
                     type="text"
-                    value={proile.residence}
-                    onchange={(e)=> setProfile({...proile,residence: e.target.value})}
+                    value={profile.residence}
+                    onchange={(e)=> setProfile({...profile,residence: e.target.value})}
                 />
             </div>
         </div>
@@ -113,16 +122,16 @@ const PersonalProfile = (props) => {
                 <TextInput
                     lead="تاریخ تولد (میلادی)"
                     type="text"
-                    value={proile.DateOfBirth}
-                    onchange={(e)=> setProfile({...proile,DateOfBirth: e.target.value})}
+                    value={profile.DateOfBirth}
+                    onchange={(e)=> setProfile({...profile,DateOfBirth: e.target.value})}
                 />
             </div>
             <div className="col-49">
                 <TextInput
                     lead="تاریخ تولد (غیرمیلادی)"
                     type="text"
-                    value={proile.DateOfBirthAlt}
-                    onchange={(e)=> setProfile({...proile,DateOfBirthAlt: e.target.value})}
+                    value={profile.DateOfBirthAlt}
+                    onchange={(e)=> setProfile({...profile,DateOfBirthAlt: e.target.value})}
                 />
             </div>
         </div>
@@ -131,16 +140,16 @@ const PersonalProfile = (props) => {
                 <TextInput
                     lead="شناسه ملی"
                     type="text"
-                    value={proile.nationalID}
-                    onchange={(e)=> setProfile({...proile,nationalID: e.target.value})}
+                    value={profile.nationalID}
+                    onchange={(e)=> setProfile({...profile,nationalID: e.target.value})}
                 />
             </div>
             <div className="col-49">
                 <TextInput
                     lead="شماره پاسپورت"
                     type="text"
-                    value={proile.passportNumber}
-                    onchange={(e)=> setProfile({...proile,passportNumber: e.target.value})}
+                    value={profile.passportNumber}
+                    onchange={(e)=> setProfile({...profile,passportNumber: e.target.value})}
                 />
             </div>
         </div>
@@ -149,16 +158,16 @@ const PersonalProfile = (props) => {
                 <TextInput
                     lead="تلفن همراه"
                     type="text"
-                    value={proile.phoneNumber}
-                    onchange={(e)=> setProfile({...proile,phoneNumber: e.target.value})}
+                    value={profile.phoneNumber}
+                    onchange={(e)=> setProfile({...profile,phoneNumber: e.target.value})}
                 />
             </div>
             <div className="col-49">
                 <TextInput
                     lead="تلفن ثابت"
                     type="text"
-                    value={proile.telephone}
-                    onchange={(e)=> setProfile({...proile,telephone: e.target.value})}
+                    value={profile.telephone}
+                    onchange={(e)=> setProfile({...profile,telephone: e.target.value})}
                 />
             </div>
         </div>
@@ -167,16 +176,16 @@ const PersonalProfile = (props) => {
                 <TextInput
                     lead="پست الکترونیک"
                     type="email"
-                    value={proile.email}
-                    onchange={(e)=> setProfile({...proile,email: e.target.value})}
+                    value={profile.email}
+                    onchange={(e)=> setProfile({...profile,email: e.target.value})}
                 />
             </div>
             <div className="col-49">
                 <TextInput
                     lead="کد پستی"
                     type="text"
-                    value={proile.postalCode}
-                    onchange={(e)=> setProfile({...proile,postalCode: e.target.value})}
+                    value={profile.postalCode}
+                    onchange={(e)=> setProfile({...profile,postalCode: e.target.value})}
                 />
             </div>
         </div>
@@ -186,8 +195,8 @@ const PersonalProfile = (props) => {
                     lead="آدرس"
                     customClass={classes.addressInput}
                     type="text"
-                    value={proile.address}
-                    onchange={(e)=> setProfile({...proile,address: e.target.value})}
+                    value={profile.address}
+                    onchange={(e)=> setProfile({...profile,address: e.target.value})}
                 />
             </div>
         </div>

@@ -14,7 +14,6 @@ import {images} from "../assets/images";
 import Wallet from "../pages/Wallet/wallet"
 import {BrowserView, MobileView} from "react-device-detect";
 import ReactTooltip from "react-tooltip";
-import Chart from "../pages/Chart/chart";
 import ProtectedRoute from "../components/ProtectedRoute";
 import Login from "../pages/Login/Login";
 import *  as Routes from '../routes/routes';
@@ -23,13 +22,13 @@ import {isSafari} from 'react-device-detect'
 import Settings from "../pages/Settings/settings";
 
 
-
 const App = (props) => {
     const {t} = useTranslation();
     const [ltr, setLtr] = useState(false)
 
     useEffect(() => {
         props.onLoad();
+        i18n.language !== "fa" ? setLtr(true) : setLtr(false);
         i18n.on('languageChanged', (lng) => {
             lng !== "fa" ? setLtr(true) : setLtr(false)
         })
@@ -45,36 +44,46 @@ const App = (props) => {
                         <Login/>
                     </Route>
                     <Fragment>
-                    <div className={`container ${props.isDark ? 'dark' : ''} ${ltr ? "ltr" : "rtl"} ${isSafari ? "" : "user-select"}`}>
-                        {props.isLoading ? <FullWidthLoading/> : null}
-                        <ReactTooltip data-html={true} data-effect="float"/>
-                        <div className="row">
-                            <MainMenu/>
-                            <SubMenu/>
-                            <div className="column content">
-                                <Header/>
-                                <ScrollBar>
-                                    <Switch>
-                                    <Route exact path={Routes.Dashboard}>
-                                        <Dashboard/>
-                                    </Route>
-                                    <ProtectedRoute component={Wallet} isLogin={props.isLogin} exact path={Routes.Wallet}/>
-                                    <ProtectedRoute component={Settings} isLogin={props.isLogin} exact path={Routes.Settings}/>
-                                    {/*<ProtectedRoute component={Chart} isLogin={props.isLogin} exact path={Routes.Technical}/>*/}
-                                    <Route path="*">
-                                        <div className="container flex ai-center jc-center" style={{height:"70%"}}>
-                                            <h1>{t('comingSoon')}</h1>
+                        <div
+                            className={`container ${props.isDark ? 'dark' : ''} ${ltr ? "ltr" : "rtl"} ${isSafari ? "" : "user-select"}`}>
+                            {props.isLoading ?
+                                <FullWidthLoading/>
+                                : <Fragment>
+                                    <ReactTooltip data-html={true} data-effect="float"/>
+                                    <div className="row">
+                                        <MainMenu/>
+                                        <SubMenu/>
+                                        <div className="column content">
+                                            <Header/>
+                                            <ScrollBar>
+                                                <Switch>
+                                                    <Route exact path={Routes.Dashboard}>
+                                                        <Dashboard/>
+                                                    </Route>
+                                                    <ProtectedRoute component={Wallet} isLogin={props.isLogin} exact
+                                                                    path={Routes.Wallet}/>
+                                                    <ProtectedRoute component={Settings} isLogin={props.isLogin} exact
+                                                                    path={Routes.Settings}/>
+                                                    {/*<ProtectedRoute component={Chart} isLogin={props.isLogin} exact path={Routes.Technical}/>*/}
+                                                    <Route path="*">
+                                                        <div className="container flex ai-center jc-center"
+                                                             style={{height: "70%"}}>
+                                                            <h1>{t('comingSoon')}</h1>
+                                                        </div>
+                                                    </Route>
+                                                </Switch>
+                                                <Footer/>
+                                            </ScrollBar>
                                         </div>
-                                    </Route>
-                                    </Switch>
-                                    <Footer/>
-                                </ScrollBar>
-                            </div>
+                                    </div>
+                                </Fragment>}
+
                         </div>
-                    </div>
                     </Fragment>
                 </Switch>
             </BrowserView>
+
+
             <MobileView style={{padding: "2vh 3vw"}}>
 
                 <div className="mobile-view">

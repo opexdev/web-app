@@ -20,9 +20,8 @@ const MarketCard = (props) => {
         const [base, quote] = pairName.split("/")
         return images[base]
     }
-
     let items = props.pairs.map((pair) =>
-        <div  onClick={()=>props.onSetActivePair(pair.name)} key={pair.name} className={`container row jc-between ai-center px-05 py-05 ${classes.container} ${props.activePair === pair.name ? classes.selected :""} `}>
+        <div  onClick={()=>props.onSetActivePair(pair.name)} key={pair.name} className={`container row jc-between ai-center px-05 py-05 cursor-pointer ${classes.container} ${props.activePair === pair.name ? classes.selected :""} `}>
             <div className={` row jc-between ai-center ${classes.marketCardImage}`}>
                 <img className={`img-md flex`} src={imageHandler(pair.name)} alt="bitcoin" title="bitcoin"/>
             </div>
@@ -30,7 +29,7 @@ const MarketCard = (props) => {
                 <div className={`column `}>
                     <span>{pair.name}</span>
                     <div className={`row jc-between ai-center`}>
-                        <span onClick={() => props.addFav(pair.name)}>
+                        <span onClick={(e) => {e.stopPropagation();props.addFav(pair.name) }} data-name={pair.name}>
                             <Icon iconName={`${ props.favPair.includes(pair.name) ? 'icon-star-filled' : 'icon-star' } text-color font-size-md`}/>
                         </span>
                         <span className={`font-size-sm ${ (pair.Type) === 'increase'? 'text-green' : 'text-red' } `}>%{pair.Change}</span>
