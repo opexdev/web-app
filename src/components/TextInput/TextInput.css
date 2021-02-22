@@ -57,7 +57,7 @@
     text-align: center;
     font-family: iranyekan , serif;
     background: none;
-    color: var(--textColor);
+    color: var(--textColor) !important;
 }
 .ltr .input-group input{
     font-family: 'Segoe UI', serif;
@@ -123,7 +123,7 @@
     margin-top: 0;
 }
 .select__option--is-focused{
-    color: var(--alternateTextColor) !important;
+    color: #444444 !important;
     background-color: var(--activeTab);
 }
 .select__option--is-selected{

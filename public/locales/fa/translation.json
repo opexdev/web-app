@@ -30,6 +30,9 @@
     "LTC": "لایت کوین",
     "BCH": "بیتکوین کش"
   },
+  "routes": {
+    "/settings/profile":"مشخصات کاربری"
+  },
   "ordersStatus": {
     "live": "جاری شده",
     "reject": "رد شده",

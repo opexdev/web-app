@@ -81,7 +81,7 @@ const TradingView = (props) => {
         timeScale: {
             borderColor: '#2b2b43',
             tickMarkFormatter: (time, tickMarkType, locale) => {
-                return moment( time * 1000 ).format('jYYYY/jM/jD');
+                return moment(time * 1000).format('jYYYY/jM/jD');
             }
         },
 
@@ -93,22 +93,23 @@ const TradingView = (props) => {
         chartProperties = {
             width: chartContainerRef.current.clientWidth,
             height: chartContainerRef.current.clientHeight,
-            layout: {...lightTheme.layout,
+            layout: {
+                ...lightTheme.layout,
                 fontFamily: (i18next.language === undefined || i18next.language === "fa") ? "iranyekan" : "Segoe UI"
             },
             grid: lightTheme.grid,
             priceScale: lightTheme.priceScale,
             timeScale: lightTheme.timeScale,
-
         }
-
 
         if (props.isDark) {
             theme = darkTheme;
             chartProperties = {
                 ...chartProperties,
-                layout: {...lightTheme.layout,
-                    fontFamily: (i18next.language === undefined || i18next.language === "fa") ? "iranyekan" : "Segoe UI"},
+                layout: {
+                    ...darkTheme.layout,
+                    fontFamily: (i18next.language === undefined || i18next.language === "fa") ? "iranyekan" : "Segoe UI"
+                },
                 grid: darkTheme.grid,
                 priceScale: darkTheme.priceScale,
                 timeScale: darkTheme.timeScale,
@@ -119,7 +120,7 @@ const TradingView = (props) => {
         const candleSeries = chart.current.addCandlestickSeries(theme);
         const volumeSeries = chart.current.addHistogramSeries(histogramColors);
 
-        fetch(`https://api.binance.com/api/v3/klines?symbol=BTCUSDT&interval=1d&limit=200`)
+        fetch(`https://api.binance.com/api/v3/klines?symbol=${props.activePair.base}${props.activePair.quote === "IRT" ? "USDT" : props.activePair.quote}&interval=1d&limit=200`)
             .then(res => res.json())
             .catch(() => JSON.parse(mock))
             .then((data) => {
@@ -138,8 +139,6 @@ const TradingView = (props) => {
                 candleSeries.setData(cdata);
                 volumeSeries.setData(cdata);
             })
-
-
 
 
         /*function businessDayToString(businessDay) {
@@ -195,7 +194,7 @@ const TradingView = (props) => {
                 chart.current = null;
             }
         }
-    }, []);
+    }, [props.activePair]);
 
 
     React.useEffect(() => {
@@ -204,9 +203,9 @@ const TradingView = (props) => {
                 chart.current.applyOptions({
                     localization: {
                         locale: lng === "fa" ? "fa-IR" : "en-US",
-                        dateFormat:  console.log("rub"),
+                        dateFormat: console.log("rub"),
                     },
-                    layout: { fontFamily: (i18next.language === undefined || i18next.language === "fa") ? "iranyekan" : "Segoe UI"},
+                    layout: {fontFamily: (i18next.language === undefined || i18next.language === "fa") ? "iranyekan" : "Segoe UI"},
                 })
                 // chart.current.applyOptions({
                 //     localization: {
@@ -236,8 +235,10 @@ const TradingView = (props) => {
         if (props.isDark) {
             chart.current.applyOptions({
                 ...chartProperties,
-                layout: {...darkTheme.layout,
-                    fontFamily: (i18next.language === undefined || i18next.language === "fa") ? "iranyekan" : "Segoe UI"},
+                layout: {
+                    ...darkTheme.layout,
+                    fontFamily: (i18next.language === undefined || i18next.language === "fa") ? "iranyekan" : "Segoe UI"
+                },
                 grid: darkTheme.grid,
                 priceScale: darkTheme.priceScale,
                 timeScale: darkTheme.timeScale,
@@ -245,8 +246,10 @@ const TradingView = (props) => {
         } else {
             chart.current.applyOptions({
                 ...chartProperties,
-                layout: {...lightTheme.layout,
-                    fontFamily: (i18next.language === undefined || i18next.language === "fa") ? "iranyekan" : "Segoe UI"},
+                layout: {
+                    ...lightTheme.layout,
+                    fontFamily: (i18next.language === undefined || i18next.language === "fa") ? "iranyekan" : "Segoe UI"
+                },
                 grid: lightTheme.grid,
                 priceScale: lightTheme.priceScale,
                 timeScale: lightTheme.timeScale,
@@ -254,13 +257,8 @@ const TradingView = (props) => {
         }
 
     }, [props.isDark]);
-
-
     return (
-        <div ref={chartContainerRef} className={`container card-background card-border  ${classes.chartContainer}`}>
-
-        </div>
-    );
+        <div ref={chartContainerRef} className={`container card-background card-border  ${classes.chartContainer}`}/>);
 };
 
 const mapStateToProps = state => {

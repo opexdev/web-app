@@ -11,5 +11,5 @@ export function* loadConfig() {
     const token = yield localStorage.getItem("token");
     yield put(actions.setTheme(isDark === 'true'));
     if(token !== "null") yield put(actions.login(token));
-    //yield put(actions.setLoading(false));
+    yield put(actions.setLoading(false));
 }

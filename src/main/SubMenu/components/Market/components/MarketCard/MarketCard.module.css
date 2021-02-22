@@ -10,9 +10,15 @@
 }
 .selected{
     background-color: var(--mainContent);
-    border-top-right-radius: 10px;
-    border-bottom-right-radius: 10px;
+    border-radius: 0 10px 10px 0;
     transition: 0.4s background-color;
+    width: 97% !important;
+    margin-right: 3% !important;
+}
+:global(.ltr) .selected{
+    border-radius: 10px 0 0 10px;
+    margin-left: 3% !important;
+    margin-right: 0 !important;
 }
 
 .selected:before{
@@ -51,5 +57,4 @@
     left: initial;
     border-bottom-right-radius: 10px;
     box-shadow: 5px 10px 0 0 var(--mainContent);
-
 }

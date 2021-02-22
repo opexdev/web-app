@@ -41,7 +41,17 @@
   "pair": {
     "BTC/IRT" : "BTC/IRT",
     "ETH/IRT" : "ETH/IRT",
-    "ETH/BTC": "ETH/BTC"
+    "ETH/BTC": "ETH/BTC",
+    "BTC/USDT": "BTC/USDT",
+    "LTC/BTC": "LTC/BTC",
+    "DOGE/BTC": "DOGE/BTC",
+    "BCH/BTC": "BCH/BTC",
+    "LTC/IRT": "LTC/IRT",
+    "DOGE/IRT": "DOGE/IRT",
+    "BCH/IRT": "BCH/IRT",
+    "ETH/USDT": "ETH/USDT",
+    "DOGE/USDT": "DOGE/USDT",
+    "BCH/USDT": "BCH/USDT"
   },
   "header": {
     "lastPrice" : "Last Price",

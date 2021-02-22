@@ -121,7 +121,6 @@
     /*--tableRow: #F1F3F878;*/
     --tableRow: #e2e9f978;
     --textColor: #444444;
-    --alternateTextColor: #ecececc7;
 
     --textDark: #0707073b;
 
@@ -178,17 +177,12 @@
     --mainContent: #383A59;
     --cardBody: #282a36;
     --textColor: #ecececc7;
-    --alternateTextColor: #444444;
 
     --cardHeader: #242633fa;
     --textGreen: #50fa7ba1;
     --textRed: #ff5555;
-
     --textDark: #f9f9f9;
-
-
     --textBlue: #f3f7ff78;
-
     --textGreenAlpha: #18A97978;
     --textRedAlpha: #d73e3678;
     --activeTab: #007BFF;

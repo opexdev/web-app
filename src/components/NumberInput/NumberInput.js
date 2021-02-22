@@ -26,23 +26,7 @@ const NumberInput = (props) => {
                          data-html={true}
                          data-place="left"
                          data-effect="float"
-                         data-tip={`
-                                            <div class="column jc-between col-100">
-                                                <div class="row jc-between col-100">
-                                                    <span class="pl-05">info</span>
-                                                    <span >info</span>
-                                                </div>
-                                                <div class="row jc-between col-100">
-                                                    <span class="pl-05">info</span>
-                                                    <span >info</span>
-                                                </div>
-                                                <div class="row jc-between col-100">
-                                                    <span class="pl-05">info</span>
-                                                    <span >info</span>
-                                                </div>
-                                            </div>
-                                        `}
-
+                         data-tip={props.hint}
                     >
                         <Icon iconName="icon-info icon-white font-size-sm" customClass="hint-icon"/>
                         <span className="alert pr-05">{props.alert}</span>
