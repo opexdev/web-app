@@ -8,14 +8,16 @@ const SetTwoStepVerification = () => {
     const {t} = useTranslation();
 
     return (
-        <div className={`container card-background card-border column ${classes.container}`}>
-            <div className={`column border-bottom jc-center card-header-bg  ${classes.header}`}>
-                <div className="row jc-start ">
-                    <h3>SetTwoStepVerification</h3>
+        <div className="container py-2">
+            <div className={`container card-background card-border column ${classes.container}`}>
+                <div className={`column border-bottom jc-center card-header-bg  ${classes.header}`}>
+                    <div className="row jc-start ">
+                        <h3>SetTwoStepVerification</h3>
+                    </div>
                 </div>
-            </div>
-            <div className={`row container ${classes.content}`}>
-                SetTwoStepVerification
+                <div className={`row container ${classes.content}`}>
+                    SetTwoStepVerification
+                </div>
             </div>
         </div>
     );

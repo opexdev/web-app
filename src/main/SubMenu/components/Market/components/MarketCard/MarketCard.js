@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Fragment} from 'react';
 import classes from "./MarketCard.module.css"
 import ScrollBar from "../../../../../../components/ScrollBar";
 import {useTranslation} from "react-i18next";
@@ -21,9 +21,9 @@ const MarketCard = (props) => {
         return images[base]
     }
     let items = props.pairs.map((pair) =>
-        <div  onClick={()=>props.onSetActivePair(pair.name)} key={pair.name} className={`container row jc-between ai-center px-05 py-05 cursor-pointer ${classes.container} ${props.activePair === pair.name ? classes.selected :""} `}>
+        <div onClick={()=>props.onSetActivePair(pair.name)} key={pair.name} className={`container row jc-between ai-center px-05 py-05 cursor-pointer ${classes.container} ${props.activePair === pair.name ? classes.selected :""} `}>
             <div className={` row jc-between ai-center ${classes.marketCardImage}`}>
-                <img className={`img-md flex`} src={imageHandler(pair.name)} alt="bitcoin" title="bitcoin"/>
+                <img className={`img-md flex`} src={imageHandler(pair.name)} alt={(pair.name)} title={(pair.name)}/>
             </div>
             <div className={`row jc-between ai-center ${classes.marketCardContent}`}>
                 <div className={`column `}>
@@ -35,6 +35,7 @@ const MarketCard = (props) => {
                         <span className={`font-size-sm ${ (pair.Type) === 'increase'? 'text-green' : 'text-red' } `}>%{pair.Change}</span>
                     </div>
                 </div>
+
                 <div className={`column ai-center`}>
                     <MarketChart color={(pair.Type) === 'increase'? green : red } data={pair.price7d}/>
                 </div>

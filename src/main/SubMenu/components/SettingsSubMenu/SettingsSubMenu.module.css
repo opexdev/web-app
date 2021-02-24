@@ -1,9 +1,11 @@
 .container{
     height: 100vh;
+    width: 100%;
 }
 .header{
-    height: 12%;
+    height: 10%;
     padding: 1vh 1vw;
+    z-index: 100;
 }
 .header h2{
     color: var(--orange);
@@ -13,11 +15,65 @@
     text-align: center;
 }
 .content{
-    height: 88%;
+    height: 90%;
     /*background-color: #F58634;*/
 }
 .content div{
     height: 6vh;
     display: flex;
     align-items: center;
+}
+
+.container a.selected{
+    background-color: var(--mainContent);
+    position: relative;
+    margin-right: 1.5vw;
+    border-radius: 0 9px 9px 0;
+    padding: 1vh 0.5vw;
+    /*width: 95%;*/
+    transition: background-color 0.4s;
+}
+:global(.ltr) .container a.selected{
+    margin-left: 1.5vw;
+    margin-right: initial;
+    border-radius: 9px 0 0 9px;
+}
+
+.selected:before{
+    content: "";
+    position: absolute;
+    background-color: var(--cardBody);
+    width: 15px;
+    height: 15px;
+    border-top-left-radius: 10px;
+    bottom: -15px;
+    left: 0vw;
+    box-shadow: -3px -7px 0 0 var(--mainContent);
+    transition: background-color 0.4s, box-shadow 0.4s;
+}
+:global(.ltr) .selected:before{
+    right: 0vw;
+    left: initial;
+    border-top-right-radius: 10px;
+    box-shadow: 7px -2px 0 0 var(--mainContent);
+
+}
+.selected:after{
+    content: "";
+    position: absolute;
+    background-color: var(--cardBody);
+    width: 15px;
+    height: 15px;
+    border-bottom-left-radius: 10px;
+    top: -15px;
+    left: 0vw;
+    box-shadow: -3px 7px 0 0 var(--mainContent);
+    transition: background-color 0.4s, box-shadow 0.4s;
+}
+:global(.ltr) .selected:after{
+    right: 0vw;
+    left: initial;
+    border-bottom-right-radius: 10px;
+    box-shadow: 7px 2px 0 0 var(--mainContent);
+
 }

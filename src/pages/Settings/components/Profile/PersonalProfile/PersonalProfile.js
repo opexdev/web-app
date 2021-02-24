@@ -1,10 +1,10 @@
 import React, { useState, useEffect} from 'react';
 import classes from "./PersonalProfile.module.css"
-import AccordionBox from "../../../components/AccordionBox/AccordionBox";
+import AccordionBox from "../../../../../components/AccordionBox/AccordionBox";
 import {connect} from "react-redux";
 import {useTranslation} from "react-i18next";
-import {MyOrderCurrentData, MyOrderStopData, MyOrderHistoryData, MyOrderTradeData} from "../../../FakeData/FakeData";
-import TextInput from "../../../components/TextInput/TextInput";
+import {MyOrderCurrentData, MyOrderStopData, MyOrderHistoryData, MyOrderTradeData} from "../../../../../FakeData/FakeData";
+import TextInput from "../../../../../components/TextInput/TextInput";
 
 
 const PersonalProfile = (props) => {
@@ -210,7 +210,7 @@ const PersonalProfile = (props) => {
 
     return (
         <div className="container py-2">
-            <div className={`container card-background card-border column ${classes.container}`}>
+            <div className={` card-background card-border column ${classes.container}`}>
                 <AccordionBox title={t('PersonalProfile.title')} content={data} safari={classes.safariFlexSize}/>
             </div>
         </div>

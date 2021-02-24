@@ -1,10 +1,10 @@
 import React,{useState,useEffect} from 'react';
-import classes from "./ActiveSessions.module.css"
+import classes from "./PersonalizationForm.module.css"
 import {useTranslation} from "react-i18next";
 
 
 
-const ActiveSessions = () => {
+const PersonalizationForm = () => {
     const {t} = useTranslation();
 
     return (
@@ -12,15 +12,15 @@ const ActiveSessions = () => {
             <div className={` card-background card-border column ${classes.container}`}>
                 <div className={`column border-bottom jc-center card-header-bg  ${classes.header}`}>
                     <div className="row jc-start ">
-                        <h3>ActiveSessions</h3>
+                        <h3>PersonalizationForm</h3>
                     </div>
                 </div>
                 <div className={`row container ${classes.content}`}>
-                    ActiveSessions
+                    PersonalizationForm
                 </div>
             </div>
         </div>
     );
 };
 
-export default ActiveSessions;
+export default PersonalizationForm;

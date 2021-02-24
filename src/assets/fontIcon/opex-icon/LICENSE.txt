@@ -55,6 +55,15 @@ Font license info
    Homepage:  http://designmodo.com/linecons-free/
 
 
+## Zocial
+
+   Copyright (C) 2012 by Sam Collins
+
+   Author:    Sam Collins
+   License:   MIT (http://opensource.org/licenses/mit-license.php)
+   Homepage:  http://zocial.smcllns.com/
+
+
 ## MFG Labs
 
    Copyright (C) 2012 by Daniel Bruce

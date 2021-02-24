@@ -58,7 +58,7 @@ const MainMenu = (props) => {
                     <Icon iconName="icon-messages-dotted font-size-lg"/>
                 </NavLink>
 
-                <NavLink exact={true} to={Routes.Settings}  activeClassName={classes.selected}
+                <NavLink to={Routes.Settings}  activeClassName={classes.selected}
                          data-html={true}
                          data-place="left"
                          data-effect="float"

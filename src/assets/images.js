@@ -19,6 +19,7 @@ import dogecoin from "./images/dogecoin.svg";
 import bitcoinCash from "./images/bitcoinCash.svg";
 import litecoin from "./images/litecoin.svg";
 import tether from "./images/tether.svg";
+import toman from "./images/toman.svg";
 import ethereumLight from "./images/ethereumLight.svg";
 import starwithfill from "./images/starwithfill.svg";
 import starWithoutfill from "./images/starWithoutfill.svg";
@@ -33,6 +34,7 @@ import ho from "./images/ho.png";
 import cryptoBG from "./images/cryptoBG.jpg";
 import loading from "./images/loading.gif";
 import abstractBG from "./images/abstractBG.png";
+import safe from "./images/safe.svg";
 
 
 
@@ -60,6 +62,7 @@ export const  images = {
     'LTC' : litecoin,
     'USDT' : tether,
     'ETH' : ethereumLight,
+    'IRT' : toman,
     'starwithfill' : starwithfill,
     'starWithoutfill' : starWithoutfill,
     'Sun' : Sun,
@@ -73,6 +76,7 @@ export const  images = {
     'cryptoBG' : cryptoBG,
     'loading' : loading,
     'abstractBG' : abstractBG,
+    'safe' : safe,
 
 };
 

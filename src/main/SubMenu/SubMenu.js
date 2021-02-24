@@ -7,7 +7,7 @@ import ProtectedRoute from "../../components/ProtectedRoute";
 import Wallet from "../../pages/Wallet/wallet";
 import * as Routes from "../../routes/routes";
 import Chart from "../../pages/Chart/chart";
-import SMWallet from "./components/Wallet/SMWallet";
+import WalletSubMenu from "./components/WalletSubMenu/WalletSubMenu";
 import {useTranslation} from "react-i18next";
 import SettingsSubMenu from "./components/SettingsSubMenu/SettingsSubMenu";
 
@@ -22,12 +22,12 @@ const SubMenu = (props) => {
                     <Market/>
                 </Route>
                 <Route exact path={Routes.Wallet}>
-                    <SMWallet/>
+                    <WalletSubMenu/>
                 </Route>
-                <Route exact path={Routes.Settings}>
+                <Route path={Routes.Settings}>
                     <SettingsSubMenu/>
                 </Route>
-                {/*<ProtectedRoute component={Wallet} isLogin={props.isLogin} exact path={Routes.Wallet}/>*/}
+                {/*<ProtectedRoute component={WalletSubMenu} isLogin={props.isLogin} exact path={Routes.WalletSubMenu}/>*/}
 
                 <Route path="*">
                     <h3>{t('comingSoon')}</h3>

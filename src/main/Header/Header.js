@@ -5,7 +5,7 @@ import {useTranslation} from "react-i18next";
 import {connect} from "react-redux";
 import moment from "moment-jalaali";
 import {setLogoutInitiate} from "../../store/actions";
-import {Link, Route, Switch} from "react-router-dom";
+import {Link, Route, Switch, useLocation} from "react-router-dom";
 import {Login} from "../../routes/routes";
 import * as Routes from "../../routes/routes";
 import MarketHeader from "./components/MarketHeader/MarketHeader";
@@ -13,6 +13,8 @@ import MarketHeader from "./components/MarketHeader/MarketHeader";
 
 const Header = (props) => {
     const {t} = useTranslation();
+    const location = useLocation();
+
     return (
         <div className={`container row jc-between ai-center ${classes.container}`}>
             <div className={`row jc-between ai-center ${classes.content}`}>
@@ -24,10 +26,10 @@ const Header = (props) => {
                     <Route exact path={Routes.Wallet}>
                         <h2 style={{color:"var(--orange)"}}>بیتکوین (BTC)</h2>
                     </Route>
-                    <Route exact path={Routes.Settings}>
-                        <h2 style={{color:"var(--orange)"}}>مشخصات کاربری</h2>
+                    <Route path={Routes.Settings}>
+                        <h2 style={{color:"var(--orange)"}}>{t('routes.' + location.pathname )}</h2>
                     </Route>
-                    {/*<ProtectedRoute component={Wallet} isLogin={props.isLogin} exact path={Routes.Wallet}/>*/}
+                    {/*<ProtectedRoute component={WalletSubMenu} isLogin={props.isLogin} exact path={Routes.WalletSubMenu}/>*/}
 
                     <Route path="*">
                         <h4>{t('comingSoon')}</h4>

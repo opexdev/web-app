@@ -9,7 +9,7 @@ import SetTwoStepVerification from "./SetTwoStepVerification/SetTwoStepVerificat
 const Security = (props) => {
 
     return (
-        <div className="px-1 py-1">
+        <Fragment>
             <div className="row">
 
                 <LoginReports/>
@@ -30,7 +30,7 @@ const Security = (props) => {
                 <SetTwoStepVerification/>
 
             </div>
-        </div>
+        </Fragment>
     )
 }
 const mapStateToProps = state => {

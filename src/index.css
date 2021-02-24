@@ -338,7 +338,7 @@ html,body{
 .ai-start{
     -webkit-box-align: start;
     -ms-flex-align: start;
-    align-items: flex-start;
+    align-items: flex-start !important;
 }
 .ai-center{
     -webkit-box-align: center;
@@ -348,7 +348,7 @@ html,body{
 .ai-end{
     -webkit-box-align: end;
     -ms-flex-align: end;
-    align-items: flex-end;
+    align-items: flex-end !important;
 }
 
 .img-vsm{
