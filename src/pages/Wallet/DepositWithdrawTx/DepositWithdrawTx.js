@@ -7,7 +7,6 @@ import {useTranslation} from "react-i18next";
 import {DTAllTransactionsData} from "../../../FakeData/FakeData";
 import Icon from "../../../components/Icon/Icon";
 import NumberInput from "../../../components/NumberInput/NumberInput";
-import SelectInput from "../../../components/SelectInput/SelectInput";
 import TextInput from "../../../components/TextInput/TextInput";
 
 const DepositWithdrawTx = (props) => {
@@ -20,8 +19,8 @@ const DepositWithdrawTx = (props) => {
         fromDate: null,
         toTime: null,
         toDate: null,
-        type:null,
-        address:null
+        type: null,
+        address: null
     })
 
     const [alert, setAlert] = useState({
@@ -40,7 +39,7 @@ const DepositWithdrawTx = (props) => {
         const isValid = /^(2[0-3]|[01]?[0-9]):([0-5]?[0-9])$/.test(inputField);
         if (isValid) {
             setAlert({...alert, [key]: null})
-            setFilters({...filters,[key]:inputField})
+            setFilters({...filters, [key]: inputField})
         } else {
             setAlert({...alert, [key]: "ساعت وارد شده صحیح نمیباشد"})
         }
@@ -55,20 +54,22 @@ const DepositWithdrawTx = (props) => {
         }
     }
     const options = [
-        { value: 'all', label: 'همه' },
-        { value: 'deposit', label: 'واریز' },
-        { value: 'withdraw', label: 'برداشت' },
+        {value: 'all', label: 'همه'},
+        {value: 'deposit', label: 'واریز'},
+        {value: 'withdraw', label: 'برداشت'},
     ]
-
     return (
         <div className="container py-2">
             <div className={`container card-background card-border column ${classes.container}`}>
-                <div className={classes.header}>
-                    <h3 className={classes.title}>{t('DepositWithdrawTx.title')}</h3>
-                    <div className={classes.iconBox}>
-                        <span onClick={() => setFilterOpen(prev => !prev)}><i
-                            className="icon-safe font-size-lg"/></span>
-                        <span><i className="icon-safe font-size-lg"/></span>
+                <div className="flex jc-between card-header-bg py-2 px-1">
+                    <h3>{t('DepositWithdrawTx.title')}</h3>
+                    <div>
+                        <span style={{color:"var(--bgGreen)"}}>
+                            <i className="icon-microsoft_excel"/>
+                        </span>
+                        <span  style={{color:"var(--orange)"}} onClick={() => setFilterOpen(prev => !prev)}>
+                            <i className="icon-filter"/>
+                        </span>
                     </div>
                 </div>
                 <ScrollBar>
@@ -76,32 +77,30 @@ const DepositWithdrawTx = (props) => {
                         filterOpen ?
                             <Fragment>
                                 <div className={classes.filterBox}>
-                                    <span className={classes.inputTitle}>از</span>
                                     <NumberInput
-                                        lead="ساعت" after="$"
+                                        lead="از ساعت" after=<i className="icon-clock"/>
                                         customClass={classes.filterInput}
                                         format="##:##" placeholder="HH:mm" mask={['H', 'H', 'm', 'm']}
                                         alert={alert.fromTime}
                                         onchange={(input) => timeValidator(input.target.value, "fromTime")}
                                     />
                                     <NumberInput
-                                        lead="تاریخ" after="$"
+                                        lead="تاریخ" after=<i className="icon-calendar-1"/>
                                         customClass={classes.filterInput}
                                         format="####/##/##" placeholder="YYYY/MM/DD"
                                         mask={['Y', 'Y', 'Y', 'Y', 'M', 'M', 'D', 'D']}
                                         alert={alert.fromDate}
                                         onchange={(input) => dateValidator(input.target.value, "fromDate")}
                                     />
-                                    <span className={classes.inputTitle}>تا</span>
                                     <NumberInput
-                                        lead="ساعت" after="$"
+                                        lead="تا ساعت" after=<i className="icon-clock"/>
                                         customClass={classes.filterInput}
                                         format="##:##" placeholder="HH:mm" mask={['H', 'H', 'm', 'm']}
                                         alert={alert.toTime}
                                         onchange={(input) => timeValidator(input.target.value, "toTime")}
                                     />
                                     <NumberInput
-                                        lead="تاریخ" after="$"
+                                        lead="تاریخ" after=<i className="icon-calendar-1"/>
                                         customClass={classes.filterInput}
                                         format="####/##/##" placeholder="YYYY/MM/DD"
                                         mask={['Y', 'Y', 'Y', 'Y', 'M', 'M', 'D', 'D']}
@@ -112,12 +111,32 @@ const DepositWithdrawTx = (props) => {
                                 <div className={classes.filterBox}>
                                     <TextInput
                                         select={true}
-                                        placeholder={"ملیت خود را انتخاب کنید"}
+                                        placeholder="نوع تراکنش"
                                         options={options}
+                                        value={filters.type}
                                         lead="نوع تراکنش"
                                         customClass={classes.filterInput}
-                                        onchange={(e)=> setFilters({...filters,type: e.value})}
+                                        onchange={(e) => setFilters({...filters, type: e.value})}
                                     />
+                                    <TextInput
+                                        placeholder=" آدرس مبدا/مقصد را وارد کنید"
+                                        options={options}
+                                        value={filters.address}
+                                        lead="مبدا/مقصد"
+                                        customClass={`${classes.filterInput} ${classes.address}`}
+                                        onchange={(e) => setFilters({...filters, address: e.target.value})}
+                                    />
+                                </div>
+                                <div className={classes.btnBox}>
+                                    <button className={`${classes.button} ${classes.submit}`}
+                                            onClick={() => setFilterOpen(prev => !prev)}>اعمال فیلتر
+                                    </button>
+                                    <button className={`${classes.button} ${classes.reset}`}
+                                            onClick={() => setFilterOpen(prev => !prev)}>حذف فیلتر
+                                    </button>
+                                    <button className={`${classes.button} ${classes.return}`}
+                                            onClick={() => setFilterOpen(prev => !prev)}>بازگشت
+                                    </button>
                                 </div>
                             </Fragment>
                             :
