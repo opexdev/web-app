@@ -1,16 +1,21 @@
-import React, {Fragment, useRef} from 'react';
+import React, {Fragment, useEffect, useRef} from 'react';
 import classes from "./DepositWithdraw.module.css"
 import AccordionBox from "../../../components/AccordionBox/AccordionBox";
 import {useTranslation} from "react-i18next";
 import {images} from "../../../assets/images";
 import TextInput from "../../../components/TextInput/TextInput";
 import Icon from "../../../components/Icon/Icon";
+import ReactTooltip from "react-tooltip";
 
 
 const DepositWithdraw = (props) => {
 
     const {t} = useTranslation();
     const address = useRef(null);
+
+    useEffect(() => {
+        ReactTooltip.rebuild();
+    });
 
     const copyToClipboard = () => {
         address.current.select();

@@ -7,9 +7,9 @@
     vertical-align: middle;
     border-radius: 50vw;
 }
-:global(.container .card-header-bg) i{
+/*:global(.container .card-header-bg) i{
     font-size: 2vw;
-}
+}*/
 
 .close {
     max-height: 0;

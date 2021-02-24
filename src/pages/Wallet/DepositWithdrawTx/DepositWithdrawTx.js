@@ -64,10 +64,10 @@ const DepositWithdrawTx = (props) => {
                 <div className="flex jc-between card-header-bg py-2 px-1">
                     <h3>{t('DepositWithdrawTx.title')}</h3>
                     <div>
-                        <span style={{color:"var(--bgGreen)"}}>
+                        <span style={{color:"var(--bgGreen)"}} className="font-size-md-plus">
                             <i className="icon-microsoft_excel"/>
                         </span>
-                        <span  style={{color:"var(--orange)"}} onClick={() => setFilterOpen(prev => !prev)}>
+                        <span  style={{color:"var(--orange)"}} className="font-size-md-plus" onClick={() => setFilterOpen(prev => !prev)}>
                             <i className="icon-filter"/>
                         </span>
                     </div>
