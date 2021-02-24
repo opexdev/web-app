@@ -1,18 +1,17 @@
 import React from "react";
-import {connect} from "react-redux";
-import Deposit from "./Deposit/Deposit";
-import DepositTransactions from "./DepositTransactions/DepositTransactions";
-import OrdersTrades from "./OrdersTrades/OrdersTrades";
 
+import DepositWithdraw from "./DepositWithdraw/DepositWithdraw";
+import DepositWithdrawTx from "./DepositWithdrawTx/DepositWithdrawTx";
+import OrdersTrades from "./OrdersTrades/OrdersTrades";
 
 const Wallet = (props) => {
     return (
         <div className="px-1 py-1">
             <div className="row">
-                <Deposit/>
+                <DepositWithdraw/>
             </div>
             <div className="row">
-                <DepositTransactions/>
+                <DepositWithdrawTx/>
             </div>
             <div className="row">
                 <OrdersTrades/>
@@ -20,10 +19,5 @@ const Wallet = (props) => {
         </div>
     )
 }
-const mapStateToProps = state => {
-    return {
-        activePair: state.global.activePair
-    }
-}
 
-export default connect(mapStateToProps, null)(Wallet);
+export default Wallet;

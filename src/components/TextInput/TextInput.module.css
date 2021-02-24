@@ -1,4 +1,4 @@
-.input-group {
+.inputGroup {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -22,13 +22,13 @@
     width: 100%;
 }
 
-.input-group span {
+.inputGroup span {
     background: var(--cardHeader);
     color: var(--textColor);
     /*-webkit-box-flex: 0.4;
     -ms-flex: 0.4;
     flex: 0.4;*/
-    width: 30%;
+    width: 50%;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -42,14 +42,14 @@
     border: 0.3vh solid var(--cardHeader);
 }
 
-.input-group input {
+.inputGroup input {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
     /*-webkit-box-flex: 0.2;
     -ms-flex: 0.2;
     flex: 0.2;*/
-    width: 40%;
+    width: 50%;
     height: 100%;
     border: none;
     /*padding-right: 10px;*/
@@ -57,25 +57,25 @@
     text-align: center;
     font-family: iranyekan , serif;
     background: none;
-    color: var(--textColor);
+    color: var(--textColor) !important;
 }
-.ltr .input-group input{
+.ltr .inputGroup input{
     font-family: 'Segoe UI', serif;
 }
-.input-group span.lead {
+.inputGroup span.lead {
     border-radius: 0 7px 7px 0;
 }
-.ltr .input-group span.lead{
+.ltr .inputGroup span.lead{
     border-radius: 7px 0 0 7px;
 }
-.input-group span.after {
+/*.inputGroup span.after {
     border-radius: 7px 0 0 7px ;
 }
-.ltr .input-group span.after {
+.ltr .inputGroup span.after {
     border-radius: 0 7px 7px 0;
-}
+}*/
 
-.input-group-hint{
+.inputGroup-hint{
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -87,7 +87,7 @@
     align-items: center;
 }
 
-.hint-icon{
+.hintIcon{
     width: 1.1vw;
     height: 1.1vw;
     border-radius: 50vw;
@@ -105,4 +105,44 @@
 .alert{
     font-size: 0.7vw;
     color: var(--textRed);
+}
+.selectBox {
+    width: 50%;
+}
+:global .select__control {
+    border-color: transparent !important;
+    background-color: transparent !important;
+    box-shadow: none !important;
+}
+:global .select__control:hover {
+    border-color: transparent !important;
+    background-color: transparent !important;
+    box-shadow: none !important;
+}
+:global .select__menu{
+    margin-top: 0;
+}
+:global .select__option--is-focused{
+    color: #444444 !important;
+    background-color: var(--activeTab);
+}
+:global .select__option--is-selected{
+    background-color: var(--activeTab);
+}
+:global .select__indicator-separator {
+    width: 1px !important;
+    webkit-align-self: stretch !important;
+    -ms-flex-item-align: stretch !important;
+    background: hsl(0, 0%, 80%);
+    border: none !important;
+    height: auto !important;
+}
+:global .select__menu {
+    background-color: var(--cardBody) !important;
+}
+:global .select__single-value {
+    color: var(--textColor) !important;
+}
+:global .select__value-container {
+    justify-content: center;
 }

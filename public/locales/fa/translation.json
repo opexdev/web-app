@@ -19,6 +19,11 @@
   "status" : "وضعیت",
   "pleaseLogin" : "لطفا وارد شوید!",
   "comingSoon" : "به زودی :)",
+  "deposit": "واریز",
+  "withdrawal": "برداشت",
+  "transfer": "انتقال",
+  "destination": "مقصد",
+  "details": "جزئیات",
   "currency": {
     "IRT": "تومان",
     "Euro": "یورو",
@@ -31,7 +36,9 @@
     "BCH": "بیتکوین کش"
   },
   "routes": {
-    "/settings/profile":"مشخصات کاربری"
+    "/settings/profile":"مشخصات کاربری",
+    "/settings/security":"امنیت",
+    "/settings/personalization":"شخصی سازی"
   },
   "ordersStatus": {
     "live": "جاری شده",
@@ -126,13 +133,10 @@
     "startOrderTime": "زمان جاری شدن",
     "orders": "معامله ها"
   },
-  "Deposit": {
-    "title": "واریز/برداشت",
-    "deposit": "واریز",
-    "withdrawal": "برداشت",
-    "transfer": "انتقال"
+  "DepositWithdraw": {
+    "title": "واریز/برداشت"
   },
-  "DepositTransactions": {
+  "DepositWithdrawTx": {
     "title": "تراکنش های واریز/برداشت",
     "depositWithdrawal": "واریز/دریافت",
     "withdrawalSend": "برداشت/ارسال",
@@ -141,7 +145,6 @@
     "blockchainTransactionId": "شناسه بلاکچینی تراکنش",
     "price": "مبلغ",
     "destination": "مبدا/مقصد",
-    "details": "جزئیات",
     "inventory": "موجودی بعد تراکنش"
   },
   "transactionType": {
@@ -156,7 +159,6 @@
     "stop": "متوقف",
     "cancelClose": "لغو و بسته شده",
     "trades": "معامله ها",
-    "market": "بازار",
     "side": "سمت",
     "order": "سفارش",
     "done": "اجراشده",

@@ -1,0 +1,71 @@
+.container {
+    height: 50vh;
+    border-radius: 9px;
+}
+
+.iconBG {
+    vertical-align: middle;
+    border-radius: 50vw;
+}
+
+.header {
+    padding: 1vh 1vw 2vh;
+    display: flex;
+    justify-content: space-between;
+}
+
+.close {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s;
+    opacity: 0;
+    line-height: 0;
+    visibility: collapse
+}
+
+.open {
+    max-height: 2vh;
+    transition: max-height 0.6s;
+}
+
+.filterInput {
+    width: 100%;
+    margin-left: 0.5vw;
+}
+.filterInput :global(.after) {
+    width: 20%;
+}
+
+.filterBox {
+    display: flex;
+}
+
+.inputTitle {
+    padding: 0 1vw;
+    align-items: center;
+    display: flex;
+    height: 5vh;
+}
+
+.openDetailes {
+    /*display: table-row;*/
+    animation: anim 1s ease;
+}
+
+@keyframes anim {
+    0% {
+        transform: scaleY(0);
+    }
+    100% {
+        transform: scaleY(1);
+    }
+}
+
+
+.safariFlexSize :global(.accordion-header) {
+    flex: 22;
+}
+
+.safariFlexSize :global(.accordion-body) {
+    flex: 77;
+}

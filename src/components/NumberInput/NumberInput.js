@@ -1,14 +1,14 @@
 import React from "react";
 import NumberFormat from 'react-number-format';
-import "./NumberInput.css";
+import * as classes from "./NumberInput.module.css";
 import Icon from "../Icon/Icon";
 
 
 const NumberInput = (props) => {
     return (
-        <div>
-            <div className={`input-group ${props.customClass}`}>
-                <span className="lead">{props.lead}</span>
+        <div className={props.customClass ?? ""}>
+            <div className={classes.inputGroup}>
+                <span className={`${classes.lead} lead`}>{props.lead}</span>
                 <NumberFormat
                     thousandSeparator={true}
                     allowNegative={false}
@@ -17,18 +17,21 @@ const NumberInput = (props) => {
                     isAllowed={props.isAllowed}
                     prefix={props.prefix}
                     value={props.value}
+                    format={props.format}
+                    placeholder={props.placeholder}
+                    mask={props.mask}
                 />
-                <span className="after">{props.after}</span>
+                <span className={`${classes.after} after`}>{props.after}</span>
             </div>
             {
                 props.alert != null ?
-                    <div className={`input-group-hint ${props.customClass}`}
+                    <div className={`${classes.inputGroupHint} inputGroupHint `}
                          data-html={true}
                          data-place="left"
                          data-effect="float"
                          data-tip={props.hint}
                     >
-                        <Icon iconName="icon-info icon-white font-size-sm" customClass="hint-icon"/>
+                        <Icon iconName="icon-info icon-white font-size-sm" customClass={classes.hintIcon}/>
                         <span className="alert pr-05">{props.alert}</span>
                     </div>
                     :
