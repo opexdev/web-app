@@ -55,4 +55,5 @@
 .icon-user-circle-o:before { content: '\f2be'; } /* '' */
 .icon-stopwatch:before { content: '󨃏'; } /* '\e80cf' */
 .icon-calendar-3:before { content: '󨄭'; } /* '\e812d' */
+.icon-copy:before { content: '󨉳'; } /* '\e8273' */
 .icon-account:before { content: '󨥮'; } /* '\e896e' */

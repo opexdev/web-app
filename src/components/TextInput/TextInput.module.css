@@ -59,14 +59,20 @@
     background: none;
     color: var(--textColor) !important;
 }
-.ltr .inputGroup input{
+:global(.ltr) .inputGroup input{
     font-family: 'Segoe UI', serif;
 }
-.inputGroup span.lead {
+.inputGroup .lead {
     border-radius: 0 7px 7px 0;
 }
-.ltr .inputGroup span.lead{
+.inputGroup .after {
     border-radius: 7px 0 0 7px;
+}
+:global(.ltr) .inputGroup .lead{
+    border-radius: 7px 0 0 7px;
+}
+:global(.ltr) .inputGroup .after{
+    border-radius: 0 7px 7px 0;
 }
 /*.inputGroup span.after {
     border-radius: 7px 0 0 7px ;

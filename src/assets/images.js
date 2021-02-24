@@ -35,6 +35,7 @@ import cryptoBG from "./images/cryptoBG.jpg";
 import loading from "./images/loading.gif";
 import abstractBG from "./images/abstractBG.png";
 import safe from "./images/safe.svg";
+import opexQrCode from "./images/opex-qr-code.svg";
 
 
 
@@ -77,6 +78,7 @@ export const  images = {
     'loading' : loading,
     'abstractBG' : abstractBG,
     'safe' : safe,
+    'opexQrCode' : opexQrCode,
 
 };
 

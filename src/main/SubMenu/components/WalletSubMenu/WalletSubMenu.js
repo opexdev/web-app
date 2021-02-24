@@ -19,7 +19,7 @@ const WalletSubMenu = (props) => {
         <div className={`container card-background column ${classes.container}`}>
             <div className={`column border-bottom jc-center card-header-bg  ${classes.header}`}>
                 <div className="row jc-start ">
-                    <h2>دارایی ها</h2>
+                    <h2>{t('WalletSubMenu.title')}</h2>
                 </div>
             </div>
             <div className={`column container  ${classes.content}`}>
@@ -30,12 +30,12 @@ const WalletSubMenu = (props) => {
                     </div>
                     <div className={`row jc-between px-1 ${classes.pairDetails}`}>
                         <div className="column ai-start">
-                            <span>ارزش کل</span>
-                            <span className="font-size-sm">تقریبی</span>
+                            <span>{t('WalletSubMenu.totalValue')}</span>
+                                <span className="font-size-sm">{t('WalletSubMenu.approximate')}</span>
                         </div>
                         <div className="column ai-end">
-                            <span>530،095،000 <span>تومان</span></span>
-                            <span>1،3 <span>بیتکوین</span></span>
+                            <span>530،095،000 <span className="font-size-sm">{t('currency.IRT')}</span></span>
+                            <span>1،3 <span className="font-size-sm">{t('currency.BTC')}</span></span>
                         </div>
                     </div>
                 </NavLink>
@@ -46,10 +46,11 @@ const WalletSubMenu = (props) => {
                     <div className={`row jc-between px-1 ${classes.pairDetails}`}>
                         <div className="column ai-start">
                             <span>IRT</span>
-                            <span className="font-size-sm">تومان ایران</span>
+                            <span className="font-size-sm">{t('currency.IRT')}</span>
                         </div>
-                        <div className="jc-end ai-center">
-                            <span>{props.wallet.IRT}</span>
+                        <div className="column ai-end">
+                            <span>{props.wallet.IRT} <span className="font-size-sm">{t('currency.IRT')}</span></span>
+                            <span>1،3 <span className="font-size-sm">{t('currency.BTC')}</span></span>
                         </div>
                     </div>
                 </NavLink>
@@ -60,11 +61,15 @@ const WalletSubMenu = (props) => {
                     <div className={`row jc-between px-1 ${classes.pairDetails}`}>
                         <div className="column ai-start">
                             <span>BTC</span>
-                            <span className="font-size-sm">بیتکوین</span>
+                            <span className="font-size-sm">{t('currency.BTC')}</span>
                         </div>
-                        <div className="jc-end ai-center">
+                        <div className="column ai-end">
+                            <span>{props.wallet.BTC} <span className="font-size-sm">{t('currency.BTC')}</span></span>
+                            <span>{props.wallet.IRT} <span className="font-size-sm">{t('currency.IRT')}</span></span>
+                        </div>
+                        {/*<div className="jc-end ai-center">
                             <span>{props.wallet.BTC}</span>
-                        </div>
+                        </div>*/}
                     </div>
                 </NavLink>
                 <NavLink exact={true} activeClassName={classes.selected} className="container row ai-center cursor-pointer px-1 py-05" to={Routes.Wallet}>
@@ -74,10 +79,11 @@ const WalletSubMenu = (props) => {
                     <div className={`row jc-between px-1 ${classes.pairDetails}`}>
                         <div className="column ai-start">
                             <span>ETH</span>
-                            <span className="font-size-sm">اتریوم</span>
+                            <span className="font-size-sm">{t('currency.ETH')}</span>
                         </div>
-                        <div className="jc-end ai-center">
-                            <span>{props.wallet.ETH}</span>
+                        <div className="column ai-end">
+                            <span>{props.wallet.ETH} <span className="font-size-sm">{t('currency.ETH')}</span></span>
+                            <span>{props.wallet.IRT} <span className="font-size-sm">{t('currency.IRT')}</span></span>
                         </div>
                     </div>
                 </NavLink>
@@ -88,10 +94,11 @@ const WalletSubMenu = (props) => {
                     <div className={`row jc-between px-1 ${classes.pairDetails}`}>
                         <div className="column ai-start">
                             <span>USDT</span>
-                            <span className="font-size-sm">تتر</span>
+                            <span className="font-size-sm">{t('currency.USDT')}</span>
                         </div>
-                        <div className="jc-end ai-center">
-                            <span>{props.wallet.USDT}</span>
+                        <div className="column ai-end">
+                            <span>{props.wallet.USDT} <span className="font-size-sm">{t('currency.USDT')}</span></span>
+                            <span>{props.wallet.IRT} <span className="font-size-sm">{t('currency.IRT')}</span></span>
                         </div>
                     </div>
                 </NavLink>
@@ -102,10 +109,11 @@ const WalletSubMenu = (props) => {
                     <div className={`row jc-between px-1 ${classes.pairDetails}`}>
                         <div className="column ai-start">
                             <span>LTC</span>
-                            <span className="font-size-sm">لایت کوین</span>
+                            <span className="font-size-sm">{t('currency.LTC')}</span>
                         </div>
-                        <div className="jc-end ai-center">
-                            <span>{props.wallet.LTC}</span>
+                        <div className="column ai-end">
+                            <span>{props.wallet.LTC} <span className="font-size-sm">{t('currency.LTC')}</span></span>
+                            <span>{props.wallet.IRT} <span className="font-size-sm">{t('currency.IRT')}</span></span>
                         </div>
                     </div>
                 </NavLink>
@@ -116,10 +124,11 @@ const WalletSubMenu = (props) => {
                     <div className={`row jc-between px-1 ${classes.pairDetails}`}>
                         <div className="column ai-start">
                             <span>BCH</span>
-                            <span className="font-size-sm">بیتکوین کش</span>
+                            <span className="font-size-sm">{t('currency.BCH')}</span>
                         </div>
-                        <div className="jc-end ai-center">
-                            <span>{props.wallet.BCH}</span>
+                        <div className="column ai-end">
+                            <span>{props.wallet.BCH} <span className="font-size-sm">{t('currency.BCH')}</span></span>
+                            <span>{props.wallet.IRT} <span className="font-size-sm">{t('currency.IRT')}</span></span>
                         </div>
                     </div>
                 </NavLink>
@@ -130,10 +139,11 @@ const WalletSubMenu = (props) => {
                     <div className={`row jc-between px-1 ${classes.pairDetails}`}>
                         <div className="column ai-start">
                             <span>DOGE</span>
-                            <span className="font-size-sm">دوج کوین</span>
+                            <span className="font-size-sm">{t('currency.DOGE')}</span>
                         </div>
-                        <div className="jc-end ai-center">
-                            <span>{props.wallet.DOGE}</span>
+                        <div className="column ai-end">
+                            <span>{props.wallet.DOGE} <span className="font-size-sm">{t('currency.DOGE')}</span></span>
+                            <span>{props.wallet.IRT} <span className="font-size-sm">{t('currency.IRT')}</span></span>
                         </div>
                     </div>
                 </NavLink>
@@ -150,7 +160,5 @@ const mapStateToProps = state => {
         wallet : state.auth.wallet
     }
 }
-
-
 
 export default  connect( mapStateToProps , null )(WalletSubMenu);

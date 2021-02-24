@@ -229,6 +229,9 @@
 .text-blue{
     color: var(--textBlue)
 }
+.text-orange{
+    color: var(--orange)
+}
 .icon-white{
     color: var(--iconWhite);
 }
@@ -362,6 +365,9 @@ html,body{
 }
 .img-lg{
     width: 3.5vw;
+}
+.img-lg-plus{
+    width: 10vw;
 }
 
 
@@ -547,6 +553,15 @@ tr{
     position: relative;
     line-height: 3.4vh;
 }
+.p-1{
+    padding: 1vh 1vw;
+}
+.p-05{
+    padding: 0.5vh 0.5vw;
+}
+.p-025{
+    padding: 0.25vh 0.25vw;
+}
 .px-1{
     padding-right: 1vw;
     padding-left: 1vw;
@@ -600,8 +615,14 @@ tr{
 .pt-1{
     padding-top: 1vh;
 }
+.pt-05{
+    padding-top: 1vh;
+}
 .pb-1{
     padding-bottom: 1vh;
+}
+.pb-2{
+    padding-bottom: 2vh;
 }
 .mt-1{
     margin-top: 1vh;
@@ -627,6 +648,9 @@ li{
 }
 .font-size-md{
     font-size: 1vw;
+}
+.font-size-md-01{
+    font-size: 1.25vw;
 }
 .font-size-md-plus{
     font-size: 1.5vw;

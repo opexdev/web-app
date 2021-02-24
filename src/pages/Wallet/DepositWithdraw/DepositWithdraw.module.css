@@ -1,7 +1,23 @@
 .container {
-    height: 35vh;
+    height: 40vh;
     border-radius: 9px;
 }
+.content{
+    height: 100%;
+
+}
+
+.depositInput{
+    width: 80%;
+}
+.depositInput :global(.after){
+    width: 15%;
+    cursor: pointer;
+}
+.depositInput :global(input){
+    width: 75% !important;
+}
+
 
 .iconBG{
     vertical-align: middle;

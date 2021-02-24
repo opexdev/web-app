@@ -133,6 +133,11 @@
     "startOrderTime": "زمان جاری شدن",
     "orders": "معامله ها"
   },
+  "WalletSubMenu": {
+    "title": "دارایی ها ",
+    "totalValue": "ارزش کل",
+    "approximate": "تقریبی"
+  },
   "DepositWithdraw": {
     "title": "واریز/برداشت"
   },

@@ -7,12 +7,22 @@ const TextInput = (props) => {
     return (
         <div className={props.customClass ?? ""}>
             <div className={classes.inputGroup}>
-                <span className={`${classes.lead} lead`}>{props.lead}</span>
+                {props.lead ?
+                    <span className={`lead ${classes.lead}`}>{props.lead}</span>
+                    :
+                    ""
+                }
                 { props.select ?
                     <Select onChange={props.onchange} options={props.options} placeholder={props.placeholder} classNamePrefix="select" className={classes.selectBox}/>
                     :
-                    <input value={props.value} type={props.type} onChange={props.onchange} placeholder={props.placeholder}/>
+                    <input value={props.value} ref={props.customRef} type={props.type} readOnly={props.readOnly} onChange={props.onchange} placeholder={props.placeholder}/>
                 }
+                {props.after ?
+                    <span className={`after ${classes.after}`}>{props.after}</span>
+                    :
+                    ""
+                }
+
             </div>
             {
                 props.alert != null ?
