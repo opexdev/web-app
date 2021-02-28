@@ -20,6 +20,7 @@ import *  as Routes from '../routes/routes';
 import {useTranslation} from "react-i18next";
 import {isSafari} from 'react-device-detect'
 import Settings from "../pages/Settings/Settings";
+import TechnicalChart from "../pages/TechnicalChart/TechnicalChart";
 
 
 const App = (props) => {
@@ -43,9 +44,9 @@ const App = (props) => {
                     <Route exact path="/login">
                         <Login/>
                     </Route>
+                    <ProtectedRoute component={TechnicalChart} isLogin={props.isLogin} exact path={Routes.Technical}/>
                     <Fragment>
-                        <div
-                            className={`container ${props.isDark ? 'dark' : ''} ${ltr ? "ltr" : "rtl"} ${isSafari ? "" : "user-select"}`}>
+                        <div className={`container ${props.isDark ? 'dark' : ''} ${ltr ? "ltr" : "rtl"} ${isSafari ? "" : "user-select"}`}>
                             {props.isLoading ?
                                 <FullWidthLoading/>
                                 : <Fragment>
@@ -64,7 +65,6 @@ const App = (props) => {
                                                                     path={Routes.Wallet}/>
                                                     <ProtectedRoute component={Settings} isLogin={props.isLogin}
                                                                     path={Routes.Settings}/>
-                                                    {/*<ProtectedRoute component={Chart} isLogin={props.isLogin} exact path={Routes.Technical}/>*/}
                                                     <Route path="*">
                                                         <div className="container flex ai-center jc-center"
                                                              style={{height: "70%"}}>
@@ -77,7 +77,6 @@ const App = (props) => {
                                         </div>
                                     </div>
                                 </Fragment>}
-
                         </div>
                     </Fragment>
                 </Switch>

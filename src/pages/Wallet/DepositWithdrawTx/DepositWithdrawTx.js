@@ -12,7 +12,7 @@ import TextInput from "../../../components/TextInput/TextInput";
 const DepositWithdrawTx = (props) => {
 
     const {t} = useTranslation();
-    const [filterOpen, setFilterOpen] = useState(false)
+    const [filterOpen, setFilterOpen] = useState(null)
     const [openItem, setOpenItem] = useState(false)
     const [filters, setFilters] = useState({
         fromTime: null,
@@ -166,7 +166,7 @@ const DepositWithdrawTx = (props) => {
                                                 <td>{tr.inventory}</td>
                                                 <td>{t("ordersStatus." + tr.status)}</td>
                                                 {
-                                                    openItem.all === index ?
+                                                    openItem === index ?
                                                         <td onClick={() => setOpenItem(null)}>
                                                             <Icon iconName="icon-up-open icon-blue font-size-sm"
                                                                   customClass={classes.iconBG}/>
@@ -178,7 +178,7 @@ const DepositWithdrawTx = (props) => {
                                                         </td>
                                                 }
                                             </tr>
-                                            <tr style={{display: openItem.all === index ? "revert" : "none"}}>
+                                            <tr style={{display: openItem === index ? "revert" : "none"}}>
                                                 <td colSpan="9" className={`py-1 px-2`}>
                                                     <div className="row jc-around  ai-center" style={{width: "100%"}}>
                                                         <p className="col-46 row jc-between">{t('DepositWithdrawTx.transactionId')} : <span>{tr.transactionId}</span>

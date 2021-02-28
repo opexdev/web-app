@@ -21,7 +21,7 @@ const MarketCard = (props) => {
         return images[base]
     }
     let items = props.pairs.map((pair) =>
-        <div onClick={()=>props.onSetActivePair(pair.name)} key={pair.name} className={`container row jc-between ai-center px-05 py-05 cursor-pointer ${classes.container} ${props.activePair === pair.name ? classes.selected :""} `}>
+        <div onClick={()=>props.onSetActivePair(pair.name)} key={pair.name+Math.random()} className={`container row jc-between ai-center px-05 py-05 cursor-pointer ${classes.container} ${props.activePair === pair.name ? classes.selected :""} `}>
             <div className={` row jc-between ai-center ${classes.marketCardImage}`}>
                 <img className={`img-md flex`} src={imageHandler(pair.name)} alt={(pair.name)} title={(pair.name)}/>
             </div>

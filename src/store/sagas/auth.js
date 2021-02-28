@@ -7,6 +7,6 @@ export function* login(action) {
     yield put(actions.login())
 }
 export function* logout() {
-    yield localStorage.setItem("token", null);
+    yield localStorage.removeItem("token");
     yield put(actions.logout())
 }

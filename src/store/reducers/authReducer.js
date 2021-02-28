@@ -22,7 +22,7 @@ const initialState = {
         BCH: 0.0,
         USDT: 0.0,
     },
-    isLogin: true
+    isLogin: false
 }
 
 const reducer = (state = initialState, action) => {
