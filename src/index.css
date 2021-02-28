@@ -121,6 +121,7 @@
     /*--tableRow: #F1F3F878;*/
     --tableRow: #e2e9f978;
     --textColor: #444444;
+    --textColorGray: #949494;
 
     --textDark: #0707073b;
 
@@ -177,6 +178,7 @@
     --mainContent: #383A59;
     --cardBody: #282a36;
     --textColor: #ecececc7;
+    --textColorGray: #8e8e8e;
 
     --cardHeader: #242633fa;
     --textGreen: #50fa7ba1;
@@ -206,7 +208,12 @@
     /*darkula*/
     /*--activeTab: #ff79c6;*/
 }
-
+.text-color-gray{
+    color: var(--textColorGray);
+}
+.text-color{
+    color: var(--textColor);
+}
 
 .text-green{
     color: var(--textGreen)
@@ -284,6 +291,7 @@ html,body{
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
     direction: rtl;
+    overflow-x: hidden;
 
 }
 .container{
@@ -501,8 +509,14 @@ html,body{
     color: var(--textGreen);
 }
 
+.text-start{
+    text-align: start;
+}
 .text-center{
     text-align: center;
+}
+.text-end{
+    text-align: end;
 }
 
 /**::-webkit-scrollbar {
@@ -596,6 +610,13 @@ tr{
 .ltr .pl-1{
     padding-right: 1vw;
     padding-left: initial;
+}
+.pr-1{
+    padding-right: 1vw;
+}
+.ltr .pr-1{
+    padding-left: 1vw;
+    padding-right: initial;
 }
 .pl-05{
     padding-left: 0.5vw;

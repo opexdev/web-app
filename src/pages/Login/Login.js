@@ -103,20 +103,22 @@ const Login = (props) => {
     return (
         <div className={`container ${classes.container}`}style={{backgroundImage: `url("${images.ho}")`}}>
             <div className={`row ${classes.row}`}>
-                <div className="column col-40 jc-center ai-center px-1" style={{backgroundColor: "#131212d1"}}>
+                <div className="column col-50 jc-center ai-center px-1" style={{backgroundColor: "#e6e6e6"}}>
                     <span className={` ${classes.content} card-background card-border `}>
                         <AccordionBox title="ورود/ثبت نام" content={data}/>
                     </span>
                 </div>
-                <div className={`column col-60 ai-center jc-center px-1 ${classes.intro}`} style={{backgroundColor: "#131212d1"}}>
+                <div className={`container  col-50 ai-center jc-center px-1 ${classes.space} ${classes.moveImage}`} style={{backgroundImage: `url("${images.spaceBackgroundStars}")`}}>
+                    <div className={`container column ai-center jc-center ${classes.intro} ${classes.moveImage}`} style={{backgroundImage: `url("${images.starBtc}")`}}>
 
-                    <div className={classes.bgicon}>
-                        <img src={images.opexLogo_light} alt="logo"/>
-                        <h1 className="pt-1">OPen source EXchange</h1>
+                        <div className={`column jc-center ai-center ${classes.bgicon}`}>
+                            <img src={images.opexLogo_light} alt="logo"/>
+                            <h1 className="pt-1">OPen source EXchange</h1>
+                        </div>
+
+
+
                     </div>
-
-
-
                 </div>
             </div>
         </div>

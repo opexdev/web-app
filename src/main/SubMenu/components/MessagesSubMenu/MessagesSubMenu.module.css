@@ -8,18 +8,6 @@
     padding: 1.8vh 1vw;
 }
 
-.TitleFontSize{
-    font-size:1.5vw;
-    margin: 1vh 0;
-}
-.UlMaxWidth{
-
-}
-.listBorder{
-    border-top: 0.1vh solid var(--borderBottom);
-    border-bottom: 0.1vh solid var(--borderBottom);
-    transition: border 0.4s;
-}
 
 .safariFlexSize :global(.accordion-header){
     flex: 14;

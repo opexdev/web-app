@@ -136,7 +136,8 @@
   "WalletSubMenu": {
     "title": "دارایی ها ",
     "totalValue": "ارزش کل",
-    "approximate": "تقریبی"
+    "approximate": "تقریبی",
+    "equivalent": "معادل"
   },
   "DepositWithdraw": {
     "title": "واریز/برداشت"
@@ -175,13 +176,21 @@
     "limit": "محدود",
     "paid": "پرداخت شده"
   },
+
+
+
+  "MessagesSubMenu": {
+    "title": "اطلاع رسانی",
+    "myMessages": "پیام های من",
+    "news": "اطلاعیه ها"
+  },
+
   "UserAccountStatus": {
     "title": "وضعیت حساب کاربری"
   },
   "PersonalProfile": {
     "title": "مشخصات فردی",
     "userLevel/fee": "سطح کاربری/کارمزدها"
-
   },
   "footer": {
     "changeColor": "تغییر رنگ",

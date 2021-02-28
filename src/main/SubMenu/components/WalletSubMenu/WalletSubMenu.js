@@ -35,7 +35,7 @@ const WalletSubMenu = (props) => {
                         </div>
                         <div className="column ai-end">
                             <span>530،095،000 <span className="font-size-sm">{t('currency.IRT')}</span></span>
-                            <span>1،3 <span className="font-size-sm">{t('currency.BTC')}</span></span>
+                            <span className="font-size-sm text-color-gray"><span>{t('WalletSubMenu.equivalent')} </span>0.57 <span>{t('currency.BTC')}</span></span>
                         </div>
                     </div>
                 </NavLink>
@@ -50,7 +50,7 @@ const WalletSubMenu = (props) => {
                         </div>
                         <div className="column ai-end">
                             <span>{props.wallet.IRT} <span className="font-size-sm">{t('currency.IRT')}</span></span>
-                            <span>1،3 <span className="font-size-sm">{t('currency.BTC')}</span></span>
+                            <span className="font-size-sm text-color-gray"><span>{t('WalletSubMenu.equivalent')} </span>0.003 <span>{t('currency.BTC')}</span></span>
                         </div>
                     </div>
                 </NavLink>
@@ -65,7 +65,7 @@ const WalletSubMenu = (props) => {
                         </div>
                         <div className="column ai-end">
                             <span>{props.wallet.BTC} <span className="font-size-sm">{t('currency.BTC')}</span></span>
-                            <span>{props.wallet.IRT} <span className="font-size-sm">{t('currency.IRT')}</span></span>
+                            <span className="font-size-sm text-color-gray"><span>{t('WalletSubMenu.equivalent')} </span>960،000،000 <span>{t('currency.IRT')}</span></span>
                         </div>
                         {/*<div className="jc-end ai-center">
                             <span>{props.wallet.BTC}</span>
@@ -83,7 +83,7 @@ const WalletSubMenu = (props) => {
                         </div>
                         <div className="column ai-end">
                             <span>{props.wallet.ETH} <span className="font-size-sm">{t('currency.ETH')}</span></span>
-                            <span>{props.wallet.IRT} <span className="font-size-sm">{t('currency.IRT')}</span></span>
+                            <span className="font-size-sm text-color-gray"><span>{t('WalletSubMenu.equivalent')} </span>45،000،000 <span>{t('currency.IRT')}</span></span>
                         </div>
                     </div>
                 </NavLink>
@@ -98,7 +98,7 @@ const WalletSubMenu = (props) => {
                         </div>
                         <div className="column ai-end">
                             <span>{props.wallet.USDT} <span className="font-size-sm">{t('currency.USDT')}</span></span>
-                            <span>{props.wallet.IRT} <span className="font-size-sm">{t('currency.IRT')}</span></span>
+                            <span className="font-size-sm text-color-gray"><span>{t('WalletSubMenu.equivalent')} </span>120،000،000 <span>{t('currency.IRT')}</span></span>
                         </div>
                     </div>
                 </NavLink>
@@ -113,7 +113,7 @@ const WalletSubMenu = (props) => {
                         </div>
                         <div className="column ai-end">
                             <span>{props.wallet.LTC} <span className="font-size-sm">{t('currency.LTC')}</span></span>
-                            <span>{props.wallet.IRT} <span className="font-size-sm">{t('currency.IRT')}</span></span>
+                            <span className="font-size-sm text-color-gray"><span>{t('WalletSubMenu.equivalent')} </span>800،000 <span>{t('currency.IRT')}</span></span>
                         </div>
                     </div>
                 </NavLink>
@@ -128,7 +128,7 @@ const WalletSubMenu = (props) => {
                         </div>
                         <div className="column ai-end">
                             <span>{props.wallet.BCH} <span className="font-size-sm">{t('currency.BCH')}</span></span>
-                            <span>{props.wallet.IRT} <span className="font-size-sm">{t('currency.IRT')}</span></span>
+                            <span className="font-size-sm text-color-gray"><span>{t('WalletSubMenu.equivalent')} </span>26،000،000 <span>{t('currency.IRT')}</span></span>
                         </div>
                     </div>
                 </NavLink>
@@ -143,7 +143,7 @@ const WalletSubMenu = (props) => {
                         </div>
                         <div className="column ai-end">
                             <span>{props.wallet.DOGE} <span className="font-size-sm">{t('currency.DOGE')}</span></span>
-                            <span>{props.wallet.IRT} <span className="font-size-sm">{t('currency.IRT')}</span></span>
+                            <span className="font-size-sm text-color-gray"><span>{t('WalletSubMenu.equivalent')} </span>1،560،000،000 <span>{t('currency.IRT')}</span></span>
                         </div>
                     </div>
                 </NavLink>

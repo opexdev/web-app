@@ -36,6 +36,8 @@ import loading from "./images/loading.gif";
 import abstractBG from "./images/abstractBG.png";
 import safe from "./images/safe.svg";
 import opexQrCode from "./images/opex-qr-code.svg";
+import starBtc from "./images/starBtc.png";
+import spaceBackgroundStars from "./images/space-background-stars.png";
 
 
 
@@ -79,6 +81,8 @@ export const  images = {
     'abstractBG' : abstractBG,
     'safe' : safe,
     'opexQrCode' : opexQrCode,
+    'starBtc' : starBtc,
+    'spaceBackgroundStars' : spaceBackgroundStars,
 
 };
 

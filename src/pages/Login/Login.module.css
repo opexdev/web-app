@@ -4,11 +4,36 @@
 .row{
     height: 100vh;
 }
-.intro{
-
+.space{
+    height: 100vh;
+    background-repeat: repeat;
+    background-position: center center;
+    background-size: 600px 1200px;
 }
+.intro{
+    height: 100vh;
+    background-repeat: no-repeat repeat;
+    background-position: center center;
+    background-size: 600px 1200px;
+}
+
+.moveImage {
+    animation-name: MOVE-BG;
+    animation-duration: 15s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+}
+@keyframes MOVE-BG {
+    from {
+        background-position: center top;
+    }
+    to {
+        background-position: center 1200px;
+    }
+}
+
 .intro img{
-    width: 13vw;
+    width: 11vw;
 }
 .intro h1{
     line-height: 4.5vh;
@@ -16,14 +41,14 @@
     color: #f2f2f2;
 }
 .content{
-    width: 60%;
+    width: 50%;
     height: 45%;
 
 }
 .bgicon{
     width: 60%;
     height: 65%;
-    background: #0e0e10cc;
+    /*background: #0e0e10cc;*/
     display: flex;
     flex-direction: column;
     align-items: center;
