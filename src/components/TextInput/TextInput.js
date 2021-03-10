@@ -32,7 +32,7 @@ const TextInput = (props) => {
                          data-effect="float"
                          data-tip={props.hint}
                     >
-                        <Icon iconName={`${classes.iconInfo} icon-white font-size-sm`} customClass="hint-icon"/>
+                        <Icon iconName={`${classes.iconInfo} icon-white font-size-sm flex`} customClass="hint-icon"/>
                         <span className={`${classes.alert} pr-05 `}>{props.alert}</span>
                     </div>
                     :

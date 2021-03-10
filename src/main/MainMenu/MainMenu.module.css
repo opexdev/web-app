@@ -114,7 +114,7 @@
 }
 .show.subMenu{
     margin-right: 5%;
-    transition: all 0.75s;
+    transition: all 0.45s;
 }
 :global(.ltr) .show.subMenu{
     margin-right: initial;

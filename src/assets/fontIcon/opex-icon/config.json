@@ -453,6 +453,44 @@
       "search": [
         "copy"
       ]
+    },
+    {
+      "uid": "17ebadd1e3f274ff0205601eef7b9cc4",
+      "css": "help-circled",
+      "code": 10,
+      "src": "fontawesome"
+    },
+    {
+      "uid": "de9a631a7d18106aea1c89ba51b1990a",
+      "css": "help-circled-1",
+      "code": 59410,
+      "src": "entypo"
+    },
+    {
+      "uid": "a3d734a5b4bec33fc3aa459d82092b23",
+      "css": "help-circled-2",
+      "code": 950741,
+      "src": "mfglabs"
+    },
+    {
+      "uid": "3e02a8849305ac80a0e36302f461f265",
+      "css": "help-circled-alt",
+      "code": 59414,
+      "src": "mfglabs"
+    },
+    {
+      "uid": "dc4e0d236b28459de8c40249ed26506b",
+      "css": "menu_vertical",
+      "code": 132504,
+      "src": "custom_icons",
+      "selected": true,
+      "svg": {
+        "path": "M506.7 142.2C457.8 142.2 417.8 182.2 417.8 231.1S457.8 320 506.7 320 595.6 280 595.6 231.1 555.6 142.2 506.7 142.2ZM506.7 408.9C457.8 408.9 417.8 448.9 417.8 497.8S457.8 586.7 506.7 586.7 595.6 546.7 595.6 497.8 555.6 408.9 506.7 408.9ZM506.7 675.6C457.8 675.6 417.8 715.6 417.8 764.4S457.8 853.3 506.7 853.3 595.6 813.3 595.6 764.4 555.6 675.6 506.7 675.6Z",
+        "width": 1013
+      },
+      "search": [
+        "menu_vertical"
+      ]
     }
   ]
 }

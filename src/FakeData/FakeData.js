@@ -486,3 +486,29 @@ export const MarketPair = [
 ]
 
 
+export const MyMessagesData = () => {
+    const data = [];
+    const count = Faker.random.number({'min': 28, 'max': 38})
+    for (let i = 0; i < count; i++) {
+        data.push({
+            orderId: Faker.random.number({'min': 11000, 'max': 1000000}),
+            timestamp: Faker.date.between('2020-01-01', '2021-02-05'),
+            title: Faker.random.arrayElement(['successful', 'login', 'cancel', 'done', 'incompleted']),
+        });
+    }
+    return data;
+}
+
+export const newsData = () => {
+    const data = [];
+    const count = Faker.random.number({'min': 28, 'max': 38})
+    for (let i = 0; i < count; i++) {
+        data.push({
+            orderId: Faker.random.number({'min': 11000, 'max': 1000000}),
+            timestamp: Faker.date.between('2020-01-01', '2021-02-05'),
+            title: Faker.random.arrayElement(['successful', 'login', 'cancel', 'done', 'incompleted']),
+        });
+    }
+    return data;
+}
+

@@ -1,24 +1,11 @@
 .container{
-    height: 35vh;
+    height: 70vh;
 }
 .header{
-    height: 20%;
-    padding: 1vh 1vw;
-
-}
-.header span{
-    width: 50%;
-    text-align: center;
+    height: 10%;
 }
 .content{
-    height: 80%;
-    width: 100%;
-}
-.content :global(.row){
-    width: 100%;
-}
-.content:nth-child(n){
-    /* width: 50%;*/
+    height: 90%;
 }
 .button{
     width: 10%;

@@ -12,11 +12,11 @@ const SetTwoStepVerification = () => {
             <div className={`container card-background card-border column ${classes.container}`}>
                 <div className={`column border-bottom jc-center card-header-bg  ${classes.header}`}>
                     <div className="row jc-start ">
-                        <h3>SetTwoStepVerification</h3>
+                        <h3>{t('SetTwoStepVerification.title')}</h3>
                     </div>
                 </div>
                 <div className={`row container ${classes.content}`}>
-                    SetTwoStepVerification
+                    {t('SetTwoStepVerification.title')}
                 </div>
             </div>
         </div>

@@ -63,12 +63,12 @@ const DepositWithdrawTx = (props) => {
             <div className={`container card-background card-border column ${classes.container}`}>
                 <div className="flex jc-between card-header-bg py-2 px-1">
                     <h3>{t('DepositWithdrawTx.title')}</h3>
-                    <div>
-                        <span style={{color:"var(--bgGreen)"}} className="font-size-md-plus">
-                            <i className="icon-microsoft_excel"/>
+                    <div className="row jc-center ai-center">
+                        <span style={{color:"var(--bgGreen)"}} className="font-size-md-plus cursor-pointer">
+                            <i className="icon-microsoft_excel flex"/>
                         </span>
-                        <span  style={{color:"var(--orange)"}} className="font-size-md-plus" onClick={() => setFilterOpen(prev => !prev)}>
-                            <i className="icon-filter"/>
+                        <span  style={{color:"var(--orange)"}} className="font-size-md-plus  cursor-pointer" onClick={() => setFilterOpen(prev => !prev)}>
+                            <i className="icon-filter flex"/>
                         </span>
                     </div>
                 </div>
@@ -128,13 +128,13 @@ const DepositWithdrawTx = (props) => {
                                     />
                                 </div>
                                 <div className={classes.btnBox}>
-                                    <button className={`${classes.button} ${classes.submit}`}
+                                    <button className={`${classes.button} ${classes.submit} cursor-pointer`}
                                             onClick={() => setFilterOpen(prev => !prev)}>اعمال فیلتر
                                     </button>
-                                    <button className={`${classes.button} ${classes.reset}`}
+                                    <button className={`${classes.button} ${classes.reset} cursor-pointer`}
                                             onClick={() => setFilterOpen(prev => !prev)}>حذف فیلتر
                                     </button>
-                                    <button className={`${classes.button} ${classes.return}`}
+                                    <button className={`${classes.button} ${classes.return} cursor-pointer`}
                                             onClick={() => setFilterOpen(prev => !prev)}>بازگشت
                                     </button>
                                 </div>
@@ -168,12 +168,12 @@ const DepositWithdrawTx = (props) => {
                                                 {
                                                     openItem === index ?
                                                         <td onClick={() => setOpenItem(null)}>
-                                                            <Icon iconName="icon-up-open icon-blue font-size-sm"
+                                                            <Icon iconName="icon-up-open icon-blue font-size-sm cursor-pointer"
                                                                   customClass={classes.iconBG}/>
                                                         </td>
                                                         :
                                                         <td onClick={() => setOpenItem(index)}>
-                                                            <Icon iconName="icon-down-open icon-blue font-size-sm"
+                                                            <Icon iconName="icon-down-open icon-blue font-size-sm cursor-pointer"
                                                                   customClass={classes.iconBG}/>
                                                         </td>
                                                 }
@@ -181,10 +181,8 @@ const DepositWithdrawTx = (props) => {
                                             <tr style={{display: openItem === index ? "revert" : "none"}}>
                                                 <td colSpan="9" className={`py-1 px-2`}>
                                                     <div className="row jc-around  ai-center" style={{width: "100%"}}>
-                                                        <p className="col-46 row jc-between">{t('DepositWithdrawTx.transactionId')} : <span>{tr.transactionId}</span>
-                                                        </p>
-                                                        <p className="col-46 row jc-between">{t('DepositWithdrawTx.blockchainTransactionId')} : <span>{tr.blockchainTransactionId}</span>
-                                                        </p>
+                                                        <p className="col-46 row jc-between">{t('DepositWithdrawTx.transactionId')} : <span>{tr.transactionId}</span></p>
+                                                        <p className="col-46 row jc-between">{t('DepositWithdrawTx.blockchainTransactionId')} : <span>{tr.blockchainTransactionId}</span></p>
                                                     </div>
                                                 </td>
                                             </tr>

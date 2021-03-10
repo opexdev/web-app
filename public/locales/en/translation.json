@@ -19,6 +19,9 @@
   "status" : "Status",
   "pleaseLogin" : "Please Login!",
   "comingSoon" : "Coming Soon :)",
+  "nextStep": "Next Step",
+  "prevStep": "Prev Step",
+  "submit": "Submit",
   "currency": {
     "IRT" : "IRT",
     "Euro" : "Euro",
@@ -157,6 +160,57 @@
     "done": "Done",
     "donePercentage": "Done %"
   },
+
+
+
+  "MessagesSubMenu": {
+    "title": "Notifications",
+    "myMessages": "My Messages",
+    "news": "News"
+  },
+  "SettingsSubMenu": {
+    "title": "Settings",
+    "userProfile": "User Profile",
+    "security": "Security",
+    "personalization": "Personalization",
+    "authentication": "Authentication"
+  },
+
+  "UserAccountStatus": {
+    "title": "وضعیت حساب کاربری"
+  },
+  "PersonalProfile": {
+    "title": "Personal Profile",
+    "userLevel/fee": "سطح کاربری/کارمزدها"
+  },
+
+  "LoginReports": {
+    "title": "Login Reports"
+  },
+  "ActiveSessions": {
+    "title": "Active Sessions"
+  },
+  "ChangePassword": {
+    "title": "Change Password"
+  },
+  "SetTwoStepVerification": {
+    "title": "Set Two Step Verification"
+  },
+  "HelpStep": {
+    "title": "Step 1 of 4: Help"
+  },
+  "PersonalProfileStep": {
+    "title": "Step 2 of 4: Enter Personal Information"
+  },
+  "SendPhotosStep": {
+    "title": "Step 3 of 4: Send Photos"
+  },
+  "SendToExpertStep": {
+    "title": "Step 4 of 4: Send To Expert"
+  },
+
+
+
   "market": {
     "title": "Market"
   },

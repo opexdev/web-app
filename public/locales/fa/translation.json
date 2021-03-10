@@ -24,6 +24,9 @@
   "transfer": "انتقال",
   "destination": "مقصد",
   "details": "جزئیات",
+  "nextStep": "گام بعدی",
+  "prevStep": "گام قبلی",
+  "submit": "ثبت",
   "currency": {
     "IRT": "تومان",
     "Euro": "یورو",
@@ -38,7 +41,8 @@
   "routes": {
     "/settings/profile":"مشخصات کاربری",
     "/settings/security":"امنیت",
-    "/settings/personalization":"شخصی سازی"
+    "/settings/personalization":"شخصی سازی",
+    "/settings/authentication":"احراز هویت کاربری"
   },
   "ordersStatus": {
     "live": "جاری شده",
@@ -47,6 +51,14 @@
     "cancel": "لغو شده",
     "doing": "در حال انجام",
     "incompleted": "نیمه تمام"
+  },
+  "messagesTitle": {
+    "successful": "عدم تائید معامله",
+    "login": "ورود موفق",
+    "done": "ورود همزمان",
+    "cancel": "لغو سفارش",
+    "done": "سفارش موفق",
+      "incompleted": "سفارش نیمه تمام"
   },
   "orderTypes": {
     "stopLimit" : "متوقف محدود",
@@ -185,6 +197,14 @@
     "news": "اطلاعیه ها"
   },
 
+  "SettingsSubMenu": {
+    "title": "تنظیمات",
+    "userProfile": "مشخصات کاربری",
+    "security": "امنیت",
+    "personalization": "شخصی سازی",
+    "authentication": "احراز هویت کاربری"
+  },
+
   "UserAccountStatus": {
     "title": "وضعیت حساب کاربری"
   },
@@ -192,6 +212,36 @@
     "title": "مشخصات فردی",
     "userLevel/fee": "سطح کاربری/کارمزدها"
   },
+
+  "LoginReports": {
+    "title": "گزارش ورودها"
+  },
+  "ActiveSessions": {
+    "title": "نشست های فعال"
+  },
+  "ChangePassword": {
+    "title": "تغییر رمز ورود"
+  },
+  "SetTwoStepVerification": {
+    "title": "فعال سازی ورود دوعاملی"
+  },
+  "HelpStep": {
+    "title": "گام 1 از 4: راهنما"
+  },
+  "PersonalProfileStep": {
+    "title": "گام 2 از 4: ورود اطلاعات فردی"
+  },
+  "SendPhotosStep": {
+    "title": "گام 3 از 4: ارسال تصاویر",
+    "textTitle": "متن اعلام رضایت را با کشیدن روی کادر یا کلیک کردن و انتخاب فایل آپلود کنید!",
+    "textSelfiTitle": "سلفی همراه با متن اعلام رضایت را با کشیدن روی کادر یا کلیک کردن و انتخاب فایل آپلود کنید!",
+    "NationalCardTitle": "سلفی همراه با کارت ملی یا شناسنامه را با کشیدن روی کادر یا کلیک کردن و انتخاب فایل آپلود کنید!"
+  },
+  "SendToExpertStep": {
+    "title": "گام 4 از 4: ارسال به کارشناس"
+  },
+
+
   "footer": {
     "changeColor": "تغییر رنگ",
     "aboutUs": "درباره ما",

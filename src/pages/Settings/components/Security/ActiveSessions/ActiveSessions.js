@@ -12,11 +12,11 @@ const ActiveSessions = () => {
             <div className={` card-background card-border column ${classes.container}`}>
                 <div className={`column border-bottom jc-center card-header-bg  ${classes.header}`}>
                     <div className="row jc-start ">
-                        <h3>ActiveSessions</h3>
+                        <h3>{t('ActiveSessions.title')}</h3>
                     </div>
                 </div>
                 <div className={`row container ${classes.content}`}>
-                    ActiveSessions
+                    {t('ActiveSessions.title')}
                 </div>
             </div>
         </div>

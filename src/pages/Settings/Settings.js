@@ -7,6 +7,7 @@ import {useTranslation} from "react-i18next";
 import Profile from "./components/Profile/Profile";
 import Security from "./components/Security/Security";
 import Personalization from "./components/Personalization/Personalization";
+import Authentication from "./components/Authentication/Authentication";
 
 const Settings = (props) => {
     const {t} = useTranslation();
@@ -22,6 +23,9 @@ const Settings = (props) => {
                 </Route>
                 <Route exact path={Routes.Personalization}>
                     <Personalization/>
+                </Route>
+                <Route exact path={Routes.Authentication}>
+                    <Authentication/>
                 </Route>
 
                 {/*<ProtectedRoute component={WalletSubMenu} isLogin={props.isLogin} exact path={Routes.WalletSubMenu}/>*/}

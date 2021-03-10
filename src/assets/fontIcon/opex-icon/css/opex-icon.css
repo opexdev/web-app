@@ -2,12 +2,12 @@
 
  @font-face {
   font-family: 'opex-icon';
-  src: url('../font/opex-icon.eot?79988412');
-  src: url('../font/opex-icon.eot?79988412#iefix') format('embedded-opentype'),
-       url('../font/opex-icon.woff2?79988412') format('woff2'),
-       url('../font/opex-icon.woff?79988412') format('woff'),
-       url('../font/opex-icon.ttf?79988412') format('truetype'),
-       url('../font/opex-icon.svg?79988412#opex-icon') format('svg');
+  src: url('../font/opex-icon.eot?82032901');
+  src: url('../font/opex-icon.eot?82032901#iefix') format('embedded-opentype'),
+       url('../font/opex-icon.woff2?82032901') format('woff2'),
+       url('../font/opex-icon.woff?82032901') format('woff'),
+       url('../font/opex-icon.ttf?82032901') format('truetype'),
+       url('../font/opex-icon.svg?82032901#opex-icon') format('svg');
   font-weight: normal;
   font-style: normal;
 }
@@ -17,7 +17,7 @@
 @media screen and (-webkit-min-device-pixel-ratio:0) {
   @font-face {
     font-family: 'opex-icon';
-    src: url('../font/opex-icon.svg?79988412#opex-icon') format('svg');
+    src: url('../font/opex-icon.svg?82032901#opex-icon') format('svg');
   }
 }
 */
@@ -57,6 +57,8 @@
   /* text-shadow: 1px 1px 1px rgba(127, 127, 127, 0.3); */
 }
  
+.icon-help-circled:before { content: '\a'; } /* '
+' */
 .icon-star-1:before { content: '\e211'; } /* '' */
 .icon-chat:before { content: '\e22b'; } /* '' */
 .icon-comment-alt:before { content: '\e23c'; } /* '' */
@@ -80,8 +82,10 @@
 .icon-calendar:before { content: '\e80f'; } /* '' */
 .icon-calendar-1:before { content: '\e810'; } /* '' */
 .icon-calendar-2:before { content: '\e811'; } /* '' */
+.icon-help-circled-1:before { content: '\e812'; } /* '' */
 .icon-info-circled:before { content: '\e813'; } /* '' */
 .icon-down-open:before { content: '\e814'; } /* '' */
+.icon-help-circled-alt:before { content: '\e816'; } /* '' */
 .icon-filter:before { content: '\e818'; } /* '' */
 .icon-filternfilled:before { content: '\e819'; } /* '' */
 .icon-microsoft_excel:before { content: '\e81a'; } /* '' */
@@ -109,7 +113,9 @@
 .icon-diamond:before { content: '\f259'; } /* '' */
 .icon-envelope-open:before { content: '\f2b6'; } /* '' */
 .icon-user-circle-o:before { content: '\f2be'; } /* '' */
+.icon-menu_vertical:before { content: '𠖘'; } /* '\20598' */
 .icon-stopwatch:before { content: '󨃏'; } /* '\e80cf' */
 .icon-calendar-3:before { content: '󨄭'; } /* '\e812d' */
+.icon-help-circled-2:before { content: '󨇕'; } /* '\e81d5' */
 .icon-copy:before { content: '󨉳'; } /* '\e8273' */
 .icon-account:before { content: '󨥮'; } /* '\e896e' */

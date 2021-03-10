@@ -13,6 +13,7 @@
 .content{
     height: 80%;
 }
-.content:nth-child(n){
-    /* width: 50%;*/
+.iconCustomClasss{
+    display: flex;
+    justify-content: flex-end;
 }

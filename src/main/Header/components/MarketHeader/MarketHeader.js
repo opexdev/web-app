@@ -4,10 +4,10 @@ import {images} from "../../../../assets/images"
 import {useTranslation} from "react-i18next";
 import {connect} from "react-redux";
 import moment from "moment-jalaali";
-import IconBtn from "../../../../components/Icon/Icon";
 import {setLogoutInitiate} from "../../../../store/actions";
 import {Link} from "react-router-dom";
 import {Login} from "../../../../routes/routes";
+import Icon from "../../../../components/Icon/Icon";
 
 
 const MarketHeader = (props) => {
@@ -22,14 +22,14 @@ const MarketHeader = (props) => {
                 <p className="mb-05">{t('header.availableBalance')}</p>
                 <div className={`row ai-center ${classes.inventory}`}>
                     <div className="flex ai-center">
-                        <IconBtn iconName="icon-plus icon-white font-size-sm" customClass={`mx-05 ${classes.iconBG}`}/>
+                        <Icon iconName="icon-plus icon-white font-size-sm flex" customClass={`mx-05 ${classes.iconBG}`}/>
                         <span>{props.auth.wallet[props.activePair.base]}</span>
                         <span>{t('currency.'+props.activePair.base)}</span>
                     </div>
                     <div className="flex ai-center">
                         <span>{props.auth.wallet[props.activePair.quote]}</span>
                         <span>{t('currency.'+props.activePair.quote)}</span>
-                        <IconBtn iconName="icon-plus icon-white font-size-sm" customClass={`mx-05 ${classes.iconBG}`}/>
+                        <Icon iconName="icon-plus icon-white font-size-sm flex" customClass={`mx-05 ${classes.iconBG}`}/>
                     </div>
                 </div>
             </div>

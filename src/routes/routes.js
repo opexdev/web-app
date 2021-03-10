@@ -10,3 +10,4 @@ export const Settings = '/settings';
 export const Profile = '/settings/profile';
 export const Security = '/settings/security';
 export const Personalization = '/settings/personalization';
+export const Authentication = '/settings/authentication';

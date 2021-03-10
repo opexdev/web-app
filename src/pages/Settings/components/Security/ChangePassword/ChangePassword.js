@@ -11,11 +11,11 @@ const ChangePassword = () => {
         <div className={`container card-background card-border column ${classes.container}`}>
             <div className={`column border-bottom jc-center card-header-bg  ${classes.header}`}>
                 <div className="row jc-start ">
-                    <h3>ChangePassword</h3>
+                    <h3>{t('ChangePassword.title')}</h3>
                 </div>
             </div>
             <div className={`row container ${classes.content}`}>
-                ChangePassword
+                {t('ChangePassword.title')}
             </div>
         </div>
     );
