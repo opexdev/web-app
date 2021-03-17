@@ -8,7 +8,7 @@
     height: 90%;
 }
 .prevButton{
-    width: 10%;
+    width: 30%;
     height: 4.5vh;
     /*padding: 1vh 0vw;*/
     border: none;
@@ -21,7 +21,7 @@
     /*margin-top: 1vh;*/
 }
 .nextButton{
-    width: 10%;
+    width: 30%;
     height: 4.5vh;
     /*padding: 1vh 0vw;*/
     border: none;
@@ -36,14 +36,22 @@
 
 .zoneBox{
     width: 22vw;
-    background-color: #fff9f1;
+    /*background-color: #fff9f1;*/
     padding: 2vh 1vw;
     border-radius: 10px;
-    border: 0.2vh solid var(--CardBorder);
+    border: 0.3vh dotted var(--CardBorder);
+}
+.cancel{
+    top: 0.8vh;
+    left: 0.1vw;
 }
 .zone{
-    border: 0.3vh dotted #b7a8a8;
-    padding: 2vh 3vw;
-    height: 15vh;
+    /*border: 0.3vh dotted #b7a8a8;*/
+    padding: 2vh 1vw;
+    height: 30vh;
+    border-radius: 10px;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
     background-color: var(--cardHeader);
 }

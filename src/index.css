@@ -666,6 +666,13 @@ tr{
     padding-left: 1vw;
     padding-right: initial;
 }
+.pr-2{
+    padding-right: 2vw;
+}
+.ltr .pr-2{
+    padding-left: 2vw;
+    padding-right: initial;
+}
 
 .ml-05{
     margin-left: 0.5vw;
@@ -679,6 +686,13 @@ tr{
 }
 .ltr .mr-05{
     margin-left: 0.5vw;
+    margin-right: initial;
+}
+.mr-1{
+    margin-right: 1vw;
+}
+.ltr .mr-1{
+    margin-left: 1vw;
     margin-right: initial;
 }
 
@@ -742,6 +756,10 @@ tr{
 .my-2{
     margin-top: 2vh;
     margin-bottom: 2vh;
+}
+.my-05{
+    margin-top: 0.5vh;
+    margin-bottom: 0.5vh;
 }
 
 li{

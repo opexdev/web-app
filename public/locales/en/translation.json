@@ -181,7 +181,24 @@
   },
   "PersonalProfile": {
     "title": "Personal Profile",
-    "userLevel/fee": "سطح کاربری/کارمزدها"
+    "userLevel/fee": "سطح کاربری/کارمزدها",
+    "firstNameEn": "Firstname (English)",
+    "lastNameEn": "Lastname (English)",
+    "firstNameMain": "Firstname (Main Language)",
+    "lastNameMain": "Lastname (Main Language)",
+    "nationality": "Nationality",
+    "residence": "Residence",
+    "dateOfBirth": "Date Of Birth ( )",
+    "dateOfBirthAlt": "Date Of Birth ( )",
+    "nationalID": "National ID",
+    "passportNumber": "Passport Number",
+    "phoneNumber": "Phone Number",
+    "telephone": "Telephone",
+    "email": "Email",
+    "postalCode": "Postal Code",
+    "address": "Address",
+    "selectNationality": "Select your nationality",
+    "selectResidence": "Select your country of residence"
   },
 
   "LoginReports": {

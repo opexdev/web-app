@@ -19,28 +19,48 @@ const SettingsSubMenu = () => {
             </div>
             <div className={`column container  ${classes.content}`}>
 
-                <NavLink exact={true} activeClassName={classes.selected} className="px-1 py-05" to={Routes.Profile}>
-                    <div className="row cursor-pointer">
-                        <Icon iconName="icon-vcard text-color font-size-md-plus" customClass={classes.iconBG}/>
-                        <span className="pr-05">{t('SettingsSubMenu.userProfile')}</span>
+                <NavLink exact={true} activeClassName={classes.selected} className="row jc-around ai-center cursor-pointer px-1 py-1" to={Routes.Profile}>
+                    <div className="row ai-center" style={{width:"40%"}}>
+                        {/*<Icon iconName="icon-profilesetting text-color font-size-md-plus" customClass={classes.iconBG}/>*/}
+                        <span className={`font-weight-bold pr-05 ${classes.topic}`}>{t('SettingsSubMenu.userProfile')}</span>
+                    </div>
+                    <div className={`column position-relative font-size-sm mr-1 ${classes.listBox}`} style={{width:"60%"}}>
+                        <span className={`flex ai-center my-05 pr-2 ${classes.list}`}>{t('UserAccountStatus.title')}</span>
+                        <span className={`flex ai-center my-05 pr-2 ${classes.list}`}>{t('PersonalProfile.title')}</span>
                     </div>
                 </NavLink>
-                <NavLink exact={true} activeClassName={classes.selected} className="px-1 py-05" to={Routes.Security}>
-                    <div className="row cursor-pointer">
-                        <Icon iconName="icon-lock-3 text-color font-size-md-plus" customClass={classes.iconBG}/>
-                        <span className="pr-05">{t('SettingsSubMenu.security')}</span>
+                <NavLink exact={true} activeClassName={classes.selected} className="row jc-around ai-center cursor-pointer px-1 py-1" to={Routes.Security}>
+                    <div className="row ai-center" style={{width:"40%"}}>
+                       {/* <Icon iconName="icon-protectsetting text-color font-size-md-plus" customClass={classes.iconBG}/>*/}
+                        <span className={`font-weight-bold pr-05 ${classes.topic}`}>{t('SettingsSubMenu.security')}</span>
+
+                    </div>
+                    <div className={` column position-relative font-size-sm mr-1 ${classes.listBox}`} style={{width:"60%"}}>
+                        <span className={`flex ai-center my-05 pr-2 ${classes.list}`}>{t('LoginReports.title')}</span>
+                        <span className={`flex ai-center my-05 pr-2 ${classes.list}`}>{t('ActiveSessions.title')}</span>
+                        <span className={`flex ai-center my-05 pr-2 ${classes.list}`}>{t('ChangePassword.title')}</span>
+                        <span className={`flex ai-center my-05 pr-2 ${classes.list}`}>{t('SetTwoStepVerification.title')}</span>
                     </div>
                 </NavLink>
-                <NavLink exact={true} activeClassName={classes.selected} className="px-1 py-05" to={Routes.Personalization}>
-                    <div className="row cursor-pointer">
-                        <Icon iconName="icon-tag text-color font-size-md-plus" customClass={classes.iconBG}/>
-                        <span className="pr-05">{t('SettingsSubMenu.personalization')}</span>
+                <NavLink exact={true} activeClassName={classes.selected} className="row jc-around ai-center cursor-pointer px-1 py-1" to={Routes.Personalization}>
+                    <div className="row ai-center" style={{width:"40%"}}>
+                        {/*<Icon iconName="icon-fileSubsetting text-color font-size-md-plus" customClass={classes.iconBG}/>*/}
+                        <span className={`font-weight-bold pr-05 ${classes.topic}`}>{t('SettingsSubMenu.personalization')}</span>
+                    </div>
+                    <div className={` column position-relative font-size-sm mr-1 ${classes.listBox}`} style={{width:"60%"}}>
+                        <span className={`flex ai-center my-05 pr-2 ${classes.list}`}>{t('SettingsSubMenu.personalization')}</span>
                     </div>
                 </NavLink>
-                <NavLink exact={true} activeClassName={classes.selected} className="px-1 py-05" to={Routes.Authentication}>
-                    <div className="row cursor-pointer">
-                        <Icon iconName="icon-tag text-color font-size-md-plus" customClass={classes.iconBG}/>
-                        <span className="pr-05">{t('SettingsSubMenu.authentication')}</span>
+                <NavLink exact={true} activeClassName={classes.selected} className="row jc-around ai-center cursor-pointer px-1 py-1" to={Routes.Authentication}>
+                    <div className="row ai-center" style={{width:"40%"}}>
+                        {/*<Icon iconName="icon-verifiedsetting text-color font-size-md-plus" customClass={classes.iconBG}/>*/}
+                        <span className={`font-weight-bold pr-05 ${classes.topic}`}>{t('SettingsSubMenu.authentication')}</span>
+                    </div>
+                    <div className={`column position-relative font-size-sm mr-1 ${classes.listBox}`} style={{width:"60%"}}>
+                        <span className={`flex ai-center my-05 pr-2 ${classes.list}`}>{t('HelpStep.title')}</span>
+                        <span className={`flex ai-center my-05 pr-2 ${classes.list}`}>{t('PersonalProfileStep.title')}</span>
+                        <span className={`flex ai-center my-05 pr-2 ${classes.list}`}>{t('SendPhotosStep.title')}</span>
+                        <span className={`flex ai-center my-05 pr-2 ${classes.list}`}>{t('SendToExpertStep.title')}</span>
                     </div>
                 </NavLink>
 
