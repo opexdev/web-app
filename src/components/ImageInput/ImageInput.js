@@ -137,7 +137,7 @@ const ImageInput = (props) => {
 
     return (
         <section className={`${props.zoneCustomClass}`} >
-            <div {...getRootProps({className: `dropzone flex jc-center ai-center text-center position-relative ${classes.zone}`})} style={{backgroundImage: `url("${files[0]?.preview}")`}}>
+            <div {...getRootProps({className: `dropzone flex jc-center ai-center text-center position-relative cursor-pointer hover-text ${classes.zone}`})} style={{backgroundImage: `url("${files[0]?.preview}")`}}>
                 {
                     files[0]?.preview ?  <Icon iconName="icon-cancel-circle-2 text-red font-size-md-01" customClass={`position-absolute ${classes.cancel} cursor-pointer`} onClick={(e) => {e.stopPropagation();setFiles([]);props.onchange("") }}/> : ""
                 }

@@ -109,7 +109,6 @@ const PersonalProfile = (props) => {
             </div>
             <div className="col-49">
                 <TextInput
-                    select={true}
                     placeholder={t('PersonalProfile.selectResidence')}
                     lead={t('PersonalProfile.residence')}
                     type="text"

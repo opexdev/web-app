@@ -607,6 +607,10 @@ html,body{
     position: relative;
 }
 
+.hover-text:hover{
+    color: var(--activeTab);
+}
+
 table{
     width: 100%;
     max-height: 100%;

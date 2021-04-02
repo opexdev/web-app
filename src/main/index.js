@@ -21,6 +21,7 @@ import {useTranslation} from "react-i18next";
 import {isSafari} from 'react-device-detect'
 import Settings from "../pages/Settings/Settings";
 import TechnicalChart from "../pages/TechnicalChart/TechnicalChart";
+import DevelopeLogin from "../pages/DevelopeLogin/DevelopeLogin";
 
 
 const App = (props) => {
@@ -42,7 +43,7 @@ const App = (props) => {
             <BrowserView>
                 <Switch>
                     <Route exact path="/login">
-                        <Login/>
+                        <DevelopeLogin/>
                     </Route>
                     <ProtectedRoute component={TechnicalChart} isLogin={props.isLogin} exact path={Routes.Technical}/>
                     <Fragment>
