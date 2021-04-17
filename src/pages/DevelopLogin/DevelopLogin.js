@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import {connect} from "react-redux";
-import classes from "./DevelopeLogin.module.css"
+import classes from "./DevelopLogin.module.css"
 import {images} from "../../assets/images";
 import TextInput from "../../components/TextInput/TextInput";
 import AccordionBox from "../../components/AccordionBox/AccordionBox";
@@ -8,7 +8,7 @@ import {setLoginInitiate} from "../../store/actions";
 import { Redirect,useHistory } from "react-router";
 
 
-const DevelopeLogin = (props) => {
+const DevelopLogin = (props) => {
 
     let history = useHistory();
     const [credential, setCredential] = useState({username:"",password:""});
@@ -141,4 +141,4 @@ const mapStateToProps = state => {
     }
 }
 
-export default  connect( mapStateToProps , mapDispatchToProps )(DevelopeLogin);
+export default  connect( mapStateToProps , mapDispatchToProps )(DevelopLogin);

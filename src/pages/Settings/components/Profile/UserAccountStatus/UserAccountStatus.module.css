@@ -2,7 +2,7 @@
     height: 30vh;
 }
 .header{
-    height: 20%;
+    height: 30%;
     padding: 1vh 1vw;
 
 }
@@ -11,9 +11,14 @@
     text-align: center;
 }
 .content{
-    height: 80%;
+    height: 70%;
 }
 .iconCustomClasss{
     display: flex;
     justify-content: flex-end;
+}
+
+.content tr:nth-child(even) td{
+    background-color: var(--tableRow);
+    transition: background-color 0.4s;
 }

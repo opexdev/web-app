@@ -1,4 +1,4 @@
-import React, {Fragment} from "react";
+import React, {Fragment, useEffect, useState} from "react";
 import classes from "./MarketHeader.module.css";
 import {images} from "../../../../assets/images"
 import {useTranslation} from "react-i18next";
@@ -8,15 +8,61 @@ import {setLogoutInitiate} from "../../../../store/actions";
 import {Link} from "react-router-dom";
 import {Login} from "../../../../routes/routes";
 import Icon from "../../../../components/Icon/Icon";
+import axios from "axios";
+import {OrderBookData} from "../../../../FakeData/FakeData";
 
 
 const MarketHeader = (props) => {
     const {t} = useTranslation();
+
+
+    const [marketHeaderData, setMarketHeaderData] = useState({
+
+            "price": null
+
+    })
+
+    const getMarketHeaderData = (activePair)=>{
+        //console.log( activePair.base + activePair.quote )
+        const axiosInstance = axios.create({
+            //proxy: {host:"217.97.101.134",port:80},
+            baseURL: 'https://api.binance.com',
+            timeout: 5000,
+            headers: {'X-Custom-Header': 'foobar'}
+        });
+        axiosInstance.get('/api/v3/ticker/price',{
+            params:{
+                'symbol' : props.activePair.base+ ( props.activePair.quote === "IRT" ? "USDT" : props.activePair.quote)
+            }})
+            .then(function (response) {
+                //console.log("headerData : " , response.data);
+                setMarketHeaderData( response.data )
+            })
+            .catch(function (error) {
+                //console.log("Error : " , error);
+                //setMarketHeaderData( )
+                clearInterval()
+            })
+            .then(function () {
+                // always executed
+            });
+    }
+
+
+    useEffect(() => {
+        const interval = setInterval(() => {
+            getMarketHeaderData(props.activePair)
+        }, 2000);
+        return () => clearInterval(interval);
+
+    },[props.activePair])
+
+
     return (
         <Fragment>
             <div className={`column ai-start`}>
                 <h2 className="mb-05">{t(`pair.${props.activePair.pair}`)}</h2>
-                <p>{t('header.lastPrice')}: <span>410,130,000</span> {t('currency.'+props.activePair.quote)}</p>
+                <p>{t('header.lastPrice')}: <span>{ marketHeaderData.price !== null ? marketHeaderData.price : <span className="flashit">در حال دریافت اطلاعات...</span> }</span> {marketHeaderData.price === null ? "" :t('currency.'+props.activePair.quote)}</p>
             </div>
             <div className={`column ai-center`}>
                 <p className="mb-05">{t('header.availableBalance')}</p>

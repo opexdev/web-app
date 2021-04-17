@@ -6,11 +6,13 @@ import i18n from "i18next";
 import ReactTooltip from "react-tooltip";
 import {connect} from "react-redux";
 import {setBestBuyPrice, setBestSellPrice, setBuyOrder, setSellOrder} from "../../../../store/actions";
+import Faker from "faker";
 
 const OrderBookTable = (props) => {
 
     const {t} = useTranslation();
     const [selected, setSelected] = useState({buy:-1,sell:-1})
+    const [totalAsks, setTotalAsks] = useState(9999999)
 
     useEffect(() => {
         ReactTooltip.rebuild();
@@ -40,8 +42,9 @@ const OrderBookTable = (props) => {
         </tr>
     }
     useEffect(()=>{
+        setTotalAsks( props.data.slice( 0 , 50 ).reduce((total , asks) => parseFloat(asks[1])+ total,0 ))
         props.type === "buy" ?  props.setBestSellPrice(props.data[0].pricePerUnit) : props.setBestBuyPrice(props.data[0].pricePerUnit)
-    },[])
+    },[props.data])
 
     return (
         <div className={`column container ${classes.container}`}>
@@ -54,10 +57,15 @@ const OrderBookTable = (props) => {
                     {
                         props.data.map((tr, index) => {
                             let barStyle;
+                            tr['percent'] = ((parseFloat(tr[1])/totalAsks)*100).toFixed();
+                            tr['pricePerUnit'] = parseFloat(tr[0]);
+                            tr['amount'] = parseFloat(tr[1]);
+                            tr['totalPrice'] = parseFloat(tr[1]*tr[0]);
+
                             if (props.type === "buy") {
-                                barStyle = {background: "linear-gradient(to "+end+" , var(--textGreenAlpha)   " + (tr.percent) + "%, transparent   " + (tr.percent) + "%) no-repeat"}
+                                barStyle = {background: "linear-gradient(to "+end+" , var(--textGreenAlpha)   " + (tr['percent']) + "%, transparent   " + (tr['percent']) + "%) no-repeat"}
                             } else {
-                                barStyle = {background: "linear-gradient( to "+start+", var(--textRedAlpha) " + (tr.percent) + "%,   transparent  " + (tr.percent) + "%) no-repeat"};
+                                barStyle = {background: "linear-gradient( to "+start+", var(--textRedAlpha) " + (tr['percent']) + "%,   transparent  " + (tr['percent']) + "%) no-repeat"};
                             }
                             return (props.type === "buy" ?
                                     <tr key={index} style={barStyle}
@@ -70,27 +78,27 @@ const OrderBookTable = (props) => {
                                             <div class="column jc-between col-100">
                                                 <div class="row jc-between col-100">
                                                     <span class="pl-05">${t('averagePrice')}:</span>
-                                                    <span >${((avg.pricePerUnit =avg.pricePerUnit + tr.pricePerUnit) / (index+1)).toFixed(props.activePair.quoteMaxDecimal).toLocaleString() }</span>
+                                                    <span >${((avg.pricePerUnit =avg.pricePerUnit + tr['pricePerUnit']) / (index+1)).toFixed(props.activePair.quoteMaxDecimal).toLocaleString() }</span>
                                                 </div>
                                                 <div class="row jc-between col-100">
                                                     <span class="pl-05">${t('totalVolume')}:</span>
-                                                    <span >${(avg.amount = avg.amount + tr.amount).toFixed(props.activePair.baseMaxDecimal).toLocaleString()}</span>
+                                                    <span >${(avg.amount = avg.amount + tr['amount']).toFixed(props.activePair.baseMaxDecimal).toLocaleString()}</span>
                                                 </div>
                                                 <div class="row jc-between col-100">
                                                     <span class="pl-05">${t('totalPrice')}:</span>
-                                                    <span >${(avg.total = avg.total + tr.totalPrice).toLocaleString()}</span>
+                                                    <span >${(avg.total = avg.total + tr['totalPrice']).toLocaleString()}</span>
                                                 </div>
                                             </div>
                                         `}
                                         data-amount={avg.amount}
                                         onClick={(e) => props.onSetSellOrder({
-                                            pricePerUnit: tr.pricePerUnit,
+                                            pricePerUnit: tr['pricePerUnit'],
                                             amount: parseFloat(e.currentTarget.getAttribute('data-amount'))
                                         })}
                                     >
-                                        <td>{tr.pricePerUnit.toLocaleString()}</td>
-                                        <td>{tr.amount}</td>
-                                        <td>{tr.totalPrice.toLocaleString()}</td>
+                                        <td>{tr['pricePerUnit']}</td>
+                                        <td>{tr['amount']}</td>
+                                        <td>{tr['totalPrice']}</td>
                                     </tr>
                                     :
                                     <tr key={index} style={barStyle}
@@ -103,31 +111,32 @@ const OrderBookTable = (props) => {
                                             <div class="column jc-between col-100">
                                                 <div class="row jc-between col-100">
                                                     <span class="pl-05">${t('averagePrice')}:</span>
-                                                    <span >${((avg.pricePerUnit = avg.pricePerUnit + tr.pricePerUnit) / (index+1)).toFixed(props.activePair.quoteMaxDecimal).toLocaleString() }</span>
+                                                    <span >${((avg.pricePerUnit = avg.pricePerUnit + tr['pricePerUnit']) / (index+1)).toFixed(props.activePair.quoteMaxDecimal).toLocaleString() }</span>
                                                 </div>
                                                 <div class="row jc-between col-100">
                                                     <span class="pl-05">${t('totalVolume')}:</span>
-                                                    <span >${(avg.amount = avg.amount + tr.amount).toFixed(props.activePair.baseMaxDecimal).toLocaleString()}</span>
+                                                    <span >${(avg.amount = avg.amount + tr['amount']).toFixed(props.activePair.baseMaxDecimal).toLocaleString()}</span>
                                                 </div>
                                                 <div class="row jc-between col-100">
                                                     <span class="pl-05">${t('totalPrice')}:</span>
-                                                    <span >${(avg.total = avg.total + tr.totalPrice).toLocaleString()}</span>
+                                                    <span >${(avg.total = avg.total + tr['totalPrice']).toLocaleString()}</span>
                                                 </div>
                                             </div>
                                         `}
                                         data-amount={avg.amount}
                                         onClick={(e) => props.onSetBuyOrder({
-                                            pricePerUnit: tr.pricePerUnit,
+                                            pricePerUnit: tr['pricePerUnit'],
                                             amount: parseFloat(e.currentTarget.getAttribute('data-amount'))
                                         })}
                                     >
-                                        <td>{tr.totalPrice.toLocaleString()}</td>
-                                        <td>{tr.amount}</td>
-                                        <td>{tr.pricePerUnit.toLocaleString()}</td>
+                                        <td>{tr['totalPrice'].toFixed(props.activePair.quoteMaxDecimal)}</td>
+                                        <td>{tr['amount']}</td>
+                                        <td>{tr['pricePerUnit'].toFixed(props.activePair.quoteMaxDecimal)}</td>
                                     </tr>
                             )
                         })
                     }
+
                     </tbody>
                 </table>
             </ScrollBar>

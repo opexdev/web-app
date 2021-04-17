@@ -4,10 +4,11 @@ const initialState = {
 
     activePair: {
         pair: "BTC/IRT",
+        symbol:"BTCIRT",
         base: "BTC",
         quote: "IRT",
         baseMaxDecimal: 6,
-        quoteMaxDecimal: 0,
+        quoteMaxDecimal: 3,
         baseRange: {
             min: 0.004,
             max: 10,
@@ -17,7 +18,10 @@ const initialState = {
             min: 0.004,
             max: 10,
             step: 0.005
-        }
+        },
+        orderTypes: [
+            "MARKET"
+        ],
     },
     activePairOrders: {
         bestBuyPrice: 765121689.0,

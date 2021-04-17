@@ -313,6 +313,15 @@ html,body{
     -ms-flex-direction: row;
     flex-direction: row;
 }
+.row-reverse{
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: row-reverse;
+    flex-direction: row-reverse;
+}
 .column{
     display: -webkit-box;
     display: -ms-flexbox;
@@ -884,6 +893,11 @@ table th {
     font-weight: normal;
     background-color: var(--tableHeader);
     line-height: 3.7vh;
+}
+
+.th-border-y th{
+    border-top: 0.1vh solid var(--CardBorder);
+    border-bottom: 0.1vh solid var(--CardBorder);
 }
 
 

@@ -65,8 +65,7 @@
 }
 
 thead th {
-    border-top: 1px solid var(--CardBorder);
-    border-bottom: 1px solid var(--CardBorder);
+
 }
 
 .filterBox {

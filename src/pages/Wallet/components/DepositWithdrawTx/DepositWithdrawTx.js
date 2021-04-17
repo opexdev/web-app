@@ -1,13 +1,13 @@
 import React, {Fragment, useState, useEffect} from 'react';
 import classes from "./DepositWithdrawTx.module.css"
-import ScrollBar from "../../../components/ScrollBar";
+import ScrollBar from "../../../../components/ScrollBar";
 import moment from "moment-jalaali";
 import {connect} from "react-redux";
 import {useTranslation} from "react-i18next";
-import {DTAllTransactionsData} from "../../../FakeData/FakeData";
-import Icon from "../../../components/Icon/Icon";
-import NumberInput from "../../../components/NumberInput/NumberInput";
-import TextInput from "../../../components/TextInput/TextInput";
+import {DTAllTransactionsData} from "../../../../FakeData/FakeData";
+import Icon from "../../../../components/Icon/Icon";
+import NumberInput from "../../../../components/NumberInput/NumberInput";
+import TextInput from "../../../../components/TextInput/TextInput";
 
 const DepositWithdrawTx = (props) => {
 
@@ -141,7 +141,7 @@ const DepositWithdrawTx = (props) => {
                             </Fragment>
                             :
                             <table className="text-center double-striped" cellSpacing="0" cellPadding="0">
-                                <thead>
+                                <thead className="th-border-y">
                                 <tr>
                                     <th className="pt-1">{t('time')}</th>
                                     <th>{t('date')}</th>

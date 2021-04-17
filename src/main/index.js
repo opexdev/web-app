@@ -21,7 +21,7 @@ import {useTranslation} from "react-i18next";
 import {isSafari} from 'react-device-detect'
 import Settings from "../pages/Settings/Settings";
 import TechnicalChart from "../pages/TechnicalChart/TechnicalChart";
-import DevelopeLogin from "../pages/DevelopeLogin/DevelopeLogin";
+import DevelopeLogin from "../pages/DevelopLogin/DevelopLogin";
 
 
 const App = (props) => {
@@ -62,13 +62,10 @@ const App = (props) => {
                                                     <Route exact path={Routes.Dashboard}>
                                                         <Dashboard/>
                                                     </Route>
-                                                    <ProtectedRoute component={Wallet} isLogin={props.isLogin} exact
-                                                                    path={Routes.Wallet}/>
-                                                    <ProtectedRoute component={Settings} isLogin={props.isLogin}
-                                                                    path={Routes.Settings}/>
+                                                    <ProtectedRoute component={Wallet} isLogin={props.isLogin} exact path={Routes.Wallet}/>
+                                                    <ProtectedRoute component={Settings} isLogin={props.isLogin} path={Routes.Settings}/>
                                                     <Route path="*">
-                                                        <div className="container flex ai-center jc-center"
-                                                             style={{height: "70%"}}>
+                                                        <div className="container flex ai-center jc-center" style={{height: "70%"}}>
                                                             <h1>{t('comingSoon')}</h1>
                                                         </div>
                                                     </Route>

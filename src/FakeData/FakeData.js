@@ -53,16 +53,30 @@ export const OrderBookBuyData = () => {
     }
     return data;
 }
-export const OrderBookSellData = () => {
-    const data = [];
+export const OrderBookData = () => {
+    const data = {
+        "lastUpdateId": null,
+        "bids": [],
+        "asks": []
+    };
     for (let i = 0; i < 100; i++) {
-        data.push({
+        data.bids.push([
+            Faker.random.number({'min': 4990000, 'max': 3990000}),
+            Faker.random.number({'min': 0, 'max': 1.5, precision: 0.0001})
+        ]);
+        /*data.push({
             id: Faker.random.number,
             amount: Faker.random.number({'min': 0, 'max': 1.5, precision: 0.0001}),
             pricePerUnit: Faker.random.number({'min': 4990000, 'max': 3990000}),
             totalPrice: Faker.random.number({'min': 139900000, 'max': 4139900000}),
             percent: Faker.random.number({'min': 1, 'max': 70})
-        });
+        });*/
+    }
+    for (let i = 0; i < 100; i++) {
+        data.asks.push([
+            Faker.random.number({'min': 4990000, 'max': 3990000}),
+            Faker.random.number({'min': 0, 'max': 1.5, precision: 0.0001})
+        ]);
     }
     return data;
 }
@@ -507,6 +521,20 @@ export const newsData = () => {
             orderId: Faker.random.number({'min': 11000, 'max': 1000000}),
             timestamp: Faker.date.between('2020-01-01', '2021-02-05'),
             title: Faker.random.arrayElement(['successful', 'login', 'cancel', 'done', 'incompleted']),
+        });
+    }
+    return data;
+}
+
+export const AccountStatusData = () => {
+    const data = [];
+    const count = Faker.random.number({'min': 1, 'max': 1})
+    for (let i = 0; i < count; i++) {
+        data.push({
+            dailyWithdrawal: Faker.random.number({'min': 11000, 'max': 1000000}),
+            dailyDeposit: Faker.random.number({'min': 0, 'max': 0}),
+            monthlyWithdrawal: Faker.random.number({'min': 11000, 'max': 1000000}),
+            monthlyDeposit: Faker.random.number({'min': 11000, 'max': 1000000}),
         });
     }
     return data;

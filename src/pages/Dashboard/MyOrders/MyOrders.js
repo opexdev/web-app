@@ -34,7 +34,7 @@ const MyOrders = (props) => {
 
     const CurrentOrdersTable = <ScrollBar>
         <table className="text-center double-striped" cellSpacing="0" cellPadding="0">
-            <thead>
+            <thead className="th-border-y">
             <tr>
                 <th className="pt-1">{t('time')}</th>
                 <th>{t('date')}</th>
@@ -94,7 +94,7 @@ const MyOrders = (props) => {
     </ScrollBar>
     const StopTable = <ScrollBar>
         <table className="text-center striped" cellSpacing="0" cellPadding="0">
-            <thead>
+            <thead className="th-border-y">
             <tr>
                 <th className="pt-1">{t('time')}</th>
                 <th>{t('date')}</th>
@@ -125,7 +125,7 @@ const MyOrders = (props) => {
     </ScrollBar>
     const OrderHistoryTable = <ScrollBar>
         <table className="text-center double-striped" cellSpacing="0" cellPadding="0">
-            <thead>
+            <thead className="th-border-y">
             <tr>
                 <th className="pt-1">{t('time')}</th>
                 <th>{t('date')}</th>
@@ -184,7 +184,7 @@ const MyOrders = (props) => {
     </ScrollBar>
     const TradesTable = <ScrollBar>
         <table className="text-center double-striped" cellSpacing="0" cellPadding="0">
-            <thead>
+            <thead className="th-border-y">
             <tr>
                 <th className="pt-1">{t('time')}</th>
                 <th>{t('date')}</th>

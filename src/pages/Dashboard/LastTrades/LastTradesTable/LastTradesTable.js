@@ -22,14 +22,18 @@ const LastTradesTable = (props) => {
                     </tr>
                     </thead>
                     <tbody>
-                    {props.data.map((tr , index) =>
-                    <tr key={index} style={{color: (tr.Type === "buy" ? "var(--textGreen)" : "var(--textRed)")}}>
-                        <td style={{direction:"ltr"}}>{moment(tr.timestamp).format('HH:mm:ss')}</td>
-                        <td style={{direction:"ltr"}}>{moment(tr.timestamp).format('jYY/jMM/jDD')}</td>
-                        <td>{tr.amount}</td>
-                        <td>{(tr.price).toLocaleString()}</td>
-                        <td>{(tr.totalPrice).toLocaleString()}</td>
-                    </tr>)}
+                    {props.data.map((tr , index) => {
+                        let totalPrice = (tr.price * tr.qty);
+                        return (
+                            <tr key={index} style={{color: (tr.isBuyerMaker === true ? "var(--textGreen)" : "var(--textRed)")}}>
+                                <td style={{direction: "ltr"}}>{moment(tr.time).format('HH:mm:ss')}</td>
+                                <td style={{direction: "ltr"}}>{moment(tr.time).format('jYY/jMM/jDD')}</td>
+                                <td>{tr.qty}</td>
+                                <td>{tr.price}</td>
+                                <td>{totalPrice}</td>
+                            </tr>
+                        )
+                    })}
                     </tbody>
                 </table>
             </ScrollBar>

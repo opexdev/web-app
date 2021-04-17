@@ -1,9 +1,9 @@
 import React from "react";
 
-import DepositWithdraw from "./DepositWithdraw/DepositWithdraw";
-import DepositWithdrawTx from "./DepositWithdrawTx/DepositWithdrawTx";
-import OrdersTrades from "./OrdersTrades/OrdersTrades";
-import OrdersTradesFilter from "./OrdersTradesFilter/OrdersTradesFilter";
+import DepositWithdraw from "./components/DepositWithdraw/DepositWithdraw";
+import DepositWithdrawTx from "./components/DepositWithdrawTx/DepositWithdrawTx";
+import OrdersTrades from "./components/OrdersTrades/OrdersTrades";
+import OrdersTradesFilter from "./components/OrdersTradesFilter/OrdersTradesFilter";
 
 const Wallet = (props) => {
     return (

@@ -1,10 +1,10 @@
 import React, {Fragment, useEffect, useRef, useState} from 'react';
 import classes from "./DepositWithdraw.module.css"
-import AccordionBox from "../../../components/AccordionBox/AccordionBox";
+import AccordionBox from "../../../../components/AccordionBox/AccordionBox";
 import {useTranslation} from "react-i18next";
-import {images} from "../../../assets/images";
-import TextInput from "../../../components/TextInput/TextInput";
-import Icon from "../../../components/Icon/Icon";
+import {images} from "../../../../assets/images";
+import TextInput from "../../../../components/TextInput/TextInput";
+import Icon from "../../../../components/Icon/Icon";
 import ReactTooltip from "react-tooltip";
 
 

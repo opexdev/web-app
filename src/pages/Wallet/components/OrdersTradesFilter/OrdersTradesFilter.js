@@ -1,17 +1,88 @@
 import React, {Fragment, useState, useEffect} from 'react';
-import classes from "./OrdersTrades.module.css"
-import ScrollBar from "../../../components/ScrollBar";
-import AccordionBox from "../../../components/AccordionBox/AccordionBox";
+import classes from "./OrdersTradesFilter.module.css"
+import ScrollBar from "../../../../components/ScrollBar";
+import AccordionBox from "../../../../components/AccordionBox/AccordionBox";
 import moment from "moment-jalaali";
 import {connect} from "react-redux";
 import {useTranslation} from "react-i18next";
 
-import {OrdersTradesAliveOrderData, OrdersTradesStopData, OrdersTradesOrdersHistoryData, OrdersTradesTradesData} from "../../../FakeData/FakeData";
-import Icon from "../../../components/Icon/Icon";
+import {OrdersTradesAliveOrderData, OrdersTradesStopData, OrdersTradesOrdersHistoryData, OrdersTradesTradesData} from "../../../../FakeData/FakeData";
+import Icon from "../../../../components/Icon/Icon";
+import {isSafari} from "react-device-detect";
+import NumberInput from "../../../../components/NumberInput/NumberInput";
+import TextInput from "../../../../components/TextInput/TextInput";
 
-const OrdersTrades = (props) => {
-
+const OrdersTradesFilter = (props) => {
     const {t} = useTranslation();
+
+
+    //AccordionBox
+
+    const {activeTab} = props;
+
+    const [active, setActive] = useState(0);
+    const itemsClickHandler = (index) => {
+        setActive(index)
+    }
+
+    useEffect(()=>{
+        if( activeTab !== undefined ){
+            setActive(activeTab)
+        }
+    },[activeTab])
+
+    // end AccordionBox
+
+    const [filterOpen, setFilterOpen] = useState(null)
+
+    const [filters, setFilters] = useState({
+        fromTime: null,
+        fromDate: null,
+        toTime: null,
+        toDate: null,
+        type: null,
+        address: null
+    })
+
+    const [alert, setAlert] = useState({
+        fromTime: null,
+        fromDate: null,
+        toTime: null,
+        toDate: null,
+    })
+
+    function timeValidator(inputField, key) {
+        const isValid = /^(2[0-3]|[01]?[0-9]):([0-5]?[0-9])$/.test(inputField);
+        if (isValid) {
+            setAlert({...alert, [key]: null})
+            setFilters({...filters, [key]: inputField})
+        } else {
+            setAlert({...alert, [key]: "ساعت وارد شده صحیح نمیباشد"})
+        }
+    }
+
+    function dateValidator(inputField, key) {
+        const isValid = /^[1-4]\d{3}\/((0[1-6]\/((3[0-1])|([1-2][0-9])|(0[1-9])))|((1[0-2]|(0[7-9]))\/(30|31|([1-2][0-9])|(0[1-9]))))$/.test(inputField);
+        if (isValid) {
+            setAlert({...alert, [key]: null})
+        } else {
+            setAlert({...alert, [key]: "تاریخ وارد شده صحیح نمیباشد"})
+        }
+    }
+    const marketOptions = [
+        {value: 'all', label: 'همه'},
+        {value: 'BTC/IRT', label: 'بیتکوین/تومان'},
+        {value: 'ETH/IRT', label: 'اتریوم/تومان'},
+        {value: 'ETH/BTC', label: 'اتریوم/بیتکوین'},
+    ]
+    const sideOptions = [
+        {value: 'all', label: 'همه'},
+        {value: 'buy', label: 'خرید'},
+        {value: 'sell', label: 'فروش'},
+    ]
+
+
+
     const [openItem, setOpenItem] = useState({
         aliveOrder: null,
         ordersHistory: null,
@@ -37,7 +108,7 @@ const OrdersTrades = (props) => {
 
     const aliveOrderTable = <ScrollBar>
         <table className="text-center double-striped" cellSpacing="0" cellPadding="0">
-            <thead>
+            <thead className="th-border-y">
             <tr>
                 <th className="pt-1">{t('time')}</th>
                 <th>{t('date')}</th>
@@ -71,19 +142,19 @@ const OrdersTrades = (props) => {
                             <td>{tr.totalPrice}</td>
                             <td>{tr.donePercentage}</td>
                             <td>
-                                <Icon iconName="icon-cancel text-red font-size-sm" customClass={classes.iconBG}/>
+                                <Icon iconName="icon-cancel text-red font-size-sm cursor-pointer" customClass={classes.iconBG}/>
                             </td>
 
                             {
                                 openItem.aliveOrder === index ?
                                     <td onClick={() => setOpenItem({...openItem, aliveOrder: null})}>
                                         {/*<i className="icon-up flex jc-center  text-blue font-size-md"/>*/}
-                                        <Icon iconName="icon-up-open icon-blue font-size-sm" customClass={classes.iconBG}/>
+                                        <Icon iconName="icon-up-open icon-blue font-size-sm cursor-pointer" customClass={classes.iconBG}/>
                                     </td>
                                     :
                                     <td onClick={() => setOpenItem({...openItem, aliveOrder: index})}>
                                         {/*<i className="icon-down flex jc-center  text-blue font-size-md"/>*/}
-                                        <Icon iconName="icon-down-open icon-blue font-size-sm" customClass={classes.iconBG}/>
+                                        <Icon iconName="icon-down-open icon-blue font-size-sm cursor-pointer" customClass={classes.iconBG}/>
                                     </td>
                             }
                         </tr>
@@ -101,7 +172,7 @@ const OrdersTrades = (props) => {
     </ScrollBar>
     const stopOrderTable = <ScrollBar>
         <table className="text-center striped" cellSpacing="0" cellPadding="0">
-            <thead>
+            <thead className="th-border-y">
             <tr>
                 <th className="pt-1">{t('time')}</th>
                 <th>{t('date')}</th>
@@ -134,7 +205,7 @@ const OrdersTrades = (props) => {
                             <td>{(tr.market === "BTC/IRT") ? "IRRT" : (tr.market === "ETH/BTC") ? "BTC" : "USDT" }</td>
                             <td>{tr.totalPrice.toLocaleString()}</td>
                             <td>
-                                <Icon iconName="icon-cancel text-red font-size-sm" customClass={classes.iconBG}/>
+                                <Icon iconName="icon-cancel text-red font-size-sm cursor-pointer" customClass={classes.iconBG}/>
                             </td>
                         </tr>
                     </Fragment>)
@@ -144,7 +215,7 @@ const OrdersTrades = (props) => {
     </ScrollBar>
     const ordersHistoryTable = <ScrollBar>
         <table className="text-center double-striped" cellSpacing="0" cellPadding="0">
-            <thead>
+            <thead className="th-border-y">
             <tr>
                 <th className="pt-1">{t('time')}</th>
                 <th>{t('date')}</th>
@@ -182,12 +253,12 @@ const OrdersTrades = (props) => {
                                 openItem.ordersHistory === index ?
                                     <td onClick={() => setOpenItem({...openItem, ordersHistory: null})}>
                                         {/*<i className="icon-up flex jc-center  text-blue font-size-md"/>*/}
-                                        <Icon iconName="icon-up-open icon-blue font-size-sm" customClass={classes.iconBG}/>
+                                        <Icon iconName="icon-up-open icon-blue font-size-sm cursor-pointer" customClass={classes.iconBG}/>
                                     </td>
                                     :
                                     <td onClick={() => setOpenItem({...openItem, ordersHistory: index})}>
                                         {/*<i className="icon-down flex jc-center  text-blue font-size-md"/>*/}
-                                        <Icon iconName="icon-down-open icon-blue font-size-sm" customClass={classes.iconBG}/>
+                                        <Icon iconName="icon-down-open icon-blue font-size-sm cursor-pointer" customClass={classes.iconBG}/>
                                     </td>
                             }
                         </tr>
@@ -205,7 +276,7 @@ const OrdersTrades = (props) => {
     </ScrollBar>
     const tradesTable = <ScrollBar>
         <table className="text-center double-striped" cellSpacing="0" cellPadding="0">
-            <thead>
+            <thead className="th-border-y">
             <tr>
                 <th className="pt-1">{t('time')}</th>
                 <th>{t('date')}</th>
@@ -240,12 +311,12 @@ const OrdersTrades = (props) => {
                                 openItem.trades === index ?
                                     <td onClick={() => setOpenItem({...openItem, trades: null})}>
                                         {/*<i className="icon-up flex jc-center  text-blue font-size-md"/>*/}
-                                        <Icon iconName="icon-up-open icon-blue font-size-sm" customClass={classes.iconBG}/>
+                                        <Icon iconName="icon-up-open icon-blue font-size-sm cursor-pointer" customClass={classes.iconBG}/>
                                     </td>
                                     :
                                     <td onClick={() => setOpenItem({...openItem, trades: index})}>
                                         {/*<i className="icon-down flex jc-center  text-blue font-size-md"/>*/}
-                                        <Icon iconName="icon-down-open icon-blue font-size-sm" customClass={classes.iconBG}/>
+                                        <Icon iconName="icon-down-open icon-blue font-size-sm cursor-pointer" customClass={classes.iconBG}/>
                                     </td>
                             }
                         </tr>
@@ -274,10 +345,103 @@ const OrdersTrades = (props) => {
         <div className={`container card-background card-border column ${classes.container}`}>
 
 
+            <div className={`${classes.content} ${isSafari ? classes.safariFlexSize : ""} `}>
+                <div className={`card-header-bg accordion-header ${classes.header}`}>
+                    <div className={`row jc-between ai-center  px-1 py-1`}>
+                        <h3>{t('OrdersTrades.title')}</h3>
+                        <div className="row jc-center ai-center">
+                            <span style={{color: "var(--bgGreen)"}} className="font-size-md-plus cursor-pointer"><i className="icon-microsoft_excel flex"/></span>
+                            <span style={{color: "var(--orange)"}} className="font-size-md-plus cursor-pointer" onClick={() => setFilterOpen(prev => !prev)}><i className="icon-filter flex"/></span>
+                        </div>
+                    </div>
+                    <div className={classes.items}>
+                        <ul>
+                            {data.map((item, index) => {
+                                        return <li className={active === index ? (classes.active) : ""}
+                                                   onClick={() => itemsClickHandler(index)}
+                                                   key={index}>{item.title}</li>})}
+
+                        </ul>
+                    </div>
+                </div>
+                <div className={`accordion-body ${classes.body}`}>
+                    {
+                        filterOpen ?
+                            <Fragment>
+                                <div className={classes.filterBox}>
+                                    <NumberInput
+                                        lead="از ساعت" after=<i className="icon-clock"/>
+                                    customClass={classes.filterInput}
+                                    format="##:##" placeholder="HH:mm" mask={['H', 'H', 'm', 'm']}
+                                    alert={alert.fromTime}
+                                    onchange={(input) => timeValidator(input.target.value, "fromTime")}
+                                    />
+                                    <NumberInput
+                                        lead="تاریخ" after=<i className="icon-calendar-1"/>
+                                    customClass={classes.filterInput}
+                                    format="####/##/##" placeholder="YYYY/MM/DD"
+                                    mask={['Y', 'Y', 'Y', 'Y', 'M', 'M', 'D', 'D']}
+                                    alert={alert.fromDate}
+                                    onchange={(input) => dateValidator(input.target.value, "fromDate")}
+                                    />
+                                    <NumberInput
+                                        lead="تا ساعت" after=<i className="icon-clock"/>
+                                    customClass={classes.filterInput}
+                                    format="##:##" placeholder="HH:mm" mask={['H', 'H', 'm', 'm']}
+                                    alert={alert.toTime}
+                                    onchange={(input) => timeValidator(input.target.value, "toTime")}
+                                    />
+                                    <NumberInput
+                                        lead="تاریخ" after=<i className="icon-calendar-1"/>
+                                    customClass={classes.filterInput}
+                                    format="####/##/##" placeholder="YYYY/MM/DD"
+                                    mask={['Y', 'Y', 'Y', 'Y', 'M', 'M', 'D', 'D']}
+                                    alert={alert.toDate}
+                                    onchange={(input) => dateValidator(input.target.value, "toDate")}
+                                    />
+                                </div>
+                                <div className={classes.filterBox}>
+                                    <TextInput
+                                        select={true}
+                                        placeholder="بازار"
+                                        options={marketOptions}
+                                        value={filters.type}
+                                        lead="بازار"
+                                        customClass={classes.filterInput}
+                                        onchange={(e) => setFilters({...filters, type: e.value})}
+                                    />
+                                    <TextInput
+                                        select={true}
+                                        placeholder="سمت"
+                                        options={sideOptions}
+                                        value={filters.address}
+                                        lead="سمت"
+                                        customClass={`${classes.filterInput} ${classes.address}`}
+                                        onchange={(e) => setFilters({...filters, address: e.value})}
+                                    />
+                                </div>
+                                <div className={classes.btnBox}>
+                                    <button className={`${classes.button} ${classes.submit} cursor-pointer`}
+                                            onClick={() => setFilterOpen(prev => !prev)}>اعمال فیلتر
+                                    </button>
+                                    <button className={`${classes.button} ${classes.reset} cursor-pointer`}
+                                            onClick={() => setFilterOpen(prev => !prev)}>حذف فیلتر
+                                    </button>
+                                    <button className={`${classes.button} ${classes.return} cursor-pointer`}
+                                            onClick={() => setFilterOpen(prev => !prev)}>بازگشت
+                                    </button>
+                                </div>
+                            </Fragment>
+                            :
+                            data[active].body
+
+                    }
+
+                </div>
+            </div>
 
 
-
-            <AccordionBox title={t('OrdersTrades.title')} content={data} safari={classes.safariFlexSize}/>
+            {/*<AccordionBox title={t('OrdersTrades.title')} content={data} safari={classes.safariFlexSize}/>*/}
         </div>
     );
 };
@@ -289,4 +453,4 @@ const mapStateToProps = state => {
     }
 }
 
-export default connect(mapStateToProps, null)(OrdersTrades);
+export default connect(mapStateToProps, null)(OrdersTradesFilter);
