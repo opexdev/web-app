@@ -1,24 +1,23 @@
-.container{
-    height: 30vh;
+.container {
+  height: 30vh;
 }
-.header{
-    height: 30%;
-    padding: 1vh 1vw;
+.header {
+  height: 30%;
+  padding: 1vh 1vw;
+}
+.header span {
+  width: 50%;
+  text-align: center;
+}
+.content {
+  height: 70%;
+}
+.iconCustomClasss {
+  display: flex;
+  justify-content: flex-end;
+}
 
-}
-.header span{
-    width: 50%;
-    text-align: center;
-}
-.content{
-    height: 70%;
-}
-.iconCustomClasss{
-    display: flex;
-    justify-content: flex-end;
-}
-
-.content tr:nth-child(even) td{
-    background-color: var(--tableRow);
-    transition: background-color 0.4s;
+.content tr:nth-child(even) td {
+  background-color: var(--tableRow);
+  transition: background-color 0.4s;
 }

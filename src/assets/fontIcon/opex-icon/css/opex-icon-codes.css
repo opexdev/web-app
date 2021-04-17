@@ -1,75 +1,216 @@
 @charset "UTF-8";
 
- 
-.icon-help-circled:before { content: '\a'; } /* '
+.icon-help-circled:before {
+  content: "\a";
+} /* '
 ' */
-.icon-verifiedsetting:before { content: '\da'; } /* 'Ú' */
-.icon-fileSubsetting:before { content: '\fd'; } /* 'ý' */
-.icon-protectsetting:before { content: '\0adf'; } /* '૟' */
-.icon-profilesetting:before { content: '\0dfd'; } /* '෽' */
-.icon-star-1:before { content: '\e211'; } /* '' */
-.icon-chat:before { content: '\e22b'; } /* '' */
-.icon-comment-alt:before { content: '\e23c'; } /* '' */
-.icon-comment:before { content: '\e24d'; } /* '' */
-.icon-lock:before { content: '\e800'; } /* '' */
-.icon-lock-filled:before { content: '\e801'; } /* '' */
-.icon-lock-1:before { content: '\e802'; } /* '' */
-.icon-flag:before { content: '\e803'; } /* '' */
-.icon-flag-filled:before { content: '\e804'; } /* '' */
-.icon-vcard:before { content: '\e805'; } /* '' */
-.icon-lock-2:before { content: '\e806'; } /* '' */
-.icon-lock-empty:before { content: '\e807'; } /* '' */
-.icon-lock-3:before { content: '\e808'; } /* '' */
-.icon-user:before { content: '\e809'; } /* '' */
-.icon-note:before { content: '\e80a'; } /* '' */
-.icon-tag:before { content: '\e80b'; } /* '' */
-.icon-account:before { content: '\e80c'; } /* '' */
-.icon-plus-circle:before { content: '\e80d'; } /* '' */
-.icon-calendar-inv:before { content: '\e80e'; } /* '' */
-.icon-calendar:before { content: '\e80f'; } /* '' */
-.icon-calendar-1:before { content: '\e810'; } /* '' */
-.icon-calendar-2:before { content: '\e811'; } /* '' */
-.icon-help-circled-1:before { content: '\e812'; } /* '' */
-.icon-info-circled:before { content: '\e813'; } /* '' */
-.icon-down-open:before { content: '\e814'; } /* '' */
-.icon-messages-dotted:before { content: '\e815'; } /* '' */
-.icon-help-circled-alt:before { content: '\e816'; } /* '' */
-.icon-safe:before { content: '\e817'; } /* '' */
-.icon-filter:before { content: '\e818'; } /* '' */
-.icon-filternfilled:before { content: '\e819'; } /* '' */
-.icon-microsoft_excel:before { content: '\e81a'; } /* '' */
-.icon-clear-filters:before { content: '\e81b'; } /* '' */
-.icon-clock:before { content: '\e81c'; } /* '' */
-.icon-copy:before { content: '\e81d'; } /* '' */
-.icon-menu_vertical:before { content: '\e81e'; } /* '' */
-.icon-cancel-circled:before { content: '\e81e'; } /* '' */
-.icon-cancel-circle-2:before { content: '\e824'; } /* '' */
-.icon-up-open:before { content: '\e825'; } /* '' */
-.icon-info:before { content: '\e830'; } /* '' */
-.icon-plus:before { content: '\e841'; } /* '' */
-.icon-star:before { content: '\e852'; } /* '' */
-.icon-star-filled:before { content: '\e863'; } /* '' */
-.icon-cancel:before { content: '\e876'; } /* '' */
-.icon-eye:before { content: '\e887'; } /* '' */
-.icon-sun-filled:before { content: '\e898'; } /* '' */
-.icon-cancel-circled-1:before { content: '\e8dd'; } /* '' */
-.icon-sun:before { content: '\e909'; } /* '' */
-.icon-infinity:before { content: '\e91a'; } /* '' */
-.icon-market:before { content: '\e93b'; } /* '' */
-.icon-settings:before { content: '\e94c'; } /* '' */
-.icon-wallet:before { content: '\e95d'; } /* '' */
-.icon-counting:before { content: '\e97f'; } /* '' */
-.icon-messages:before { content: '\e990'; } /* '' */
-.icon-down-open-1:before { content: '\f004'; } /* '' */
-.icon-up-open-1:before { content: '\f005'; } /* '' */
-.icon-calendar-empty:before { content: '\f133'; } /* '' */
-.icon-file-excel:before { content: '\f1c3'; } /* '' */
-.icon-diamond:before { content: '\f259'; } /* '' */
-.icon-envelope-open:before { content: '\f2b6'; } /* '' */
-.icon-user-circle-o:before { content: '\f2be'; } /* '' */
-.icon-cancel-circle-1:before { content: '󟿟'; } /* '\dffdf' */
-.icon-stopwatch:before { content: '󨃏'; } /* '\e80cf' */
-.icon-calendar-3:before { content: '󨄭'; } /* '\e812d' */
-.icon-help-circled-2:before { content: '󨇕'; } /* '\e81d5' */
-.icon-cancel-circled2:before { content: '󨴢'; } /* '\e8d22' */
-.icon-cancel-circle:before { content: '󨸠'; } /* '\e8e20' */
+.icon-verifiedsetting:before {
+  content: "\da";
+} /* 'Ú' */
+.icon-fileSubsetting:before {
+  content: "\fd";
+} /* 'ý' */
+.icon-protectsetting:before {
+  content: "\0adf";
+} /* '૟' */
+.icon-profilesetting:before {
+  content: "\0dfd";
+} /* '෽' */
+.icon-star-1:before {
+  content: "\e211";
+} /* '' */
+.icon-chat:before {
+  content: "\e22b";
+} /* '' */
+.icon-comment-alt:before {
+  content: "\e23c";
+} /* '' */
+.icon-comment:before {
+  content: "\e24d";
+} /* '' */
+.icon-lock:before {
+  content: "\e800";
+} /* '' */
+.icon-lock-filled:before {
+  content: "\e801";
+} /* '' */
+.icon-lock-1:before {
+  content: "\e802";
+} /* '' */
+.icon-flag:before {
+  content: "\e803";
+} /* '' */
+.icon-flag-filled:before {
+  content: "\e804";
+} /* '' */
+.icon-vcard:before {
+  content: "\e805";
+} /* '' */
+.icon-lock-2:before {
+  content: "\e806";
+} /* '' */
+.icon-lock-empty:before {
+  content: "\e807";
+} /* '' */
+.icon-lock-3:before {
+  content: "\e808";
+} /* '' */
+.icon-user:before {
+  content: "\e809";
+} /* '' */
+.icon-note:before {
+  content: "\e80a";
+} /* '' */
+.icon-tag:before {
+  content: "\e80b";
+} /* '' */
+.icon-account:before {
+  content: "\e80c";
+} /* '' */
+.icon-plus-circle:before {
+  content: "\e80d";
+} /* '' */
+.icon-calendar-inv:before {
+  content: "\e80e";
+} /* '' */
+.icon-calendar:before {
+  content: "\e80f";
+} /* '' */
+.icon-calendar-1:before {
+  content: "\e810";
+} /* '' */
+.icon-calendar-2:before {
+  content: "\e811";
+} /* '' */
+.icon-help-circled-1:before {
+  content: "\e812";
+} /* '' */
+.icon-info-circled:before {
+  content: "\e813";
+} /* '' */
+.icon-down-open:before {
+  content: "\e814";
+} /* '' */
+.icon-messages-dotted:before {
+  content: "\e815";
+} /* '' */
+.icon-help-circled-alt:before {
+  content: "\e816";
+} /* '' */
+.icon-safe:before {
+  content: "\e817";
+} /* '' */
+.icon-filter:before {
+  content: "\e818";
+} /* '' */
+.icon-filternfilled:before {
+  content: "\e819";
+} /* '' */
+.icon-microsoft_excel:before {
+  content: "\e81a";
+} /* '' */
+.icon-clear-filters:before {
+  content: "\e81b";
+} /* '' */
+.icon-clock:before {
+  content: "\e81c";
+} /* '' */
+.icon-copy:before {
+  content: "\e81d";
+} /* '' */
+.icon-menu_vertical:before {
+  content: "\e81e";
+} /* '' */
+.icon-cancel-circled:before {
+  content: "\e81e";
+} /* '' */
+.icon-cancel-circle-2:before {
+  content: "\e824";
+} /* '' */
+.icon-up-open:before {
+  content: "\e825";
+} /* '' */
+.icon-info:before {
+  content: "\e830";
+} /* '' */
+.icon-plus:before {
+  content: "\e841";
+} /* '' */
+.icon-star:before {
+  content: "\e852";
+} /* '' */
+.icon-star-filled:before {
+  content: "\e863";
+} /* '' */
+.icon-cancel:before {
+  content: "\e876";
+} /* '' */
+.icon-eye:before {
+  content: "\e887";
+} /* '' */
+.icon-sun-filled:before {
+  content: "\e898";
+} /* '' */
+.icon-cancel-circled-1:before {
+  content: "\e8dd";
+} /* '' */
+.icon-sun:before {
+  content: "\e909";
+} /* '' */
+.icon-infinity:before {
+  content: "\e91a";
+} /* '' */
+.icon-market:before {
+  content: "\e93b";
+} /* '' */
+.icon-settings:before {
+  content: "\e94c";
+} /* '' */
+.icon-wallet:before {
+  content: "\e95d";
+} /* '' */
+.icon-counting:before {
+  content: "\e97f";
+} /* '' */
+.icon-messages:before {
+  content: "\e990";
+} /* '' */
+.icon-down-open-1:before {
+  content: "\f004";
+} /* '' */
+.icon-up-open-1:before {
+  content: "\f005";
+} /* '' */
+.icon-calendar-empty:before {
+  content: "\f133";
+} /* '' */
+.icon-file-excel:before {
+  content: "\f1c3";
+} /* '' */
+.icon-diamond:before {
+  content: "\f259";
+} /* '' */
+.icon-envelope-open:before {
+  content: "\f2b6";
+} /* '' */
+.icon-user-circle-o:before {
+  content: "\f2be";
+} /* '' */
+.icon-cancel-circle-1:before {
+  content: "󟿟";
+} /* '\dffdf' */
+.icon-stopwatch:before {
+  content: "󨃏";
+} /* '\e80cf' */
+.icon-calendar-3:before {
+  content: "󨄭";
+} /* '\e812d' */
+.icon-help-circled-2:before {
+  content: "󨇕";
+} /* '\e81d5' */
+.icon-cancel-circled2:before {
+  content: "󨴢";
+} /* '\e8d22' */
+.icon-cancel-circle:before {
+  content: "󨸠";
+} /* '\e8e20' */

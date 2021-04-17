@@ -1,49 +1,47 @@
 .container {
-    height: 40vh;
-    border-radius: 9px;
+  height: 40vh;
+  border-radius: 9px;
 }
-.content{
-    height: 100%;
-
-}
-
-.depositInput{
-    width: 80%;
-}
-.depositInput :global(.after){
-    width: 15%;
-    cursor: pointer;
-}
-.depositInput :global(input){
-    width: 75% !important;
-    cursor: not-allowed;
-}
-.withdrawalInput :global(.lead){
-    width: 30%;
-}
-.withdrawalInput :global(input){
-    width: 70% !important;
+.content {
+  height: 100%;
 }
 
-.button{
-    width: 40%;
-    height: 4.5vh;
-    /*padding: 1vh 0vw;*/
-    border: none;
-    background-color: var(--bgRed);
-    border-radius: 7px;
-    font-family: 'IRANYekan';
-    font-size: 0.8vw;
-    color: #f2f2f2;
-    bottom: 0;
-    /*margin-top: 1vh;*/
+.depositInput {
+  width: 80%;
+}
+.depositInput :global(.after) {
+  width: 15%;
+  cursor: pointer;
+}
+.depositInput :global(input) {
+  width: 75% !important;
+  cursor: not-allowed;
+}
+.withdrawalInput :global(.lead) {
+  width: 30%;
+}
+.withdrawalInput :global(input) {
+  width: 70% !important;
 }
 
-.iconBG{
-    vertical-align: middle;
+.button {
+  width: 40%;
+  height: 4.5vh;
+  /*padding: 1vh 0vw;*/
+  border: none;
+  background-color: var(--bgRed);
+  border-radius: 7px;
+  font-family: "IRANYekan";
+  font-size: 0.8vw;
+  color: #f2f2f2;
+  bottom: 0;
+  /*margin-top: 1vh;*/
+}
 
-    border-radius: 50vw;
+.iconBG {
+  vertical-align: middle;
 
+  border-radius: 50vw;
 }
 /*
 .openDetailes{
@@ -56,42 +54,39 @@
     from {height: 0;}
     to {height: 40vh;}
 }*/
-.close{
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.3s;
-    opacity:0;
-    line-height: 0;
-    visibility: collapse
+.close {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s;
+  opacity: 0;
+  line-height: 0;
+  visibility: collapse;
 }
-.open{
-    max-height:2vh;
-    transition: max-height 0.6s;
-
+.open {
+  max-height: 2vh;
+  transition: max-height 0.6s;
 }
 
-
-.openDetailes{
-    /*display: table-row;*/
-    animation: anim 1s ease;
+.openDetailes {
+  /*display: table-row;*/
+  animation: anim 1s ease;
 }
 @keyframes anim {
-    0% {
-        transform: scaleY(0);
-    }
-    100% {
-        transform: scaleY(1);
-    }
+  0% {
+    transform: scaleY(0);
+  }
+  100% {
+    transform: scaleY(1);
+  }
 }
 /*
 tr{
     transform-origin: top;
 }*/
 
-
-.safariFlexSize :global(.accordion-header){
-    flex: 22;
+.safariFlexSize :global(.accordion-header) {
+  flex: 22;
 }
-.safariFlexSize :global(.accordion-body){
-    flex: 77;
+.safariFlexSize :global(.accordion-body) {
+  flex: 77;
 }

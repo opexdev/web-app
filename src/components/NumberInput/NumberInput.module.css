@@ -1,104 +1,104 @@
 .inputGroup {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-pack: justify;
-    -ms-flex-pack: justify;
-    justify-content: space-between;
-    -webkit-box-align: center;
-    -ms-flex-align: center;
-    align-items: center;
-    -webkit-box-orient: horizontal;
-    -webkit-box-direction: normal;
-    -ms-flex-direction: row;
-    flex-direction: row;
-    border: 0.3vh solid var(--CardBorder);
-    border-radius: 7px;
-    height: 5vh;
-    width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  border: 0.3vh solid var(--CardBorder);
+  border-radius: 7px;
+  height: 5vh;
+  width: 100%;
 }
 
 .inputGroup span {
-    background: var(--cardHeader);
-    color: var(--textColor);
-    /*-webkit-box-flex: 0.4;
+  background: var(--cardHeader);
+  color: var(--textColor);
+  /*-webkit-box-flex: 0.4;
     -ms-flex: 0.4;
     flex: 0.4;*/
-    width: 30%;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-align: center;
-    -ms-flex-align: center;
-    align-items: center;
-    -webkit-box-pack: center ;
-    -ms-flex-pack: center;
-    justify-content: center;
-    /*height: 4.5vh;*/
-    border: 0.3vh solid var(--cardHeader);
+  width: 30%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  /*height: 4.5vh;*/
+  border: 0.3vh solid var(--cardHeader);
 }
 
 .inputGroup input {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    /*-webkit-box-flex: 0.2;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  /*-webkit-box-flex: 0.2;
     -ms-flex: 0.2;
     flex: 0.2;*/
-    width: 40%;
-    height: 100%;
-    border: none;
-    /*padding-right: 10px;*/
-    direction: ltr;
-    text-align: center;
-    font-family: iranyekan , serif;
-    background: none;
-    color: var(--textColor);
+  width: 40%;
+  height: 100%;
+  border: none;
+  /*padding-right: 10px;*/
+  direction: ltr;
+  text-align: center;
+  font-family: iranyekan, serif;
+  background: none;
+  color: var(--textColor);
 }
-.ltr .inputGroup input{
-    font-family: 'Segoe UI', serif;
+.ltr .inputGroup input {
+  font-family: "Segoe UI", serif;
 }
 .inputGroup span.lead {
-    border-radius: 0 7px 7px 0;
+  border-radius: 0 7px 7px 0;
 }
-.ltr .inputGroup span.lead{
-    border-radius: 7px 0 0 7px;
+.ltr .inputGroup span.lead {
+  border-radius: 7px 0 0 7px;
 }
 .inputGroup span.after {
-    border-radius: 7px 0 0 7px ;
+  border-radius: 7px 0 0 7px;
 }
 .ltr .inputGroup span.after {
-    border-radius: 0 7px 7px 0;
+  border-radius: 0 7px 7px 0;
 }
 
-.inputGroupHint{
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-pack: end;
-    -ms-flex-pack: end;
-    justify-content: flex-end;
-    -webkit-box-align: center;
-    -ms-flex-align: center;
-    align-items: center;
+.inputGroupHint {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
 }
 
 .hintIcon {
-    width: 1.1vw;
-    height: 1.1vw;
-    border-radius: 50vw;
-    background-color: var(--bgRed);
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-align: center;
-    -ms-flex-align: center;
-    align-items: center;
-    -webkit-box-pack: center;
-    -ms-flex-pack: center;
-    justify-content: center;
+  width: 1.1vw;
+  height: 1.1vw;
+  border-radius: 50vw;
+  background-color: var(--bgRed);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
 }
-.alert{
-    font-size: 0.7vw;
-    color: var(--textRed);
+.alert {
+  font-size: 0.7vw;
+  color: var(--textRed);
 }

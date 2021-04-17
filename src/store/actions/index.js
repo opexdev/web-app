@@ -1,21 +1,13 @@
 export {
-    loadConfig,
-    setLoading,
-    setActivePair,
+  loadConfig,
+  setLoading,
+  setActivePair,
+  setThemeInitiate,
+  setTheme,
+  setBuyOrder,
+  setSellOrder,
+  setBestBuyPrice,
+  setBestSellPrice,
+} from "./global";
 
-    setThemeInitiate,
-    setTheme,
-
-    setBuyOrder,
-    setSellOrder,
-
-    setBestBuyPrice,
-    setBestSellPrice
-} from "./global"
-
-export {
-    login,
-    setLoginInitiate,
-    logout,
-    setLogoutInitiate
-} from "./auth"
+export {login, setLoginInitiate, logout, setLogoutInitiate} from "./auth";

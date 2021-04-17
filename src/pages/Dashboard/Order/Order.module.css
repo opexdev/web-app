@@ -1,62 +1,62 @@
-.container{
-    height: 70vh;
+.container {
+  height: 70vh;
 }
-.content{
-    height: 100%;
-    padding: 1.8vh 1vw;
+.content {
+  height: 100%;
+  padding: 1.8vh 1vw;
 }
-.button{
-    width: 100%;
-    height: 4.5vh;
-    /*padding: 1vh 0vw;*/
-    border: none;
-    /*background: var(--textGreen);*/
-    border-radius: 7px;
-    font-family: 'IRANYekan';
-    font-size: 0.8vw;
-    color: #f2f2f2;
-    bottom: 0;
-    /*margin-top: 1vh;*/
+.button {
+  width: 100%;
+  height: 4.5vh;
+  /*padding: 1vh 0vw;*/
+  border: none;
+  /*background: var(--textGreen);*/
+  border-radius: 7px;
+  font-family: "IRANYekan";
+  font-size: 0.8vw;
+  color: #f2f2f2;
+  bottom: 0;
+  /*margin-top: 1vh;*/
 }
-.button.buyOrder{
-    background-color: var(--bgGreen);
+.button.buyOrder {
+  background-color: var(--bgGreen);
 }
-.button.sellOrder{
-    background-color: var(--bgRed);
+.button.sellOrder {
+  background-color: var(--bgRed);
 }
 
 .button:disabled,
-.button[disabled]{
-    /*border: 1px solid #999999;
+.button[disabled] {
+  /*border: 1px solid #999999;
     background-color: #cccccc;
     color: #666666;*/
-    border: 0.3vh solid var(--cardHeader);
-    background: var(--cardHeader);
-    color: var(--textColor);
+  border: 0.3vh solid var(--cardHeader);
+  background: var(--cardHeader);
+  color: var(--textColor);
 }
 
-.dangerHint span i{
-    background-color: #6619bf;
-    width: 1.1vw;
-    height: 1.1vw;
-    border-radius: 50vw;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.dangerHint span i {
+  background-color: #6619bf;
+  width: 1.1vw;
+  height: 1.1vw;
+  border-radius: 50vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-.dangerHint :global(.alert){
-    font-size: 0.7vw;
-    color: #6619bf;
+.dangerHint :global(.alert) {
+  font-size: 0.7vw;
+  color: #6619bf;
 }
-.stopMarket{
-    background: var(--cardHeader);
+.stopMarket {
+  background: var(--cardHeader);
 }
-.stopMarket input{
-    cursor: not-allowed;
+.stopMarket input {
+  cursor: not-allowed;
 }
-.safariFlexSize :global(.accordion-header){
-    flex: 17;
+.safariFlexSize :global(.accordion-header) {
+  flex: 17;
 }
-.safariFlexSize :global(.accordion-body){
-    flex: 83;
+.safariFlexSize :global(.accordion-body) {
+  flex: 83;
 }
