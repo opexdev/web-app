@@ -93,7 +93,7 @@ export const lastTradesData = () => {
       amount: Faker.datatype.number({min: 0, max: 1, precision: 0.0001}),
       price: Faker.datatype.number({min: 413990000, max: 613990000}),
       totalPrice: Faker.datatype.number({min: 13990000, max: 413990000}),
-      Type: Faker.datatype.array(["buy", "sell"]),
+      Type: Faker.random.arrayElement(["buy", "sell"]),
     });
   }
 
@@ -117,7 +117,7 @@ export const MyOrderCurrentData = () => {
         precision: 0.0001,
       }),
       tradedPrice: Faker.datatype.number({min: 0, max: 1, precision: 0.0001}),
-      type: Faker.datatype.array(["buy", "sell"]),
+      type: Faker.random.arrayElement(["buy", "sell"]),
       progress: Faker.datatype.number({min: 0, max: 100, precision: 0.5}),
     });
   }
@@ -130,7 +130,7 @@ export const MyOrderHistoryData = () => {
   for (let i = 0; i < count; i++) {
     data.push({
       orderId: Faker.datatype.number({min: 11000, max: 1000000}),
-      orderType: Faker.datatype.array(["stopLimit", "stopMarket"]),
+      orderType: Faker.random.arrayElement(["stopLimit", "stopMarket"]),
       timestamp: Faker.date.between("2020-01-01", "2021-02-05"),
       stopOrderTime: Faker.date.between("2020-01-01", "2021-02-05"),
       startOrderTime: Faker.date.between("2020-01-01", "2021-02-05"),
@@ -138,8 +138,8 @@ export const MyOrderHistoryData = () => {
       price: Faker.datatype.number({min: 413990000, max: 613990000}),
       stoppedPrice: Faker.datatype.number({min: 413990000, max: 613990000}),
       totalPrice: Faker.datatype.number({min: 13990000, max: 413990000}),
-      type: Faker.datatype.array(["buy", "sell"]),
-      status: Faker.datatype.array(["live", "reject", "done", "cancel"]),
+      type: Faker.random.arrayElement(["buy", "sell"]),
+      status: Faker.random.arrayElement(["live", "reject", "done", "cancel"]),
     });
   }
   return data;
@@ -155,7 +155,7 @@ export const MyOrderStopData = () => {
       price: Faker.datatype.number({min: 413990000, max: 613990000}),
       totalPrice: Faker.datatype.number({min: 13990000, max: 413990000}),
       stopPrice: Faker.datatype.number({min: 13990000, max: 413990000}),
-      type: Faker.datatype.array(["buy", "sell"]),
+      type: Faker.random.arrayElement(["buy", "sell"]),
     });
   }
   return data;
@@ -171,7 +171,7 @@ export const MyOrderTradeData = () => {
       volume: Faker.datatype.number({min: 0, max: 1, precision: 0.0001}),
       price: Faker.datatype.number({min: 413990000, max: 613990000}),
       totalPrice: Faker.datatype.number({min: 13990000, max: 413990000}),
-      type: Faker.datatype.array(["buy", "sell"]),
+      type: Faker.random.arrayElement(["buy", "sell"]),
     });
   }
   return data;
@@ -184,7 +184,7 @@ export const DTAllTransactionsData = () => {
     data.push({
       orderId: Faker.datatype.number({min: 11000, max: 1000000}),
       timestamp: Faker.date.between("2020-01-01", "2021-02-05"),
-      transactionType: Faker.datatype.array([
+      transactionType: Faker.random.arrayElement([
         "deposit",
         "withdrawal",
         "Received",
@@ -200,7 +200,7 @@ export const DTAllTransactionsData = () => {
       blockchainTransactionId:
         "befe" +
         Faker.datatype.number({min: 8439201925530, max: 8539201925530}),
-      status: Faker.datatype.array([
+      status: Faker.random.arrayElement([
         "live",
         "reject",
         "done",
@@ -220,8 +220,8 @@ export const OrdersTradesAliveOrderData = () => {
     data.push({
       orderId: Faker.datatype.number({min: 11000, max: 1000000}),
       timestamp: Faker.date.between("2020-01-01", "2021-02-05"),
-      market: Faker.datatype.array(["BTC/IRT", "ETH/BTC", "BTC/USDT"]),
-      side: Faker.datatype.array(["buy", "sell"]),
+      market: Faker.random.arrayElement(["BTC/IRT", "ETH/BTC", "BTC/USDT"]),
+      side: Faker.random.arrayElement(["buy", "sell"]),
       order: Faker.datatype.number({min: 0, max: 10, precision: 0.0001}),
       done: Faker.datatype.number({min: 0, max: 0.5, precision: 0.0001}),
       pricePerUnit: Faker.datatype.number({min: 0, max: 2, precision: 0.0001}),
@@ -239,8 +239,8 @@ export const OrdersTradesStopData = () => {
     data.push({
       orderId: Faker.datatype.number({min: 11000, max: 1000000}),
       timestamp: Faker.date.between("2020-01-01", "2021-02-05"),
-      market: Faker.datatype.array(["BTC/IRT", "ETH/BTC", "BTC/USDT"]),
-      side: Faker.datatype.array(["buy", "sell"]),
+      market: Faker.random.arrayElement(["BTC/IRT", "ETH/BTC", "BTC/USDT"]),
+      side: Faker.random.arrayElement(["buy", "sell"]),
       order: Faker.datatype.number({min: 0, max: 10, precision: 0.0001}),
       stoppedPrice: Faker.datatype.number({min: 0, max: 450000540}),
       pricePerUnit: Faker.datatype.number({min: 0, max: 450000540}),
@@ -258,14 +258,14 @@ export const OrdersTradesOrdersHistoryData = () => {
     data.push({
       orderId: Faker.datatype.number({min: 11000, max: 1000000}),
       timestamp: Faker.date.between("2020-01-01", "2021-02-05"),
-      market: Faker.datatype.array(["BTC/IRT", "ETH/BTC", "BTC/USDT"]),
-      side: Faker.datatype.array(["buy", "sell"]),
-      type: Faker.datatype.array(["market", "limit"]),
+      market: Faker.random.arrayElement(["BTC/IRT", "ETH/BTC", "BTC/USDT"]),
+      side: Faker.random.arrayElement(["buy", "sell"]),
+      type: Faker.random.arrayElement(["market", "limit"]),
       order: Faker.datatype.number({min: 0, max: 1, precision: 0.0001}),
       done: Faker.datatype.number({min: 0, max: 1, precision: 0.0001}),
       pricePerUnit: Faker.datatype.number({min: 0, max: 450000540}),
       paid: Faker.datatype.number({min: 0, max: 450000540}),
-      status: Faker.datatype.array(["reject", "done", "cancel", "incompleted"]),
+      status: Faker.random.arrayElement(["reject", "done", "cancel", "incompleted"]),
     });
   }
   return data;
@@ -278,9 +278,9 @@ export const OrdersTradesTradesData = () => {
     data.push({
       orderId: Faker.datatype.number({min: 11000, max: 1000000}),
       timestamp: Faker.date.between("2020-01-01", "2021-02-05"),
-      market: Faker.datatype.array(["BTC/IRT", "ETH/BTC", "BTC/USDT"]),
-      side: Faker.datatype.array(["buy", "sell"]),
-      type: Faker.datatype.array(["market", "limit"]),
+      market: Faker.random.arrayElement(["BTC/IRT", "ETH/BTC", "BTC/USDT"]),
+      side: Faker.random.arrayElement(["buy", "sell"]),
+      type: Faker.random.arrayElement(["market", "limit"]),
       order: Faker.datatype.number({min: 0, max: 1, precision: 0.0001}),
       stoppedPrice: Faker.datatype.number({min: 0, max: 450000540}),
       pricePerUnit: Faker.datatype.number({min: 0, max: 450000540}),
@@ -296,7 +296,7 @@ export const MarketPair = [
     Change: Faker.datatype.number({min: 0, max: 20, precision: 0.01}),
     Price: Faker.datatype.number({min: 0, max: 450000540}),
     Vol: Faker.datatype.number({min: 200, max: 3000}),
-    Type: Faker.datatype.array(["increase", "decrease"]),
+    Type: Faker.random.arrayElement(["increase", "decrease"]),
     price7d: [
       Faker.datatype.number({min: 0, max: 20}),
       Faker.datatype.number({min: 0, max: 20}),
@@ -312,7 +312,7 @@ export const MarketPair = [
     Change: Faker.datatype.number({min: 0, max: 20, precision: 0.01}),
     Price: Faker.datatype.number({min: 0, max: 450000540}),
     Vol: Faker.datatype.number({min: 200, max: 3000}),
-    Type: Faker.datatype.array(["increase", "decrease"]),
+    Type: Faker.random.arrayElement(["increase", "decrease"]),
     price7d: [
       Faker.datatype.number({min: 0, max: 20}),
       Faker.datatype.number({min: 0, max: 20}),
@@ -328,7 +328,7 @@ export const MarketPair = [
     Change: Faker.datatype.number({min: 0, max: 20, precision: 0.01}),
     Price: Faker.datatype.number({min: 0, max: 450000540}),
     Vol: Faker.datatype.number({min: 200, max: 3000}),
-    Type: Faker.datatype.array(["increase", "decrease"]),
+    Type: Faker.random.arrayElement(["increase", "decrease"]),
     price7d: [
       Faker.datatype.number({min: 0, max: 20}),
       Faker.datatype.number({min: 0, max: 20}),
@@ -344,7 +344,7 @@ export const MarketPair = [
     Change: Faker.datatype.number({min: 0, max: 20, precision: 0.01}),
     Price: Faker.datatype.number({min: 0, max: 450000540}),
     Vol: Faker.datatype.number({min: 200, max: 3000}),
-    Type: Faker.datatype.array(["increase", "decrease"]),
+    Type: Faker.random.arrayElement(["increase", "decrease"]),
     price7d: [
       Faker.datatype.number({min: 0, max: 20}),
       Faker.datatype.number({min: 0, max: 20}),
@@ -360,7 +360,7 @@ export const MarketPair = [
     Change: Faker.datatype.number({min: 0, max: 20, precision: 0.01}),
     Price: Faker.datatype.number({min: 0, max: 450000540}),
     Vol: Faker.datatype.number({min: 200, max: 3000}),
-    Type: Faker.datatype.array(["increase", "decrease"]),
+    Type: Faker.random.arrayElement(["increase", "decrease"]),
     price7d: [
       Faker.datatype.number({min: 0, max: 20}),
       Faker.datatype.number({min: 0, max: 20}),
@@ -376,7 +376,7 @@ export const MarketPair = [
     Change: Faker.datatype.number({min: 0, max: 20, precision: 0.01}),
     Price: Faker.datatype.number({min: 0, max: 450000540}),
     Vol: Faker.datatype.number({min: 200, max: 3000}),
-    Type: Faker.datatype.array(["increase", "decrease"]),
+    Type: Faker.random.arrayElement(["increase", "decrease"]),
     price7d: [
       Faker.datatype.number({min: 0, max: 20}),
       Faker.datatype.number({min: 0, max: 20}),
@@ -393,7 +393,7 @@ export const MarketPair = [
     Change: Faker.datatype.number({min: 0, max: 20, precision: 0.01}),
     Price: Faker.datatype.number({min: 0, max: 450000540}),
     Vol: Faker.datatype.number({min: 200, max: 3000}),
-    Type: Faker.datatype.array(["increase", "decrease"]),
+    Type: Faker.random.arrayElement(["increase", "decrease"]),
     price7d: [
       Faker.datatype.number({min: 0, max: 20}),
       Faker.datatype.number({min: 0, max: 20}),
@@ -409,7 +409,7 @@ export const MarketPair = [
     Change: Faker.datatype.number({min: 0, max: 20, precision: 0.01}),
     Price: Faker.datatype.number({min: 0, max: 450000540}),
     Vol: Faker.datatype.number({min: 200, max: 3000}),
-    Type: Faker.datatype.array(["increase", "decrease"]),
+    Type: Faker.random.arrayElement(["increase", "decrease"]),
     price7d: [
       Faker.datatype.number({min: 0, max: 20}),
       Faker.datatype.number({min: 0, max: 20}),
@@ -425,7 +425,7 @@ export const MarketPair = [
     Change: Faker.datatype.number({min: 0, max: 20, precision: 0.01}),
     Price: Faker.datatype.number({min: 0, max: 450000540}),
     Vol: Faker.datatype.number({min: 200, max: 3000}),
-    Type: Faker.datatype.array(["increase", "decrease"]),
+    Type: Faker.random.arrayElement(["increase", "decrease"]),
     price7d: [
       Faker.datatype.number({min: 0, max: 20}),
       Faker.datatype.number({min: 0, max: 20}),
@@ -441,7 +441,7 @@ export const MarketPair = [
     Change: Faker.datatype.number({min: 0, max: 20, precision: 0.01}),
     Price: Faker.datatype.number({min: 0, max: 450000540}),
     Vol: Faker.datatype.number({min: 200, max: 3000}),
-    Type: Faker.datatype.array(["increase", "decrease"]),
+    Type: Faker.random.arrayElement(["increase", "decrease"]),
     price7d: [
       Faker.datatype.number({min: 0, max: 20}),
       Faker.datatype.number({min: 0, max: 20}),
@@ -458,7 +458,7 @@ export const MarketPair = [
     Change: Faker.datatype.number({min: 0, max: 20, precision: 0.01}),
     Price: Faker.datatype.number({min: 0, max: 450000540}),
     Vol: Faker.datatype.number({min: 200, max: 3000}),
-    Type: Faker.datatype.array(["increase", "decrease"]),
+    Type: Faker.random.arrayElement(["increase", "decrease"]),
     price7d: [
       Faker.datatype.number({min: 0, max: 20}),
       Faker.datatype.number({min: 0, max: 20}),
@@ -474,7 +474,7 @@ export const MarketPair = [
     Change: Faker.datatype.number({min: 0, max: 20, precision: 0.01}),
     Price: Faker.datatype.number({min: 0, max: 450000540}),
     Vol: Faker.datatype.number({min: 200, max: 3000}),
-    Type: Faker.datatype.array(["increase", "decrease"]),
+    Type: Faker.random.arrayElement(["increase", "decrease"]),
     price7d: [
       Faker.datatype.number({min: 0, max: 20}),
       Faker.datatype.number({min: 0, max: 20}),
@@ -490,7 +490,7 @@ export const MarketPair = [
     Change: Faker.datatype.number({min: 0, max: 20, precision: 0.01}),
     Price: Faker.datatype.number({min: 0, max: 450000540}),
     Vol: Faker.datatype.number({min: 200, max: 3000}),
-    Type: Faker.datatype.array(["increase", "decrease"]),
+    Type: Faker.random.arrayElement(["increase", "decrease"]),
     price7d: [
       Faker.datatype.number({min: 0, max: 20}),
       Faker.datatype.number({min: 0, max: 20}),
@@ -506,7 +506,7 @@ export const MarketPair = [
     Change: Faker.datatype.number({min: 0, max: 20, precision: 0.01}),
     Price: Faker.datatype.number({min: 0, max: 450000540}),
     Vol: Faker.datatype.number({min: 200, max: 3000}),
-    Type: Faker.datatype.array(["increase", "decrease"]),
+    Type: Faker.random.arrayElement(["increase", "decrease"]),
     price7d: [
       Faker.datatype.number({min: 0, max: 20}),
       Faker.datatype.number({min: 0, max: 20}),
@@ -526,7 +526,7 @@ export const MyMessagesData = () => {
     data.push({
       orderId: Faker.datatype.number({min: 11000, max: 1000000}),
       timestamp: Faker.date.between("2020-01-01", "2021-02-05"),
-      title: Faker.datatype.array([
+      title: Faker.random.arrayElement([
         "successful",
         "login",
         "cancel",
@@ -545,7 +545,7 @@ export const newsData = () => {
     data.push({
       orderId: Faker.datatype.number({min: 11000, max: 1000000}),
       timestamp: Faker.date.between("2020-01-01", "2021-02-05"),
-      title: Faker.datatype.array([
+      title: Faker.random.arrayElement([
         "successful",
         "login",
         "cancel",
