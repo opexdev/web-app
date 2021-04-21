@@ -6,6 +6,7 @@ import {images} from "../../../../assets/images";
 import TextInput from "../../../../components/TextInput/TextInput";
 import Icon from "../../../../components/Icon/Icon";
 import ReactTooltip from "react-tooltip";
+import Button from "../../../../components/Button/Button";
 
 const DepositWithdraw = (props) => {
   const {t} = useTranslation();
@@ -128,11 +129,12 @@ const DepositWithdraw = (props) => {
                 دریافتی شما: <span>...</span>
               </span>
             </div>
-            <button
-              type="submit"
-              className={`cursor-pointer ${classes.button}`}>
-              ثبت درخواست برداشت
-            </button>
+
+            <Button
+                buttonClass={`${classes.thisButton} ${classes.withdrawal}`}
+                type="submit"
+                buttonTitle="ثبت درخواست برداشت"
+            />
           </div>
         </div>
       </div>
@@ -197,11 +199,11 @@ const DepositWithdraw = (props) => {
                 دریافتی شما: <span>...</span>
               </span>
             </div>
-            <button
-              type="submit"
-              className={`cursor-pointer ${classes.button}`}>
-              ثبت درخواست انتقال
-            </button>
+            <Button
+                buttonClass={`${classes.thisButton} ${classes.transfer}`}
+                type="submit"
+                buttonTitle="ثبت درخواست انتقال"
+            />
           </div>
         </div>
       </div>

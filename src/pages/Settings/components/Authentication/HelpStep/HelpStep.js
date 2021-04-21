@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from "react";
 import classes from "./HelpStep.module.css";
 import {useTranslation} from "react-i18next";
+import Button from "../../../../../components/Button/Button";
 
 const HelpStep = (props) => {
   const {t} = useTranslation();
@@ -18,12 +19,19 @@ const HelpStep = (props) => {
         className={`container column jc-between px-1 py-2 ${classes.content}`}>
         <span>راهنما</span>
         <div className="row jc-end">
-          <button
+          {/*<button
             onClick={props.nextStep}
             type="submit"
             className={`cursor-pointer ${classes.button}`}>
             {t("nextStep")}
-          </button>
+          </button>*/}
+
+          <Button
+              buttonClass={classes.thisButton}
+              onClick={props.nextStep}
+              buttonTitle={t("nextStep")}
+          />
+
         </div>
       </div>
     </div>

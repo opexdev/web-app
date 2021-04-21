@@ -2,6 +2,7 @@ import React, {useState, useEffect} from "react";
 import classes from "./PersonalProfileStep.module.css";
 import {useTranslation} from "react-i18next";
 import TextInput from "../../../../../components/TextInput/TextInput";
+import Button from "../../../../../components/Button/Button";
 
 const PersonalProfileStep = (props) => {
   const {t} = useTranslation();
@@ -209,18 +210,16 @@ const PersonalProfileStep = (props) => {
         </div>
 
         <div className="row pt-1 jc-end">
-          <button
-            onClick={props.prevStep}
-            type="submit"
-            className={`cursor-pointer ml-05 ${classes.prevButton}`}>
-            {t("prevStep")}
-          </button>
-          <button
-            onClick={props.nextStep}
-            type="submit"
-            className={`cursor-pointer ${classes.nextButton}`}>
-            {t("nextStep")}
-          </button>
+          <Button
+              buttonClass={`${classes.thisButton} ${classes.prev} ml-05`}
+              onClick={props.prevStep}
+              buttonTitle={t("prevStep")}
+          />
+          <Button
+              buttonClass={`${classes.thisButton} ${classes.next}`}
+              onClick={props.nextStep}
+              buttonTitle={t("nextStep")}
+          />
         </div>
       </div>
     </div>

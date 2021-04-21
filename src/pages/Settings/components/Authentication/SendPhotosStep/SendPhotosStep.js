@@ -4,6 +4,7 @@ import {useTranslation} from "react-i18next";
 import {useDropzone} from "react-dropzone";
 import {images} from "../../../../../assets/images";
 import ImageInput from "../../../../../components/ImageInput/ImageInput";
+import Button from "../../../../../components/Button/Button";
 
 const SendPhotosStep = (props) => {
   const {t} = useTranslation();
@@ -80,18 +81,16 @@ const SendPhotosStep = (props) => {
             </span>
           </div>
           <div className={`row jc-end col-50 ai-end`}>
-            <button
-              onClick={props.prevStep}
-              type="submit"
-              className={`cursor-pointer ml-05 ${classes.prevButton}`}>
-              {t("prevStep")}
-            </button>
-            <button
-              onClick={props.nextStep}
-              type="submit"
-              className={`cursor-pointer ${classes.nextButton}`}>
-              {t("nextStep")}
-            </button>
+            <Button
+                buttonClass={`${classes.thisButton} ${classes.prev} ml-05`}
+                onClick={props.prevStep}
+                buttonTitle={t("prevStep")}
+            />
+            <Button
+                buttonClass={`${classes.thisButton} ${classes.next}`}
+                onClick={props.nextStep}
+                buttonTitle={t("nextStep")}
+            />
           </div>
         </div>
       </div>

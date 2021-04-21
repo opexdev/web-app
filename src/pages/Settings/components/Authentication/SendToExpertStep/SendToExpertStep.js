@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from "react";
 import classes from "./SendToExpertStep.module.css";
 import {useTranslation} from "react-i18next";
+import Button from "../../../../../components/Button/Button";
 
 const SendToExpertStep = (props) => {
   const {t} = useTranslation();
@@ -18,18 +19,17 @@ const SendToExpertStep = (props) => {
         className={`container column jc-between px-1 py-2 ${classes.content}`}>
         <span>ارسال به کارشناس</span>
         <div className="row pt-1 jc-end">
-          <button
-            onClick={props.prevStep}
-            type="submit"
-            className={`cursor-pointer ml-05 ${classes.prevButton}`}>
-            {t("prevStep")}
-          </button>
-          <button
-            onClick={props.nextStep}
-            type="submit"
-            className={`cursor-pointer ${classes.nextButton}`}>
-            {t("submit")}
-          </button>
+            <Button
+                buttonClass={`${classes.thisButton} ${classes.prev} ml-05`}
+                onClick={props.prevStep}
+                buttonTitle={t("prevStep")}
+            />
+            <Button
+                buttonClass={`${classes.thisButton} ${classes.submit}`}
+                onClick={props.nextStep}
+                type="submit"
+                buttonTitle={t("submit")}
+            />
         </div>
       </div>
     </div>

@@ -4,6 +4,7 @@ import {parsePriceString} from "../../../../utils/utils";
 import classes from "../Order.module.css";
 import NumberInput from "../../../../components/NumberInput/NumberInput";
 import {connect} from "react-redux";
+import Button from "../../../../components/Button/Button";
 
 const SellOrder = (props) => {
   const {t} = useTranslation();
@@ -267,15 +268,12 @@ const SellOrder = (props) => {
           {t("currency." + props.activePair.quote)}
         </p>
       </div>
-
-      <button
-        type="submit"
-        className={`${classes.button} ${classes.sellOrder}`}
-        disabled={
-          alert.reqAmount || order.reqAmount === 0 || !props.auth.isLogin
-        }>
-        {props.auth.isLogin ? t("sell") : t("pleaseLogin")}
-      </button>
+      <Button
+          buttonClass={`${classes.thisButton} ${classes.sellOrder}`}
+          type="submit"
+          disabled={alert.reqAmount || order.reqAmount === 0 || !props.auth.isLogin}
+          buttonTitle={props.auth.isLogin ? t("sell") : t("pleaseLogin")}
+      />
     </div>
   );
 };

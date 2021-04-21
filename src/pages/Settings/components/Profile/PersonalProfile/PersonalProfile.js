@@ -31,25 +31,6 @@ const PersonalProfile = (props) => {
   });
 
   const {t} = useTranslation();
-  const [openItem, setOpenItem] = useState({
-    current: null,
-    history: null,
-    trade: null,
-  });
-  const [customData, setCustomData] = useState({
-    current: [],
-    history: [],
-    trade: [],
-    stop: [],
-  });
-  useEffect(() => {
-    setCustomData({
-      current: MyOrderCurrentData(),
-      stop: MyOrderStopData(),
-      history: MyOrderHistoryData(),
-      trade: MyOrderTradeData(),
-    });
-  }, []);
 
   const options = [
     {value: "IRAN", label: "جمهوری اسلامی ایران"},

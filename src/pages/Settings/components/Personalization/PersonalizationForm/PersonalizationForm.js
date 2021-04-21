@@ -2,6 +2,7 @@ import React, {useState, useEffect} from "react";
 import classes from "./PersonalizationForm.module.css";
 import {useTranslation} from "react-i18next";
 import TextInput from "../../../../../components/TextInput/TextInput";
+import Button from "../../../../../components/Button/Button";
 
 const PersonalizationForm = () => {
   const {t} = useTranslation();
@@ -153,11 +154,12 @@ const PersonalizationForm = () => {
             </div>
           </div>
           <div className="row jc-end pt-1">
-            <button
-              type="submit"
-              className={`cursor-pointer ${classes.button}`}>
-              ذخیره
-            </button>
+
+            <Button
+                buttonClass={`${classes.thisButton}`}
+                /*buttonTitle={t("prevStep")}*/
+                buttonTitle="ذخیره"
+            />
           </div>
         </div>
       </div>

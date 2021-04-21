@@ -346,21 +346,27 @@ const MyOrders = (props) => {
     </ScrollBar>
   );
 
+  const LoginText = <div className="container height-100 flex ai-center jc-center">
+    {t("pleaseLogin")}
+  </div>
+
   const data = [
-    {id: 1, title: t("myOrders.aliveOrder"), body: CurrentOrdersTable},
-    {id: 2, title: t("myOrders.stoppedOrder"), body: StopTable},
-    {id: 3, title: t("myOrders.orderHistory"), body: OrderHistoryTable},
-    {id: 4, title: t("myOrders.orders"), body: TradesTable},
+    {id: 1, title: t("myOrders.aliveOrder"), body: props.auth.isLogin ? CurrentOrdersTable : LoginText},
+    {id: 2, title: t("myOrders.stoppedOrder"), body: props.auth.isLogin ?StopTable : LoginText},
+    {id: 3, title: t("myOrders.orderHistory"), body: props.auth.isLogin ?OrderHistoryTable : LoginText},
+    {id: 4, title: t("myOrders.orders"), body: props.auth.isLogin ?TradesTable : LoginText},
   ];
 
   return (
     <div
       className={`container card-background card-border column ${classes.container}`}>
       <AccordionBox
-        title={t("myOrders.title")}
-        content={data}
-        safari={classes.safariFlexSize}
+          title={t("myOrders.title")}
+          content={data}
+          safari={classes.safariFlexSize}
       />
+
+
     </div>
   );
 };
@@ -368,6 +374,7 @@ const MyOrders = (props) => {
 const mapStateToProps = (state) => {
   return {
     activePair: state.global.activePair,
+    auth: state.auth,
   };
 };
 

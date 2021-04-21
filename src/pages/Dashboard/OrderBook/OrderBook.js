@@ -5,6 +5,8 @@ import {OrderBookData} from "../../../FakeData/FakeData";
 import {useTranslation} from "react-i18next";
 import {connect} from "react-redux";
 import axios from "axios";
+import OrderBookTableSafari from "./OrderBookTableSafari/OrderBookTableSafari";
+import {isSafari} from "react-device-detect";
 
 const OrderBook = (props) => {
   const {t} = useTranslation();
@@ -75,8 +77,19 @@ const OrderBook = (props) => {
         <div className={`row container ${classes.content}`}>
           {orderBookData.asks.length || orderBookData.bids.length > 0 ? (
             <Fragment>
-              <OrderBookTable data={orderBookData.asks} />
-              <OrderBookTable data={orderBookData.bids} type="buy" />
+              {
+                isSafari
+                    ?
+                    <Fragment>
+                      <OrderBookTableSafari data={orderBookData.asks} />
+                      <OrderBookTableSafari data={orderBookData.bids} type="buy" />
+                    </Fragment>
+                    :
+                    <Fragment>
+                      <OrderBookTable data={orderBookData.asks} />
+                      <OrderBookTable data={orderBookData.bids} type="buy" />
+                    </Fragment>
+              }
             </Fragment>
           ) : (
             <div className="container flex ai-center jc-center flashit">
