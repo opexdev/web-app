@@ -4,6 +4,7 @@ import MainMenu from "../../main/MainMenu/MainMenu";
 import {isSafari} from "react-device-detect";
 import i18n from "i18next";
 import ReactTooltip from "react-tooltip";
+import AdvanceTradingView from "../../components/AdvanceTradingView/AdvanceTradingView";
 
 const TechnicalChart = (props) => {
   const [ltr, setLtr] = useState(false);
@@ -27,7 +28,9 @@ const TechnicalChart = (props) => {
           width: "100%",
           marginRight: "5%",
           backgroundColor: "var(--cardBody)",
-        }}></div>
+        }}>
+        <AdvanceTradingView />
+      </div>
     </div>
   );
 };
