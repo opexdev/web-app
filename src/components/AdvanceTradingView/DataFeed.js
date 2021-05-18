@@ -17,14 +17,10 @@ const config = {
 };
 
 export default {
-  onReady: (cb) => {
+  onReady(cb) {
     setTimeout(() => cb(config), 0);
   },
-  resolveSymbol: (
-    symbolName,
-    onSymbolResolvedCallback,
-    onResolveErrorCallback,
-  ) => {
+  resolveSymbol(symbolName, onSymbolResolvedCallback, onResolveErrorCallback) {
     // expects a symbolInfo object in response
     var split_data = symbolName.split("/");
     var symbol_stub = {
@@ -42,17 +38,14 @@ export default {
       volume_precision: 8,
       data_status: "streaming",
     };
-
     if (split_data[1].match(/USD|EUR|JPY|AUD|GBP|KRW|CNY/)) {
       symbol_stub.pricescale = 100;
     }
-
     setTimeout(function () {
       onSymbolResolvedCallback(symbol_stub);
     }, 0);
   },
-
-  getBars: function (
+  getBars(
     symbolInfo,
     resolution,
     from,
@@ -70,5 +63,17 @@ export default {
         console.log({err});
         onErrorCallback(err);
       });
+  },
+  subscribeBars(
+    symbolInfo,
+    resolution,
+    onRealtimeCallback,
+    subscribeUID,
+    onResetCacheNeededCallback,
+  ) {
+    console.log("=====subscribeBars running");
+  },
+  unsubscribeBars(subscriberUID) {
+    console.log("=====unsubscribeBars running");
   },
 };
