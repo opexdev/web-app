@@ -51,7 +51,7 @@ const LastTrades = (props) => {
         clearInterval();
       })
       .then(function () {
-        // always executed
+
       });
   };
 

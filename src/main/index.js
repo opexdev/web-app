@@ -22,10 +22,12 @@ import {isSafari} from "react-device-detect";
 import Settings from "../pages/Settings/Settings";
 import TechnicalChart from "../pages/TechnicalChart/TechnicalChart";
 import DevelopeLogin from "../pages/DevelopLogin/DevelopLogin";
+import {useToasts} from "react-toast-notifications";
 
 const App = (props) => {
   const {t} = useTranslation();
   const [ltr, setLtr] = useState(false);
+  const { addToast } = useToasts();
 
   useEffect(() => {
     props.onLoad();
@@ -34,6 +36,35 @@ const App = (props) => {
       lng !== "fa" ? setLtr(true) : setLtr(false);
     });
   }, []);
+
+
+  const toastContent = <div style={{height:"6vh"}}>
+    از حساب کاربری خارج شدید
+  </div>
+
+  /*useEffect(() => {
+    const timer = setInterval(() => {
+      addToast(toastContent, {
+        appearance: 'info',
+        autoDismiss: true,
+        autoDismissTimeout: 8000,
+      })
+    }, 10000);
+    return () => clearInterval(timer);
+  }, []);
+*/
+
+  /*useEffect(() => {
+    {props.isLogin ? addToast(toastContent, {
+      appearance: 'success',
+      autoDismiss: true,
+      autoDismissTimeout: 8000,
+    })
+        :
+        ""
+    }
+  }, []);*/
+
 
   return (
     /*basename={"demo"}*/

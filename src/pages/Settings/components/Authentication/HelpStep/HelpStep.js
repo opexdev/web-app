@@ -15,8 +15,7 @@ const HelpStep = (props) => {
           <h3>{t("HelpStep.title")}</h3>
         </div>
       </div>
-      <div
-        className={`container column jc-between px-1 py-2 ${classes.content}`}>
+      <div className={`container column jc-between px-1 py-2 ${classes.content}`}>
         <span>راهنما</span>
         <div className="row jc-end">
           {/*<button

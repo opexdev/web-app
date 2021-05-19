@@ -25,9 +25,6 @@
 .inputGroup span {
   background: var(--cardHeader);
   color: var(--textColor);
-  /*-webkit-box-flex: 0.4;
-    -ms-flex: 0.4;
-    flex: 0.4;*/
   width: 50%;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -46,13 +43,9 @@
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  /*-webkit-box-flex: 0.2;
-    -ms-flex: 0.2;
-    flex: 0.2;*/
   width: 50%;
   height: 100%;
   border: none;
-  /*padding-right: 10px;*/
   direction: ltr;
   text-align: center;
   font-family: iranyekan, serif;
@@ -114,6 +107,7 @@
 }
 .selectBox {
   width: 50%;
+  font-size: 0.75vw;
 }
 :global .select__control {
   border-color: transparent !important;

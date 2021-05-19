@@ -18,9 +18,9 @@ const Overview = (props) => {
     lastPrice: "",
     lastQty: "",
     bidPrice: "",
-    bidQty: "",
+    //bidQty: "",
     askPrice: "",
-    askQty: "",
+    //askQty: "",
     openPrice: "",
     highPrice: "",
     lowPrice: "",
@@ -44,11 +44,7 @@ const Overview = (props) => {
     axiosInstance
       .get("/api/v3/ticker/24hr", {
         params: {
-          symbol:
-            props.activePair.base +
-            (props.activePair.quote === "IRT"
-              ? "USDT"
-              : props.activePair.quote),
+          symbol: props.activePair.base + (props.activePair.quote === "IRT" ? "USDT" : props.activePair.quote),
         },
       })
       .then(function (response) {

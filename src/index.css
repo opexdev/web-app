@@ -77,7 +77,7 @@
   font-weight: normal;
   src: url("assets/fonts/IRANYekan/Farsi_numerals/eot/iranyekanwebregularfanum.eot");
   src: url("assets/fonts/IRANYekan/Farsi_numerals/eot/iranyekanwebregularfanum.eot?#iefix")
-      format("embedded-opentype"),
+      format("e "),
     /* IE6-8 */
       url("assets/fonts/IRANYekan/Farsi_numerals/woff/iranyekanwebregularfanum.woff")
       format("woff"),
@@ -655,6 +655,9 @@ body {
 .hover-text:hover {
   color: var(--activeTab);
 }
+.hover-underline:hover{
+  text-decoration: underline;
+}
 
 .button{
   height: 4.5vh;
@@ -879,6 +882,9 @@ h6 {
   direction: ltr;
   font-family: "Segoe UI", serif;
 }
+
+
+
 /*
 .ltr html,body{
     font-family: 'Segoe UI', serif !important;
@@ -918,6 +924,9 @@ h6 {
   -o-transition: background-color 0.4s;
   transition: background-color 0.4s;
 }
+
+
+
 .double-striped tr:nth-child(4n) td {
   background-color: var(--tableRow);
   -webkit-transition: background-color 0.4s;

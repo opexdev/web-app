@@ -61,8 +61,7 @@ const DepositWithdrawTx = (props) => {
   ];
   return (
     <div className="container py-2">
-      <div
-        className={`container card-background card-border column ${classes.container}`}>
+      <div className={`container card-background card-border column ${classes.container}`}>
         <div className="flex jc-between card-header-bg py-2 px-1">
           <h3>{t("DepositWithdrawTx.title")}</h3>
           <div className="row jc-center ai-center">

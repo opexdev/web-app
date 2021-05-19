@@ -38,7 +38,7 @@ const Header = (props) => {
 
         <div className={`column ai-end`}>
           {props.auth.firstName === null ? (
-            <Link to={Login}>
+            <Link to={Login} className="hover-text">
               <p>{t("pleaseLogin")}</p>
             </Link>
           ) : (

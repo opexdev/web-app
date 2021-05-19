@@ -99,6 +99,7 @@ const PersonalProfileStep = (props) => {
           </div>
           <div className="col-49">
             <TextInput
+                select={true}
               placeholder="کشور محل اقامت خود را انتخاب کنید"
               lead="محل اقامت"
               type="text"
