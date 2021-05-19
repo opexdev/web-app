@@ -5,8 +5,11 @@ export default {
   history: history,
   async getBars(symbolInfo, resolution, from, to, first, limit) {
     const url = first
-      ? `${api_root}?symbol=BTCUSDT&interval=1m&limit=300`
-      : `${api_root}?symbol=BTCUSDT&startTime=${
+      ? `${api_root}?symbol=${symbolInfo.name.replace(
+          "/",
+          "",
+        )}&interval=1m&limit=300`
+      : `${api_root}?symbol=${symbolInfo.name.replace("/", "")}&startTime=${
           from * 1000
         }&interval=1m&limit=300`;
     return fetch(url).then(async (res) => {

@@ -82,7 +82,7 @@ export default {
       onResult([
         {
           symbol: "BTC/USDT",
-          full_name: "Bitcoin/Tether",
+          full_name: "BTC/USDT",
           description: "",
           exchange,
           ticker: "BTC/USDT",
