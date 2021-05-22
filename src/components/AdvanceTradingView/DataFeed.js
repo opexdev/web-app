@@ -26,7 +26,7 @@ export default {
     var symbol_stub = {
       name: symbolName,
       description: "",
-      type: "crypto",
+      type: "Crypto",
       session: "24x7",
       timezone: "Etc/UTC",
       ticker: symbolName,
@@ -75,5 +75,20 @@ export default {
   },
   unsubscribeBars(subscriberUID) {
     console.log("=====unsubscribeBars running");
+  },
+  searchSymbols(userInput, exchange, symbolType, onResult) {
+    console.log(userInput, exchange, symbolType, onResult);
+    setTimeout(() => {
+      onResult([
+        {
+          symbol: "BTC/USDT",
+          full_name: "BTC/USDT",
+          description: "",
+          exchange,
+          ticker: "BTC/USDT",
+          type: "Crypto",
+        },
+      ]);
+    }, 0);
   },
 };
