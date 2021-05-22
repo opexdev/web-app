@@ -1,4 +1,4 @@
-import React from "react";
+  import React from "react";
 import NumberFormat from "react-number-format";
 import * as classes from "./NumberInput.module.css";
 import Icon from "../Icon/Icon";

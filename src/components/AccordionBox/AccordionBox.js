@@ -20,6 +20,7 @@ const AccordionBox = (props) => {
 
   return (
     <div
+
       className={`${customClass} ${classes.container} ${
         isSafari ? props.safari : ""
       }`}>

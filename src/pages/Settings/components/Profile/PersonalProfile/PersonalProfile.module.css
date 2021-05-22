@@ -1,5 +1,5 @@
 .container {
-  height: 70vh;
+  height: 75vh;
   border-radius: 9px;
 }
 
@@ -17,6 +17,7 @@
 .addressInput :global(input) {
   width: 75.5%;
 }
+
 
 .iconBG {
   vertical-align: middle;
@@ -45,6 +46,11 @@
 .open {
   max-height: 2vh;
   transition: max-height 0.6s;
+}
+
+.thisButton {
+  width: 10%;
+  background-color: var(--bgGreen);
 }
 
 .openDetailes {

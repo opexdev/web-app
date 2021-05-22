@@ -4,6 +4,8 @@ import {useTranslation} from "react-i18next";
 import Icon from "../../../../../components/Icon/Icon";
 import ScrollBar from "../../../../../components/ScrollBar";
 import {AccountStatusData} from "../../../../../FakeData/FakeData";
+import {NavLink} from "react-router-dom";
+import ReactTooltip from "react-tooltip";
 
 const UserAccountStatus = (props) => {
   const {t} = useTranslation();
@@ -17,6 +19,10 @@ const UserAccountStatus = (props) => {
     });
   }, []);
 
+  useEffect(() => {
+    ReactTooltip.rebuild();
+  });
+
   return (
     <div
       className={`container card-background card-border column ${classes.container}`}>
@@ -24,10 +30,16 @@ const UserAccountStatus = (props) => {
         className={`column border-bottom jc-center card-header-bg  ${classes.header}`}>
         <div className="row jc-between ai-center">
           <h3>{t("UserAccountStatus.title")}</h3>
-          <Icon
-            iconName="icon-help-circled-2 font-size-md-plus flex"
-            customClass={classes.iconCustomClasss}
-          />
+          <span
+            data-html={true}
+            data-place="right"
+              data-effect="float"
+              data-tip={`<span class="column jc-between col-100">...info</span>`}
+          >
+            <Icon iconName="icon-help-circled-2 font-size-md-plus flex"customClass={classes.iconCustomClasss}
+            />
+          </span>
+
         </div>
         <div className="row jc-center">
           <span className="font-weight-bold">سطح کاربری 1</span>

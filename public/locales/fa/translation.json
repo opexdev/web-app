@@ -238,7 +238,10 @@
     "title": "نشست های فعال"
   },
   "ChangePassword": {
-    "title": "تغییر رمز ورود"
+    "title": "تغییر رمز ورود",
+    "newPassword": "رمز ورود جدید",
+    "repeatNewPassword": "تکرار رمز ورود جدید",
+    "currentPassword": "رمز ورود فعلی"
   },
   "SetTwoStepVerification": {
     "title": "فعال سازی ورود دوعاملی"

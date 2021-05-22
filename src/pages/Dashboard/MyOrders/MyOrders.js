@@ -13,6 +13,8 @@ import {
   MyOrderTradeData,
 } from "../../../FakeData/FakeData";
 import Icon from "../../../components/Icon/Icon";
+import {Login} from "../../../routes/routes";
+import {Link} from "react-router-dom";
 
 const MyOrders = (props) => {
   const {t} = useTranslation();
@@ -347,7 +349,9 @@ const MyOrders = (props) => {
   );
 
   const LoginText = <div className="container height-100 flex ai-center jc-center">
-    {t("pleaseLogin")}
+    <Link to={Login} className="hover-text">
+      {t("pleaseLogin")}
+    </Link>
   </div>
 
   const data = [
