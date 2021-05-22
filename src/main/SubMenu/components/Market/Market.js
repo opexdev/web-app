@@ -168,8 +168,6 @@ const Market = (props) => {
   );
 };
 
-/*export default Market;*/
-
 const mapStateToProps = (state) => {
   return {
     activePair: state.global.activePair,

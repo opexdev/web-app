@@ -4,7 +4,6 @@
   background-color: #f2f2f2;
   font-size: 2vw;
   padding: 3vh 0;
-  /*border-left: 0.2vh solid #505050;*/
   position: fixed;
   z-index: 5;
   overflow-x: hidden;
@@ -13,16 +12,6 @@
 .messages {
   margin: 1.2vh 0;
 }
-
-/*
-.container ul li{
-    margin: 1.2vh 0;
-    position: relative;
-    !*width: 100%;
-    height: 100%;*!
-}
-*/
-
 .container a.selected,
 .messages.selected {
   background-color: var(--cardBody);

@@ -14,9 +14,6 @@ const Wallet = (props) => {
       <div className="row">
         <DepositWithdrawTx />
       </div>
-      {/*<div className="row">
-                <OrdersTrades/>
-            </div>*/}
       <div className="row">
         <OrdersTradesFilter />
       </div>

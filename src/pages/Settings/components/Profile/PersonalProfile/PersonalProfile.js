@@ -1,20 +1,9 @@
 import React, {useState, useEffect, Fragment} from "react";
 import classes from "./PersonalProfile.module.css";
-import AccordionBox from "../../../../../components/AccordionBox/AccordionBox";
 import {connect} from "react-redux";
 import {useTranslation} from "react-i18next";
-import {
-  MyOrderCurrentData,
-  MyOrderStopData,
-  MyOrderHistoryData,
-  MyOrderTradeData,
-} from "../../../../../FakeData/FakeData";
 import TextInput from "../../../../../components/TextInput/TextInput";
 import Button from "../../../../../components/Button/Button";
-import ScrollBar from "../../../../../components/ScrollBar";
-import NumberInput from "../../../../../components/NumberInput/NumberInput";
-import moment from "moment-jalaali";
-import Icon from "../../../../../components/Icon/Icon";
 
 const PersonalProfile = (props) => {
   const [profile, setProfile] = useState({
@@ -50,18 +39,6 @@ const PersonalProfile = (props) => {
 
 
   return (
-    /*<div className="container py-2">
-      <div className={` card-background card-border column ${classes.container}`}>
-        <AccordionBox
-          title={t("PersonalProfile.title")}
-          content={data}
-          safari={classes.safariFlexSize}
-        />
-      </div>
-    </div>*/
-
-
-
   <div className="container py-2">
     <div className={`card-background card-border column ${classes.container}`}>
       <div className="flex jc-between card-header-bg py-2 px-1">
@@ -233,34 +210,15 @@ const PersonalProfile = (props) => {
             />
           </div>
         </div>
-
         <div className="row pt-1 jc-end">
           <Button
               buttonClass={`${classes.thisButton}`}
               buttonTitle={t("nextStep")}
           />
         </div>
-
       </div>
-
-
     </div>
   </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
   );
 };

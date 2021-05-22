@@ -1,15 +1,11 @@
 import React, {Fragment, useEffect, useState} from "react";
 import classes from "./MarketHeader.module.css";
-import {images} from "../../../../assets/images";
 import {useTranslation} from "react-i18next";
 import {connect} from "react-redux";
-import moment from "moment-jalaali";
 import {setLogoutInitiate} from "../../../../store/actions";
-import {Link} from "react-router-dom";
-import {Login} from "../../../../routes/routes";
 import Icon from "../../../../components/Icon/Icon";
 import axios from "axios";
-import {OrderBookData} from "../../../../FakeData/FakeData";
+
 
 const MarketHeader = (props) => {
   const {t} = useTranslation();
@@ -19,7 +15,6 @@ const MarketHeader = (props) => {
   });
 
   const getMarketHeaderData = (activePair) => {
-    //console.log( activePair.base + activePair.quote )
     const axiosInstance = axios.create({
       //proxy: {host:"217.97.101.134",port:80},
       baseURL: "https://api.binance.com",
@@ -46,7 +41,7 @@ const MarketHeader = (props) => {
         clearInterval();
       })
       .then(function () {
-        // always executed
+
       });
   };
 

@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from "react";
+import React, {useState} from "react";
 import classes from "./PersonalizationForm.module.css";
 import {useTranslation} from "react-i18next";
 import TextInput from "../../../../../components/TextInput/TextInput";
@@ -157,7 +157,6 @@ const PersonalizationForm = () => {
 
             <Button
                 buttonClass={`${classes.thisButton}`}
-                /*buttonTitle={t("prevStep")}*/
                 buttonTitle="ذخیره"
             />
           </div>

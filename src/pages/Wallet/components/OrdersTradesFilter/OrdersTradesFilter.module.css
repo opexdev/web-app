@@ -88,7 +88,6 @@
 .items ul::-webkit-scrollbar {
   display: none;
 }
-
 /* Hide scrollbar for IE, Edge and Firefox */
 .items ul {
   -ms-overflow-style: none; /* IE and Edge */
@@ -102,7 +101,6 @@
   background: chartreuse;
   display: none;
 }
-
 .active {
   border-bottom: 0.5vh solid var(--activeTab);
   position: relative;
@@ -115,7 +113,6 @@
 .active:hover {
   background-color: var(--activeLi);
 }
-
 .filterInput {
   width: 100%;
   margin-left: 0.5vw;

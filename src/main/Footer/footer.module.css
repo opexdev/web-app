@@ -38,9 +38,6 @@
   border-right: initial;
   padding-right: initial;
 }
-/*.footerSetting .row img{
-    width: 2.25vw;
-}*/
 .changeTheme {
   width: 4vw;
   height: 4.5vh;
@@ -58,11 +55,6 @@
   position: absolute;
   left: 0;
 }
-
-/*:global(.ltr) .container :global(.row){
-    flex-direction: row-reverse;
-}*/
-
 .onoffswitch {
   position: relative;
   width: 3.35vw;

@@ -4,7 +4,6 @@ import {useTranslation} from "react-i18next";
 import Icon from "../../../../../components/Icon/Icon";
 import ScrollBar from "../../../../../components/ScrollBar";
 import {AccountStatusData} from "../../../../../FakeData/FakeData";
-import {NavLink} from "react-router-dom";
 import ReactTooltip from "react-tooltip";
 
 const UserAccountStatus = (props) => {

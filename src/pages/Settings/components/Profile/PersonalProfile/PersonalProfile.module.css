@@ -17,24 +17,10 @@
 .addressInput :global(input) {
   width: 75.5%;
 }
-
-
 .iconBG {
   vertical-align: middle;
   border-radius: 50vw;
 }
-
-/*
-.openDetailes{
-    animation-name: expand;
-    animation-duration: 1s;
-}
-
-
-@keyframes expand {
-    from {height: 0;}
-    to {height: 40vh;}
-}*/
 .close {
   max-height: 0;
   overflow: hidden;
@@ -47,29 +33,10 @@
   max-height: 2vh;
   transition: max-height 0.6s;
 }
-
 .thisButton {
   width: 10%;
   background-color: var(--bgGreen);
 }
-
-.openDetailes {
-  /*display: table-row;*/
-  animation: anim 1s ease;
-}
-@keyframes anim {
-  0% {
-    transform: scaleY(0);
-  }
-  100% {
-    transform: scaleY(1);
-  }
-}
-/*
-tr{
-    transform-origin: top;
-}*/
-
 .safariFlexSize :global(.accordion-header) {
   flex: 22;
 }

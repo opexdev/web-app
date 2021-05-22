@@ -1,8 +1,8 @@
 import React, {useEffect, useState} from "react";
 import classes from "./Order.module.css";
 import AccordionBox from "../../../components/AccordionBox/AccordionBox";
-import BuyOrder from "./BuyOrder";
-import SellOrder from "./SellOrder";
+import BuyOrder from "./BuyOrder/BuyOrder";
+import SellOrder from "./SellOrder/SellOrder";
 import {useTranslation} from "react-i18next";
 import {connect} from "react-redux";
 

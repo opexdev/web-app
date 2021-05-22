@@ -1,4 +1,4 @@
-import classes from "./style.module.css";
+  import classes from "./ShimmerEffect.module.css";
 
 const ShimmerEffect = (props) => {
   if (props.circle) {

@@ -18,10 +18,6 @@ const ChangePassword = () => {
         currentPassword: false,
     });
 
-
-
-
-
   return (
     <div
       className={`container card-background card-border column ${classes.container}`}>
@@ -40,7 +36,7 @@ const ChangePassword = () => {
                       after={
                           <Icon
                               iconName={`${isInputVisible.newPassword ? 'icon-eye'  : 'icon-closed_eye' } font-size-md-01 flex`}
-                              onMouseDown={() => setIsInputVisible({ ...isInputVisible, newPassword: !isInputVisible.newPassword })}
+                              onClick={() => setIsInputVisible({ ...isInputVisible, newPassword: !isInputVisible.newPassword })}
                           />
                       }
                       type={isInputVisible.newPassword ? "text" : "password"}
@@ -92,14 +88,11 @@ const ChangePassword = () => {
               <div className="col-49 flex jc-end">
                   <Button
                       buttonClass={`${classes.thisButton}`}
-                      /*buttonTitle={t("prevStep")}*/
                       buttonTitle={t("submit")}
                   />
               </div>
 
           </div>
-
-
 
       </div>
     </div>

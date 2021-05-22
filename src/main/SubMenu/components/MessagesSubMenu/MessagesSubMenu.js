@@ -1,9 +1,7 @@
 import React, {Fragment, useEffect, useState} from "react";
 import classes from "./MessagesSubMenu.module.css";
-import {images} from "../../../../assets/images";
 import AccordionBox from "../../../../components/AccordionBox/AccordionBox";
 import {useTranslation} from "react-i18next";
-import NotifCard from "./components/NotifCard/NotifCard";
 import ScrollBar from "../../../../components/ScrollBar";
 import moment from "moment-jalaali";
 import Icon from "../../../../components/Icon/Icon";
@@ -40,7 +38,6 @@ const MessagesSubMenu = (props) => {
                 <td className="text-right font-weight-bold pr-1">
                   {t("messagesTitle." + tr.title)}
                 </td>
-                {/*<td className="text-left"></td>*/}
                 <td className="text-left pl-1">
                   {moment(tr.timestamp).format("HH:mm:ss  -  jYY/jMM/jDD")}
                 </td>

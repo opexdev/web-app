@@ -16,9 +16,6 @@
 .content :global(.row) {
   width: 100%;
 }
-.content:nth-child(n) {
-  /* width: 50%;*/
-}
 .thisButton {
   width: 10%;
   background-color: var(--bgGreen);

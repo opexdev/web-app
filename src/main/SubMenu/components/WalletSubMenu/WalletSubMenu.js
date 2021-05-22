@@ -4,8 +4,6 @@ import {images} from "../../../../assets/images";
 import {useTranslation} from "react-i18next";
 import {NavLink} from "react-router-dom";
 import * as Routes from "../../../../routes/routes";
-import Icon from "../../../../components/Icon/Icon";
-import {setActivePair} from "../../../../store/actions";
 import {connect} from "react-redux";
 
 const WalletSubMenu = (props) => {
@@ -110,9 +108,6 @@ const WalletSubMenu = (props) => {
                 <span>{t("currency.IRT")}</span>
               </span>
             </div>
-            {/*<div className="jc-end ai-center">
-                            <span>{props.wallet.BTC}</span>
-                        </div>*/}
           </div>
         </NavLink>
         <NavLink
