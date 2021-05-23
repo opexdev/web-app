@@ -19,7 +19,6 @@
 
 .zoneBox {
   width: 22vw;
-  /*background-color: #fff9f1;*/
   padding: 2vh 1vw;
   border-radius: 10px;
   border: 0.3vh dotted var(--CardBorder);
@@ -29,7 +28,6 @@
   left: 0.1vw;
 }
 .zone {
-  /*border: 0.3vh dotted #b7a8a8;*/
   padding: 2vh 1vw;
   height: 30vh;
   border-radius: 10px;

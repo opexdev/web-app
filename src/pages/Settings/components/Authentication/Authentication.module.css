@@ -1,7 +1,6 @@
 .wizardBox {
   height: 6vh;
   width: 60%;
-  /*background-color: #F58634;*/
 }
 .activeStep {
   color: var(--activeTab);

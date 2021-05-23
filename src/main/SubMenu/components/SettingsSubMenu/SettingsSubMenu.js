@@ -1,7 +1,6 @@
 import React, {useState, useEffect} from "react";
 import classes from "./SettingsSubMenu.module.css";
 import {useTranslation} from "react-i18next";
-import Icon from "../../../../components/Icon/Icon";
 import * as Routes from "../../../../routes/routes";
 import {NavLink} from "react-router-dom";
 
@@ -23,7 +22,6 @@ const SettingsSubMenu = () => {
           className="row jc-around ai-center cursor-pointer px-1 py-1"
           to={Routes.Profile}>
           <div className="row ai-center" style={{width: "40%"}}>
-            {/*<Icon iconName="icon-profilesetting text-color font-size-md-plus" customClass={classes.iconBG}/>*/}
             <span className={`font-weight-bold pr-05 ${classes.topic}`}>
               {t("SettingsSubMenu.userProfile")}
             </span>
@@ -45,7 +43,6 @@ const SettingsSubMenu = () => {
           className="row jc-around ai-center cursor-pointer px-1 py-1"
           to={Routes.Security}>
           <div className="row ai-center" style={{width: "40%"}}>
-            {/* <Icon iconName="icon-protectsetting text-color font-size-md-plus" customClass={classes.iconBG}/>*/}
             <span className={`font-weight-bold pr-05 ${classes.topic}`}>
               {t("SettingsSubMenu.security")}
             </span>
@@ -73,7 +70,6 @@ const SettingsSubMenu = () => {
           className="row jc-around ai-center cursor-pointer px-1 py-1"
           to={Routes.Personalization}>
           <div className="row ai-center" style={{width: "40%"}}>
-            {/*<Icon iconName="icon-fileSubsetting text-color font-size-md-plus" customClass={classes.iconBG}/>*/}
             <span className={`font-weight-bold pr-05 ${classes.topic}`}>
               {t("SettingsSubMenu.personalization")}
             </span>
@@ -92,7 +88,6 @@ const SettingsSubMenu = () => {
           className="row jc-around ai-center cursor-pointer px-1 py-1"
           to={Routes.Authentication}>
           <div className="row ai-center" style={{width: "40%"}}>
-            {/*<Icon iconName="icon-verifiedsetting text-color font-size-md-plus" customClass={classes.iconBG}/>*/}
             <span className={`font-weight-bold pr-05 ${classes.topic}`}>
               {t("SettingsSubMenu.authentication")}
             </span>

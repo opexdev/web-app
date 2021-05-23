@@ -16,14 +16,12 @@
 }
 .content {
   height: 90%;
-  /*background-color: #F58634;*/
 }
 .content div {
   height: 6vh;
   display: flex;
   align-items: center;
 }
-
 .PairImage {
   width: 20%;
 }

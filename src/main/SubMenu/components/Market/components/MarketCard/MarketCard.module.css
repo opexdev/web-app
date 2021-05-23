@@ -8,16 +8,6 @@
 .marketCardContent {
   width: 86%;
 }
-
-/*.doubleStriped:nth-child(even){
-  background-color: var(--tableRow);
-  -webkit-transition: background-color 0.4s;
-  -o-transition: background-color 0.4s;
-  transition: background-color 0.4s;
-}*/
-
-
-
 .selected {
   background-color: var(--mainContent);
   border-radius: 0 10px 10px 0;

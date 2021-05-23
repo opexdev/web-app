@@ -11,7 +11,6 @@ import {
   setBuyOrder,
   setSellOrder,
 } from "../../../../store/actions";
-import Faker from "faker";
 
 const OrderBookTableSafari = (props) => {
   const {t} = useTranslation();

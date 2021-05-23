@@ -14,17 +14,12 @@
 .thisButton.sellOrder {
   background-color: var(--bgRed);
 }
-
 .thisButton:disabled,.button[disabled] {
-  /*border: 1px solid #999999;
-    background-color: #cccccc;
-    color: #666666;*/
   border: 0.3vh solid var(--cardHeader);
   background: var(--cardHeader);
   color: var(--textColor);
   cursor: not-allowed;
 }
-
 .dangerHint span i {
   background-color: #6619bf;
   width: 1.1vw;

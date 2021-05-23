@@ -15,14 +15,13 @@ import Wallet from "../pages/Wallet/wallet";
 import {BrowserView, MobileView} from "react-device-detect";
 import ReactTooltip from "react-tooltip";
 import ProtectedRoute from "../components/ProtectedRoute";
-import Login from "../pages/Login/Login";
 import * as Routes from "../routes/routes";
 import {useTranslation} from "react-i18next";
 import {isSafari} from "react-device-detect";
 import Settings from "../pages/Settings/Settings";
 import TechnicalChart from "../pages/TechnicalChart/TechnicalChart";
-import DevelopeLogin from "../pages/DevelopLogin/DevelopLogin";
 import {useToasts} from "react-toast-notifications";
+import Login from "../pages/Login/Login";
 
 const App = (props) => {
   const {t} = useTranslation();
@@ -70,10 +69,11 @@ const App = (props) => {
     /*basename={"demo"}*/
     /*"homepage":"https://opex.dev/demo"*/
     <Router basename={"demo"}>
+
       <BrowserView>
         <Switch>
           <Route exact path="/login">
-            <DevelopeLogin />
+            <Login/>
           </Route>
           <ProtectedRoute
             component={TechnicalChart}
@@ -134,15 +134,13 @@ const App = (props) => {
       <MobileView style={{padding: "2vh 3vw"}}>
         <div className="mobile-view">
           <img className={`flashit`} src={images.opexLogo_light} alt="logo" />
-
           <h1>
             اوپکس فعلاً برای نمایش در موبایل بهینه نشده است. لطفاً لینک را در
             کامپیوتر باز کنید! :)
           </h1>
-
-          {/*<img src={images.bit} alt="bit"/>*/}
         </div>
       </MobileView>
+
     </Router>
   );
 };

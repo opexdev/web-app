@@ -12,6 +12,3 @@
 .content {
   height: 88%;
 }
-.content:nth-child(n) {
-  /* width: 50%;*/
-}

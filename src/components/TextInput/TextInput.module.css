@@ -67,13 +67,6 @@
 :global(.ltr) .inputGroup .after {
   border-radius: 0 7px 7px 0;
 }
-/*.inputGroup span.after {
-    border-radius: 7px 0 0 7px ;
-}
-.ltr .inputGroup span.after {
-    border-radius: 0 7px 7px 0;
-}*/
-
 .inputGroup-hint {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -85,7 +78,6 @@
   -ms-flex-align: center;
   align-items: center;
 }
-
 .hintIcon {
   width: 1.1vw;
   height: 1.1vw;

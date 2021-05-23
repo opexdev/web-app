@@ -18,19 +18,11 @@ const HelpStep = (props) => {
       <div className={`container column jc-between px-1 py-2 ${classes.content}`}>
         <span>راهنما</span>
         <div className="row jc-end">
-          {/*<button
-            onClick={props.nextStep}
-            type="submit"
-            className={`cursor-pointer ${classes.button}`}>
-            {t("nextStep")}
-          </button>*/}
-
           <Button
               buttonClass={classes.thisButton}
               onClick={props.nextStep}
               buttonTitle={t("nextStep")}
           />
-
         </div>
       </div>
     </div>

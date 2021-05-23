@@ -27,9 +27,7 @@ const Settings = (props) => {
         <Route exact path={Routes.Authentication}>
           <Authentication />
         </Route>
-
         {/*<ProtectedRoute component={WalletSubMenu} isLogin={props.isLogin} exact path={Routes.WalletSubMenu}/>*/}
-
         <Route path="*">
           <Redirect
             to={{

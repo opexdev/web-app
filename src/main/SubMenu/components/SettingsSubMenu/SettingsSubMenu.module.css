@@ -16,12 +16,9 @@
 }
 .content {
   height: 90%;
-  /*background-color: #F58634;*/
 }
 .content div {
-  /*height: 6vh;*/
   display: flex;
-  /*align-items: center;*/
 }
 .topic {
 }
@@ -57,14 +54,10 @@
 .container a.selected {
   background-color: var(--mainContent);
   position: relative;
-  /* margin-right: 1.5vw;*/
-  /*border-radius: 0 9px 9px 0;*/
   transition: background-color 0.4s;
 }
 :global(.ltr) .container a.selected {
-  /*margin-left: 1.5vw;*/
   margin-right: initial;
-  /*border-radius: 9px 0 0 9px;*/
 }
 
 .selected:before {

@@ -1,14 +1,6 @@
-/*
-* Prefixed by https://autoprefixer.github.io
-* PostCSS: v7.0.29,
-* Autoprefixer: v9.7.6
-* Browsers: last 4 version
-*/
-
 .container {
   height: 100%;
   width: 100%;
-  /*background-color: #fcfeff;*/
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -24,8 +16,6 @@
 }
 .header {
   width: 100%;
-  /*min-height: 20%;
-    max-height: 35%;*/
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -40,9 +30,6 @@
   -webkit-box-flex: 1;
   -ms-flex: 1;
   flex: 1;
-  /*background-color: #F58634 !important;*/
-
-  /* border-bottom: 0.01vh solid #505050;*/
   border-top-left-radius: 9px;
   border-top-right-radius: 9px;
 }
@@ -51,8 +38,6 @@
 }
 .body {
   width: 100%;
-  /*background-color: chartreuse;*/
-
   -webkit-box-flex: 9;
   -ms-flex: 9;
   flex: 9;
@@ -67,42 +52,15 @@
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  /*max-width: 65%;*/
-  /*background: #e7b21c;*/
-  /*background: #fcfeff;*/
-  /*position: absolute;
-    left: 0;*/
   overflow-x: scroll;
-  /*height: 5vh;*/
-  /*padding: 0;
-    margin: 0;*/
 }
 .items li {
   list-style: none;
   padding: 0.8vh 0.7vw;
   cursor: pointer;
-  /*background: #d4e987;*/
-  /* background: #fcfeff;*/
-  /* transition: all 1s ease-in-out;*/
-}
-/*
-.items li::after{
-    content: ' ';
-    width: 2vw;
-    background-color: green;
-}*/
-
-/*.items li.active{
-    border-bottom: 0.65vh solid green;
-
-}*/
-.body {
-  /*background: #61dafb;*/
-  /*background: #fcfeff;*/
 }
 .items {
   position: relative;
-  /*height: 5vh ;*/
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -116,14 +74,8 @@
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  /*transition: all 1s ease-in-out;*/
 }
 
-/*.header h3{
-    height: 2.5%;
-}.header .items{
-    height: 2.5%;
-}*/
 
 /* Hide scrollbar for Chrome, Safari and Opera */
 .items ul::-webkit-scrollbar {
@@ -136,33 +88,19 @@
   scrollbar-width: none; /* Firefox */
 }
 .leftBtn {
-  /* position: absolute;
-     left: 0;
-     top: 0;*/
   background: red;
   display: none;
 }
 .rightBtn {
-  /*position: absolute;
-    right: 0;
-    top: 0;*/
   background: chartreuse;
 
   display: none;
 }
-/*
-.active{
-    z-index: 1;
-    display: block;
-}*/
 
 .active {
   border-bottom: 0.5vh solid var(--activeTab);
   position: relative;
-  /*font-weight: bold;*/
-  /*z-index: 1;*/
   color: var(--activeTab);
-  /* background: white;*/
   border-top-left-radius: 4px;
   border-top-right-radius: 4px;
   padding-right: 8px !important;
@@ -171,36 +109,3 @@
 .active:hover {
   background-color: var(--activeLi);
 }
-
-/*
-.active:before{
-    content: "";
-    position: absolute;
-    background-color: #f7f9fc;
-    width: 9px;
-    height: 9px;
-    border-bottom-right-radius: 10px;
-    bottom: 2px;
-    left: -8px;
-    box-shadow: 3px 7px 0 0 white;
-    transition: background-color 0.4s, box-shadow 0.4s;
-}
-:global(.ltr) .active:before{
-    right: 1vw;
-    left: initial;
-    border-top-right-radius: 10px;
-    box-shadow: 7px -2px 0 0 var(--cardBody);
-
-}
-.active:after{
-    content: "";
-    position: absolute;
-    background-color: #f7f9fc;
-    width: 9px;
-    height: 9px;
-    border-bottom-left-radius: 10px;
-    bottom: 0;
-    right: -9px;
-    box-shadow: -3px 4px 0 0 white;
-    transition: background-color 0.4s, box-shadow 0.4s;
-}*/

@@ -167,7 +167,6 @@ const OrdersTradesFilter = (props) => {
                     onClick={() =>
                       setOpenItem({...openItem, aliveOrder: null})
                     }>
-                    {/*<i className="icon-up flex jc-center  text-blue font-size-md"/>*/}
                     <Icon
                       iconName="icon-up-open icon-blue font-size-sm cursor-pointer"
                       customClass={classes.iconBG}
@@ -178,7 +177,6 @@ const OrdersTradesFilter = (props) => {
                     onClick={() =>
                       setOpenItem({...openItem, aliveOrder: index})
                     }>
-                    {/*<i className="icon-down flex jc-center  text-blue font-size-md"/>*/}
                     <Icon
                       iconName="icon-down-open icon-blue font-size-sm cursor-pointer"
                       customClass={classes.iconBG}
@@ -191,9 +189,7 @@ const OrdersTradesFilter = (props) => {
                   display: openItem.aliveOrder === index ? "revert" : "none",
                 }}>
                 <td colSpan="13" className={`py-1 px-2`}>
-                  <div
-                    className="row jc-around  ai-center"
-                    style={{width: "100%"}}></div>
+                  <div className="row jc-around  ai-center" style={{width: "100%"}}/>
                 </td>
               </tr>
             </Fragment>
@@ -323,7 +319,6 @@ const OrdersTradesFilter = (props) => {
                     onClick={() =>
                       setOpenItem({...openItem, ordersHistory: null})
                     }>
-                    {/*<i className="icon-up flex jc-center  text-blue font-size-md"/>*/}
                     <Icon
                       iconName="icon-up-open icon-blue font-size-sm cursor-pointer"
                       customClass={classes.iconBG}
@@ -334,7 +329,6 @@ const OrdersTradesFilter = (props) => {
                     onClick={() =>
                       setOpenItem({...openItem, ordersHistory: index})
                     }>
-                    {/*<i className="icon-down flex jc-center  text-blue font-size-md"/>*/}
                     <Icon
                       iconName="icon-down-open icon-blue font-size-sm cursor-pointer"
                       customClass={classes.iconBG}
@@ -347,9 +341,7 @@ const OrdersTradesFilter = (props) => {
                   display: openItem.ordersHistory === index ? "revert" : "none",
                 }}>
                 <td colSpan="13" className={`py-1 px-2`}>
-                  <div
-                    className="row jc-around  ai-center"
-                    style={{width: "100%"}}></div>
+                  <div className="row jc-around  ai-center" style={{width: "100%"}}/>
                 </td>
               </tr>
             </Fragment>
@@ -410,7 +402,6 @@ const OrdersTradesFilter = (props) => {
                 <td>{tr.totalPrice.toLocaleString()}</td>
                 {openItem.trades === index ? (
                   <td onClick={() => setOpenItem({...openItem, trades: null})}>
-                    {/*<i className="icon-up flex jc-center  text-blue font-size-md"/>*/}
                     <Icon
                       iconName="icon-up-open icon-blue font-size-sm cursor-pointer"
                       customClass={classes.iconBG}
@@ -418,7 +409,6 @@ const OrdersTradesFilter = (props) => {
                   </td>
                 ) : (
                   <td onClick={() => setOpenItem({...openItem, trades: index})}>
-                    {/*<i className="icon-down flex jc-center  text-blue font-size-md"/>*/}
                     <Icon
                       iconName="icon-down-open icon-blue font-size-sm cursor-pointer"
                       customClass={classes.iconBG}
@@ -431,9 +421,7 @@ const OrdersTradesFilter = (props) => {
                   display: openItem.trades === index ? "revert" : "none",
                 }}>
                 <td colSpan="13" className={`py-1 px-2`}>
-                  <div
-                    className="row jc-around  ai-center"
-                    style={{width: "100%"}}></div>
+                  <div className="row jc-around  ai-center" style={{width: "100%"}}/>
                 </td>
               </tr>
             </Fragment>
@@ -585,9 +573,7 @@ const OrdersTradesFilter = (props) => {
           )}
         </div>
       </div>
-
-      {/*<AccordionBox title={t('OrdersTrades.title')} content={data} safari={classes.safariFlexSize}/>*/}
-    </div>
+   </div>
   );
 };
 

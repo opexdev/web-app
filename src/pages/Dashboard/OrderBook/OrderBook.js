@@ -96,8 +96,6 @@ const OrderBook = (props) => {
               در حال دریافت اطلاعات...
             </div>
           )}
-
-          {/*<OrderBookTable data={OrderBookBuyData()} type="buy"/>*/}
         </div>
       </div>
     </div>

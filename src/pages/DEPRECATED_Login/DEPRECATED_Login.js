@@ -1,13 +1,13 @@
 import React, {useState} from "react";
 import {connect} from "react-redux";
-import classes from "./DevelopLogin.module.css";
+import classes from "./Login.module.css";
 import {images} from "../../assets/images";
 import TextInput from "../../components/TextInput/TextInput";
 import AccordionBox from "../../components/AccordionBox/AccordionBox";
 import {setLoginInitiate} from "../../store/actions";
 import {Redirect, useHistory} from "react-router";
 
-const DevelopLogin = (props) => {
+const Login = (props) => {
   let history = useHistory();
   const [credential, setCredential] = useState({username: "", password: ""});
   const [signup, setSignup] = useState({
@@ -168,4 +168,4 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(DevelopLogin);
+export default connect(mapStateToProps, mapDispatchToProps)(Login);

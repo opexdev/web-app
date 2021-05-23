@@ -1,8 +1,6 @@
 import React, {useState, useEffect} from "react";
 import classes from "./SendPhotosStep.module.css";
 import {useTranslation} from "react-i18next";
-import {useDropzone} from "react-dropzone";
-import {images} from "../../../../../assets/images";
 import ImageInput from "../../../../../components/ImageInput/ImageInput";
 import Button from "../../../../../components/Button/Button";
 
@@ -52,7 +50,6 @@ const SendPhotosStep = (props) => {
           </span>
 
           <div className={`row jc-between ai-start mt-2`}>
-            {/*title="Drag some files here, or click to select files"*/}
             <ImageInput
               zoneCustomClass={classes.zoneBox}
               title={t("SendPhotosStep.textTitle")}

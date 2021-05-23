@@ -9,12 +9,6 @@ import {connect} from "react-redux";
 const LastTrades = (props) => {
   const {t} = useTranslation();
 
-  /*const [lastTrades, setLastTrades] = useState([])*/
-
-  /*useEffect(()=>{
-        setLastTrades(lastTradesData())
-    },[])*/
-
   const [lastTradesData, setLastTradesData] = useState({
     price: "",
     qty: "",

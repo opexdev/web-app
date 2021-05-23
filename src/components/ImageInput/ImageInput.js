@@ -14,19 +14,10 @@ const ImageInput = (props) => {
 
   const [files, setFiles] = useState([]);
   const {getRootProps, getInputProps, fileRejections} = useDropzone({
-    /*accept: 'image/!*',*/
     accept: "image/jpeg, image/png",
     maxFiles: 1,
     maxSize: 100000,
     multiple: false,
-    // onDrop: acceptedFiles => {
-    //     setFiles(acceptedFiles.map((file) => {
-    //         props.onchange(URL.createObjectURL(file));
-    //         return Object.assign(file, {
-    //             preview: URL.createObjectURL(file)
-    //         })
-    //     }));
-    // }
     onDrop: (acceptedFiles) => {
       if (acceptedFiles.length > 0) {
         props.onchange(URL.createObjectURL(acceptedFiles[0]));
@@ -43,7 +34,6 @@ const ImageInput = (props) => {
 
   useEffect(
     () => () => {
-      // Make sure to revoke the data uris to avoid memory leaks
       files.forEach((file) => URL.revokeObjectURL(file.preview));
     },
     [files],
@@ -56,17 +46,6 @@ const ImageInput = (props) => {
     marginTop: "1vh",
   };
 
-  /*const thumb = {
-        display: 'inline-flex',
-        borderRadius: 2,
-        border: '1px solid #eaeaea',
-        marginBottom: 8,
-        marginRight: 8,
-        width: '10vw',
-        height: '15vh',
-        padding: 4,
-        boxSizing: 'border-box'
-    };*/
   const thumb = {
     display: "inline-flex",
     borderRadius: "2px",

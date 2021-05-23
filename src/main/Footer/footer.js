@@ -50,17 +50,7 @@ const Footer = (props) => {
 
         <div className={`${classes.footerSetting} `}>
           <div className={`row ai-center py-2`}>
-            {/*<div><img className="img-md" src={images.darkTheme} alt="darkTheme"/></div>
-                        <div className={classes.changeTheme}>
-                            <span/>
-                        </div>*/}
-
-            {/*<div style={{width:"4vw", height:"8vh", position:"relative"}}>
-                            <img src={images.Sun} className={`img-md text-blue`} alt=""/>
-                            <span style={{width:"100%" , height:"50%" ,position: "absolute"}} />
-                        </div>*/}
             <span className={`pl-1`}>{t("footer.changeColor")}:</span>
-
             <div className={classes.onoffswitch}>
               <input
                 type="checkbox"
@@ -77,20 +67,9 @@ const Footer = (props) => {
                 <span className={classes.onoffswitchSwitch} />
               </label>
             </div>
-
-            {/*<div>
-                            <div className="toggle toggle--daynight">
-                                <input type="checkbox" id="toggle--daynight" className="toggle--checkbox" onChange={e => props.onThemeChange(e.target.checked)} checked={props.isDark}/>
-                                <label className="toggle--btn" htmlFor="toggle--daynight">
-                                    <span className="toggle--feature"/>
-                                </label>
-                            </div>
-                        </div>*/}
-            {/*<div><img className="flex img-md" src={images.brightTheme} alt="brightTheme"/></div>*/}
           </div>
 
           <div className={`row ai-center jc-between`}>
-            {/*<div><img className="flex img-md" src={images.languages} alt="languages"/></div>*/}
             <div className={`row ai-center ${classes.languages}`}>
               <span
                 className="cursor-pointer"

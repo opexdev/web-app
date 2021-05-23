@@ -50,7 +50,6 @@ const DepositWithdraw = (props) => {
             type="text"
             customRef={address}
             value="3KCw3CBZWfV4BDzgVTDjPUb8PbaqLtv9vw"
-            /*onchange={(e)=> setProfile({...profile,postalCode: e.target.value})}*/
           />
           <span className="pt-05">
             حداقل میزان قابل قبول: <span>0.001 بیتکوین</span>

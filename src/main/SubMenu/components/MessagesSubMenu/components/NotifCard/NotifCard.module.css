@@ -1,6 +1,5 @@
 .container {
   height: 5vh;
-  /*background-color: #F58634;*/
   border-bottom: 0.1vh solid var(--textColor);
 }
 .notifTime {

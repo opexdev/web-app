@@ -3,7 +3,6 @@ import classes from "./MessagesCard.module.css";
 import ScrollBar from "../../../../../../components/ScrollBar";
 import {useTranslation} from "react-i18next";
 import Icon from "../../../../../../components/Icon/Icon";
-import {images} from "../../../../../../assets/images";
 
 const MessagesCard = (props) => {
   const {t} = useTranslation();
@@ -14,7 +13,6 @@ const MessagesCard = (props) => {
   return (
     <div style={{height: "100%"}}>
       <ScrollBar>
-        {/*{items}*/}
         <div
           className={`container column jc-center px-05  ${classes.container} `}>
           <div className={`container row font-size-sm-plus`}>
@@ -29,7 +27,6 @@ const MessagesCard = (props) => {
               />
             </div>
           </div>
-
           <div></div>
         </div>
       </ScrollBar>
