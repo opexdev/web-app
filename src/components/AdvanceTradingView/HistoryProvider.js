@@ -7,7 +7,7 @@ export default {
     const symbol = symbolInfo.name.replace("/", "");
     const url = `${api_root}?symbol=${symbol}&startTime=${
       from * 1000
-    }&endTime=${to * 1000}&interval=1m`;
+    }&endTime=${to * 1000}&interval=${resolution.toLowerCase()}`;
     return fetch(url).then(async (res) => {
       const data = await res.json();
       if (res.status !== 200) {
