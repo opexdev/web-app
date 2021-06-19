@@ -31,6 +31,7 @@ export default {
       type: "Crypto",
       session: "24x7",
       timezone: "Etc/UTC",
+      exchange: "Binance",
       ticker: symbolName,
       minmov: 1,
       pricescale: 100000000,
@@ -92,7 +93,7 @@ export default {
         symbols.map((v) => ({
           symbol: v.symbol.replace(v.baseAsset, `${v.baseAsset}/`),
           full_name: v.symbol,
-          description: "",
+          description: "Binance",
           exchange,
           ticker: v.symbol.replace(v.baseAsset, `${v.baseAsset}/`),
           type: "Crypto",
