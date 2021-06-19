@@ -1,14 +1,16 @@
 import historyProvider from "./HistoryProvider";
 
+const api_root = "https://api.binance.com/api/v1/exchangeInfo";
+
 const supportedResolutions = [
-  "1",
-  "3",
-  "5",
-  "15",
-  "30",
-  "60",
-  "120",
-  "240",
+  // "1",
+  // "3",
+  // "5",
+  // "15",
+  // "30",
+  // "60",
+  // "120",
+  // "240",
   "D",
 ];
 
@@ -76,19 +78,26 @@ export default {
   unsubscribeBars(subscriberUID) {
     console.log("=====unsubscribeBars running");
   },
-  searchSymbols(userInput, exchange, symbolType, onResult) {
-    console.log(userInput, exchange, symbolType, onResult);
+  async searchSymbols(userInput, exchange, symbolType, onResult) {
+    const symbols = await fetch(api_root).then(async (res) => {
+      const json = await res.json();
+      if (res.status !== 200) {
+        console.log("Binance API error:", json.message);
+        return [];
+      }
+      return json.symbols;
+    });
     setTimeout(() => {
-      onResult([
-        {
-          symbol: "BTC/USDT",
-          full_name: "BTC/USDT",
+      onResult(
+        symbols.map((v) => ({
+          symbol: v.symbol.replace(v.baseAsset, `${v.baseAsset}/`),
+          full_name: v.symbol,
           description: "",
           exchange,
-          ticker: "BTC/USDT",
+          ticker: v.symbol.replace(v.baseAsset, `${v.baseAsset}/`),
           type: "Crypto",
-        },
-      ]);
+        })),
+      );
     }, 0);
   },
 };

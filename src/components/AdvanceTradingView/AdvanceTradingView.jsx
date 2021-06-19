@@ -7,8 +7,8 @@ const widgetOptions = {
   container_id: "jsChartContainer",
   datafeed: DataFeed,
   library_path: "/charting_library/",
-  debug: false, // uncomment this line to see Library errors and warnings in the console
-  interval: "1H",
+  // debug: true, // uncomment this line to see Library errors and warnings in the console
+  interval: "1D",
   locale: "fa",
   drawings_access: {type: "black", tools: [{name: "Regression Trend"}]},
   disabled_features: [],
