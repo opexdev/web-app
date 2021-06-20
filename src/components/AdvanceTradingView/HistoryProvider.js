@@ -4,8 +4,11 @@ const history = {};
 export default {
   history,
   async getBars(symbolInfo, resolution, from, to, first, limit) {
+    const isMinute = Number(resolution.toLowerCase()) < 60;
     const interval = Number(resolution.toLowerCase())
-      ? `${Number(resolution.toLowerCase()) / 60}h`
+      ? isMinute
+        ? `${Number(resolution.toLowerCase())}m`
+        : `${Number(resolution.toLowerCase()) / 60}h`
       : resolution.toLowerCase();
     const symbol = symbolInfo.name.replace("/", "");
     const url = `${api_root}?symbol=${symbol}&startTime=${

@@ -3,7 +3,7 @@ import historyProvider from "./HistoryProvider";
 const api_root = "https://api.binance.com/api/v1/exchangeInfo";
 
 const supportedResolutions = [
-  // "1",
+  "1",
   // "3",
   // "5",
   // "15",
