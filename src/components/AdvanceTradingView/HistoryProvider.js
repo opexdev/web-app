@@ -7,13 +7,13 @@ export default {
     const isMinute = Number(resolution.toLowerCase()) < 60;
     const interval = Number(resolution.toLowerCase())
       ? isMinute
-        ? `${Number(resolution.toLowerCase())}m`
-        : `${Number(resolution.toLowerCase()) / 60}h`
+        ? `${parseInt(resolution.toLowerCase())}m`
+        : `${parseInt(resolution.toLowerCase()) / 60}h`
       : resolution.toLowerCase();
     const symbol = symbolInfo.name.replace("/", "");
     const url = `${api_root}?symbol=${symbol}&startTime=${
-      from * 1000
-    }&endTime=${to * 1000}&interval=${interval}`;
+      ((from + to) / 2) * 1000
+    }&endTime=${to * 1000}&interval=${interval}&limit=1000`;
     return fetch(url).then(async (res) => {
       const data = await res.json();
       if (res.status !== 200) {
@@ -21,7 +21,7 @@ export default {
         return [];
       }
       if (data.length) {
-        var bars = data.map((el) => {
+        const bars = data.map((el) => {
           const [time, open, high, low, close, volume] = el;
           return {
             time: time,
@@ -32,10 +32,10 @@ export default {
             volume: parseFloat(volume),
           };
         });
-        if (first) {
-          var lastBar = bars[bars.length - 1];
-          history[symbolInfo.name] = {lastBar};
-        }
+        // if (first) {
+        //   const lastBar = bars[bars.length - 1];
+        //   history[symbolInfo.name] = {lastBar};
+        // }
         return bars;
       } else {
         return [];
