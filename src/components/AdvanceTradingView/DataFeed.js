@@ -18,7 +18,7 @@ const config = {
   supported_resolutions: supportedResolutions,
 };
 
-let initialized = false;
+let intervalID;
 
 export default {
   onReady(cb) {
@@ -66,10 +66,7 @@ export default {
       .then((bars) => {
         onHistoryCallback(bars, {noData: !bars.length});
       })
-      .catch((err) => {
-        console.log({err});
-        onErrorCallback(err);
-      });
+      .catch(onErrorCallback);
   },
   subscribeBars(
     symbolInfo,
@@ -78,39 +75,40 @@ export default {
     subscribeUID,
     onResetCacheNeededCallback,
   ) {
-    // !initialized &&
-    //   setInterval(() => {
-    //     const isMinute = Number(resolution.toLowerCase()) < 60;
-    //     const interval = Number(resolution.toLowerCase())
-    //       ? isMinute
-    //         ? `${parseInt(resolution.toLowerCase())}m`
-    //         : `${parseInt(resolution.toLowerCase()) / 60}h`
-    //       : resolution.toLowerCase();
-    //     const symbol = symbolInfo.name.replace("/", "");
-    //     const url = `https://api.binance.com/api/v3/klines?symbol=${symbol}&interval=${interval}&limit=1`;
-    //     fetch(url).then(async (res) => {
-    //       const data = await res.json();
-    //       if (res.status !== 200) {
-    //         console.log("Binance API error:", data.message);
-    //         return;
-    //       }
-    //       if (data.length) {
-    //         const [time, open, high, low, close, volume] = data[0];
-    //         onRealtimeCallback({
-    //           time: time,
-    //           low: parseFloat(low),
-    //           high: parseFloat(high),
-    //           open: parseFloat(open),
-    //           close: parseFloat(close),
-    //           volume: parseFloat(volume),
-    //         });
-    //       }
-    //     });
-    //   }, 60000);
-    initialized = true;
+    if (intervalID === undefined) {
+      intervalID = setInterval(() => {
+        const isMinute = Number(resolution.toLowerCase()) < 60;
+        const interval = Number(resolution.toLowerCase())
+          ? isMinute
+            ? `${parseInt(resolution.toLowerCase())}m`
+            : `${parseInt(resolution.toLowerCase()) / 60}h`
+          : resolution.toLowerCase();
+        const symbol = symbolInfo.name.replace("/", "");
+        const url = `https://api.binance.com/api/v3/klines?symbol=${symbol}&interval=${interval}&limit=1`;
+        fetch(url).then(async (res) => {
+          const data = await res.json();
+          if (res.status !== 200) {
+            console.log("Binance API error:", data.message);
+            return;
+          }
+          if (data.length) {
+            const [time, open, high, low, close, volume] = data[0];
+            onRealtimeCallback({
+              time: time,
+              low: parseFloat(low),
+              high: parseFloat(high),
+              open: parseFloat(open),
+              close: parseFloat(close),
+              volume: parseFloat(volume),
+            });
+          }
+        });
+      }, 1000);
+    }
   },
   unsubscribeBars(subscriberUID) {
-    console.log("=====unsubscribeBars running");
+    clearInterval(intervalID);
+    intervalID = undefined;
   },
   async searchSymbols(userInput, exchange, symbolType, onResult) {
     const symbols = await fetch(api_root).then(async (res) => {
