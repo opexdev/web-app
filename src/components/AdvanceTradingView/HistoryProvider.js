@@ -1,21 +1,19 @@
 const api_root = "https://api.binance.com/api/v3/klines";
 const history = {};
 
-export default {
-  history: history,
-  async getBars(symbolInfo, resolution, from, to, first, limit) {
-    const symbol = symbolInfo.name.replace("/", "");
-    const url = `${api_root}?symbol=${symbol}&startTime=${
-      from * 1000
-    }&endTime=${to * 1000}&interval=${resolution.toLowerCase()}`;
-    return fetch(url).then(async (res) => {
+const fetchData = async function* (symbol, startTime, endTime, interval) {
+  let isDone = false;
+  let url = `${api_root}?symbol=${symbol}&endTime=${endTime}&interval=${interval}&limit=1000`;
+  const bars = [];
+  while (!isDone) {
+    await fetch(url).then(async (res) => {
       const data = await res.json();
       if (res.status !== 200) {
         console.log("Binance API error:", data.message);
-        return [];
+        return;
       }
       if (data.length) {
-        var bars = data.map((el) => {
+        const rawBarData = data.map((el) => {
           const [time, open, high, low, close, volume] = el;
           return {
             time: time,
@@ -26,14 +24,42 @@ export default {
             volume: parseFloat(volume),
           };
         });
-        if (first) {
-          var lastBar = bars[bars.length - 1];
-          history[symbolInfo.name] = {lastBar};
+        url = `${api_root}?symbol=${symbol}&endTime=${
+          rawBarData[0].time - 1000
+        }&interval=${interval}&limit=1000`;
+        const filteredBarData = rawBarData.filter((v) => v.time > startTime);
+        if (filteredBarData.length === 0) {
+          isDone = true;
+          return;
         }
-        return bars;
+        bars.unshift(...filteredBarData);
       } else {
-        return [];
+        isDone = true;
       }
     });
+    yield bars;
+  }
+};
+
+export default {
+  history,
+  async getBars(symbolInfo, resolution, from, to, first) {
+    const isMinute = Number(resolution.toLowerCase()) < 60;
+    const interval = Number(resolution.toLowerCase())
+      ? isMinute
+        ? `${parseInt(resolution.toLowerCase())}m`
+        : `${parseInt(resolution.toLowerCase()) / 60}h`
+      : resolution.toLowerCase();
+    const symbol = symbolInfo.name.replace("/", "");
+    let bars = [];
+    for await (const res of fetchData(
+      symbol,
+      from * 1000,
+      to * 1000,
+      interval,
+    )) {
+      bars = res;
+    }
+    return bars;
   },
 };
