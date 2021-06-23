@@ -8,7 +8,7 @@ const widgetOptions = {
   datafeed: DataFeed,
   library_path: "/charting_library/",
   // debug: true, // uncomment this line to see Library errors and warnings in the console
-  interval: "1D",
+  interval: "3",
   locale: "fa",
   drawings_access: {type: "black", tools: [{name: "Regression Trend"}]},
   disabled_features: [],

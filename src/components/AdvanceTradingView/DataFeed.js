@@ -4,10 +4,10 @@ const api_root = "https://api.binance.com/api/v1/exchangeInfo";
 
 const supportedResolutions = [
   "1",
-  // "3",
-  // "5",
-  // "15",
-  // "30",
+  "3",
+  "5",
+  "15",
+  "30",
   "60",
   "120",
   "240",
@@ -18,9 +18,13 @@ const config = {
   supported_resolutions: supportedResolutions,
 };
 
+let initialized = false;
+
 export default {
   onReady(cb) {
-    setTimeout(() => cb(config), 0);
+    setTimeout(() => {
+      cb(config);
+    }, 0);
   },
   resolveSymbol(symbolName, onSymbolResolvedCallback, onResolveErrorCallback) {
     // expects a symbolInfo object in response
@@ -74,7 +78,36 @@ export default {
     subscribeUID,
     onResetCacheNeededCallback,
   ) {
-    console.log("=====subscribeBars running");
+    // !initialized &&
+    //   setInterval(() => {
+    //     const isMinute = Number(resolution.toLowerCase()) < 60;
+    //     const interval = Number(resolution.toLowerCase())
+    //       ? isMinute
+    //         ? `${parseInt(resolution.toLowerCase())}m`
+    //         : `${parseInt(resolution.toLowerCase()) / 60}h`
+    //       : resolution.toLowerCase();
+    //     const symbol = symbolInfo.name.replace("/", "");
+    //     const url = `https://api.binance.com/api/v3/klines?symbol=${symbol}&interval=${interval}&limit=1`;
+    //     fetch(url).then(async (res) => {
+    //       const data = await res.json();
+    //       if (res.status !== 200) {
+    //         console.log("Binance API error:", data.message);
+    //         return;
+    //       }
+    //       if (data.length) {
+    //         const [time, open, high, low, close, volume] = data[0];
+    //         onRealtimeCallback({
+    //           time: time,
+    //           low: parseFloat(low),
+    //           high: parseFloat(high),
+    //           open: parseFloat(open),
+    //           close: parseFloat(close),
+    //           volume: parseFloat(volume),
+    //         });
+    //       }
+    //     });
+    //   }, 60000);
+    initialized = true;
   },
   unsubscribeBars(subscriberUID) {
     console.log("=====unsubscribeBars running");
