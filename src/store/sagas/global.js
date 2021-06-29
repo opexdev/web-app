@@ -8,7 +8,7 @@ export function* setThemeSaga(action) {
 
 export function* loadConfig() {
   const isDark = yield localStorage.getItem("isDark");
-  const token = yield localStorage.getItem("token");
+  const token = yield localStorage.getItem("access_token");
   yield put(actions.setTheme(isDark === "true"));
   if (token) yield put(actions.login(token));
   yield put(actions.setLoading(false));

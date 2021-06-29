@@ -3,7 +3,10 @@ import * as actionTypes from "../actions/actionTypes";
 const initialState = {
   firstName: null,
   lastName: null,
-  token: null,
+  access_token: null,
+  expires_in: null,
+  refresh_token: null,
+  refresh_expires_in: null,
   wallet: {
     IRT: 0.0,
     BTC: 0.0,
@@ -32,6 +35,10 @@ const reducer = (state = initialState, action) => {
         ...state,
         firstName: "سیاوش",
         lastName: "تفضلی",
+        access_token: action.access_token,
+        expires_in: Date.now() + action.expires_in * 1000,
+        refresh_token: action.refresh_token,
+        refresh_expires_in: Date.now() + action.refresh_expires_in * 1000,
         wallet: {
           IRT: 100000,
           BTC: 0.5,

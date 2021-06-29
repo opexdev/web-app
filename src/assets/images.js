@@ -38,6 +38,10 @@ import safe from "./images/safe.svg";
 import opexQrCode from "./images/opex-qr-code.svg";
 import starBtc from "./images/starBtc.png";
 import spaceBackgroundStars from "./images/space-background-stars.png";
+import spaceStar from "./images/spaceStar.png";
+import spacePlanet from "./images/spacePlanet.png";
+import astronaut from "./images/astronaut.svg";
+import loadingGif from "./images/loadingGif.gif";
 
 export const images = {
   opexLogo_light: opexLogo_light,
@@ -79,4 +83,8 @@ export const images = {
   opexQrCode: opexQrCode,
   starBtc: starBtc,
   spaceBackgroundStars: spaceBackgroundStars,
+  spaceStar: spaceStar,
+  astronaut: astronaut,
+  spacePlanet: spacePlanet,
+  loadingGif: loadingGif,
 };
