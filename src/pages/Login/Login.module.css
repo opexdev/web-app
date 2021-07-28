@@ -3,7 +3,8 @@
   background-repeat: repeat;
   background-position: center center;
   background-size: 600px 1200px;
-  background-color: var(--lightBlue);
+  /*background-color: var(--mainContent);*/
+  background-color: #383a59;
 }
 .row {
   height: 100vh;
@@ -61,6 +62,10 @@
 /*.content :global(.accordion-body){
   background-color: rgba(206, 223, 255, 0.83);
 }*/
+.forgetPasswordInput{
+  width: 75%;
+}
+
 .loginInput{
   width: 75%;
   margin-bottom: 1vh;
@@ -79,11 +84,28 @@
   background-color: #282a36 !important;
 }
 
+.restPassHeader{
+  height: 20%;
+  width: 75%;
+}
+.restPassBody{
+  height: 60%;
+}
 .formBody{
   height: 80%;
 }
 .formFotter{
   height: 20%;
+}
+
+.errorText{
+  color: var(--textRed);
+}
+.forgetPassword{
+  width: 75%;
+}
+.thisButton{
+  transform: rotate(-90deg);
 }
 
 .bgicon {
@@ -115,6 +137,10 @@
   color: #eaeaea;
   bottom: 0;
   /*margin-top: 1vh;*/
+}
+.forgetPassButton{
+  background-color: var(--orange);
+  color: #181717;
 }
 
 

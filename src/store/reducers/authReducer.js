@@ -36,9 +36,9 @@ const reducer = (state = initialState, action) => {
         firstName: "سیاوش",
         lastName: "تفضلی",
         access_token: action.access_token,
-        expires_in: Date.now() + action.expires_in * 1000,
+        expires_in: action.expires_in,
         refresh_token: action.refresh_token,
-        refresh_expires_in: Date.now() + action.refresh_expires_in * 1000,
+        refresh_expires_in: action.refresh_expires_in,
         wallet: {
           IRT: 100000,
           BTC: 0.5,

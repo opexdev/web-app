@@ -7,7 +7,7 @@ import Footer from "./Footer/footer";
 import {connect} from "react-redux";
 import {BrowserRouter as Router, Switch, Route} from "react-router-dom";
 import FullWidthLoading from "../components";
-import {loadConfig} from "../store/actions";
+import {loadConfig, setThemeInitiate} from "../store/actions";
 import Dashboard from "../pages/Dashboard/dashboard";
 import i18n from "i18next";
 import {images} from "../assets/images";
@@ -22,10 +22,13 @@ import Settings from "../pages/Settings/Settings";
 import TechnicalChart from "../pages/TechnicalChart/TechnicalChart";
 import {useToasts} from "react-toast-notifications";
 import Login from "../pages/Login/Login";
+import classes from "./MainMenu/MainMenu.module.css";
+import Icon from "../components/Icon/Icon";
 
 const App = (props) => {
   const {t} = useTranslation();
   const [ltr, setLtr] = useState(false);
+  const [lang, setLang] = useState(false);
   const { addToast } = useToasts();
 
   useEffect(() => {
@@ -91,6 +94,16 @@ const App = (props) => {
               ) : (
                 <Fragment>
                   <ReactTooltip data-html={true} data-effect="float" />
+                  {/*<div className={`onScreen ${lang ? "wide" : ""} cursor-pointer row jc-center ai-center`} onClick={()=>setLang(true)}>
+                    <Icon iconName="icon-down-open font-size-md-01" customClass={`thisButton cursor-pointer`}/>
+                    {lang ?
+                        <div className={`row ai-center ${classes.languages}`}>
+                        <span className="cursor-pointer" onClick={() => i18n.changeLanguage("fa")}>فارسی</span>
+                          <span className="cursor-pointer" onClick={() => i18n.changeLanguage("en")}>English</span>
+                        </div>
+                        : ""
+                    }
+                  </div>*/}
                   <div className="row">
                     <MainMenu />
                     <SubMenu />
@@ -155,6 +168,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     onLoad: () => dispatch(loadConfig()),
+    onThemeChange: (isDark) => dispatch(setThemeInitiate(isDark)),
   };
 };
 

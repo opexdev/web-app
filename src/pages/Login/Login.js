@@ -1,32 +1,40 @@
-import React, {Fragment, useState} from "react";
+import React, {Fragment, useEffect, useState} from "react";
 import {connect} from "react-redux";
 import classes from "./Login.module.css";
 import {images} from "../../assets/images";
 import TextInput from "../../components/TextInput/TextInput";
 import AccordionBox from "../../components/AccordionBox/AccordionBox";
-import {login, setLoginInitiate} from "../../store/actions";
-import {Redirect, useHistory} from "react-router";
+import {loadConfig, login, setLoginInitiate, setThemeInitiate} from "../../store/actions";
+import {useHistory} from "react-router-dom";
 import axios from "axios";
-import {OrderBookData} from "../../FakeData/FakeData";
+import i18n from "i18next";
+import Icon from "../../components/Icon/Icon";
 
 const Login = (props) => {
     let history = useHistory();
-    const [credential, setCredential] = useState({username: "", password: ""});
-    const [signup, setSignup] = useState({
-        firstName: "",
-        lastName: "",
-        username: "",
-        email: "",
-    });
-
-    console.log('date :', Date.now())
-
+    const [ltr, setLtr] = useState(false);
     const [isLoading, setLoading] = useState(false);
     const [registerStatus, setRegisterStatus] = useState(false);
-    const [error, setError] = useState({
-        signIn: {username: "", password: ""},
-        register: {username: "", password: ""},
+    const [error, setError] = useState(false);
+    const [forgetPassword, setForgetPassword] = useState(false);
+    const [credential, setCredential] = useState({username: "", password: ""});
+
+    const [signup, setSignup] = useState({
+        firstName: {value: "", error: null},
+        lastName: {value: "", error: null},
+        username: {value: "", error: null},
+        email: {value: "", error: null},
     });
+
+
+    useEffect(() => {
+        props.onLoad();
+        i18n.language !== "fa" ? setLtr(true) : setLtr(false);
+        i18n.on("languageChanged", (lng) => {
+            lng !== "fa" ? setLtr(true) : setLtr(false);
+        });
+    }, []);
+
 
     const submit = async (e) => {
         e.preventDefault();
@@ -37,19 +45,25 @@ const Login = (props) => {
         params.append('password', credential.password);
         params.append('grant_type', 'password');
 
-        const response = await axios.post('https://api.opex.dev/auth/realms/mixchange/protocol/openid-connect/token', params)
-
-        if (response.status === 200) {
-            console.log(response.data)
-            props.login(response.data)
-            setTimeout(() => {
-                history.push("/");
-            }, 2000);
-        } else {
-            setTimeout(() => {
+        axios.post('https://api.opex.dev/auth/realms/mixchange/protocol/openid-connect/token', params)
+            .then((response) => {
+                if (response.status === 200) {
+                    console.log(response.data)
+                    props.login(response.data)
+                    setTimeout(() => {
+                        history.push("/");
+                    }, 2000);
+                } else {
+                    setTimeout(() => {
+                        setLoading(false);
+                    }, 2000);
+                }
+            })
+            .catch(() => {
                 setLoading(false);
-            }, 2000);
-        }
+                setError(true)
+            })
+
     };
 
 
@@ -62,14 +76,12 @@ const Login = (props) => {
         const token = await axios.post('https://api.opex.dev/auth/realms/mixchange/protocol/openid-connect/token', params)
 
         if (token.status === 200) {
-
             console.log(token)
             props.saveToken(token.data.access_token)
             return token.data.access_token
         } else {
             return false
         }
-
     }
 
     const register = async (e) => {
@@ -79,17 +91,16 @@ const Login = (props) => {
         if (token) {
             axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
             axios.post('https://api.opex.dev/auth/admin/realms/mixchange/users', {
-
                 "createdTimestamp": Date.now(),
-                "username": signup.username,
+                "username": signup.username.value,
                 "enabled": true,
                 "totp": false,
-                "emailVerified": true,
-                "firstName": signup.firstName,
-                "lastName": signup.lastName,
-                "email": signup.email,
+                "emailVerified": false,
+                "firstName": signup.firstName.value,
+                "lastName": signup.lastName.value,
+                "email": signup.email.value,
                 "disableableCredentialTypes": [],
-                "requiredActions": [],
+                "requiredActions": ["VERIFY_EMAIL", "UPDATE_PASSWORD"],
                 "notBefore": 0,
                 "access": {
                     "manageGroupMembership": true,
@@ -99,33 +110,99 @@ const Login = (props) => {
                     "manage": true
                 },
                 "realmRoles": ["mb-user"]
-
-
             }).then(function (response) {
-                console.log(response);
+                console.log(response.data);
                 setRegisterStatus(true);
-
+                getUser(token, signup.username.value)
             }).catch(function (error) {
                 console.log("Error : ", error);
             }).then(function () {
                 setLoading(false);
             });
 
-
-        } else {
-
         }
-
-
     }
 
+    const getUser = (token, username) => {
+        if (token) {
+            axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+            axios.get(`https://api.opex.dev/auth/admin/realms/mixchange/users?username=${username}`,)
+                .then(function (user) {
+                    console.log(user);
+                    sendVerifyEmail(token, user.data[0].id)
+                }).catch(function (error) {
+                console.log("Error : ", error);
+            }).then(function () {
+
+            });
+        }
+    }
+
+
+    const sendVerifyEmail = (token, user_id) => {
+        if (token) {
+            axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+            axios.put(`https://api.opex.dev/auth/admin/realms/mixchange/users/${user_id}/send-verify-email`,)
+                .then(function (user) {
+                    console.log(user);
+                }).catch(function (error) {
+                console.log("Error : ", error);
+            }).then(function () {
+
+            });
+        }
+    }
+    const SendResetPassword = (token, user_id) => {
+        /*setLoading(true)
+        setTimeout(() => {
+
+            setLoading(false);
+        }, 2000);*/
+        alert("Check your email to reset your password")
+    }
+
+    const forgetPasswordForm = <form onSubmit={(e) => SendResetPassword(e)} className={`column ai-center jc-between ${classes.form}`}>
+        {isLoading ?
+            <div className={`flex jc-center ai-center`} style={{height: "100%"}}>
+                <img
+                    style={{width: "3vw", textAlign: "center"}}
+                    src={images.SquareLoading}
+                />
+            </div>
+            :
+            <Fragment>
+                <div className={`row jc-between ai-center ${classes.restPassHeader}`}>
+                    <Icon iconName="icon-down-open font-size-md-01" customClass={`${classes.thisButton} cursor-pointer`} onClick={()=>setForgetPassword(false)}/>
+                    <span>فراموشی رمز عبور</span>
+                    <Icon iconName="icon-down-open font-size-md-01" customClass={`${classes.thisButton} visibility-hidden cursor-pointer`}/>
+                </div>
+                <div className={`container column jc-center ai-center ${classes.restPassBody}`}>
+                    <TextInput
+                        lead="ایمیل"
+                        type="email"
+                        customClass={`${classes.forgetPasswordInput}`}
+                        value={forgetPassword.value}
+                        onchange={(e) => setForgetPassword(e.target.value)}
+                    />
+                </div>
+                <div className={`container flex jc-center ai-center ${classes.formFotter}`}>
+                    <button type="submit"
+                            className={`flex jc-center ai-center ${classes.button} ${classes.forgetPassButton}`}>
+                        بازیابی رمز
+                    </button>
+                </div>
+            </Fragment>
+        }
+    </form>
+
+
     const login = (
-        <form onSubmit={(e) => submit(e)} className={`column ai-center jc-between ${classes.form} `}>
+        <form onSubmit={(e) => submit(e)} className={`column ai-center jc-between ${classes.form}`}>
             {isLoading ? (
                 <div className={`flex jc-center ai-center`} style={{height: "100%"}}>
                     <img
                         style={{width: "3vw", textAlign: "center"}}
-                        src={images.loadingGif}
+                        src={images.SquareLoading}
                     />
                 </div>
             ) : (
@@ -149,10 +226,18 @@ const Login = (props) => {
                                 setCredential({...credential, password: e.target.value})
                             }
                         />
+                        <div className={`column ${classes.forgetPassword}`}>
+                            {error ?
+                                <span className={`${classes.errorText} font-size-sm-plus`}>نام کاربری یا رمز عبور صحیح نمی باشد!</span> : ""}
+                            <span className={`cursor-pointer flex ai-center font-size-sm-plus`}
+                                  onClick={() => setForgetPassword(true)}>فراموشی رمز عبور</span>
+                        </div>
                     </div>
+
                     <div className={`container flex jc-center ai-center ${classes.formFotter}`}>
                         <button type="submit"
-                                className={`flex jc-center ai-center ${classes.button} ${classes.buyOrder}`}>ورود
+                                className={`flex jc-center ai-center ${classes.button} ${classes.buyOrder}`}>
+                            ورود
                         </button>
                     </div>
                 </Fragment>
@@ -166,14 +251,15 @@ const Login = (props) => {
                 <div className={`flex jc-center ai-center`} style={{height: "100%"}}>
                     <img
                         style={{width: "3vw", textAlign: "center"}}
-                        src={images.loadingGif}
+                        src={images.SquareLoading}
                     />
                 </div>
                 :
                 <Fragment>
                     {registerStatus ?
-                        <div className={`flex jc-center ai-center`} style={{height: "100%"}}>
+                        <div className={`column jc-center ai-center`} style={{height: "100%"}}>
                             <span>ثبت نام با موفقیت انجام شد :)</span>
+                            <span>برای تکمیل ثبت نام به ایمیل ثبت شده مراجعه کنید.</span>
                         </div>
                         :
                         <Fragment>
@@ -182,29 +268,43 @@ const Login = (props) => {
                                     lead="نام"
                                     type="text"
                                     customClass={`${classes.loginInput}`}
-                                    value={signup.firstName}
-                                    onchange={(e) => setSignup({...signup, firstName: e.target.value})}
+                                    value={signup.firstName.value}
+                                    onchange={(e) => setSignup({
+                                        ...signup,
+                                        firstName: {...signup.firstName, value: e.target.value}
+                                    })}
+                                    //alert="نام یابد حداقل سه کاراکتر باشد."
                                 />
+
                                 <TextInput
                                     lead="نام خانوادگی"
                                     type="text"
                                     customClass={`${classes.loginInput}`}
-                                    value={signup.lastName}
-                                    onchange={(e) => setSignup({...signup, lastName: e.target.value})}
+                                    value={signup.lastName.value}
+                                    onchange={(e) => setSignup({
+                                        ...signup,
+                                        lastName: {...signup.lastName, value: e.target.value}
+                                    })}
                                 />
                                 <TextInput
                                     lead="نام کاربری"
                                     type="text"
                                     customClass={`${classes.loginInput}`}
-                                    value={signup.username}
-                                    onchange={(e) => setSignup({...signup, username: e.target.value})}
+                                    value={signup.username.value}
+                                    onchange={(e) => setSignup({
+                                        ...signup,
+                                        username: {...signup.username, value: e.target.value}
+                                    })}
                                 />
                                 <TextInput
                                     lead="ایمیل"
                                     type="email"
                                     customClass={`${classes.loginInput}`}
-                                    value={signup.email}
-                                    onchange={(e) => setSignup({...signup, email: e.target.value})}
+                                    value={signup.email.value}
+                                    onchange={(e) => setSignup({
+                                        ...signup,
+                                        email: {...signup.email, value: e.target.value}
+                                    })}
                                 />
                             </div>
                             <div className={`container flex jc-center ai-center ${classes.formFotter}`}>
@@ -223,52 +323,54 @@ const Login = (props) => {
     );
 
     const data = [
-        {id: 1, title: "ورود", body: login},
+        {id: 1, title: "ورود", body: forgetPassword === false ? login : forgetPasswordForm},
         {id: 2, title: "ثبت نام", body: signUp},
     ];
 
     return (
-        <div className={`container row col-100 ai-center jc-center px-1 ${classes.container} ${classes.moveImage}`}
+        <div className={`container row col-100 ai-center jc-center px-1 
+        ${classes.container} ${classes.moveImage} ${props.isDark ? "dark" : ""} ${ltr ? "ltr" : "rtl"}`}
              style={{backgroundImage: `url("${images.spaceStar}")`}}>
 
             <div className={`col-60  flex jc-center ai-center `} style={{height: "100%"}}>
                 <div className={`${classes.content}`}>
                     <AccordionBox title="ورود/ثبت نام" content={data}/>
                 </div>
-
-
             </div>
 
             <div
                 className={`col-40 column ai-center jc-center ${classes.intro} ${classes.moveImage}`} /*style={{backgroundImage: `url("${images.spaceStar}")`}}*/>
                 <div className={`column jc-center ai-center ${classes.bgicon}`}>
                     <img src={images.astronaut} alt="logo"/>
-                    <h1 className="pt-1">OPen source EXchange</h1>
+                    <h1 className="pt-1">
+                        OPen source EXchange
+                    </h1>
                 </div>
             </div>
 
         </div>
     );
 };
-const mapDispatchToProps = (dispatch) => {
-    return {
-        login: (auth) => dispatch(setLoginInitiate(auth)),
-        saveToken: (token) => dispatch(login(token)),
-    };
-};
+
 
 const mapStateToProps = (state) => {
     return {
         isLogin: state.auth.isLogin,
         token: state.auth.token,
+        isDark: state.global.isDark,
+    };
+};
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        login: (auth) => dispatch(setLoginInitiate(auth)),
+        saveToken: (token) => dispatch(login(token)),
+        onLoad: () => dispatch(loadConfig()),
+        onThemeChange: (isDark) => dispatch(setThemeInitiate(isDark)),
+
     };
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Login);
 
 
-/*<div className="column col-50 jc-center ai-center px-1" style={{backgroundColor: "#e6e6e6" , display: "none"}}>
-          <span className={` ${classes.content} card-background card-border `}>
-            <AccordionBox title="ورود/ثبت نام" content={data} />
-          </span>
-        </div>*/

@@ -42,6 +42,7 @@ import spaceStar from "./images/spaceStar.png";
 import spacePlanet from "./images/spacePlanet.png";
 import astronaut from "./images/astronaut.svg";
 import loadingGif from "./images/loadingGif.gif";
+import SquareLoading from "./images/SquareLoading.gif";
 
 export const images = {
   opexLogo_light: opexLogo_light,
@@ -87,4 +88,5 @@ export const images = {
   astronaut: astronaut,
   spacePlanet: spacePlanet,
   loadingGif: loadingGif,
+  SquareLoading: SquareLoading,
 };
