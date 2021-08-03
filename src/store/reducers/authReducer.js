@@ -1,65 +1,86 @@
 import * as actionTypes from "../actions/actionTypes";
 
 const initialState = {
-  firstName: null,
-  lastName: null,
-  token: null,
-  wallet: {
-    IRT: 0.0,
-    BTC: 0.0,
-    ETH: 0.0,
-    LTC: 0.0,
-    DOGE: 0.0,
-    BCH: 0.0,
-    USDT: 0.0,
-  },
-  tradeFee: {
-    IRT: 0.0,
-    BTC: 0.0,
-    ETH: 0.0,
-    LTC: 0.0,
-    DOGE: 0.0,
-    BCH: 0.0,
-    USDT: 0.0,
-  },
-  isLogin: false,
+    username: null,
+    id: null,
+    email: null,
+    firstName: null,
+    lastName: null,
+    accessToken: null,
+    accessTokenExpires: null,
+    refreshToken: null,
+    refreshTokenExpires: null,
+    wallet: {
+        IRT: 0.0,
+        BTC: 0.0,
+        ETH: 0.0,
+        LTC: 0.0,
+        DOGE: 0.0,
+        BCH: 0.0,
+        USDT: 0.0,
+    },
+    tradeFee: {
+        IRT: 0.0,
+        BTC: 0.0,
+        ETH: 0.0,
+        LTC: 0.0,
+        DOGE: 0.0,
+        BCH: 0.0,
+        USDT: 0.0,
+    },
+    isLogin: false,
 };
 
 const reducer = (state = initialState, action) => {
-  switch (action.type) {
-    case actionTypes.LOGIN:
-      return {
-        ...state,
-        firstName: "سیاوش",
-        lastName: "تفضلی",
-        wallet: {
-          IRT: 100000,
-          BTC: 0.5,
-          ETH: 10.2,
-          LTC: 6.0,
-          DOGE: 50000.0,
-          BCH: 56.0,
-          USDT: 100.0,
-        },
-        tradeFee: {
-          IRT: 0.0001,
-          BTC: 0.0002,
-          ETH: 0.0003,
-          LTC: 0.0,
-          DOGE: 0.0,
-          BCH: 0.0,
-          USDT: 0.0,
-        },
-        token: action.token,
-        isLogin: true,
-      };
-    case actionTypes.LOGOUT:
-      return {
-        ...initialState,
-      };
-    default:
-      return state;
-  }
+    switch (action.type) {
+        case actionTypes.LOGIN:
+            return {
+                ...state,
+                wallet: {
+                    IRT: 100000,
+                    BTC: 0.5,
+                    ETH: 10.2,
+                    LTC: 6.0,
+                    DOGE: 50000.0,
+                    BCH: 56.0,
+                    USDT: 100.0,
+                },
+                tradeFee: {
+                    IRT: 0.0001,
+                    BTC: 0.0002,
+                    ETH: 0.0003,
+                    LTC: 0.0,
+                    DOGE: 0.0,
+                    BCH: 0.0,
+                    USDT: 0.0,
+                },
+            };
+        case actionTypes.LOGOUT:
+            return {
+                ...initialState,
+            };
+        case actionTypes.SET_USER_INFO:
+            return {
+                ...state,
+                id: action.id,
+                username: action.username,
+                emailVerified: action.emailVerified,
+                firstName: action.firstName,
+                lastName: action.lastName,
+                email: action.email,
+            };
+        case actionTypes.SET_USER_TOKENS:
+            return {
+                ...state,
+                accessToken: action.accessToken,
+                accessTokenExpires: action.accessTokenExpires,
+                refreshToken: action.refreshToken,
+                refreshTokenExpires: action.refreshTokenExpires,
+                isLogin: true,
+            }
+        default:
+            return state;
+    }
 };
 
 export default reducer;

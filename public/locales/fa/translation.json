@@ -1,6 +1,7 @@
 {
   "title": "اپکس",
   "signIn": "ورود",
+  "signUp": "ثبت نام",
   "signOut": "خروج",
   "date": "تاریخ",
   "time": "زمان",
@@ -16,9 +17,9 @@
   "sell": "فروش",
   "all": "همه",
   "orderType": "نوع سفارش",
-  "status" : "وضعیت",
-  "pleaseLogin" : "لطفا وارد شوید!",
-  "comingSoon" : "به زودی :)",
+  "status": "وضعیت",
+  "pleaseLogin": "لطفا وارد شوید!",
+  "comingSoon": "به زودی :)",
   "deposit": "واریز",
   "withdrawal": "برداشت",
   "transfer": "انتقال",
@@ -27,6 +28,11 @@
   "nextStep": "گام بعدی",
   "prevStep": "گام قبلی",
   "submit": "ثبت",
+  "username": "نام کاربری",
+  "password": "رمز ورود",
+  "firstName": "نام",
+  "lastName": "نام خانوادگی",
+  "email": "ایمیل",
   "currency": {
     "IRT": "تومان",
     "Euro": "یورو",
@@ -39,10 +45,10 @@
     "BCH": "بیتکوین کش"
   },
   "routes": {
-    "/settings/profile":"مشخصات کاربری",
-    "/settings/security":"امنیت",
-    "/settings/personalization":"شخصی سازی",
-    "/settings/authentication":"احراز هویت کاربری"
+    "/settings/profile": "مشخصات کاربری",
+    "/settings/security": "امنیت",
+    "/settings/personalization": "شخصی سازی",
+    "/settings/authentication": "احراز هویت کاربری"
   },
   "ordersStatus": {
     "live": "جاری شده",
@@ -55,14 +61,13 @@
   "messagesTitle": {
     "successful": "عدم تائید معامله",
     "login": "ورود موفق",
-    "done": "ورود همزمان",
     "cancel": "لغو سفارش",
     "done": "سفارش موفق",
-      "incompleted": "سفارش نیمه تمام"
+    "incompleted": "سفارش نیمه تمام"
   },
   "orderTypes": {
-    "stopLimit" : "متوقف محدود",
-    "stopMarket" : "متوقف بازار"
+    "stopLimit": "متوقف محدود",
+    "stopMarket": "متوقف بازار"
   },
   "pair": {
     "BTC/IRT": "بیتکوین/تومان",
@@ -109,8 +114,8 @@
   },
   "orders": {
     "title": "سفارش",
-    "minOrder":  "حداقل مقدار سفارش {{min}} {{currency}} میباشد",
-    "maxOrder":  "حداکثر مقدار سفارش {{max}} {{currency}} میباشد",
+    "minOrder": "حداقل مقدار سفارش {{min}} {{currency}} میباشد",
+    "maxOrder": "حداکثر مقدار سفارش {{max}} {{currency}} میباشد",
     "divisibility": "بخش پذیری !",
     "availableAmount": "موجودی قابل معامله",
     "bestOffer": "بهترین پیشنهاد",
@@ -189,15 +194,11 @@
     "limit": "محدود",
     "paid": "پرداخت شده"
   },
-
-
-
   "MessagesSubMenu": {
     "title": "اطلاع رسانی",
     "myMessages": "پیام های من",
     "news": "اطلاعیه ها"
   },
-
   "SettingsSubMenu": {
     "title": "تنظیمات",
     "userProfile": "مشخصات کاربری",
@@ -205,7 +206,6 @@
     "personalization": "شخصی سازی",
     "authentication": "احراز هویت کاربری"
   },
-
   "UserAccountStatus": {
     "title": "وضعیت حساب کاربری"
   },
@@ -230,7 +230,6 @@
     "selectNationality": "ملیت خود را انتخاب کنید",
     "selectResidence": "کشور محل اقامت خود را انتخاب کنید"
   },
-
   "LoginReports": {
     "title": "گزارش ورودها"
   },
@@ -256,20 +255,36 @@
     "title": "گام 3 از 4: ارسال تصاویر",
     "textTitle": "متن اعلام رضایت",
     "textSelfiTitle": "سلفی همراه با متن اعلام رضایت",
-      "nationalCardTitle": "سلفی همراه با کارت ملی یا شناسنامه"
+    "nationalCardTitle": "سلفی همراه با کارت ملی یا شناسنامه"
   },
-
   "ImageInput": {
     "title": "",
     "dropText": "را با کشیدن روی کادر یا کلیک کردن و انتخاب فایل آپلود کنید!",
     "iconErrorText": "عکس آپلود شده معتبر نمی باشد ، لطفا دوباره تلاش کنید!"
   },
-
   "SendToExpertStep": {
     "title": "گام 4 از 4: ارسال به کارشناس"
   },
-
-
+  "login": {
+    "title": "ورود/ثبت نام",
+    "wrongPassword": "نام کاربری یا رمز عبور صحیح نمی باشد!",
+    "forgetPassword": "فراموشی رمز عبور",
+    "enter": "ورود",
+    "resetPassword": "بازیابی رمز",
+    "inputError": "تعداد کاراکتر نام کاربری یا رمز ورود مجاز نیست.",
+    "loginError": "خطا در ارتباط با سرور",
+    "registerFinished": "ثبت نام با موفقیت انجام شد :)",
+    "forgetPasswordFinished": "درخواست بازیابی رمز عبور با موفقیت انجام شد :)",
+    "registerFinishedGoToMail": "برای تکمیل ثبت نام به ایمیل ثبت شده مراجعه کنید.",
+    "register": "ثبت نام",
+    "wrongEmail": "ایمیل وارد شده معتبر نیست.",
+    "notFoundEmail": "ایمیل وارد شده یافت نشد.",
+    "emptyEmail": "ایمیل را وارد کنید.",
+    "emptyInput": "وارد کردن فیلد {{name}} الزامی است.",
+    "emptyCredentialError": "وارد کردن فیلد نام کاربری و رمز ورود الزامی است.",
+    "minInput": "{{name}} حداقل باید {{min}} کاراکتر باشد.",
+    "finishedWithError": "خطا در ایجاد کاربر جدید."
+  },
   "footer": {
     "changeColor": "تغییر رنگ",
     "aboutUs": "درباره ما",

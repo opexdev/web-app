@@ -185,6 +185,7 @@
   --bgRed: #d73e36;
   --bgBlue: #0e4095;
   --orange: #ff8124;
+  --lightBlue: #0d0d5a;
 }
 .dark {
   /*--primary-color: #403f4d;
@@ -650,6 +651,9 @@ body {
 }
 .position-relative {
   position: relative;
+}
+.visibility-hidden {
+  visibility: hidden;
 }
 
 .hover-text:hover {
@@ -1171,3 +1175,24 @@ table th {
   }
 }
 /*End LoadingPage*/
+
+
+
+.onScreen{
+  position: absolute;
+  width: 1vw;
+  height: 5vh;
+  border-radius: 4px;
+  background-color: var(--orange);
+  z-index: 1000;
+  bottom: 10vh;
+  left: 0;
+  transition: width 0.75s;
+}
+.onScreen.wide{
+  width: 10vw;
+  /*background-color: var(--subMenu);*/
+}
+.thisButton{
+  transform: rotate(-90deg);
+}
