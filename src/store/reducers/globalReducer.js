@@ -1,6 +1,8 @@
 import * as actionTypes from "../actions/actionTypes";
 
 const initialState = {
+  panelAccessToken: null,
+  panelAccessTokenExpires: null,
   activePair: {
     pair: "BTC/IRT",
     symbol: "BTCIRT",
@@ -96,6 +98,12 @@ const globalReducer = (state = initialState, action) => {
             amount: action.selected.amount,
           },
         },
+      };
+      case actionTypes.SET_PANEL_TOKENS:
+      return {
+        ...state,
+        panelAccessToken: action.panelAccessToken,
+        panelAccessTokenExpires: action.panelAccessTokenExpires,
       };
     default:
       return state;

@@ -6,6 +6,12 @@ export function* setThemeSaga(action) {
     yield put(actions.setTheme(action.isDark));
 }
 
+export function* setPanelTokens(action) {
+    yield localStorage.setItem("panelAccessToken", action.panelAccessToken);
+    yield localStorage.setItem("panelAccessTokenExpires", action.panelAccessTokenExpires);
+    yield put(actions.setPanelTokens(action));
+}
+
 export function* loadConfig() {
     const isDark = yield localStorage.getItem("isDark");
     yield put(actions.setTheme(isDark === "true"));

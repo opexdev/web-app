@@ -1,4 +1,4 @@
-import {put, delay} from "redux-saga/effects";
+import {put} from "redux-saga/effects";
 import * as actions from "../actions/index";
 
 export function* login(action) {
@@ -9,11 +9,26 @@ export function* login(action) {
   yield put(actions.login(action));
 }
 export function* logout() {
-  yield localStorage.removeItem("access_token");
-  yield localStorage.removeItem("expires_in");
-  yield localStorage.removeItem("refresh_token");
-  yield localStorage.removeItem("refresh_expires_in");
+  yield localStorage.removeItem("accessToken");
+  yield localStorage.removeItem("accessTokenExpires");
+  yield localStorage.removeItem("refreshToken");
+  yield localStorage.removeItem("refreshTokenExpires");
   yield put(actions.logout());
 }
 
+export function* setUserInfo(action) {
+  yield localStorage.setItem("id", action.id);
+  yield localStorage.setItem("emailVerified", action.emailVerified);
+  yield localStorage.setItem("firstName", action.firstName);
+  yield localStorage.setItem("lastName", action.lastName);
+  yield localStorage.setItem("email", action.email);
+  yield put(actions.setUserInfo(action));
+}
 
+export function* setUserTokens(action) {
+  yield localStorage.setItem("accessToken", action.accessToken);
+  yield localStorage.setItem("accessTokenExpires", action.accessTokenExpires);
+  yield localStorage.setItem("refreshToken", action.refreshToken);
+  yield localStorage.setItem("refreshTokenExpires", action.refreshTokenExpires);
+  yield put(actions.setUserTokens(action));
+}
