@@ -96,6 +96,7 @@
 .alert {
   font-size: 0.7vw;
   color: var(--textRed);
+  line-height:2.8vh;
 }
 .selectBox {
   width: 50%;
