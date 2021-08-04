@@ -3,7 +3,7 @@ import classes from "./MarketCard.module.css";
 import ScrollBar from "../../../../../../components/ScrollBar";
 import {useTranslation} from "react-i18next";
 import Icon from "../../../../../../components/Icon/Icon";
-import MarketChart from "../MarketChart";
+import MarketChart from "../MarketChart/MarketChart";
 import {images} from "../../../../../../assets/images";
 import {setActivePair} from "../../../../../../store/actions";
 import {connect} from "react-redux";

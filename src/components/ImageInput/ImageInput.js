@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from "react";
 import {useDropzone} from "react-dropzone";
-import classes from "../../pages/Settings/components/Authentication/SendPhotosStep/SendPhotosStep.module.css";
+import classes from "../../pages/Settings/components/Authentication/components/SendPhotosStep/SendPhotosStep.module.css";
 import Icon from "../Icon/Icon";
 import {useTranslation} from "react-i18next";
 import ReactTooltip from "react-tooltip";
@@ -39,33 +39,7 @@ const ImageInput = (props) => {
     [files],
   );
 
-  const thumbsContainer = {
-    display: "flex",
-    flexDirection: "row",
-    flexWrap: "wrap",
-    marginTop: "1vh",
-  };
 
-  const thumb = {
-    display: "inline-flex",
-    borderRadius: "2px",
-    border: "0.1vh solid var(--CardBorder)",
-    width: "10vw",
-    height: "17vh",
-    padding: "0.5vh 0.5vw",
-  };
-
-  const thumbInner = {
-    display: "flex",
-    minWidth: 0,
-    overflow: "hidden",
-  };
-
-  const img = {
-    display: "block",
-    width: "auto",
-    height: "100%",
-  };
   const errorMsg = (code) => {
     switch (code) {
       case "file-too-large":
@@ -103,13 +77,7 @@ const ImageInput = (props) => {
     )),
   );
 
-  const thumbs = files.map((file) => (
-    <div style={thumb} key={file.name}>
-      <div style={thumbInner}>
-        <img src={file.preview} style={img} />
-      </div>
-    </div>
-  ));
+
 
   return (
     <section className={`${props.zoneCustomClass}`}>
@@ -145,9 +113,6 @@ const ImageInput = (props) => {
           ""
         )}
       </div>
-      {/*<aside style={thumbsContainer}>
-                {thumbs}
-            </aside>*/}
     </section>
   );
 };

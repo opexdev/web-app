@@ -28,7 +28,7 @@ const AdvanceTradingView = (props) => {
         widget.onChartReady(() => {
             console.log("Chart has loaded!");
         });
-    }, []);
+    }, [props.isDark]);
     return (
         <div
             style={{width: "100%", height: "100%"}}

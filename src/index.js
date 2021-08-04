@@ -6,7 +6,7 @@ import {createStore, applyMiddleware, combineReducers, compose} from "redux";
 import createSagaMiddleware from "redux-saga";
 import globalReducer from "./store/reducers/globalReducer";
 import reportWebVitals from "./reportWebVitals";
-import App from "./main";
+import App from "./main/main";
 import "normalize.css";
 import "./index.css";
 import authReducer from "./store/reducers/authReducer";

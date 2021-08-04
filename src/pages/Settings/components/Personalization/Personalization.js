@@ -1,6 +1,6 @@
 import React, {Fragment} from "react";
 import {connect} from "react-redux";
-import PersonalizationForm from "./PersonalizationForm/PersonalizationForm";
+import PersonalizationForm from "./components/PersonalizationForm/PersonalizationForm";
 
 const Personalization = (props) => {
   return (

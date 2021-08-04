@@ -1,5 +1,4 @@
 import Faker from "faker";
-import {images} from "../assets/images";
 
 export const OverViewData = {
   lastDay: {
@@ -34,15 +33,6 @@ export const OrderData = {
   sale: {CurrencyBalance: "0.3 بیتکوین", BestOffer: "450،000،000 ", type: true},
 };
 
-/*export const OrderBookData = [
-    {
-        totalPrice: '413،990،000',
-        Amount: "0.01",
-        Count: "413،990،000",
-        Percent: 10
-    }
-];*/
-
 export const OrderBookBuyData = () => {
   const data = [];
   for (let i = 0; i < 100; i++) {
@@ -67,13 +57,6 @@ export const OrderBookData = () => {
       Faker.datatype.number({min: 4990000, max: 3990000}),
       Faker.datatype.number({min: 0, max: 1.5, precision: 0.0001}),
     ]);
-    /*data.push({
-            id: Faker.datatype.number,
-            amount: Faker.datatype.number({'min': 0, 'max': 1.5, precision: 0.0001}),
-            pricePerUnit: Faker.datatype.number({'min': 4990000, 'max': 3990000}),
-            totalPrice: Faker.datatype.number({'min': 139900000, 'max': 4139900000}),
-            percent: Faker.datatype.number({'min': 1, 'max': 70})
-        });*/
   }
   for (let i = 0; i < 100; i++) {
     data.asks.push([

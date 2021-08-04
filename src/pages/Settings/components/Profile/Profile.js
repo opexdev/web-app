@@ -1,7 +1,7 @@
 import React, {Fragment} from "react";
 import {connect} from "react-redux";
-import UserAccountStatus from "./UserAccountStatus/UserAccountStatus";
-import PersonalProfile from "./PersonalProfile/PersonalProfile";
+import UserAccountStatus from "./components/UserAccountStatus/UserAccountStatus";
+import PersonalProfile from "./components/PersonalProfile/PersonalProfile";
 
 const Profile = (props) => {
   return (

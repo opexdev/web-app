@@ -1,13 +1,13 @@
-import React, {Fragment, useEffect, useState} from "react";
+import React, {useEffect, useState} from "react";
 import {connect} from "react-redux";
 import classes from "./Login.module.css";
 import {images} from "../../assets/images";
 import AccordionBox from "../../components/AccordionBox/AccordionBox";
-import {loadConfig, login, setLoginInitiate, setThemeInitiate} from "../../store/actions";
+import {loadConfig} from "../../store/actions";
 import i18n from "i18next";
-import LoginForm from "./LoginForm/LoginForm";
-import RegisterForm from "./RegisterForm/RegisterForm";
-import ForgetPassword from "./ForgetPassword/ForgetPassword";
+import LoginForm from "./components/LoginForm/LoginForm";
+import RegisterForm from "./components/RegisterForm/RegisterForm";
+import ForgetPassword from "./components/ForgetPassword/ForgetPassword";
 import {useTranslation} from "react-i18next";
 
 const Login = (props) => {
