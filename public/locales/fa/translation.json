@@ -155,6 +155,7 @@
     "title": "دارایی ها ",
     "totalValue": "ارزش کل",
     "approximate": "تقریبی",
+    "error": "خطا در دریافت اطلاعات...",
     "equivalent": "معادل"
   },
   "DepositWithdraw": {

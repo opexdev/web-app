@@ -11,7 +11,7 @@ import {loadConfig, setThemeInitiate} from "../store/actions";
 import Dashboard from "../pages/Dashboard/Dashboard";
 import i18n from "i18next";
 import {images} from "../assets/images";
-import Wallet from "../pages/Wallet/wallet";
+import Wallet from "../pages/Wallet/Wallet.js";
 import {BrowserView, MobileView} from "react-device-detect";
 import ReactTooltip from "react-tooltip";
 import ProtectedRoute from "../components/ProtectedRoute";
@@ -117,7 +117,6 @@ const App = (props) => {
                           <ProtectedRoute
                             component={Wallet}
                             isLogin={props.isLogin}
-                            exact
                             path={Routes.Wallet}
                           />
                           <ProtectedRoute

@@ -48,7 +48,6 @@ const MainMenu = (props) => {
             <Icon iconName="icon-market font-size-lg" />
           </NavLink>
           <NavLink
-            exact={true}
             to={Routes.Wallet}
             activeClassName={classes.selected}
             onClick={() => setShowMessages(false)}

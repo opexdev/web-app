@@ -169,7 +169,7 @@ const BuyOrder = (props) => {
         <p onClick={() => fillBuyByWallet()}>
           {t("orders.availableAmount")}:{" "}
           <span className="cursor-pointer">
-            {props.auth.wallet[props.activePair.quote].toLocaleString()}{" "}
+            {props.auth.wallets[props.activePair.quote].free.toLocaleString()}{" "}
             {t("currency." + props.activePair.quote)}
           </span>
         </p>

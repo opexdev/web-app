@@ -1,5 +1,4 @@
 import * as actionTypes from "./actionTypes";
-import {SET_USER_TOKENS} from "./actionTypes";
 
 export const login = (token) => {
   return {
@@ -28,6 +27,13 @@ export const setUserTokens = (token) => {
     accessTokenExpires: token.accessTokenExpires,
     refreshToken: token.refreshToken,
     refreshTokenExpires:token.refreshTokenExpires,
+  };
+};
+
+export const setUserAccountInfo = (info) => {
+  return {
+    type: actionTypes.SET_USER_ACCOUNT_INFO,
+    info: info,
   };
 };
 

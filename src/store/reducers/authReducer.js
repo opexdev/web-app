@@ -10,14 +10,23 @@ const initialState = {
     accessTokenExpires: null,
     refreshToken: null,
     refreshTokenExpires: null,
-    wallet: {
-        IRT: 0.0,
-        BTC: 0.0,
-        ETH: 0.0,
-        LTC: 0.0,
-        DOGE: 0.0,
-        BCH: 0.0,
-        USDT: 0.0,
+    makerCommission: 0,
+    takerCommission: 0,
+    buyerCommission: 0,
+    sellerCommission: 0,
+    canTrade: false,
+    canWithdraw: false,
+    canDeposit: false,
+    accountType: null,
+    permissions: [],
+    wallets: {
+        IRT: {free: 0.0, locked: 0.0, inWithdrawalProcess: 0.0},
+        BTC: {free: 0.0, locked: 0.0, inWithdrawalProcess: 0.0},
+        ETH: {free: 0.0, locked: 0.0, inWithdrawalProcess: 0.0},
+        LTC: {free: 0.0, locked: 0.0, inWithdrawalProcess: 0.0},
+        DOGE: {free: 0.0, locked: 0.0, inWithdrawalProcess: 0.0},
+        BCH: {free: 0.0, locked: 0.0, inWithdrawalProcess: 0.0},
+        USDT: {free: 0.0, locked: 0.0, inWithdrawalProcess: 0.0},
     },
     tradeFee: {
         IRT: 0.0,
@@ -36,7 +45,7 @@ const reducer = (state = initialState, action) => {
         case actionTypes.LOGIN:
             return {
                 ...state,
-                wallet: {
+                wallets: {
                     IRT: 100000,
                     BTC: 0.5,
                     ETH: 10.2,
@@ -77,6 +86,15 @@ const reducer = (state = initialState, action) => {
                 refreshToken: action.refreshToken,
                 refreshTokenExpires: action.refreshTokenExpires,
                 isLogin: true,
+            }
+        case actionTypes.SET_USER_ACCOUNT_INFO:
+            return {
+                ...state,
+                ...action.info,
+                wallets: {
+                    ...state.wallets,
+                    ...action.info.wallets
+                }
             }
         default:
             return state;

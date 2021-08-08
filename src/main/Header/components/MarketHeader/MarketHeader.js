@@ -78,11 +78,11 @@ const MarketHeader = (props) => {
               iconName="icon-plus icon-white font-size-sm flex"
               customClass={`mx-05 ${classes.iconBG}`}
             />
-            <span>{props.auth.wallet[props.activePair.base]}</span>
+            <span>{props.auth.wallets[props.activePair.base].free}</span>
             <span>{t("currency." + props.activePair.base)}</span>
           </div>
           <div className="flex ai-center">
-            <span>{props.auth.wallet[props.activePair.quote]}</span>
+            <span>{props.auth.wallets[props.activePair.quote].free}</span>
             <span>{t("currency." + props.activePair.quote)}</span>
             <Icon
               iconName="icon-plus icon-white font-size-sm flex"

@@ -16,7 +16,7 @@ const SubMenu = (props) => {
         <Route exact path={Routes.Dashboard}>
           <Market />
         </Route>
-        <Route exact path={Routes.Wallet}>
+        <Route path={Routes.Wallet}>
           <WalletSubMenu />
         </Route>
         <Route path={Routes.Settings}>
