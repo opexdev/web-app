@@ -5,22 +5,24 @@ import {useTranslation} from "react-i18next";
 import classes from "./WalletSubMenu.module.css";
 import WalletList from "./components/WalletList/WalletList";
 import {setUserAccountInfo} from "../../../../store/actions/auth";
+import ToggleSwitch from "../../../../components/ToggleSwitch/ToggleSwitch";
 
 
 const WalletSubMenu = (props) => {
     const {t} = useTranslation();
-    const {accessToken, setUserAccountInfo} = props;
+    const {accessToken, setUserAccountInfo,wallets} = props;
     const [isLoading, setLoading] = useState(true);
-    const [wallets, setWallets] = useState([]);
+    //const [wallets, setWallets] = useState([]);
 
     useEffect(async () => {
         let account = await getAccount(accessToken)
         if (account.status === 200) {
-            setWallets(account.data.balances);
-            setUserAccountInfo(parseWalletsResponse(account.data))
+            const parsedData = parseWalletsResponse(account.data);
+            //setWallets(parsedData.wallets);
+            setUserAccountInfo(parsedData)
         }
         if (!account) {
-            setWallets(false);
+            //setWallets(false);
             setLoading(false);
             return false
         }
@@ -31,8 +33,8 @@ const WalletSubMenu = (props) => {
         let wallets = {}
         res.balances.map((wallet) => {
             wallets[wallet.asset.toUpperCase()] = {
-                free: wallet.free,
-                locked: wallet.locked,
+                free: parseFloat(wallet.free.toFixed(6)),
+                locked:  parseFloat(wallet.locked.toFixed(6)),
                 inWithdrawalProcess: 0,
             }
         })
@@ -61,8 +63,8 @@ const WalletSubMenu = (props) => {
 
 const mapStateToProps = (state) => {
     return {
-        wallet: state.auth.wallet,
         accessToken: state.auth.accessToken,
+        wallets: state.auth.wallets,
     };
 };
 const mapDispatchToProps = (dispatch) => {

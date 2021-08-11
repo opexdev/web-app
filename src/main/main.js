@@ -14,22 +14,17 @@ import {images} from "../assets/images";
 import Wallet from "../pages/Wallet/Wallet.js";
 import {BrowserView, MobileView} from "react-device-detect";
 import ReactTooltip from "react-tooltip";
-import ProtectedRoute from "../components/ProtectedRoute";
+import ProtectedRoute from "../components/ProtectedRoute/ProtectedRoute";
 import * as Routes from "../routes/routes";
 import {useTranslation} from "react-i18next";
 import {isSafari} from "react-device-detect";
 import Settings from "../pages/Settings/Settings";
-import TechnicalChart from "../pages/TechnicalChart/TechnicalChart";
-import {useToasts} from "react-toast-notifications";
 import Login from "../pages/Login/Login";
-import classes from "./MainMenu/MainMenu.module.css";
-import Icon from "../components/Icon/Icon";
+import TechnicalChart from "../pages/TechnicalChart/TechnicalChart";
 
 const App = (props) => {
   const {t} = useTranslation();
   const [ltr, setLtr] = useState(false);
-  const [lang, setLang] = useState(false);
-  const { addToast } = useToasts();
 
   useEffect(() => {
     props.onLoad();
@@ -40,39 +35,12 @@ const App = (props) => {
   }, []);
 
 
-  const toastContent = <div style={{height:"6vh"}}>
-    از حساب کاربری خارج شدید
-  </div>
-
-  /*useEffect(() => {
-    const timer = setInterval(() => {
-      addToast(toastContent, {
-        appearance: 'info',
-        autoDismiss: true,
-        autoDismissTimeout: 8000,
-      })
-    }, 10000);
-    return () => clearInterval(timer);
-  }, []);
-*/
-
-  /*useEffect(() => {
-    {props.isLogin ? addToast(toastContent, {
-      appearance: 'success',
-      autoDismiss: true,
-      autoDismissTimeout: 8000,
-    })
-        :
-        ""
-    }
-  }, []);*/
 
 
   return (
     /*basename={"demo"}*/
-    /*"homepage":"https://opex.dev/demo"*/
+    /*"homepage"""https://opex.dev/demo"*/
     <Router basename={"demo"}>
-
       <BrowserView>
         <Switch>
           <Route exact path="/login">

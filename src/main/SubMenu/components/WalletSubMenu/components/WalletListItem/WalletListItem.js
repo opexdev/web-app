@@ -14,7 +14,7 @@ const WalletListItem = (props) => {
         <NavLink
             exact={true}
             activeClassName={classes.selected}
-            className="container row ai-center cursor-pointer px-1 py-05"
+            className="container row ai-center cursor-pointer position-relative px-1 py-05"
             to={route}>
             <div className={` row jc-center ai-center ${classes.PairImage}`}>
                 <img

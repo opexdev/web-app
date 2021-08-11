@@ -1,22 +1,27 @@
-import React, {Fragment} from "react";
+import React, {Fragment, useState} from "react";
 import classes from "../../WalletSubMenu.module.css";
 import {images} from "../../../../../../assets/images";
 import {useTranslation} from "react-i18next";
 import WalletListItem from "../WalletListItem/WalletListItem";
 import * as Routes from "../../../../../../routes/routes";
 import WalletLoading from "../WalletLoading/WalletLoading";
+import Error from "../../../../../../components/Error/Error";
+import ToggleSwitch from "../../../../../../components/ToggleSwitch/ToggleSwitch";
 
 
 const WalletList = (props) => {
-    const {wallets, isLoading} = props
+    let {wallets, isLoading} = props
     const {t} = useTranslation();
+    const [showZero, setShowZero] = useState(false);
 
     if (isLoading) {
         return <WalletLoading/>
     }
     if (!wallets) {
-        return <div className="container row ai-center px-1 py-05 text-center" style={{height: "8.5vh"}}>{t('WalletSubMenu.error')}</div>
+        return <Error/>
     }
+
+
 
     if (wallets.length === 0) {
         return (
@@ -49,6 +54,10 @@ const WalletList = (props) => {
     }
     return (
         <Fragment>
+            <div className={`container row jc-around ai-center py-2 border-bottom`}>
+                <span className={`font-size-sm`}>{t("WalletSubMenu.showZeroBalance")}</span>
+                <ToggleSwitch onchange={(e)=>setShowZero(prevState => !prevState)} checked={showZero}/>
+            </div>
             <div className="container row ai-center px-1 py-05" style={{height: "8.5vh"}}>
                 <div className={` row jc-center ai-center ${classes.PairImage}`}>
                     <img
@@ -74,7 +83,11 @@ const WalletList = (props) => {
                     </div>
                 </div>
             </div>
-            {wallets.map(wallet => <WalletListItem name={wallet.asset.toUpperCase()} route={Routes.Wallet + "/" + wallet.asset.toUpperCase()} amount={wallet.free}/>)}
+            {Object.keys(wallets).map((name) => {
+                if(wallets[name].free !== 0.0 || !showZero   ) {
+                    return <WalletListItem name={name} route={Routes.Wallet + "/" + name} amount={wallets[name].free}/>
+                }
+            })}
         </Fragment>
     )
 }

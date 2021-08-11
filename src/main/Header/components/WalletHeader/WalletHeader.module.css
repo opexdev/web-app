@@ -1,0 +1,4 @@
+.border{
+    border-right: 0.1vh solid var(--orange);
+    border-left: 0.1vh solid var(--orange);
+}

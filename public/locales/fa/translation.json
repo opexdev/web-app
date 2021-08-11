@@ -33,6 +33,7 @@
   "firstName": "نام",
   "lastName": "نام خانوادگی",
   "email": "ایمیل",
+  "error": "خطا در دریافت اطلاعات...",
   "currency": {
     "IRT": "تومان",
     "Euro": "یورو",
@@ -42,7 +43,8 @@
     "USDT": "تتر",
     "DOGE": "دوج کوین",
     "LTC": "لایت کوین",
-    "BCH": "بیتکوین کش"
+    "BCH": "بیتکوین کش",
+    "NLN": "نیلین*"
   },
   "routes": {
     "/settings/profile": "مشخصات کاربری",
@@ -87,7 +89,10 @@
   },
   "header": {
     "lastPrice": "آخرین قیمت",
-    "availableBalance": "موجودی قابل معامله"
+    "availableBalance": "موجودی قابل معامله",
+    "free": "دارایی آزاد",
+    "locked": "درگیر معامله",
+    "inWithdrawalProcess": "منتظر تسویه"
   },
   "market": {
     "title": "بازار"
@@ -155,8 +160,8 @@
     "title": "دارایی ها ",
     "totalValue": "ارزش کل",
     "approximate": "تقریبی",
-    "error": "خطا در دریافت اطلاعات...",
-    "equivalent": "معادل"
+    "equivalent": "معادل",
+    "showZeroBalance": "عدم نمایش موجودی صفر"
   },
   "DepositWithdraw": {
     "title": "واریز/برداشت"

@@ -9,6 +9,8 @@ import {Link, Route, Switch, useLocation} from "react-router-dom";
 import {Login} from "../../routes/routes";
 import * as Routes from "../../routes/routes";
 import MarketHeader from "./components/MarketHeader/MarketHeader";
+import WalletHeader from "./components/WalletHeader/WalletHeader";
+import ProtectedRoute from "../../components/ProtectedRoute/ProtectedRoute";
 
 const Header = (props) => {
   const {t} = useTranslation();
@@ -21,14 +23,14 @@ const Header = (props) => {
           <Route exact path={Routes.Dashboard}>
             <MarketHeader />
           </Route>
-          <Route exact path={Routes.Wallet}>
-            <h2 style={{color: "var(--orange)"}}>بیتکوین (BTC)</h2>
-          </Route>
-          <Route path={Routes.Settings}>
+          <ProtectedRoute path={Routes.Wallet+"/:id"}>
+             <WalletHeader/>
+          </ProtectedRoute>
+          <ProtectedRoute path={Routes.Settings}>
             <h2 style={{color: "var(--orange)"}}>
               {t("routes." + location.pathname)}
             </h2>
-          </Route>
+          </ProtectedRoute>
           {/*<ProtectedRoute component={WalletSubMenu} isLogin={props.isLogin} exact path={Routes.WalletSubMenu}/>*/}
 
           <Route path="*">
@@ -36,7 +38,7 @@ const Header = (props) => {
           </Route>
         </Switch>
 
-        <div className={`column ai-end`}>
+        <div className={`col-35 column ai-end`}>
           {props.auth.firstName === null ? (
             <Link to={Login} className="hover-text">
               <p>{t("pleaseLogin")}</p>
@@ -51,10 +53,7 @@ const Header = (props) => {
           </p>
         </div>
       </div>
-      <div
-        className={`flex jc-center ai-center ${classes.signOut}`}
-        onClick={props.onLogout}>
-        {props.auth.isLogin ? (
+      <div className={`flex jc-center ai-center ${classes.signOut}`} onClick={props.onLogout}>{props.auth.isLogin ? (
           <img
             className="img-md"
             src={images.signOut}
