@@ -2,6 +2,7 @@ import opexLogo_light from "./images/src/opexLogo_light.svg";
 import signOut from "./images/src/signOut.svg";
 import opexQrCode from "./images/src/opex-qr-code.svg";
 import safe from "./images/src/safe.svg";
+import opexCoin from "./images/src/opexCoin.svg";
 import bitcoin from "./images/src/bitcoin.svg";
 import dogecoin from "./images/src/dogecoin.svg";
 import bitcoinCash from "./images/src/bitcoinCash.svg";
@@ -19,6 +20,7 @@ export const images = {
   signOut: signOut,
   opexQrCode: opexQrCode,
   safe: safe,
+  NLN: opexCoin,
   BTC: bitcoin,
   DOGE: dogecoin,
   BCH: bitcoinCash,

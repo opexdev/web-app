@@ -54,7 +54,7 @@ const MarketHeader = (props) => {
 
   return (
     <Fragment>
-      <div className={`column ai-start`}>
+      <div className={`col-35 column ai-start`}>
         <h2 className="mb-05">{t(`pair.${props.activePair.pair}`)}</h2>
         <p>
           {t("header.lastPrice")}:{" "}
@@ -70,19 +70,19 @@ const MarketHeader = (props) => {
             : t("currency." + props.activePair.quote)}
         </p>
       </div>
-      <div className={`column ai-center`}>
+      <div className={`col-30 column ai-center`}>
         <p className="mb-05">{t("header.availableBalance")}</p>
-        <div className={`row ai-center ${classes.inventory}`}>
-          <div className="flex ai-center">
+        <div className={`container row ai-center ${classes.inventory}`}>
+          <div className="col-50 flex ai-center jc-end">
             <Icon
               iconName="icon-plus icon-white font-size-sm flex"
               customClass={`mx-05 ${classes.iconBG}`}
             />
-            <span>{props.auth.wallet[props.activePair.base]}</span>
+            <span>{props.auth.wallets[props.activePair.base].free}</span>
             <span>{t("currency." + props.activePair.base)}</span>
           </div>
-          <div className="flex ai-center">
-            <span>{props.auth.wallet[props.activePair.quote]}</span>
+          <div className="col-50 flex ai-center  jc-start">
+            <span>{props.auth.wallets[props.activePair.quote].free}</span>
             <span>{t("currency." + props.activePair.quote)}</span>
             <Icon
               iconName="icon-plus icon-white font-size-sm flex"

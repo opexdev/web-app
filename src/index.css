@@ -479,6 +479,26 @@ body {
   -ms-flex: 0.15;
   flex: 0.15;
 }
+.col-18 {
+  -webkit-box-flex: 0.18;
+  -ms-flex: 0.18;
+  flex: 0.18;
+}
+.col-23 {
+  -webkit-box-flex: 0.23;
+  -ms-flex: 0.23;
+  flex: 0.23;
+}
+.col-28 {
+  -webkit-box-flex: 0.28;
+  -ms-flex: 0.28;
+  flex: 0.28;
+}
+.col-21 {
+  -webkit-box-flex: 0.21;
+  -ms-flex: 0.21;
+  flex: 0.21;
+}
 .col-75 {
   -webkit-box-flex: 0.75;
   -ms-flex: 0.75;
