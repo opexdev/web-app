@@ -42,28 +42,6 @@ const initialState = {
 
 const reducer = (state = initialState, action) => {
     switch (action.type) {
-        case actionTypes.LOGIN:
-            return {
-                ...state,
-                wallets: {
-                    IRT: 100000,
-                    BTC: 0.5,
-                    ETH: 10.2,
-                    LTC: 6.0,
-                    DOGE: 50000.0,
-                    BCH: 56.0,
-                    USDT: 100.0,
-                },
-                tradeFee: {
-                    IRT: 0.0001,
-                    BTC: 0.0002,
-                    ETH: 0.0003,
-                    LTC: 0.0,
-                    DOGE: 0.0,
-                    BCH: 0.0,
-                    USDT: 0.0,
-                },
-            };
         case actionTypes.LOGOUT:
             return {
                 ...initialState,

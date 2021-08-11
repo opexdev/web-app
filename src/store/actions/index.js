@@ -14,8 +14,6 @@ export {
 } from "./global";
 
 export {
-  login,
-  setLoginInitiate,
   logout,
   setLogoutInitiate,
   setUserTokens,

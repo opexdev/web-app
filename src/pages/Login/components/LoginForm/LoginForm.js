@@ -4,7 +4,11 @@ import React, {useState} from "react";
 import classes from "../../Login.module.css";
 import TextInput from "../../../../components/TextInput/TextInput";
 import LoginFormLoading from "../LoginLoading/LoginFormLoading";
-import {setPanelTokensInitiate, setUserInfoInitiate, setUserTokensInitiate} from "../../../../store/actions";
+import {
+    setUserInfo,
+    setPanelTokensInitiate,
+    setUserTokensInitiate
+} from "../../../../store/actions";
 import {useHistory} from "react-router-dom";
 import {useTranslation} from "react-i18next";
 
@@ -44,8 +48,8 @@ const LoginForm = (props) => {
 
             let panelToken = await getToken()
             panelToken = parsePanelToken(panelToken.data)
-
             props.setPanelToken(panelToken)
+
             let userInfo = await getUser(panelToken.panelAccessToken, "username", credential.username)
             if (userInfo.status === 200) {
                 userInfo = userInfo.data.find(user => user.username === credential.username)
@@ -94,7 +98,7 @@ const mapDispatchToProps = (dispatch) => {
     return {
         setToken: (token) => dispatch(setUserTokensInitiate(token)),
         setPanelToken: (token) => dispatch(setPanelTokensInitiate(token)),
-        setUserInfo: (token) => dispatch(setUserInfoInitiate(token)),
+        setUserInfo: (token) => dispatch(setUserInfo(token)),
     };
 };
 

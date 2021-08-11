@@ -17,13 +17,14 @@ export function* loadConfig() {
     yield put(actions.setTheme(isDark === "true"));
 
     const tokens = {
-        access_token: yield localStorage.getItem("access_token"),
-        expires_in: yield localStorage.getItem("expires_in"),
-        refresh_token: yield localStorage.getItem("refresh_token"),
-        refresh_expires_in: yield localStorage.getItem("refresh_expires_in")
+        accessToken: yield localStorage.getItem("accessToken"),
+        accessTokenExpires: yield localStorage.getItem("accessTokenExpires"),
+        refreshToken: yield localStorage.getItem("refreshToken"),
+        refreshTokenExpires: yield localStorage.getItem("refreshTokenExpires")
     };
-    if (tokens.refresh_expires_in > Date.now()) {
-        yield put(actions.login(tokens));
+
+    if (tokens.accessToken && tokens.accessTokenExpires > Date.now()) {
+        yield put(actions.setUserTokens(tokens));
     } else {
         yield put(actions.setLogoutInitiate());
     }

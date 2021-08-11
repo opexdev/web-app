@@ -3,7 +3,7 @@ import React, {useState} from "react";
 import TextInput from "../../../../components/TextInput/TextInput";
 import LoginFormLoading from "../LoginLoading/LoginFormLoading";
 import {Trans, useTranslation} from "react-i18next";
-import {getToken, parsePanelToken, register} from "../../api/auth";
+import {getToken, getUser, parsePanelToken, register, sendForgetPasswordEmail, sendVerifyEmail} from "../../api/auth";
 import {setPanelTokensInitiate} from "../../../../store/actions";
 import {connect} from "react-redux";
 import {validateEmail} from "../../../../utils/utils";
@@ -53,6 +53,13 @@ const RegisterForm = props => {
         let userInfo = await register(panelToken.panelAccessToken, user)
 
         if (userInfo.status === 201) {
+
+            let userInfo = await getUser(panelToken.panelAccessToken, "email", userData.email.value)
+
+            if (userInfo.status === 200) {
+                userInfo = userInfo.data.find(user => user.email === userData.email.value)
+            }
+            await sendVerifyEmail(panelToken.panelAccessToken, userInfo.id);
             setRegisterStatus("finish");
         }else {
             setRegisterStatus("finishedWithError");
