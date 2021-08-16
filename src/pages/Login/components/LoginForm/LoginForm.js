@@ -11,6 +11,8 @@ import {
 } from "../../../../store/actions";
 import {useHistory} from "react-router-dom";
 import {useTranslation} from "react-i18next";
+import {getAccount, parseWalletsResponse} from "../../../../main/SubMenu/components/WalletSubMenu/api/wallet";
+import {setUserAccountInfo} from "../../../../store/actions/auth";
 
 
 const LoginForm = (props) => {
@@ -43,8 +45,12 @@ const LoginForm = (props) => {
         if (submitResult.status === 401) {
             setLoginError(t("login.wrongPassword"));
         }
+        if (submitResult.status === 400 && submitResult.data.error_description === "Account is not fully set up") {
+            setLoginError(t("login.accountNotActive"));
+        }
         if (submitResult && submitResult.status === 200) {
-            props.setToken(parseToken(submitResult.data))
+            const userToken = parseToken(submitResult.data);
+            props.setToken(userToken)
 
             let panelToken = await getToken()
             panelToken = parsePanelToken(panelToken.data)
@@ -55,6 +61,12 @@ const LoginForm = (props) => {
                 userInfo = userInfo.data.find(user => user.username === credential.username)
                 props.setUserInfo(userInfo)
             }
+            let account = await getAccount(userToken.accessToken)
+            if (account.status === 200) {
+                const parsedData = parseWalletsResponse(account.data);
+                props.setUserAccountInfo(parsedData)
+            }
+
             return history.push("/");
 
         }
@@ -99,6 +111,7 @@ const mapDispatchToProps = (dispatch) => {
         setToken: (token) => dispatch(setUserTokensInitiate(token)),
         setPanelToken: (token) => dispatch(setPanelTokensInitiate(token)),
         setUserInfo: (token) => dispatch(setUserInfo(token)),
+        setUserAccountInfo: (info) => dispatch(setUserAccountInfo(info)),
     };
 };
 

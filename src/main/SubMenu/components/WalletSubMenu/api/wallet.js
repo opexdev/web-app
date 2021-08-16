@@ -12,7 +12,7 @@ export const getAccount = async (token) => {
     params.append('timestamp', timestamp.toString());
     params.append('c', "");
 
-    return await Wallet.get(`/api/api/v3/account?timestamp=${timestamp.toString()}&c`, {
+    return await Wallet.get(`/api/v3/account?timestamp=${timestamp.toString()}&c`, {
         data:params,
         headers : {
             'Authorization': `Bearer ${token}`,
@@ -27,4 +27,21 @@ export const getAccount = async (token) => {
         return e.response;
     })
 
+}
+
+export const parseWalletsResponse = (res) => {
+    let wallets = {}
+    res.balances.map((wallet) => {
+        wallets[wallet.asset.toUpperCase()] = {
+            free: parseFloat(wallet.free.toFixed(6)),
+            locked:  parseFloat(wallet.locked.toFixed(6)),
+            inWithdrawalProcess: 0,
+        }
+    })
+    delete res.balances;
+    delete res.updateTime;
+    return {
+        ...res,
+        wallets:wallets
+    };
 }

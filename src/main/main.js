@@ -73,8 +73,8 @@ const App = (props) => {
                     }
                   </div>*/}
                   <div className="row">
-                    <MainMenu />
-                    <SubMenu />
+                    <MainMenu isLogin={props.isLogin}/>
+                    <SubMenu isLogin={props.isLogin}/>
                     <div className="column content">
                       <Header />
                       <ScrollBar>

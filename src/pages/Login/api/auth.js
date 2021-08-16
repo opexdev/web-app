@@ -13,7 +13,7 @@ export const getToken = async () => {
     params.append('client_secret', authClientSecret);
     params.append('grant_type', 'client_credentials');
 
-    return await Auth.post('/auth/realms/mixchange/protocol/openid-connect/token', params)
+    return await Auth.post('/auth/realms/opex/protocol/openid-connect/token', params)
         .then((res) => {
             return res;
         }).catch((e) => {
@@ -31,7 +31,7 @@ export const login = async (credential) => {
     params.append('password', credential.password);
     params.append('grant_type', 'password');
 
-    return await Auth.post('/auth/realms/mixchange/protocol/openid-connect/token', params)
+    return await Auth.post('/auth/realms/opex/protocol/openid-connect/token', params)
         .then((res) => {
             return res;
         }).catch((e) => {
@@ -44,7 +44,7 @@ export const login = async (credential) => {
 
 export const register = async (token, user) => {
     Auth.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-    return await Auth.post('/auth/admin/realms/mixchange/users', {
+    return await Auth.post('/auth/admin/realms/opex/users', {
         "createdTimestamp": Date.now(),
         "username": user.username,
         "enabled": true,
@@ -77,7 +77,7 @@ export const register = async (token, user) => {
 
 export const getUser = async (token, key , value) => {
     Auth.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-    return await Auth.get(`/auth/admin/realms/mixchange/users?${key}=${value}`,)
+    return await Auth.get(`/auth/admin/realms/opex/users?${key}=${value}`,)
         .then((res) => {
             return res;
         }).catch((e) => {
@@ -91,7 +91,7 @@ export const getUser = async (token, key , value) => {
 
 export const sendVerifyEmail = async (token, userId) => {
     Auth.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-    return await Auth.put(`/auth/admin/realms/mixchange/users/${userId}/send-verify-email`,)
+    return await Auth.put(`/auth/admin/realms/opex/users/${userId}/send-verify-email`,)
         .then((res) => {
             console.log(res.data);
         }).catch((e) => {
@@ -102,7 +102,7 @@ export const sendVerifyEmail = async (token, userId) => {
 export const sendForgetPasswordEmail = async (token, userId) => {
     Auth.defaults.headers.common['Authorization'] = `Bearer ${token}`;
     Auth.defaults.headers.common['Content-Type'] = "application/json";
-    return await Auth.put(`/auth/admin/realms/mixchange/users/${userId}/execute-actions-email`,
+    return await Auth.put(`/auth/admin/realms/opex/users/${userId}/execute-actions-email`,
         ["UPDATE_PASSWORD"]
     ).then((res) => {
         return res;
