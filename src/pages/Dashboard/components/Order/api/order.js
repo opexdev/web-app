@@ -8,15 +8,6 @@ const Order = axios.create({
 export const createOrder = async (activePair , side , token , order) => {
     const timestamp = Date.now()
 
-
-    // symbol:btc_usdt
-    // side:SELL
-    // type:LIMIT
-    // timeInForce:GTC
-    // timestamp:1626805452
-    // quantity:10
-    // price:1
-
     const params = new URLSearchParams();
     params.append('symbol', activePair);
     params.append('side', side);
@@ -26,17 +17,10 @@ export const createOrder = async (activePair , side , token , order) => {
     params.append('quantity', order.reqAmount);
     params.append('price', order.pricePerUnit);
 
+    Order.defaults.headers.post['Authorization'] = `Bearer ${token}`;
+    Order.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
 
-    console.log("params : " , params.toString())
-
-
-    return await Order.post(`/api/v3/order?${params.toString()}`, {
-        data:params,
-        headers : {
-            'Authorization': `Bearer ${token}`,
-            'content-type': 'application/x-www-form-urlencoded'
-        },
-    }).then((res) => {
+    return await Order.post(`/api/v3/order?${params.toString()}` ,params).then((res) => {
         return res;
     }).catch((e) => {
         if (!e.response) {
