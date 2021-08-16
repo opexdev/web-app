@@ -5,6 +5,7 @@ import classes from "../../Order.module.css";
 import NumberInput from "../../../../../../components/NumberInput/NumberInput";
 import {connect} from "react-redux";
 import Button from "../../../../../../components/Button/Button";
+import {createOrder} from "../../api/order";
 
 const BuyOrder = (props) => {
   const {t} = useTranslation();
@@ -163,6 +164,11 @@ const BuyOrder = (props) => {
     );
   };
 
+  const submit = async ()=>{
+    console.log("in")
+    await createOrder((props.activePair.base+"_"+props.activePair.quote).toLowerCase() , "BUY" , props.auth.accessToken , order)
+  }
+
   return (
     <div className={`column jc-between ${classes.content}`}>
       <div className="column jc-between">
@@ -273,6 +279,7 @@ const BuyOrder = (props) => {
       <Button
           buttonClass={`${classes.thisButton} ${classes.buyOrder}`}
           type="submit"
+          onClick={submit}
           disabled={alert.reqAmount || order.reqAmount === 0 || !props.auth.isLogin}
           buttonTitle={props.auth.isLogin ? t("buy") : t("pleaseLogin")}
       />
