@@ -1,5 +1,6 @@
 import {put} from "redux-saga/effects";
 import * as actions from "../actions/index";
+import jwtDecode from "jwt-decode";
 
 export function* setThemeSaga(action) {
     yield localStorage.setItem("isDark", action.isDark);
@@ -24,7 +25,18 @@ export function* loadConfig() {
     };
 
     if (tokens.accessToken && tokens.accessTokenExpires > Date.now()) {
+        const jwt = jwtDecode(tokens.accessToken)
+        const user= {
+            id: jwt.sub,
+            username: jwt.preferred_username,
+            email: jwt.email,
+            firstName: jwt.given_name,
+            lastName: jwt.family_name,
+            emailVerified : jwt.email_verified
+        }
         yield put(actions.setUserTokens(tokens));
+        yield put(actions.setUserInfo(user));
+
     } else {
         yield put(actions.setLogoutInitiate());
     }

@@ -17,12 +17,8 @@ const SubMenu = (props) => {
                 <Route exact path={Routes.Dashboard}>
                     <Market/>
                 </Route>
-                <ProtectedRoute path={Routes.Wallet}>
-                    <WalletSubMenu/>
-                </ProtectedRoute>
-                <ProtectedRoute path={Routes.Settings}>
-                    <SettingsSubMenu/>
-                </ProtectedRoute>
+                <ProtectedRoute path={Routes.Wallet} isLogin={props.isLogin} component={WalletSubMenu}/>
+                <ProtectedRoute path={Routes.Settings}  isLogin={props.isLogin} component={SettingsSubMenu}/>
                 <Route path="*">
                     <h3>{t("comingSoon")}</h3>
                 </Route>
