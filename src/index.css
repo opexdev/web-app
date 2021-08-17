@@ -902,6 +902,9 @@ h6 {
 .cursor-pointer {
   cursor: pointer;
 }
+.cursor-not-allowed {
+  cursor: not-allowed;
+}
 .ltr {
   direction: ltr;
   font-family: "Segoe UI", serif;
