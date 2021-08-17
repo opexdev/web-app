@@ -4,10 +4,10 @@ import Icon from "../../../../../../components/Icon/Icon";
 import classes from "../../MyOrders.module.css";
 import ScrollBar from "../../../../../../components/ScrollBar";
 import {useTranslation} from "react-i18next";
-import {getOpenOrder} from "../api/myOrders";
+import {getOrdersHistory} from "../api/myOrders";
 import {connect} from "react-redux";
 
-const OpenOrders = (props) => {
+const OrdersHistory = (props) => {
 
     const {activePair, accessToken, lastTransaction} = props
 
@@ -16,7 +16,7 @@ const OpenOrders = (props) => {
     const [orders, setOrders] = useState([])
 
     useEffect(async () => {
-        const myOrders = await getOpenOrder(activePair, accessToken)
+        const myOrders = await getOrdersHistory(activePair, accessToken)
         if (myOrders.status === 200) {
             setOrders(myOrders.data)
         }
@@ -37,8 +37,7 @@ const OpenOrders = (props) => {
                         {t("pricePerUnit")}({activePair.quote})
                     </th>
                     <th>{t("totalPrice")}</th>
-                    <th>{t("myOrders.donePercentage")}</th>
-                    <th/>
+                    <th>{t("status")}</th>
                     <th/>
                 </tr>
                 </thead>
@@ -49,15 +48,9 @@ const OpenOrders = (props) => {
                             <td>{moment(tr.time).format("HH:mm:ss")}</td>
                             <td>{moment(tr.time).format("jYY/jMM/jDD")}</td>
                             <td>{tr.origQty}</td>
-                            <td>{tr.price}</td>
-                            <td>{(tr.origQty * tr.price).toFixed(6)}</td>
-                            <td>{((tr.executedQty / tr.origQty) * 100).toFixed()}</td>
-                            <td>
-                                <Icon
-                                    iconName="icon-cancel text-red font-size-sm"
-                                    customClass={`${classes.iconBG} cursor-pointer`}
-                                />
-                            </td>
+                            <td>{tr.price.toLocaleString()}</td>
+                            <td>{(tr.origQty * tr.price).toLocaleString()}</td>
+                            <td>{t("ordersStatus." + tr.status)}</td>
                             {openOrder === index ? (
                                 <td onClick={() => setOpenOrder(null)}>
                                     <Icon
@@ -74,29 +67,42 @@ const OpenOrders = (props) => {
                                 </td>
                             )}
                         </tr>
-                        <tr style={{display: openOrder === index ? "revert" : "none"}}>
+                        <tr style={{
+                            display: openOrder === index ? "revert" : "none",
+                        }}>
                             <td colSpan="8" className={`py-1 px-2`}>
                                 <div
-                                    className="row jc-around  ai-center"
-                                    style={{width: "100%"}}>
+                                    className="row jc-between  ai-center"
+                                    style={{width: "100%", textAlign: "start"}}>
                                     <p className="col-46 row jc-between">
                                         {t("myOrders.orderId")} : <span>{tr.orderId}</span>
                                     </p>
                                     <p className="col-46 row jc-between">
-                                        {t("myOrders.tradedAmount")} :{" "}
-                                        <span>{tr.executedQty}</span>
+                                        {t("orderType")} :{" "}
+                                        <span>
+                                            {t(tr.side) + " " + t("orderTypes." + tr.type)}
+                                        </span>
                                     </p>
                                 </div>
-                                <div
-                                    className="row jc-around  ai-center"
-                                    style={{width: "100%"}}>
+                                <div className="row  jc-between ai-center"
+                                    style={{width: "100%", textAlign: "start"}}>
                                     <p className="col-46 row jc-between">
-                                        {t("myOrders.avgTradedAmount")} :{" "}
-                                        <span>{tr.origQuoteOrderQty}</span>
+                                        {t("myOrders.stopOrderTime")} :{" "}
+                                        <span>
+                                            {moment(tr.updateTime).format("jYY/jMM/jDD HH:mm:ss",)}
+                                        </span>
                                     </p>
                                     <p className="col-46 row jc-between">
-                                        {t("myOrders.tradedPrice")} :{" "}
-                                        <span>{tr.executedQty * tr.price}</span>
+                                        {t("myOrders.startOrderTime")} :{" "}
+                                        <span>
+                                            {moment(tr.time).format("jYY/jMM/jDD HH:mm:ss",)}
+                                        </span>
+                                    </p>
+                                </div>
+                                <div className="row jc-between ai-center" style={{width: "100%", textAlign: "start"}}>
+                                    <p className="col-46 row jc-between">
+                                        {t("myOrders.stoppedPrice")} :{" "}
+                                        <span>{tr.price}</span>
                                     </p>
                                 </div>
                             </td>
@@ -118,4 +124,4 @@ const mapStateToProps = (state) => {
     };
 };
 
-export default connect(mapStateToProps, null)(OpenOrders);
+export default connect(mapStateToProps, null)(OrdersHistory);

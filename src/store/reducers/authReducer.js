@@ -19,6 +19,7 @@ const initialState = {
     canDeposit: false,
     accountType: null,
     permissions: [],
+    lastTransaction: null,
     wallets: {
         IRT: {free: 0.0, locked: 0.0, inWithdrawalProcess: 0.0},
         BTC: {free: 0.0, locked: 0.0, inWithdrawalProcess: 0.0},
@@ -73,6 +74,11 @@ const reducer = (state = initialState, action) => {
                     ...state.wallets,
                     ...action.info.wallets
                 }
+            }
+        case actionTypes.SET_LAST_TRANSACTION:
+            return {
+                ...state,
+                lastTransaction : action.time
             }
         default:
             return state;

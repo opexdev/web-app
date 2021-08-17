@@ -7,6 +7,7 @@ import {connect} from "react-redux";
 import Button from "../../../../../../components/Button/Button";
 import {createOrder} from "../../api/order";
 import {images} from "../../../../../../assets/images";
+import {setLastTransaction} from "../../../../../../store/actions/auth";
 
 const SellOrder = (props) => {
   const {t} = useTranslation();
@@ -192,6 +193,7 @@ const SellOrder = (props) => {
         pricePerUnit: 0.0,
         totalPrice: 0.0,
       })
+      setTimeout(()=>props.setLastTransaction(submitOrder.data.transactTime), 2000);
     }else {
       setAlert({
         ...alert , submit: true
@@ -335,5 +337,10 @@ const mapStateToProps = (state) => {
     auth: state.auth,
   };
 };
+const mapDispatchToProps = (dispatch) => {
+  return {
+    setLastTransaction: (time) => dispatch(setLastTransaction(time)),
+  };
+};
 
-export default connect(mapStateToProps, null)(SellOrder);
+export default connect(mapStateToProps, mapDispatchToProps)(SellOrder);
