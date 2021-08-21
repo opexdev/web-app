@@ -5,11 +5,15 @@ import classes from "../../Order.module.css";
 import NumberInput from "../../../../../../components/NumberInput/NumberInput";
 import {connect} from "react-redux";
 import Button from "../../../../../../components/Button/Button";
+import {createOrder} from "../../api/order";
+import {images} from "../../../../../../assets/images";
+import {setLastTransaction} from "../../../../../../store/actions/auth";
 
 const SellOrder = (props) => {
   const {t} = useTranslation();
   const [alert, setAlert] = useState({
     reqAmount: null,
+    submit: false,
   });
 
   const [order, setOrder] = useState({
@@ -21,6 +25,16 @@ const SellOrder = (props) => {
     pricePerUnit: 0.0,
     totalPrice: 0.0,
   });
+
+  useEffect(()=>{
+    if (alert.submit) {
+      setAlert({
+        ...alert , submit: false
+      })
+    }
+  },[order , props.activePair])
+
+  const [loading, setLoading] = useState(false)
 
   const currencyValidator = (key, val, rule) => {
     if (val < rule.min) {
@@ -163,6 +177,43 @@ const SellOrder = (props) => {
     );
   };
 
+  const submit = async ()=>{
+    setLoading(true)
+    const submitOrder = await createOrder( props.activePair , "SELL" , props.auth.accessToken , order)
+    if (!submitOrder){
+      setLoading(false)
+    }
+    if (submitOrder.status === 200){
+      setOrder({
+        tradeFee: 0.0,
+        stopLimit: false,
+        stopMarket: false,
+        stopPrice: 0.0,
+        reqAmount: 0.0,
+        pricePerUnit: 0.0,
+        totalPrice: 0.0,
+      })
+      setTimeout(()=>props.setLastTransaction(submitOrder.data.transactTime), 2000);
+    }else {
+      setAlert({
+        ...alert , submit: true
+      })
+    }
+    setLoading(false)
+  }
+  const submitButtonTextHandler = ()=> {
+    if(loading){
+      return <img className={`${classes.thisLoading}`} src={images.linearLoading} alt="linearLoading"/>
+    }
+    if (alert.submit){
+      return <span>{t("login.loginError")}</span>
+    }
+    if(props.auth.isLogin){
+      return t("sell")
+    }
+    return t("pleaseLogin")
+  }
+
   return (
     <div className={`column jc-between ${classes.content}`}>
       <div className="column jc-center">
@@ -269,10 +320,11 @@ const SellOrder = (props) => {
         </p>
       </div>
       <Button
-          buttonClass={`${classes.thisButton} ${classes.sellOrder}`}
+          buttonClass={`${classes.thisButton} ${alert.submit ? classes.alertSubmit : classes.sellOrder} ${loading ? "cursor-not-allowed" : "cursor-pointer"} flex jc-center ai-center`}
           type="submit"
+          onClick={submit}
           disabled={alert.reqAmount || order.reqAmount === 0 || !props.auth.isLogin}
-          buttonTitle={props.auth.isLogin ? t("sell") : t("pleaseLogin")}
+          buttonTitle={submitButtonTextHandler()}
       />
     </div>
   );
@@ -285,5 +337,10 @@ const mapStateToProps = (state) => {
     auth: state.auth,
   };
 };
+const mapDispatchToProps = (dispatch) => {
+  return {
+    setLastTransaction: (time) => dispatch(setLastTransaction(time)),
+  };
+};
 
-export default connect(mapStateToProps, null)(SellOrder);
+export default connect(mapStateToProps, mapDispatchToProps)(SellOrder);

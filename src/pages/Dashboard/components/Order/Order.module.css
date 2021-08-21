@@ -8,6 +8,9 @@
 .thisButton {
   width: 100%;
 }
+.alertSubmit{
+  background-color: var(--orange);
+}
 .thisButton.buyOrder {
   background-color: var(--bgGreen);
 }
@@ -19,6 +22,9 @@
   background: var(--cardHeader);
   color: var(--textColor);
   cursor: not-allowed;
+}
+.thisLoading{
+  width: 5vw;
 }
 .dangerHint span i {
   background-color: #6619bf;

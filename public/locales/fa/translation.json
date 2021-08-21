@@ -15,6 +15,8 @@
   "max": "حداکثر",
   "buy": "خرید",
   "sell": "فروش",
+  "BUY": "خرید",
+  "SELL": "فروش",
   "all": "همه",
   "orderType": "نوع سفارش",
   "status": "وضعیت",
@@ -53,12 +55,13 @@
     "/settings/authentication": "احراز هویت کاربری"
   },
   "ordersStatus": {
-    "live": "جاری شده",
-    "reject": "رد شده",
-    "done": "انجام شده",
-    "cancel": "لغو شده",
-    "doing": "در حال انجام",
-    "incompleted": "نیمه تمام"
+    "NEW": "جاری شده",
+    "REJECTED": "رد شده",
+    "FILLED": "انجام شده",
+    "CANCELED": "لغو شده",
+    "PENDING_CANCEL": "لغو معلق",
+    "EXPIRED": "منقضی شده",
+    "PARTIALLY_FILLED": "نیمه تمام"
   },
   "messagesTitle": {
     "successful": "عدم تائید معامله",
@@ -68,8 +71,13 @@
     "incompleted": "سفارش نیمه تمام"
   },
   "orderTypes": {
-    "stopLimit": "متوقف محدود",
-    "stopMarket": "متوقف بازار"
+    "LIMIT": "متوقف محدود",
+    "MARKET": "متوقف بازار",
+    "STOP_LOSS": "متوقف محدود",
+    "STOP_LOSS_LIMIT": "متوقف محدود",
+    "TAKE_PROFIT": "متوقف محدود",
+    "TAKE_PROFIT_LIMIT": "متوقف محدود",
+    "LIMIT_MAKER": "متوقف محدود"
   },
   "pair": {
     "BTC/IRT": "بیتکوین/تومان",
