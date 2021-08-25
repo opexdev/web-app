@@ -45,7 +45,8 @@ ReactDOM.render(
     <React.StrictMode>
         <Suspense fallback={"loading"}>
             <Provider store={store}>
-                <ToastProvider components={{ Toast: MyCustomToast }} placement={'bottom-left'}>
+               {/* components={{ Toast: MyCustomToast }}*/}
+                <ToastProvider  placement={'bottom-left'}>
                     <App/>
                 </ToastProvider>
             </Provider>

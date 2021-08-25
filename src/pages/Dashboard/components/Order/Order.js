@@ -5,6 +5,7 @@ import BuyOrder from "./components/BuyOrder/BuyOrder";
 import SellOrder from "./components/SellOrder/SellOrder";
 import {useTranslation} from "react-i18next";
 import {connect} from "react-redux";
+import Toast from "../../../../components/Toast/Toast";
 
 const Order = (props) => {
   const {t} = useTranslation();
@@ -29,6 +30,7 @@ const Order = (props) => {
 
   return (
     <div className="py-2">
+      {/*<Toast/>*/}
       <div
         className={`container card-background card-border ${classes.container}`}>
         <AccordionBox

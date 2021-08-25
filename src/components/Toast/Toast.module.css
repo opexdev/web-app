@@ -1,0 +1,56 @@
+.container{
+    width: 20vw;
+    background-color: #15e28a;
+    position: fixed;
+    bottom: 0;
+    left: 1.5vw;
+    z-index: 1000;
+}
+:global(.ltr) .container{
+    right: 1.5vw;
+    left: initial;
+}
+.toastCard {
+    width: 100%;
+    height: 8vh;
+    background-color: #ff8124e6;
+    margin-bottom: 2vh;
+}
+.timer{
+    background-color: #9b0202;
+    width: 8%;
+    height: 100%;
+    border-radius: 0 9px 9px 0;
+}
+:global(.ltr) .timer{
+    border-radius: 9px 0 0 9px;
+}
+.timerWrapper{
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.66);
+    /*border-radius: 0 9px 9px 0;*/
+    width: 100%;
+    height: 100%;
+}
+:global(.ltr) .timerWrapper{
+   /* border-radius: 9px 0 0 9px;*/
+}
+.timerWrapper.show{
+    /*animation: timer 5s infinite;*/
+    /*transition: 5s;*/
+}
+.title{
+    background-color: #0d0d5a;
+    width: 92%;
+    height: 100%;
+    border-radius: 9px 0 0 9px;
+}
+:global(.ltr) .title{
+    border-radius: 0 9px 9px 0;
+}
+
+
+@keyframes :global(timer) {
+    from {height: 0;}
+    to {height: 100%;}
+}

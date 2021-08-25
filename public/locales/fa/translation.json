@@ -71,13 +71,13 @@
     "incompleted": "سفارش نیمه تمام"
   },
   "orderTypes": {
-    "LIMIT": "متوقف محدود",
-    "MARKET": "متوقف بازار",
-    "STOP_LOSS": "متوقف محدود",
-    "STOP_LOSS_LIMIT": "متوقف محدود",
-    "TAKE_PROFIT": "متوقف محدود",
-    "TAKE_PROFIT_LIMIT": "متوقف محدود",
-    "LIMIT_MAKER": "متوقف محدود"
+    "LIMIT": "محدود",
+    "MARKET": "بازار",
+    "STOP_LOSS": "*متوقف محدود",
+    "STOP_LOSS_LIMIT": "*متوقف محدود",
+    "TAKE_PROFIT": "*متوقف محدود",
+    "TAKE_PROFIT_LIMIT": "*متوقف محدود",
+    "LIMIT_MAKER": "*متوقف محدود"
   },
   "pair": {
     "BTC/IRT": "بیتکوین/تومان",

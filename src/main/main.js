@@ -21,6 +21,7 @@ import {isSafari} from "react-device-detect";
 import Settings from "../pages/Settings/Settings";
 import Login from "../pages/Login/Login";
 import TechnicalChart from "../pages/TechnicalChart/TechnicalChart";
+import Toast from "../components/Toast/Toast";
 
 const App = (props) => {
   const {t} = useTranslation();
@@ -39,7 +40,7 @@ const App = (props) => {
 
   return (
     /*basename={"demo"}*/
-    /*"homepage"""https://opex.dev/demo"*/
+    /*"homepage":"https://opex.dev/demo"*/
     <Router basename={"demo"}>
       <BrowserView>
         <Switch>
@@ -72,7 +73,9 @@ const App = (props) => {
                         : ""
                     }
                   </div>*/}
+
                   <div className="row">
+
                     <MainMenu isLogin={props.isLogin}/>
                     <SubMenu isLogin={props.isLogin}/>
                     <div className="column content">
