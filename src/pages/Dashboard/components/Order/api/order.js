@@ -6,11 +6,10 @@ const Order = axios.create({
 });
 
 export const createOrder = async (activePair , side , token , order) => {
-    const symbol = (activePair.base+"_"+activePair.quote).toLowerCase()
     const timestamp = Date.now()
 
     const params = new URLSearchParams();
-    params.append('symbol', symbol);
+    params.append('symbol', activePair.symbol);
     params.append('side', side);
     params.append('type', "LIMIT");
     params.append('timeInForce', "GTC");

@@ -140,7 +140,9 @@
     "marketSellPrice": "فروش به قیمت بازار",
     "totalPrice": "قیمت کل",
     "tradeFee": "کارمزد",
-    "getAmount": "دریافتی شما"
+    "getAmount": "دریافتی شما",
+    "error": "خطایی در ثبت سفارش رخ داده‌ است",
+    "success": "ثبت سفارش {{type}} {{reqAmount}} {{name}} با قیمت {{pricePerUnit}} با موفقیت انجام شد"
   },
   "LastTrades": {
     "title": "معامله های اخیر"
@@ -160,7 +162,7 @@
     "aliveOrder": "سفارش های جاری",
     "stoppedOrder": "متوقف",
     "orderHistory": "تاریخچه سفارش ها",
-    "stopOrderTime": "زمان سفارش توقف",
+    "stopOrderTime": "زمان انجام تراکنش",
     "startOrderTime": "زمان جاری شدن",
     "orders": "معامله ها"
   },

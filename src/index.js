@@ -11,10 +11,7 @@ import "normalize.css";
 import "./index.css";
 import authReducer from "./store/reducers/authReducer";
 import {watchGlobal} from "./store/sagas";
-
 import "./assets/fontIcon/opex-icon/css/opex-icon.css";
-import {ToastProvider} from "react-toast-notifications";
-import {MyCustomToast} from "./components/Toast/Toast";
 
 const sagaMiddleware = createSagaMiddleware();
 const rootReducer = combineReducers({
@@ -26,13 +23,10 @@ const rootReducer = combineReducers({
 const composeEnhancers =
     typeof window === 'object' &&
     window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ ?
-        window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({
-            // Specify extension’s options like name, actionsBlacklist, actionsCreators, serialize...
-        }) : compose;
+        window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({}) : compose;
 
 const enhancer = composeEnhancers(
     applyMiddleware(sagaMiddleware),
-    // other store enhancers if any
 );
 const store = createStore(rootReducer, enhancer);
 
@@ -45,10 +39,7 @@ ReactDOM.render(
     <React.StrictMode>
         <Suspense fallback={"loading"}>
             <Provider store={store}>
-               {/* components={{ Toast: MyCustomToast }}*/}
-                <ToastProvider  placement={'bottom-left'}>
-                    <App/>
-                </ToastProvider>
+                <App/>
             </Provider>
         </Suspense>
     </React.StrictMode>,
@@ -58,4 +49,4 @@ ReactDOM.render(
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals(console.log);
+//reportWebVitals(console.log);

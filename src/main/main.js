@@ -22,48 +22,70 @@ import Settings from "../pages/Settings/Settings";
 import Login from "../pages/Login/Login";
 import TechnicalChart from "../pages/TechnicalChart/TechnicalChart";
 import Toast from "../components/Toast/Toast";
+import {Toaster} from "react-hot-toast";
 
 const App = (props) => {
-  const {t} = useTranslation();
-  const [ltr, setLtr] = useState(false);
+    const {t} = useTranslation();
+    const [ltr, setLtr] = useState(false);
 
-  useEffect(() => {
-    props.onLoad();
-    i18n.language !== "fa" ? setLtr(true) : setLtr(false);
-    i18n.on("languageChanged", (lng) => {
-      lng !== "fa" ? setLtr(true) : setLtr(false);
-    });
-  }, []);
-
-
+    useEffect(() => {
+        props.onLoad();
+        i18n.language !== "fa" ? setLtr(true) : setLtr(false);
+        i18n.on("languageChanged", (lng) => {
+            lng !== "fa" ? setLtr(true) : setLtr(false);
+        });
+    }, []);
 
 
-  return (
-    /*basename={"demo"}*/
-    /*"homepage":"https://opex.dev/demo"*/
-    <Router basename={"demo"}>
-      <BrowserView>
-        <Switch>
-          <Route exact path="/login">
-            <Login/>
-          </Route>
-          <ProtectedRoute
-            component={TechnicalChart}
-            isLogin={props.isLogin}
-            exact
-            path={Routes.Technical}
-          />
-          <Fragment>
-            <div
-              className={`container ${props.isDark ? "dark" : ""} ${
-                ltr ? "ltr" : "rtl"
-              } ${isSafari ? "" : "user-select"}`}>
-              {props.isLoading ? (
-                <FullWidthLoading />
-              ) : (
-                <Fragment>
-                  <ReactTooltip data-html={true} data-effect="float" />
-                  {/*<div className={`onScreen ${lang ? "wide" : ""} cursor-pointer row jc-center ai-center`} onClick={()=>setLang(true)}>
+    const Toast = () => <Toaster position="top-right" toastOptions={
+        {
+            className: ltr ? "ltr" : "rtl",
+            style: {
+                padding: "1vh 0.5vw",
+                color: "white",
+                background: "var(--mainContent)",
+            },
+            success: {
+                style: {
+                    background: "var(--bgGreen)",
+                },
+            },
+            error: {
+                style: {
+                    background: "var(--bgRed)",
+                },
+            },
+        }} containerStyle={{
+        top: 100,
+        left: 20,
+        bottom: 20,
+        right: 20,
+    }}/>
+
+    return (
+        /*basename={"demo"}*/
+        /*"homepage":"https://opex.dev/demo"*/
+        <Router basename={"demo"}>
+            <BrowserView>
+                <Switch>
+                    <Route exact path="/login">
+                        <Login/>
+                    </Route>
+                    <ProtectedRoute
+                        component={TechnicalChart}
+                        isLogin={props.isLogin}
+                        exact
+                        path={Routes.Technical}
+                    />
+                    <Fragment>
+                        <div
+                            className={`container ${props.isDark ? "dark" : ""} ${ltr ? "ltr" : "rtl"} ${isSafari ? "" : "user-select"}`}>
+                            {props.isLoading ? (
+                                <FullWidthLoading/>
+                            ) : (
+                                <Fragment>
+                                    <ReactTooltip data-html={true} data-effect="float"/>
+                                    {/*<div className={`onScreen ${lang ? "wide" : ""} cursor-pointer row jc-center ai-center`} onClick={()=>setLang(true)}>
                     <Icon iconName="icon-down-open font-size-md-01" customClass={`thisButton cursor-pointer`}/>
                     {lang ?
                         <div className={`row ai-center ${classes.languages}`}>
@@ -74,72 +96,72 @@ const App = (props) => {
                     }
                   </div>*/}
 
-                  <div className="row">
+                                    <div className="row">
+                                        <MainMenu isLogin={props.isLogin}/>
+                                        <SubMenu isLogin={props.isLogin}/>
+                                        <div className="column content">
+                                            <Header/>
+                                            <ScrollBar>
+                                                <Switch>
+                                                    <Route exact path={Routes.Dashboard}>
+                                                        <Dashboard/>
+                                                    </Route>
+                                                    <ProtectedRoute
+                                                        component={Wallet}
+                                                        isLogin={props.isLogin}
+                                                        path={Routes.Wallet}
+                                                    />
+                                                    <ProtectedRoute
+                                                        component={Settings}
+                                                        isLogin={props.isLogin}
+                                                        path={Routes.Settings}
+                                                    />
+                                                    <Route path="*">
+                                                        <div
+                                                            className="container flex ai-center jc-center"
+                                                            style={{height: "70%"}}>
+                                                            <h1>{t("comingSoon")}</h1>
+                                                        </div>
+                                                    </Route>
+                                                </Switch>
+                                                <Footer/>
+                                            </ScrollBar>
+                                        </div>
+                                    </div>
+                                    <Toast/>
+                                </Fragment>
+                            )}
+                        </div>
+                    </Fragment>
+                </Switch>
+            </BrowserView>
 
-                    <MainMenu isLogin={props.isLogin}/>
-                    <SubMenu isLogin={props.isLogin}/>
-                    <div className="column content">
-                      <Header />
-                      <ScrollBar>
-                        <Switch>
-                          <Route exact path={Routes.Dashboard}>
-                            <Dashboard />
-                          </Route>
-                          <ProtectedRoute
-                            component={Wallet}
-                            isLogin={props.isLogin}
-                            path={Routes.Wallet}
-                          />
-                          <ProtectedRoute
-                            component={Settings}
-                            isLogin={props.isLogin}
-                            path={Routes.Settings}
-                          />
-                          <Route path="*">
-                            <div
-                              className="container flex ai-center jc-center"
-                              style={{height: "70%"}}>
-                              <h1>{t("comingSoon")}</h1>
-                            </div>
-                          </Route>
-                        </Switch>
-                        <Footer />
-                      </ScrollBar>
-                    </div>
-                  </div>
-                </Fragment>
-              )}
-            </div>
-          </Fragment>
-        </Switch>
-      </BrowserView>
+            <MobileView style={{padding: "2vh 3vw"}}>
+                <div className="mobile-view">
+                    <img className={`flashit`} src={images.opexLogo_light} alt="logo"/>
+                    <h1>
+                        اوپکس فعلاً برای نمایش در موبایل بهینه نشده است. لطفاً لینک را در
+                        کامپیوتر باز کنید! :)
+                    </h1>
+                </div>
+            </MobileView>
 
-      <MobileView style={{padding: "2vh 3vw"}}>
-        <div className="mobile-view">
-          <img className={`flashit`} src={images.opexLogo_light} alt="logo" />
-          <h1>
-            اوپکس فعلاً برای نمایش در موبایل بهینه نشده است. لطفاً لینک را در
-            کامپیوتر باز کنید! :)
-          </h1>
-        </div>
-      </MobileView>
-
-    </Router>
-  );
+        </Router>
+    );
 };
 
 const mapStateToProps = (state) => {
-  return {
-    isLoading: state.global.isLoading,
-    isDark: state.global.isDark,
-    isLogin: state.auth.isLogin,
-  };
+    return {
+        isLoading: state.global.isLoading,
+        isDark: state.global.isDark,
+        isLogin: state.auth.isLogin,
+    };
 };
 const mapDispatchToProps = (dispatch) => {
-  return {
-    onLoad: () => dispatch(loadConfig()),
-    onThemeChange: (isDark) => dispatch(setThemeInitiate(isDark)),
-  };
+    return {
+        onLoad: () => dispatch(loadConfig()),
+        onThemeChange: (isDark) => dispatch(setThemeInitiate(isDark)),
+    };
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

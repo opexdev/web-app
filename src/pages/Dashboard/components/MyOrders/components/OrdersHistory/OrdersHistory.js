@@ -99,12 +99,12 @@ const OrdersHistory = (props) => {
                                         </span>
                                     </p>
                                 </div>
-                                <div className="row jc-between ai-center" style={{width: "100%", textAlign: "start"}}>
+                                {/*<div className="row jc-between ai-center" style={{width: "100%", textAlign: "start"}}>
                                     <p className="col-46 row jc-between">
                                         {t("myOrders.stoppedPrice")} :{" "}
                                         <span>{tr.price}</span>
                                     </p>
-                                </div>
+                                </div>*/}
                             </td>
                         </tr>
                     </Fragment>

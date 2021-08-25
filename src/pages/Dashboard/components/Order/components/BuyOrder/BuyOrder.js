@@ -8,9 +8,11 @@ import Button from "../../../../../../components/Button/Button";
 import {createOrder} from "../../api/order";
 import {images} from "../../../../../../assets/images";
 import {setLastTransaction} from "../../../../../../store/actions/auth"
+import {toast} from "react-hot-toast";
 
 const BuyOrder = (props) => {
     const {t} = useTranslation();
+    const [isLoading, setIsLoading] = useState(false)
     const [alert, setAlert] = useState({
         reqAmount: null,
         submit: false,
@@ -26,6 +28,7 @@ const BuyOrder = (props) => {
         totalPrice: 0.0,
     });
 
+
     useEffect(() => {
         if (alert.submit) {
             setAlert({
@@ -34,7 +37,7 @@ const BuyOrder = (props) => {
         }
     }, [order, props.activePair])
 
-    const [loading, setLoading] = useState(false)
+
 
     const currencyValidator = (key, val, rule) => {
         if (val < rule.min) {
@@ -79,7 +82,7 @@ const BuyOrder = (props) => {
                 currencyValidator("reqAmount", reqAmount, props.activePair.baseRange);
                 setOrder({
                     ...order,
-                    reqAmount: value,
+                    reqAmount: reqAmount,
                     totalPrice: (reqAmount * order.pricePerUnit).toFixed(
                         props.activePair.quoteMaxDecimal,
                     ),
@@ -155,16 +158,17 @@ const BuyOrder = (props) => {
 
     const fillBuyByWallet = () => {
         if (order.pricePerUnit === 0) {
-            const totalPrice = props.auth.wallet[props.activePair.quote];
+            const totalPrice = props.auth.wallets[props.activePair.quote].free;
             setOrder({
-                reqAmount: totalPrice / props.activePair.bestBuyPrice,
-                pricePerUnit: props.activePair.bestBuyPrice,
+                ...order,
+                reqAmount: (totalPrice / props.activePairOrders.bestBuyPrice).toString(),
+                pricePerUnit: props.activePairOrders.bestBuyPrice,
                 totalPrice: totalPrice,
                 tradeFee: totalPrice * props.auth.tradeFee[props.activePair.quote],
             });
         } else {
             buyPriceHandler(
-                props.auth.wallet[props.activePair.quote].toString(),
+                props.auth.wallets[props.activePair.quote].free.toString(),
                 "totalPrice",
             );
         }
@@ -178,10 +182,13 @@ const BuyOrder = (props) => {
     };
 
     const submit = async () => {
-        setLoading(true)
+        if(isLoading){
+            return false
+        }
+        setIsLoading(true)
         const submitOrder = await createOrder(props.activePair, "BUY", props.auth.accessToken, order)
         if (!submitOrder) {
-            setLoading(false)
+            setIsLoading(false)
         }
         if (submitOrder.status === 200) {
             setOrder({
@@ -193,16 +200,26 @@ const BuyOrder = (props) => {
                 pricePerUnit: 0.0,
                 totalPrice: 0.0,
             })
+            toast.success(<Trans
+                i18nKey="orders.success"
+                values={{
+                    name: t("currency." + props.activePair.base),
+                    type : t("buy"),
+                    reqAmount: order.reqAmount,
+                    pricePerUnit: order.pricePerUnit,
+                }}
+            />);
             setTimeout(()=>props.setLastTransaction(submitOrder.data.transactTime), 2000);
         } else {
+            toast.error(t("orders.error"));
             setAlert({
                 ...alert, submit: true
             })
         }
-        setLoading(false)
+        setIsLoading(false)
     }
     const submitButtonTextHandler = () => {
-        if (loading) {
+        if (isLoading) {
             return <img className={`${classes.thisLoading}`} src={images.linearLoading} alt="linearLoading"/>
         }
         if (alert.submit) {
@@ -232,7 +249,7 @@ const BuyOrder = (props) => {
             </span>
                 </p>
             </div>
-
+{/*
             <div className="row ai-center">
                 <span className="pl-05">{t("orders.stopLimit")}</span>
                 <input
@@ -254,7 +271,7 @@ const BuyOrder = (props) => {
                 />
             ) : (
                 ""
-            )}
+            )}*/}
 
             <NumberInput
                 lead={t("orders.amount")}
@@ -320,17 +337,13 @@ const BuyOrder = (props) => {
                     {t("currency." + props.activePair.base)}
                 </p>
             </div>
-
-
             <Button
-                buttonClass={`${classes.thisButton} ${alert.submit ? classes.alertSubmit : classes.buyOrder} ${loading ? "cursor-not-allowed" : "cursor-pointer"} flex jc-center ai-center`}
+                buttonClass={`${classes.thisButton} ${alert.submit ? classes.alertSubmit : classes.buyOrder} ${isLoading ? "cursor-not-allowed" : "cursor-pointer"} flex jc-center ai-center`}
                 type="submit"
                 onClick={submit}
-                disabled={alert.reqAmount || order.reqAmount === 0 || !props.auth.isLogin}
+                disabled={alert.reqAmount || order.reqAmount === 0 || order.pricePerUnit === 0 || !props.auth.isLogin}
                 buttonTitle={submitButtonTextHandler()}
             />
-
-
         </div>
     );
 };

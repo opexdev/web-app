@@ -5,7 +5,6 @@ import BuyOrder from "./components/BuyOrder/BuyOrder";
 import SellOrder from "./components/SellOrder/SellOrder";
 import {useTranslation} from "react-i18next";
 import {connect} from "react-redux";
-import Toast from "../../../../components/Toast/Toast";
 
 const Order = (props) => {
   const {t} = useTranslation();
@@ -29,10 +28,7 @@ const Order = (props) => {
   }, [props.selectedBuyOrder]);
 
   return (
-    <div className="py-2">
-      {/*<Toast/>*/}
-      <div
-        className={`container card-background card-border ${classes.container}`}>
+      <div className={`container card-background card-border my-2 ${classes.container}`}>
         <AccordionBox
           title={t("orders.title")}
           safari={classes.safariFlexSize}
@@ -40,7 +36,6 @@ const Order = (props) => {
           activeTab={activeTab}
         />
       </div>
-    </div>
   );
 };
 

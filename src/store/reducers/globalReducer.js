@@ -26,12 +26,12 @@ const initialState = {
     bestBuyPrice: 765121689.0,
     bestSellPrice: 765022879.0,
     selectedBuyOrder: {
-      pricePerUnit: null,
-      amount: null,
+      pricePerUnit: 0,
+      amount: 0,
     },
     selectedSellOrder: {
-      pricePerUnit: null,
-      amount: null,
+      pricePerUnit: 0,
+      amount: 0,
     },
   },
   isLoading: true,
