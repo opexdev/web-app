@@ -1,5 +1,6 @@
 import opexLogo_light from "./images/src/opexLogo_light.svg";
 import signOut from "./images/src/signOut.svg";
+import signIn from "./images/src/signIn.svg";
 import opexQrCode from "./images/src/opex-qr-code.svg";
 import safe from "./images/src/safe.svg";
 import opexCoin from "./images/src/opexCoin.svg";
@@ -19,6 +20,7 @@ import linearLoading from "./images/src/linearLoading.gif";
 export const images = {
   opexLogo_light: opexLogo_light,
   signOut: signOut,
+  signIn: signIn,
   opexQrCode: opexQrCode,
   safe: safe,
   NLN: opexCoin,

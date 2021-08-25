@@ -13,12 +13,16 @@ import WalletHeader from "./components/WalletHeader/WalletHeader";
 import ProtectedRoute from "../../components/ProtectedRoute/ProtectedRoute";
 import {getAccount, parseWalletsResponse} from "../SubMenu/components/WalletSubMenu/api/wallet";
 import {setUserAccountInfo} from "../../store/actions/auth";
+import ReactTooltip from "react-tooltip";
 
 const Header = (props) => {
     const {t} = useTranslation();
-    const location = useLocation();
+    const location = useLocation()
+    const {auth, setUserAccountInfo} = props
 
-    const {auth ,setUserAccountInfo} = props
+    useEffect(() => {
+        ReactTooltip.rebuild();
+    });
 
     useEffect(async () => {
             if (auth.accessToken && auth.accountType === null) {
@@ -29,8 +33,8 @@ const Header = (props) => {
                 }
             }
         },
-    []
-)
+        []
+    )
 
     return (
         <div className={`container row jc-between ai-center ${classes.container}`}>
@@ -65,18 +69,33 @@ const Header = (props) => {
                     </p>
                 </div>
             </div>
-            <div className={`flex jc-center ai-center ${classes.signOut}`}
-                 onClick={props.onLogout}>{auth.isLogin ? (
-                <img
-                    className="img-md"
-                    src={images.signOut}
-                    alt="signOut"
-                    title={t("signOut")}
-                />
-            ) : (
-                " "
-            )}
+            <div className={`flex jc-center ai-center ${classes.signOut}`}>
+                {auth.isLogin ? (
+                    <img
+                        className="img-md-plus"
+                        src={images.signOut}
+                        alt={t("signOut")}
+                        onClick={(props.onLogout)}
+                        data-html={true}
+                        data-place="right"
+                        data-effect="float"
+                        data-tip={`<span class="column jc-between col-100">${t("signOut")}</span>`}
+                    />
+                ) : (
+                    <Link to={Login} className="flex">
+                        <img
+                            className="img-md-plus"
+                            src={images.signIn}
+                            alt={t("signIn")}
+                            data-html={true}
+                            data-place="right"
+                            data-effect="float"
+                            data-tip={`<span class="column jc-between col-100">${t("signIn")}</span>`}
+                        />
+                    </Link>
+                )}
             </div>
+
         </div>
     );
 };
