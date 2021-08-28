@@ -37,7 +37,7 @@ const Header = (props) => {
     )
 
     return (
-        <div className={`container row jc-between ai-center ${classes.container}`}>
+        <div className={`container row jc-between ai-center px-1 ${classes.container}`}>
             <div className={`row jc-between ai-center ${classes.content}`}>
                 <Switch>
                     <Route exact path={Routes.Dashboard}>
@@ -69,7 +69,7 @@ const Header = (props) => {
                     </p>
                 </div>
             </div>
-            <div className={`flex jc-center ai-center ${classes.signOut}`}>
+            <div className={`flex jc-end ai-center ${classes.signOut}`}>
                 {auth.isLogin ? (
                     <img
                         className="img-md-plus"
