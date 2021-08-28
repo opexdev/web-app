@@ -13,8 +13,8 @@ const LastTradesTable = (props) => {
         <table className="text-center" cellSpacing="0" cellPadding="0">
           <thead>
             <tr>
-              <th>{t("time")}</th>
               <th>{t("date")}</th>
+              <th>{t("time")}</th>
               <th>
                 {t("volume")}({props.activePair.base})
               </th>
@@ -26,7 +26,7 @@ const LastTradesTable = (props) => {
           </thead>
           <tbody>
             {props.data.map((tr, index) => {
-              let totalPrice = tr.price * tr.qty;
+              let totalPrice = parseFloat((tr.price * tr.qty).toFixed(6));
               return (
                 <tr
                   key={index}
@@ -37,10 +37,10 @@ const LastTradesTable = (props) => {
                         : "var(--textRed)",
                   }}>
                   <td style={{direction: "ltr"}}>
-                    {moment(tr.time).format("HH:mm:ss")}
+                    {moment(tr.time).format("jYY/jMM/jDD")}
                   </td>
                   <td style={{direction: "ltr"}}>
-                    {moment(tr.time).format("jYY/jMM/jDD")}
+                    {moment(tr.time).format("HH:mm:ss")}
                   </td>
                   <td>{tr.qty}</td>
                   <td>{tr.price}</td>
