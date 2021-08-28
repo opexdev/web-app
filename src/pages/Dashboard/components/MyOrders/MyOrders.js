@@ -89,8 +89,8 @@ const MyOrders = (props) => {
         cellPadding="0">
         <thead className="th-border-y">
           <tr>
-            <th className="pt-1">{t("time")}</th>
             <th>{t("date")}</th>
+            <th>{t("time")}</th>
             <th>
               {t("volume")}({props.activePair.base})
             </th>
@@ -105,8 +105,8 @@ const MyOrders = (props) => {
           {customData.trade.map((tr, index) => (
             <Fragment key={index}>
               <tr className={tr.type === "buy" ? "text-green" : "text-red"}>
-                <td>{moment(tr.timestamp).format("HH:mm:ss")}</td>
                 <td>{moment(tr.timestamp).format("jYY/jMM/jDD")}</td>
+                <td>{moment(tr.timestamp).format("HH:mm:ss")}</td>
                 <td>{tr.volume}</td>
                 <td>{tr.price}</td>
                 <td>{tr.totalPrice}</td>

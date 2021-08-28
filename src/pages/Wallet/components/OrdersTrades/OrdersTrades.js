@@ -44,8 +44,8 @@ const OrdersTrades = (props) => {
         cellPadding="0">
         <thead>
           <tr>
-            <th className="pt-1">{t("time")}</th>
             <th>{t("date")}</th>
+            <th>{t("time")}</th>
             <th>{t("OrdersTrades.market")}</th>
             <th>{t("OrdersTrades.side")}</th>
             <th>{t("OrdersTrades.order")}</th>
@@ -63,8 +63,8 @@ const OrdersTrades = (props) => {
           {customData.aliveOrder.map((tr, index) => (
             <Fragment key={index}>
               <tr className={tr.side === "buy" ? "text-green" : "text-red"}>
-                <td>{moment(tr.timestamp).format("HH:mm:ss")}</td>
                 <td>{moment(tr.timestamp).format("jYY/jMM/jDD")}</td>
+                <td>{moment(tr.timestamp).format("HH:mm:ss")}</td>
                 <td>{t("pair." + tr.market)}</td>
                 <td>{tr.side === "buy" ? t("buy") : t("sell")}</td>
                 <td>{tr.order}</td>
@@ -132,8 +132,8 @@ const OrdersTrades = (props) => {
       <table className="text-center striped" cellSpacing="0" cellPadding="0">
         <thead>
           <tr>
-            <th className="pt-1">{t("time")}</th>
             <th>{t("date")}</th>
+            <th>{t("time")}</th>
             <th>{t("OrdersTrades.market")}</th>
             <th>{t("OrdersTrades.side")}</th>
             <th>{t("OrdersTrades.order")}</th>
@@ -150,8 +150,8 @@ const OrdersTrades = (props) => {
           {customData.stopOrder.map((tr, index) => (
             <Fragment key={index}>
               <tr className={tr.side === "buy" ? "text-green" : "text-red"}>
-                <td>{moment(tr.timestamp).format("HH:mm:ss")}</td>
                 <td>{moment(tr.timestamp).format("jYY/jMM/jDD")}</td>
+                <td>{moment(tr.timestamp).format("HH:mm:ss")}</td>
                 <td>{t("pair." + tr.market)}</td>
                 <td>{tr.side === "buy" ? t("buy") : t("sell")}</td>
                 <td>{tr.order}</td>
@@ -198,8 +198,8 @@ const OrdersTrades = (props) => {
         cellPadding="0">
         <thead>
           <tr>
-            <th className="pt-1">{t("time")}</th>
             <th>{t("date")}</th>
+            <th>{t("time")}</th>
             <th>{t("OrdersTrades.market")}</th>
             <th>{t("OrdersTrades.side")}</th>
             <th>{t("OrdersTrades.type")}</th>
@@ -217,8 +217,8 @@ const OrdersTrades = (props) => {
           {customData.ordersHistory.map((tr, index) => (
             <Fragment key={index}>
               <tr className={tr.side === "buy" ? "text-green" : "text-red"}>
-                <td>{moment(tr.timestamp).format("HH:mm:ss")}</td>
                 <td>{moment(tr.timestamp).format("jYY/jMM/jDD")}</td>
+                <td>{moment(tr.timestamp).format("HH:mm:ss")}</td>
                 <td>{t("pair." + tr.market)}</td>
                 <td>{tr.side === "buy" ? t("buy") : t("sell")}</td>
                 <td>
@@ -287,8 +287,8 @@ const OrdersTrades = (props) => {
         cellPadding="0">
         <thead>
           <tr>
-            <th className="pt-1">{t("time")}</th>
             <th>{t("date")}</th>
+            <th>{t("time")}</th>
             <th>{t("OrdersTrades.market")}</th>
             <th>{t("OrdersTrades.side")}</th>
             <th>{t("OrdersTrades.type")}</th>
@@ -305,8 +305,8 @@ const OrdersTrades = (props) => {
           {customData.trades.map((tr, index) => (
             <Fragment key={index}>
               <tr className={tr.side === "buy" ? "text-green" : "text-red"}>
-                <td>{moment(tr.timestamp).format("HH:mm:ss")}</td>
                 <td>{moment(tr.timestamp).format("jYY/jMM/jDD")}</td>
+                <td>{moment(tr.timestamp).format("HH:mm:ss")}</td>
                 <td>{t("pair." + tr.market)}</td>
                 <td>{tr.side === "buy" ? t("buy") : t("sell")}</td>
                 <td>

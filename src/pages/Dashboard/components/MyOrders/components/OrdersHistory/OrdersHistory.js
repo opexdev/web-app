@@ -28,8 +28,8 @@ const OrdersHistory = (props) => {
             <table className="text-center double-striped" cellSpacing="0" cellPadding="0">
                 <thead className="th-border-y">
                 <tr>
-                    <th className="pt-1">{t("time")}</th>
                     <th>{t("date")}</th>
+                    <th>{t("time")}</th>
                     <th>
                         {t("volume")}({activePair.base})
                     </th>
@@ -45,8 +45,8 @@ const OrdersHistory = (props) => {
                 {orders.map((tr, index) => (
                     <Fragment key={index}>
                         <tr className={tr.side === "BUY" ? "text-green" : "text-red"}>
-                            <td>{moment(tr.time).format("HH:mm:ss")}</td>
                             <td>{moment(tr.time).format("jYY/jMM/jDD")}</td>
+                            <td>{moment(tr.time).format("HH:mm:ss")}</td>
                             <td>{tr.origQty}</td>
                             <td>{tr.price.toLocaleString()}</td>
                             <td>{(tr.origQty * tr.price).toLocaleString()}</td>
