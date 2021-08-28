@@ -35,7 +35,7 @@
   "firstName": "نام",
   "lastName": "نام خانوادگی",
   "email": "ایمیل",
-  "error": "خطا در دریافت اطلاعات...",
+  "error": "خطا در دریافت اطلاعات ... !",
   "currency": {
     "IRT": "تومان",
     "Euro": "یورو",
@@ -142,7 +142,7 @@
     "tradeFee": "کارمزد",
     "getAmount": "دریافتی شما",
     "error": "خطایی در ثبت سفارش رخ داده‌ است",
-    "success": "ثبت سفارش {{type}} {{reqAmount}} {{name}} با قیمت {{pricePerUnit}} با موفقیت انجام شد"
+    "success": "ثبت سفارش {{type}} {{reqAmount}} {{base}} با قیمت {{pricePerUnit}} {{quote}} با موفقیت انجام شد"
   },
   "LastTrades": {
     "title": "معامله های اخیر"

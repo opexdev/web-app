@@ -203,7 +203,8 @@ const BuyOrder = (props) => {
             toast.success(<Trans
                 i18nKey="orders.success"
                 values={{
-                    name: t("currency." + props.activePair.base),
+                    base: t("currency." + props.activePair.base),
+                    quote: t("currency." + props.activePair.quote),
                     type : t("buy"),
                     reqAmount: order.reqAmount,
                     pricePerUnit: order.pricePerUnit,

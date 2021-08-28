@@ -37,17 +37,22 @@ const App = (props) => {
     }, []);
 
 
-    const Toast = () => <Toaster position="top-right" toastOptions={
+    const Toast = () => <Toaster position="bottom-right" toastOptions={
         {
             className: ltr ? "ltr" : "rtl",
             style: {
-                padding: "1vh 0.5vw",
+                padding: "0.3vh 0.8vw 0.3vh 0",
                 color: "white",
+                lineHeight : "3vh",
+                fontSize: "0.8vw",
+               /* maxWidth: "20vw",*/
+                borderRadius : "4px",
                 background: "var(--mainContent)",
             },
             success: {
                 style: {
                     background: "var(--bgGreen)",
+
                 },
             },
             error: {
@@ -56,10 +61,6 @@ const App = (props) => {
                 },
             },
         }} containerStyle={{
-        top: 100,
-        left: 20,
-        bottom: 20,
-        right: 20,
     }}/>
 
     return (
