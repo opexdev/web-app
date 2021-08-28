@@ -3,7 +3,7 @@ import {images} from "../../../../assets/images";
 
 const LoginFormLoading = () => {
     return <div className= "flex jc-center ai-center" style={{height: "100%"}}>
-        <img style={{width: "3vw", textAlign: "center"}} src={images.squareLoading}/>
+        <img style={{width: "2.5vw", textAlign: "center"}} src={images.squareLoading}/>
     </div>
 }
 export default LoginFormLoading;
