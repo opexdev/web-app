@@ -6,260 +6,244 @@ import i18n from "i18next";
 import ReactTooltip from "react-tooltip";
 import {connect} from "react-redux";
 import {
-  setBestBuyPrice,
-  setBestSellPrice,
-  setBuyOrder,
-  setSellOrder,
+    setBestBuyPrice,
+    setBestSellPrice,
+    setBuyOrder,
+    setSellOrder,
 } from "../../../../../../store/actions";
 
 const OrderBookTable = (props) => {
-  const {t} = useTranslation();
-  const [selected, setSelected] = useState({buy: -1, sell: -1});
-  const [totalAsks, setTotalAsks] = useState(9999999);
+    const {t} = useTranslation();
+    const [selected, setSelected] = useState({buy: -1, sell: -1});
 
-  useEffect(() => {
-    ReactTooltip.rebuild();
-  });
+    useEffect(() => {
+        ReactTooltip.rebuild();
+    });
 
-  let header;
-  let avg = {pricePerUnit: 0, amount: 0, total: 0};
-  let start = "right";
-  let end = "left";
+    let header;
+    let totalAmount = props.data.reduce((total, asks) => parseFloat(asks[1]) + total, 0);
+    let avg = {pricePerUnit: 0, amount: 0, total: 0};
+    let start = "right";
+    let end = "left";
 
-  if (i18n.language === "en") {
-    start = "left";
-    end = "right";
-  }
+    if (i18n.language === "en") {
+        start = "left";
+        end = "right";
+    }
 
-  if (props.type === "buy") {
-    header = (
-      <tr>
-        <th>{t("pricePerUnit")}</th>
-        <th>{t("volume")}</th>
-        <th>{t("totalPrice")}</th>
-      </tr>
-    );
-  } else {
-    header = (
-      <tr>
-        <th>{t("totalPrice")}</th>
-        <th>{t("volume")}</th>
-        <th>{t("pricePerUnit")}</th>
-      </tr>
-    );
-  }
-  useEffect(() => {
-    setTotalAsks(
-      props.data
-        .slice(0, 50)
-        .reduce((total, asks) => parseFloat(asks[1]) + total, 0),
-    );
-    props.type === "buy"
-      ? props.setBestSellPrice(props.data[0].pricePerUnit)
-      : props.setBestBuyPrice(props.data[0].pricePerUnit);
-  }, [props.data]);
+    if (props.type === "buy") {
+        header = (
+            <tr>
+                <th>{t("pricePerUnit")}</th>
+                <th>{t("volume")}</th>
+                <th>{t("totalPrice")}</th>
+            </tr>
+        );
+    } else {
+        header = (
+            <tr>
+                <th>{t("totalPrice")}</th>
+                <th>{t("volume")}</th>
+                <th>{t("pricePerUnit")}</th>
+            </tr>
+        );
+    }
+    useEffect(() => {
+        if (props.data.length > 0) {
+            totalAmount = props.data.reduce((total, asks) => parseFloat(asks[1]) + total, 0);
 
-  return (
-    <div className={`column container ${classes.container}`}>
-      <ScrollBar>
-        <table className="text-center" cellSpacing="0" cellPadding="0">
-          <thead>{header}</thead>
-          <tbody>
-            {props.data.map((tr, index) => {
-              let barStyle;
-              tr["percent"] = ((parseFloat(tr[1]) / totalAsks) * 100).toFixed();
-              tr["pricePerUnit"] = parseFloat(tr[0]);
-              tr["amount"] = parseFloat(tr[1]);
-              tr["totalPrice"] = parseFloat(tr[1] * tr[0]);
+            props.type === "buy"
+                ? props.setBestSellPrice(props.data[0].pricePerUnit)
+                : props.setBestBuyPrice(props.data[0].pricePerUnit);
+        }
 
-              if (props.type === "buy") {
-                barStyle = {
-                  background:
-                    "linear-gradient(to " +
-                    end +
-                    " , var(--textGreenAlpha)   " +
-                    tr["percent"] +
-                    "%, transparent   " +
-                    tr["percent"] +
-                    "%) no-repeat",
-                };
-              } else {
-                barStyle = {
-                  background:
-                    "linear-gradient( to " +
-                    start +
-                    ", var(--textRedAlpha) " +
-                    tr["percent"] +
-                    "%,   transparent  " +
-                    tr["percent"] +
-                    "%) no-repeat",
-                };
-              }
-              return props.type === "buy" ? (
-                <tr
-                  key={index}
-                  style={barStyle}
-                  onMouseEnter={() => setSelected({...selected, sell: index})}
-                  onMouseLeave={() => setSelected({...selected, sell: -1})}
-                  data-html={true}
-                  className={`${
-                    selected.sell >= index ? "selected" : ""
-                  } cursor-pointer`}
-                  data-place="bottom"
-                  data-effect="float"
-                  data-tip={`
+    }, [props.data]);
+
+    const backgroundBar = (percent) => {
+        if (props.type === "buy") {
+            return {
+                background: `linear-gradient(to ${end}, var(--textGreenAlpha) ${percent}%, transparent ${percent}%) no-repeat`,
+            };
+        }
+        return {
+            background: `linear-gradient(to ${start}, var(--textRedAlpha) ${percent}%, transparent ${percent}%) no-repeat`,
+        };
+    }
+
+    return (
+        <div className={`column container ${classes.container}`}>
+            <ScrollBar>
+                <table className="text-center" cellSpacing="0" cellPadding="0">
+                    <thead>{header}</thead>
+                    <tbody>
+                    {props.data.map((tr, index) => {
+                        tr["percent"] = ((parseFloat(tr[1]) / totalAmount) * 100).toFixed();
+                        tr["pricePerUnit"] = tr[0];
+                        tr["amount"] = tr[1];
+                        tr["totalPrice"] = tr[1] * tr[0];
+                        return props.type === "buy" ? (
+                            <tr
+                                key={index}
+                                style={backgroundBar(tr["percent"])}
+                                onMouseEnter={() => setSelected({...selected, sell: index})}
+                                onMouseLeave={() => setSelected({...selected, sell: -1})}
+                                data-html={true}
+                                className={`${
+                                    selected.sell >= index ? "selected" : ""
+                                } cursor-pointer`}
+                                data-place="bottom"
+                                data-effect="float"
+                                data-tip={`
                                             <div class="column jc-between col-100">
                                                 <div class="row jc-between col-100">
                                                     <span class="pl-05">${t(
-                                                      "averagePrice",
-                                                    )}:</span>
+                                    "averagePrice",
+                                )}:</span>
                                                     <span >${(
-                                                      (avg.pricePerUnit =
-                                                        avg.pricePerUnit +
-                                                        tr["pricePerUnit"]) /
-                                                      (index + 1)
-                                                    )
-                                                      .toFixed(
-                                                        props.activePair
-                                                          .quoteMaxDecimal,
-                                                      )
-                                                      .toLocaleString()}</span>
+                                    (avg.pricePerUnit =
+                                        avg.pricePerUnit +
+                                        tr["pricePerUnit"]) /
+                                    (index + 1)
+                                )
+                                    .toFixed(
+                                        props.activePair
+                                            .quoteMaxDecimal,
+                                    )
+                                    .toLocaleString()}</span>
                                                 </div>
                                                 <div class="row jc-between col-100">
                                                     <span class="pl-05">${t(
-                                                      "totalVolume",
-                                                    )}:</span>
+                                    "totalVolume",
+                                )}:</span>
                                                     <span >${(avg.amount =
-                                                      avg.amount + tr["amount"])
-                                                      .toFixed(
-                                                        props.activePair
-                                                          .baseMaxDecimal,
-                                                      )
-                                                      .toLocaleString()}</span>
+                                    avg.amount + tr["amount"])
+                                    .toFixed(
+                                        props.activePair
+                                            .baseMaxDecimal,
+                                    )
+                                    .toLocaleString()}</span>
                                                 </div>
                                                 <div class="row jc-between col-100">
                                                     <span class="pl-05">${t(
-                                                      "totalPrice",
-                                                    )}:</span>
+                                    "totalPrice",
+                                )}:</span>
                                                     <span >${(avg.total =
-                                                      avg.total +
-                                                      tr[
-                                                        "totalPrice"
-                                                      ]).toLocaleString()}</span>
+                                    avg.total +
+                                    tr[
+                                        "totalPrice"
+                                        ]).toLocaleString()}</span>
                                                 </div>
                                             </div>
                                         `}
-                  data-amount={avg.amount}
-                  onClick={(e) =>
-                    props.onSetSellOrder({
-                      pricePerUnit: tr["pricePerUnit"],
-                      amount: parseFloat(
-                        e.currentTarget.getAttribute("data-amount"),
-                      ),
-                    })
-                  }>
-                  <td>{tr["pricePerUnit"]}</td>
-                  <td>{tr["amount"]}</td>
-                  <td>{tr["totalPrice"]}</td>
-                </tr>
-              ) : (
-                <tr
-                  key={index}
-                  style={barStyle}
-                  onMouseEnter={() => setSelected({...selected, buy: index})}
-                  onMouseLeave={() => setSelected({...selected, buy: -1})}
-                  data-html={true}
-                  className={`${
-                    selected.buy >= index ? "selected" : ""
-                  } cursor-pointer `}
-                  data-place="bottom"
-                  data-effect="float"
-                  data-tip={`
+                                data-amount={avg.amount}
+                                onClick={(e) =>
+                                    props.onSetSellOrder({
+                                        pricePerUnit: tr["pricePerUnit"],
+                                        amount: parseFloat(
+                                            e.currentTarget.getAttribute("data-amount"),
+                                        ),
+                                    })
+                                }>
+                                <td>{tr["pricePerUnit"]}</td>
+                                <td>{tr["amount"]}</td>
+                                <td>{tr["totalPrice"]}</td>
+                            </tr>
+                        ) : (
+                            <tr
+                                key={index}
+                                style={backgroundBar(tr["percent"])}
+                                onMouseEnter={() => setSelected({...selected, buy: index})}
+                                onMouseLeave={() => setSelected({...selected, buy: -1})}
+                                data-html={true}
+                                className={`${
+                                    selected.buy >= index ? "selected" : ""
+                                } cursor-pointer `}
+                                data-place="bottom"
+                                data-effect="float"
+                                data-tip={`
                                             <div class="column jc-between col-100">
                                                 <div class="row jc-between col-100">
                                                     <span class="pl-05">${t(
-                                                      "averagePrice",
-                                                    )}:</span>
+                                    "averagePrice",
+                                )}:</span>
                                                     <span >${(
-                                                      (avg.pricePerUnit =
-                                                        avg.pricePerUnit +
-                                                        tr["pricePerUnit"]) /
-                                                      (index + 1)
-                                                    )
-                                                      .toFixed(
-                                                        props.activePair
-                                                          .quoteMaxDecimal,
-                                                      )
-                                                      .toLocaleString()}</span>
+                                    (avg.pricePerUnit =
+                                        avg.pricePerUnit +
+                                        tr["pricePerUnit"]) /
+                                    (index + 1)
+                                )
+                                    .toFixed(
+                                        props.activePair
+                                            .quoteMaxDecimal,
+                                    )
+                                    .toLocaleString()}</span>
                                                 </div>
                                                 <div class="row jc-between col-100">
                                                     <span class="pl-05">${t(
-                                                      "totalVolume",
-                                                    )}:</span>
+                                    "totalVolume",
+                                )}:</span>
                                                     <span >${(avg.amount =
-                                                      avg.amount + tr["amount"])
-                                                      .toFixed(
-                                                        props.activePair
-                                                          .baseMaxDecimal,
-                                                      )
-                                                      .toLocaleString()}</span>
+                                    avg.amount + tr["amount"])
+                                    .toFixed(
+                                        props.activePair
+                                            .baseMaxDecimal,
+                                    )
+                                    .toLocaleString()}</span>
                                                 </div>
                                                 <div class="row jc-between col-100">
                                                     <span class="pl-05">${t(
-                                                      "totalPrice",
-                                                    )}:</span>
+                                    "totalPrice",
+                                )}:</span>
                                                     <span >${(avg.total =
-                                                      avg.total +
-                                                      tr[
-                                                        "totalPrice"
-                                                      ]).toLocaleString()}</span>
+                                    avg.total +
+                                    tr[
+                                        "totalPrice"
+                                        ]).toLocaleString()}</span>
                                                 </div>
                                             </div>
                                         `}
-                  data-amount={avg.amount}
-                  onClick={(e) =>
-                    props.onSetBuyOrder({
-                      pricePerUnit: tr["pricePerUnit"],
-                      amount: parseFloat(
-                        e.currentTarget.getAttribute("data-amount"),
-                      ),
-                    })
-                  }>
-                  <td>
-                    {tr["totalPrice"].toFixed(props.activePair.quoteMaxDecimal)}
-                  </td>
-                  <td>{tr["amount"]}</td>
-                  <td>
-                    {tr["pricePerUnit"].toFixed(
-                      props.activePair.quoteMaxDecimal,
-                    )}
-                  </td>
-                </tr>
-              );
-            })}
-          </tbody>
-        </table>
-      </ScrollBar>
-    </div>
-  );
+                                data-amount={avg.amount}
+                                onClick={(e) =>
+                                    props.onSetBuyOrder({
+                                        pricePerUnit: tr["pricePerUnit"],
+                                        amount: parseFloat(
+                                            e.currentTarget.getAttribute("data-amount"),
+                                        ),
+                                    })
+                                }>
+                                <td>
+                                    {tr["totalPrice"].toFixed(props.activePair.quoteMaxDecimal)}
+                                </td>
+                                <td>{tr["amount"]}</td>
+                                <td>
+                                    {tr["pricePerUnit"].toFixed(
+                                        props.activePair.quoteMaxDecimal,
+                                    )}
+                                </td>
+                            </tr>
+                        );
+                    })}
+                    </tbody>
+                </table>
+            </ScrollBar>
+        </div>
+    );
 };
 
 const mapStateToProps = (state) => {
-  return {
-    activePair: state.global.activePair,
-    activePairOrders: state.global.activePairOrders,
-    auth: state.auth,
-  };
+    return {
+        activePair: state.global.activePair,
+        activePairOrders: state.global.activePairOrders,
+    };
 };
 
 const mapDispatchToProps = (dispatch) => {
-  return {
-    onSetBuyOrder: (selected) => dispatch(setBuyOrder(selected)),
-    onSetSellOrder: (selected) => dispatch(setSellOrder(selected)),
-    setBestSellPrice: (bestSellPrice) =>
-      dispatch(setBestSellPrice(bestSellPrice)),
-    setBestBuyPrice: (bestBuyPrice) => dispatch(setBestBuyPrice(bestBuyPrice)),
-  };
+    return {
+        onSetBuyOrder: (selected) => dispatch(setBuyOrder(selected)),
+        onSetSellOrder: (selected) => dispatch(setSellOrder(selected)),
+        setBestSellPrice: (bestSellPrice) => dispatch(setBestSellPrice(bestSellPrice)),
+        setBestBuyPrice: (bestBuyPrice) => dispatch(setBestBuyPrice(bestBuyPrice)),
+    };
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(OrderBookTable);
