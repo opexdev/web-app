@@ -10,14 +10,14 @@ import Loading from "../../../../components/Loading/Loading";
 
 const LastTrades = (props) => {
   const {t} = useTranslation();
-  const {activePair,accessToken} = props
+  const {activePair} = props
 
   const [lastTrades, setLastTrades] = useState([]);
   const [error, setError] = useState(false);
 
 
 const getLastTradesData = async () =>{
-  const lastTradesReq = await getLastTrades(accessToken,activePair);
+  const lastTradesReq = await getLastTrades(activePair);
 
   if (lastTradesReq.status === 200) {
     setLastTrades(lastTradesReq.data)
@@ -27,8 +27,8 @@ const getLastTradesData = async () =>{
 }
 
 
-  useEffect(() => {
-    getLastTradesData()
+  useEffect(async () => {
+    await getLastTradesData()
     const interval = setInterval(getLastTradesData, 10000);
     return () => clearInterval(interval);
   }, [props.activePair]);
@@ -47,8 +47,6 @@ const getLastTradesData = async () =>{
     }
 
   }
-
-
 
   return (
     <div
@@ -69,7 +67,6 @@ const getLastTradesData = async () =>{
 const mapStateToProps = (state) => {
   return {
     activePair: state.global.activePair,
-    accessToken: state.auth.accessToken
   };
 };
 

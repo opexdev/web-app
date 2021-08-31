@@ -1,18 +1,17 @@
 import axios from "axios";
 import {apiBaseUrl} from "../../../../../constants/global";
 
-const Wallet = axios.create({
+const orderBook = axios.create({
     baseURL: apiBaseUrl,
 });
 
-export const getLastTrades = async (activePair) => {
+export const getOrderBook = async (activePair) => {
 
     const params = new URLSearchParams();
-
     params.append('symbol', activePair.symbol);
-    params.append('limit', "25");
+    params.append('limit', "100");
 
-    return await Wallet.get(`/api/v3/trades?${params.toString()}`, {
+    return await orderBook.get(`/api/v3/depth?${params.toString()}`, {
         data:params,
     }).then((res) => {
         return res;
@@ -22,5 +21,4 @@ export const getLastTrades = async (activePair) => {
         }
         return e.response;
     })
-
 }
