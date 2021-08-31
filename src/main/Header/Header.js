@@ -37,7 +37,7 @@ const Header = (props) => {
     )
 
     return (
-        <div className={`container row jc-between ai-center px-1 ${classes.container}`}>
+        <div className={`container row jc-between ai-center px-1 py-1 ${classes.container}`}>
             <div className={`row jc-between ai-center ${classes.content}`}>
                 <Switch>
                     <Route exact path={Routes.Dashboard}>

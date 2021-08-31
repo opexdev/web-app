@@ -3,11 +3,19 @@
   height: 100vh;
   background-color: #f2f2f2;
   font-size: 2vw;
-  padding: 3vh 0;
+  /*padding: 3vh 0;*/
   position: fixed;
   z-index: 5;
   overflow-x: hidden;
 }
+.header{
+  height: 10vh;
+}
+
+.content{
+  height: 90vh;
+}
+
 .container a,
 .messages {
   margin: 1.2vh 0;
@@ -63,6 +71,19 @@
   box-shadow: -3px 7px 0 0 var(--cardBody);
   transition: background-color 0.4s, box-shadow 0.4s;
 }
+
+.topSection .selected:first-child:after ,
+.topSection .messages.selected:first-child:after {
+  width: 0;
+}
+.bottomSection .selected:last-child:before ,
+.bottomSection .messages.selected:last-child:before {
+  width: 0;
+}
+/*.firstSelected:first-child:after {
+  background-color: darkred !important;
+  width: 0;
+}*/
 :global(.ltr) .selected:after,
 :global(.ltr) .messages.selected:after {
   right: 1vw;
