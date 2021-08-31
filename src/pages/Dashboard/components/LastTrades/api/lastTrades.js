@@ -5,7 +5,7 @@ const Wallet = axios.create({
     baseURL: apiBaseUrl,
 });
 
-export const getLastTrades = async (token , activePair) => {
+export const getLastTrades = async (activePair) => {
 
     const params = new URLSearchParams();
 
@@ -14,9 +14,6 @@ export const getLastTrades = async (token , activePair) => {
 
     return await Wallet.get(`/api/v3/trades?${params.toString()}`, {
         data:params,
-        headers : {
-            'Authorization': `Bearer ${token}`
-        },
     }).then((res) => {
         return res;
     }).catch((e) => {
