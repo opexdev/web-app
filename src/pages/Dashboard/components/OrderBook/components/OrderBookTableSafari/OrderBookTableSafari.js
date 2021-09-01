@@ -221,9 +221,9 @@ const OrderBookTableSafari = (props) => {
                       ),
                     })
                   }>
-                  <span className="width-40">{tr["totalPrice"].toFixed(props.activePair.quoteMaxDecimal)}</span>
+                  <span className="width-40">{tr["totalPrice"]}</span>
                   <span className="width-30">{tr["amount"]}</span>
-                  <span className="width-30">{tr["pricePerUnit"].toFixed(props.activePair.quoteMaxDecimal,)}</span>
+                  <span className="width-30">{tr["pricePerUnit"]}</span>
                 </div>
               );
             })}

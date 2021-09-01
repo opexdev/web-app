@@ -212,13 +212,11 @@ const OrderBookTable = (props) => {
                                     })
                                 }>
                                 <td>
-                                    {tr["totalPrice"].toFixed(props.activePair.quoteMaxDecimal)}
+                                    {tr["totalPrice"]}
                                 </td>
                                 <td>{tr["amount"]}</td>
                                 <td>
-                                    {tr["pricePerUnit"].toFixed(
-                                        props.activePair.quoteMaxDecimal,
-                                    )}
+                                    {tr["pricePerUnit"]}
                                 </td>
                             </tr>
                         );
