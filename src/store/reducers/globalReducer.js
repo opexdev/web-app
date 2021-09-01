@@ -23,8 +23,9 @@ const initialState = {
     orderTypes: ["MARKET"],
   },
   activePairOrders: {
-    bestBuyPrice: 765121689.0,
-    bestSellPrice: 765022879.0,
+    bestBuyPrice: 0,
+    bestSellPrice: 0,
+    lastTradePrice:0,
     selectedBuyOrder: {
       pricePerUnit: 0,
       amount: 0,
@@ -87,6 +88,14 @@ const globalReducer = (state = initialState, action) => {
             pricePerUnit: action.selected.pricePerUnit,
             amount: action.selected.amount,
           },
+        },
+      };
+    case actionTypes.SET_LAST_TRADE_PRICE:
+      return {
+        ...state,
+        activePairOrders: {
+          ...state.activePairOrders,
+          lastTradePrice: action.lastTradePrice
         },
       };
     case actionTypes.SET_SELL_ORDERS:
