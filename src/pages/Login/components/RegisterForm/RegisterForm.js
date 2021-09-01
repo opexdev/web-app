@@ -7,6 +7,7 @@ import {getToken, getUser, parsePanelToken, register, sendForgetPasswordEmail, s
 import {setPanelTokensInitiate} from "../../../../store/actions";
 import {connect} from "react-redux";
 import {validateEmail} from "../../../../utils/utils";
+import Button from "../../../../components/Button/Button";
 
 const RegisterForm = props => {
     const {t} = useTranslation();
@@ -22,9 +23,10 @@ const RegisterForm = props => {
         return <LoginFormLoading/>
     }
     if (registerStatus === "finish") {
-        return <div className={`column jc-center ai-center`} style={{height: "100%"}}>
+        return <div className={`column jc-center ai-center text-center px-4`} style={{height: "35vh"}}>
             <span>{t('login.registerFinished')}</span>
             <span>{t('login.registerFinishedGoToMail')}</span>
+            <span className={`font-size-sm-plus border-top-dotted pt-1 mt-1`}>{t('login.registerFinishedSpamMail')}</span>
         </div>
     }
     if (registerStatus === "finishedWithError") {
@@ -48,16 +50,16 @@ const RegisterForm = props => {
             firstName: userData.firstName.value,
             lastName: userData.lastName.value,
             username: userData.username.value,
-            email: userData.email.value,
+            email: userData.email.value.toLowerCase(),
         }
         let userInfo = await register(panelToken.panelAccessToken, user)
 
         if (userInfo.status === 201) {
 
-            let userInfo = await getUser(panelToken.panelAccessToken, "email", userData.email.value)
+            let userInfo = await getUser(panelToken.panelAccessToken, "email", user.email)
 
             if (userInfo.status === 200) {
-                userInfo = userInfo.data.find(user => user.email === userData.email.value)
+                userInfo = userInfo.data.find(userReq => userReq.email === user.email)
             }
             await sendVerifyEmail(panelToken.panelAccessToken, userInfo.id);
             setRegisterStatus("finish");
@@ -120,7 +122,7 @@ const RegisterForm = props => {
 
     return (
         <form onSubmit={(e) => submit(e)} className={`column jc-between ${classes.form}`}>
-            <div className={`container column jc-center ai-center ${classes.formBody}`}>
+            <div className={`container column jc-center ai-center ${classes.formBody} py-2`}>
                 <TextInput
                     lead={t('firstName')}
                     data-name="firstName"
@@ -168,7 +170,14 @@ const RegisterForm = props => {
                 />
             </div>
             <div className={`container flex jc-center ai-center ${classes.formFooter}`}>
-                <button type="submit" className={` ${classes.button}`}>{t('login.register')}</button>
+
+                <Button
+                    type="submit"
+                    buttonClass={`${classes.thisButton} cursor-pointer`}
+                    buttonTitle={t('login.register')}
+                />
+
+
             </div>
         </form>
     )

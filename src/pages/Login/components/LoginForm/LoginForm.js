@@ -13,6 +13,7 @@ import {useHistory} from "react-router-dom";
 import {useTranslation} from "react-i18next";
 import {getAccount, parseWalletsResponse} from "../../../../main/SubMenu/components/WalletSubMenu/api/wallet";
 import {setUserAccountInfo} from "../../../../store/actions/auth";
+import Button from "../../../../components/Button/Button";
 
 
 const LoginForm = (props) => {
@@ -78,7 +79,10 @@ const LoginForm = (props) => {
     }
 
     return <form onSubmit={(e) => submit(e)} className={`column ai-center jc-between ${classes.form}`}>
-        <div className={`container column jc-center ai-center ${classes.formBody}`}>
+        <div className={`container column jc-center ai-center ${classes.formBody} py-2`}>
+            <div className={`font-weight-300 mb-2`}>
+                <span>برای ورود آزمایشی می توانید از <span className={`hover-text cursor-pointer`} onClick={() => setCredential({username: "demo1", password: "demo1"})}>نام کاربری و رمز عبور demo1</span> استفاده کنید.</span>
+            </div>
             <TextInput
                 lead={t('username')}
                 type="text"
@@ -95,13 +99,16 @@ const LoginForm = (props) => {
             />
             <div className={`column ${classes.forgetPassword}`}>
                 <span className={`${classes.errorText} font-size-sm-plus`}>{loginError}</span>
-                <span className="cursor-pointer flex ai-center font-size-sm-plus"
-                      onClick={props.forgetPass}>{t('login.forgetPassword')}</span>
+                <span className="cursor-pointer flex ai-center font-size-sm-plus" onClick={props.forgetPass}>{t('login.forgetPassword')}</span>
             </div>
         </div>
 
         <div className={`container flex jc-center ai-center ${classes.formFooter}`}>
-            <button type="submit" className={`flex jc-center ai-center ${classes.button}`}>{t('login.enter')}</button>
+            <Button
+                type="submit"
+                buttonClass={`${classes.thisButton} cursor-pointer`}
+                buttonTitle={t('login.enter')}
+            />
         </div>
     </form>
 }

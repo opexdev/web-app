@@ -44,7 +44,7 @@
 }
 .content {
   width: 65%;
-  height: 65%;
+  /*height: 65%;*/
   background-color: #282a36e6;
   border-radius: 9px;
   color: #ecececc7;
@@ -83,18 +83,12 @@
   background-color: #282a36 !important;
 }
 
-.restPassHeader{
-  height: 20%;
-  width: 75%;
-}
-.restPassBody{
-  height: 60%;
-}
+
 .formBody{
-  height: 80%;
+  /*height: 80%;*/
 }
 .formFooter{
-  height: 20%;
+  height: 8vh;
 }
 
 .errorText{
@@ -103,9 +97,9 @@
 .forgetPassword{
   width: 75%;
 }
-.thisButton{
+/*.thisIcon{
   transform: rotate(-90deg);
-}
+}*/
 
 .bgicon {
   width: 60%;
@@ -124,22 +118,18 @@
   padding: 1.8vh 1vw;
 }
 
-.button {
+.thisButton {
   width: 40%;
-  height: 4.5vh;
-  /*padding: 1vh 0vw;*/
-  border: none;
   background: var(--textGreen);
-  border-radius: 7px;
-  font-family: "IRANYekan", serif;
-  font-size: 0.8vw;
   color: #eaeaea;
   bottom: 0;
-  /*margin-top: 1vh;*/
 }
 .forgetPassButton{
   background-color: var(--orange);
-  color: #181717;
+}
+.backButton{
+  width: 20%;
+  background-color: var(--textRed);
 }
 
 

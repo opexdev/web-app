@@ -292,8 +292,9 @@
     "inputError": "تعداد کاراکتر نام کاربری یا رمز ورود مجاز نیست.",
     "loginError": "خطا در ارتباط با سرور",
     "registerFinished": "ثبت نام با موفقیت انجام شد :)",
-    "forgetPasswordFinished": "درخواست بازیابی رمز عبور با موفقیت انجام شد :)",
-    "registerFinishedGoToMail": "برای تکمیل ثبت نام به ایمیل ثبت شده مراجعه کنید.",
+    "forgetPasswordFinished": "درخواست بازیابی رمز عبور با موفقیت ارسال شد :)",
+    "registerFinishedGoToMail": "برای تکمیل ثبت نام به ایمیل ثبت شده مراجعه فرمایید.",
+    "registerFinishedSpamMail": "ایمیل دریافتی از آدرس for.demo.purpose.only@opex.dev ممکن است در بخش spam باشد.",
     "register": "ثبت نام",
     "wrongEmail": "ایمیل وارد شده معتبر نیست.",
     "notFoundEmail": "ایمیل وارد شده یافت نشد.",
@@ -301,7 +302,8 @@
     "emptyInput": "وارد کردن فیلد {{name}} الزامی است.",
     "emptyCredentialError": "وارد کردن فیلد نام کاربری و رمز ورود الزامی است.",
     "minInput": "{{name}} حداقل باید {{min}} کاراکتر باشد.",
-    "finishedWithError": "خطا در ایجاد کاربر جدید."
+    "finishedWithError": "خطا در ایجاد کاربر جدید.",
+    "back": "بازگشت"
   },
   "footer": {
     "changeColor": "تغییر رنگ",
