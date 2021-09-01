@@ -4,37 +4,23 @@ import {images} from "../../assets/images";
 import {useTranslation} from "react-i18next";
 import {connect} from "react-redux";
 import moment from "moment-jalaali";
-import {setLogoutInitiate, setPanelTokensInitiate, setUserInfo, setUserTokensInitiate} from "../../store/actions";
+import {setLogoutInitiate} from "../../store/actions";
 import {Link, Route, Switch, useLocation} from "react-router-dom";
 import {Login} from "../../routes/routes";
 import * as Routes from "../../routes/routes";
 import MarketHeader from "./components/MarketHeader/MarketHeader";
 import WalletHeader from "./components/WalletHeader/WalletHeader";
 import ProtectedRoute from "../../components/ProtectedRoute/ProtectedRoute";
-import {getAccount, parseWalletsResponse} from "../SubMenu/components/WalletSubMenu/api/wallet";
-import {setUserAccountInfo} from "../../store/actions/auth";
 import ReactTooltip from "react-tooltip";
 
 const Header = (props) => {
     const {t} = useTranslation();
     const location = useLocation()
-    const {auth, setUserAccountInfo} = props
+    const {auth} = props
 
     useEffect(() => {
         ReactTooltip.rebuild();
     });
-
-    useEffect(async () => {
-            if (auth.accessToken && auth.accountType === null) {
-                let account = await getAccount(auth.accessToken)
-                if (account.status === 200) {
-                    const parsedData = parseWalletsResponse(account.data);
-                    setUserAccountInfo(parsedData)
-                }
-            }
-        },
-        []
-    )
 
     return (
         <div className={`container row jc-between ai-center px-1 py-1 ${classes.container}`}>
@@ -109,7 +95,6 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
     return {
         onLogout: () => dispatch(setLogoutInitiate()),
-        setUserAccountInfo: (info) => dispatch(setUserAccountInfo(info)),
     };
 };
 

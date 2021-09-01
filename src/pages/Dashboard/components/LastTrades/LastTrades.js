@@ -2,11 +2,11 @@ import React, {useState, useEffect} from "react";
 import classes from "./LastTrades.module.css";
 import LastTradesTable from "./components/LastTradesTable/LastTradesTable";
 import {useTranslation} from "react-i18next";
-import axios from "axios";
 import {connect} from "react-redux";
 import {getLastTrades} from "./api/lastTrades";
 import Error from "../../../../components/Error/Error";
 import Loading from "../../../../components/Loading/Loading";
+import useInterval from "../../../../Hooks/useInterval";
 
 const LastTrades = (props) => {
   const {t} = useTranslation();
@@ -18,7 +18,6 @@ const LastTrades = (props) => {
 
 const getLastTradesData = async () =>{
   const lastTradesReq = await getLastTrades(activePair);
-
   if (lastTradesReq.status === 200) {
     setLastTrades(lastTradesReq.data)
   } else {
@@ -26,16 +25,16 @@ const getLastTradesData = async () =>{
   }
 }
 
-
   useEffect(async () => {
     await getLastTradesData()
-    const interval = setInterval(getLastTradesData, 10000);
-    return () => clearInterval(interval);
   }, [props.activePair]);
+
+  useInterval(async () => {
+    await getLastTradesData();
+  }, props.activePair ? 1500 : null);
 
 
   const content = () => {
-
     if (lastTrades.length === 0) {
       return <Loading/>
     }
@@ -45,7 +44,6 @@ const getLastTradesData = async () =>{
     if (error) {
       return <Error/>
     }
-
   }
 
   return (

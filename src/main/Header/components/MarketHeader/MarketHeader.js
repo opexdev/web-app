@@ -1,22 +1,32 @@
-import React, {Fragment, useEffect, useState} from "react";
+import React, {Fragment, useEffect, useState,useRef} from "react";
 import classes from "./MarketHeader.module.css";
 import {useTranslation} from "react-i18next";
 import {connect} from "react-redux";
-import {setLogoutInitiate} from "../../../../store/actions";
 import Icon from "../../../../components/Icon/Icon";
 import axios from "axios";
+import {getAccount, parseWalletsResponse} from "../../../SubMenu/components/WalletSubMenu/api/wallet";
+import {setUserAccountInfo} from "../../../../store/actions/auth";
+import useInterval from "../../../../Hooks/useInterval";
 
 
 const MarketHeader = (props) => {
   const {t} = useTranslation();
+  const {auth, setUserAccountInfo,activePair} = props
 
   const [marketHeaderData, setMarketHeaderData] = useState({
     price: null,
   });
 
-  const getMarketHeaderData = (activePair) => {
+  const getWallet = async () => {
+    let accountWallet = await getAccount(auth.accessToken)
+    if (accountWallet.status === 200) {
+      const parsedData = parseWalletsResponse(accountWallet.data);
+      setUserAccountInfo(parsedData)
+    }
+  }
+
+  const getMarketHeaderData = () => {
     const axiosInstance = axios.create({
-      //proxy: {host:"217.97.101.134",port:80},
       baseURL: "https://api.binance.com",
       timeout: 5000,
       headers: {"X-Custom-Header": "foobar"},
@@ -32,25 +42,19 @@ const MarketHeader = (props) => {
         },
       })
       .then(function (response) {
-        //console.log("headerData : " , response.data);
         setMarketHeaderData(response.data);
       })
       .catch(function (error) {
-        //console.log("Error : " , error);
-        //setMarketHeaderData( )
-        clearInterval();
       })
       .then(function () {
 
       });
   };
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      getMarketHeaderData(props.activePair);
-    }, 2000);
-    return () => clearInterval(interval);
-  }, [props.activePair]);
+  useInterval(() => {
+    getWallet()
+    getMarketHeaderData(activePair);
+  }, auth.isLogin ? 1500 : null);
 
   return (
     <Fragment>
@@ -62,7 +66,7 @@ const MarketHeader = (props) => {
             {marketHeaderData.price !== null ? (
               marketHeaderData.price
             ) : (
-              <span className="flashit">در حال دریافت اطلاعات...</span>
+              <span className="flashit">{t('loading')}</span>
             )}
           </span>{" "}
           {marketHeaderData.price === null
@@ -95,6 +99,7 @@ const MarketHeader = (props) => {
   );
 };
 
+
 const mapStateToProps = (state) => {
   return {
     activePair: state.global.activePair,
@@ -103,7 +108,7 @@ const mapStateToProps = (state) => {
 };
 const mapDispatchToProps = (dispatch) => {
   return {
-    onLogout: () => dispatch(setLogoutInitiate()),
+    setUserAccountInfo: (info) => dispatch(setUserAccountInfo(info)),
   };
 };
 

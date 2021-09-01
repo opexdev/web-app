@@ -9,7 +9,7 @@ const initialState = {
     base: "BTC",
     quote: "USDT",
     baseMaxDecimal: 6,
-    quoteMaxDecimal: 0,
+    quoteMaxDecimal: 3,
     baseRange: {
       min: 0.0004,
       max: 1000,
@@ -59,6 +59,7 @@ const globalReducer = (state = initialState, action) => {
           pair: action.pair,
           base: base,
           quote: quote,
+          symbol: base+quote,
         },
       };
     case actionTypes.SET_BEST_BUY_PRICE:

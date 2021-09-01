@@ -7,6 +7,7 @@ import OrderBookTableSafari from "./components/OrderBookTableSafari/OrderBookTab
 import {isSafari} from "react-device-detect";
 import {getOrderBook} from "./api/orderBook";
 import Error from "../../../../components/Error/Error";
+import useInterval from "../../../../Hooks/useInterval";
 
 const OrderBook = (props) => {
 
@@ -34,9 +35,11 @@ const OrderBook = (props) => {
 
     useEffect(async () => {
         await getOrderBookData();
-        const interval = setInterval(getOrderBookData, 10000);
-        return () => clearInterval(interval);
     }, [props.activePair]);
+
+    useInterval(async () => {
+        await getOrderBookData();
+    }, props.activePair ? 1500 : null);
 
     const tableRender = () => {
         if (error)  return <Error/>
