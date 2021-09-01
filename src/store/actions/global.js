@@ -60,6 +60,12 @@ export const setBestBuyPrice = (bestBuyPrice) => {
     bestBuyPrice: bestBuyPrice,
   };
 };
+export const setLastTradePrice = (lastTradePrice) => {
+  return {
+    type: actionTypes.SET_LAST_TRADE_PRICE,
+    lastTradePrice: lastTradePrice,
+  };
+};
 
 export const setPanelTokens = (token) => {
   return {

@@ -1,16 +1,17 @@
 import React, {useState, useEffect} from "react";
-import classes from "./LastTrades.module.css";
-import LastTradesTable from "./components/LastTradesTable/LastTradesTable";
-import {useTranslation} from "react-i18next";
 import {connect} from "react-redux";
+import {useTranslation} from "react-i18next";
+import classes from "./LastTrades.module.css";
 import {getLastTrades} from "./api/lastTrades";
 import Error from "../../../../components/Error/Error";
 import Loading from "../../../../components/Loading/Loading";
 import useInterval from "../../../../Hooks/useInterval";
+import {setLastTradePrice} from "../../../../store/actions/global";
+import LastTradesTable from "./components/LastTradesTable/LastTradesTable";
 
 const LastTrades = (props) => {
   const {t} = useTranslation();
-  const {activePair} = props
+  const {activePair,setLastTradePrice} = props
 
   const [lastTrades, setLastTrades] = useState([]);
   const [error, setError] = useState(false);
@@ -20,6 +21,9 @@ const getLastTradesData = async () =>{
   const lastTradesReq = await getLastTrades(activePair);
   if (lastTradesReq.status === 200) {
     setLastTrades(lastTradesReq.data)
+    //console.log(lastTradesReq.data[0].price)
+    setLastTradePrice(lastTradesReq.data[0].price)
+
   } else {
     setError(true)
   }
@@ -27,11 +31,11 @@ const getLastTradesData = async () =>{
 
   useEffect(async () => {
     await getLastTradesData()
-  }, [props.activePair]);
+  }, [activePair]);
 
   useInterval(async () => {
     await getLastTradesData();
-  }, props.activePair ? 1500 : null);
+  }, activePair ? 1500 : null);
 
 
   const content = () => {
@@ -67,5 +71,9 @@ const mapStateToProps = (state) => {
     activePair: state.global.activePair,
   };
 };
-
-export default connect(mapStateToProps, null)(LastTrades);
+const mapDispatchToProps = (dispatch) => {
+  return {
+    setLastTradePrice: (lastTradePrice) => dispatch(setLastTradePrice(lastTradePrice)),
+  };
+};
+export default connect(mapStateToProps, mapDispatchToProps)(LastTrades);
