@@ -33,67 +33,6 @@ const Market = (props) => {
     }
   };
 
-
-  const [marketData, setMarketData] = useState({
-    symbol: "",
-    priceChange: "",
-    priceChangePercent: "",
-    weightedAvgPrice: "",
-    prevClosePrice: "",
-    lastPrice: "",
-    lastQty: "",
-    bidPrice: "",
-    bidQty: "",
-    askPrice: "",
-    askQty: "",
-    openPrice: "",
-    highPrice: "",
-    lowPrice: "",
-    volume: "",
-    quoteVolume: "",
-    openTime: 0,
-    closeTime: 0,
-    firstId: 0,
-    lastId: 0,
-    count: 0,
-  });
-
-  const getMarketData = (activePair) => {
-    //console.log( activePair.base + activePair.quote )
-    const axiosInstance = axios.create({
-      //proxy: {host:"217.97.101.134",port:80},
-      baseURL: "https://api.binance.com",
-      timeout: 5000,
-      headers: {"X-Custom-Header": "foobar"},
-    });
-    axiosInstance
-        .get("/api/v3/ticker/24hr", {
-          params: {
-            /*symbol: props.activePair.base + (props.activePair.quote === "IRT" ? "USDT" : props.activePair.quote),*/
-            symbol: "BTCUSDT"
-          },
-        })
-        .then(function (response) {
-          //console.log("MarketData: " , response.data);
-          //setMarketData(response.data);
-        })
-        .catch(function (error) {
-          //console.log("MarketDataError: " , error);
-          //setMarketData( )
-          clearInterval();
-        })
-        .then(function () {
-          // always executed
-        });
-  };
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      getMarketData(props.activePair);
-    }, 2000);
-    return () => clearInterval(interval);
-  }, [props.activePair]);
-
   const data = [
     {
       id: 1,
