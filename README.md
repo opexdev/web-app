@@ -17,7 +17,7 @@
     <img src="https://img.shields.io/badge/chat-discord-blue" alt="Chat">
   </a>
   <a href="https://github.com/opexdev/Front-end/issues" target="blank">
-	<img src="https://img.shields.io/github/issues/opexdev/Front-end?	style=flat-square" alt="github-profile-readme-generator issues"/>
+	<img src="https://img.shields.io/github/issues/opexdev/Front-end?style=flat-square" alt="github-profile-readme-generator issues"/>
 </a>
 </p>
 
