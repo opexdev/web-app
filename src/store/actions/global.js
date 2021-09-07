@@ -60,3 +60,25 @@ export const setBestBuyPrice = (bestBuyPrice) => {
     bestBuyPrice: bestBuyPrice,
   };
 };
+export const setLastTradePrice = (lastTradePrice) => {
+  return {
+    type: actionTypes.SET_LAST_TRADE_PRICE,
+    lastTradePrice: lastTradePrice,
+  };
+};
+
+export const setPanelTokens = (token) => {
+  return {
+    type: actionTypes.SET_PANEL_TOKENS,
+    panelAccessToken: token.panelAccessToken,
+    panelAccessTokenExpires: token.panelAccessTokenExpires,
+  };
+};
+
+export const setPanelTokensInitiate = (token) => {
+  return {
+    type: actionTypes.SET_PANEL_TOKENS_INITIATE,
+    panelAccessToken: token.panelAccessToken,
+    panelAccessTokenExpires: token.panelAccessTokenExpires,
+  };
+};

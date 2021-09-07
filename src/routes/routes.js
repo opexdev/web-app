@@ -1,5 +1,6 @@
 export const Dashboard = "/";
 export const Login = "/login";
+export const Guide = "/guide";
 export const Wallet = "/wallet";
 export const Technical = "/technical";
 //export const Messages = '/messages';

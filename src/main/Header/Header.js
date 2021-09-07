@@ -1,84 +1,97 @@
-import React from "react";
+import React, {useEffect} from "react";
 import classes from "./Header.module.css";
 import {images} from "../../assets/images";
 import {useTranslation} from "react-i18next";
 import {connect} from "react-redux";
 import moment from "moment-jalaali";
 import {setLogoutInitiate} from "../../store/actions";
-import {Link, Route, Switch, useLocation} from "react-router-dom";
+import {Link, Route, Switch} from "react-router-dom";
 import {Login} from "../../routes/routes";
 import * as Routes from "../../routes/routes";
 import MarketHeader from "./components/MarketHeader/MarketHeader";
+import WalletHeader from "./components/WalletHeader/WalletHeader";
+import ProtectedRoute from "../../components/ProtectedRoute/ProtectedRoute";
+import ReactTooltip from "react-tooltip";
+import SettingHeader from "./components/SettingsHeader/SettingsHeader";
 
 const Header = (props) => {
-  const {t} = useTranslation();
-  const location = useLocation();
+    const {t} = useTranslation();
+    const {auth} = props
 
-  return (
-    <div className={`container row jc-between ai-center ${classes.container}`}>
-      <div className={`row jc-between ai-center ${classes.content}`}>
-        <Switch>
-          <Route exact path={Routes.Dashboard}>
-            <MarketHeader />
-          </Route>
-          <Route exact path={Routes.Wallet}>
-            <h2 style={{color: "var(--orange)"}}>بیتکوین (BTC)</h2>
-          </Route>
-          <Route path={Routes.Settings}>
-            <h2 style={{color: "var(--orange)"}}>
-              {t("routes." + location.pathname)}
-            </h2>
-          </Route>
-          {/*<ProtectedRoute component={WalletSubMenu} isLogin={props.isLogin} exact path={Routes.WalletSubMenu}/>*/}
+    useEffect(() => {
+        ReactTooltip.rebuild();
+    });
 
-          <Route path="*">
-            <h4>{t("comingSoon")}</h4>
-          </Route>
-        </Switch>
+    return (
+        <div className={`container row jc-between ai-center px-1 py-1 ${classes.container}`}>
+            <div className={`row jc-between ai-center ${classes.content}`}>
+                <Switch>
+                    <Route exact path={Routes.Dashboard}>
+                        <MarketHeader/>
+                    </Route>
+                    <ProtectedRoute path={Routes.Wallet + "/:id"} isLogin={auth.isLogin} component={WalletHeader}/>
+                    <ProtectedRoute path={Routes.Settings} isLogin={auth.isLogin} component={SettingHeader}/>
+                    <Route path="*">
+                        <h4>{t("comingSoon")}</h4>
+                    </Route>
+                </Switch>
 
-        <div className={`column ai-end`}>
-          {props.auth.firstName === null ? (
-            <Link to={Login} className="hover-text">
-              <p>{t("pleaseLogin")}</p>
-            </Link>
-          ) : (
-            <p className="mb-05">
-              {props.auth.firstName + " " + props.auth.lastName}
-            </p>
-          )}
-          <p style={{direction: "ltr"}}>
-            {moment().format("jYYYY/jM/jD - HH:mm:ss")}
-          </p>
+                <div className={`col-35 column ai-end`}>
+                    {auth.firstName === null ? (
+                        <Link to={Login} className="hover-text">
+                            <p>{t("pleaseLogin")}</p>
+                        </Link>
+                    ) : (
+                        <p className="mb-05">
+                            {auth.firstName + " " + auth.lastName}
+                        </p>
+                    )}
+                    <p style={{direction: "ltr"}}>
+                        {moment().format("jYYYY/jM/jD - HH:mm:ss")}
+                    </p>
+                </div>
+            </div>
+            <div className={`flex jc-end ai-center ${classes.signOut}`}>
+                {auth.isLogin ? (
+                    <img
+                        className="img-md-plus"
+                        src={images.signOut}
+                        alt={t("signOut")}
+                        onClick={(props.onLogout)}
+                        data-html={true}
+                        data-place="right"
+                        data-effect="float"
+                        data-tip={`<span class="column jc-between col-100">${t("signOut")}</span>`}
+                    />
+                ) : (
+                    <Link to={Login} className="flex">
+                        <img
+                            className="img-md-plus"
+                            src={images.signIn}
+                            alt={t("signIn")}
+                            data-html={true}
+                            data-place="right"
+                            data-effect="float"
+                            data-tip={`<span class="column jc-between col-100">${t("signIn")}</span>`}
+                        />
+                    </Link>
+                )}
+            </div>
+
         </div>
-      </div>
-      <div
-        className={`flex jc-center ai-center ${classes.signOut}`}
-        onClick={props.onLogout}>
-        {props.auth.isLogin ? (
-          <img
-            className="img-md"
-            src={images.signOut}
-            alt="signOut"
-            title={t("signOut")}
-          />
-        ) : (
-          " "
-        )}
-      </div>
-    </div>
-  );
+    );
 };
 
 const mapStateToProps = (state) => {
-  return {
-    activePair: state.global.activePair,
-    auth: state.auth,
-  };
+    return {
+        activePair: state.global.activePair,
+        auth: state.auth,
+    };
 };
 const mapDispatchToProps = (dispatch) => {
-  return {
-    onLogout: () => dispatch(setLogoutInitiate()),
-  };
+    return {
+        onLogout: () => dispatch(setLogoutInitiate()),
+    };
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Header);

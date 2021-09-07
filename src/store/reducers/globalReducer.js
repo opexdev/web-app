@@ -1,35 +1,38 @@
 import * as actionTypes from "../actions/actionTypes";
 
 const initialState = {
+  panelAccessToken: null,
+  panelAccessTokenExpires: null,
   activePair: {
-    pair: "BTC/IRT",
-    symbol: "BTCIRT",
+    pair: "BTC/USDT",
+    symbol: "BTCUSDT",
     base: "BTC",
-    quote: "IRT",
+    quote: "USDT",
     baseMaxDecimal: 6,
-    quoteMaxDecimal: 3,
+    quoteMaxDecimal: 6,
     baseRange: {
-      min: 0.004,
-      max: 10,
-      step: 0.005,
+      min: 0.000001,
+      max: 1000,
+      step: 0.000001,
     },
     quoteRange: {
-      min: 0.004,
-      max: 10,
-      step: 0.005,
+      min: 0.001,
+      max: 10000,
+      step: 0.00001,
     },
     orderTypes: ["MARKET"],
   },
   activePairOrders: {
-    bestBuyPrice: 765121689.0,
-    bestSellPrice: 765022879.0,
+    bestBuyPrice: 0,
+    bestSellPrice: 0,
+    lastTradePrice:0,
     selectedBuyOrder: {
-      pricePerUnit: null,
-      amount: null,
+      pricePerUnit: 0,
+      amount: 0,
     },
     selectedSellOrder: {
-      pricePerUnit: null,
-      amount: null,
+      pricePerUnit: 0,
+      amount: 0,
     },
   },
   isLoading: true,
@@ -57,6 +60,7 @@ const globalReducer = (state = initialState, action) => {
           pair: action.pair,
           base: base,
           quote: quote,
+          symbol: base+quote,
         },
       };
     case actionTypes.SET_BEST_BUY_PRICE:
@@ -86,6 +90,14 @@ const globalReducer = (state = initialState, action) => {
           },
         },
       };
+    case actionTypes.SET_LAST_TRADE_PRICE:
+      return {
+        ...state,
+        activePairOrders: {
+          ...state.activePairOrders,
+          lastTradePrice: action.lastTradePrice
+        },
+      };
     case actionTypes.SET_SELL_ORDERS:
       return {
         ...state,
@@ -96,6 +108,12 @@ const globalReducer = (state = initialState, action) => {
             amount: action.selected.amount,
           },
         },
+      };
+      case actionTypes.SET_PANEL_TOKENS:
+      return {
+        ...state,
+        panelAccessToken: action.panelAccessToken,
+        panelAccessTokenExpires: action.panelAccessTokenExpires,
       };
     default:
       return state;

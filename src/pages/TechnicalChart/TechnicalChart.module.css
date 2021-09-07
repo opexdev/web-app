@@ -1,0 +1,10 @@
+.content{
+    width: 100%;
+    height: 100vh;
+    margin-right: 5%;
+    background-color: var(--cardBody);
+}
+:global(.ltr) .content{
+    margin-left: 5%;
+    margin-right: initial;
+}

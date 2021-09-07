@@ -1,9 +1,9 @@
 import React, {Fragment} from "react";
 import {connect} from "react-redux";
-import ChangePassword from "./ChangePassword/ChangePassword";
-import LoginReports from "./LoginReports/LoginReports";
-import ActiveSessions from "./ActiveSessions/ActiveSessions";
-import SetTwoStepVerification from "./SetTwoStepVerification/SetTwoStepVerification";
+import ChangePassword from "./components/ChangePassword/ChangePassword";
+import LoginReports from "./components/LoginReports/LoginReports";
+import ActiveSessions from "./components/ActiveSessions/ActiveSessions";
+import SetTwoStepVerification from "./components/SetTwoStepVerification/SetTwoStepVerification";
 
 const Security = (props) => {
   return (

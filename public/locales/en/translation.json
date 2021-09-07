@@ -22,6 +22,8 @@
   "nextStep": "Next Step",
   "prevStep": "Prev Step",
   "submit": "Submit",
+  "error": "Something wrong happened !",
+  "loading": "Loading....",
   "currency": {
     "IRT" : "IRT",
     "Euro" : "Euro",
@@ -224,6 +226,29 @@
   },
   "SendToExpertStep": {
     "title": "Step 4 of 4: Send To Expert"
+  },
+  "login": {
+    "title": "Login/Register",
+    "wrongPassword": "نام کاربری یا رمز عبور صحیح نمی باشد!",
+    "forgetPassword": "Forget Password",
+    "accountNotActive": "اکانت شما هنوز فعال نشده است",
+    "enter": "Enter",
+    "resetPassword": "Reset Password",
+    "inputError": "تعداد کاراکتر نام کاربری یا رمز ورود مجاز نیست.",
+    "loginError": "خطا در ارتباط با سرور",
+    "registerFinished": "ثبت نام با موفقیت انجام شد :)",
+    "forgetPasswordFinished": "درخواست بازیابی رمز عبور با موفقیت ارسال شد :)",
+    "registerFinishedGoToMail": "برای تکمیل ثبت نام به ایمیل ثبت شده مراجعه فرمایید.",
+    "registerFinishedSpamMail": "ایمیل دریافتی از آدرس for.demo.purpose.only@opex.dev ممکن است در بخش spam باشد.",
+    "register": "Register",
+    "wrongEmail": "ایمیل وارد شده معتبر نیست.",
+    "notFoundEmail": "ایمیل وارد شده یافت نشد.",
+    "emptyEmail": "ایمیل را وارد کنید.",
+    "emptyInput": "وارد کردن فیلد {{name}} الزامی است.",
+    "emptyCredentialError": "وارد کردن فیلد نام کاربری و رمز ورود الزامی است.",
+    "minInput": "{{name}} حداقل باید {{min}} کاراکتر باشد.",
+    "finishedWithError": "خطا در ایجاد کاربر جدید.",
+    "back": "Back"
   },
 
 

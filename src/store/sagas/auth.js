@@ -1,12 +1,17 @@
-import {put, delay} from "redux-saga/effects";
+import {put} from "redux-saga/effects";
 import * as actions from "../actions/index";
 
-export function* login(action) {
-  yield delay(1000);
-  yield localStorage.setItem("token", action.token);
-  yield put(actions.login());
-}
 export function* logout() {
-  yield localStorage.removeItem("token");
+  const isDark = localStorage.getItem('isDark');
+  yield localStorage.clear();
+  yield localStorage.setItem('isDark',isDark);
   yield put(actions.logout());
+}
+
+export function* setUserTokens(action) {
+  yield localStorage.setItem("accessToken", action.accessToken);
+  yield localStorage.setItem("accessTokenExpires", action.accessTokenExpires);
+  yield localStorage.setItem("refreshToken", action.refreshToken);
+  yield localStorage.setItem("refreshTokenExpires", action.refreshTokenExpires);
+  yield put(actions.setUserTokens(action));
 }

@@ -1,10 +1,10 @@
 import React, {Fragment, useState} from "react";
 import {connect} from "react-redux";
 import classes from "./Authentication.module.css";
-import HelpStep from "./HelpStep/HelpStep";
-import PersonalProfileStep from "./PersonalProfileStep/PersonalProfileStep";
-import SendPhotosStep from "./SendPhotosStep/SendPhotosStep";
-import SendToExpertStep from "./SendToExpertStep/SendToExpertStep";
+import HelpStep from "./components/HelpStep/HelpStep";
+import PersonalProfileStep from "./components/PersonalProfileStep/PersonalProfileStep";
+import SendPhotosStep from "./components/SendPhotosStep/SendPhotosStep";
+import SendToExpertStep from "./components/SendToExpertStep/SendToExpertStep";
 
 const Authentication = (props) => {
   const [step, setStep] = useState(1);

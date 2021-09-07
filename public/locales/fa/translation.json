@@ -1,6 +1,7 @@
 {
   "title": "اپکس",
   "signIn": "ورود",
+  "signUp": "ثبت نام",
   "signOut": "خروج",
   "date": "تاریخ",
   "time": "زمان",
@@ -14,11 +15,13 @@
   "max": "حداکثر",
   "buy": "خرید",
   "sell": "فروش",
+  "BUY": "خرید",
+  "SELL": "فروش",
   "all": "همه",
   "orderType": "نوع سفارش",
-  "status" : "وضعیت",
-  "pleaseLogin" : "لطفا وارد شوید!",
-  "comingSoon" : "به زودی :)",
+  "status": "وضعیت",
+  "pleaseLogin": "لطفا وارد شوید!",
+  "comingSoon": "به زودی :)",
   "deposit": "واریز",
   "withdrawal": "برداشت",
   "transfer": "انتقال",
@@ -27,6 +30,13 @@
   "nextStep": "گام بعدی",
   "prevStep": "گام قبلی",
   "submit": "ثبت",
+  "username": "نام کاربری",
+  "password": "رمز ورود",
+  "firstName": "نام",
+  "lastName": "نام خانوادگی",
+  "email": "ایمیل",
+  "error": "خطا در دریافت اطلاعات ... !",
+  "loading": "در حال دریافت اطلاعات ...",
   "currency": {
     "IRT": "تومان",
     "Euro": "یورو",
@@ -36,33 +46,39 @@
     "USDT": "تتر",
     "DOGE": "دوج کوین",
     "LTC": "لایت کوین",
-    "BCH": "بیتکوین کش"
+    "BCH": "بیتکوین کش",
+    "NLN": "نیلین*"
   },
   "routes": {
-    "/settings/profile":"مشخصات کاربری",
-    "/settings/security":"امنیت",
-    "/settings/personalization":"شخصی سازی",
-    "/settings/authentication":"احراز هویت کاربری"
+    "/settings/profile": "مشخصات کاربری",
+    "/settings/security": "امنیت",
+    "/settings/personalization": "شخصی سازی",
+    "/settings/authentication": "احراز هویت کاربری"
   },
   "ordersStatus": {
-    "live": "جاری شده",
-    "reject": "رد شده",
-    "done": "انجام شده",
-    "cancel": "لغو شده",
-    "doing": "در حال انجام",
-    "incompleted": "نیمه تمام"
+    "NEW": "جاری شده",
+    "REJECTED": "رد شده",
+    "FILLED": "انجام شده",
+    "CANCELED": "لغو شده",
+    "PENDING_CANCEL": "لغو معلق",
+    "EXPIRED": "منقضی شده",
+    "PARTIALLY_FILLED": "نیمه تمام"
   },
   "messagesTitle": {
     "successful": "عدم تائید معامله",
     "login": "ورود موفق",
-    "done": "ورود همزمان",
     "cancel": "لغو سفارش",
     "done": "سفارش موفق",
-      "incompleted": "سفارش نیمه تمام"
+    "incompleted": "سفارش نیمه تمام"
   },
   "orderTypes": {
-    "stopLimit" : "متوقف محدود",
-    "stopMarket" : "متوقف بازار"
+    "LIMIT": "محدود",
+    "MARKET": "بازار",
+    "STOP_LOSS": "*متوقف محدود",
+    "STOP_LOSS_LIMIT": "*متوقف محدود",
+    "TAKE_PROFIT": "*متوقف محدود",
+    "TAKE_PROFIT_LIMIT": "*متوقف محدود",
+    "LIMIT_MAKER": "*متوقف محدود"
   },
   "pair": {
     "BTC/IRT": "بیتکوین/تومان",
@@ -82,7 +98,10 @@
   },
   "header": {
     "lastPrice": "آخرین قیمت",
-    "availableBalance": "موجودی قابل معامله"
+    "availableBalance": "موجودی قابل معامله",
+    "free": "دارایی آزاد",
+    "locked": "درگیر معامله",
+    "inWithdrawalProcess": "منتظر تسویه"
   },
   "market": {
     "title": "بازار"
@@ -109,8 +128,8 @@
   },
   "orders": {
     "title": "سفارش",
-    "minOrder":  "حداقل مقدار سفارش {{min}} {{currency}} میباشد",
-    "maxOrder":  "حداکثر مقدار سفارش {{max}} {{currency}} میباشد",
+    "minOrder": "حداقل مقدار سفارش {{min}} {{currency}} میباشد",
+    "maxOrder": "حداکثر مقدار سفارش {{max}} {{currency}} میباشد",
     "divisibility": "بخش پذیری !",
     "availableAmount": "موجودی قابل معامله",
     "bestOffer": "بهترین پیشنهاد",
@@ -122,7 +141,9 @@
     "marketSellPrice": "فروش به قیمت بازار",
     "totalPrice": "قیمت کل",
     "tradeFee": "کارمزد",
-    "getAmount": "دریافتی شما"
+    "getAmount": "دریافتی شما",
+    "error": "خطایی در ثبت سفارش رخ داده‌ است",
+    "success": "ثبت سفارش {{type}} {{reqAmount}} {{base}} با قیمت {{pricePerUnit}} {{quote}} با موفقیت انجام شد"
   },
   "LastTrades": {
     "title": "معامله های اخیر"
@@ -142,7 +163,7 @@
     "aliveOrder": "سفارش های جاری",
     "stoppedOrder": "متوقف",
     "orderHistory": "تاریخچه سفارش ها",
-    "stopOrderTime": "زمان سفارش توقف",
+    "stopOrderTime": "زمان انجام تراکنش",
     "startOrderTime": "زمان جاری شدن",
     "orders": "معامله ها"
   },
@@ -150,7 +171,8 @@
     "title": "دارایی ها ",
     "totalValue": "ارزش کل",
     "approximate": "تقریبی",
-    "equivalent": "معادل"
+    "equivalent": "معادل",
+    "showZeroBalance": "عدم نمایش موجودی صفر"
   },
   "DepositWithdraw": {
     "title": "واریز/برداشت"
@@ -189,15 +211,11 @@
     "limit": "محدود",
     "paid": "پرداخت شده"
   },
-
-
-
   "MessagesSubMenu": {
     "title": "اطلاع رسانی",
     "myMessages": "پیام های من",
     "news": "اطلاعیه ها"
   },
-
   "SettingsSubMenu": {
     "title": "تنظیمات",
     "userProfile": "مشخصات کاربری",
@@ -205,7 +223,6 @@
     "personalization": "شخصی سازی",
     "authentication": "احراز هویت کاربری"
   },
-
   "UserAccountStatus": {
     "title": "وضعیت حساب کاربری"
   },
@@ -230,7 +247,6 @@
     "selectNationality": "ملیت خود را انتخاب کنید",
     "selectResidence": "کشور محل اقامت خود را انتخاب کنید"
   },
-
   "LoginReports": {
     "title": "گزارش ورودها"
   },
@@ -256,20 +272,39 @@
     "title": "گام 3 از 4: ارسال تصاویر",
     "textTitle": "متن اعلام رضایت",
     "textSelfiTitle": "سلفی همراه با متن اعلام رضایت",
-      "nationalCardTitle": "سلفی همراه با کارت ملی یا شناسنامه"
+    "nationalCardTitle": "سلفی همراه با کارت ملی یا شناسنامه"
   },
-
   "ImageInput": {
     "title": "",
     "dropText": "را با کشیدن روی کادر یا کلیک کردن و انتخاب فایل آپلود کنید!",
     "iconErrorText": "عکس آپلود شده معتبر نمی باشد ، لطفا دوباره تلاش کنید!"
   },
-
   "SendToExpertStep": {
     "title": "گام 4 از 4: ارسال به کارشناس"
   },
-
-
+  "login": {
+    "title": "ورود/ثبت نام",
+    "wrongPassword": "نام کاربری یا رمز عبور صحیح نمی باشد!",
+    "forgetPassword": "فراموشی رمز عبور",
+    "accountNotActive": "اکانت شما هنوز فعال نشده است",
+    "enter": "ورود",
+    "resetPassword": "بازیابی رمز",
+    "inputError": "تعداد کاراکتر نام کاربری یا رمز ورود مجاز نیست.",
+    "loginError": "خطا در ارتباط با سرور",
+    "registerFinished": "ثبت نام با موفقیت انجام شد :)",
+    "forgetPasswordFinished": "درخواست بازیابی رمز عبور با موفقیت ارسال شد :)",
+    "registerFinishedGoToMail": "برای تکمیل ثبت نام به ایمیل ثبت شده مراجعه فرمایید.",
+    "registerFinishedSpamMail": "ایمیل دریافتی از آدرس for.demo.purpose.only@opex.dev ممکن است در بخش spam باشد.",
+    "register": "ثبت نام",
+    "wrongEmail": "ایمیل وارد شده معتبر نیست.",
+    "notFoundEmail": "ایمیل وارد شده یافت نشد.",
+    "emptyEmail": "ایمیل را وارد کنید.",
+    "emptyInput": "وارد کردن فیلد {{name}} الزامی است.",
+    "emptyCredentialError": "وارد کردن فیلد نام کاربری و رمز ورود الزامی است.",
+    "minInput": "{{name}} حداقل باید {{min}} کاراکتر باشد.",
+    "finishedWithError": "خطا در ایجاد کاربر جدید.",
+    "back": "بازگشت"
+  },
   "footer": {
     "changeColor": "تغییر رنگ",
     "aboutUs": "درباره ما",
@@ -282,7 +317,7 @@
     "addCoin": "درخواست افزودن سکه یا توکن",
     "demo": "بازار نمایشی (ویژه تمرین رایگان)",
     "errorReport": "گزارش خطا و مشکل",
-    "copyright": "1400-کلیه حقوق برای اوپکس گستر خاورمیانه محفوظ است."
+    "copyright": "1400 - کلیه حقوق برای شرکت تجربه کاربری متن باز (در شرف تاُسیس) محفوظ است."
   },
   "junk": {
     "t": "ت",

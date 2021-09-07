@@ -177,8 +177,8 @@ const DepositWithdrawTx = (props) => {
               cellPadding="0">
               <thead className="th-border-y">
                 <tr>
-                  <th className="pt-1">{t("time")}</th>
                   <th>{t("date")}</th>
+                  <th>{t("time")}</th>
                   <th>{t("DepositWithdrawTx.transactionType")}</th>
                   <th>{t("destination")}</th>
                   <th>
@@ -201,8 +201,8 @@ const DepositWithdrawTx = (props) => {
                           ? "text-green"
                           : "text-red"
                       }>
-                      <td>{moment(tr.timestamp).format("HH:mm:ss")}</td>
                       <td>{moment(tr.timestamp).format("jYY/jMM/jDD")}</td>
+                      <td>{moment(tr.timestamp).format("HH:mm:ss")}</td>
                       <td>{t("transactionType." + tr.transactionType)}</td>
                       <td className="direction-ltr">{tr.destination}</td>
                       <td>

@@ -96,3 +96,9 @@
   border-bottom-right-radius: 10px;
   box-shadow: 7px 2px 0 0 var(--mainContent);
 }
+.selected:first-child:after {
+  width: 0;
+}
+.selected:last-child:before{
+  width: 0;
+}

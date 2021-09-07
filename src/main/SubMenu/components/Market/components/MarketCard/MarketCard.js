@@ -1,9 +1,9 @@
-import React, {Fragment} from "react";
+import React from "react";
 import classes from "./MarketCard.module.css";
 import ScrollBar from "../../../../../../components/ScrollBar";
 import {useTranslation} from "react-i18next";
 import Icon from "../../../../../../components/Icon/Icon";
-import MarketChart from "../MarketChart";
+import MarketChart from "../MarketChart/MarketChart";
 import {images} from "../../../../../../assets/images";
 import {setActivePair} from "../../../../../../store/actions";
 import {connect} from "react-redux";
@@ -21,6 +21,7 @@ const MarketCard = (props) => {
     const [base, quote] = pairName.split("/");
     return images[base];
   };
+
   let items = props.pairs.map((pair) => (
     <div
       onClick={() => props.onSetActivePair(pair.name)}
@@ -65,6 +66,7 @@ const MarketCard = (props) => {
           <MarketChart
             color={pair.Type === "increase" ? green : red}
             data={pair.price7d}
+            chartId={pair.name}
           />
         </div>
         <div className={`column  ai-end`}>

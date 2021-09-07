@@ -12,5 +12,16 @@ export const decimalChecker = (value, decimal) => {
 };
 
 export const parsePriceString = (value) => {
-  return parseFloat(value.replace(/[^0-9\.-]+/g, ""));
+  return parseFloat(value.replace(/[^0-9.-]+/g, ""));
 };
+
+export const validateEmail = (email) => {
+  return /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(email);
+}
+
+export const encodeQueryData = (params) => {
+  const ret = [];
+  for (let d in params)
+    ret.push(encodeURIComponent(d) + '=' + encodeURIComponent(params[d]));
+  return ret.join('&');
+}

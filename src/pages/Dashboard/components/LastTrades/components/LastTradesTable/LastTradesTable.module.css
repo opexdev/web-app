@@ -1,0 +1,4 @@
+.container tr:nth-child(even) td {
+  background-color: var(--tableRow);
+  transition: background-color 0.4s;
+}

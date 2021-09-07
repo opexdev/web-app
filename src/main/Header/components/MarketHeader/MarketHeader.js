@@ -1,89 +1,60 @@
-import React, {Fragment, useEffect, useState} from "react";
+import React, {Fragment} from "react";
 import classes from "./MarketHeader.module.css";
 import {useTranslation} from "react-i18next";
 import {connect} from "react-redux";
-import {setLogoutInitiate} from "../../../../store/actions";
 import Icon from "../../../../components/Icon/Icon";
-import axios from "axios";
+import {getAccount, parseWalletsResponse} from "../../../SubMenu/components/WalletSubMenu/api/wallet";
+import {setUserAccountInfo} from "../../../../store/actions/auth";
+import useInterval from "../../../../Hooks/useInterval";
 
 
 const MarketHeader = (props) => {
   const {t} = useTranslation();
+  const {auth, setUserAccountInfo,lastTradePrice,activePair} = props
 
-  const [marketHeaderData, setMarketHeaderData] = useState({
-    price: null,
-  });
+  const getWallet = async () => {
+    let accountWallet = await getAccount(auth.accessToken)
+    if (accountWallet.status === 200) {
+      const parsedData = parseWalletsResponse(accountWallet.data);
+      setUserAccountInfo(parsedData)
+    }
+  }
 
-  const getMarketHeaderData = (activePair) => {
-    const axiosInstance = axios.create({
-      //proxy: {host:"217.97.101.134",port:80},
-      baseURL: "https://api.binance.com",
-      timeout: 5000,
-      headers: {"X-Custom-Header": "foobar"},
-    });
-    axiosInstance
-      .get("/api/v3/ticker/price", {
-        params: {
-          symbol:
-            props.activePair.base +
-            (props.activePair.quote === "IRT"
-              ? "USDT"
-              : props.activePair.quote),
-        },
-      })
-      .then(function (response) {
-        //console.log("headerData : " , response.data);
-        setMarketHeaderData(response.data);
-      })
-      .catch(function (error) {
-        //console.log("Error : " , error);
-        //setMarketHeaderData( )
-        clearInterval();
-      })
-      .then(function () {
-
-      });
-  };
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      getMarketHeaderData(props.activePair);
-    }, 2000);
-    return () => clearInterval(interval);
-  }, [props.activePair]);
+  useInterval(() => {
+    getWallet()
+  }, auth.isLogin ? 1500 : null);
 
   return (
     <Fragment>
-      <div className={`column ai-start`}>
-        <h2 className="mb-05">{t(`pair.${props.activePair.pair}`)}</h2>
+      <div className={`col-35 column ai-start`}>
+        <h2 className="mb-05">{t(`pair.${activePair.pair}`)}</h2>
         <p>
           {t("header.lastPrice")}:{" "}
           <span>
-            {marketHeaderData.price !== null ? (
-              marketHeaderData.price
+            {lastTradePrice !== null ? (lastTradePrice
             ) : (
-              <span className="flashit">در حال دریافت اطلاعات...</span>
+              <span className="flashit">{t('loading')}</span>
             )}
           </span>{" "}
-          {marketHeaderData.price === null
+          {lastTradePrice === null
             ? ""
-            : t("currency." + props.activePair.quote)}
+            : t("currency." + activePair.quote)}
         </p>
       </div>
-      <div className={`column ai-center`}>
+      <div className={`col-30 column ai-center`}>
         <p className="mb-05">{t("header.availableBalance")}</p>
-        <div className={`row ai-center ${classes.inventory}`}>
-          <div className="flex ai-center">
+        <div className={`container row ai-center ${classes.inventory}`}>
+          <div className="col-50 flex ai-center jc-end">
             <Icon
               iconName="icon-plus icon-white font-size-sm flex"
               customClass={`mx-05 ${classes.iconBG}`}
             />
-            <span>{props.auth.wallet[props.activePair.base]}</span>
-            <span>{t("currency." + props.activePair.base)}</span>
+            <span>{auth.wallets[activePair.base].free}</span>
+            <span>{t("currency." + activePair.base)}</span>
           </div>
-          <div className="flex ai-center">
-            <span>{props.auth.wallet[props.activePair.quote]}</span>
-            <span>{t("currency." + props.activePair.quote)}</span>
+          <div className="col-50 flex ai-center  jc-start">
+            <span>{auth.wallets[activePair.quote].free}</span>
+            <span>{t("currency." + activePair.quote)}</span>
             <Icon
               iconName="icon-plus icon-white font-size-sm flex"
               customClass={`mx-05 ${classes.iconBG}`}
@@ -95,15 +66,17 @@ const MarketHeader = (props) => {
   );
 };
 
+
 const mapStateToProps = (state) => {
   return {
-    activePair: state.global.activePair,
     auth: state.auth,
+    activePair : state.global.activePair,
+    lastTradePrice : state.global.activePairOrders.lastTradePrice
   };
 };
 const mapDispatchToProps = (dispatch) => {
   return {
-    onLogout: () => dispatch(setLogoutInitiate()),
+    setUserAccountInfo: (info) => dispatch(setUserAccountInfo(info)),
   };
 };
 

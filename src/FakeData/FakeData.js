@@ -1,5 +1,4 @@
 import Faker from "faker";
-import {images} from "../assets/images";
 
 export const OverViewData = {
   lastDay: {
@@ -34,15 +33,6 @@ export const OrderData = {
   sale: {CurrencyBalance: "0.3 بیتکوین", BestOffer: "450،000،000 ", type: true},
 };
 
-/*export const OrderBookData = [
-    {
-        totalPrice: '413،990،000',
-        Amount: "0.01",
-        Count: "413،990،000",
-        Percent: 10
-    }
-];*/
-
 export const OrderBookBuyData = () => {
   const data = [];
   for (let i = 0; i < 100; i++) {
@@ -67,13 +57,6 @@ export const OrderBookData = () => {
       Faker.datatype.number({min: 4990000, max: 3990000}),
       Faker.datatype.number({min: 0, max: 1.5, precision: 0.0001}),
     ]);
-    /*data.push({
-            id: Faker.datatype.number,
-            amount: Faker.datatype.number({'min': 0, 'max': 1.5, precision: 0.0001}),
-            pricePerUnit: Faker.datatype.number({'min': 4990000, 'max': 3990000}),
-            totalPrice: Faker.datatype.number({'min': 139900000, 'max': 4139900000}),
-            percent: Faker.datatype.number({'min': 1, 'max': 70})
-        });*/
   }
   for (let i = 0; i < 100; i++) {
     data.asks.push([
@@ -139,7 +122,7 @@ export const MyOrderHistoryData = () => {
       stoppedPrice: Faker.datatype.number({min: 413990000, max: 613990000}),
       totalPrice: Faker.datatype.number({min: 13990000, max: 413990000}),
       type: Faker.random.arrayElement(["buy", "sell"]),
-      status: Faker.random.arrayElement(["live", "reject", "done", "cancel"]),
+      status: Faker.random.arrayElement(["NEW", "FILLED", "CANCELED","PARTIALLY_FILLED", "REJECTED"]),
     });
   }
   return data;
@@ -200,13 +183,7 @@ export const DTAllTransactionsData = () => {
       blockchainTransactionId:
         "befe" +
         Faker.datatype.number({min: 8439201925530, max: 8539201925530}),
-      status: Faker.random.arrayElement([
-        "live",
-        "reject",
-        "done",
-        "cancel",
-        "doing",
-      ]),
+      status: Faker.random.arrayElement(["NEW", "FILLED", "CANCELED","PARTIALLY_FILLED", "REJECTED"]),
       progress: Faker.datatype.number({min: 0, max: 100, precision: 0.5}),
     });
   }
@@ -265,7 +242,7 @@ export const OrdersTradesOrdersHistoryData = () => {
       done: Faker.datatype.number({min: 0, max: 1, precision: 0.0001}),
       pricePerUnit: Faker.datatype.number({min: 0, max: 450000540}),
       paid: Faker.datatype.number({min: 0, max: 450000540}),
-      status: Faker.random.arrayElement(["reject", "done", "cancel", "incompleted"]),
+      status: Faker.random.arrayElement(["NEW", "FILLED", "CANCELED","PARTIALLY_FILLED", "REJECTED"]),
     });
   }
   return data;
@@ -526,13 +503,7 @@ export const MyMessagesData = () => {
     data.push({
       orderId: Faker.datatype.number({min: 11000, max: 1000000}),
       timestamp: Faker.date.between("2020-01-01", "2021-02-05"),
-      title: Faker.random.arrayElement([
-        "successful",
-        "login",
-        "cancel",
-        "done",
-        "incompleted",
-      ]),
+      title: Faker.random.arrayElement(["NEW", "FILLED", "CANCELED","PARTIALLY_FILLED", "REJECTED"]),
     });
   }
   return data;
@@ -545,13 +516,7 @@ export const newsData = () => {
     data.push({
       orderId: Faker.datatype.number({min: 11000, max: 1000000}),
       timestamp: Faker.date.between("2020-01-01", "2021-02-05"),
-      title: Faker.random.arrayElement([
-        "successful",
-        "login",
-        "cancel",
-        "done",
-        "incompleted",
-      ]),
+      title: Faker.random.arrayElement(["NEW", "FILLED", "CANCELED","PARTIALLY_FILLED", "REJECTED"]),
     });
   }
   return data;

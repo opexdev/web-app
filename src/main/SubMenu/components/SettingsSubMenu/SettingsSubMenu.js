@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from "react";
+import React from "react";
 import classes from "./SettingsSubMenu.module.css";
 import {useTranslation} from "react-i18next";
 import * as Routes from "../../../../routes/routes";
