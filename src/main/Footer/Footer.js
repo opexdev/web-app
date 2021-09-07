@@ -5,6 +5,8 @@ import {useTranslation} from "react-i18next";
 import i18n from "../../i18n/i18n";
 import {connect} from "react-redux";
 import {setThemeInitiate} from "../../store/actions/";
+import {Link} from "react-router-dom";
+import {Guide} from "../../routes/routes";
 
 const Footer = (props) => {
   const {t} = useTranslation();
@@ -12,40 +14,22 @@ const Footer = (props) => {
     <div className={`container column footerBackground ${classes.container}`}>
       <div className={`row jc-between ai-center ${classes.content}`}>
         <div className="row">
-          <div className="column px-1">
-            <a href="/" title="about_us" target="_blank">
-              <span>{t("footer.aboutUs")}</span>
-            </a>
-            <a href="/" title="contact_us" target="_blank">
-              <span>{t("footer.contactUS")}</span>
-            </a>
-            <a href="/" title="blog" target="_blank">
-              <span>{t("footer.blog")}</span>
-            </a>
-            <a href="/" title="user_manual" target="_blank">
-              <span>{t("footer.guide")}</span>
-            </a>
-            <a href="/" title="Terms_of_use" target="_blank">
-              <span>{t("footer.rules")}</span>
-            </a>
-          </div>
-          <div className="column px-1">
-            <a href="/" title="Wage" target="_blank">
-              <span>{t("footer.wage")}</span>
-            </a>
-            <a href="/" title="Web_Services" target="_blank">
-              <span>{t("footer.api")}</span>
-            </a>
-            <a href="/" title="Request to add coins or tokens" target="_blank">
-              <span>{t("footer.addCoin")}</span>
-            </a>
-            <a href="/" title="market" target="_blank">
-              <span>{t("footer.demo")}</span>
-            </a>
-            <a href="/" title="Report errors and problems" target="_blank">
-              <span>{t("footer.errorReport")}</span>
-            </a>
-          </div>
+          <Link to={Guide} className="row">
+            <div className="column px-1">
+                <span className="hover-text">{t("footer.aboutUs")}</span>
+                <span className="hover-text">{t("footer.contactUS")}</span>
+                <span className="hover-text">{t("footer.blog")}</span>
+                <span className="hover-text">{t("footer.guide")}</span>
+                <span className="hover-text">{t("footer.rules")}</span>
+            </div>
+            <div className="column px-1">
+                <span className="hover-text">{t("footer.wage")}</span>
+                <span className="hover-text">{t("footer.api")}</span>
+                <span className="hover-text">{t("footer.addCoin")}</span>
+                <span className="hover-text">{t("footer.demo")}</span>
+                <span className="hover-text">{t("footer.errorReport")}</span>
+            </div>
+          </Link>
         </div>
 
         <div className={`${classes.footerSetting} `}>

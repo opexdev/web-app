@@ -23,6 +23,7 @@ import Login from "../pages/Login/Login";
 import TechnicalChart from "../pages/TechnicalChart/TechnicalChart";
 //import Toast from "../components/Toast/Toast";
 import {Toaster} from "react-hot-toast";
+import Guide from "../pages/Guide/Guide";
 
 const App = (props) => {
     const {t} = useTranslation();
@@ -70,6 +71,9 @@ const App = (props) => {
                 <Switch>
                     <Route exact path="/login">
                         <Login/>
+                    </Route>
+                    <Route exact path="/guide">
+                        <Guide/>
                     </Route>
                     <ProtectedRoute
                         component={TechnicalChart}

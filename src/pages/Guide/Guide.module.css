@@ -1,0 +1,33 @@
+.container {
+    height: 100vh;
+    background-color: #383a59;
+    color: var(--textColor);
+}
+.menu{
+    width: 20%;
+    height: 100%;
+    background-color: var(--cardHeader);
+    box-shadow: 0 0 8px 0 #00000080;
+}
+.content{
+    width: 80%;
+    height: 100%;
+    background-color: var(--cardBody);
+}
+.top{
+    height: 25%;
+    /*background-color: #00a97f;*/
+}
+.top img{
+    width: 7vw;
+}
+.body{
+    height: 75%;
+    /*background-color: #8c0b72;*/
+}
+.thisButton {
+    width: 40%;
+    background: var(--orange);
+    color: var(--textColor);
+    bottom: 0;
+}
