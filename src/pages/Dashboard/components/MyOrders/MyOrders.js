@@ -148,9 +148,9 @@ const MyOrders = (props) => {
     </Link>
   </div>
   const ComingSoon = <div className="container height-100 flex ai-center jc-center">
-    <Link to={Login} className="hover-text">
+    <span>
       {t("comingSoon")}
-    </Link>
+    </span>
   </div>
 
   const data = [

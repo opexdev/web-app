@@ -18,15 +18,15 @@ const WalletHeader = (props) => {
             </div>
             <div className={`col-35 column ai-center`}>
                 <span>{t("header.free")}</span>
-                <span>{wallets[id].free} <span className={`font-size-sm text-color-gray`}>( {wallets[id].free*100000} {t("currency.IRT")} )</span></span>
+                <span>{wallets[id].free} <span className={`font-size-sm text-color-gray`}>( --- {t("currency.IRT")} )</span></span>
             </div>
             <div className={`col-35 column ai-center ${classes.border}`}>
                 <span>{t("header.locked")}</span>
-                <span>{wallets[id].locked} <span className={`font-size-sm text-color-gray`}>( {wallets[id].locked*100000} {t("currency.IRT")} )</span></span>
+                <span>{wallets[id].locked} <span className={`font-size-sm text-color-gray`}>( --- {t("currency.IRT")} )</span></span>
             </div>
             <div className={`col-35 column ai-center`}>
                 <span>{t("header.inWithdrawalProcess")}</span>
-                <span>{wallets[id].inWithdrawalProcess} <span className={`font-size-sm text-color-gray`}>( {wallets[id].inWithdrawalProcess*100000} {t("currency.IRT")} )</span></span>
+                <span>{wallets[id].inWithdrawalProcess} <span className={`font-size-sm text-color-gray`}>( --- {t("currency.IRT")} )</span></span>
             </div>
         </Fragment>
     );
