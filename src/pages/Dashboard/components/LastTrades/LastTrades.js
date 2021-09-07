@@ -21,16 +21,14 @@ const getLastTradesData = async () =>{
   const lastTradesReq = await getLastTrades(activePair);
   if (lastTradesReq.status === 200) {
     setLastTrades(lastTradesReq.data)
-    //console.log(lastTradesReq.data[0].price)
-    setLastTradePrice(lastTradesReq.data[0].price)
-
+    if(lastTradesReq.data.length) setLastTradePrice(lastTradesReq.data[0].price)
   } else {
     setError(true)
   }
 }
 
-  useEffect(async () => {
-    await getLastTradesData()
+  useEffect(() => {
+    getLastTradesData();
   }, [activePair]);
 
   useInterval(async () => {

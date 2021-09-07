@@ -4,6 +4,7 @@ import {ResponsiveLine} from "@nivo/line";
 const MarketChart = (props) => {
   const data = [
     {
+      "id": props.chartId,
       data: [
         {
           x: 1,

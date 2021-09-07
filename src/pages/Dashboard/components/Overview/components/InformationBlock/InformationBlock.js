@@ -40,7 +40,7 @@ const InformationBlock = (props) => {
         <p>
             {t("overview.change")}:{" "}
             <span className={information.priceChange > 0 ? "text-green" : "text-red"}>
-            %{information.priceChangePercent}
+            %{information.priceChangePercent.toFixed(2)}
           </span>
         </p>
         <p>

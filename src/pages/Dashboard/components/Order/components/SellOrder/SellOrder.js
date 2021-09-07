@@ -38,7 +38,7 @@ const SellOrder = (props) => {
 
 
     const currencyValidator = (key, val, rule) => {
-        if (val < rule.min) {
+        if (val !== 0 && val < rule.min) {
             return setAlert({
                 ...alert,
                 [key]: (
@@ -66,9 +66,9 @@ const SellOrder = (props) => {
                 ),
             });
         }
-        if (!Number.isInteger(val / rule.step)) {
+/*        if (!Number.isInteger(val / rule.step)) {
             return setAlert({...alert, [key]: t("orders.divisibility")});
-        }
+        }*/
         return setAlert({...alert, [key]: null});
     };
 
@@ -329,8 +329,8 @@ const SellOrder = (props) => {
                     {t("orders.getAmount")}:{" "}
                     {order.totalPrice === "NaN" || order.tradeFee === "NaN"
                         ? 0
-                        : (order.totalPrice - order.tradeFee)
-                            .toFixed(props.activePair.quoteMaxDecimal)
+                        : parseFloat((order.totalPrice - order.tradeFee)
+                            .toFixed(props.activePair.quoteMaxDecimal))
                             .toLocaleString()}{" "}
                     {t("currency." + props.activePair.quote)}
                 </p>

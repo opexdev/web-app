@@ -9,20 +9,24 @@ import {setUserAccountInfo} from "../../../../store/actions/auth";
 
 const WalletSubMenu = (props) => {
     const {t} = useTranslation();
-    const {accessToken, setUserAccountInfo,wallets} = props;
     const [isLoading, setLoading] = useState(true);
+    const {accessToken, setUserAccountInfo,wallets} = props;
 
-    useEffect(async () => {
-        let account = await getAccount(accessToken)
-        if (account.status === 200) {
-            const parsedData = parseWalletsResponse(account.data);
-            setUserAccountInfo(parsedData)
+    useEffect(() => {
+        const getAccountUseEffect = async () => {
+            let account = await getAccount(accessToken)
+
+            if (account.status === 200) {
+                const parsedData = parseWalletsResponse(account.data);
+                setUserAccountInfo(parsedData)
+            }
+            if (!account) {
+                setLoading(false);
+                return false
+            }
+            setLoading(false)
         }
-        if (!account) {
-            setLoading(false);
-            return false
-        }
-        setLoading(false)
+        getAccountUseEffect()
     }, []);
 
 

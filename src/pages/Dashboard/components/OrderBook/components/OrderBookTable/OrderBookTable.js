@@ -80,7 +80,7 @@ const OrderBookTable = (props) => {
                         tr["percent"] = ((parseFloat(tr[1]) / totalAmount) * 100).toFixed();
                         tr["pricePerUnit"] = tr[0];
                         tr["amount"] = tr[1];
-                        tr["totalPrice"] = tr[1] * tr[0];
+                        tr["totalPrice"] = parseFloat((tr[1] * tr[0]).toFixed(6));
                         return props.type === "buy" ? (
                             <tr
                                 key={index}
@@ -104,24 +104,13 @@ const OrderBookTable = (props) => {
                                         avg.pricePerUnit +
                                         tr["pricePerUnit"]) /
                                     (index + 1)
-                                )
-                                    .toFixed(
-                                        props.activePair
-                                            .quoteMaxDecimal,
-                                    )
-                                    .toLocaleString()}</span>
+                                )}</span>
                                                 </div>
                                                 <div class="row jc-between col-100">
                                                     <span class="pl-05">${t(
                                     "totalVolume",
                                 )}:</span>
-                                                    <span >${(avg.amount =
-                                    avg.amount + tr["amount"])
-                                    .toFixed(
-                                        props.activePair
-                                            .baseMaxDecimal,
-                                    )
-                                    .toLocaleString()}</span>
+                                                    <span >${(avg.amount = avg.amount + tr["amount"]).toFixed(6).toString()}</span>
                                                 </div>
                                                 <div class="row jc-between col-100">
                                                     <span class="pl-05">${t(
@@ -171,24 +160,14 @@ const OrderBookTable = (props) => {
                                         avg.pricePerUnit +
                                         tr["pricePerUnit"]) /
                                     (index + 1)
-                                )
-                                    .toFixed(
-                                        props.activePair
-                                            .quoteMaxDecimal,
-                                    )
-                                    .toLocaleString()}</span>
+                                )}</span>
                                                 </div>
                                                 <div class="row jc-between col-100">
                                                     <span class="pl-05">${t(
                                     "totalVolume",
                                 )}:</span>
                                                     <span >${(avg.amount =
-                                    avg.amount + tr["amount"])
-                                    .toFixed(
-                                        props.activePair
-                                            .baseMaxDecimal,
-                                    )
-                                    .toLocaleString()}</span>
+                                    avg.amount + tr["amount"])}</span>
                                                 </div>
                                                 <div class="row jc-between col-100">
                                                     <span class="pl-05">${t(

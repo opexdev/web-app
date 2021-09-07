@@ -31,7 +31,6 @@ const ForgetPassword = (props) => {
             return false
         }
         if (!validateEmail(email)) {
-            console.log("in pass" )
             setError([t('login.wrongEmail')])
             return false
         }

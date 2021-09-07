@@ -1,19 +1,17 @@
 import React, {useEffect, useState} from "react";
 import classes from "./Market.module.css";
-import {images} from "../../../../assets/images";
 import MarketCard from "./components/MarketCard/MarketCard";
 import AccordionBox from "../../../../components/AccordionBox/AccordionBox";
 import {useTranslation} from "react-i18next";
 import Icon from "../../../../components/Icon/Icon";
 import {MarketPair} from "../../../../FakeData/FakeData";
-import axios from "axios";
 import {connect} from "react-redux";
 
-const Market = (props) => {
+const Market = () => {
+  const {t} = useTranslation();
+
   const [pairs, setPairs] = useState(MarketPair);
   const [fav, setFav] = useState(["BTC/IRT", "ETH/IRT"]);
-
-  const {t} = useTranslation();
 
   const marketBody = (selected, pairs) => {
     let selectedPair = pairs.filter((pair) =>

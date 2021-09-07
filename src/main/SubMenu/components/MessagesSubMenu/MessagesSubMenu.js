@@ -30,13 +30,13 @@ const MessagesSubMenu = (props) => {
         className="text-center triplet-striped font-size-sm-plus mt-05"
         cellSpacing="0"
         cellPadding="0">
-        <thead></thead>
+        <thead/>
         <tbody>
           {customData.myMessages.map((tr, index) => (
             <Fragment key={index}>
               <tr>
                 <td className="text-right font-weight-bold pr-1">
-                  {t("messagesTitle." + tr.title)}
+                  {t("ordersStatus." + tr.title)}
                 </td>
                 <td className="text-left pl-1">
                   {moment(tr.timestamp).format("HH:mm:ss  -  jYY/jMM/jDD")}

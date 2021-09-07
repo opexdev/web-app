@@ -1,19 +1,14 @@
-import React, {Fragment, useEffect, useState} from "react";
+import React, {Fragment} from "react";
 import classes from "./WalletHeader.module.css";
 import {useTranslation} from "react-i18next";
 import {connect} from "react-redux";
-import {setLogoutInitiate} from "../../../../store/actions";
-import Icon from "../../../../components/Icon/Icon";
-import axios from "axios";
 import {useParams} from "react-router-dom";
 
 
 const WalletHeader = (props) => {
-    const {t} = useTranslation();
-    const wallets = props.wallets
-
-    const { id } = useParams();
-    console.log(id)
+    const { id } = useParams()
+    const {t} = useTranslation()
+    const {wallets} = props
 
     return (
         <Fragment>

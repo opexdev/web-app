@@ -10,8 +10,9 @@ import ToggleSwitch from "../../../../../../components/ToggleSwitch/ToggleSwitch
 
 
 const WalletList = (props) => {
-    let {wallets, isLoading} = props
+
     const {t} = useTranslation();
+    let {wallets, isLoading} = props
     const [showZero, setShowZero] = useState(false);
 
     if (isLoading) {
@@ -20,8 +21,6 @@ const WalletList = (props) => {
     if (!wallets) {
         return <Error/>
     }
-
-
 
     if (wallets.length === 0) {
         return (
@@ -56,7 +55,7 @@ const WalletList = (props) => {
         <Fragment>
             <div className={`container row jc-around ai-center py-2 border-bottom`}>
                 <span className={`font-size-sm`}>{t("WalletSubMenu.showZeroBalance")}</span>
-                <ToggleSwitch onchange={(e)=>setShowZero(prevState => !prevState)} checked={showZero}/>
+                <ToggleSwitch onchange={()=>setShowZero(prevState => !prevState)} checked={showZero}/>
             </div>
             <div className="container row ai-center px-1 py-05" style={{height: "8.5vh"}}>
                 <div className={` row jc-center ai-center ${classes.PairImage}`}>
@@ -84,9 +83,10 @@ const WalletList = (props) => {
                 </div>
             </div>
             {Object.keys(wallets).map((name) => {
-                if(wallets[name].free !== 0.0 || !showZero   ) {
-                    return <WalletListItem name={name} route={Routes.Wallet + "/" + name} amount={wallets[name].free}/>
+                if(wallets[name].free !== 0.0 || !showZero) {
+                    return <WalletListItem key={name} name={name} route={Routes.Wallet + "/" + name} amount={wallets[name].free}/>
                 }
+                return null
             })}
         </Fragment>
     )

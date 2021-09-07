@@ -5,17 +5,17 @@ import {useTranslation} from "react-i18next";
 import {connect} from "react-redux";
 import moment from "moment-jalaali";
 import {setLogoutInitiate} from "../../store/actions";
-import {Link, Route, Switch, useLocation} from "react-router-dom";
+import {Link, Route, Switch} from "react-router-dom";
 import {Login} from "../../routes/routes";
 import * as Routes from "../../routes/routes";
 import MarketHeader from "./components/MarketHeader/MarketHeader";
 import WalletHeader from "./components/WalletHeader/WalletHeader";
 import ProtectedRoute from "../../components/ProtectedRoute/ProtectedRoute";
 import ReactTooltip from "react-tooltip";
+import SettingHeader from "./components/SettingsHeader/SettingsHeader";
 
 const Header = (props) => {
     const {t} = useTranslation();
-    const location = useLocation()
     const {auth} = props
 
     useEffect(() => {
@@ -30,11 +30,7 @@ const Header = (props) => {
                         <MarketHeader/>
                     </Route>
                     <ProtectedRoute path={Routes.Wallet + "/:id"} isLogin={auth.isLogin} component={WalletHeader}/>
-                    <ProtectedRoute path={Routes.Settings} isLogin={auth.isLogin}>
-                        <h2 style={{color: "var(--orange)"}}>
-                            {t("routes." + location.pathname)}
-                        </h2>
-                    </ProtectedRoute>
+                    <ProtectedRoute path={Routes.Settings} isLogin={auth.isLogin} component={SettingHeader}/>
                     <Route path="*">
                         <h4>{t("comingSoon")}</h4>
                     </Route>

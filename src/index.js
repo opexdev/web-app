@@ -5,7 +5,7 @@ import {Provider} from "react-redux";
 import {createStore, applyMiddleware, combineReducers, compose} from "redux";
 import createSagaMiddleware from "redux-saga";
 import globalReducer from "./store/reducers/globalReducer";
-import reportWebVitals from "./reportWebVitals";
+//import reportWebVitals from "./reportWebVitals";
 import App from "./main/main";
 import "normalize.css";
 import "./index.css";

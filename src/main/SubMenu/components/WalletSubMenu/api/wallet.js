@@ -31,7 +31,7 @@ export const getAccount = async (token) => {
 
 export const parseWalletsResponse = (res) => {
     let wallets = {}
-    res.balances.map((wallet) => {
+    res.balances.forEach((wallet) => {
         wallets[wallet.asset.toUpperCase()] = {
             free: parseFloat(wallet.free.toFixed(6)),
             locked:  parseFloat(wallet.locked.toFixed(6)),

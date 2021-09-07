@@ -21,7 +21,7 @@ import {isSafari} from "react-device-detect";
 import Settings from "../pages/Settings/Settings";
 import Login from "../pages/Login/Login";
 import TechnicalChart from "../pages/TechnicalChart/TechnicalChart";
-import Toast from "../components/Toast/Toast";
+//import Toast from "../components/Toast/Toast";
 import {Toaster} from "react-hot-toast";
 
 const App = (props) => {
@@ -45,7 +45,6 @@ const App = (props) => {
                 color: "white",
                 lineHeight : "3vh",
                 fontSize: "0.8vw",
-               /* maxWidth: "20vw",*/
                 borderRadius : "4px",
                 background: "var(--mainContent)",
             },

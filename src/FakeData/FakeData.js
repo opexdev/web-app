@@ -122,7 +122,7 @@ export const MyOrderHistoryData = () => {
       stoppedPrice: Faker.datatype.number({min: 413990000, max: 613990000}),
       totalPrice: Faker.datatype.number({min: 13990000, max: 413990000}),
       type: Faker.random.arrayElement(["buy", "sell"]),
-      status: Faker.random.arrayElement(["live", "reject", "done", "cancel"]),
+      status: Faker.random.arrayElement(["NEW", "FILLED", "CANCELED","PARTIALLY_FILLED", "REJECTED"]),
     });
   }
   return data;
@@ -183,13 +183,7 @@ export const DTAllTransactionsData = () => {
       blockchainTransactionId:
         "befe" +
         Faker.datatype.number({min: 8439201925530, max: 8539201925530}),
-      status: Faker.random.arrayElement([
-        "live",
-        "reject",
-        "done",
-        "cancel",
-        "doing",
-      ]),
+      status: Faker.random.arrayElement(["NEW", "FILLED", "CANCELED","PARTIALLY_FILLED", "REJECTED"]),
       progress: Faker.datatype.number({min: 0, max: 100, precision: 0.5}),
     });
   }
@@ -248,7 +242,7 @@ export const OrdersTradesOrdersHistoryData = () => {
       done: Faker.datatype.number({min: 0, max: 1, precision: 0.0001}),
       pricePerUnit: Faker.datatype.number({min: 0, max: 450000540}),
       paid: Faker.datatype.number({min: 0, max: 450000540}),
-      status: Faker.random.arrayElement(["reject", "done", "cancel", "incompleted"]),
+      status: Faker.random.arrayElement(["NEW", "FILLED", "CANCELED","PARTIALLY_FILLED", "REJECTED"]),
     });
   }
   return data;
@@ -509,13 +503,7 @@ export const MyMessagesData = () => {
     data.push({
       orderId: Faker.datatype.number({min: 11000, max: 1000000}),
       timestamp: Faker.date.between("2020-01-01", "2021-02-05"),
-      title: Faker.random.arrayElement([
-        "successful",
-        "login",
-        "cancel",
-        "done",
-        "incompleted",
-      ]),
+      title: Faker.random.arrayElement(["NEW", "FILLED", "CANCELED","PARTIALLY_FILLED", "REJECTED"]),
     });
   }
   return data;
@@ -528,13 +516,7 @@ export const newsData = () => {
     data.push({
       orderId: Faker.datatype.number({min: 11000, max: 1000000}),
       timestamp: Faker.date.between("2020-01-01", "2021-02-05"),
-      title: Faker.random.arrayElement([
-        "successful",
-        "login",
-        "cancel",
-        "done",
-        "incompleted",
-      ]),
+      title: Faker.random.arrayElement(["NEW", "FILLED", "CANCELED","PARTIALLY_FILLED", "REJECTED"]),
     });
   }
   return data;

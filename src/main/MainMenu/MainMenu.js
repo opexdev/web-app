@@ -8,10 +8,8 @@ import * as Routes from "../../routes/routes";
 import {useTranslation} from "react-i18next";
 import MessagesSubMenu from "../SubMenu/components/MessagesSubMenu/MessagesSubMenu";
 
-const MainMenu = (props) => {
+const MainMenu = () => {
     const {t} = useTranslation();
-
-    const [messages, setMessages] = useState([]);
     const [showMessages, setShowMessages] = useState(false);
 
     useEffect(() => {

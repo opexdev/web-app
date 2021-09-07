@@ -5,13 +5,7 @@ import AccordionBox from "../../../../components/AccordionBox/AccordionBox";
 import moment from "moment-jalaali";
 import {connect} from "react-redux";
 import {useTranslation} from "react-i18next";
-
-import {
-  MyOrderCurrentData,
-  MyOrderStopData,
-  MyOrderHistoryData,
-  MyOrderTradeData,
-} from "../../../../FakeData/FakeData";
+import {MyOrderStopData, MyOrderTradeData} from "../../../../FakeData/FakeData";
 import Icon from "../../../../components/Icon/Icon";
 import {Login} from "../../../../routes/routes";
 import {Link} from "react-router-dom";
@@ -40,7 +34,7 @@ const MyOrders = (props) => {
     });
   }, []);
 
-  const StopTable = (
+/*  const StopTable = (
     <ScrollBar>
       <table className="text-center striped" cellSpacing="0" cellPadding="0">
         <thead className="th-border-y">
@@ -80,7 +74,7 @@ const MyOrders = (props) => {
         </tbody>
       </table>
     </ScrollBar>
-  );
+  );*/
   const TradesTable = (
     <ScrollBar>
       <table
@@ -98,7 +92,7 @@ const MyOrders = (props) => {
               {t("pricePerUnit")}({props.activePair.quote})
             </th>
             <th>{t("totalPrice")}</th>
-            <th></th>
+            <th/>
           </tr>
         </thead>
         <tbody>
@@ -153,12 +147,17 @@ const MyOrders = (props) => {
       {t("pleaseLogin")}
     </Link>
   </div>
+  const ComingSoon = <div className="container height-100 flex ai-center jc-center">
+    <Link to={Login} className="hover-text">
+      {t("comingSoon")}
+    </Link>
+  </div>
 
   const data = [
     {id: 1, title: t("myOrders.aliveOrder"), body: props.auth.isLogin ? <OpenOrders/> : LoginText},
     //{id: 2, title: t("myOrders.stoppedOrder"), body: props.auth.isLogin ? StopTable : LoginText},
     {id: 3, title: t("myOrders.orderHistory"), body: props.auth.isLogin ? <OrdersHistory/> : LoginText},
-    {id: 4, title: t("myOrders.orders"), body: props.auth.isLogin ?TradesTable : LoginText},
+    {id: 4, title: t("myOrders.orders"), body: props.auth.isLogin ? ComingSoon : LoginText},
   ];
 
 

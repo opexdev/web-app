@@ -28,7 +28,7 @@ const OrderBook = (props) => {
             setIsLoading(false)
             setError(false)
         } else {
-            setError(true)
+            //setError(true)
             setIsLoading(false)
         }
     };

@@ -7,8 +7,8 @@ import {useTranslation} from "react-i18next";
 
 const WalletListItem = (props) => {
 
-    const {route, name, amount} = props
     const {t} = useTranslation();
+    const {route, name, amount} = props
 
     return (
         <NavLink
