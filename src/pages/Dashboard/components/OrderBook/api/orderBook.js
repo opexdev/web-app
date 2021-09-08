@@ -9,7 +9,7 @@ export const getOrderBook = async (activePair) => {
 
     const params = new URLSearchParams();
     params.append('symbol', activePair.symbol);
-    params.append('limit', "100");
+    params.append('limit', "20");
 
     return await orderBook.get(`/api/v3/depth?${params.toString()}`, {
         data:params,

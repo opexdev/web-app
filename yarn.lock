@@ -4261,6 +4261,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"bignumber.js@npm:^9.0.1":
+  version: 9.0.1
+  resolution: "bignumber.js@npm:9.0.1"
+  checksum: 6e72f6069d9db32fc8d27561164de9f811b15f9144be61f323d8b36150a239eea50c92e20ba38af2ba5e717af10b8ef12db8f9948fe2ff02bf17ede5239d15d3
+  languageName: node
+  linkType: hard
+
 "binary-extensions@npm:^1.0.0":
   version: 1.13.1
   resolution: "binary-extensions@npm:1.13.1"
@@ -11329,6 +11336,7 @@ fsevents@^1.2.7:
     "@testing-library/react": ^11.2.5
     "@testing-library/user-event": ^12.7.4
     axios: ^0.21.1
+    bignumber.js: ^9.0.1
     faker: ^5.4.0
     i18next: ^19.9.0
     i18next-browser-languagedetector: ^6.0.1

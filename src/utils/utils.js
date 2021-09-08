@@ -1,3 +1,5 @@
+import BigNumber from "bignumber.js";
+
 export const numberFixedDecimal = (val, decimal) => {
   return Math.round(val * decimal) / decimal;
 };
@@ -25,3 +27,9 @@ export const encodeQueryData = (params) => {
     ret.push(encodeURIComponent(d) + '=' + encodeURIComponent(params[d]));
   return ret.join('&');
 }
+
+export const BN = BigNumber.clone({ FORMAT: {
+    groupSize: 3,
+    groupSeparator: ',',
+    decimalSeparator: '.',
+  }})
