@@ -14,8 +14,8 @@ export const createOrder = async (activePair , side , token , order) => {
     params.append('type', "LIMIT");
     params.append('timeInForce', "GTC");
     params.append('timestamp', timestamp.toString());
-    params.append('quantity', order.reqAmount);
-    params.append('price', order.pricePerUnit);
+    params.append('quantity', order.reqAmount.toString());
+    params.append('price', order.pricePerUnit.toString());
 
     Order.defaults.headers.post['Authorization'] = `Bearer ${token}`;
     Order.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';

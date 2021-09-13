@@ -6,22 +6,30 @@ import ScrollBar from "../../../../../../components/ScrollBar";
 import {useTranslation} from "react-i18next";
 import {getOrdersHistory} from "../api/myOrders";
 import {connect} from "react-redux";
+import Loading from "../../../../../../components/Loading/Loading";
 
 const OrdersHistory = (props) => {
 
     const {activePair, accessToken, lastTransaction} = props
 
     const {t} = useTranslation();
-    const [openOrder, setOpenOrder] = useState(null)
     const [orders, setOrders] = useState([])
+    const [openOrder, setOpenOrder] = useState(null)
+    const [isLoading, setIsLoading] = useState(true)
 
-    useEffect(async () => {
-        const myOrders = await getOrdersHistory(activePair, accessToken)
-        if (myOrders.status === 200) {
-            setOrders(myOrders.data)
-        }
+    useEffect(() => {
+        getOrdersHistory(activePair, accessToken)
+            .then((ordersHistory) => {
+                if (ordersHistory.status === 200) {
+                    setOrders(ordersHistory.data)
+                }
+                setIsLoading(false)
+            })
     }, [activePair, lastTransaction])
 
+    if (isLoading) {
+        return <Loading/>
+    }
 
     return (
         <ScrollBar>
@@ -85,7 +93,7 @@ const OrdersHistory = (props) => {
                                     </p>
                                 </div>
                                 <div className="row  jc-between ai-center"
-                                    style={{width: "100%", textAlign: "start"}}>
+                                     style={{width: "100%", textAlign: "start"}}>
                                     <p className="col-46 row jc-between">
                                         {t("myOrders.stopOrderTime")} :{" "}
                                         <span>

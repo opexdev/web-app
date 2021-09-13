@@ -14,6 +14,9 @@ export const decimalChecker = (value, decimal) => {
 };
 
 export const parsePriceString = (value) => {
+  if(!value){
+    return 0;
+  }
   return parseFloat(value.replace(/[^0-9.-]+/g, ""));
 };
 

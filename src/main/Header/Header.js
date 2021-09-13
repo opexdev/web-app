@@ -16,12 +16,11 @@ import SettingHeader from "./components/SettingsHeader/SettingsHeader";
 
 const Header = (props) => {
     const {t} = useTranslation();
-    const {auth} = props
+    const {isLogin, firstName, lastName} = props
 
     useEffect(() => {
         ReactTooltip.rebuild();
     });
-
     return (
         <div className={`container row jc-between ai-center px-1 py-1 ${classes.container}`}>
             <div className={`row jc-between ai-center ${classes.content}`}>
@@ -29,21 +28,20 @@ const Header = (props) => {
                     <Route exact path={Routes.Dashboard}>
                         <MarketHeader/>
                     </Route>
-                    <ProtectedRoute path={Routes.Wallet + "/:id"} isLogin={auth.isLogin} component={WalletHeader}/>
-                    <ProtectedRoute path={Routes.Settings} isLogin={auth.isLogin} component={SettingHeader}/>
+                    <ProtectedRoute path={Routes.Wallet + "/:id"} isLogin={isLogin} component={WalletHeader}/>
+                    <ProtectedRoute path={Routes.Settings} isLogin={isLogin} component={SettingHeader}/>
                     <Route path="*">
                         <h4>{t("comingSoon")}</h4>
                     </Route>
                 </Switch>
-
                 <div className={`col-35 column ai-end`}>
-                    {auth.firstName === null ? (
+                    {firstName === null ? (
                         <Link to={Login} className="hover-text">
                             <p>{t("pleaseLogin")}</p>
                         </Link>
                     ) : (
                         <p className="mb-05">
-                            {auth.firstName + " " + auth.lastName}
+                            {firstName + " " + lastName}
                         </p>
                     )}
                     <p style={{direction: "ltr"}}>
@@ -52,7 +50,7 @@ const Header = (props) => {
                 </div>
             </div>
             <div className={`flex jc-end ai-center ${classes.signOut}`}>
-                {auth.isLogin ? (
+                {isLogin ? (
                     <img
                         className="img-md-plus"
                         src={images.signOut}
@@ -77,15 +75,15 @@ const Header = (props) => {
                     </Link>
                 )}
             </div>
-
         </div>
     );
 };
 
 const mapStateToProps = (state) => {
     return {
-        activePair: state.global.activePair,
-        auth: state.auth,
+        isLogin: state.auth.isLogin,
+        firstName: state.auth.firstName,
+        lastName: state.auth.lastName,
     };
 };
 const mapDispatchToProps = (dispatch) => {

@@ -1,20 +1,20 @@
-import React, {Fragment, useState, useEffect} from "react";
+import React, {useState} from "react";
 import classes from "./MyOrders.module.css";
-import ScrollBar from "../../../../components/ScrollBar";
+//import ScrollBar from "../../../../components/ScrollBar";
 import AccordionBox from "../../../../components/AccordionBox/AccordionBox";
-import moment from "moment-jalaali";
+//import moment from "moment-jalaali";
 import {connect} from "react-redux";
 import {useTranslation} from "react-i18next";
-import {MyOrderStopData, MyOrderTradeData} from "../../../../FakeData/FakeData";
-import Icon from "../../../../components/Icon/Icon";
+//import Icon from "../../../../components/Icon/Icon";
 import {Login} from "../../../../routes/routes";
 import {Link} from "react-router-dom";
 import OpenOrders from "./components/OpenOrders/OpenOrders";
 import OrdersHistory from "./components/OrdersHistory/OrdersHistory";
 
 const MyOrders = (props) => {
+  const {isLogin}= props
   const {t} = useTranslation();
-  const [openItem, setOpenItem] = useState({
+/*  const [openItem, setOpenItem] = useState({
     current: null,
     history: null,
     trade: null,
@@ -24,15 +24,7 @@ const MyOrders = (props) => {
     history: [],
     trade: [],
     stop: [],
-  });
-  useEffect(() => {
-    setCustomData({
-      current: [],
-      stop: MyOrderStopData(),
-      history: [],
-      trade: MyOrderTradeData(),
-    });
-  }, []);
+  });*/
 
 /*  const StopTable = (
     <ScrollBar>
@@ -75,7 +67,7 @@ const MyOrders = (props) => {
       </table>
     </ScrollBar>
   );*/
-  const TradesTable = (
+/*  const TradesTable = (
     <ScrollBar>
       <table
         className="text-center double-striped"
@@ -140,7 +132,7 @@ const MyOrders = (props) => {
         </tbody>
       </table>
     </ScrollBar>
-  );
+  );*/
 
   const LoginText = <div className="container height-100 flex ai-center jc-center">
     <Link to={Login} className="hover-text">
@@ -154,12 +146,11 @@ const MyOrders = (props) => {
   </div>
 
   const data = [
-    {id: 1, title: t("myOrders.aliveOrder"), body: props.auth.isLogin ? <OpenOrders/> : LoginText},
+    {id: 1, title: t("myOrders.aliveOrder"), body: isLogin ? <OpenOrders/> : LoginText},
     //{id: 2, title: t("myOrders.stoppedOrder"), body: props.auth.isLogin ? StopTable : LoginText},
-    {id: 3, title: t("myOrders.orderHistory"), body: props.auth.isLogin ? <OrdersHistory/> : LoginText},
-    {id: 4, title: t("myOrders.orders"), body: props.auth.isLogin ? ComingSoon : LoginText},
+    {id: 3, title: t("myOrders.orderHistory"), body: isLogin ? <OrdersHistory/> : LoginText},
+    {id: 4, title: t("myOrders.orders"), body: isLogin ? ComingSoon : LoginText},
   ];
-
 
   return (
     <div
@@ -169,8 +160,6 @@ const MyOrders = (props) => {
           content={data}
           safari={classes.safariFlexSize}
       />
-
-
     </div>
   );
 };
@@ -178,7 +167,7 @@ const MyOrders = (props) => {
 const mapStateToProps = (state) => {
   return {
     activePair: state.global.activePair,
-    auth: state.auth,
+    isLogin: state.auth.isLogin,
   };
 };
 

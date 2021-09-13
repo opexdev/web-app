@@ -1,31 +1,36 @@
+import {connect} from "react-redux";
+import {toast} from "react-hot-toast";
+import {createOrder} from "../../api/order";
+import classes from "../../Order.module.css";
 import React, {useState, useEffect} from "react";
 import {useTranslation, Trans} from "react-i18next";
-import {parsePriceString} from "../../../../../../utils/utils";
-import classes from "../../Order.module.css";
-import NumberInput from "../../../../../../components/NumberInput/NumberInput";
-import {connect} from "react-redux";
-import Button from "../../../../../../components/Button/Button";
-import {createOrder} from "../../api/order";
 import {images} from "../../../../../../assets/images";
+import Button from "../../../../../../components/Button/Button";
+import {BN, parsePriceString} from "../../../../../../utils/utils";
 import {setLastTransaction} from "../../../../../../store/actions/auth"
-import {toast} from "react-hot-toast";
+import NumberInput from "../../../../../../components/NumberInput/NumberInput";
+import {Login as LoginRoute} from "../../../../../../routes/routes";
+import {useHistory} from "react-router-dom";
 
 const BuyOrder = (props) => {
+    const history = useHistory();
     const {t} = useTranslation();
     const [isLoading, setIsLoading] = useState(false)
+    const {wallets, activePair, tradeFee, bestBuyPrice, accessToken, isLogin, selectedBuyOrder} = props
     const [alert, setAlert] = useState({
-        reqAmount: null,
         submit: false,
+        reqAmount: null,
+        totalPrice: null,
     });
 
     const [order, setOrder] = useState({
-        tradeFee: 0.0,
+        tradeFee: new BN(0),
         stopLimit: false,
         stopMarket: false,
-        stopPrice: 0.0,
-        reqAmount: 0.0,
-        pricePerUnit: 0.0,
-        totalPrice: 0.0,
+        stopPrice: new BN(0),
+        reqAmount: new BN(0),
+        pricePerUnit: new BN(0),
+        totalPrice: new BN(0),
     });
 
 
@@ -35,42 +40,47 @@ const BuyOrder = (props) => {
                 ...alert, submit: false
             })
         }
-    }, [order, props.activePair])
-
+    }, [order, activePair])
 
 
     const currencyValidator = (key, val, rule) => {
-        if (val !== 0 && val < rule.min ) {
+        if (!val.isZero() && val.isLessThan(rule.min)) {
             return setAlert({
                 ...alert,
                 [key]: (
                     <Trans
                         i18nKey="orders.minOrder"
                         values={{
-                            min: props.activePair.baseRange.min,
-                            currency: t("currency." + props.activePair.base),
+                            min: activePair.baseRange.min,
+                            currency: t("currency." + activePair.base),
                         }}
                     />
                 ),
             });
         }
-        if (val > rule.max) {
+        if (val.isGreaterThan(rule.max)) {
             return setAlert({
                 ...alert,
                 [key]: (
                     <Trans
                         i18nKey="orders.maxOrder"
                         values={{
-                            max: props.activePair.baseRange.max,
-                            currency: t("currency." + props.activePair.base),
+                            max: activePair.baseRange.max,
+                            currency: t("currency." + activePair.base),
                         }}
                     />
                 ),
             });
         }
-/*        if (!Number.isInteger(parseFloat(val / rule.step).toFixed(6))) {
-            return setAlert({...alert, [key]: t("orders.divisibility")});
-        }*/
+        if (!val.mod(rule.step).isZero()) {
+            return setAlert({
+                ...alert,
+                [key]: (<Trans
+                    i18nKey="orders.divisibility"
+                    values={{mod:rule.step.toString()}}
+                />)
+            })
+        }
         return setAlert({...alert, [key]: null});
     };
 
@@ -78,97 +88,94 @@ const BuyOrder = (props) => {
         value = parsePriceString(value);
         switch (key) {
             case "reqAmount":
-                const reqAmount = value;
-                currencyValidator("reqAmount", reqAmount, props.activePair.baseRange);
+                const reqAmount = new BN(value);
+                currencyValidator("reqAmount", reqAmount, activePair.baseRange);
                 setOrder({
                     ...order,
-                    reqAmount: reqAmount,
-                    totalPrice: (reqAmount * order.pricePerUnit).toFixed(
-                        props.activePair.quoteMaxDecimal,
-                    ),
-                    tradeFee: (
-                        reqAmount * props.auth.tradeFee[props.activePair.quote]
-                    ).toFixed(props.activePair.baseMaxDecimal),
+                    reqAmount,
+                    totalPrice: reqAmount.multipliedBy(order.pricePerUnit).decimalPlaces(activePair.quoteMaxDecimal),
+                    tradeFee: reqAmount.multipliedBy(tradeFee[activePair.quote]).decimalPlaces(activePair.baseMaxDecimal),
                 });
                 break;
             case "pricePerUnit":
-                const pricePerUnit = value;
+                const pricePerUnit = new BN(value);
                 setOrder({
                     ...order,
                     pricePerUnit: pricePerUnit,
-                    totalPrice: (order.reqAmount * pricePerUnit).toFixed(
-                        props.activePair.quoteMaxDecimal,
-                    ),
-                    tradeFee: (
-                        order.reqAmount * props.auth.tradeFee[props.activePair.quote]
-                    ).toFixed(props.activePair.baseMaxDecimal),
+                    totalPrice: pricePerUnit.multipliedBy(order.reqAmount).decimalPlaces(activePair.quoteMaxDecimal),
+                    tradeFee: order.reqAmount.multipliedBy(tradeFee[activePair.quote]).decimalPlaces(activePair.baseMaxDecimal),
                 });
                 break;
             case "totalPrice":
-                const totalPrice = value;
-                const req = (totalPrice / order.pricePerUnit).toFixed(
-                    props.activePair.baseMaxDecimal,
-                );
+                const totalPrice = new BN(value);
+                const req = totalPrice.dividedBy(order.pricePerUnit).decimalPlaces(activePair.baseMaxDecimal);
                 setOrder({
                     ...order,
-                    reqAmount: req,
-                    totalPrice: value,
-                    tradeFee: (
-                        (totalPrice / order.pricePerUnit) *
-                        props.auth.tradeFee[props.activePair.quote]
-                    ).toFixed(props.activePair.baseMaxDecimal),
+                    reqAmount: req.isFinite() ? req : new BN(0),
+                    totalPrice,
+                    tradeFee: req.isFinite() ? req.multipliedBy(tradeFee[activePair.quote]).decimalPlaces(activePair.baseMaxDecimal) : new BN(0),
                 });
-                currencyValidator("reqAmount", req, props.activePair.baseRange);
+                currencyValidator("reqAmount", req, activePair.baseRange);
                 break;
             default:
         }
     };
 
     useEffect(() => {
+        if(order.totalPrice.isGreaterThan(wallets[activePair.quote].free)){
+            return setAlert({
+                ...alert,
+                totalPrice: t('orders.notEnoughBalance')
+            })
+        }
+        return setAlert({
+            ...alert,
+            totalPrice: null
+        })
+    }, [order.totalPrice]);
+
+
+    useEffect(() => {
         setOrder((prevState) => ({
             ...order,
-            tradeFee:
-                prevState.totalPrice * props.auth.tradeFee[props.activePair.quote],
+            tradeFee: prevState.totalPrice.multipliedBy(tradeFee[activePair.quote]).decimalPlaces(activePair.baseMaxDecimal),
         }));
-    }, [props.auth]);
+    }, [tradeFee]);
 
     useEffect(() => {
         buyPriceHandler(
-            props.activePairOrders.bestBuyPrice.toString(),
+            bestBuyPrice.toString(),
             "pricePerUnit",
         );
     }, [order.stopMarket]);
 
     useEffect(() => {
-        const amount = props.activePairOrders.selectedBuyOrder.amount;
-        const pricePerUnit = props.activePairOrders.selectedBuyOrder.pricePerUnit;
+        const reqAmount = new BN(selectedBuyOrder.amount);
+        const pricePerUnit = new BN(selectedBuyOrder.pricePerUnit);
         setOrder({
             ...order,
-            reqAmount: amount,
+            reqAmount,
             pricePerUnit: pricePerUnit,
-            totalPrice: (amount * pricePerUnit).toFixed(
-                props.activePair.quoteMaxDecimal,
-            ),
-            tradeFee: (amount * props.auth.tradeFee[props.activePair.quote]).toFixed(
-                props.activePair.baseMaxDecimal,
-            ),
+            totalPrice: reqAmount.multipliedBy(pricePerUnit).decimalPlaces(activePair.quoteMaxDecimal),
+            tradeFee: reqAmount.multipliedBy(tradeFee[activePair.quote]).decimalPlaces(activePair.baseMaxDecimal),
         });
-        currencyValidator("reqAmount", amount, props.activePair.baseRange);
-    }, [props.activePairOrders.selectedBuyOrder]);
+        currencyValidator("reqAmount", reqAmount, activePair.baseRange);
+    }, [selectedBuyOrder]);
+
 
     const fillBuyByWallet = () => {
-        if (order.pricePerUnit === 0) {
-            const totalPrice = props.auth.wallets[props.activePair.quote].free;
+        if (order.pricePerUnit.isEqualTo(0)) {
+            const totalPrice = new BN(wallets[activePair.quote].free);
             setOrder({
                 ...order,
-                reqAmount: (totalPrice / props.activePairOrders.bestBuyPrice).toString(),
-                pricePerUnit: props.activePairOrders.bestBuyPrice,
-                totalPrice: totalPrice,
-                tradeFee: totalPrice * props.auth.tradeFee[props.activePair.quote],
+                reqAmount: totalPrice.dividedBy(bestBuyPrice).decimalPlaces(activePair.baseMaxDecimal),
+                pricePerUnit: new BN(bestBuyPrice),
+                totalPrice,
+                tradeFee: totalPrice.multipliedBy(tradeFee[activePair.quote]).decimalPlaces(activePair.baseMaxDecimal),
             });
         } else {
             buyPriceHandler(
-                props.auth.wallets[props.activePair.quote].free.toString(),
+                wallets[activePair.quote].free.toString(),
                 "totalPrice",
             );
         }
@@ -176,41 +183,46 @@ const BuyOrder = (props) => {
 
     const fillBuyByBestPrice = () => {
         buyPriceHandler(
-            props.activePairOrders.bestBuyPrice.toString(),
+            bestBuyPrice.toString(),
             "pricePerUnit",
         );
     };
 
+
     const submit = async () => {
-        if(isLoading){
+        if (!isLogin) {
+            history.push(LoginRoute);
+            return false
+        }
+        if (isLoading) {
             return false
         }
         setIsLoading(true)
-        const submitOrder = await createOrder(props.activePair, "BUY", props.auth.accessToken, order)
+        const submitOrder = await createOrder(activePair, "BUY", accessToken, order)
         if (!submitOrder) {
             setIsLoading(false)
         }
         if (submitOrder.status === 200) {
             setOrder({
-                tradeFee: 0.0,
+                tradeFee: new BN(0),
                 stopLimit: false,
                 stopMarket: false,
-                stopPrice: 0.0,
-                reqAmount: 0.0,
-                pricePerUnit: 0.0,
-                totalPrice: 0.0,
+                stopPrice: new BN(0),
+                reqAmount: new BN(0),
+                pricePerUnit: new BN(0),
+                totalPrice: new BN(0),
             })
             toast.success(<Trans
                 i18nKey="orders.success"
                 values={{
-                    base: t("currency." + props.activePair.base),
-                    quote: t("currency." + props.activePair.quote),
-                    type : t("buy"),
+                    base: t("currency." + activePair.base),
+                    quote: t("currency." + activePair.quote),
+                    type: t("buy"),
                     reqAmount: order.reqAmount,
                     pricePerUnit: order.pricePerUnit,
                 }}
             />);
-            setTimeout(()=>props.setLastTransaction(submitOrder.data.transactTime), 2000);
+            setTimeout(() => props.setLastTransaction(submitOrder.data.transactTime), 2000);
         } else {
             toast.error(t("orders.error"));
             setAlert({
@@ -226,7 +238,7 @@ const BuyOrder = (props) => {
         if (alert.submit) {
             return <span>{t("login.loginError")}</span>
         }
-        if (props.auth.isLogin) {
+        if (isLogin) {
             return t("buy")
         }
         return t("pleaseLogin")
@@ -235,22 +247,25 @@ const BuyOrder = (props) => {
     return (
         <div className={`column jc-between ${classes.content}`}>
             <div className="column jc-between">
-                <p onClick={() => fillBuyByWallet()}>
+                <p onClick={() => {
+                    fillBuyByWallet()
+                }}>
                     {t("orders.availableAmount")}:{" "}
                     <span className="cursor-pointer">
-              {props.auth.wallets[props.activePair.quote].free.toLocaleString()}{" "}
-                        {t("currency." + props.activePair.quote)}
+              {wallets[activePair.quote].free.toLocaleString()}{" "}
+                        {t("currency." + activePair.quote)}
             </span>
                 </p>
-                <p onClick={() => fillBuyByBestPrice()}>
+                <p onClick={() => {
+                    fillBuyByBestPrice()
+                }}>
                     {t("orders.bestOffer")}:{" "}
                     <span className="cursor-pointer">
-              {props.activePairOrders.bestBuyPrice.toLocaleString()}{" "}
-                        {t("currency." + props.activePair.quote)}
-            </span>
+                        {bestBuyPrice.toLocaleString()}{" "}{t("currency." + activePair.quote)}
+                    </span>
                 </p>
             </div>
-{/*
+            {/*
             <div className="row ai-center">
                 <span className="pl-05">{t("orders.stopLimit")}</span>
                 <input
@@ -263,9 +278,9 @@ const BuyOrder = (props) => {
             {order.stopLimit ? (
                 <NumberInput
                     lead={t("orders.stopPrice")}
-                    after={t("currency." + props.activePair.base)}
+                    after={t("currency." + activePair.base)}
                     value={order.stopPrice}
-                    maxDecimal={props.activePair.baseMaxDecimal}
+                    maxDecimal={activePair.baseMaxDecimal}
                     onchange={(value) =>
                         setOrder({...order, stopPrice: value.floatValue})
                     }
@@ -276,9 +291,9 @@ const BuyOrder = (props) => {
 
             <NumberInput
                 lead={t("orders.amount")}
-                after={t("currency." + props.activePair.base)}
-                value={order.reqAmount}
-                maxDecimal={props.activePair.baseMaxDecimal}
+                after={t("currency." + activePair.base)}
+                value={order.reqAmount.toString()}
+                maxDecimal={activePair.baseMaxDecimal}
                 onchange={(e) => buyPriceHandler(e.target.value, "reqAmount")}
                 alert={alert.reqAmount}
             />
@@ -289,17 +304,17 @@ const BuyOrder = (props) => {
                     lead={t("orders.pricePerUnit")}
                     isAllowed={false}
                     prefix="~"
-                    after={t("currency." + props.activePair.quote)}
-                    value={order.pricePerUnit}
-                    maxDecimal={props.activePair.quoteMaxDecimal}
+                    after={t("currency." + activePair.quote)}
+                    value={order.pricePerUnit.toString()}
+                    maxDecimal={activePair.quoteMaxDecimal}
                     onchange={(e) => buyPriceHandler(e.target.value, "pricePerUnit")}
                 />
             ) : (
                 <NumberInput
                     lead={t("orders.pricePerUnit")}
-                    after={t("currency." + props.activePair.quote)}
-                    value={order.pricePerUnit}
-                    maxDecimal={props.activePair.quoteMaxDecimal}
+                    after={t("currency." + activePair.quote)}
+                    value={order.pricePerUnit.toString()}
+                    maxDecimal={activePair.quoteMaxDecimal}
                     onchange={(e) => buyPriceHandler(e.target.value, "pricePerUnit")}
                 />
             )}
@@ -316,33 +331,30 @@ const BuyOrder = (props) => {
 
             <NumberInput
                 lead={t("orders.totalPrice")}
-                value={order.totalPrice}
-                maxDecimal={props.activePair.quoteMaxDecimal}
-                after={t("currency." + props.activePair.quote)}
+                value={order.totalPrice.toString()}
+                maxDecimal={activePair.quoteMaxDecimal}
+                after={t("currency." + activePair.quote)}
                 onchange={(e) => buyPriceHandler(e.target.value, "totalPrice")}
+                alert={alert.totalPrice}
             />
 
             <div className="column jc-between">
                 <p>
                     {t("orders.tradeFee")}:{" "}
-                    {order.tradeFee === "NaN" ? 0 : order.tradeFee}{" "}
-                    {t("currency." + props.activePair.base)}
+                    {order.tradeFee.toFormat()}{" "}
+                    {t("currency." + activePair.base)}
                 </p>
                 <p>
                     {t("orders.getAmount")}:{" "}
-                    {order.reqAmount === "NaN" || order.tradeFee === "NaN"
-                        ? 0
-                        : parseFloat((order.reqAmount - order.tradeFee)
-                            .toFixed(props.activePair.baseMaxDecimal))
-                            .toLocaleString()}{" "}
-                    {t("currency." + props.activePair.base)}
+                    {order.reqAmount.minus(order.tradeFee).decimalPlaces(activePair.baseMaxDecimal).toNumber()}{" "}
+                    {t("currency." + activePair.base)}
                 </p>
             </div>
             <Button
                 buttonClass={`${classes.thisButton} ${alert.submit ? classes.alertSubmit : classes.buyOrder} ${isLoading ? "cursor-not-allowed" : "cursor-pointer"} flex jc-center ai-center`}
                 type="submit"
                 onClick={submit}
-                disabled={alert.reqAmount || order.reqAmount === 0 || order.pricePerUnit === 0 || !props.auth.isLogin}
+                disabled={alert.reqAmount || order.reqAmount.isZero() || order.pricePerUnit.isZero() || !isLogin}
                 buttonTitle={submitButtonTextHandler()}
             />
         </div>
@@ -352,8 +364,12 @@ const BuyOrder = (props) => {
 const mapStateToProps = (state) => {
     return {
         activePair: state.global.activePair,
-        activePairOrders: state.global.activePairOrders,
-        auth: state.auth,
+        bestBuyPrice: state.global.activePairOrders.bestBuyPrice,
+        selectedBuyOrder: state.global.activePairOrders.selectedBuyOrder,
+        wallets: state.auth.wallets,
+        tradeFee: state.auth.tradeFee,
+        accessToken: state.auth.accessToken,
+        isLogin: state.auth.isLogin,
     };
 };
 

@@ -121,7 +121,7 @@ const OrderBookTable = (props) => {
                 data-amount={avg.amount.toString()}
                 onClick={(e) =>
                   onSetSellOrder({
-                    pricePerUnit: parseFloat(pricePerUnit.decimalPlaces(activePair.quoteMaxDecimal).toFormat()),
+                    pricePerUnit: pricePerUnit.decimalPlaces(activePair.quoteMaxDecimal).toString(),
                     amount: parseFloat(e.currentTarget.getAttribute("data-amount")),
                   })
                 }>
@@ -143,7 +143,7 @@ const OrderBookTable = (props) => {
                 data-amount={avg.amount.toString()}
                 onClick={(e) =>
                   onSetBuyOrder({
-                    pricePerUnit: parseFloat(pricePerUnit.decimalPlaces(activePair.quoteMaxDecimal).toFormat()),
+                    pricePerUnit: parseFloat(pricePerUnit.decimalPlaces(activePair.quoteMaxDecimal).toString()),
                     amount: parseFloat(e.currentTarget.getAttribute("data-amount")),
                   })
                 }>

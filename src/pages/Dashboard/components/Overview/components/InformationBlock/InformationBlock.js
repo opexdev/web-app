@@ -46,16 +46,16 @@ const InformationBlock = (props) => {
         <p>
             {t("min")}:{" "}
             <span className="text-red">{information.lowPrice.toLocaleString()}</span>{" "}
-            {t(`currency.${props.activePair.quote}`)}
+            {t(`currency.${activePair.quote}`)}
         </p>
         <p>
             {t("max")}:{" "}
             <span className="text-green">{information.highPrice.toLocaleString()}</span>{" "}
-            {t(`currency.${props.activePair.quote}`)}
+            {t(`currency.${activePair.quote}`)}
         </p>
         <p>
             {t("overview.volume")}: <span>{information.volume.toLocaleString()} </span>
-            {t(`currency.${props.activePair.quote}`)}
+            {t(`currency.${activePair.quote}`)}
         </p>
     </div>)
 }
