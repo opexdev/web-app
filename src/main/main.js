@@ -72,7 +72,7 @@ const App = (props) => {
                     <Route exact path="/login">
                         <Login/>
                     </Route>
-                    <Route exact path="/guide">
+                    <Route path="/guide">
                         <Guide/>
                     </Route>
                     <ProtectedRoute
@@ -89,22 +89,12 @@ const App = (props) => {
                             ) : (
                                 <Fragment>
                                     <ReactTooltip data-html={true} data-effect="float"/>
-                                    {/*<div className={`onScreen ${lang ? "wide" : ""} cursor-pointer row jc-center ai-center`} onClick={()=>setLang(true)}>
-                    <Icon iconName="icon-down-open font-size-md-01" customClass={`thisButton cursor-pointer`}/>
-                    {lang ?
-                        <div className={`row ai-center ${classes.languages}`}>
-                        <span className="cursor-pointer" onClick={() => i18n.changeLanguage("fa")}>فارسی</span>
-                          <span className="cursor-pointer" onClick={() => i18n.changeLanguage("en")}>English</span>
-                        </div>
-                        : ""
-                    }
-                  </div>*/}
-
                                     <div className="row">
                                         <MainMenu isLogin={props.isLogin}/>
                                         <SubMenu isLogin={props.isLogin}/>
                                         <div className="column content">
                                             <Header/>
+                                            <div style={{display:"flex",flex:1}}>
                                             <ScrollBar>
                                                 <Switch>
                                                     <Route exact path={Routes.Dashboard}>
@@ -130,6 +120,7 @@ const App = (props) => {
                                                 </Switch>
                                                 <Footer/>
                                             </ScrollBar>
+                                            </div>
                                         </div>
                                     </div>
                                     <Toast/>
@@ -144,8 +135,7 @@ const App = (props) => {
                 <div className="mobile-view">
                     <img className={`flashit`} src={images.opexLogo_light} alt="logo"/>
                     <h1>
-                        اوپکس فعلاً برای نمایش در موبایل بهینه نشده است. لطفاً لینک را در
-                        کامپیوتر باز کنید! :)
+                        {t('desktopSupport')}
                     </h1>
                 </div>
             </MobileView>
