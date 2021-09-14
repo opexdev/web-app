@@ -54,3 +54,28 @@ export const getOrdersHistory = async (activePair, token ) => {
         return e.response;
     })
 }
+
+export const cancelOpenOrders = async (activePair, token ,orderId ) => {
+    const timestamp = Date.now()
+
+    const params = new URLSearchParams();
+    params.append('symbol', activePair.symbol);
+    params.append('orderId', orderId);
+    //params.append('origClientOrderId', "");
+    params.append('timestamp', timestamp.toString());
+
+    return await myOrder.delete(`/api/v3/order?${params.toString()}`, {
+        data:params,
+        headers : {
+            'Authorization': `Bearer ${token}`,
+            'content-type': 'application/x-www-form-urlencoded'
+        },
+    }).then((res) => {
+        return res;
+    }).catch((e) => {
+        if (!e.response) {
+            return false;
+        }
+        return e.response;
+    })
+}

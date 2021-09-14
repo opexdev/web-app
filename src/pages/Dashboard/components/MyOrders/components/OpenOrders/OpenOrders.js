@@ -4,7 +4,7 @@ import Icon from "../../../../../../components/Icon/Icon";
 import classes from "../../MyOrders.module.css";
 import ScrollBar from "../../../../../../components/ScrollBar";
 import {useTranslation} from "react-i18next";
-import {getOpenOrder} from "../api/myOrders";
+import {cancelOpenOrders, getOpenOrder} from "../api/myOrders";
 import {connect} from "react-redux";
 import {BN} from "../../../../../../utils/utils";
 import Loading from "../../../../../../components/Loading/Loading";
@@ -18,16 +18,21 @@ const OpenOrders = (props) => {
     const [openOrder, setOpenOrder] = useState(null)
     const [isLoading, setIsLoading] = useState(true)
 
+    const getOpenOrderData = async () => {
+        const openOrder = await getOpenOrder(activePair, accessToken)
+        if (openOrder.status === 200) {
+            setOrders(openOrder.data)
+        }
+    }
+
     useEffect(async () => {
-        await getOpenOrder(activePair, accessToken)
-            .then((openOrder) => {
-                if (openOrder.status === 200) {
-                    setOrders(openOrder.data)
-                }
-                setIsLoading(false)
-            })
+        getOpenOrderData().then(()=>setIsLoading(false))
     }, [activePair, lastTransaction])
 
+    const cancelOrder = async (orderId) => {
+        await cancelOpenOrders(activePair, accessToken, orderId)
+        await getOpenOrderData()
+    }
     if (isLoading) {
         return <Loading/>
     }
@@ -51,7 +56,7 @@ const OpenOrders = (props) => {
                 </tr>
                 </thead>
                 <tbody>
-                {orders.map((tr, index) => {
+                {orders.sort((a, b) => a.time - b.time).map((tr, index) => {
                         const origQty = new BN(tr.origQty)
                         const executedQty = new BN(tr.executedQty)
                         const pricePerUnit = new BN(tr.price)
@@ -65,7 +70,13 @@ const OpenOrders = (props) => {
                                 <td>{pricePerUnit.decimalPlaces(activePair.quoteMaxDecimal).toFormat()}</td>
                                 <td>{totalPrice.decimalPlaces(activePair.quoteMaxDecimal).toFormat()}</td>
                                 <td>{executedQty.dividedBy(origQty).multipliedBy(100).toFormat(0)}</td>
-                                <td>
+                                <td
+                                    onClick={() => cancelOrder(tr.orderId)}
+                                    data-html={true}
+                                    data-place="bottom"
+                                    data-effect="float"
+                                    data-tip={t("myOrders.cancelOrder")}
+                                >
                                     <Icon
                                         iconName="icon-cancel text-red font-size-sm"
                                         customClass={`${classes.iconBG} cursor-pointer`}
