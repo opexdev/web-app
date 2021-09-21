@@ -9,6 +9,7 @@ import {BN} from "../../../../../../utils/utils";
 const LastTradesTable = (props) => {
   const {t} = useTranslation();
   const {activePair ,data} = props
+
   return (
     <div className={`column container ${classes.container}`}>
       <ScrollBar>
@@ -18,10 +19,10 @@ const LastTradesTable = (props) => {
               <th>{t("date")}</th>
               <th>{t("time")}</th>
               <th>
-                {t("volume")}({activePair.base})
+                {t("volume")}({activePair.baseAsset})
               </th>
               <th>
-                {t("price")}({activePair.quote})
+                {t("price")}({activePair.quoteAsset})
               </th>
               <th>{t("totalPrice")}</th>
             </tr>
@@ -40,9 +41,9 @@ const LastTradesTable = (props) => {
                   <td style={{direction: "ltr"}}>
                     {moment(tr.time).format("HH:mm:ss")}
                   </td>
-                  <td>{amount.decimalPlaces(activePair.baseMaxDecimal).toFormat()}</td>
-                  <td>{pricePerUnit.decimalPlaces(activePair.quoteMaxDecimal).toFormat()}</td>
-                  <td>{totalPrice.decimalPlaces(activePair.quoteMaxDecimal).toFormat()}</td>
+                  <td>{amount.decimalPlaces(activePair.baseAssetPrecision).toFormat()}</td>
+                  <td>{pricePerUnit.decimalPlaces(activePair.quoteAssetPrecision).toFormat()}</td>
+                  <td>{totalPrice.decimalPlaces(activePair.quoteAssetPrecision).toFormat()}</td>
                 </tr>
               );
             })}

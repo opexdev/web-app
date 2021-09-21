@@ -7,10 +7,9 @@ const myOrder = axios.create({
 
 export const getOpenOrder = async (activePair, token ) => {
     const timestamp = Date.now()
-    const symbol = (activePair.base+"_"+activePair.quote).toLowerCase();
 
     const params = new URLSearchParams();
-    params.append('symbol', symbol);
+    params.append('symbol', activePair.symbol);
     params.append('recvWindow', "1");
     params.append('timestamp', timestamp.toString());
 
@@ -32,10 +31,9 @@ export const getOpenOrder = async (activePair, token ) => {
 
 export const getOrdersHistory = async (activePair, token ) => {
     const timestamp = Date.now()
-    const symbol = (activePair.base+"_"+activePair.quote).toLowerCase();
 
     const params = new URLSearchParams();
-    params.append('symbol', symbol);
+    params.append('symbol', activePair.symbol);
     params.append('recvWindow', "1");
     params.append('timestamp', timestamp.toString());
 

@@ -76,15 +76,15 @@ const OrderBookTable = (props) => {
     return `<div class="column jc-between col-100">
       <div class="row jc-between col-100">
         <span class="pl-05">${t("averagePrice")}:</span>
-        <span>${average.pricePerUnit.dividedBy(index + 1).decimalPlaces(activePair.quoteMaxDecimal).toFormat()}</span>
+        <span>${average.pricePerUnit.dividedBy(index + 1).decimalPlaces(activePair.quoteAssetPrecision).toFormat()}</span>
       </div>
       <div class="row jc-between col-100">
         <span class="pl-05">${t("totalVolume",)}:</span>
-        <span>${average.amount.decimalPlaces(activePair.baseMaxDecimal).toFormat()}</span>
+        <span>${average.amount.decimalPlaces(activePair.baseAssetPrecision).toFormat()}</span>
       </div>
       <div class="row jc-between col-100">
         <span class="pl-05">${t("totalPrice")}:</span>
-        <span>${average.total.decimalPlaces(activePair.quoteMaxDecimal).toFormat()}</span>
+        <span>${average.total.decimalPlaces(activePair.quoteAssetPrecision).toFormat()}</span>
       </div>
     </div>`
   }
@@ -121,13 +121,13 @@ const OrderBookTable = (props) => {
                 data-amount={avg.amount.toString()}
                 onClick={(e) =>
                   onSetSellOrder({
-                    pricePerUnit: pricePerUnit.decimalPlaces(activePair.quoteMaxDecimal).toString(),
+                    pricePerUnit: pricePerUnit.decimalPlaces(activePair.quoteAssetPrecision).toString(),
                     amount: parseFloat(e.currentTarget.getAttribute("data-amount")),
                   })
                 }>
-                <td>{pricePerUnit.decimalPlaces(activePair.quoteMaxDecimal).toFormat()}</td>
-                <td>{amount.decimalPlaces(activePair.baseMaxDecimal).toFormat()}</td>
-                <td>{totalPrice.decimalPlaces(activePair.quoteMaxDecimal).toFormat()}</td>
+                <td>{pricePerUnit.decimalPlaces(activePair.quoteAssetPrecision).toFormat()}</td>
+                <td>{amount.decimalPlaces(activePair.baseAssetPrecision).toFormat()}</td>
+                <td>{totalPrice.decimalPlaces(activePair.quoteAssetPrecision).toFormat()}</td>
               </tr>
             ) : (
               <tr
@@ -143,13 +143,13 @@ const OrderBookTable = (props) => {
                 data-amount={avg.amount.toString()}
                 onClick={(e) =>
                   onSetBuyOrder({
-                    pricePerUnit: parseFloat(pricePerUnit.decimalPlaces(activePair.quoteMaxDecimal).toString()),
+                    pricePerUnit: parseFloat(pricePerUnit.decimalPlaces(activePair.quoteAssetPrecision).toString()),
                     amount: parseFloat(e.currentTarget.getAttribute("data-amount")),
                   })
                 }>
-                <td>{totalPrice.decimalPlaces(activePair.quoteMaxDecimal).toFormat()}</td>
-                <td>{amount.decimalPlaces(activePair.baseMaxDecimal).toFormat()}</td>
-                <td>{pricePerUnit.decimalPlaces(activePair.quoteMaxDecimal).toFormat()}</td>
+                <td>{totalPrice.decimalPlaces(activePair.quoteAssetPrecision).toFormat()}</td>
+                <td>{amount.decimalPlaces(activePair.baseAssetPrecision).toFormat()}</td>
+                <td>{pricePerUnit.decimalPlaces(activePair.quoteAssetPrecision).toFormat()}</td>
               </tr>
             );
           })}

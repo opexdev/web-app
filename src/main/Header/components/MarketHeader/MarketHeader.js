@@ -17,10 +17,16 @@ const MarketHeader = (props) => {
     const getWallet = async () => {
         let accountWallet = await getAccount(accessToken)
         if (accountWallet.status === 200) {
+            let base = "-";
+            let quote = "-";
             const parsedData = parseWalletsResponse(accountWallet.data);
             setUserAccountInfo(parsedData)
-            const base = new BN(parsedData.wallets[activePair.base].free).decimalPlaces(activePair.baseMaxDecimal).toFormat();
-            const quote = new BN(parsedData.wallets[activePair.quote].free).decimalPlaces(activePair.quoteMaxDecimal).toFormat();
+            if(typeof parsedData.wallets[activePair.baseAsset] !== 'undefined'){
+                base = new BN(parsedData.wallets[activePair.baseAsset].free).decimalPlaces(activePair.baseAssetPrecision).toFormat();
+            }
+            if(typeof parsedData.wallets[activePair.quoteAsset] !== 'undefined') {
+                quote = new BN(parsedData.wallets[activePair.quoteAsset].free).decimalPlaces(activePair.quoteAssetPrecision).toFormat();
+            }
             if (currentWallet.base !== base || currentWallet.quote !== quote) {
                 setCurrentWallet({base, quote})
             }
@@ -34,7 +40,7 @@ const MarketHeader = (props) => {
     return (
         <Fragment>
             <div className={`col-35 column ai-start`}>
-                <h2 className="mb-05">{t(`pair.${activePair.pair}`)}</h2>
+                <h2 className="mb-05">{t(`pair.${activePair.name}`)}</h2>
                 <p>
                     {t("header.lastPrice")}:{" "}
                     <span>
@@ -45,7 +51,7 @@ const MarketHeader = (props) => {
           </span>{" "}
                     {lastTradePrice === null
                         ? ""
-                        : t("currency." + activePair.quote)}
+                        : t("currency." + activePair.quoteAsset)}
                 </p>
             </div>
             <div className={`col-30 column ai-center`}>
@@ -57,11 +63,11 @@ const MarketHeader = (props) => {
                             customClass={`mx-05 ${classes.iconBG}`}
                         />
                         <span>{currentWallet.base}</span>
-                        <span>{t("currency." + activePair.base)}</span>
+                        <span>{t("currency." + activePair.baseAsset)}</span>
                     </div>
                     <div className="col-50 flex ai-center  jc-start">
                         <span>{currentWallet.quote}</span>
-                        <span>{t("currency." + activePair.quote)}</span>
+                        <span>{t("currency." + activePair.quoteAsset)}</span>
                         <Icon
                             iconName="icon-plus icon-white font-size-sm flex"
                             customClass={`mx-05 ${classes.iconBG}`}

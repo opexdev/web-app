@@ -1,103 +1,77 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import classes from "./MarketCard.module.css";
 import ScrollBar from "../../../../../../components/ScrollBar";
-import {useTranslation} from "react-i18next";
 import Icon from "../../../../../../components/Icon/Icon";
-import MarketChart from "../MarketChart/MarketChart";
 import {images} from "../../../../../../assets/images";
-import {setActivePair} from "../../../../../../store/actions";
+import {setActivePairInitiate} from "../../../../../../store/actions";
 import {connect} from "react-redux";
+import {getPrice} from "../../api/market";
+import {BN} from "../../../../../../utils/utils";
 
 const MarketCard = (props) => {
-  const {t} = useTranslation();
-  const red = getComputedStyle(document.documentElement).getPropertyValue(
-    "--textRed",
-  );
-  const green = getComputedStyle(document.documentElement).getPropertyValue(
-    "--textGreen",
-  );
+    const [symbols, setSymbols] = useState([])
 
-  const imageHandler = (pairName) => {
-    const [base, quote] = pairName.split("/");
-    return images[base];
-  };
+    useEffect(() => {
+        setSymbols(props.pairs)
+        let newPair = [...props.pairs]
+        getPrice().then((res) => {
+            if(res && res.status === 200 ){
+                newPair = newPair.map((p) => {
+                    const pair = res.data.find(b => b.symbol === p.symbol)
+                    if(pair) p.price = pair.price
+                    return p
+                })
+            }
+            setSymbols(newPair)
+        })
+    }, [props.pairs])
 
-  let items = props.pairs.map((pair) => (
-    <div
-      onClick={() => props.onSetActivePair(pair.name)}
-      key={pair.name + Math.random()}
-      className={`container row jc-between ai-center px-05 py-05 cursor-pointer double-striped ${classes.container} ${classes.doubleStriped} ${props.activePair === pair.name ? classes.selected : ""} `}>
-      <div className={` row jc-between ai-center ${classes.marketCardImage}`}>
-        <img
-          className={`img-md flex`}
-          src={imageHandler(pair.name)}
-          alt={pair.name}
-          title={pair.name}
-        />
-      </div>
-      <div className={`row jc-between ai-center ${classes.marketCardContent}`}>
-        <div className={`column `}>
-          <span>{pair.name}</span>
-          <div className={`row jc-between ai-center`}>
-            <span
-              onClick={(e) => {
-                e.stopPropagation();
-                props.addFav(pair.name);
-              }}
-              data-name={pair.name}>
-              <Icon
-                iconName={`${
-                  props.favPair.includes(pair.name)
-                    ? "icon-star-filled"
-                    : "icon-star"
-                } text-color font-size-md`}
-              />
-            </span>
-            <span
-              className={`font-size-sm ${
-                pair.Type === "increase" ? "text-green" : "text-red"
-              } `}>
-              %{pair.Change}
-            </span>
-          </div>
+    return (
+        <div style={{height: "100%"}}>
+            <ScrollBar>
+                {symbols.map((pair) => (
+                    <div onClick={() => props.onSetActivePair(pair, props.id)}
+                         key={pair.symbol}
+                         className={`container row jc-between ai-center px-05 py-05 cursor-pointer double-striped ${classes.container} ${props.activePair === pair.symbol ? classes.selected : ""} `}>
+                        <div className={` row jc-between ai-center ${classes.marketCardImage}`}>
+                            <img
+                                className="img-md flex"
+                                src={images[pair.baseAsset]}
+                                alt={pair.symbol}
+                                title={pair.symbol}
+                            />
+                        </div>
+                        <div className={`row jc-between ai-center ${classes.marketCardContent}`}>
+                            <div className="row">
+                                <div onClick={(e) => {
+                                    e.stopPropagation();
+                                    props.addFav(pair.symbol);
+                                }} data-name={pair.symbol}>
+                                    <Icon
+                                        iconName={`${props.favPair.includes(pair.symbol) ? "icon-star-filled" : "icon-star"} text-color font-size-md`}/>
+                                </div>
+                                {pair.baseAsset +"/"+pair.quoteAsset}
+                            </div>
+                            <div>
+                                {pair.price ? new BN( pair.price).toFormat() : "-"}
+                            </div>
+                        </div>
+                    </div>))}
+            </ScrollBar>
         </div>
-
-        <div className={`column ai-center`}>
-          <MarketChart
-            color={pair.Type === "increase" ? green : red}
-            data={pair.price7d}
-            chartId={pair.name}
-          />
-        </div>
-        <div className={`column  ai-end`}>
-          <p>
-            <span>{pair.Price}</span> {t("junk.t")}
-          </p>
-          <p className="font-size-sm">
-            {t("junk.vol")}: <span>{pair.Vol} ~</span> {t("junk.billionT")}
-          </p>
-        </div>
-      </div>
-    </div>
-  ));
-
-  return (
-    <div style={{height: "100%"}}>
-      <ScrollBar>{items}</ScrollBar>
-    </div>
-  );
+    );
 };
 
 const mapStateToProps = (state) => {
-  return {
-    activePair: state.global.activePair.pair,
-  };
+    return {
+        activePair: state.global.activePair.symbol,
+    };
 };
 
 const mapDispatchToProps = (dispatch) => {
-  return {
-    onSetActivePair: (pair) => dispatch(setActivePair(pair)),
-  };
+    return {
+        onSetActivePair: (pair, activeTab) => dispatch(setActivePairInitiate(pair, activeTab)),
+    };
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(MarketCard);

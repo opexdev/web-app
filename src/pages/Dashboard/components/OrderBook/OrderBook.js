@@ -64,8 +64,8 @@ const OrderBook = (props) => {
             <div className={`column border-bottom jc-between header-radius card-header-bg ${classes.header}`}>
                 <div className="row jc-start">
                     <h3>
-                        {t("orderBook.title")} ({t("currency." + activePair.base)}/
-                        {t("currency." + activePair.quote)})
+                        {t("orderBook.title")} ({t("currency." + activePair.baseAsset)}/
+                        {t("currency." + activePair.quoteAsset)})
                     </h3>
                 </div>
                 <div className="row jc-center">

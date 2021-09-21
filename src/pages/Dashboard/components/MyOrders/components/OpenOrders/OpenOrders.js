@@ -44,10 +44,10 @@ const OpenOrders = (props) => {
                     <th>{t("date")}</th>
                     <th>{t("time")}</th>
                     <th>
-                        {t("volume")}({activePair.base})
+                        {t("volume")}({activePair.baseAsset})
                     </th>
                     <th>
-                        {t("pricePerUnit")}({activePair.quote})
+                        {t("pricePerUnit")}({activePair.quoteAsset})
                     </th>
                     <th>{t("totalPrice")}</th>
                     <th>{t("myOrders.donePercentage")}</th>
@@ -66,9 +66,9 @@ const OpenOrders = (props) => {
                             <tr className={tr.side === "BUY" ? "text-green" : "text-red"}>
                                 <td>{moment(tr.time).format("jYY/jMM/jDD")}</td>
                                 <td>{moment(tr.time).format("HH:mm:ss")}</td>
-                                <td>{origQty.decimalPlaces(activePair.baseMaxDecimal).toFormat()}</td>
-                                <td>{pricePerUnit.decimalPlaces(activePair.quoteMaxDecimal).toFormat()}</td>
-                                <td>{totalPrice.decimalPlaces(activePair.quoteMaxDecimal).toFormat()}</td>
+                                <td>{origQty.decimalPlaces(activePair.baseAssetPrecision).toFormat()}</td>
+                                <td>{pricePerUnit.decimalPlaces(activePair.quoteAssetPrecision).toFormat()}</td>
+                                <td>{totalPrice.decimalPlaces(activePair.quoteAssetPrecision).toFormat()}</td>
                                 <td>{executedQty.dividedBy(origQty).multipliedBy(100).toFormat(0)}</td>
                                 <td
                                     onClick={() => cancelOrder(tr.orderId)}
@@ -108,7 +108,7 @@ const OpenOrders = (props) => {
                                         </p>
                                         <p className="col-46 row jc-between">
                                             {t("myOrders.tradedAmount")} :{" "}
-                                            <span>{executedQty.decimalPlaces(activePair.baseMaxDecimal).toFormat()}</span>
+                                            <span>{executedQty.decimalPlaces(activePair.baseAssetPrecision).toFormat()}</span>
                                         </p>
                                     </div>
                                     <div
@@ -120,7 +120,7 @@ const OpenOrders = (props) => {
                                         </p>
                                         <p className="col-46 row jc-between">
                                             {t("myOrders.tradedPrice")} :{" "}
-                                            <span>{executedQty.multipliedBy(pricePerUnit).decimalPlaces(activePair.baseMaxDecimal).toFormat()}</span>
+                                            <span>{executedQty.multipliedBy(pricePerUnit).decimalPlaces(activePair.baseAssetPrecision).toFormat()}</span>
                                         </p>
                                     </div>
                                 </td>

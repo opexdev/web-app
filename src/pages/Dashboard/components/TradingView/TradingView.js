@@ -126,11 +126,14 @@ const TradingView = (props) => {
     const volumeSeries = chart.current.addHistogramSeries(histogramColors);
 
     fetch(
-      `https://api.binance.com/api/v3/klines?symbol=${props.activePair.base}${
-        props.activePair.quote === "IRT" ? "USDT" : props.activePair.quote
+      `https://api.binance.com/api/v3/klines?symbol=${props.activePair.baseAsset}${
+        props.activePair.quoteAsset === "IRT" ? "USDT" : props.activePair.quoteAsset
       }&interval=1d&limit=200`,
     )
-      .then((res) => res.json())
+      .then((res) => {
+        if(res.status === 200) return res.json()
+        return JSON.parse(mock)
+      })
       .catch(() => JSON.parse(mock))
       .then((data) => {
         const cdata = data.map((d) => {

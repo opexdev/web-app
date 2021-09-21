@@ -77,15 +77,15 @@ const OrderBookTableSafari = (props) => {
     return `<div class="column jc-between col-100">
       <div class="row jc-between col-100">
         <span class="pl-05">${t("averagePrice")}:</span>
-        <span>${average.pricePerUnit.dividedBy(index + 1).decimalPlaces(activePair.quoteMaxDecimal).toFormat()}</span>
+        <span>${average.pricePerUnit.dividedBy(index + 1).decimalPlaces(activePair.quoteAssetPrecision).toFormat()}</span>
       </div>
       <div class="row jc-between col-100">
         <span class="pl-05">${t("totalVolume",)}:</span>
-        <span>${average.amount.decimalPlaces(activePair.baseMaxDecimal).toFormat()}</span>
+        <span>${average.amount.decimalPlaces(activePair.baseAssetPrecision).toFormat()}</span>
       </div>
       <div class="row jc-between col-100">
         <span class="pl-05">${t("totalPrice")}:</span>
-        <span>${average.total.decimalPlaces(activePair.quoteMaxDecimal).toFormat()}</span>
+        <span>${average.total.decimalPlaces(activePair.quoteAssetPrecision).toFormat()}</span>
       </div>
     </div>`
   }
@@ -122,13 +122,13 @@ const OrderBookTableSafari = (props) => {
                   data-amount={avg.amount.toString()}
                   onClick={(e) =>
                       onSetSellOrder({
-                        pricePerUnit: pricePerUnit.decimalPlaces(activePair.quoteMaxDecimal).toString(),
+                        pricePerUnit: pricePerUnit.decimalPlaces(activePair.quoteAssetPrecision).toString(),
                         amount: parseFloat(e.currentTarget.getAttribute("data-amount")),
                       })
                   }>
-                  <span className="width-30">{pricePerUnit.decimalPlaces(activePair.quoteMaxDecimal).toFormat()}</span>
-                  <span className="width-30">{amount.decimalPlaces(activePair.baseMaxDecimal).toFormat()}</span>
-                  <span className="width-40">{totalPrice.decimalPlaces(activePair.quoteMaxDecimal).toFormat()}</span>
+                  <span className="width-30">{pricePerUnit.decimalPlaces(activePair.quoteAssetPrecision).toFormat()}</span>
+                  <span className="width-30">{amount.decimalPlaces(activePair.baseAssetPrecision).toFormat()}</span>
+                  <span className="width-40">{totalPrice.decimalPlaces(activePair.quoteAssetPrecision).toFormat()}</span>
                 </div>
               ) : (
                 <div
@@ -144,13 +144,13 @@ const OrderBookTableSafari = (props) => {
                   data-amount={avg.amount.toString()}
                   onClick={(e) =>
                       onSetBuyOrder({
-                        pricePerUnit: parseFloat(pricePerUnit.decimalPlaces(activePair.quoteMaxDecimal).toString()),
+                        pricePerUnit: parseFloat(pricePerUnit.decimalPlaces(activePair.quoteAssetPrecision).toString()),
                         amount: parseFloat(e.currentTarget.getAttribute("data-amount")),
                       })
                   }>
-                  <span className="width-40">{totalPrice.decimalPlaces(activePair.quoteMaxDecimal).toFormat()}</span>
-                  <span className="width-30">{amount.decimalPlaces(activePair.baseMaxDecimal).toFormat()}</span>
-                  <span className="width-30">{pricePerUnit.decimalPlaces(activePair.quoteMaxDecimal).toFormat()}</span>
+                  <span className="width-40">{totalPrice.decimalPlaces(activePair.quoteAssetPrecision).toFormat()}</span>
+                  <span className="width-30">{amount.decimalPlaces(activePair.baseAssetPrecision).toFormat()}</span>
+                  <span className="width-30">{pricePerUnit.decimalPlaces(activePair.quoteAssetPrecision).toFormat()}</span>
                 </div>
               );
             })}

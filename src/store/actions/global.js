@@ -21,9 +21,18 @@ export const setLoading = (isLoading) => {
   };
 };
 
-export const setActivePair = (pair) => {
+export const setActivePairInitiate = (pair, activeTab) => {
+  return {
+    type: actionTypes.SET_ACTIVE_PAIR_INITIATE,
+    activeTab: activeTab,
+    pair: pair,
+  };
+};
+
+export const setActivePair = (pair , activeTab) => {
   return {
     type: actionTypes.SET_ACTIVE_PAIR,
+    activeTab: activeTab,
     pair: pair,
   };
 };

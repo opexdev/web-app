@@ -39,10 +39,10 @@ const OrdersHistory = (props) => {
                     <th>{t("date")}</th>
                     <th>{t("time")}</th>
                     <th>
-                        {t("volume")}({activePair.base})
+                        {t("volume")}({activePair.baseAsset})
                     </th>
                     <th>
-                        {t("pricePerUnit")}({activePair.quote})
+                        {t("pricePerUnit")}({activePair.quoteAsset})
                     </th>
                     <th>{t("totalPrice")}</th>
                     <th>{t("status")}</th>

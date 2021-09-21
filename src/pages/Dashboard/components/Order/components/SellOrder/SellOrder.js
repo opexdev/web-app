@@ -50,7 +50,7 @@ const SellOrder = (props) => {
                         i18nKey="orders.minOrder"
                         values={{
                             min: activePair.baseRange.min,
-                            currency: t("currency." + activePair.base),
+                            currency: t("currency." + activePair.baseAsset),
                         }}
                     />
                 ),
@@ -64,7 +64,7 @@ const SellOrder = (props) => {
                         i18nKey="orders.maxOrder"
                         values={{
                             max: activePair.baseRange.max,
-                            currency: t("currency." + activePair.base),
+                            currency: t("currency." + activePair.baseAsset),
                         }}
                     />)
             })
@@ -90,8 +90,8 @@ const SellOrder = (props) => {
                 setOrder({
                     ...order,
                     reqAmount,
-                    totalPrice: reqAmount.multipliedBy(order.pricePerUnit).decimalPlaces(activePair.quoteMaxDecimal),
-                    tradeFee: reqAmount.multipliedBy(tradeFee[activePair.quote]).decimalPlaces(activePair.baseMaxDecimal),
+                    totalPrice: reqAmount.multipliedBy(order.pricePerUnit).decimalPlaces(activePair.quoteAssetPrecision),
+                    tradeFee: reqAmount.multipliedBy(tradeFee[activePair.quoteAsset]).decimalPlaces(activePair.baseAssetPrecision),
                 });
                 break;
             case "pricePerUnit":
@@ -99,18 +99,18 @@ const SellOrder = (props) => {
                 setOrder({
                     ...order,
                     pricePerUnit: pricePerUnit,
-                    totalPrice: pricePerUnit.multipliedBy(order.reqAmount).decimalPlaces(activePair.quoteMaxDecimal),
-                    tradeFee: order.reqAmount.multipliedBy(tradeFee[activePair.quote]).decimalPlaces(activePair.baseMaxDecimal),
+                    totalPrice: pricePerUnit.multipliedBy(order.reqAmount).decimalPlaces(activePair.quoteAssetPrecision),
+                    tradeFee: order.reqAmount.multipliedBy(tradeFee[activePair.quoteAsset]).decimalPlaces(activePair.baseAssetPrecision),
                 });
                 break;
             case "totalPrice":
                 const totalPrice = new BN(value);
-                const req = totalPrice.dividedBy(order.pricePerUnit).decimalPlaces(activePair.baseMaxDecimal);
+                const req = totalPrice.dividedBy(order.pricePerUnit).decimalPlaces(activePair.baseAssetPrecision);
                 setOrder({
                     ...order,
                     reqAmount: req.isFinite() ? req : new BN(0),
                     totalPrice,
-                    tradeFee: req.isFinite() ? req.multipliedBy(tradeFee[activePair.quote]).decimalPlaces(activePair.baseMaxDecimal) : new BN(0),
+                    tradeFee: req.isFinite() ? req.multipliedBy(tradeFee[activePair.quoteAsset]).decimalPlaces(activePair.baseAssetPrecision) : new BN(0),
                 });
                 currencyValidator("reqAmount", req, activePair.baseRange);
                 break;
@@ -121,7 +121,7 @@ const SellOrder = (props) => {
     useEffect(() => {
         setOrder((prevState) => ({
             ...order,
-            tradeFee: prevState.totalPrice.multipliedBy(tradeFee[activePair.quote]).decimalPlaces(activePair.baseMaxDecimal),
+            tradeFee: prevState.totalPrice.multipliedBy(tradeFee[activePair.quoteAsset]).decimalPlaces(activePair.baseAssetPrecision),
         }));
     }, [tradeFee]);
 
@@ -139,25 +139,25 @@ const SellOrder = (props) => {
             ...order,
             reqAmount,
             pricePerUnit: pricePerUnit,
-            totalPrice: reqAmount.multipliedBy(pricePerUnit).decimalPlaces(activePair.quoteMaxDecimal),
-            tradeFee: reqAmount.multipliedBy(tradeFee[activePair.quote]).decimalPlaces(activePair.baseMaxDecimal),
+            totalPrice: reqAmount.multipliedBy(pricePerUnit).decimalPlaces(activePair.quoteAssetPrecision),
+            tradeFee: reqAmount.multipliedBy(tradeFee[activePair.quoteAsset]).decimalPlaces(activePair.baseAssetPrecision),
         });
         currencyValidator("reqAmount", reqAmount, activePair.baseRange);
     }, [selectedSellOrder]);
 
     const fillSellByWallet = () => {
         if (order.pricePerUnit.isEqualTo(0)) {
-            const totalPrice = new BN(wallets[activePair.quote].free);
+            const totalPrice = new BN(wallets[activePair.quoteAsset].free);
             setOrder({
                 ...order,
-                reqAmount: totalPrice.dividedBy(bestSellPrice).decimalPlaces(activePair.baseMaxDecimal),
+                reqAmount: totalPrice.dividedBy(bestSellPrice).decimalPlaces(activePair.baseAssetPrecision),
                 pricePerUnit: new BN(bestSellPrice),
                 totalPrice,
-                tradeFee: totalPrice.multipliedBy(tradeFee[activePair.quote]).decimalPlaces(activePair.baseMaxDecimal),
+                tradeFee: totalPrice.multipliedBy(tradeFee[activePair.quoteAsset]).decimalPlaces(activePair.baseAssetPrecision),
             });
         } else {
             sellPriceHandler(
-                wallets[activePair.quote].free.toString(),
+                wallets[activePair.quoteAsset].free.toString(),
                 "totalPrice",
             );
         }
@@ -171,7 +171,7 @@ const SellOrder = (props) => {
     };
 
     useEffect(() => {
-        if(order.reqAmount.isGreaterThan(wallets[activePair.base].free)){
+        if(order.reqAmount.isGreaterThan(wallets[activePair.baseAsset].free)){
             return setAlert({
                 ...alert,
                 reqAmount: t('orders.notEnoughBalance')
@@ -209,7 +209,7 @@ const SellOrder = (props) => {
             toast.success(<Trans
                 i18nKey="orders.success"
                 values={{
-                    name: t("currency." + activePair.base),
+                    name: t("currency." + activePair.baseAsset),
                     type: t("sell"),
                     reqAmount: order.reqAmount,
                     pricePerUnit: order.pricePerUnit,
@@ -243,14 +243,14 @@ const SellOrder = (props) => {
                 <p onClick={() => fillSellByWallet()}>
                     {t("orders.availableAmount")}:{" "}
                     <span className="cursor-pointer">
-            {wallets[activePair.base].free.toLocaleString()}{" "}
-                        {t("currency." + activePair.base)}
+            {wallets[activePair.baseAsset].free.toLocaleString()}{" "}
+                        {t("currency." + activePair.baseAsset)}
           </span>
                 </p>
                 <p onClick={() => fillSellByBestPrice()}>
                     {t("orders.bestOffer")}:{" "}
                     <span className="cursor-pointer">
-                        {bestSellPrice.toLocaleString()}{" "}{t("currency." + activePair.quote)}
+                        {bestSellPrice.toLocaleString()}{" "}{t("currency." + activePair.quoteAsset)}
                     </span>
                 </p>
             </div>
@@ -267,9 +267,9 @@ const SellOrder = (props) => {
             {order.stopLimit ? (
                 <NumberInput
                     lead={t("orders.stopPrice")}
-                    after={t("currency." + props.activePair.base)}
+                    after={t("currency." + props.activePair.baseAsset)}
                     value={order.stopPrice}
-                    maxDecimal={props.activePair.baseMaxDecimal}
+                    maxDecimal={props.activePair.baseAssetPrecision}
                     onchange={(value) =>
                         setOrder({...order, stopPrice: value.floatValue})
                     }
@@ -280,9 +280,9 @@ const SellOrder = (props) => {
 
             <NumberInput
                 lead={t("orders.amount")}
-                after={t("currency." + activePair.base)}
+                after={t("currency." + activePair.baseAsset)}
                 value={order.reqAmount.toString()}
-                maxDecimal={activePair.baseMaxDecimal}
+                maxDecimal={activePair.baseAssetPrecision}
                 onchange={(e) => sellPriceHandler(e.target.value, "reqAmount")}
                 alert={alert.reqAmount}
             />
@@ -293,17 +293,17 @@ const SellOrder = (props) => {
                     lead={t("orders.pricePerUnit")}
                     isAllowed={false}
                     prefix="~"
-                    after={t("currency." + activePair.quote)}
+                    after={t("currency." + activePair.quoteAsset)}
                     value={order.pricePerUnit.toString()}
-                    maxDecimal={activePair.quoteMaxDecimal}
+                    maxDecimal={activePair.quoteAssetPrecision}
                     onchange={(e) => sellPriceHandler(e.target.value, "pricePerUnit")}
                 />
             ) : (
                 <NumberInput
                     lead={t("orders.pricePerUnit")}
-                    after={t("currency." + activePair.quote)}
+                    after={t("currency." + activePair.quoteAsset)}
                     value={order.pricePerUnit.toString()}
-                    maxDecimal={activePair.quoteMaxDecimal}
+                    maxDecimal={activePair.quoteAssetPrecision}
                     onchange={(e) => sellPriceHandler(e.target.value, "pricePerUnit")}
                 />
             )}
@@ -321,8 +321,8 @@ const SellOrder = (props) => {
             <NumberInput
                 lead={t("orders.totalPrice")}
                 value={order.totalPrice.toString()}
-                maxDecimal={activePair.quoteMaxDecimal}
-                after={t("currency." + activePair.quote)}
+                maxDecimal={activePair.quoteAssetPrecision}
+                after={t("currency." + activePair.quoteAsset)}
                 onchange={(e) => sellPriceHandler(e.target.value, "totalPrice")}
             />
 
@@ -330,12 +330,12 @@ const SellOrder = (props) => {
                 <p>
                     {t("orders.tradeFee")}:{" "}
                     {order.tradeFee.toFormat()}{" "}
-                    {t("currency." + activePair.quote)}
+                    {t("currency." + activePair.quoteAsset)}
                 </p>
                 <p>
                     {t("orders.getAmount")}:{" "}
-                    {order.reqAmount.minus(order.tradeFee).decimalPlaces(activePair.baseMaxDecimal).toNumber()}{" "}
-                    {t("currency." + activePair.quote)}
+                    {order.reqAmount.minus(order.tradeFee).decimalPlaces(activePair.baseAssetPrecision).toNumber()}{" "}
+                    {t("currency." + activePair.quoteAsset)}
                 </p>
             </div>
             <Button
