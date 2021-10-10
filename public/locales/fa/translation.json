@@ -64,7 +64,7 @@
     "CANCELED": "لغو شده",
     "PENDING_CANCEL": "لغو معلق",
     "EXPIRED": "منقضی شده",
-    "PARTIALLY_FILLED": "نیمه تمام"
+    "PARTIALLY_FILLED": "کامل نشده"
   },
   "messagesTitle": {
     "successful": "عدم تائید معامله",
@@ -157,6 +157,11 @@
   "LastTrades": {
     "title": "معامله های اخیر"
   },
+  "charts": {
+    "title": "نمودار قیمت",
+    "globalChart": "جهانی",
+    "opexChart": "اپکس"
+  },
   "orderBook": {
     "title": "دفتر پیشنهادها"
   },
@@ -172,8 +177,8 @@
     "aliveOrder": "سفارش های جاری",
     "stoppedOrder": "متوقف",
     "orderHistory": "تاریخچه سفارش ها",
-    "stopOrderTime": "زمان انجام تراکنش",
-    "startOrderTime": "زمان جاری شدن",
+    "stopOrderTime": "زمان آخرین معامله",
+    "startOrderTime": "زمان ثبت سفارش",
     "cancelOrder": "لغو سفارش",
     "orders": "معامله ها"
   },

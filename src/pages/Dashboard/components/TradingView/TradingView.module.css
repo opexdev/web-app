@@ -1,9 +1,9 @@
 .chartContainer {
-  height: 50vh;
+  height: 100%;
   align-items: center;
   justify-content: center;
   display: flex;
-  padding: 1vw;
+  padding: 0 1vw;
   flex-direction: row;
   direction: ltr;
 }
