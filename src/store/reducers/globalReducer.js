@@ -42,7 +42,7 @@ const initialState = {
             amount: 0,
         },
     },
-    activeMarketTab: 'BTC',
+    activeMarketTab: 0,
     isLoading: true,
     isDark: false,
 };

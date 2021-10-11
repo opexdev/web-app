@@ -11,9 +11,12 @@ import {
 } from "../../../../store/actions";
 import {useHistory} from "react-router-dom";
 import {useTranslation} from "react-i18next";
-import {getAccount, parseWalletsResponse} from "../../../../main/SubMenu/components/WalletSubMenu/api/wallet";
 import {setUserAccountInfo} from "../../../../store/actions/auth";
 import Button from "../../../../components/Button/Button";
+import {
+    getAccount,
+    parseWalletsResponse
+} from "../../../../main/Browser/Sections/SubMenu/components/WalletSubMenu/api/wallet";
 
 
 const LoginForm = (props) => {

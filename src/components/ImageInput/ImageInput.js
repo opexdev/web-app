@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from "react";
 import {useDropzone} from "react-dropzone";
-import classes from "../../pages/Settings/components/Authentication/components/SendPhotosStep/SendPhotosStep.module.css";
+import classes from "../../main/Browser/Sections/Content/components/Settings/components/Authentication/components/SendPhotosStep/SendPhotosStep.module.css";
 import Icon from "../Icon/Icon";
 import {useTranslation} from "react-i18next";
 import ReactTooltip from "react-tooltip";
@@ -10,6 +10,7 @@ const ImageInput = (props) => {
 
   useEffect(() => {
     ReactTooltip.rebuild();
+
   });
 
   const [files, setFiles] = useState([]);
