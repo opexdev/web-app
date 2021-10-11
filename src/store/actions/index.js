@@ -2,6 +2,7 @@ export {
   loadConfig,
   setLoading,
   setActivePair,
+  setActivePairInitiate,
   setThemeInitiate,
   setTheme,
   setBuyOrder,

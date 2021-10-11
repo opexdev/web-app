@@ -9,9 +9,6 @@ import {setPanelTokensInitiate} from "../../../../store/actions";
 import {connect} from "react-redux";
 import {validateEmail} from "../../../../utils/utils";
 import Button from "../../../../components/Button/Button";
-import Loading from "../../../../components/Loading/Loading";
-import LastTradesTable from "../../../Dashboard/components/LastTrades/components/LastTradesTable/LastTradesTable";
-import Error from "../../../../components/Error/Error";
 
 const ForgetPassword = (props) => {
     const [error, setError] = useState([]);

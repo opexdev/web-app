@@ -481,7 +481,7 @@
     {
       "uid": "dc4e0d236b28459de8c40249ed26506b",
       "css": "menu_vertical",
-      "code": 59422,
+      "code": 10006,
       "src": "custom_icons",
       "selected": true,
       "svg": {
@@ -611,6 +611,12 @@
       "search": [
         "eye"
       ]
+    },
+    {
+      "uid": "d6944e1d9af302093d43b299bbecbbbe",
+      "css": "hash",
+      "code": 59013,
+      "src": "iconic"
     }
   ]
 }

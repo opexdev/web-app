@@ -35,8 +35,10 @@
   "firstName": "نام",
   "lastName": "نام خانوادگی",
   "email": "ایمیل",
+  "desktopSupport": "اوپکس فعلاً برای نمایش در موبایل بهینه نشده است. لطفاً لینک را در کامپیوتر باز کنید! :)",
   "error": "خطا در دریافت اطلاعات ... !",
   "loading": "در حال دریافت اطلاعات ...",
+  "noData": "در حال حاضر هیچ اطلاعاتی وجود ندارد",
   "currency": {
     "IRT": "تومان",
     "Euro": "یورو",
@@ -47,7 +49,7 @@
     "DOGE": "دوج کوین",
     "LTC": "لایت کوین",
     "BCH": "بیتکوین کش",
-    "NLN": "نیلین*"
+    "NLN": "اپکس"
   },
   "routes": {
     "/settings/profile": "مشخصات کاربری",
@@ -62,7 +64,7 @@
     "CANCELED": "لغو شده",
     "PENDING_CANCEL": "لغو معلق",
     "EXPIRED": "منقضی شده",
-    "PARTIALLY_FILLED": "نیمه تمام"
+    "PARTIALLY_FILLED": "کامل نشده"
   },
   "messagesTitle": {
     "successful": "عدم تائید معامله",
@@ -94,7 +96,9 @@
     "BCH/IRT": "بیتکوین کش/تومان",
     "ETH/USDT": "اتریوم/تتر",
     "DOGE/USDT": "دوج کوین/تتر",
-    "BCH/USDT": "بیتکوین کش/تتر"
+    "BCH/USDT": "بیتکوین کش/تتر",
+    "NLN/BTC": "اپکس/بیتکوین",
+    "NLN/USDT": "اپکس/تتر"
   },
   "header": {
     "lastPrice": "آخرین قیمت",
@@ -118,6 +122,10 @@
   "settings": {
     "title": "تنظیمات"
   },
+  "Languages": {
+    "Persian": "فارسی",
+    "English": "English"
+  },
   "overview": {
     "title": "نمای کلی",
     "change": "تغییر",
@@ -130,7 +138,8 @@
     "title": "سفارش",
     "minOrder": "حداقل مقدار سفارش {{min}} {{currency}} میباشد",
     "maxOrder": "حداکثر مقدار سفارش {{max}} {{currency}} میباشد",
-    "divisibility": "بخش پذیری !",
+    "divisibility": "مقدار وارد شده باید بر {{mod}} بخشپذیر باشند‍!",
+    "notEnoughBalance": "موجودی کافی نیست!",
     "availableAmount": "موجودی قابل معامله",
     "bestOffer": "بهترین پیشنهاد",
     "stopLimit": "سفارش متوقف",
@@ -148,6 +157,11 @@
   "LastTrades": {
     "title": "معامله های اخیر"
   },
+  "charts": {
+    "title": "نمودار قیمت",
+    "globalChart": "جهانی",
+    "opexChart": "اپکس"
+  },
   "orderBook": {
     "title": "دفتر پیشنهادها"
   },
@@ -163,8 +177,9 @@
     "aliveOrder": "سفارش های جاری",
     "stoppedOrder": "متوقف",
     "orderHistory": "تاریخچه سفارش ها",
-    "stopOrderTime": "زمان انجام تراکنش",
-    "startOrderTime": "زمان جاری شدن",
+    "stopOrderTime": "زمان آخرین معامله",
+    "startOrderTime": "زمان ثبت سفارش",
+    "cancelOrder": "لغو سفارش",
     "orders": "معامله ها"
   },
   "WalletSubMenu": {

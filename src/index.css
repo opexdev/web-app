@@ -419,6 +419,9 @@ body {
 .img-lg {
   width: 3.5vw;
 }
+.img-lg-1 {
+  width: 5vw;
+}
 .img-lg-plus {
   width: 10vw;
 }
@@ -741,6 +744,10 @@ tr {
 .py-2 {
   padding-top: 2vh;
   padding-bottom: 2vh;
+}
+.py-3 {
+  padding-top: 3vh;
+  padding-bottom: 3vh;
 }
 .py-4 {
   padding-top: 4vh;

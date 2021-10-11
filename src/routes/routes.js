@@ -1,6 +1,5 @@
 export const Dashboard = "/";
 export const Login = "/login";
-export const Guide = "/guide";
 export const Wallet = "/wallet";
 export const Technical = "/technical";
 //export const Messages = '/messages';
@@ -11,3 +10,6 @@ export const Profile = "/settings/profile";
 export const Security = "/settings/security";
 export const Personalization = "/settings/personalization";
 export const Authentication = "/settings/authentication";
+
+
+export const Guide = "/guide";

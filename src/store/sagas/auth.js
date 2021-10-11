@@ -2,9 +2,10 @@ import {put} from "redux-saga/effects";
 import * as actions from "../actions/index";
 
 export function* logout() {
-  const isDark = localStorage.getItem('isDark');
-  yield localStorage.clear();
-  yield localStorage.setItem('isDark',isDark);
+  yield localStorage.removeItem("accessToken");
+  yield localStorage.removeItem("accessTokenExpires");
+  yield localStorage.removeItem("refreshToken");
+  yield localStorage.removeItem("refreshTokenExpires");
   yield put(actions.logout());
 }
 

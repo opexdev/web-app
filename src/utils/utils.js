@@ -1,3 +1,5 @@
+import BigNumber from "bignumber.js";
+
 export const numberFixedDecimal = (val, decimal) => {
   return Math.round(val * decimal) / decimal;
 };
@@ -12,6 +14,9 @@ export const decimalChecker = (value, decimal) => {
 };
 
 export const parsePriceString = (value) => {
+  if(!value){
+    return 0;
+  }
   return parseFloat(value.replace(/[^0-9.-]+/g, ""));
 };
 
@@ -25,3 +30,9 @@ export const encodeQueryData = (params) => {
     ret.push(encodeURIComponent(d) + '=' + encodeURIComponent(params[d]));
   return ret.join('&');
 }
+
+export const BN = BigNumber.clone({ FORMAT: {
+    groupSize: 3,
+    groupSeparator: ',',
+    decimalSeparator: '.',
+  }})
