@@ -1,0 +1,10 @@
+.container{
+    height: 10vh;
+    background-color: var(--menu);
+    position: fixed;
+    bottom: 0;
+    /*border-radius: 140px;*/
+}
+.selected{
+    color: var(--orange);
+}

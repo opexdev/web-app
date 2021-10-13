@@ -1,0 +1,12 @@
+.container{
+    height: 10vh;
+    background-color: rgba(36, 36, 46, 0.91);
+    border-radius: 100px;
+    position: fixed;
+    bottom: 11vh;
+    /*bottom: 10vh;*/
+}
+.selected{
+    color: var(--orange);
+    /*background-color: var(--mainContent);*/
+}

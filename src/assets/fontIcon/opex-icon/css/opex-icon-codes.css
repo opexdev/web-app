@@ -48,6 +48,11 @@
 .icon-up-open:before { content: '\e825'; } /* '' */
 .icon-info:before { content: '\e830'; } /* '' */
 .icon-plus:before { content: '\e841'; } /* '' */
+.icon-lasttrades:before { content: '\e846'; } /* '' */
+.icon-myorder:before { content: '\e847'; } /* '' */
+.icon-order:before { content: '\e848'; } /* '' */
+.icon-orderbook:before { content: '\e849'; } /* '' */
+.icon-overview:before { content: '\e84a'; } /* '' */
 .icon-star:before { content: '\e852'; } /* '' */
 .icon-star-filled:before { content: '\e863'; } /* '' */
 .icon-cancel:before { content: '\e876'; } /* '' */

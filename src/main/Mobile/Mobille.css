@@ -1,0 +1,70 @@
+@media (max-width: 480px) {
+
+    html,body{
+        font-size: 4.5vw;
+        line-height: 3.5vh;
+        top: 0;
+        bottom: 0;
+        position: absolute;
+
+    }
+    .mobile-container {
+        color: var(--textColor);
+        background-color: var(--mainContent);
+        height: 100%;
+    }
+
+    .font-size-sm-mini {
+        font-size: 3vw;
+    }
+    .font-size-sm {
+        font-size: 4vw;
+    }
+    .font-size-sm-plus {
+        font-size: 4.3vw;
+    }
+    .font-size-md {
+        font-size: 4.75vw;
+    }
+    .font-size-md-01 {
+        font-size: 4.8vw;
+    }
+    .font-size-md-plus {
+        font-size: 5vw;
+    }
+    .font-size-lg {
+        font-size: 7vw;
+    }
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@media screen and (orientation: landscape) {
+    .mobile-view {
+        font-size: 1vw;
+        line-height: 14vh;
+        border: 0.4vw dotted #4a5eab;
+    }
+    .mobile-view img {
+        width: 12vw;
+    }
+    .mobile-view h1 {
+        padding: 5vh 0;
+    }
+}

@@ -44,7 +44,7 @@ const initialState = {
     },
     activeMarketTab: 0,
     isLoading: true,
-    isDark: false,
+    isDark: true,
 };
 
 const globalReducer = (state = initialState, action) => {
