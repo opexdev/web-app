@@ -1,4 +1,5 @@
 import * as actionTypes from "./actionTypes";
+import {SET_IMPERSONATE_TOKENS} from "./actionTypes";
 
 
 export const setUserTokens = (token) => {
@@ -8,6 +9,13 @@ export const setUserTokens = (token) => {
         accessTokenExpires: token.accessTokenExpires,
         refreshToken: token.refreshToken,
         refreshTokenExpires: token.refreshTokenExpires,
+    };
+};
+
+export const setImpersonateTokens = (token) => {
+    return {
+        type: actionTypes.SET_IMPERSONATE_TOKENS,
+        accessToken: token,
     };
 };
 

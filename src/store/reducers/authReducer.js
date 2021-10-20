@@ -57,6 +57,12 @@ const reducer = (state = initialState, action) => {
                 lastName: action.lastName,
                 email: action.email,
             };
+        case actionTypes.SET_IMPERSONATE_TOKENS:
+            return {
+                ...state,
+                accessToken: action.accessToken,
+                isLogin: true,
+            }
         case actionTypes.SET_USER_TOKENS:
             return {
                 ...state,
