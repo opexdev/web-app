@@ -3,64 +3,58 @@ import classes from "./TheNavMenu.module.css";
 import {NavLink} from "react-router-dom";
 import * as Routes from "../../../../../../../../routes/routes";
 import Icon from "../../../../../../../../components/Icon/Icon";
+import {LastTrades, MyOrder, Order, OrderBook, Overview} from "../../../../../../../../routes/routes";
 
 
 const TheNavMenu = () => {
 
     return (
-        <div className={`container ${classes.container} row jc-between ai-center px-7`}>
+        <div className={`container ${classes.container} row ai-center`}>
 
             <NavLink
                 exact={true}
-                to={Routes.Dashboard}
+                to={Routes.Overview}
                 activeClassName={classes.selected}
+                className={`col-20 column jc-center ai-center`}
             >
-                <div className={`column ai-center`}>
-                    <Icon iconName="icon-overview font-size-lg"/>
-                    <span className={`font-size-sm-mini`}>نمای کلی</span>
-                </div>
-
+                <Icon iconName="icon-overview font-size-lg"/>
+                <span className={`font-size-sm`}>نمای کلی</span>
             </NavLink>
             <NavLink
                 exact={true}
-                to={Routes.Wallet}
+                to={Routes.OrderBook}
                 activeClassName={classes.selected}
+                className={`col-20 column jc-center ai-center`}
             >
-                <div className={`column ai-center`}>
-                    <Icon iconName="icon-orderbook font-size-lg"/>
-                    <span className={`font-size-sm-mini`}>پیشنهادات</span>
-                </div>
+                <Icon iconName="icon-orderbook font-size-lg"/>
+                <span className={`font-size-sm`}>پیشنهادات</span>
             </NavLink>
             <NavLink
                 exact={true}
-                to={Routes.Technical}
+                to={Routes.Order}
                 activeClassName={classes.selected}
+                className={`col-20 column jc-center ai-center`}
             >
-                <div className={`column ai-center`}>
-                    <Icon iconName="icon-order font-size-lg"/>
-                    <span className={`font-size-sm-mini`}>سفارش</span>
-                </div>
+                <Icon iconName="icon-order font-size-lg"/>
+                <span className={`font-size-sm`}>سفارش</span>
             </NavLink>
             <NavLink
                 exact={true}
-                to={Routes.Settings}
+                to={Routes.MyOrder}
                 activeClassName={classes.selected}
+                className={`col-20 column jc-center ai-center`}
             >
-                <div className={`column ai-center`}>
-                    <Icon iconName="icon-myorder font-size-lg"/>
-                    <span className={`font-size-sm-mini`}>تراکنش ها</span>
-                </div>
+                <Icon iconName="icon-myorder font-size-lg"/>
+                <span className={`font-size-sm`}>تراکنش ها</span>
             </NavLink>
             <NavLink
                 exact={true}
-                to={Routes.Dashboard}
+                to={Routes.LastTrades}
                 activeClassName={classes.selected}
+                className={`col-20 column jc-center ai-center`}
             >
-                <div className={`column ai-center`}>
-                    <Icon iconName="icon-lasttrades font-size-lg"/>
-                    <span className={`font-size-sm-mini`}>اخیر</span>
-                </div>
-
+                <Icon iconName="icon-lasttrades font-size-lg"/>
+                <span className={`font-size-sm`}>اخیر</span>
             </NavLink>
 
 

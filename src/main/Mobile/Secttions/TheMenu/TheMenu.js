@@ -3,62 +3,64 @@ import classes from "./TheMenu.module.css";
 import * as Routes from "../../../../routes/routes";
 import Icon from "../../../../components/Icon/Icon";
 import {NavLink} from "react-router-dom";
+import {MobileDashboard, Overview} from "../../../../routes/routes";
 
 
 const TheMenu = () => {
 
     return (
-        <div className={`container ${classes.container} row jc-around ai-center px-7`}>
+        <div className={`container ${classes.container} column jc-around ai-center pt-1`}>
 
             <NavLink
-                exact={true}
-                to={Routes.Dashboard}
+                to={Routes.Overview}
                 activeClassName={classes.selected}
+                className={`width-50 row jc-between ai-center py-1`}
+                isActive={(match, location) => {
+                    if (location.pathname.includes("/dashboard")) {
+                        return true;
+                    }
+                    return false
+                }}
             >
-                <div className={`column ai-center`}>
-                    <Icon iconName="icon-market font-size-lg"/>
-                    <span className={`font-size-sm-mini`}>بازار</span>
-                </div>
-
+                <Icon iconName="icon-market font-size-lg-plus" customClass={`col-48 flex jc-end ai-center`}/>
+                <span className={`col-48 ai-start`}>بازار</span>
             </NavLink>
             <NavLink
                 exact={true}
                 to={Routes.Wallet}
                 activeClassName={classes.selected}
+                className={`width-50 row jc-between ai-center py-1`}
             >
-                <div className={`column ai-center`}>
-                    <Icon iconName="icon-safe font-size-lg"/>
-                    <span className={`font-size-sm-mini`}>کیف پول</span>
-                </div>
+                <Icon iconName="icon-safe font-size-lg-plus" customClass={`col-48 flex jc-end ai-center`}/>
+                <span className={`col-48 ai-start`}>کیف پول</span>
             </NavLink>
             {/*<NavLink
                 exact={true}
                 to={Routes.Technical}
                 activeClassName={classes.selected}
             >
-                <div className={`column ai-center`}>
-                    <Icon iconName="icon-account font-size-lg"/>
-                    <span className={`font-size-sm-mini`}>تکنیکال</span>
+                <div className={`row ai-center`}>
+                    <Icon iconName="icon-account font-size-lg-plus"/>
+                    <span className={`font-size-sm`}>تکنیکال</span>
                 </div>
             </NavLink>*/}
             <NavLink
                 exact={true}
                 to={Routes.Settings}
                 activeClassName={classes.selected}
+                className={`width-50 row jc-between ai-center py-1`}
             >
-                <div className={`column ai-center`}>
-                    <Icon iconName="icon-settings font-size-lg"/>
-                    <span className={`font-size-sm-mini`}>تنظیمات</span>
-                </div>
+                <Icon iconName="icon-settings font-size-lg-plus" customClass={`col-48 flex jc-end ai-center`}/>
+                <span className={`col-48 ai-start`}>تنظیمات</span>
             </NavLink>
             {/*<NavLink
                 exact={true}
                 to={Routes.Dashboard}
                 activeClassName={classes.selected}
             >
-                <div className={`column ai-center`}>
-                    <Icon iconName="icon-messages-dotted font-size-lg"/>
-                    <span className={`font-size-sm-mini`}>پیام ها</span>
+                <div className={`row ai-center`}>
+                    <Icon iconName="icon-messages-dotted font-size-lg-plus"/>
+                    <span className={`font-size-sm`}>پیام ها</span>
                 </div>
 
             </NavLink>*/}

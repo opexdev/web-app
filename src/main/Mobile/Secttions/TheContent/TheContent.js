@@ -7,9 +7,13 @@ import ProtectedRoute from "../../../../components/ProtectedRoute/ProtectedRoute
 import Footer from "../../../Browser/Sections/Footer/Footer";
 import {useTranslation} from "react-i18next";
 import TheDashboard from "./components/TheDashboard/TheDashboard";
+import TheWallet from "./components/TheWallet/TheWallet";
+import {connect} from "react-redux";
+import TheSettings from "./components/TheSettings/TheSettings";
+import {MobileDashboard} from "../../../../routes/routes";
 
 
-const TheContent = () => {
+const TheContent = ({isLogin}) => {
 
     const {t} = useTranslation();
 
@@ -17,19 +21,19 @@ const TheContent = () => {
         <div className={`container ${classes.container}`}>
             <ScrollBar>
                 <Switch>
-                    <Route exact path={Routes.Dashboard}>
+                    <Route path={Routes.MobileDashboard}>
                         <TheDashboard/>
                     </Route>
-                    {/*<ProtectedRoute
-                        component={}
-                        isLogin={isLogin}
+                    <Route
+                        component={TheWallet}
+                        /*isLogin={isLogin}*/
                         path={Routes.Wallet}
                     />
-                    <ProtectedRoute
-                        component={}
-                        isLogin={isLogin}
+                    <Route
+                        component={TheSettings}
+                        /*isLogin={isLogin}*/
                         path={Routes.Settings}
-                    />*/}
+                    />
                     <Route path="*">
                         <div
                             className="container flex ai-center jc-center"
@@ -43,4 +47,11 @@ const TheContent = () => {
     );
 };
 
-export default TheContent;
+const mapStateToProps = (state) => {
+    return {
+        isLogin: state.auth.isLogin,
+    };
+};
+
+
+export default connect(mapStateToProps, null)(TheContent);

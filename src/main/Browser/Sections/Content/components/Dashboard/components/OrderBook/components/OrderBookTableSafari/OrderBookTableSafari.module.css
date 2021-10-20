@@ -26,3 +26,14 @@
 :global .selected {
   background: darkgrey !important;
 }
+.tbody{
+  line-height: 3.7vh;
+}
+.thead{
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  font-weight: normal;
+  background-color: var(--tableHeader);
+  line-height: 3.7vh;
+}

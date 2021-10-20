@@ -1,11 +1,12 @@
 @media (max-width: 480px) {
 
     html,body{
-        font-size: 4.5vw;
+        font-size: 3.5vw;
         line-height: 3.5vh;
         top: 0;
         bottom: 0;
         position: absolute;
+        overflow: hidden;
 
     }
     .mobile-container {
@@ -15,26 +16,48 @@
     }
 
     .font-size-sm-mini {
-        font-size: 3vw;
+        font-size: 2vw;
     }
     .font-size-sm {
-        font-size: 4vw;
+        font-size: 3vw;
     }
     .font-size-sm-plus {
-        font-size: 4.3vw;
+        font-size: 3.3vw;
     }
     .font-size-md {
-        font-size: 4.75vw;
+        font-size: 3.75vw;
     }
     .font-size-md-01 {
-        font-size: 4.8vw;
+        font-size: 3.8vw;
     }
     .font-size-md-plus {
-        font-size: 5vw;
+        font-size: 4vw;
     }
     .font-size-lg {
+        font-size: 6vw;
+    }
+    .font-size-lg-plus {
         font-size: 7vw;
     }
+
+
+    .button{
+        height: 5vh;
+        border: none;
+        border-radius: 7px;
+        font-family: "IRANYekan", serif;
+        font-size: 3vw;
+        color: #f2f2f2;
+    }
+
+
+    tr {
+        position: relative;
+        line-height: 4.5vh;
+    }
+
+
+
 
 }
 

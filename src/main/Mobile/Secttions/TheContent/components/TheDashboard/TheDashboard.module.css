@@ -1,0 +1,13 @@
+.container {
+    height: 88%;
+   /* background-color: lime;*/
+}
+.thisButton {
+    width: 49%;
+}
+.thisButton.buyOrder {
+    background-color: var(--bgGreen);
+}
+.thisButton.sellOrder {
+    background-color: var(--bgRed);
+}

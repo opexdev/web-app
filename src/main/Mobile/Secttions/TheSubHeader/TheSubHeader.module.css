@@ -1,0 +1,21 @@
+.container{
+    border-top: 0.0005vh solid rgba(68, 68, 68, 0.8);
+    background-color: var(--subMenu);
+    position: fixed;
+    top: 7%;
+    z-index: 1;
+    box-shadow: -1px 5px 8px -2px #101010ad;
+
+}
+
+.expand{
+    background-color: var(--menu);
+    z-index: 1;
+    height: 3%;
+    position: fixed;
+    top: 7%;
+    border-top: 0.0005vh solid rgba(68, 68, 68, 0.8);
+}
+.thisIcon {
+
+}

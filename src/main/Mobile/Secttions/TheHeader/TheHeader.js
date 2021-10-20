@@ -1,20 +1,40 @@
-import React from "react";
+import React, {useState , Fragment} from "react";
 import classes from "./TheHeader.module.css";
-import ToggleSwitch from "../../../../components/ToggleSwitch/ToggleSwitch";
 import {setThemeInitiate} from "../../../../store/actions";
 import {connect} from "react-redux";
+import Icon from "../../../../components/Icon/Icon";
+import ActionSheet from "../../../../components/ActionSheet/ActionSheet";
+import TheMenu from "../TheMenu/TheMenu";
 
 
 const TheHeader = (props) => {
 
+    const [showAction, setShowAction] = useState(false);
+
+    console.log("before click showAction: ", showAction)
+
+
     return (
-        <div className={`container row ai-center jc-around ${classes.container}`}>
+        <Fragment>
+            <div className={`container row ai-center jc-between ${classes.container} px-5`}>
+                <div className={`row ai-center`}>
+                    <Icon iconName="icon-th font-size-md flex" customClass={`${classes.thisIcon}`}
+                          onClick={() => setShowAction((prevState) => !prevState)}
+                    />
+                    <h3 className={`mr-2`}>بیتکوین/تومان</h3>
+                </div>
 
-            <h4>بیتکوین/تومان</h4>
+                <span>آخرین قیمت: <span className={`text-green`}>1,651,999,900</span> تومان</span>
+            </div>
 
-            <ToggleSwitch onchange={(e) => props.onThemeChange(e.target.checked)} checked={props.isDark}/>
+                <ActionSheet show={showAction} onChangeShow={(state)=>setShowAction(state)}>
+                    <TheMenu/>
+                </ActionSheet>
 
-        </div>
+
+
+        </Fragment>
+
     );
 };
 

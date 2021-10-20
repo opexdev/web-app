@@ -4,13 +4,16 @@ import i18n from "i18next";
 import {useTranslation} from "react-i18next";
 import {loadConfig, setThemeInitiate} from "../../store/actions";
 import "./Mobille.css";
-import {Switch , Route} from "react-router-dom";
+import {Switch, Route, Redirect} from "react-router-dom";
 import {isSafari} from "react-device-detect";
 import FullWidthLoading from "../../components/FullWidthLoading/FullWidthLoading";
 import ReactTooltip from "react-tooltip";
 import TheMenu from "./Secttions/TheMenu/TheMenu";
 import TheHeader from "./Secttions/TheHeader/TheHeader";
 import TheContent from "./Secttions/TheContent/TheContent";
+import {Login, Overview} from "../../routes/routes";
+import TheSubHeader from "./Secttions/TheSubHeader/TheSubHeader";
+import ActionSheet from "../../components/ActionSheet/ActionSheet";
 
 
 const Mobile = (props) => {
@@ -22,14 +25,18 @@ const Mobile = (props) => {
             <Route exact path="/login">
 
             </Route>
+            <Route exact path="/">
+                <Redirect to={Overview} />
+            </Route>
             <div>
                 {props.isLoading ? (<FullWidthLoading/>) : (
                     <Fragment>
                         <ReactTooltip data-html={true} data-effect="float"/>
                         <div className={`mobile-container column`}>
                             <TheHeader/>
+                            <TheSubHeader/>
                             <TheContent/>
-                            <TheMenu/>
+                            {/*<TheMenu/>*/}
                         </div>
                     </Fragment>
                 )}

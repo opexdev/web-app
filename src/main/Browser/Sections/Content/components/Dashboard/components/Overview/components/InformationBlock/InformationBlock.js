@@ -36,7 +36,7 @@ const InformationBlock = (props) => {
         return <Error/>
     }
 
-    return (<div className={classes.content}>
+    return (<div className={`${classes.content} column jc-between px-1 py-2`}>
         <p>
             {t("overview.change")}:{" "}
             <span className={information.priceChange > 0 ? "text-green" : "text-red"}>

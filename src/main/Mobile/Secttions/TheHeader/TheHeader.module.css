@@ -1,6 +1,9 @@
 .container{
-    height: 8vh;
+    height: 7%;
     background-color: var(--menu);
     position: fixed;
     top: 0;
 }
+
+
+

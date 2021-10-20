@@ -1,13 +1,15 @@
 import React from "react";
-import classes from "./TheWallet.module.css";
+import {useTranslation} from "react-i18next";
+/*import classes from "./TheWallet.module.css";*/
 
 
 const TheWallet = () => {
 
+    const {t} = useTranslation();
+
     return (
-        <div className={`container`}>
-
-
+        <div className={`container flex ai-center jc-center`} style={{height:"100%"}}>
+            <span>{t("comingSoon")}</span>
         </div>
     );
 };

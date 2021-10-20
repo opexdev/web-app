@@ -1,4 +1,5 @@
 export const Dashboard = "/";
+export const MobileDashboard = "/dashboard";
 export const Login = "/login";
 export const Wallet = "/wallet";
 export const Technical = "/technical";
@@ -13,3 +14,10 @@ export const Authentication = "/settings/authentication";
 
 
 export const Guide = "/guide";
+
+
+export const Overview = "/dashboard/overview";
+export const OrderBook = "/dashboard/orderbook";
+export const Order = "/dashboard/order";
+export const MyOrder = "/dashboard/myorder";
+export const LastTrades = "/dashboard/lasttrades";

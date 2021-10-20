@@ -22,7 +22,7 @@ const MainMenu = () => {
                 <div className={`${classes.header} py-1`}>
                     <Link to={Routes.Dashboard} onClick={() => setShowMessages(false)}>
                         <span className="flex">
-                         <img className="img-lg" src={images.opexLogo_light} alt="opexLogo_light" title={t("title")} style={{height: "7.5vh"}}/>
+                         <img className="img-md" src={images.opexLogoOnePlus} alt={t("title")} title={t("title")} style={{height: "7.5vh"}}/>
                         </span>
                     </Link>
                 </div>
