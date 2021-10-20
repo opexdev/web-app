@@ -3,6 +3,14 @@ import classes from "./SendPhotosStep.module.css";
 import {useTranslation} from "react-i18next";
 import Button from "../../../../../../../../../../components/Button/Button";
 import ImageInput from "../../../../../../../../../../components/ImageInput/ImageInput";
+import {
+  getToken,
+  getUser,
+  parsePanelToken,
+  sendUpdateProfileReq,
+  sendUserFile
+} from "../../../../../../../../../../pages/Login/api/auth";
+import {useSelector} from "react-redux";
 
 
 const SendPhotosStep = (props) => {
@@ -13,6 +21,34 @@ const SendPhotosStep = (props) => {
     img2: "",
     img3: "",
   });
+  const id = useSelector(state => state.auth.id);
+  const token = useSelector(state => state.auth.accessToken);
+
+  const sendImageHandler = async () => {
+    const acceptForm = await sendUserFile(token ,id ,images.img1)
+    const selfie = await sendUserFile(token ,id ,images.img2)
+    const idCard = await sendUserFile(token ,id ,images.img3)
+
+    let panelToken = await getToken()
+    panelToken = parsePanelToken(panelToken.data)
+    let userInfo = await getUser(panelToken.panelAccessToken, "id", id)
+    if (userInfo.status === 200) {
+      userInfo = userInfo.data.find(user => user.id === id)
+    }
+    const update = await sendUpdateProfileReq(panelToken.panelAccessToken, userInfo.id,
+        {
+          ...userInfo.attributes,
+          acceptForm : acceptForm.data.path,
+          selfie : selfie.data.path,
+          idCard : idCard.data.path,
+        }
+    )
+    if (update.status === 204) {
+      props.nextStep()
+    }
+  }
+
+
 
   return (
     <div
@@ -86,7 +122,7 @@ const SendPhotosStep = (props) => {
             />
             <Button
                 buttonClass={`${classes.thisButton} ${classes.next}`}
-                onClick={props.nextStep}
+                onClick={sendImageHandler}
                 buttonTitle={t("nextStep")}
             />
           </div>
