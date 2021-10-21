@@ -10,7 +10,7 @@ const Overview = () => {
   const data = [
     {title: t("overview.lastDay"), body: <InformationBlock period="24h"/>},
     {title: t("overview.lastWeek"), body: <InformationBlock period="7d"/>},
-    {title: t("overview.lastMonth"), body: <InformationBlock period="1m"/>},
+    {title: t("overview.lastMonth"), body: <InformationBlock period="1M"/>},
   ];
 
   return (

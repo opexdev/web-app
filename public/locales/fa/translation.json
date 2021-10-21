@@ -27,6 +27,7 @@
   "transfer": "انتقال",
   "destination": "مقصد",
   "details": "جزئیات",
+  "commission": "کارمزد",
   "nextStep": "گام بعدی",
   "prevStep": "گام قبلی",
   "submit": "ثبت",
@@ -39,6 +40,12 @@
   "error": "خطا در دریافت اطلاعات ... !",
   "loading": "در حال دریافت اطلاعات ...",
   "noData": "در حال حاضر هیچ اطلاعاتی وجود ندارد",
+  "country": {
+    "iran" : "جمهوری اسلامی ایران",
+    "germany" : "آلمان",
+    "uk": "انگلستان",
+    "turkey" : "ترکیه"
+  },
   "currency": {
     "IRT": "تومان",
     "Euro": "یورو",
@@ -201,7 +208,16 @@
     "blockchainTransactionId": "شناسه بلاکچینی تراکنش",
     "price": "مبلغ",
     "destination": "مبدا/مقصد",
-    "inventory": "موجودی بعد تراکنش"
+    "inventory": "موجودی بعد تراکنش",
+    "freeWallet": "موجودی قابل برداشت",
+    "minWithdraw": "حداقل مقدار برداشت",
+    "maxWithdraw": "سقف برداشت روزانه شما",
+    "maxMonthWithdraw": "سقف برداشت ماهانه شما",
+    "withdrawWarn": "لطفا دقت کنید! ورود اشتباه آدرس می تواند به از دست رفتن سرمایه منجر شود.",
+    "withdrawReqSubmit": "ثبت درخواست برداشت",
+    "destAddress": "آدرس دریافت",
+    "reqAmount": "دریافتی شما"
+
   },
   "transactionType": {
     "deposit": "واریز",
@@ -250,8 +266,8 @@
     "lastNameMain": "نام خانوادگی (زبان اصلی)",
     "nationality": "ملیت",
     "residence": "محل اقامت",
-    "dateOfBirth": "تاریخ تولد (میلادی)",
-    "dateOfBirthAlt": "تاریخ تولد (غیرمیلادی)",
+    "birthday": "تاریخ تولد (میلادی)",
+    "birthdayAlt": "تاریخ تولد (غیرمیلادی)",
     "nationalID": "شناسه ملی",
     "passportNumber": "شماره پاسپورت",
     "phoneNumber": "تلفن همراه",

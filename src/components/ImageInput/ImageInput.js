@@ -10,7 +10,6 @@ const ImageInput = (props) => {
 
   useEffect(() => {
     ReactTooltip.rebuild();
-
   });
 
   const [files, setFiles] = useState([]);
@@ -21,7 +20,7 @@ const ImageInput = (props) => {
     multiple: false,
     onDrop: (acceptedFiles) => {
       if (acceptedFiles.length > 0) {
-        props.onchange(URL.createObjectURL(acceptedFiles[0]));
+        props.onchange(acceptedFiles[0]);
         setFiles([
           Object.assign(acceptedFiles[0], {
             preview: URL.createObjectURL(acceptedFiles[0]),

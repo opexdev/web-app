@@ -30,7 +30,14 @@ const Market = (props) => {
     useEffect(() => {
         getExchange()
             .then((info) => {
-                if (info && info.status === 200) setPairs(info.data.symbols)
+                if (info && info.status === 200) {
+                    const removedNLN = info.data.symbols.filter((pair)=>{
+                        if( pair.baseAsset !== "NLN"){
+                            return pair
+                        }
+                    });
+                    setPairs(removedNLN)
+                }
             })
         if (props.activeMarketTab) setActiveTab(parseInt(props.activeMarketTab))
     }, [])
