@@ -77,7 +77,7 @@ const Market = (props) => {
                 />
             ),
         },
-        {
+        /*{
             id: 3,
             title: t("currency.IRT"),
             body: (
@@ -88,7 +88,7 @@ const Market = (props) => {
                     addFav={(selected) => addToFav(selected)}
                 />
             ),
-        },
+        },*/
         {
             id: 4,
             title: t("currency.USDT"),

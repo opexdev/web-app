@@ -90,7 +90,7 @@ const PersonalProfile = (props) => {
             />
           </div>
         </div>
-        <div className="row jc-between">
+ {/*       <div className="row jc-between">
           <div className="col-49">
             <TextInput
                 select={true}
@@ -113,11 +113,11 @@ const PersonalProfile = (props) => {
                 }
             />
           </div>
-        </div>
+        </div>*/}
         <div className="row jc-between">
           <div className="col-49">
             <TextInput
-                lead={t("PersonalProfile.dateOfBirth")}
+                lead={t("PersonalProfile.birthday")}
                 type="text"
                 value={profile.DateOfBirth}
                 onchange={(e) =>
@@ -127,7 +127,7 @@ const PersonalProfile = (props) => {
           </div>
           <div className="col-49">
             <TextInput
-                lead={t("PersonalProfile.dateOfBirthAlt")}
+                lead={t("PersonalProfile.birthdayAlt")}
                 type="text"
                 value={profile.DateOfBirthAlt}
                 onchange={(e) =>

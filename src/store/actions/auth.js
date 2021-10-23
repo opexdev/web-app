@@ -1,5 +1,4 @@
 import * as actionTypes from "./actionTypes";
-import {SET_IMPERSONATE_TOKENS} from "./actionTypes";
 
 
 export const setUserTokens = (token) => {

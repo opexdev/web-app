@@ -23,3 +23,18 @@ export const sendWithdrawReq = async (token, amount, currency, address, fee) => 
         return e.response;
     })
 }
+
+export const getDepositAddress = async (token, currency) => {
+
+    wallet.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+    wallet.defaults.headers.common['Content-Type'] = 'application/x-www-form-urlencoded';
+
+    return await wallet.get(`sapi/v1/capital/deposit/address?coin=${currency.toLowerCase()}&timestamp=${Date.now()}`).then((res) => {
+        return res;
+    }).catch((e) => {
+        if (!e.response) {
+            return false;
+        }
+        return e.response;
+    })
+}
