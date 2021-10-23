@@ -1,0 +1,71 @@
+.container{
+    position: absolute;
+    bottom: -100%;
+    background-color: var(--menu);
+    z-index: 3;
+    border-radius: 37px 37px 0 0;
+}
+.header span{
+    width: 27%;
+    height: 0.4vh;
+    border-radius: 100px;
+    background-color: var(--textColor);
+}
+.wrapper{
+    position: absolute;
+    background-color: #0000008c;
+    top: initial;
+    left: 0;
+    bottom: 0;
+    z-index: 2;
+}
+.show.container{
+    animation: BottomToTop ease 0.5s forwards;
+    -webkit-animation: BottomToTop ease 0.5s forwards;
+    -moz-animation: BottomToTop ease 0.5s forwards;
+    -o-animation: BottomToTop ease 0.5s forwards;
+    -ms-animation: BottomToTop ease 0.5s forwards;
+}
+@-webkit-keyframes BottomToTop {
+    0% {
+        bottom: -100%;
+    }
+    100% {
+        bottom: 0;
+    }
+}
+@keyframes BottomToTop {
+    0% {
+        bottom: -100%;
+    }
+    100% {
+        bottom: 0;
+    }
+}
+.close.container{
+    animation: TopToBottom ease 0.5s forwards;
+    -webkit-animation: TopToBottom ease 0.5s forwards;
+    -moz-animation: TopToBottom ease 0.5s forwards;
+    -o-animation: TopToBottom ease 0.5s forwards;
+    -ms-animation: TopToBottom ease 0.5s forwards;
+}
+@-webkit-keyframes TopToBottom {
+    0% {
+        bottom: 0;
+    }
+    100% {
+        bottom: -100%;
+    }
+}
+@keyframes TopToBottom {
+    0% {
+        bottom: 0;
+    }
+    100% {
+        bottom: -100%;
+    }
+}
+.show.wrapper{
+    top: 0;
+}
+

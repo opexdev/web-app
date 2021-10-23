@@ -6,7 +6,7 @@ const myOrder = axios.create({
     baseURL: apiBaseUrl,
 });
 
-export const getOpexChartData = async (symbol, interval = "1d", limit = "200") => {
+export const getOpexChartData = async (symbol, interval = "1h", limit = "200") => {
 
     const params = new URLSearchParams();
     params.append('symbol', symbol);

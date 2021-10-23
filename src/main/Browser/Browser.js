@@ -17,18 +17,12 @@ import Content from "./Sections/Content/Content";
 import FullWidthLoading from "../../components/FullWidthLoading/FullWidthLoading";
 import {loadConfig, setThemeInitiate} from "../../store/actions";
 import TechnicalChart from "./Sections/Content/components/TechnicalChart/TechnicalChart";
+import "./Browser.css"
+
 
 const Browser = (props) => {
 
     const [ltr, setLtr] = useState(false);
-
-    useEffect(() => {
-        props.onLoad();
-        i18n.language !== "fa" ? setLtr(true) : setLtr(false);
-        i18n.on("languageChanged", (lng) => {
-            lng !== "fa" ? setLtr(true) : setLtr(false);
-        });
-    }, []);
 
 
     const Toast = () => <Toaster position="bottom-right" toastOptions={
@@ -69,29 +63,24 @@ const Browser = (props) => {
                 exact
                 path={Routes.Technical}
             />
-            <Fragment>
-                <div
-                    className={`container ${props.isDark ? "dark" : ""} ${ltr ? "ltr" : "rtl"} ${isSafari ? "" : "user-select"}`}>
-                    {props.isLoading ? (
-                        <FullWidthLoading/>
-                    ) : (
-                        <Fragment>
-                            <ReactTooltip data-html={true} data-effect="float"/>
-                            <div className="row">
-                                <MainMenu isLogin={props.isLogin}/>
-                                <SubMenu isLogin={props.isLogin}/>
-                                <div className="column content">
-                                    <Header/>
-                                    <div style={{display: "flex", flex: 1}}>
-                                        <Content/>
-                                    </div>
+            <div>
+                {props.isLoading ? (<FullWidthLoading/>) : (
+                    <Fragment>
+                        <ReactTooltip data-html={true} data-effect="float"/>
+                        <div className="row">
+                            <MainMenu isLogin={props.isLogin}/>
+                            <SubMenu isLogin={props.isLogin}/>
+                            <div className="column content">
+                                <Header/>
+                                <div style={{display: "flex", flex: 1}}>
+                                    <Content/>
                                 </div>
                             </div>
-                            <Toast/>
-                        </Fragment>
-                    )}
-                </div>
-            </Fragment>
+                        </div>
+                        <Toast/>
+                    </Fragment>
+                )}
+            </div>
         </Switch>
 
     );
@@ -100,14 +89,12 @@ const Browser = (props) => {
 const mapStateToProps = (state) => {
     return {
         isLoading: state.global.isLoading,
-        isDark: state.global.isDark,
         isLogin: state.auth.isLogin,
     };
 };
 const mapDispatchToProps = (dispatch) => {
     return {
         onLoad: () => dispatch(loadConfig()),
-        onThemeChange: (isDark) => dispatch(setThemeInitiate(isDark)),
     };
 };
 

@@ -16,7 +16,7 @@ const HelpStep = (props) => {
         </div>
       </div>
       <div className={`container column jc-between px-1 py-2 ${classes.content}`}>
-        <span>راهنما</span>
+        <span>به منظور استفاده از تمامی خدمات این صرافی و فعال شدن امکان برداشت دارایی‌ها، باید احراز هویت شوید. فرایند احراز هویت ساده و آنلاین است. در مراحل بعد از شما درخواست خواهد شد تا اطلاعات فردی خود را در فرم مربوطه وارد کرده و تصاویر پرتره، کارت ملی و رضایت‌نامه استفاده از خدمات را ارسال بفرمایید.</span>
         <div className="row jc-end">
           <Button
               buttonClass={classes.thisButton}

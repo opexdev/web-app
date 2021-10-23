@@ -1,0 +1,45 @@
+@media (min-width: 992px) {
+
+    html,body{
+        font-size: 0.9vw;
+        line-height: 3.5vh;
+        height: 100%;
+
+    }
+
+    .font-size-sm {
+        font-size: 0.75vw;
+    }
+    .font-size-sm-plus {
+        font-size: 0.8vw;
+    }
+    .font-size-md {
+        font-size: 1vw;
+    }
+    .font-size-md-01 {
+        font-size: 1.25vw;
+    }
+    .font-size-md-plus {
+        font-size: 1.5vw;
+    }
+    .font-size-lg {
+        font-size: 2.2vw;
+    }
+
+
+
+    .button{
+        height: 4.5vh;
+        border: none;
+        border-radius: 7px;
+        font-family: "IRANYekan", serif;
+        font-size: 0.8vw;
+        color: #f2f2f2;
+    }
+
+
+    tr {
+        position: relative;
+        line-height: 3.4vh;
+    }
+}
