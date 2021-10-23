@@ -3,14 +3,14 @@ import {connect, useDispatch} from "react-redux";
 import classes from "./Login.module.css";
 import {images} from "../../assets/images";
 import AccordionBox from "../../components/AccordionBox/AccordionBox";
-import {loadConfig, setPanelTokensInitiate, setUserInfo, setUserTokensInitiate} from "../../store/actions";
+import {loadConfig, setPanelTokensInitiate, setUserInfo} from "../../store/actions";
 import i18n from "i18next";
 import LoginForm from "./components/LoginForm/LoginForm";
 import RegisterForm from "./components/RegisterForm/RegisterForm";
 import ForgetPassword from "./components/ForgetPassword/ForgetPassword";
 import {useTranslation} from "react-i18next";
 import useQuery from "../../Hooks/useQuery";
-import {getToken, getUser, parsePanelToken, parseToken} from "./api/auth";
+import {getToken, getUser, parsePanelToken} from "./api/auth";
 import {
     getAccount,
     parseWalletsResponse
@@ -40,7 +40,6 @@ const Login = (props) => {
 
     const getLoginByAdminToken = async (token) => {
 
-        //const userToken = parseToken(submitResult.data);
         dispatch(setImpersonateTokens(token))
         const jwt = jwtDecode(token)
 
@@ -81,10 +80,6 @@ const Login = (props) => {
         },
         {id: 2, title: t('signUp'), body: <RegisterForm/>},
     ];
-
-
-
-
 
 
     return (

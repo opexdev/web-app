@@ -1,7 +1,7 @@
 import axios from "axios";
 import {apiBaseUrl} from "../../../constants/global";
 import {authClientId, authClientSecret, authLoginClientId} from '../../../constants/auth';
-import {createReadStream} from "fs";
+
 
 const Auth = axios.create({
     baseURL: apiBaseUrl,
@@ -154,7 +154,7 @@ export const sendUserFile = async (token, user, file ) => {
     const data = new FormData();
     data.append('file', file);
 
-    return await Auth.post(`/storage/${user}`, data
+    return await axios.post(`http://192.168.2.119/storage/${user}`, data
     ).then((res) => {
         console.log(res)
         return res;

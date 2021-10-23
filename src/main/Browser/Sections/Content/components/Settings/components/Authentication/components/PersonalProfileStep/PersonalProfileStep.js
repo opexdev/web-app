@@ -18,6 +18,7 @@ const PersonalProfileStep = (props) => {
     const [isLoading, setIsLoading] = useState(true)
     const username = useSelector(state => state.auth.username);
     const token = useSelector(state => state.auth.accessToken);
+
     const [profile, setProfile] = useState({
         firstNameEn: "",
         lastNameEn: "",
@@ -31,7 +32,6 @@ const PersonalProfileStep = (props) => {
         passportNumber: "",
         phoneNumber: "",
         telephone: "",
-        email: "",
         postalCode: "",
         address: "",
     });
@@ -42,6 +42,20 @@ const PersonalProfileStep = (props) => {
         {value: "turkey", label: t('country.turkey')},
     ]
 
+    /*access: {manageGroupMembership: true, view: true, mapRoles: true, impersonate: true, manage: true}
+createdTimestamp: 1634894709039
+disableableCredentialTypes: []
+email: "demo1@nilin.co"
+emailVerified: false
+enabled: true
+firstName: "کاربر نمایشی"
+id: "27a4bebf-e470-46c3-9baf-883de8eb34b0"
+lastName: "یکم"
+notBefore: 0
+requiredActions: []
+totp: false
+username: "demo1"*/
+
     useEffect(async () => {
         let panelToken = await getToken()
         panelToken = parsePanelToken(panelToken.data)
@@ -50,22 +64,10 @@ const PersonalProfileStep = (props) => {
         if (userInfo.status === 200) {
             userInfo = userInfo.data.find(user => user.username === username)
         }
+
         setProfile({
-            firstNameEn: userInfo.attributes.firstNameEn ? userInfo.attributes.firstNameEn[0] : "",
-            lastNameEn: userInfo.attributes.lastNameEn ?  userInfo.attributes.lastNameEn[0] : "",
-            firstNameMain: userInfo.attributes.firstNameMain ? userInfo.attributes.firstNameMain[0] : "",
-            lastNameMain: userInfo.attributes.lastNameMain ?  userInfo.attributes.lastNameMain[0] : "",
-            nationality: userInfo.attributes.nationality ?  userInfo.attributes.nationality[0] : "",
-            residence: userInfo.attributes.residence ?  userInfo.attributes.residence[0] : "",
-            birthday: userInfo.attributes.birthday ?  userInfo.attributes.birthday[0] : "",
-            birthdayAlt: userInfo.attributes.birthdayAlt ? userInfo.attributes.birthdayAlt[0] : "",
-            nationalID:  userInfo.attributes.nationalID ? userInfo.attributes.nationalID[0] : "",
-            passportNumber: userInfo.attributes.passportNumber ?  userInfo.attributes.passportNumber[0] : "",
-            phoneNumber:  userInfo.attributes.phoneNumber ? userInfo.attributes.phoneNumber[0] : "",
-            telephone:  userInfo.attributes.telephone ? userInfo.attributes.telephone[0] : "",
-            email:  userInfo.attributes.email ? userInfo.attributes.email[0] : "",
-            postalCode:  userInfo.attributes.postalCode ? userInfo.attributes.postalCode[0] : "",
-            address:  userInfo.attributes.address ? userInfo.attributes.address[0] : "",
+            ...userInfo.attributes,
+            email:  userInfo.email,
         })
         setIsLoading(false)
     }, [])
@@ -149,12 +151,13 @@ const PersonalProfileStep = (props) => {
                             />
                         </div>
                     </div>
-               {/*     <div className="row jc-between">
+                  <div className="row jc-between">
                         <div className="col-49">
                             <TextInput
                                 select={true}
                                 placeholder={t('PersonalProfile.selectNationality')}
                                 options={countries}
+                                defaultInputValue = {profile.nationality}
                                 lead={t('PersonalProfile.nationality')}
                                 type="text"
                                 onchange={(e) => setProfile({...profile, nationality: e.value})}
@@ -165,6 +168,7 @@ const PersonalProfileStep = (props) => {
                                 select={true}
                                 placeholder={t('PersonalProfile.selectResidence')}
                                 lead={t('PersonalProfile.residence')}
+                                defaultInputValue = {profile.residence}
                                 type="text"
                                 value={profile.residence}
                                 onchange={(e) =>
@@ -172,7 +176,7 @@ const PersonalProfileStep = (props) => {
                                 }
                             />
                         </div>
-                    </div>*/}
+                    </div>
                     <div className="row jc-between">
                         <div className="col-49">
                             <TextInput
@@ -244,6 +248,7 @@ const PersonalProfileStep = (props) => {
                             <TextInput
                                 lead={t('PersonalProfile.email')}
                                 type="email"
+                                disabled={true}
                                 value={profile.email}
                                 onchange={(e) => setProfile({...profile, email: e.target.value})}
                             />

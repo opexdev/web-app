@@ -1,6 +1,5 @@
 import classes from "../../Login.module.css";
 import React, {Fragment, useState} from "react";
-import Icon from "../../../../components/Icon/Icon";
 import TextInput from "../../../../components/TextInput/TextInput";
 import LoginFormLoading from "../LoginLoading/LoginFormLoading";
 import {useTranslation} from "react-i18next";
