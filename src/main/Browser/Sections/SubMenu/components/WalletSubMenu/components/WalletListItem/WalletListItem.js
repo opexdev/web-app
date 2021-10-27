@@ -34,10 +34,10 @@ const WalletListItem = (props) => {
                 {amount + " "}
                   <span className="font-size-sm">{t("currency." + name)}</span>
               </span>
-                    <span className="font-size-sm text-color-gray">
+                    {/*<span className="font-size-sm text-color-gray">
                         <span>{t("WalletSubMenu.equivalent")} </span>-{" "}
                         <span>{t("currency.IRT")}</span>
-                    </span>
+                    </span>*/}
                 </div>
             </div>
         </NavLink>

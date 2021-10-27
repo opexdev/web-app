@@ -27,6 +27,7 @@
     "react-hot-toast": "^2.1.1",
     "react-i18next": "^11.8.8",
     "react-number-format": "^4.4.4",
+    "react-qr-code": "^2.0.2",
     "react-redux": "^7.2.2",
     "react-router-dom": "^5.2.0",
     "react-router-hash-link": "^2.4.3",

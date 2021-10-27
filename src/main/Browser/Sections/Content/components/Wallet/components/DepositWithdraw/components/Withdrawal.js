@@ -4,16 +4,18 @@ import Button from "../../../../../../../../../components/Button/Button";
 import React, {useState} from "react";
 import {useSelector} from "react-redux";
 import {useParams} from "react-router-dom";
-import {useTranslation} from "react-i18next";
+import {Trans, useTranslation} from "react-i18next";
 import {sendWithdrawReq} from "../../../api/wallet";
-import {BN} from "../../../../../../../../../utils/utils";
+import {BN, parsePriceString} from "../../../../../../../../../utils/utils";
+import {toast} from "react-hot-toast";
+import {images} from "../../../../../../../../../assets/images";
+import NumberInput from "../../../../../../../../../components/NumberInput/NumberInput";
 
 const Withdrawal = () => {
     const {t} = useTranslation();
     const {id} = useParams();
     const accessToken = useSelector(state => state.auth.accessToken);
     const wallets = useSelector(state => state.auth.wallets);
-    const tradeFee = useSelector(state => state.auth.tradeFee);
 
     const [amount, setAmount] = useState({
         value: "0",
@@ -24,24 +26,71 @@ const Withdrawal = () => {
         alert: null,
     });
 
-    const sendWithdrawHandler = () => {
-        sendWithdrawReq(accessToken,amount.value, id, address.value, new BN(amount.value).multipliedBy(tradeFee[id]).toString()).then(r => console.log(r))
+    const [isLoading, setIsLoading] = useState(false)
+
+    const network = (id) => {
+        switch (id) {
+            case  "BTC":
+                return 'Bit';
+            case "ETH":
+                return 'ethereum-ropsten';
+            /*case "USDT":
+                return '';*/
+            default:
+                return 'ethereum-ropsten';
+        }
+    };
+    const calculateFee = (id) => {
+        switch (id) {
+            case "BTC":
+                return 0.00035;
+            case "ETH":
+                return 0.005;
+            case "USDT":
+                return 10;
+            default:
+                return 0;
+        }
+    };
+
+    const sendWithdrawHandler = async () => {
+        setIsLoading(true)
+        sendWithdrawReq(accessToken, amount.value, id, address.value, calculateFee(id), network(id)).then((r) =>{
+            console.log(r)
+            setIsLoading(false)
+        })
+
+        toast.success(<Trans
+            i18nKey="DepositWithdrawTx.success"
+            values={{
+                asset: t("currency." + id),
+                amount: amount.value,
+            }}
+        />);
+    }
+
+    const submitButtonTextHandler = () => {
+        if (isLoading) {
+            return <img className={`${classes.thisLoading}`} src={images.linearLoadingBgOrange} alt="linearLoading"/>
+        }
+        return t('DepositWithdrawTx.withdrawReqSubmit')
     }
 
     return (
         <div className={`px-1 py-2 column jc-between ${classes.content}`}>
-            <div className="container row jc-between">
+            <div className="container row jc-between height-100">
                 <div className="col-30 column jc-between">
-                    <TextInput
+                    <NumberInput
                         lead={t('volume') + " " + t("currency." + id)}
                         value={amount.value}
                         alert={amount.alert}
+                        customClass={classes.withdrawNumberInput}
                         onchange={(e) =>
-                            setAmount({...amount, value: e.target.value})
+                            setAmount({...amount, value: parsePriceString(e.target.value)})
                         }
                         type="text"
                     />
-                    <span className="pt-1">
+                    <span>
                         {t("DepositWithdrawTx.freeWallet")}: <span>{wallets[id].free} {t("currency." + id)}</span>
                     </span>
                     <span>
@@ -54,7 +103,7 @@ const Withdrawal = () => {
                         {t('DepositWithdrawTx.maxMonthWithdraw')}: <span>2 {t("currency." + id)}</span>
                     </span>
                 </div>
-                <div className="col-70 pr-1 column jc-between" style={{height: "20vh"}}>
+                <div className="col-70 pr-1 column jc-between">
                     <div className="column">
                         <TextInput
                             lead={t("DepositWithdrawTx.destAddress") + " " + t("currency." + id)}
@@ -71,28 +120,27 @@ const Withdrawal = () => {
                     <div className="row jc-between ai-center">
                         <div className="column">
                             <span>
-                                {t('commission')}: <span>{ amount.value ? new BN(amount.value).multipliedBy(tradeFee[id]).toFormat() : 0 }</span>
+                                {t('commission')}: <span className={`text-orange`}>{amount.value ? calculateFee(id) : 0} </span> <span>{t("currency." + id)}</span>
                             </span>
                             <span>
-                                {t('DepositWithdrawTx.reqAmount')}: <span>{ amount.value ? new BN(amount.value) - BN(amount.value).multipliedBy(tradeFee[id]).toFormat() : 0}</span>
+                                {t('DepositWithdrawTx.reqAmount')}: <span className={`text-green`}>{amount.value ? new BN(amount.value).minus(new BN(calculateFee(id))).toFormat() : 0} </span> <span>{t("currency." + id)}</span>
                             </span>
                         </div>
-
                         <Button
                             buttonClass={`${classes.thisButton} ${classes.withdrawal}`}
-                            buttonTitle={t('DepositWithdrawTx.withdrawReqSubmit')}
+                            buttonTitle={submitButtonTextHandler()}
                             onClick={sendWithdrawHandler}
                         />
                     </div>
                 </div>
             </div>
-            <div>
-        <span>
-          باتوجه به ملاحضات امنیتی ممکن است انتقال به حساب با کمی تاخیر صورت
-          بگیرد. می توانید وضعیت برداشت را در همین صفحه از بخش ترکنش های{" "}
-            <span className="text-orange">{`${t("DepositWithdraw.title")}`}</span>{" "}
-            ببینید.
-        </span>
+            <div className="pt-1">
+                 <span>
+                       باتوجه به ملاحضات امنیتی ممکن است انتقال به حساب با کمی تاخیر صورت
+                      بگیرد. می توانید وضعیت برداشت را در همین صفحه از بخش ترکنش های{" "}
+                      <span className="text-orange">{`${t("DepositWithdraw.title")}`}</span>{" "}
+                     ببینید.
+                </span>
             </div>
         </div>
     )

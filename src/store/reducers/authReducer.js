@@ -22,12 +22,12 @@ const initialState = {
     lastTransaction: null,
     wallets: {
         //IRT: {free: 0.0, locked: 0.0, inWithdrawalProcess: 0.0},
-        BTC: {free: 0.0, locked: 0.0, inWithdrawalProcess: 0.0},
-        ETH: {free: 0.0, locked: 0.0, inWithdrawalProcess: 0.0},
+        BTC: {free: 0.0, locked: 0.0, withdraw: 0.0},
+        ETH: {free: 0.0, locked: 0.0, withdraw: 0.0},
         //LTC: {free: 0.0, locked: 0.0, inWithdrawalProcess: 0.0},
         //DOGE: {free: 0.0, locked: 0.0, inWithdrawalProcess: 0.0},
         //BCH: {free: 0.0, locked: 0.0, inWithdrawalProcess: 0.0},
-        USDT: {free: 0.0, locked: 0.0, inWithdrawalProcess: 0.0},
+        USDT: {free: 0.0, locked: 0.0, withdraw: 0.0},
     },
     tradeFee: {
         IRT: 0.01,

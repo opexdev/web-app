@@ -17,9 +17,9 @@ const Wallet = () => {
                     <div className="row">
                         <DepositWithdrawTx/>
                     </div>
-                    <div className="row">
+                    {/*<div className="row">
                         <OrdersTradesFilter/>
-                    </div>
+                    </div>*/}
                 </div>
             </Route>
         </Switch>

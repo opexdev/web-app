@@ -511,7 +511,7 @@ export const MyMessagesData = () => {
 
 export const newsData = () => {
   const data = [];
-  const count = Faker.datatype.number({min: 28, max: 38});
+  const count = Faker.datatype.number({min: 1, max: 1});
   for (let i = 0; i < count; i++) {
     data.push({
       orderId: Faker.datatype.number({min: 11000, max: 1000000}),

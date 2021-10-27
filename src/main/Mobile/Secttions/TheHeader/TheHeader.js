@@ -3,8 +3,8 @@ import classes from "./TheHeader.module.css";
 import {setThemeInitiate} from "../../../../store/actions";
 import {connect} from "react-redux";
 import Icon from "../../../../components/Icon/Icon";
-import ActionSheet from "../../../../components/ActionSheet/ActionSheet";
 import TheMenu from "../TheMenu/TheMenu";
+import ActionSheet from "../../../../components/ActionSheet/ActionSheet";
 
 
 const TheHeader = (props) => {

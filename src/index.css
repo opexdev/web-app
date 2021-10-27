@@ -192,6 +192,11 @@
   --bgBlue: #0e4095;
   --orange: #ff8124;
   --lightBlue: #0d0d5a;
+
+  --LoginContainer: #eafbff;
+  --cardHeaderAlpha: #acaeaf75;
+  --cardBodyAlpha: #dddada96;
+
 }
 .dark {
   /*--primary-color: #403f4d;
@@ -244,6 +249,10 @@
   --bgBlue: #6f9ffff5;
 
   --orange: #ff8124;
+
+  --LoginContainer: #383a59;
+  --cardHeaderAlpha: #11121552;
+  --cardBodyAlpha: #282a36e6;
 
   /*darkula*/
   /*--activeTab: #ff79c6;*/
@@ -628,9 +637,14 @@ body {
   flex: 0.90;
 }
 .col-92 {
-  -webkit-box-flex: 0.2;
+  -webkit-box-flex: 0.92;
   -ms-flex: 0.92;
   flex: 0.92;
+}
+.col-96 {
+  -webkit-box-flex: 0.96;
+  -ms-flex: 0.96;
+  flex: 0.96;
 }
 .col-99 {
   -webkit-box-flex: 0.99;
@@ -641,6 +655,9 @@ body {
   -webkit-box-flex: 1;
   -ms-flex: 1;
   flex: 1;
+}
+.width-23{
+  width: 23%;
 }
 .width-30{
   width: 30%;
@@ -691,6 +708,9 @@ body {
 }
 .text-green {
   color: var(--textGreen);
+}
+.text-orange {
+  color: var(--orange);
 }
 
 .text-start {
@@ -1004,7 +1024,7 @@ h6 {
 }
 .ltr {
   direction: ltr;
-  font-family: "Segoe UI", serif;
+  font-family: 'Roboto', sans-serif;
 }
 
 

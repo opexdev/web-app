@@ -86,6 +86,7 @@ username: "demo1"*/
             props.nextStep()
         }
         setIsLoading(false)
+        props.nextStep()
     }
 
     const attributeHandler = (userInfo) => {

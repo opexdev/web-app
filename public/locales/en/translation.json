@@ -22,6 +22,7 @@
   "nextStep": "Next Step",
   "prevStep": "Prev Step",
   "submit": "Submit",
+  "commission": "Commission",
   "error": "Something wrong happened !",
   "loading": "Loading....",
   "currency": {
@@ -263,7 +264,6 @@
     "blog" : "Blog",
     "guide": "Guide",
     "rules": "Rules",
-    "wage": "Wage",
     "api": "Api",
     "addCoin": "Add Coin",
     "demo": "Market Demo",

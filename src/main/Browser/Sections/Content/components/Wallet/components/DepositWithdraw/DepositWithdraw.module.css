@@ -14,14 +14,21 @@
   cursor: pointer;
 }
 .depositInput :global(input) {
-  width: 75% !important;
+  width: 85% !important;
   cursor: not-allowed;
+  font-family: 'Roboto', sans-serif;
 }
 .withdrawalInput :global(.lead) {
   width: 30%;
 }
 .withdrawalInput :global(input) {
   width: 70% !important;
+}
+.withdrawNumberInput :global(.lead) {
+  width: 50%;
+}
+.withdrawNumberInput :global(input) {
+  width: 50% !important;
 }
 
 
@@ -56,4 +63,13 @@
 }
 .safariFlexSize :global(.accordion-body) {
   flex: 77;
+}
+
+.QRStyle{
+  width: 30vw !important;
+}
+
+
+.thisLoading{
+  width: 5vw;
 }

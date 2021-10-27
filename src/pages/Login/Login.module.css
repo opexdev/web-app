@@ -4,7 +4,8 @@
   background-position: center center;
   background-size: 600px 1200px;
   /*background-color: var(--mainContent);*/
-  background-color: #383a59;
+  background-color: var(--LoginContainer);
+  color: var(--textColor);
 }
 .row {
   height: 100vh;
@@ -40,14 +41,15 @@
 .intro h1 {
   line-height: 4.5vh;
   text-align: center;
-  color: #f2f2f2;
+  /*color: #f2f2f2;*/
 }
 .content {
   width: 65%;
   /*height: 65%;*/
-  background-color: #282a36e6;
+  background-color: var(--cardBodyAlpha);
   border-radius: 9px;
-  color: #ecececc7;
+  color: var(--textColor);
+  box-shadow: 0px 0px 1px 0px #000;
 }
 
 .content :global(.accordion-header) > div{
@@ -55,8 +57,8 @@
 }
 .content :global(.accordion-header){
   /*background-color: #242633fa;*/
-  background-color: #11121552;
-  color: #ecececc7;
+  background-color: var(--cardHeaderAlpha);
+  /*color: #ecececc7;*/
 }
 /*.content :global(.accordion-body){
   background-color: rgba(206, 223, 255, 0.83);
@@ -70,17 +72,20 @@
   margin-bottom: 1vh;
 }
 .loginInput > div{
-  border-color: #22232a;
+  border-color: var(--cardHeader);
 
 }
 .loginInput :global(.lead){
-  background-color: #242633fa;
+  /*background-color: #242633fa;
   border-color: #242633fa;
-  color: #ecececc7;
+  color: #ecececc7;*/
+  background-color: var(--cardHeader);
+  border-color: var(--cardHeader);
+  color: var(--textColor);
 }
 .loginInput :global(input){
-  color: #ecececc7 !important;
-  background-color: #282a36 !important;
+  /*color: #ecececc7 !important;
+  background-color: #282a36 !important;*/
 }
 
 

@@ -55,7 +55,7 @@ const InformationBlock = (props) => {
         </p>
         <p>
             {t("overview.volume")}: <span>{information.volume.toLocaleString()} </span>
-            {t(`currency.${activePair.quoteAsset}`)}
+            {t(`currency.${activePair.baseAsset}`)}
         </p>
     </div>)
 }

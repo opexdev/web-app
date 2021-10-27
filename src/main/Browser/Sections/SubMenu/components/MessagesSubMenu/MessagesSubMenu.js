@@ -6,6 +6,8 @@ import ScrollBar from "../../../../../../components/ScrollBar";
 import Icon from "../../../../../../components/Icon/Icon";
 import AccordionBox from "../../../../../../components/AccordionBox/AccordionBox";
 import {MyMessagesData, newsData} from "../../../../../../FakeData/FakeData";
+import {Link, useHistory} from "react-router-dom";
+import {Login} from "../../../../../../routes/routes";
 
 const MessagesSubMenu = (props) => {
   const {t} = useTranslation();
@@ -23,6 +25,8 @@ const MessagesSubMenu = (props) => {
       news: newsData(),
     });
   }, []);
+
+  const history = useHistory();
 
   const MyMessagesTable = (
     <ScrollBar>
@@ -106,11 +110,13 @@ const MessagesSubMenu = (props) => {
             <Fragment key={index}>
               <tr>
                 <td className="text-right font-weight-bold pr-1">
-                  عنوان اطلاعیه
+                 {/* عنوان اطلاعیه*/}
+                  راه‌اندازی نمایشی
                 </td>
                 {/*<td className="text-left"></td>*/}
                 <td className="text-left pl-1">
-                  {moment(tr.timestamp).format("HH:mm:ss  -  jYY/jMM/jDD")}
+                  {/*{moment(tr.timestamp).format("HH:mm:ss  -  jYY/jMM/jDD")}*/}
+                  08:00:00 - 1400/08/01
                 </td>
               </tr>
               <tr>
@@ -118,7 +124,7 @@ const MessagesSubMenu = (props) => {
                   <div
                     className="row jc-between px-1 ai-center"
                     style={{width: "100%"}}>
-                    <span className="font-size-sm">خط اول متن اطلاعیه</span>
+                    <span className="font-size-sm">نسخه نمایشی اوپکس راه‌اندازی شد.</span>
 
                     {openItem.news === index ? (
                       <span
@@ -145,10 +151,7 @@ const MessagesSubMenu = (props) => {
                 <td colSpan="3" className={`pt-05 pb-2 px-1`}>
                   <div className="col-100 text-start font-size-sm">
                     <p>
-                      متن کامل اطلاعیه متن کامل اطلاعیه متن کامل اطلاعیه متن
-                      کامل اطلاعیه متن کامل اطلاعیه متن کامل اطلاعیه متن کامل
-                      اطلاعیه متن کامل اطلاعیه متن کامل اطلاعیه متن کامل اطلاعیه
-                      متن کامل اطلاعیه متن کامل اطلاعیه{" "}
+                      نسخه نمایشی اوپکس، با پشتیبانی از دارایی‌های تستی بیتکوین، اتر و تتر راه‌اندازی شد. می‌توانید در آدرس <span className={`hover-text`} onClick={() => history.push("/login")}>opex.dev/demo</span> حساب کاربری بسازید.{" "}
                     </p>
                   </div>
                 </td>
@@ -160,8 +163,11 @@ const MessagesSubMenu = (props) => {
     </ScrollBar>
   );
 
+  const NoData = <div className="container height-100 flex ai-center jc-center font-size-sm">{t("noData")}</div>
+
   const data = [
-    {id: 1, title: t("MessagesSubMenu.myMessages"), body: MyMessagesTable},
+    //MyMessagesTable
+    {id: 1, title: t("MessagesSubMenu.myMessages"), body: NoData},
     {id: 2, title: t("MessagesSubMenu.news"), body: newsTable},
   ];
 

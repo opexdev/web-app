@@ -36,8 +36,34 @@ export const getOrdersHistory = async (activePair, token ) => {
     params.append('symbol', activePair.symbol);
     params.append('recvWindow', "1");
     params.append('timestamp', timestamp.toString());
+    params.append('limit', "25");
 
     return await myOrder.get(`/api/v3/allOrders?${params.toString()}`, {
+        data:params,
+        headers : {
+            'Authorization': `Bearer ${token}`,
+            'content-type': 'application/x-www-form-urlencoded'
+        },
+    }).then((res) => {
+        return res;
+    }).catch((e) => {
+        if (!e.response) {
+            return false;
+        }
+        return e.response;
+    })
+}
+export const getTrades = async (activePair, token ) => {
+    const timestamp = Date.now()
+
+    const params = new URLSearchParams();
+    params.append('symbol', activePair.symbol);
+    params.append('startTime', "");
+    params.append('endTime', "");
+    params.append('timestamp', timestamp.toString());
+    params.append('limit', "25");
+
+    return await myOrder.get(`/api/v3/myTrades?${params.toString()}`, {
         data:params,
         headers : {
             'Authorization': `Bearer ${token}`,

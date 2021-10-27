@@ -10,6 +10,8 @@ const WalletHeader = (props) => {
     const {t} = useTranslation()
     const {wallets} = props
 
+    console.log(wallets[id])
+
     return (
         <Fragment>
             <div className={`col-35`} style={{backgroundColor: "var(--blue)"}}>
@@ -18,15 +20,15 @@ const WalletHeader = (props) => {
             </div>
             <div className={`col-35 column ai-center`}>
                 <span>{t("header.free")}</span>
-                <span>{wallets[id].free} <span className={`font-size-sm text-color-gray`}>( --- {t("currency.IRT")} )</span></span>
+                <span>{wallets[id].free}{/* <span className={`font-size-sm text-color-gray`}>( --- {t("currency.IRT")} )</span>*/}</span>
             </div>
             <div className={`col-35 column ai-center ${classes.border}`}>
                 <span>{t("header.locked")}</span>
-                <span>{wallets[id].locked} <span className={`font-size-sm text-color-gray`}>( --- {t("currency.IRT")} )</span></span>
+                <span>{wallets[id].locked} {/*<span className={`font-size-sm text-color-gray`}>( --- {t("currency.IRT")} )</span>*/}</span>
             </div>
             <div className={`col-35 column ai-center`}>
                 <span>{t("header.inWithdrawalProcess")}</span>
-                <span>{wallets[id].inWithdrawalProcess} <span className={`font-size-sm text-color-gray`}>( --- {t("currency.IRT")} )</span></span>
+                <span>{wallets[id].withdraw} {/*<span className={`font-size-sm text-color-gray`}>( --- {t("currency.IRT")} )</span>*/}</span>
             </div>
         </Fragment>
     );

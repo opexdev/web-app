@@ -95,7 +95,7 @@ const SellOrder = (props) => {
                     ...order,
                     reqAmount,
                     totalPrice: reqAmount.multipliedBy(order.pricePerUnit).decimalPlaces(activePair.quoteAssetPrecision),
-                    tradeFee: reqAmount.multipliedBy(tradeFee[activePair.quoteAsset]).decimalPlaces(activePair.baseAssetPrecision),
+                    tradeFee: reqAmount.multipliedBy(order.pricePerUnit).multipliedBy(tradeFee[activePair.quoteAsset]).decimalPlaces(activePair.baseAssetPrecision),
                 });
                 break;
             case "pricePerUnit":
@@ -104,7 +104,7 @@ const SellOrder = (props) => {
                     ...order,
                     pricePerUnit: pricePerUnit,
                     totalPrice: pricePerUnit.multipliedBy(order.reqAmount).decimalPlaces(activePair.quoteAssetPrecision),
-                    tradeFee: order.reqAmount.multipliedBy(tradeFee[activePair.quoteAsset]).decimalPlaces(activePair.baseAssetPrecision),
+                    tradeFee: pricePerUnit.multipliedBy(order.reqAmount).multipliedBy(tradeFee[activePair.quoteAsset]).decimalPlaces(activePair.baseAssetPrecision),
                 });
                 break;
             case "totalPrice":
@@ -114,7 +114,7 @@ const SellOrder = (props) => {
                     ...order,
                     reqAmount: req.isFinite() ? req : new BN(0),
                     totalPrice,
-                    tradeFee: req.isFinite() ? req.multipliedBy(tradeFee[activePair.quoteAsset]).decimalPlaces(activePair.baseAssetPrecision) : new BN(0),
+                    tradeFee: req.isFinite() ? totalPrice.multipliedBy(tradeFee[activePair.quoteAsset]).decimalPlaces(activePair.baseAssetPrecision) : new BN(0),
                 });
                 currencyValidator("reqAmount", req, activePair.baseRange);
                 break;
@@ -338,7 +338,7 @@ const SellOrder = (props) => {
                 </p>
                 <p>
                     {t("orders.getAmount")}:{" "}
-                    {order.reqAmount.minus(order.tradeFee).decimalPlaces(activePair.baseAssetPrecision).toNumber()}{" "}
+                    {order.totalPrice.minus(order.tradeFee).decimalPlaces(activePair.baseAssetPrecision).toNumber()}{" "}
                     {t("currency." + activePair.quoteAsset)}
                 </p>
             </div>

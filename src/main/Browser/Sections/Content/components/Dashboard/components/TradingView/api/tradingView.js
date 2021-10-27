@@ -27,7 +27,7 @@ export const getGlobalChartData = async (symbol, interval = "1d", limit = "200")
     params.append('interval', interval);
     params.append('limit', limit);
 
-    return await axios.get(`https://api.binance.com/api/v3/klines?${params.toString()}`).then((res) => {
+    return await myOrder.get(`/binance/api/v3/klines?${params.toString()}`).then((res) => {
         return parseCandleData(res.data);
     }).catch((e) => {
         console.log(e)

@@ -15,8 +15,9 @@ import toman from "./images/src/toman.svg";
 import spaceStar from "./images/src/spaceStar.png";
 import astronaut from "./images/src/astronaut.svg";
 import squareLoading from "./images/src/squareLoading.gif";
-import linearLoading from "./images/src/linearLoading.gif";
 import squareLoadingLight from "./images/src/squareLoadingLight.gif";
+import linearLoading from "./images/src/linearLoading.gif";
+import linearLoadingBgOrange from "./images/src/linearLoadingBgOrange.gif";
 
 
 export const images = {
@@ -37,7 +38,8 @@ export const images = {
   spaceStar: spaceStar,
   astronaut: astronaut,
   squareLoading: squareLoading,
-  linearLoading: linearLoading,
   squareLoadingLight: squareLoadingLight,
+  linearLoading: linearLoading,
+  linearLoadingBgOrange: linearLoadingBgOrange,
 
 };

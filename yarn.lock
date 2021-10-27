@@ -11354,6 +11354,7 @@ fsevents@^1.2.7:
     react-hot-toast: ^2.1.1
     react-i18next: ^11.8.8
     react-number-format: ^4.4.4
+    react-qr-code: ^2.0.2
     react-redux: ^7.2.2
     react-router-dom: ^5.2.0
     react-router-hash-link: ^2.4.3
@@ -12954,6 +12955,13 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
+"qr.js@npm:0.0.0":
+  version: 0.0.0
+  resolution: "qr.js@npm:0.0.0"
+  checksum: 5ac6c393967bdeaa660e7fd3a501a25eb538c1f6008a4d30ab2b97bbe520e5c236530090773f1578aa0a523cdaa6923c866615e21143f9e7cd22abd41c789b69
+  languageName: node
+  linkType: hard
+
 "qs@npm:6.7.0":
   version: 6.7.0
   resolution: "qs@npm:6.7.0"
@@ -13252,6 +13260,19 @@ fsevents@^1.2.7:
     react: ^0.14 || ^15.0.0-0 || ^16.0.0-0 || ^17.0.0-0
     react-dom: ^0.14 || ^15.0.0-0 || ^16.0.0-0 || ^17.0.0-0
   checksum: ae02f5432ee856679ef68d8261b3d2c83dc52add834db2824e230def5c21c8333c1aa0221fcee4ac78e01a71f4e8f56f6a1875106481995eb5c86c6de63fa554
+  languageName: node
+  linkType: hard
+
+"react-qr-code@npm:^2.0.2":
+  version: 2.0.2
+  resolution: "react-qr-code@npm:2.0.2"
+  dependencies:
+    prop-types: ^15.7.2
+    qr.js: 0.0.0
+  peerDependencies:
+    react: ^16.x || ^17.x
+    react-native-svg: "*"
+  checksum: e844e9fb809631584ec134692eaa9e901ca491af7b1dee37171c6fa762e482a8c62e0b609e285a7c29a970faf0cd666777ffaae6263932508f7b1f615448fd69
   languageName: node
   linkType: hard
 

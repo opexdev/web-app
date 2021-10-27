@@ -7,6 +7,7 @@ import {Link} from "react-router-dom";
 import OpenOrders from "./components/OpenOrders/OpenOrders";
 import OrdersHistory from "./components/OrdersHistory/OrdersHistory";
 import AccordionBox from "../../../../../../../../components/AccordionBox/AccordionBox";
+import Trades from "./components/Trades/Trades";
 
 const MyOrders = (props) => {
   const {isLogin}= props
@@ -64,72 +65,7 @@ const MyOrders = (props) => {
       </table>
     </ScrollBar>
   );*/
-/*  const TradesTable = (
-    <ScrollBar>
-      <table
-        className="text-center double-striped"
-        cellSpacing="0"
-        cellPadding="0">
-        <thead className="th-border-y">
-          <tr>
-            <th>{t("date")}</th>
-            <th>{t("time")}</th>
-            <th>
-              {t("volume")}({props.activePair.base})
-            </th>
-            <th>
-              {t("pricePerUnit")}({props.activePair.quote})
-            </th>
-            <th>{t("totalPrice")}</th>
-            <th/>
-          </tr>
-        </thead>
-        <tbody>
-          {customData.trade.map((tr, index) => (
-            <Fragment key={index}>
-              <tr className={tr.type === "buy" ? "text-green" : "text-red"}>
-                <td>{moment(tr.timestamp).format("jYY/jMM/jDD")}</td>
-                <td>{moment(tr.timestamp).format("HH:mm:ss")}</td>
-                <td>{tr.volume}</td>
-                <td>{tr.price}</td>
-                <td>{tr.totalPrice}</td>
-                {openItem.trade === index ? (
-                  <td onClick={() => setOpenItem({...openItem, trade: null})}>
-                    <Icon
-                      iconName="icon-up-open icon-blue font-size-sm"
-                      customClass={`${classes.iconBG} cursor-pointer`}
-                    />
-                  </td>
-                ) : (
-                  <td onClick={() => setOpenItem({...openItem, trade: index})}>
-                    <Icon
-                      iconName="icon-down-open icon-blue font-size-sm"
-                      customClass={`${classes.iconBG} cursor-pointer`}
-                    />
-                  </td>
-                )}
-              </tr>
-              <tr
-                style={{display: openItem.trade === index ? "revert" : "none"}}>
-                <td colSpan="6" className={`py-1 px-2`}>
-                  <div
-                    className="row jc-around  ai-center"
-                    style={{width: "100%"}}>
-                    <p className="col-46 row jc-between">
-                      {t("myOrders.orderId")} : <span>{tr.orderId}</span>
-                    </p>
-                    <p className="col-46 row jc-between">
-                      {t("myOrders.tradeId")} : <span>{tr.tradeId}</span>
-                    </p>
-                  </div>
-                </td>
-              </tr>
-            </Fragment>
-          ))}
-        </tbody>
-      </table>
-    </ScrollBar>
-  );*/
+
 
   const LoginText = <div className="container height-100 flex ai-center jc-center">
     <Link to={Login} className="hover-text">
@@ -146,7 +82,7 @@ const MyOrders = (props) => {
     {id: 1, title: t("myOrders.aliveOrder"), body: isLogin ? <OpenOrders/> : LoginText},
     //{id: 2, title: t("myOrders.stoppedOrder"), body: props.auth.isLogin ? StopTable : LoginText},
     {id: 3, title: t("myOrders.orderHistory"), body: isLogin ? <OrdersHistory/> : LoginText},
-    {id: 4, title: t("myOrders.orders"), body: isLogin ? ComingSoon : LoginText},
+    {id: 4, title: t("myOrders.orders"), body: isLogin ? <Trades/> : LoginText},
   ];
 
   return (

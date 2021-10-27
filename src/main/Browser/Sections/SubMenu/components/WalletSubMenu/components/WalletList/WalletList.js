@@ -30,7 +30,7 @@ const WalletList = (props) => {
                     <img
                         className={`img-md flex`}
                         src={images.safe}
-                        alt="safe"
+                        alt="safe"zz
                         title="safe"
                     />
                 </div>
@@ -58,7 +58,7 @@ const WalletList = (props) => {
                 <span className={`font-size-sm`}>{t("WalletSubMenu.showZeroBalance")}</span>
                 <ToggleSwitch onchange={()=>setShowZero(prevState => !prevState)} checked={showZero}/>
             </div>
-            <div className="container row ai-center px-1 py-05" style={{height: "8.5vh"}}>
+            {/*<div className="container row ai-center px-1 py-05" style={{height: "8.5vh"}}>
                 <div className={` row jc-center ai-center ${classes.PairImage}`}>
                     <img
                         className={`img-md flex`}
@@ -82,7 +82,7 @@ const WalletList = (props) => {
                         </span>
                     </div>
                 </div>
-            </div>
+            </div>*/}
             {Object.keys(wallets).map((name) => {
                 if(wallets[name].free !== 0.0 || !showZero) {
                     return <WalletListItem key={name} name={name} route={Routes.Wallet + "/" + name} amount={wallets[name].free}/>

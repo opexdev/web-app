@@ -35,7 +35,7 @@ export const parseWalletsResponse = (res) => {
         wallets[wallet.asset.toUpperCase()] = {
             free: parseFloat(wallet.free.toFixed(6)),
             locked:  parseFloat(wallet.locked.toFixed(6)),
-            inWithdrawalProcess: 0,
+            withdraw:  parseFloat(wallet.withdraw.toFixed(6)),
         }
     })
     delete res.balances;

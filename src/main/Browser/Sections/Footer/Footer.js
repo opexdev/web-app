@@ -33,8 +33,8 @@ const Footer = (props) => {
                         </NavHashLink>
                     </div>
                     <div className="column px-1">
-                        <NavHashLink to={Routes.Guide + "#wage"}>
-                            <span className="hover-text">{t("footer.wage")}</span>
+                        <NavHashLink to={Routes.Guide + "#commission"}>
+                            <span className="hover-text">{t("commission")}</span>
                         </NavHashLink>
                         <NavHashLink to={Routes.Guide + "#api"}>
                             <span className="hover-text">{t("footer.api")}</span>

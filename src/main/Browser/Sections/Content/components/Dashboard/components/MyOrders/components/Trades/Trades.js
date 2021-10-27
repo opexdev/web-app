@@ -2,26 +2,26 @@ import React, {Fragment, useEffect, useState} from "react";
 import moment from "moment-jalaali";
 import classes from "../../MyOrders.module.css";
 import {useTranslation} from "react-i18next";
-import {getOrdersHistory} from "../api/myOrders";
+import {getOrdersHistory, getTrades} from "../api/myOrders";
 import {connect} from "react-redux";
 import Loading from "../../../../../../../../../../components/Loading/Loading";
 import ScrollBar from "../../../../../../../../../../components/ScrollBar";
 import Icon from "../../../../../../../../../../components/Icon/Icon";
 
-const OrdersHistory = (props) => {
+const Trades = (props) => {
 
     const {activePair, accessToken, lastTransaction} = props
 
     const {t} = useTranslation();
-    const [orders, setOrders] = useState([])
+    const [trades, setTrades] = useState([])
     const [openOrder, setOpenOrder] = useState(null)
     const [isLoading, setIsLoading] = useState(true)
 
     useEffect(() => {
-        getOrdersHistory(activePair, accessToken)
-            .then((ordersHistory) => {
-                if (ordersHistory.status === 200) {
-                    setOrders(ordersHistory.data.sort((a,b) => a.time - b.time).slice(0 , 50))
+        getTrades(activePair, accessToken)
+            .then((trades) => {
+                if (trades.status === 200) {
+                    setTrades(trades.data.sort((a,b) => a.time - b.time).slice(0 , 50))
                 }
                 setIsLoading(false)
             })
@@ -31,9 +31,13 @@ const OrdersHistory = (props) => {
         return <Loading/>
     }
 
+
     return (
         <ScrollBar>
-            <table className="text-center double-striped" cellSpacing="0" cellPadding="0">
+            <table
+                className="text-center double-striped"
+                cellSpacing="0"
+                cellPadding="0">
                 <thead className="th-border-y">
                 <tr>
                     <th>{t("date")}</th>
@@ -45,20 +49,18 @@ const OrdersHistory = (props) => {
                         {t("pricePerUnit")}({activePair.quoteAsset})
                     </th>
                     <th>{t("totalPrice")}</th>
-                    <th>{t("status")}</th>
                     <th/>
                 </tr>
                 </thead>
                 <tbody>
-                {orders.map((tr, index) => (
+                {trades.map((tr, index) => (
                     <Fragment key={index}>
-                        <tr className={tr.side === "BUY" ? "text-green" : "text-red"}>
+                        <tr className={tr.isBuyer === false ? "text-green" : "text-red"}>
                             <td>{moment(tr.time).format("jYY/jMM/jDD")}</td>
                             <td>{moment(tr.time).format("HH:mm:ss")}</td>
-                            <td>{tr.origQty}</td>
-                            <td>{tr.price.toLocaleString()}</td>
-                            <td>{(tr.origQty * tr.price).toLocaleString()}</td>
-                            <td>{t("ordersStatus." + tr.status)}</td>
+                            <td>{tr.qty}</td>
+                            <td>{tr.price}</td>
+                            <td>{(tr.qty * tr.price).toLocaleString()}</td>
                             {openOrder === index ? (
                                 <td onClick={() => setOpenOrder(null)}>
                                     <Icon
@@ -75,44 +77,19 @@ const OrdersHistory = (props) => {
                                 </td>
                             )}
                         </tr>
-                        <tr style={{
-                            display: openOrder === index ? "revert" : "none",
-                        }}>
-                            <td colSpan="8" className={`py-1 px-2`}>
+                        <tr
+                            style={{display: openOrder === index ? "revert" : "none"}}>
+                            <td colSpan="6" className={`py-1 px-2`}>
                                 <div
-                                    className="row jc-between  ai-center"
-                                    style={{width: "100%", textAlign: "start"}}>
+                                    className="row jc-around  ai-center"
+                                    style={{width: "100%"}}>
                                     <p className="col-46 row jc-between">
                                         {t("myOrders.orderId")} : <span>{tr.orderId}</span>
                                     </p>
                                     <p className="col-46 row jc-between">
-                                        {t("orderType")} :{" "}
-                                        <span>
-                                            {t(tr.side) + " " + t("orderTypes." + tr.type)}
-                                        </span>
+                                        {t("commission")} : <span>{tr.commission} <span>{t("currency." + tr.commissionAsset.toUpperCase())}</span></span>
                                     </p>
                                 </div>
-                                <div className="row  jc-between ai-center"
-                                     style={{width: "100%", textAlign: "start"}}>
-                                    <p className="col-46 row jc-between">
-                                        {t("myOrders.stopOrderTime")} :{" "}
-                                        <span>
-                                            {moment(tr.updateTime).format("jYY/jMM/jDD HH:mm:ss",)}
-                                        </span>
-                                    </p>
-                                    <p className="col-46 row jc-between">
-                                        {t("myOrders.startOrderTime")} :{" "}
-                                        <span>
-                                            {moment(tr.time).format("jYY/jMM/jDD HH:mm:ss",)}
-                                        </span>
-                                    </p>
-                                </div>
-                                {/*<div className="row jc-between ai-center" style={{width: "100%", textAlign: "start"}}>
-                                    <p className="col-46 row jc-between">
-                                        {t("myOrders.stoppedPrice")} :{" "}
-                                        <span>{tr.price}</span>
-                                    </p>
-                                </div>*/}
                             </td>
                         </tr>
                     </Fragment>
@@ -132,4 +109,4 @@ const mapStateToProps = (state) => {
     };
 };
 
-export default connect(mapStateToProps, null)(OrdersHistory);
+export default connect(mapStateToProps, null)(Trades);
