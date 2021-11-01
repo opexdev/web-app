@@ -198,7 +198,8 @@
     "showZeroBalance": "عدم نمایش موجودی صفر"
   },
   "DepositWithdraw": {
-    "title": "واریز/برداشت"
+    "title": "واریز/برداشت",
+    "success": "آدرس کپی شد"
   },
   "DepositWithdrawTx": {
     "title": "تراکنش های واریز/برداشت",

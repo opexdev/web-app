@@ -154,7 +154,7 @@ export const sendUserFile = async (token, user, file ) => {
     const data = new FormData();
     data.append('file', file);
 
-    return await axios.post(`http://192.168.2.119/storage/${user}`, data
+    return await Auth.post(`/storage/${user}`, data
     ).then((res) => {
         console.log(res)
         return res;

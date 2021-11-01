@@ -24,6 +24,6 @@
   border-top-color: var(--toolTipBG) !important;
 }
 
-:global .selected {
-  background: darkgrey !important;
+.selected {
+  background: var(--orangeAlpha) !important;
 }

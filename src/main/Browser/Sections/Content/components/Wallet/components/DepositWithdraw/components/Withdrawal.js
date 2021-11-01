@@ -1,7 +1,7 @@
 import classes from "../DepositWithdraw.module.css";
 import TextInput from "../../../../../../../../../components/TextInput/TextInput";
 import Button from "../../../../../../../../../components/Button/Button";
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import {useSelector} from "react-redux";
 import {useParams} from "react-router-dom";
 import {Trans, useTranslation} from "react-i18next";
@@ -27,6 +27,11 @@ const Withdrawal = () => {
     });
 
     const [isLoading, setIsLoading] = useState(false)
+
+    useEffect(() => {
+        setAmount({value: "0", alert: null})
+        setAddress({value: "", alert: null})
+    }, [id]);
 
     const network = (id) => {
         switch (id) {
@@ -54,19 +59,21 @@ const Withdrawal = () => {
     };
 
     const sendWithdrawHandler = async () => {
+        if (isLoading) return false
         setIsLoading(true)
         sendWithdrawReq(accessToken, amount.value, id, address.value, calculateFee(id), network(id)).then((r) =>{
             console.log(r)
             setIsLoading(false)
+            setAmount({value: "0", alert: null})
+            setAddress({value: "", alert: null})
+            toast.success(<Trans
+                i18nKey="DepositWithdrawTx.success"
+                values={{
+                    asset: t("currency." + id),
+                    amount: amount.value,
+                }}
+            />);
         })
-
-        toast.success(<Trans
-            i18nKey="DepositWithdrawTx.success"
-            values={{
-                asset: t("currency." + id),
-                amount: amount.value,
-            }}
-        />);
     }
 
     const submitButtonTextHandler = () => {
@@ -75,6 +82,23 @@ const Withdrawal = () => {
         }
         return t('DepositWithdrawTx.withdrawReqSubmit')
     }
+
+    const fillByWallet = () => {
+        setAmount({
+            value: wallets[id].free,
+            alert: null
+        })
+    };
+
+
+    const fillByMinWithdraw = () => {
+        setAmount({
+            value: new BN(calculateFee(id)).multipliedBy(1.1).toString(),
+            alert: null
+        })
+    };
+
+
 
     return (
         <div className={`px-1 py-2 column jc-between ${classes.content}`}>
@@ -91,10 +115,14 @@ const Withdrawal = () => {
                         type="text"
                     />
                     <span>
-                        {t("DepositWithdrawTx.freeWallet")}: <span>{wallets[id].free} {t("currency." + id)}</span>
+                        {t("DepositWithdrawTx.freeWallet")}: <span className={`hover-text cursor-pointer`} onClick={() => {
+                        fillByWallet()
+                    }}>{wallets[id].free} {t("currency." + id)}</span>
                     </span>
                     <span>
-                        {t('DepositWithdrawTx.minWithdraw')}: <span>0.001 {t("currency." + id)}</span>
+                        {t('DepositWithdrawTx.minWithdraw')}: <span className={`hover-text cursor-pointer`} onClick={() => {
+                        fillByMinWithdraw()
+                    }}>{new BN(calculateFee(id)).multipliedBy(1.1).toString()} {t("currency." + id)}</span>
                     </span>
                     <span>
                         {t('DepositWithdrawTx.maxWithdraw')}: <span>2 {t("currency." + id)}</span>
@@ -123,12 +151,13 @@ const Withdrawal = () => {
                                 {t('commission')}: <span className={`text-orange`}>{amount.value ? calculateFee(id) : 0} </span> <span>{t("currency." + id)}</span>
                             </span>
                             <span>
-                                {t('DepositWithdrawTx.reqAmount')}: <span className={`text-green`}>{amount.value ? new BN(amount.value).minus(new BN(calculateFee(id))).toFormat() : 0} </span> <span>{t("currency." + id)}</span>
+                                {t('DepositWithdrawTx.reqAmount')}: <span className={`text-green`}>{new BN(amount.value).minus(new BN(calculateFee(id))).isGreaterThan(0) ? new BN(amount.value).minus(new BN(calculateFee(id))).toFormat() : 0} </span> <span>{t("currency." + id)}</span>
                             </span>
                         </div>
                         <Button
-                            buttonClass={`${classes.thisButton} ${classes.withdrawal}`}
+                            buttonClass={`${classes.thisButton} ${classes.withdrawal} ${isLoading ? "cursor-not-allowed" : "cursor-pointer"}`}
                             buttonTitle={submitButtonTextHandler()}
+                            disabled={!(new BN(amount.value).minus(new BN(calculateFee(id))).isGreaterThan(0)) || address.value.length <= 0 }
                             onClick={sendWithdrawHandler}
                         />
                     </div>

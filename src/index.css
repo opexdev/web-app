@@ -191,6 +191,7 @@
   --bgRed: #d73e36;
   --bgBlue: #0e4095;
   --orange: #ff8124;
+  --orangeAlpha: #e97b50b0;
   --lightBlue: #0d0d5a;
 
   --LoginContainer: #eafbff;
@@ -249,6 +250,7 @@
   --bgBlue: #6f9ffff5;
 
   --orange: #ff8124;
+  --orangeAlpha: #b16649d9;
 
   --LoginContainer: #383a59;
   --cardHeaderAlpha: #11121552;
@@ -520,6 +522,11 @@ body {
   -ms-flex: 0.1;
   flex: 0.1;
 }
+.col-06 {
+  -webkit-box-flex: 0.06;
+  -ms-flex: 0.06;
+  flex: 0.06;
+}
 .col-08 {
   -webkit-box-flex: 0.08;
   -ms-flex: 0.08;
@@ -641,6 +648,11 @@ body {
   -ms-flex: 0.92;
   flex: 0.92;
 }
+.col-94 {
+  -webkit-box-flex: 0.94;
+  -ms-flex: 0.94;
+  flex: 0.94;
+}
 .col-96 {
   -webkit-box-flex: 0.96;
   -ms-flex: 0.96;
@@ -655,6 +667,9 @@ body {
   -webkit-box-flex: 1;
   -ms-flex: 1;
   flex: 1;
+}
+.width-19{
+  width: 19%;
 }
 .width-23{
   width: 23%;

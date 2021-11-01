@@ -13,6 +13,8 @@ import {getDeposit, getDepositAddress, getWithdraw} from "../../api/wallet";
 import Loading from "../../../../../../../../components/Loading/Loading";
 import Error from "../../../../../../../../components/Error/Error";
 import LastTradesTable from "../../../Dashboard/components/LastTrades/components/LastTradesTable/LastTradesTable";
+import useInterval from "../../../../../../../../Hooks/useInterval";
+import {BN} from "../../../../../../../../utils/utils";
 
 const DepositWithdrawTx = (props) => {
   const {t} = useTranslation();
@@ -37,6 +39,7 @@ const DepositWithdrawTx = (props) => {
   });
   const [tx, setTx] = useState(null);
   const [error, setError] = useState(false);
+  // const wallets = useSelector(state => state.auth.wallets);
 
   function timeValidator(inputField, key) {
     const isValid = /^(2[0-3]|[01]?[0-9]):([0-5]?[0-9])$/.test(inputField);
@@ -66,10 +69,11 @@ const DepositWithdrawTx = (props) => {
 
 
   const getTx = async () => {
-    setError(false)
+
     let newTx = []
     const deposit = await getDeposit(accessToken ,id)
     if (deposit && deposit.status === 200 ){
+      setError(false)
       newTx = deposit.data.map((d)=>{
         d.time = d.insertTime
         d.isDeposit = true
@@ -81,8 +85,9 @@ const DepositWithdrawTx = (props) => {
 
     const withdraw = await getWithdraw(accessToken ,id)
     if (withdraw && withdraw.status === 200 ){
+      setError(false)
       newTx = [...newTx , ...withdraw.data.map(w => {
-        w.time = new Date(w.applyTime).getTime()
+        w.time = new Date(w.applyTime).getTime()- new Date(w.applyTime).getTimezoneOffset()*60*1000
         w.isDeposit = false
         return w
       })]
@@ -99,6 +104,19 @@ const DepositWithdrawTx = (props) => {
     })
   }, [id]);
 
+  useInterval(async () => {
+    await getTx();
+  }, id ? 3000 : null);
+
+
+  const addressRef = useRef(null);
+  console.log("addressRef : " , addressRef)
+
+  const copyToClipboard = () => {
+    addressRef.current.select();
+    document.execCommand("copy");
+  };
+
 
 
 
@@ -111,7 +129,7 @@ const DepositWithdrawTx = (props) => {
       return <Error/>
     }
     if( tx.length === 0) {
-      return <div className="container height-100 flex ai-center jc-center font-size-sm">{t("noTx")}</div>
+      return <div className="container height-100 flex ai-center jc-center">{t("noTx")}</div>
     }
     return  <ScrollBar>
       {filterOpen ? (
@@ -215,10 +233,11 @@ const DepositWithdrawTx = (props) => {
               <th>{t("date")}</th>
               <th>{t("time")}</th>
               <th>{t("DepositWithdrawTx.transactionType")}</th>
+              <th>{t("DepositWithdrawTx.network")}</th>
               {/*<th>{t("destination")}</th>*/}
               <th>{t("volume")} ({id})</th>
-              <th className={`width-23`}>{t("DepositWithdrawTx.inventory")} ({id})</th>
-              <th>{t("status")}</th>
+             {/* <th className={`width-19`}>{t("DepositWithdrawTx.inventory")} ({id})</th>
+              <th>{t("status")}</th>*/}
               <th>{t("details")}</th>
             </tr>
             </thead>
@@ -228,15 +247,16 @@ const DepositWithdrawTx = (props) => {
                     <td>{moment(tr.time).format("jYY/jMM/jDD")}</td>
                     <td>{moment(tr.time).format("HH:mm:ss")}</td>
                     <td>{tr.isDeposit === true ? t("deposit") : t("withdrawal")}</td>
+                    <td>{tr.network}</td>
                     {/*<td className="direction-ltr">{tr.destination}</td>*/}
                     <td>
-                      {tr.amount}{" "}
-                      {tr.isDeposit === true
+                      {new BN(tr.amount).toFormat()}{" "}
+                      {/*{tr.isDeposit === true
                           ? "+"
-                          : "-"}
+                          : "-"}*/}
                     </td>
-                    <td>{tr.amount}</td>
-                    <td>{t("ordersStatus.FILLED")}</td>
+                   {/* <td>{tr.amount}</td>
+                    <td>{t("ordersStatus.FILLED")}</td>*/}
                     {openItem === index ? (
                         <td onClick={() => setOpenItem(null)}>
                           <Icon
@@ -257,19 +277,35 @@ const DepositWithdrawTx = (props) => {
                       style={{display: openItem === index ? "revert" : "none"}}>
                     <td colSpan="9" className={`py-1 px-2`}>
                       <div className="row jc-around  ai-center" style={{width: "100%"}}>
-                        <p className="col-46 row jc-between">
+                        <p className="col-94 row jc-between">
                           {t("DepositWithdrawTx.destination")} :{" "}
-                          <span>{tr.address}</span>
+                          <span ref={addressRef}>{tr.address}</span>
                         </p>
-                        <p className="col-46 row jc-between">
+                        <p className="col-06 row jc-center">
+                          <Icon
+                              iconName="icon-copy font-size-md"
+                              /*onClick={() => copyToClipboard()}*/
+                              customClass={`hover-text cursor-pointer`}
+                          />
+                        </p>
+
+                        {/*<p className="col-46 row jc-between">
                           {t("DepositWithdrawTx.network")} :{" "}
                           <span>{tr.network}</span>
-                        </p>
+                        </p>*/}
+
                       </div>
                       <div className="row jc-around  ai-center" style={{width: "100%"}}>
-                        <p className="col-96 row jc-between">
+                        <p className="col-94 row jc-between">
                           {t("DepositWithdrawTx.transactionId")} :{" "}
-                          <span>{tr.txId}</span>
+                          <span>{tr.txId.slice(0, tr.txId.indexOf("_"))}</span>
+                        </p>
+                        <p className="col-06 row jc-center">
+                          <Icon
+                              iconName="icon-copy font-size-md"
+                              /*onClick={() => copyToClipboard()}*/
+                              customClass={`hover-text cursor-pointer`}
+                          />
                         </p>
                         {/*<p className="col-46 row jc-between">
                             {t("DepositWithdrawTx.blockchainTransactionId")} :{" "}

@@ -5,9 +5,10 @@ import Icon from "../../../../../../../../../components/Icon/Icon";
 import {images} from "../../../../../../../../../assets/images";
 import {useParams} from "react-router-dom";
 import {useSelector} from "react-redux";
-import {useTranslation} from "react-i18next";
+import {Trans, useTranslation} from "react-i18next";
 import {getDepositAddress} from "../../../api/wallet";
 import QRCode from "react-qr-code";
+import {toast} from "react-hot-toast";
 
 const Deposit = () => {
 
@@ -16,12 +17,16 @@ const Deposit = () => {
     const [address , setAddress] = useState("")
 
     const addressRef = useRef(null);
+    console.log("Deposit addressRef : " , addressRef)
     const {id} = useParams();
     const accessToken = useSelector(state => state.auth.accessToken);
 
     const copyToClipboard = () => {
         addressRef.current.select();
         document.execCommand("copy");
+        toast.success(<Trans
+            i18nKey="DepositWithdraw.success"
+        />);
     };
 
     useEffect(() => {
@@ -98,6 +103,7 @@ const Deposit = () => {
                             <Icon
                                 iconName="icon-copy font-size-md-01"
                                 onClick={() => copyToClipboard()}
+                                customClass={`hover-text cursor-pointer`}
                             />
                         }
                         customClass={classes.depositInput}

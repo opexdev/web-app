@@ -5,6 +5,8 @@ import {useTranslation} from "react-i18next";
 import classes from "./WalletSubMenu.module.css";
 import WalletList from "./components/WalletList/WalletList";
 import {setUserAccountInfo} from "../../../../../../store/actions/auth";
+import useInterval from "../../../../../../Hooks/useInterval";
+import {useParams} from "react-router-dom";
 
 
 const WalletSubMenu = (props) => {
@@ -12,22 +14,28 @@ const WalletSubMenu = (props) => {
     const [isLoading, setLoading] = useState(true);
     const {accessToken, setUserAccountInfo,wallets} = props;
 
-    useEffect(() => {
-        const getAccountUseEffect = async () => {
-            let account = await getAccount(accessToken)
+    const getAccountUseEffect = async () => {
+        let account = await getAccount(accessToken)
 
-            if (account.status === 200) {
-                const parsedData = parseWalletsResponse(account.data);
-                setUserAccountInfo(parsedData)
-            }
-            if (!account) {
-                setLoading(false);
-                return false
-            }
-            setLoading(false)
+        if (account.status === 200) {
+            const parsedData = parseWalletsResponse(account.data);
+            setUserAccountInfo(parsedData)
         }
-        getAccountUseEffect()
+        if (!account) {
+            setLoading(false);
+            return false
+        }
+    }
+
+    useEffect(() => {
+        getAccountUseEffect().then(()=>{
+            setLoading(false)
+        })
     }, []);
+
+    useInterval(async () => {
+        await getAccountUseEffect();
+    }, 3000);
 
 
     return (

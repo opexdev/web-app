@@ -23,7 +23,8 @@ const Main = (props) => {
     return (
         /*basename={"demo"}*/
         /*"homepage":"https://opex.dev/demo"*/
-        <div className={`container ${props.isDark ? "dark" : ""} ${ltr ? "ltr" : "rtl"} ${isSafari ? "" : "user-select"}`}>
+        /*${isSafari ? "" : "user-select"}*/
+        <div className={`container ${props.isDark ? "dark" : ""} ${ltr ? "ltr" : "rtl"}`}>
             <Router basename={"demo"}>
                 <BrowserView>
                     <Browser/>

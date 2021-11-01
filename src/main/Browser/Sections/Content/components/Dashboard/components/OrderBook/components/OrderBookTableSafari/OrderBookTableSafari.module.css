@@ -23,8 +23,8 @@
 :global .place-top::after {
   border-top-color: var(--toolTipBG) !important;
 }
-:global .selected {
-  background: darkgrey !important;
+.selected {
+  background: var(--orangeAlpha) !important;
 }
 .tbody{
   line-height: 3.7vh;

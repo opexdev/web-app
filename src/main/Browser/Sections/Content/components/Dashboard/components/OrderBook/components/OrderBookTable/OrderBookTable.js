@@ -114,7 +114,7 @@ const OrderBookTable = (props) => {
                 onMouseEnter={() => setSelected({...selected, sell: index})}
                 onMouseLeave={() => setSelected({...selected, sell: -1})}
                 data-html={true}
-                className={`${selected.sell >= index ? "selected" : ""} cursor - pointer`}
+                className={`${selected.sell >= index ? `${classes.selected}` : ""} cursor-pointer`}
                 data-place="bottom"
                 data-effect="float"
                 data-tip={toolTipHandler(avg , index)}
@@ -136,7 +136,7 @@ const OrderBookTable = (props) => {
                 onMouseEnter={() => setSelected({...selected, buy: index})}
                 onMouseLeave={() => setSelected({...selected, buy: -1})}
                 data-html={true}
-                className={`${selected.buy >= index ? "selected" : ""} cursor - pointer`}
+                className={`${selected.buy >= index ? `${classes.selected}` : ""} cursor-pointer`}
                 data-place="bottom"
                 data-effect="float"
                 data-tip={toolTipHandler(avg , index)}

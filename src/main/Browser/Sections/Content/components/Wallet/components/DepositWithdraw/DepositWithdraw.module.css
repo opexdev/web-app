@@ -37,9 +37,16 @@
 }
 .thisButton.withdrawal{
   background-color: var(--orange);
+  color: #000;
 }
 .thisButton.transfer{
   background-color: var(--bgRed);
+}
+.thisButton:disabled,.button[disabled] {
+  border: 0.3vh solid var(--cardHeader);
+  background: var(--cardHeader);
+  color: var(--textColor);
+  cursor: not-allowed;
 }
 .iconBG {
   vertical-align: middle;
