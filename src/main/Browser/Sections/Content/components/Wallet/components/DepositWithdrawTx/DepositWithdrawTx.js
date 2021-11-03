@@ -118,7 +118,18 @@ const DepositWithdrawTx = (props) => {
   };
 
 
-
+  const txStatus = (status) => {
+    switch (status) {
+      case 0:
+        return t("ordersStatus.NEW");
+      case 1:
+        return t("ordersStatus.FILLED");
+      case 2:
+        return t("ordersStatus.REJECTED");
+      default:
+        return t("ordersStatus.NEW");
+    }
+  };
 
 
   const content = () => {
@@ -236,8 +247,8 @@ const DepositWithdrawTx = (props) => {
               <th>{t("DepositWithdrawTx.network")}</th>
               {/*<th>{t("destination")}</th>*/}
               <th>{t("volume")} ({id})</th>
-             {/* <th className={`width-19`}>{t("DepositWithdrawTx.inventory")} ({id})</th>
-              <th>{t("status")}</th>*/}
+              {/*<th className={`width-19`}>{t("DepositWithdrawTx.inventory")} ({id})</th>*/}
+              <th>{t("status")}</th>
               <th>{t("details")}</th>
             </tr>
             </thead>
@@ -255,8 +266,9 @@ const DepositWithdrawTx = (props) => {
                           ? "+"
                           : "-"}*/}
                     </td>
-                   {/* <td>{tr.amount}</td>
-                    <td>{t("ordersStatus.FILLED")}</td>*/}
+                    {/*<td>{tr.amount}</td>*/}
+                   {/* <td>{t("ordersStatus.FILLED")}</td>*/}
+                    <td>{txStatus(tr.status)}</td>
                     {openItem === index ? (
                         <td onClick={() => setOpenItem(null)}>
                           <Icon
@@ -281,7 +293,7 @@ const DepositWithdrawTx = (props) => {
                           {t("DepositWithdrawTx.destination")} :{" "}
                           <span ref={addressRef}>{tr.address}</span>
                         </p>
-                        <p className="col-06 row jc-center">
+                        <p className="col-03 row jc-end">
                           <Icon
                               iconName="icon-copy font-size-md"
                               /*onClick={() => copyToClipboard()}*/
@@ -295,12 +307,12 @@ const DepositWithdrawTx = (props) => {
                         </p>*/}
 
                       </div>
-                      <div className="row jc-around  ai-center" style={{width: "100%"}}>
+                      <div className="row jc-around ai-center" style={{width: "100%"}}>
                         <p className="col-94 row jc-between">
                           {t("DepositWithdrawTx.transactionId")} :{" "}
-                          <span>{tr.txId.slice(0, tr.txId.indexOf("_"))}</span>
+                          <span>{id === "BTC" ? tr.txId.slice(0, tr.txId.indexOf("_")) : tr.txId}</span>
                         </p>
-                        <p className="col-06 row jc-center">
+                        <p className="col-03 row jc-end">
                           <Icon
                               iconName="icon-copy font-size-md"
                               /*onClick={() => copyToClipboard()}*/

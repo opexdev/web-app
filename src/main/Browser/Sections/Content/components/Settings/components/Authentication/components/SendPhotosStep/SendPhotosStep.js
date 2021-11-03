@@ -4,6 +4,7 @@ import {useTranslation} from "react-i18next";
 import Button from "../../../../../../../../../../components/Button/Button";
 import ImageInput from "../../../../../../../../../../components/ImageInput/ImageInput";
 import {
+    addToKycGroup,
     getToken,
     getUser,
     parsePanelToken,
@@ -44,6 +45,7 @@ const SendPhotosStep = (props) => {
             }
         )
         if (update.status === 204) {
+            await addToKycGroup(panelToken.panelAccessToken , id)
             props.nextStep()
         }
 

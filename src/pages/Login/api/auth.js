@@ -166,3 +166,19 @@ export const sendUserFile = async (token, user, file ) => {
     })
 }
 
+export const addToKycGroup = async (token, userId) => {
+
+    Auth.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+    Auth.defaults.headers.common['Content-Type'] = 'application/json';
+
+    return await Auth.put(`/auth/admin/realms/opex/users/${userId}/groups/24200655-dfef-4ed0-a8b8-925918793552`)
+        .then((res) => {
+            return res;
+        }).catch((e) => {
+            if (!e.response) {
+                return false;
+            }
+            return e.response;
+        })
+};
+
