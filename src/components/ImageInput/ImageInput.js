@@ -16,7 +16,7 @@ const ImageInput = (props) => {
   const {getRootProps, getInputProps, fileRejections} = useDropzone({
     accept: "image/jpeg, image/png",
     maxFiles: 1,
-    maxSize: 100000,
+    maxSize: 1000000,
     multiple: false,
     onDrop: (acceptedFiles) => {
       if (acceptedFiles.length > 0) {

@@ -21,16 +21,16 @@ const SendToExpertStep = (props) => {
         <span>ارسال به کارشناس</span>
         <div className="row pt-1 jc-end">
             <Button
-                buttonClass={`${classes.thisButton} ${classes.prev} ml-05`}
+                buttonClass={`${classes.thisButton} ${classes.prev}`}
                 onClick={props.prevStep}
                 buttonTitle={t("prevStep")}
             />
-            <Button
+            {/*<Button
                 buttonClass={`${classes.thisButton} ${classes.submit}`}
                 onClick={props.nextStep}
                 type="submit"
                 buttonTitle={t("submit")}
-            />
+            />*/}
         </div>
       </div>
     </div>

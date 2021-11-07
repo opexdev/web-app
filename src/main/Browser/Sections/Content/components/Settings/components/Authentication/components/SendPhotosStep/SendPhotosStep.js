@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useState , Fragment} from "react";
 import classes from "./SendPhotosStep.module.css";
 import {useTranslation} from "react-i18next";
 import Button from "../../../../../../../../../../components/Button/Button";
@@ -12,10 +12,14 @@ import {
     sendUserFile
 } from "../../../../../../../../../../pages/Login/api/auth";
 import {useSelector} from "react-redux";
+import Loading from "../../../../../../../../../../components/Loading/Loading";
 
 
 const SendPhotosStep = (props) => {
     const {t} = useTranslation();
+
+    const [error, setError] = useState(false);
+    const [sending, setSending] = useState(false);
 
     const [images, setImages] = useState({
         img1: "",
@@ -26,31 +30,40 @@ const SendPhotosStep = (props) => {
     const token = useSelector(state => state.auth.accessToken);
 
     const sendImageHandler = async () => {
+        setSending(true)
         const acceptForm = await sendUserFile(token, id, images.img1)
         const selfie = await sendUserFile(token, id, images.img2)
         const idCard = await sendUserFile(token, id, images.img3)
 
-        let panelToken = await getToken()
-        panelToken = parsePanelToken(panelToken.data)
-        let userInfo = await getUser(panelToken.panelAccessToken, "id", id)
-        if (userInfo.status === 200) {
-            userInfo = userInfo.data.find(user => user.id === id)
-        }
-        const update = await sendUpdateProfileReq(panelToken.panelAccessToken, userInfo.id,
-            {
-                ...userInfo.attributes,
-                acceptForm: acceptForm.data.path,
-                selfie: selfie.data.path,
-                idCard: idCard.data.path,
+        if (acceptForm.status === 200 && selfie.status === 200 && idCard.status === 200) {
+            let panelToken = await getToken()
+            panelToken = parsePanelToken(panelToken.data)
+            let userInfo = await getUser(panelToken.panelAccessToken, "id", id)
+            if (userInfo.status === 200) {
+                userInfo = userInfo.data.find(user => user.id === id)
             }
-        )
-        if (update.status === 204) {
-            await addToKycGroup(panelToken.panelAccessToken , id)
-            props.nextStep()
+            const update = await sendUpdateProfileReq(panelToken.panelAccessToken, userInfo.id,
+                {
+                    ...userInfo.attributes,
+                    acceptForm: acceptForm.data.path,
+                    selfie: selfie.data.path,
+                    idCard: idCard.data.path,
+                }
+            )
+            setSending(false)
+            if (update.status === 204) {
+                await addToKycGroup(panelToken.panelAccessToken , id)
+                props.nextStep()
+            }
         }
+        setSending(false)
+
 
 
     }
+
+
+
 
 
     return (
@@ -90,21 +103,30 @@ const SendPhotosStep = (props) => {
           </span>
 
                     <div className={`row jc-between ai-start mt-2`}>
-                        <ImageInput
+
+                        {sending ?
+                            <div className={`container flex jc-center ai-center`} style={{height: "30vh"}}>
+                                <span className={`flashit`}>در حال ارسال اطلاعات...</span>
+                            </div>
+                        :
+                            <Fragment>
+                            <ImageInput
                             zoneCustomClass={classes.zoneBox}
                             title={t("SendPhotosStep.textTitle")}
                             onchange={(url) => setImages({...images, img1: url})}
-                        />
-                        <ImageInput
+                            />
+                            <ImageInput
                             zoneCustomClass={classes.zoneBox}
                             title={t("SendPhotosStep.textSelfiTitle")}
                             onchange={(url) => setImages({...images, img2: url})}
-                        />
-                        <ImageInput
+                            />
+                            <ImageInput
                             zoneCustomClass={classes.zoneBox}
                             title={t("SendPhotosStep.nationalCardTitle")}
                             onchange={(url) => setImages({...images, img3: url})}
-                        />
+                            />
+                            </Fragment>
+                        }
                     </div>
                 </div>
 
