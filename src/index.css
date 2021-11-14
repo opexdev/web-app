@@ -196,6 +196,7 @@
 
   --LoginContainer: #eafbff;
   --cardHeaderAlpha: #acaeaf75;
+  --popupAlpha: #f0f0f0e6;
   --cardBodyAlpha: #dddada96;
 
 }
@@ -254,6 +255,7 @@
 
   --LoginContainer: #383a59;
   --cardHeaderAlpha: #11121552;
+  --popupAlpha: #24242ef2;
   --cardBodyAlpha: #282a36e6;
 
   /*darkula*/
@@ -1340,4 +1342,29 @@ table th {
 }
 .thisButton{
   transform: rotate(-90deg);
+}
+
+.appear-animation{
+  -webkit-animation: appear 0.3s cubic-bezier(.38,.1,.36,.9) forwards;
+}
+
+@keyframes appear {
+  0% {
+    box-shadow: 0 0 0 #f2f2f200;
+    opacity: 0;
+    -webkit-transform: scale(1) translateY(0);
+    transform: scale(1) translateY(0);
+  }
+  1% {
+    box-shadow: 0 0 0 #f2f2f200;
+    opacity: 0;
+    -webkit-transform: scale(.96) translateY(10px);
+    transform: scale(.96) translateY(10px);
+  }
+  100% {
+    box-shadow: 0 0 500px #f2f2f200;
+    opacity: 1;
+    -webkit-transform: scale(1) translateY(0);
+    transform: scale(1) translateY(0);
+  }
 }

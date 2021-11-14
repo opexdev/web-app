@@ -5,7 +5,7 @@
   font-size: 2vw;
   /*padding: 3vh 0;*/
   position: fixed;
-  z-index: 5;
+  z-index: 6;
   overflow-x: hidden;
 }
 .header{
@@ -101,7 +101,7 @@
   height: 100vh;
   background-color: var(--cardBody);
   margin-right: -27%;
-  z-index: 4;
+  z-index: 5;
   /*display: none;*/
   position: absolute;
 }
@@ -114,7 +114,7 @@
   height: 100vh;
   background-color: rgba(0, 0, 0, 0);
   right: 5%;
-  z-index: 3;
+  z-index: 4;
   /* display: none;*/
   position: absolute;
   /*transition: all 0.5s;*/
