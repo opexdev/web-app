@@ -1,0 +1,137 @@
+.container {
+  width: 5%;
+  height: 100vh;
+  /*background-color: #f2f2f2;*/
+  font-size: 2vw;
+  /*padding: 3vh 0;*/
+  position: fixed;
+  z-index: 6;
+  overflow-x: hidden;
+}
+.header{
+  height: 10vh;
+}
+
+.content{
+  height: 90vh;
+}
+
+.container a,
+.messages {
+  margin: 1.2vh 0;
+}
+.container a.selected,
+.messages.selected {
+  background-color: var(--cardBody);
+  width: 5vw;
+  text-align: revert;
+  position: relative;
+  margin-right: 2vw;
+  border-radius: 0 9px 9px 0;
+  padding: 1vh 0.5vw;
+  transition: background-color 0.4s;
+}
+:global(.ltr) .container a.selected,
+:global(.ltr) .messages.selected {
+  margin-left: 2vw;
+  margin-right: initial;
+  border-radius: 9px 0 0 9px;
+}
+
+.selected:before,
+.messages.selected:before {
+  content: "";
+  position: absolute;
+  background-color: var(--menu);
+  width: 15px;
+  height: 15px;
+  border-top-left-radius: 10px;
+  bottom: -15px;
+  left: 1vw;
+  box-shadow: -3px -7px 0 0 var(--cardBody);
+  transition: background-color 0.4s, box-shadow 0.4s;
+}
+:global(.ltr) .selected:before,
+:global(.ltr) .messages.selected:before {
+  right: 1vw;
+  left: initial;
+  border-top-right-radius: 10px;
+  box-shadow: 7px -2px 0 0 var(--cardBody);
+}
+.selected:after,
+.messages.selected:after {
+  content: "";
+  position: absolute;
+  background-color: var(--menu);
+  width: 15px;
+  height: 15px;
+  border-bottom-left-radius: 10px;
+  top: -15px;
+  left: 1vw;
+  box-shadow: -3px 7px 0 0 var(--cardBody);
+  transition: background-color 0.4s, box-shadow 0.4s;
+}
+
+.topSection .selected:first-child:after ,
+.topSection .messages.selected:first-child:after {
+  width: 0;
+}
+.bottomSection .selected:last-child:before ,
+.bottomSection .messages.selected:last-child:before {
+  width: 0;
+}
+/*.firstSelected:first-child:after {
+  background-color: darkred !important;
+  width: 0;
+}*/
+:global(.ltr) .selected:after,
+:global(.ltr) .messages.selected:after {
+  right: 1vw;
+  left: initial;
+  border-bottom-right-radius: 10px;
+  box-shadow: 7px 2px 0 0 var(--cardBody);
+}
+.container a.selected span i,
+.messages.selected span i {
+  color: var(--orange);
+  transition: color 0.4s;
+}
+.subMenu {
+  width: 22%;
+  height: 100vh;
+  background-color: var(--cardBody);
+  margin-right: -27%;
+  z-index: 5;
+  /*display: none;*/
+  position: absolute;
+}
+:global(.ltr) .subMenu {
+  margin-right: initial;
+  margin-left: -27%;
+}
+.subMenuWrapper {
+  width: 0%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0);
+  right: 5%;
+  z-index: 4;
+  /* display: none;*/
+  position: absolute;
+  /*transition: all 0.5s;*/
+}
+:global(.ltr) .subMenuWrapper {
+  right: initial;
+  left: 5%;
+}
+.show.subMenu {
+  margin-right: 5%;
+  transition: all 0.45s;
+}
+:global(.ltr) .show.subMenu {
+  margin-right: initial;
+  margin-left: 5%;
+}
+.show.subMenuWrapper {
+  background-color: rgba(0, 0, 0, 0.66);
+  width: 95%;
+}

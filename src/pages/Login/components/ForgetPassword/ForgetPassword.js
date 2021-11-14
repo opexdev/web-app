@@ -1,6 +1,5 @@
 import classes from "../../Login.module.css";
 import React, {Fragment, useState} from "react";
-import Icon from "../../../../components/Icon/Icon";
 import TextInput from "../../../../components/TextInput/TextInput";
 import LoginFormLoading from "../LoginLoading/LoginFormLoading";
 import {useTranslation} from "react-i18next";
@@ -9,9 +8,6 @@ import {setPanelTokensInitiate} from "../../../../store/actions";
 import {connect} from "react-redux";
 import {validateEmail} from "../../../../utils/utils";
 import Button from "../../../../components/Button/Button";
-import Loading from "../../../../components/Loading/Loading";
-import LastTradesTable from "../../../Dashboard/components/LastTrades/components/LastTradesTable/LastTradesTable";
-import Error from "../../../../components/Error/Error";
 
 const ForgetPassword = (props) => {
     const [error, setError] = useState([]);

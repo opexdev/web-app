@@ -21,22 +21,22 @@ const initialState = {
     permissions: [],
     lastTransaction: null,
     wallets: {
-        IRT: {free: 0.0, locked: 0.0, inWithdrawalProcess: 0.0},
-        BTC: {free: 0.0, locked: 0.0, inWithdrawalProcess: 0.0},
-        ETH: {free: 0.0, locked: 0.0, inWithdrawalProcess: 0.0},
-        LTC: {free: 0.0, locked: 0.0, inWithdrawalProcess: 0.0},
-        DOGE: {free: 0.0, locked: 0.0, inWithdrawalProcess: 0.0},
-        BCH: {free: 0.0, locked: 0.0, inWithdrawalProcess: 0.0},
-        USDT: {free: 0.0, locked: 0.0, inWithdrawalProcess: 0.0},
+        //IRT: {free: 0.0, locked: 0.0, inWithdrawalProcess: 0.0},
+        BTC: {free: 0.0, locked: 0.0, withdraw: 0.0},
+        ETH: {free: 0.0, locked: 0.0, withdraw: 0.0},
+        //LTC: {free: 0.0, locked: 0.0, inWithdrawalProcess: 0.0},
+        //DOGE: {free: 0.0, locked: 0.0, inWithdrawalProcess: 0.0},
+        //BCH: {free: 0.0, locked: 0.0, inWithdrawalProcess: 0.0},
+        USDT: {free: 0.0, locked: 0.0, withdraw: 0.0},
     },
     tradeFee: {
-        IRT: 0.0,
-        BTC: 0.0,
-        ETH: 0.0,
-        LTC: 0.0,
-        DOGE: 0.0,
-        BCH: 0.0,
-        USDT: 0.0,
+        IRT: 0.01,
+        BTC: 0.01,
+        ETH: 0.01,
+        LTC: 0.01,
+        DOGE: 0.01,
+        BCH: 0.01,
+        USDT: 0.01,
     },
     isLogin: false,
 };
@@ -57,6 +57,12 @@ const reducer = (state = initialState, action) => {
                 lastName: action.lastName,
                 email: action.email,
             };
+        case actionTypes.SET_IMPERSONATE_TOKENS:
+            return {
+                ...state,
+                accessToken: action.accessToken,
+                isLogin: true,
+            }
         case actionTypes.SET_USER_TOKENS:
             return {
                 ...state,

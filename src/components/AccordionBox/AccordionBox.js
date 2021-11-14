@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from "react";
 import classes from "./AccordionBox.module.css";
 import PropTypes from "prop-types";
-import {isSafari} from "react-device-detect";
+import {isMobile, isSafari} from "react-device-detect";
 
 const AccordionBox = (props) => {
   const {title, customClass, content, activeTab} = props;
@@ -25,13 +25,13 @@ const AccordionBox = (props) => {
         isSafari ? props.safari : ""
       }`}>
       <div className={`card-header-bg accordion-header ${classes.header}`}>
-        <h3 className={`${props.titleClassName} ${classes.title}`}>{title}</h3>
+        {isMobile ? "" : <h3 className={`${props.titleClassName} ${classes.title}`}>{title}</h3>}
         <div className={`${classes.items} ${props.headerClassName}`}>
           <ul>
             {content.map((item, index) => {
               return (
                 <li
-                  className={active === index ? classes.active : ""}
+                  className={` ${active === index ? classes.active : ""}  `}
                   onClick={() => itemsClickHandler(index)}
                   key={index}>
                   {item.title}

@@ -3,7 +3,7 @@ import React, {useState} from "react";
 import TextInput from "../../../../components/TextInput/TextInput";
 import LoginFormLoading from "../LoginLoading/LoginFormLoading";
 import {Trans, useTranslation} from "react-i18next";
-import {getToken, getUser, parsePanelToken, register, sendForgetPasswordEmail, sendVerifyEmail} from "../../api/auth";
+import {getToken, getUser, parsePanelToken, register, sendVerifyEmail} from "../../api/auth";
 import {setPanelTokensInitiate} from "../../../../store/actions";
 import {connect} from "react-redux";
 import {validateEmail} from "../../../../utils/utils";

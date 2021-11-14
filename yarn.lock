@@ -4261,6 +4261,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"bignumber.js@npm:^9.0.1":
+  version: 9.0.1
+  resolution: "bignumber.js@npm:9.0.1"
+  checksum: 6e72f6069d9db32fc8d27561164de9f811b15f9144be61f323d8b36150a239eea50c92e20ba38af2ba5e717af10b8ef12db8f9948fe2ff02bf17ede5239d15d3
+  languageName: node
+  linkType: hard
+
 "binary-extensions@npm:^1.0.0":
   version: 1.13.1
   resolution: "binary-extensions@npm:1.13.1"
@@ -11329,6 +11336,7 @@ fsevents@^1.2.7:
     "@testing-library/react": ^11.2.5
     "@testing-library/user-event": ^12.7.4
     axios: ^0.21.1
+    bignumber.js: ^9.0.1
     faker: ^5.4.0
     i18next: ^19.9.0
     i18next-browser-languagedetector: ^6.0.1
@@ -11346,8 +11354,10 @@ fsevents@^1.2.7:
     react-hot-toast: ^2.1.1
     react-i18next: ^11.8.8
     react-number-format: ^4.4.4
+    react-qr-code: ^2.0.2
     react-redux: ^7.2.2
     react-router-dom: ^5.2.0
+    react-router-hash-link: ^2.4.3
     react-scripts: 4.0.1
     react-select: ^4.1.0
     react-tooltip: ^4.2.15
@@ -12945,6 +12955,13 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
+"qr.js@npm:0.0.0":
+  version: 0.0.0
+  resolution: "qr.js@npm:0.0.0"
+  checksum: 5ac6c393967bdeaa660e7fd3a501a25eb538c1f6008a4d30ab2b97bbe520e5c236530090773f1578aa0a523cdaa6923c866615e21143f9e7cd22abd41c789b69
+  languageName: node
+  linkType: hard
+
 "qs@npm:6.7.0":
   version: 6.7.0
   resolution: "qs@npm:6.7.0"
@@ -13246,6 +13263,19 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
+"react-qr-code@npm:^2.0.2":
+  version: 2.0.2
+  resolution: "react-qr-code@npm:2.0.2"
+  dependencies:
+    prop-types: ^15.7.2
+    qr.js: 0.0.0
+  peerDependencies:
+    react: ^16.x || ^17.x
+    react-native-svg: "*"
+  checksum: e844e9fb809631584ec134692eaa9e901ca491af7b1dee37171c6fa762e482a8c62e0b609e285a7c29a970faf0cd666777ffaae6263932508f7b1f615448fd69
+  languageName: node
+  linkType: hard
+
 "react-redux@npm:^7.2.2":
   version: 7.2.3
   resolution: "react-redux@npm:7.2.3"
@@ -13289,6 +13319,18 @@ fsevents@^1.2.7:
   peerDependencies:
     react: ">=15"
   checksum: 98d2d35f9540ac4a3c14dc023623fc8411a6a6338e95d726370e07b27c3bc6e854516537c8e3f9ad2483c4bbd579ba28cce9aff843a19fe8ebff663318886335
+  languageName: node
+  linkType: hard
+
+"react-router-hash-link@npm:^2.4.3":
+  version: 2.4.3
+  resolution: "react-router-hash-link@npm:2.4.3"
+  dependencies:
+    prop-types: ^15.7.2
+  peerDependencies:
+    react: ">=15"
+    react-router-dom: ">=4"
+  checksum: 7dad53ebbd726e8a1ab379f4e68bce3a6b406e55af3de8a9c128510a81ad4a681ce9a5e25c0efc3d3c283b276145729b6228d0173d1d0c6e04b9cc6fb10738d4
   languageName: node
   linkType: hard
 

@@ -31,7 +31,7 @@
   -webkit-box-pack: center;
   -ms-flex-pack: center;
   justify-content: center;
-  /*height: 4.5vh;*/
+  height: 100%;
   border: 0.3vh solid var(--cardHeader);
 }
 
@@ -52,16 +52,16 @@
   font-family: "Segoe UI", serif;
 }
 .inputGroup span.lead {
-  border-radius: 0 7px 7px 0;
+  border-radius: 0 4px 4px 0;
 }
 .ltr .inputGroup span.lead {
-  border-radius: 7px 0 0 7px;
+  border-radius: 4px 0 0 4px;
 }
 .inputGroup span.after {
-  border-radius: 7px 0 0 7px;
+  border-radius: 4px 0 0 4px;
 }
 .ltr .inputGroup span.after {
-  border-radius: 0 7px 7px 0;
+  border-radius: 0 4px 4px 0;
 }
 
 .inputGroupHint {
@@ -91,6 +91,7 @@
   -ms-flex-pack: center;
   justify-content: center;
 }
+
 .alert {
   font-size: 0.7vw;
   color: var(--textRed);

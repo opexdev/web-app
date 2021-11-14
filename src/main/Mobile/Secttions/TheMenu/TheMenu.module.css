@@ -1,0 +1,13 @@
+.container{
+   /* height: 20vh;*/
+    background-color: var(--menu);
+    /*position: fixed;*/
+    /*bottom: 0;*/
+    /*border-radius: 140px;*/
+}
+/*.container a{
+    width: 100%;
+}*/
+.selected{
+    color: var(--orange);
+}

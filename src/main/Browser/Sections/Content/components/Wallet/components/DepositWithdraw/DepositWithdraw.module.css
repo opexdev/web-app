@@ -1,0 +1,82 @@
+.container {
+  height: 45vh;
+  border-radius: 9px;
+}
+.content {
+  height: 100%;
+}
+
+.depositInput {
+  width: 80%;
+}
+.depositInput :global(.after) {
+  width: 15%;
+  cursor: pointer;
+}
+.depositInput :global(input) {
+  width: 85% !important;
+  cursor: not-allowed;
+  font-family: 'Roboto', sans-serif;
+}
+.withdrawalInput :global(.lead) {
+  width: 30%;
+}
+.withdrawalInput :global(input) {
+  width: 70% !important;
+}
+.withdrawNumberInput :global(.lead) {
+  width: 50%;
+}
+.withdrawNumberInput :global(input) {
+  width: 50% !important;
+}
+
+
+.thisButton {
+  width: 40%;
+}
+.thisButton.withdrawal{
+  background-color: var(--orange);
+  color: #000;
+}
+.thisButton.transfer{
+  background-color: var(--bgRed);
+}
+.thisButton:disabled,.button[disabled] {
+  border: 0.3vh solid var(--cardHeader);
+  background: var(--cardHeader);
+  color: var(--textColor);
+  cursor: not-allowed;
+}
+.iconBG {
+  vertical-align: middle;
+
+  border-radius: 50vw;
+}
+.close {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s;
+  opacity: 0;
+  line-height: 0;
+  visibility: collapse;
+}
+.open {
+  max-height: 2vh;
+  transition: max-height 0.6s;
+}
+.safariFlexSize :global(.accordion-header) {
+  flex: 22;
+}
+.safariFlexSize :global(.accordion-body) {
+  flex: 77;
+}
+
+.QRStyle{
+  width: 30vw !important;
+}
+
+
+.thisLoading{
+  width: 5vw;
+}

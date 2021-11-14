@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from "react";
 import {useDropzone} from "react-dropzone";
-import classes from "../../pages/Settings/components/Authentication/components/SendPhotosStep/SendPhotosStep.module.css";
+import classes from "../../main/Browser/Sections/Content/components/Settings/components/Authentication/components/SendPhotosStep/SendPhotosStep.module.css";
 import Icon from "../Icon/Icon";
 import {useTranslation} from "react-i18next";
 import ReactTooltip from "react-tooltip";
@@ -16,11 +16,11 @@ const ImageInput = (props) => {
   const {getRootProps, getInputProps, fileRejections} = useDropzone({
     accept: "image/jpeg, image/png",
     maxFiles: 1,
-    maxSize: 100000,
+    maxSize: 1000000,
     multiple: false,
     onDrop: (acceptedFiles) => {
       if (acceptedFiles.length > 0) {
-        props.onchange(URL.createObjectURL(acceptedFiles[0]));
+        props.onchange(acceptedFiles[0]);
         setFiles([
           Object.assign(acceptedFiles[0], {
             preview: URL.createObjectURL(acceptedFiles[0]),

@@ -1,5 +1,5 @@
 {
-  "title": "اپکس",
+  "title": "اوپکس",
   "signIn": "ورود",
   "signUp": "ثبت نام",
   "signOut": "خروج",
@@ -27,6 +27,7 @@
   "transfer": "انتقال",
   "destination": "مقصد",
   "details": "جزئیات",
+  "commission": "کارمزد",
   "nextStep": "گام بعدی",
   "prevStep": "گام قبلی",
   "submit": "ثبت",
@@ -35,19 +36,29 @@
   "firstName": "نام",
   "lastName": "نام خانوادگی",
   "email": "ایمیل",
+  "desktopSupport": "اوپکس فعلاً برای نمایش در موبایل بهینه نشده است. لطفاً لینک را در کامپیوتر باز کنید! :)",
   "error": "خطا در دریافت اطلاعات ... !",
   "loading": "در حال دریافت اطلاعات ...",
+  "noData": "در حال حاضر هیچ اطلاعاتی وجود ندارد",
+  "noTx": "تراکنشی وجود ندارد",
+  "close": "بستن",
+  "country": {
+    "iran" : "جمهوری اسلامی ایران",
+    "germany" : "آلمان",
+    "uk": "انگلستان",
+    "turkey" : "ترکیه"
+  },
   "currency": {
     "IRT": "تومان",
     "Euro": "یورو",
     "USD": "دلار",
     "BTC": "بیتکوین",
-    "ETH": "اتریوم",
+    "ETH": "اتر",
     "USDT": "تتر",
     "DOGE": "دوج کوین",
     "LTC": "لایت کوین",
     "BCH": "بیتکوین کش",
-    "NLN": "نیلین*"
+    "NLN": "اپکس"
   },
   "routes": {
     "/settings/profile": "مشخصات کاربری",
@@ -62,7 +73,7 @@
     "CANCELED": "لغو شده",
     "PENDING_CANCEL": "لغو معلق",
     "EXPIRED": "منقضی شده",
-    "PARTIALLY_FILLED": "نیمه تمام"
+    "PARTIALLY_FILLED": "کامل نشده"
   },
   "messagesTitle": {
     "successful": "عدم تائید معامله",
@@ -82,8 +93,8 @@
   },
   "pair": {
     "BTC/IRT": "بیتکوین/تومان",
-    "ETH/IRT": "اتریوم/تومان",
-    "ETH/BTC": "اتریوم/بیتکوین",
+    "ETH/IRT": "اتر/تومان",
+    "ETH/BTC": "اتر/بیتکوین",
     "BTC/USDT": "بیتکوین/تتر",
     "LTC/BTC": "لایت کوین/بیتکوین",
     "DOGE/BTC": "دوج کوین/بیتکوین",
@@ -92,9 +103,11 @@
     "LTC/USDT": "لایت کوین/تتر",
     "DOGE/IRT": "دوج کوین/تومان",
     "BCH/IRT": "بیتکوین کش/تومان",
-    "ETH/USDT": "اتریوم/تتر",
+    "ETH/USDT": "اتر/تتر",
     "DOGE/USDT": "دوج کوین/تتر",
-    "BCH/USDT": "بیتکوین کش/تتر"
+    "BCH/USDT": "بیتکوین کش/تتر",
+    "NLN/BTC": "اپکس/بیتکوین",
+    "NLN/USDT": "اپکس/تتر"
   },
   "header": {
     "lastPrice": "آخرین قیمت",
@@ -118,6 +131,10 @@
   "settings": {
     "title": "تنظیمات"
   },
+  "Languages": {
+    "Persian": "فارسی",
+    "English": "English"
+  },
   "overview": {
     "title": "نمای کلی",
     "change": "تغییر",
@@ -130,7 +147,8 @@
     "title": "سفارش",
     "minOrder": "حداقل مقدار سفارش {{min}} {{currency}} میباشد",
     "maxOrder": "حداکثر مقدار سفارش {{max}} {{currency}} میباشد",
-    "divisibility": "بخش پذیری !",
+    "divisibility": "مقدار وارد شده باید بر {{mod}} بخشپذیر باشند‍!",
+    "notEnoughBalance": "موجودی کافی نیست!",
     "availableAmount": "موجودی قابل معامله",
     "bestOffer": "بهترین پیشنهاد",
     "stopLimit": "سفارش متوقف",
@@ -148,6 +166,11 @@
   "LastTrades": {
     "title": "معامله های اخیر"
   },
+  "charts": {
+    "title": "نمودار قیمت",
+    "globalChart": "جهانی",
+    "opexChart": "داخلی"
+  },
   "orderBook": {
     "title": "دفتر پیشنهادها"
   },
@@ -163,8 +186,9 @@
     "aliveOrder": "سفارش های جاری",
     "stoppedOrder": "متوقف",
     "orderHistory": "تاریخچه سفارش ها",
-    "stopOrderTime": "زمان انجام تراکنش",
-    "startOrderTime": "زمان جاری شدن",
+    "stopOrderTime": "زمان آخرین معامله",
+    "startOrderTime": "زمان ثبت سفارش",
+    "cancelOrder": "لغو سفارش",
     "orders": "معامله ها"
   },
   "WalletSubMenu": {
@@ -175,7 +199,8 @@
     "showZeroBalance": "عدم نمایش موجودی صفر"
   },
   "DepositWithdraw": {
-    "title": "واریز/برداشت"
+    "title": "واریز/برداشت",
+    "success": "آدرس کپی شد"
   },
   "DepositWithdrawTx": {
     "title": "تراکنش های واریز/برداشت",
@@ -186,7 +211,18 @@
     "blockchainTransactionId": "شناسه بلاکچینی تراکنش",
     "price": "مبلغ",
     "destination": "مبدا/مقصد",
-    "inventory": "موجودی بعد تراکنش"
+    "inventory": "موجودی بعد تراکنش",
+    "freeWallet": "موجودی قابل برداشت",
+    "minWithdraw": "حداقل مقدار برداشت",
+    "maxWithdraw": "سقف برداشت روزانه شما",
+    "maxMonthWithdraw": "سقف برداشت ماهانه شما",
+    "withdrawWarn": "لطفا دقت کنید! ورود اشتباه آدرس می تواند به از دست رفتن سرمایه منجر شود.",
+    "withdrawReqSubmit": "ثبت درخواست برداشت",
+    "destAddress": "آدرس دریافت",
+    "reqAmount": "دریافتی شما",
+    "network": " شبکه",
+    "success": "درخواست برداشت {{amount}} {{asset}} با موفقیت ثبت شد"
+
   },
   "transactionType": {
     "deposit": "واریز",
@@ -235,8 +271,8 @@
     "lastNameMain": "نام خانوادگی (زبان اصلی)",
     "nationality": "ملیت",
     "residence": "محل اقامت",
-    "dateOfBirth": "تاریخ تولد (میلادی)",
-    "dateOfBirthAlt": "تاریخ تولد (غیرمیلادی)",
+    "birthday": "تاریخ تولد (میلادی)",
+    "birthdayAlt": "تاریخ تولد (غیرمیلادی)",
     "nationalID": "شناسه ملی",
     "passportNumber": "شماره پاسپورت",
     "phoneNumber": "تلفن همراه",
@@ -312,7 +348,6 @@
     "blog": "بلاگ",
     "guide": "راهنمای استفاده",
     "rules": "قوانین استفاده",
-    "wage": "کارمزدها",
     "api": "وب سرویس ها",
     "addCoin": "درخواست افزودن سکه یا توکن",
     "demo": "بازار نمایشی (ویژه تمرین رایگان)",

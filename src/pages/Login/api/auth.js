@@ -2,6 +2,7 @@ import axios from "axios";
 import {apiBaseUrl} from "../../../constants/global";
 import {authClientId, authClientSecret, authLoginClientId} from '../../../constants/auth';
 
+
 const Auth = axios.create({
     baseURL: apiBaseUrl,
     responseType: "json"
@@ -128,3 +129,56 @@ export const parsePanelToken = ( data ) => {
         panelAccessTokenExpires: Date.now() + data.expires_in * 1000,
     }
 }
+
+export const sendUpdateProfileReq = async (token, user, attributes ) => {
+
+    Auth.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+    Auth.defaults.headers.common['Content-Type'] = 'application/json';
+
+    return await Auth.put(`auth/admin/realms/opex/users/${user}`,{
+        attributes ,
+    }).then((res) => {
+        return res;
+    }).catch((e) => {
+        if (!e.response) {
+            return false;
+        }
+        return e.response;
+    })
+}
+export const sendUserFile = async (token, user, file ) => {
+
+    Auth.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+    Auth.defaults.headers.common['Content-Type'] = 'application/json';
+
+    const data = new FormData();
+    data.append('file', file);
+
+    return await Auth.post(`/storage/${user}`, data
+    ).then((res) => {
+        console.log(res)
+        return res;
+    }).catch((e) => {
+        if (!e.response) {
+            return false;
+        }
+        return e.response;
+    })
+}
+
+export const addToKycGroup = async (token, userId) => {
+
+    Auth.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+    Auth.defaults.headers.common['Content-Type'] = 'application/json';
+
+    return await Auth.put(`/auth/admin/realms/opex/users/${userId}/groups/24200655-dfef-4ed0-a8b8-925918793552`)
+        .then((res) => {
+            return res;
+        }).catch((e) => {
+            if (!e.response) {
+                return false;
+            }
+            return e.response;
+        })
+};
+

@@ -1,0 +1,14 @@
+.container {
+  height: 30vh;
+  width: 100%;
+}
+.content {
+  height: 100%;
+}
+
+.safariFlexSize :global(.accordion-header) {
+  flex: 4;
+}
+.safariFlexSize :global(.accordion-body) {
+  flex: 6;
+}
