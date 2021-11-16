@@ -86,3 +86,5 @@
 .icon-resize-vertical-1 { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#x0184;&nbsp;'); }
 .icon-down-open-2 { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#x0185;&nbsp;'); }
 .icon-braille { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#x0186;&nbsp;'); }
+.icon-left-open { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#x0187;&nbsp;'); }
+.icon-right-open { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#x0188;&nbsp;'); }
