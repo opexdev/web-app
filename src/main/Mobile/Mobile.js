@@ -10,6 +10,7 @@ import TheHeader from "./Secttions/TheHeader/TheHeader";
 import TheContent from "./Secttions/TheContent/TheContent";
 import {Overview} from "../../routes/routes";
 import TheSubHeader from "./Secttions/TheSubHeader/TheSubHeader";
+import Login from "../../pages/Login/Login";
 
 
 const Mobile = (props) => {
@@ -17,7 +18,7 @@ const Mobile = (props) => {
     return (
         <Switch>
             <Route exact path="/login">
-
+                <Login/>
             </Route>
             <Route exact path="/">
                 <Redirect to={Overview} />

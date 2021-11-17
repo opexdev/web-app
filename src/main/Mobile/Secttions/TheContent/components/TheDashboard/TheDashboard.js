@@ -9,7 +9,6 @@ import Button from "../../../../../../components/Button/Button";
 import classes from "./TheDashboard.module.css";
 import TheOrderBook from "./components/TheOrderBook/TheOrderBook";
 import TheTradingView from "./components/TheTradingView/TheTradingView";
-import ReactTooltip from "react-tooltip";
 import Icon from "../../../../../../components/Icon/Icon";
 import TheOrder from "./components/TheOrder/TheOrder";
 
