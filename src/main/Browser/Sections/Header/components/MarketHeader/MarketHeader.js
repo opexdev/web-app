@@ -43,13 +43,9 @@ const MarketHeader = (props) => {
     }, isLogin ? 1500 : null);
 
     const ClickHandler = (currency) => {
-        console.log("currency :" , currency)
-        console.log("showPopUpAsset :" , showPopUpAsset)
         if (currency === showPopUpAsset || !showPopUpAsset) {
-
             setShowPopUp(true)
         }
-        //setShowPopUp(prevState => !prevState)
         setShowPopUpAsset(currency)
     }
 

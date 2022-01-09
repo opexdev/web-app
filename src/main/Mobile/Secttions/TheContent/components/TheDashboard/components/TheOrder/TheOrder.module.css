@@ -1,0 +1,48 @@
+.container{
+    height: 100%;
+}
+.content {
+    height: 100%;
+    padding: 1vh 0.5vw;
+}
+
+.thisButton {
+    width: 100%;
+}
+.alertSubmit{
+    background-color: var(--orange);
+}
+.thisButton.buyOrder {
+    background-color: var(--bgGreen);
+}
+.thisButton.sellOrder {
+    background-color: var(--bgRed);
+}
+.thisButton:disabled,.button[disabled] {
+    border: 0.3vh solid var(--cardHeader);
+    background: var(--cardHeader);
+    color: var(--textColor);
+    cursor: not-allowed;
+}
+.thisLoading{
+    width: 5vw;
+}
+.dangerHint span i {
+    background-color: #6619bf;
+    width: 1.1vw;
+    height: 1.1vw;
+    border-radius: 50vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.dangerHint :global(.alert) {
+    font-size: 0.7vw;
+    color: #6619bf;
+}
+.stopMarket {
+    background: var(--cardHeader);
+}
+.stopMarket input {
+    cursor: not-allowed;
+}

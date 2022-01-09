@@ -735,6 +735,18 @@
       "css": "braille",
       "code": 390,
       "src": "elusive"
+    },
+    {
+      "uid": "c0a07aca383ff2a164a4d691fa46e35c",
+      "css": "left-open",
+      "code": 391,
+      "src": "elusive"
+    },
+    {
+      "uid": "dc4a03854ef986d64565143bea4241aa",
+      "css": "right-open",
+      "code": 392,
+      "src": "elusive"
     }
   ]
 }
