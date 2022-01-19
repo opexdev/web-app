@@ -19,10 +19,17 @@ export function* setActivePair(action) {
     yield put(actions.setActivePair(action.pair));
 }
 
+export function* setIPGLock(action) {
+    yield localStorage.setItem("lockTime" , action.lockTime);
+    yield put(actions.setIPG(action.lockTime));
+}
+
 export function* loadConfig() {
     const isDark = yield localStorage.getItem("isDark");
     const activePair = yield localStorage.getItem("activePair");
     const activeMarketTab = yield localStorage.getItem("activeMarketTab");
+    const lockTime = yield localStorage.getItem("lockTime");
+    yield put(actions.setIPG(lockTime));
     yield put(actions.setTheme(isDark === "true"));
     if (activePair !== null ) yield put(actions.setActivePair(JSON.parse( activePair ) ,activeMarketTab));
 

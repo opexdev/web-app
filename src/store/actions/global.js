@@ -91,3 +91,17 @@ export const setPanelTokensInitiate = (token) => {
     panelAccessTokenExpires: token.panelAccessTokenExpires,
   };
 };
+
+export const setIPG = (lockTime) => {
+  return {
+    type: actionTypes.SET_IPG,
+    lockTime,
+  };
+};
+
+export const setIPGInitiate = (lockTime) => {
+  return {
+    type: actionTypes.SET_IPG_INITIATE,
+    lockTime,
+  };
+};

@@ -10,6 +10,7 @@ import {BN, parsePriceString} from "../../../../../../../../../utils/utils";
 import {toast} from "react-hot-toast";
 import {images} from "../../../../../../../../../assets/images";
 import NumberInput from "../../../../../../../../../components/NumberInput/NumberInput";
+import IRT from "./Deposit/components/IRT/IRT";
 
 const Withdrawal = () => {
     const {t} = useTranslation();
@@ -97,6 +98,13 @@ const Withdrawal = () => {
             alert: null
         })
     };
+
+
+    if(id === "IRT") {
+        return <div className={`flex jc-center ai-center px-1 py-2`} style={{height: "100%"}}>
+            <h3>{t("comingSoon")}</h3>
+        </div>
+    }
 
 
 

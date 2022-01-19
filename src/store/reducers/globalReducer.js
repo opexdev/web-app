@@ -45,6 +45,7 @@ const initialState = {
     activeMarketTab: 0,
     isLoading: true,
     isDark: true,
+    ipgLock: null,
 };
 
 const globalReducer = (state = initialState, action) => {
@@ -54,6 +55,13 @@ const globalReducer = (state = initialState, action) => {
                 ...state,
                 isDark: action.isDark,
             };
+
+        case actionTypes.SET_IPG:
+            return {
+                ...state,
+                ipgLock: action.lockTime,
+            };
+
         case actionTypes.SET_LOADING:
             return {
                 ...state,

@@ -15,6 +15,8 @@ import ethereumLight from "./images/src/ethereumLight.svg";
 import toman from "./images/src/toman.svg";
 import spaceStar from "./images/src/spaceStar.png";
 import astronaut from "./images/src/astronaut.svg";
+import approve from "./images/src/approve.svg";
+import reject from "./images/src/reject.svg";
 import squareLoading from "./images/src/squareLoading.gif";
 import squareLoadingLight from "./images/src/squareLoadingLight.gif";
 import linearLoading from "./images/src/linearLoading.gif";
@@ -39,6 +41,8 @@ export const images = {
   IRT: toman,
   spaceStar: spaceStar,
   astronaut: astronaut,
+  approve: approve,
+  reject: reject,
   squareLoading: squareLoading,
   squareLoadingLight: squareLoadingLight,
   linearLoading: linearLoading,
