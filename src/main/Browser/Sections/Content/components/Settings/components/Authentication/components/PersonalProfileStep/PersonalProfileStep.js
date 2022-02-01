@@ -171,9 +171,9 @@ username: "demo1"*/
                                 lead={t('PersonalProfile.residence')}
                                 defaultInputValue = {profile.residence}
                                 type="text"
-                                value={profile.residence}
+                                options={countries}
                                 onchange={(e) =>
-                                    setProfile({...profile, residence: e.target.value})
+                                    setProfile({...profile, residence: e.value})
                                 }
                             />
                         </div>

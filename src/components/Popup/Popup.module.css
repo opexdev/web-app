@@ -1,0 +1,49 @@
+.container{
+    position: fixed;
+    top: 11vh;
+    width: 25%;
+    height: 35vh;
+    background-color: var(--popupAlpha);
+    z-index: 3;
+    box-shadow: -1px 5px 8px -2px #101010ad;
+    right: 51%;
+    border-radius: 9px;
+}
+.header{
+    height: 12%;
+
+}
+.content{
+    height: 76%;
+}
+.footer{
+    height: 12%;
+
+}
+
+.thisButton {
+    width: 30%;
+    height: 3.5vh !important;
+
+}
+.walletButton {
+    background-color: var(--orange);
+    /*color: #333333;*/
+}
+.closeButton {
+    background-color: var(--bgRed);
+    width: 20%;
+}
+
+.thisInput {
+    width: 100%;
+}
+.thisInput :global(.after) {
+    width: 15%;
+    cursor: pointer;
+}
+.thisInput :global(input) {
+    width: 85% !important;
+    cursor: not-allowed;
+    font-family: 'Roboto', sans-serif;
+}

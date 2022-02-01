@@ -31,9 +31,26 @@
   width: 50% !important;
 }
 
+.depositIRTInput :global(.lead) {
+  width: 20%;
+}
+.depositIRTInput :global(input){
+  width: 60% !important;
+}
+.depositIRTInput :global(.after) {
+  width: 20%;
+}
+
 
 .thisButton {
   width: 40%;
+}
+.IRTButton{
+  width: 20%;
+}
+.IRTButton.withdrawal{
+  background-color: var(--orange);
+  color: #000;
 }
 .thisButton.withdrawal{
   background-color: var(--orange);
@@ -42,7 +59,15 @@
 .thisButton.transfer{
   background-color: var(--bgRed);
 }
-.thisButton:disabled,.button[disabled] {
+
+.pay{
+  background-color: var(--bgGreen);
+
+}
+.cancel{
+  background-color: var(--bgRed);
+}
+.disable:disabled,.button[disabled] {
   border: 0.3vh solid var(--cardHeader);
   background: var(--cardHeader);
   color: var(--textColor);

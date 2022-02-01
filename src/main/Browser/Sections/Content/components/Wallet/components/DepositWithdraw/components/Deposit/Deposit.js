@@ -1,14 +1,15 @@
 import React, {useEffect, useRef, useState} from "react";
-import classes from "../DepositWithdraw.module.css";
-import TextInput from "../../../../../../../../../components/TextInput/TextInput";
-import Icon from "../../../../../../../../../components/Icon/Icon";
-import {images} from "../../../../../../../../../assets/images";
+import classes from "../../DepositWithdraw.module.css";
+import TextInput from "../../../../../../../../../../components/TextInput/TextInput";
+import Icon from "../../../../../../../../../../components/Icon/Icon";
+import {images} from "../../../../../../../../../../assets/images";
 import {useParams} from "react-router-dom";
 import {useSelector} from "react-redux";
 import {Trans, useTranslation} from "react-i18next";
-import {getDepositAddress} from "../../../api/wallet";
+import {getDepositAddress} from "../../../../api/wallet";
 import QRCode from "react-qr-code";
 import {toast} from "react-hot-toast";
+import IRT from "./components/IRT/IRT";
 
 const Deposit = () => {
 
@@ -17,7 +18,6 @@ const Deposit = () => {
     const [address , setAddress] = useState("")
 
     const addressRef = useRef(null);
-    console.log("Deposit addressRef : " , addressRef)
     const {id} = useParams();
     const accessToken = useSelector(state => state.auth.accessToken);
 
@@ -89,6 +89,12 @@ const Deposit = () => {
                 return 0;
         }
     };
+
+
+    if(id === "IRT") {
+        return <IRT/>
+    }
+
 
 
     return (

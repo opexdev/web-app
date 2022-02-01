@@ -2,7 +2,7 @@ import React, {Fragment, useState, useEffect, useRef} from "react";
 import classes from "./DepositWithdrawTx.module.css";
 import moment from "moment-jalaali";
 import {connect, useSelector} from "react-redux";
-import {useTranslation} from "react-i18next";
+import {Trans, useTranslation} from "react-i18next";
 import {DTAllTransactionsData} from "../../../../../../../../FakeData/FakeData";
 import ScrollBar from "../../../../../../../../components/ScrollBar";
 import NumberInput from "../../../../../../../../components/NumberInput/NumberInput";
@@ -15,6 +15,8 @@ import Error from "../../../../../../../../components/Error/Error";
 import LastTradesTable from "../../../Dashboard/components/LastTrades/components/LastTradesTable/LastTradesTable";
 import useInterval from "../../../../../../../../Hooks/useInterval";
 import {BN} from "../../../../../../../../utils/utils";
+import IRTTx from "./components/IRTTx/IRTTx";
+import {toast} from "react-hot-toast";
 
 const DepositWithdrawTx = (props) => {
   const {t} = useTranslation();
@@ -110,12 +112,12 @@ const DepositWithdrawTx = (props) => {
 
 
   const addressRef = useRef(null);
-  console.log("addressRef : " , addressRef)
 
-  const copyToClipboard = () => {
+  /*const copyToClipboard = () => {
     addressRef.current.select();
     document.execCommand("copy");
-  };
+  };*/
+
 
 
   const txStatus = (status) => {
@@ -139,9 +141,25 @@ const DepositWithdrawTx = (props) => {
     if (error) {
       return <Error/>
     }
+    if( id === "IRT" ) {
+      return <IRTTx/>
+    }
     if( tx.length === 0) {
       return <div className="container height-100 flex ai-center jc-center">{t("noTx")}</div>
     }
+
+
+
+    const copyAddressToClipboard = (value) => {
+      navigator.clipboard.writeText(value)
+      toast.success(<Trans
+          i18nKey="DepositWithdraw.copy"
+      />);
+
+    }
+
+
+
     return  <ScrollBar>
       {filterOpen ? (
           <Fragment>
@@ -253,6 +271,9 @@ const DepositWithdrawTx = (props) => {
             </tr>
             </thead>
             <tbody>{tx.map((tr, index) => (
+
+
+
                 <Fragment key={index}>
                   <tr className={tr.isDeposit === true ? "text-green" : "text-red"}>
                     <td>{moment(tr.time).format("jYY/jMM/jDD")}</td>
@@ -291,13 +312,14 @@ const DepositWithdrawTx = (props) => {
                       <div className="row jc-around  ai-center" style={{width: "100%"}}>
                         <p className="col-94 row jc-between">
                           {t("DepositWithdrawTx.destination")} :{" "}
-                          <span ref={addressRef}>{tr.address}</span>
+                          <span >{tr.address}</span>
                         </p>
                         <p className="col-03 row jc-end">
                           <Icon
                               iconName="icon-copy font-size-md"
                               /*onClick={() => copyToClipboard()}*/
                               customClass={`hover-text cursor-pointer`}
+                              onClick={() => copyAddressToClipboard(tr.address)}
                           />
                         </p>
 
@@ -317,6 +339,7 @@ const DepositWithdrawTx = (props) => {
                               iconName="icon-copy font-size-md"
                               /*onClick={() => copyToClipboard()}*/
                               customClass={`hover-text cursor-pointer`}
+                              onClick={() => copyAddressToClipboard(tr.txId)}
                           />
                         </p>
                         {/*<p className="col-46 row jc-between">

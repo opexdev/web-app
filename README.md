@@ -1,7 +1,7 @@
 
-<div align="center" style="border-radius:25px" >
-  <img width="256px" src="https://opex.dev/images/logo/opex.png" alt="Opex" title="Opex">
-</div>
+<p align="center">
+  <img width="256px" src="https://opex.dev/demo/static/media/opexLogoPlus.2858c980.svg" alt="Opex" title="Opex">
+</p>
 
 # OPEX Web APP
 <p align="center">
@@ -12,7 +12,7 @@
     <img src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg" alt="PRs welcome!" />
   </a>
     <a href="https://github.com/opexdev/OPEX-Web-APP">
-    <img src="https://badgen.net/github/last-commit/opexdev/OPEX-Web-APP" alt="Last commit">
+    <img src="https://img.shields.io/github/last-commit/opexdev/OPEX-Web-APP" alt="Last commit">
   </a>
   <a href="https://github.com/opexdev/OPEX-Web-APP/issues" target="blank">
 	<img src="https://img.shields.io/github/issues/opexdev/OPEX-Web-APP" alt="github-profile-readme-generator issues"/>
@@ -33,7 +33,7 @@
 ##  <a name="Install"></a> Install
 You need to have [Node.js](https://nodejs.org/), [Yarn](https://yarnpkg.com) installed.
 
-1. Clone this repository or [download the latest zip](https://github.com/opexdev/Front-end).
+1. Clone this repository or [download the latest zip](https://github.com/opexdev/OPEX-Web-APP).
 2. Install dependencies: `yarn install`.
 3. Run for development: `yarn run dev`.
 4. Run for production: `yarn run build` then `yarn start`.

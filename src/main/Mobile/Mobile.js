@@ -1,29 +1,24 @@
-import React, {Fragment, useEffect, useState} from "react";
+import React, {Fragment} from "react";
 import {connect} from "react-redux";
-import i18n from "i18next";
 import {useTranslation} from "react-i18next";
-import {loadConfig, setThemeInitiate} from "../../store/actions";
+import {loadConfig} from "../../store/actions";
 import "./Mobille.css";
 import {Switch, Route, Redirect} from "react-router-dom";
-import {isSafari} from "react-device-detect";
 import FullWidthLoading from "../../components/FullWidthLoading/FullWidthLoading";
 import ReactTooltip from "react-tooltip";
-import TheMenu from "./Secttions/TheMenu/TheMenu";
 import TheHeader from "./Secttions/TheHeader/TheHeader";
 import TheContent from "./Secttions/TheContent/TheContent";
-import {Login, Overview} from "../../routes/routes";
+import {Overview} from "../../routes/routes";
 import TheSubHeader from "./Secttions/TheSubHeader/TheSubHeader";
-import ActionSheet from "../../components/ActionSheet/ActionSheet";
+import Login from "../../pages/Login/Login";
 
 
 const Mobile = (props) => {
-    const {t} = useTranslation();
-
 
     return (
         <Switch>
             <Route exact path="/login">
-
+                <Login/>
             </Route>
             <Route exact path="/">
                 <Redirect to={Overview} />
@@ -41,7 +36,6 @@ const Mobile = (props) => {
                     </Fragment>
                 )}
             </div>
-
         </Switch>
     );
 };
