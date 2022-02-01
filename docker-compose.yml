@@ -1,0 +1,13 @@
+version: "3.8"
+services:
+  app:
+    build: .
+    networks:
+      - default
+    deploy:
+      restart_policy:
+        condition: on-failure
+networks:
+  default:
+    driver: bridge
+    name: ${DEFAULT_NETWORK_NAME:-opex}
