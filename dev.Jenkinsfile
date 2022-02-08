@@ -10,8 +10,8 @@ pipeline {
         }
         stage('Deliver') {
             environment {
-                COMPOSE_PROJECT_NAME = 'demo-web-app'
-                DEFAULT_NETWORK_NAME = 'demo-opex'
+                COMPOSE_PROJECT_NAME = 'dev-web-app'
+                DEFAULT_NETWORK_NAME = 'dev-opex'
             }
             steps {
                 sh 'docker-compose up -d --remove-orphans'
