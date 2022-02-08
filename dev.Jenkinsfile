@@ -1,6 +1,11 @@
 pipeline {
     agent any
 
+    environment {
+        COMPOSE_PROJECT_NAME = 'dev-web-app'
+        DEFAULT_NETWORK_NAME = 'dev-opex'
+    }
+
     stages('Deploy') {
         stage('Build') {
             steps {
@@ -9,10 +14,6 @@ pipeline {
             }
         }
         stage('Deliver') {
-            environment {
-                COMPOSE_PROJECT_NAME = 'dev-web-app'
-                DEFAULT_NETWORK_NAME = 'dev-opex'
-            }
             steps {
                 sh 'docker-compose up -d --remove-orphans'
                 sh 'docker image prune -f'

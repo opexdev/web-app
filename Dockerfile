@@ -6,5 +6,5 @@ RUN yarn build
 
 FROM nginx:latest
 COPY --from=build /OPEX-Web-APP/build /var/www/opex/html
-COPY nginx.conf /etc/nginx/nginx.conf
+ADD default.conf /etc/nginx/conf.d
 EXPOSE 80
