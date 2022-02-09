@@ -1,1 +1,1 @@
-export const apiBaseUrl = 'https://api.opex.dev';
+export const apiBaseUrl = process.env.API_BASE_URL || 'https://api.opex.dev';
