@@ -14,6 +14,7 @@ import Loading from "../../../../../../../../../../../../components/Loading/Load
 import Countdown from "react-countdown";
 import CallbackPage from "./components/CallbackPage/CallbackPage";
 import {setIPGInitiate} from "../../../../../../../../../../../../store/actions";
+import { apiBaseUrl } from "../../../../../../../../../../../../constants/global";
 
 const IRT = (props) => {
 
@@ -180,7 +181,7 @@ const IRT = (props) => {
     }
 
     const buttonClickHandler = async (e) => {
-        window.open(`https://api.opex.dev/ipg/v1/payment/pay/${openPayment[0].reference}`)
+        window.open(`${apiBaseUrl}/ipg/v1/payment/pay/${openPayment[0].reference}`)
         setDisable(true)
         props.ipgLock(new Date().getTime() + 2 * 60 * 1000)
     }
@@ -248,7 +249,7 @@ const IRT = (props) => {
                     </div>
                     <div className={`col-30 flex jc-center ai-center`}>
                         {!disable ?<QRCode
-                            value={`http://144.76.61.20:9995/v1/payment/pay/${openPayment[0].reference}`}
+                            value={`${apiBaseUrl}/v1/payment/pay/${openPayment[0].reference}`}
                             bgColor="var(--cardBody)"
                             fgColor="var(--textColor)"
                             level='L'
