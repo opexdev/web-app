@@ -4,7 +4,7 @@ pipeline {
     environment {
         COMPOSE_PROJECT_NAME = 'dev-web-app'
         DEFAULT_NETWORK_NAME = 'dev-opex'
-        API_BASE_URL = 'https://api.opex.dev:8088'
+        REACT_APP_API_BASE_URL = 'https://api.opex.dev:8088'
     }
 
     stages('Deploy') {
