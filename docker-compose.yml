@@ -1,9 +1,10 @@
 version: "3.8"
 services:
   app:
-    build: .
-    environment:
-      - API_BASE_URL=${API_BASE_URL}
+    build:
+      context: .
+      args:
+        - API_BASE_URL=${API_BASE_URL}
     networks:
       - default
     deploy:
