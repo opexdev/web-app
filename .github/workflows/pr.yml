@@ -15,4 +15,4 @@ jobs:
         with:
           node-version: '16.x'
       - run: yarn install
-      - run: yarn build
+      - run: CI=false yarn build
