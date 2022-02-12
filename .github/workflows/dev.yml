@@ -2,7 +2,7 @@ name: Deploy OPEX-Web-APP - Dev
 on:
   push:
     branches:
-      - dev
+      - develop
 jobs:
   jenkinsJob:
     name: Build OPEX-Web-APP new dev version
