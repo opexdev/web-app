@@ -119,9 +119,7 @@ export const verifyIRTDepositReq = async (token , paymentToken , paymentStatus) 
     const params = new URLSearchParams();
     params.append('status', paymentStatus);
 
-    axios.defaults.headers.post['Authorization'] = `Bearer ${token}`;
-
-    return await axios.post(`https://api.opex.dev/ipg/v1/payment/verify/${paymentToken}?${params.toString()}`, {
+    return await Wallet.post(`/ipg/v1/payment/verify/${paymentToken}?${params.toString()}`, {
         data:params,
         headers : {
             'Authorization': `Bearer ${token}`,

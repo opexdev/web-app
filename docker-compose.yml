@@ -1,0 +1,16 @@
+version: "3.8"
+services:
+  app:
+    build:
+      context: .
+      args:
+        - API_BASE_URL=${API_BASE_URL}
+    networks:
+      - default
+    deploy:
+      restart_policy:
+        condition: on-failure
+networks:
+  default:
+    driver: bridge
+    name: ${DEFAULT_NETWORK_NAME:-opex}
