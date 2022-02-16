@@ -151,7 +151,7 @@ const MessagesSubMenu = (props) => {
                 <td colSpan="3" className={`pt-05 pb-2 px-1`}>
                   <div className="col-100 text-start font-size-sm">
                     <p>
-                      نسخه نمایشی اوپکس، با پشتیبانی از دارایی‌های تستی بیتکوین، اتر و تتر راه‌اندازی شد. می‌توانید در آدرس <span className={`hover-text`} onClick={() => history.push("/login")}>opex.dev/demo</span> حساب کاربری بسازید.{" "}
+                      نسخه نمایشی اوپکس، با پشتیبانی از دارایی‌های تستی بیتکوین، اتر و تتر راه‌اندازی شد. می‌توانید در آدرس <span className={`hover-text`} onClick={() => history.push("/login")}>opex.dev</span> حساب کاربری بسازید.{" "}
                     </p>
                   </div>
                 </td>

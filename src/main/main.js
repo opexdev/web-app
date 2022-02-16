@@ -22,10 +22,10 @@ const Main = (props) => {
 
     return (
         /*basename={"demo"}*/
-        /*"homepage":"https://opex.dev/demo"*/
+        /*"homepage":"https://opex.dev"*/
         /*${isSafari ? "" : "user-select"}*/
         <div className={`container ${props.isDark ? "dark" : ""} ${ltr ? "ltr" : "rtl"}`}>
-            <Router basename={"demo"}>
+            <Router>
                 <BrowserView>
                     <Browser/>
                 </BrowserView>
