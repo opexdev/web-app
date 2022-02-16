@@ -1,6 +1,7 @@
+import { apiBaseUrl } from "../../constants/global";
 import historyProvider from "./HistoryProvider";
 
-const api_root = "https://api.binance.com/api/v1/exchangeInfo";
+const api_root = `${apiBaseUrl}/binance/api/v1/exchangeInfo`;
 
 const supportedResolutions = [
   "1",
@@ -64,7 +65,7 @@ export default {
     historyProvider
       .getBars(symbolInfo, resolution, from, to, firstDataRequest)
       .then((bars) => {
-        onHistoryCallback(bars, {noData: !bars.length});
+        onHistoryCallback(bars, { noData: !bars.length });
       })
       .catch(onErrorCallback);
   },
@@ -84,7 +85,7 @@ export default {
             : `${parseInt(resolution.toLowerCase()) / 60}h`
           : resolution.toLowerCase();
         const symbol = symbolInfo.name.replace("/", "");
-        const url = `https://api.binance.com/api/v3/klines?symbol=${symbol}&interval=${interval}&limit=1`;
+        const url = `${apiBaseUrl}/binance.com/api/v3/klines?symbol=${symbol}&interval=${interval}&limit=1`;
         fetch(url).then(async (res) => {
           const data = await res.json();
           if (res.status !== 200) {
