@@ -10,7 +10,6 @@ const WalletHeader = (props) => {
     const {t} = useTranslation()
     const {wallets} = props
 
-    console.log(wallets[id])
 
     return (
         <Fragment>

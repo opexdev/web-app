@@ -8,7 +8,7 @@ import {images} from "../../../../../../../../assets/images";
 import Button from "../../../../../../../../components/Button/Button";
 import AccordionBox from "../../../../../../../../components/AccordionBox/AccordionBox";
 import Withdrawal from "./components/Withdrawal";
-import Deposit from "./components/Deposit";
+import Deposit from "./components/Deposit/Deposit";
 
 
 const DepositWithdraw = () => {

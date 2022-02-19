@@ -1,0 +1,102 @@
+.inputGroup {
+    display: flex;
+    flex-direction: column;
+    border: 0.3vh solid var(--CardBorder);
+    border-radius: 7px;
+    height: 10vh;
+    width: 100%;
+}
+.top{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 40%;
+    width: 100%;
+    background: var(--cardHeader);
+}
+.inputGroupBody{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 60%;
+}
+.inputGroup .lead {
+    /*background: var(--cardHeader);*/
+    color: var(--textColor);
+    width: 43%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    height: 100%;
+    /*border: 0.3vh solid var(--cardHeader);*/
+}
+
+.inputGroup input {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    width: 57%;
+    height: 100%;
+    border: none;
+    direction: ltr;
+    text-align: center;
+    font-family: iranyekan, serif;
+    background: none;
+    color: var(--textColor);
+}
+.ltr .inputGroup input {
+    font-family: "Segoe UI", serif;
+}
+.inputGroup span.lead {
+    border-radius: 0 4px 4px 0;
+}
+.ltr .inputGroup span.lead {
+    border-radius: 4px 0 0 4px;
+}
+.inputGroup span.after {
+    border-radius: 4px 0 0 4px;
+}
+.ltr .inputGroup span.after {
+    border-radius: 0 4px 4px 0;
+}
+
+.inputGroupHint {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: end;
+    -ms-flex-pack: end;
+    justify-content: flex-end;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+}
+
+.hintIcon {
+    width: 1.1vw;
+    height: 1.1vw;
+    border-radius: 50vw;
+    background-color: var(--bgRed);
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+}
+
+.alert {
+    font-size: 0.7vw;
+    color: var(--textRed);
+}

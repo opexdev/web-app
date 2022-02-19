@@ -1,6 +1,9 @@
 .container {
     height: 88%;
-   /* background-color: lime;*/
+    /*background-color: lime;*/
+}
+.container.activeOrder{
+    height: 100%;
 }
 .thisButton {
     width: 49%;
@@ -10,4 +13,21 @@
 }
 .thisButton.sellOrder {
     background-color: var(--bgRed);
+}
+.headerButton{
+    /*width: 35%;*/
+    background-color: var(--cardBody);
+    border-radius: 50px;
+    /*font-size: 3.6vw;*/
+    color: var(--textColor);
+}
+.headerButton.selected{
+    /*background-color: var(--orange);*/
+    color: var(--activeTab);
+    font-size: 3.6vw;
+}
+.headerItem{
+    background-color: var(--cardBody);
+    border-radius: 8px;
+    height: 100%;
 }

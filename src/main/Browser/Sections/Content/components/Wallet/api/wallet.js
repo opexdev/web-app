@@ -7,8 +7,6 @@ const Wallet = axios.create({
 
 export const sendWithdrawReq = async (token, amount, currency, address, fee, network) => {
 
-    console.log("fee :", fee)
-
     const params = new URLSearchParams();
     params.append('fee', fee);
     params.append('destCurrency', currency.toLowerCase());
@@ -82,6 +80,102 @@ export const getWithdraw = async (token , currency ) => {
             'content-type': 'application/x-www-form-urlencoded'
         },
     }).then((res) => {
+        return res;
+    }).catch((e) => {
+        if (!e.response) {
+            return false;
+        }
+        return e.response;
+    })
+}
+
+export const sendIRTDepositReq = async (token, amount) => {
+
+    const payload = {
+        "amount": amount,
+        "currency": "RIALS",
+        "callbackUrl": "https://opex.dev/wallet/IRT/",
+        //"paymentGatewayName": "VandarPaymentService",
+        "description": "test",
+        "mobile": null,
+        "cardNumber": null,
+        "nationalCode": null
+    }
+
+    axios.defaults.headers.post['Authorization'] = `Bearer ${token}`;
+
+    return await Wallet.post(`/ipg/v1/payment/request`, payload
+    ).then((res) => {
+        return res;
+    }).catch((e) => {
+        if (!e.response) {
+            return false;
+        }
+        return e.response;
+    })
+}
+export const verifyIRTDepositReq = async (token , paymentToken , paymentStatus) => {
+
+    const params = new URLSearchParams();
+    params.append('status', paymentStatus);
+
+    return await Wallet.post(`/ipg/v1/payment/verify/${paymentToken}?${params.toString()}`, {
+        data:params,
+        headers : {
+            'Authorization': `Bearer ${token}`,
+        },
+    }).then((res) => {
+        return res;
+    }).catch((e) => {
+        if (!e.response) {
+            return false;
+        }
+        return e.response;
+    })
+}
+
+export const getAllPayments = async (token) => {
+
+    const params = new URLSearchParams();
+
+    return await Wallet.get(`/ipg/v1/invoice`, {
+        data:params,
+        headers : {
+            'Authorization': `Bearer ${token}`,
+        },
+    }).then((res) => {
+        return res;
+    }).catch((e) => {
+        if (!e.response) {
+            return false;
+        }
+        return e.response;
+    })
+}
+export const getOpenPayments = async (token) => {
+
+    const params = new URLSearchParams();
+
+    return await Wallet.get(`/ipg/v1/invoice/open`, {
+        data:params,
+        headers : {
+            'Authorization': `Bearer ${token}`,
+        },
+    }).then((res) => {
+        return res;
+    }).catch((e) => {
+        if (!e.response) {
+            return false;
+        }
+        return e.response;
+    })
+}
+
+export const cancelIRTDepositReq = async (token, reference) => {
+
+    Wallet.defaults.headers.post['Authorization'] = `Bearer ${token}`;
+
+    return await Wallet.post(`/ipg/v1/payment/cancel/${reference}`).then((res) => {
         return res;
     }).catch((e) => {
         if (!e.response) {

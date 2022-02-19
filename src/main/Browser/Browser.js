@@ -47,6 +47,11 @@ const Browser = (props) => {
                     background: "var(--bgRed)",
                 },
             },
+            custom: {
+                style: {
+                    background: "var(--Orange)",
+                },
+            },
         }} containerStyle={{}}/>
 
     return (

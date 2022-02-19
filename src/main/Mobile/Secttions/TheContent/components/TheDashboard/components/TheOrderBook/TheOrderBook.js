@@ -18,7 +18,7 @@ import TheOrderBookTableSafari from "./components/TheOrderBookTableSafari/TheOrd
 const TheOrderBook = (props) => {
 
     const {t} = useTranslation();
-    const {activePair} = props
+    const {activePair , orderLayout} = props
     const [error, setError] = useState(false);
     const [isLoading, setIsLoading] = useState(true);
     const [orderBookData, setOrderBookData] = useState({
@@ -69,12 +69,12 @@ const TheOrderBook = (props) => {
     return (
         <div className={`container card-background card-border column ${classes.container}`}>
             <div className={`column border-bottom jc-between header-radius card-header-bg ${classes.header}`}>
-                <div className="row jc-center">
+                {orderLayout ? "" :<div className="row jc-center">
                     <h3>
                         {t("orderBook.title")} ({t("currency." + activePair.baseAsset)}/
                         {t("currency." + activePair.quoteAsset)})
                     </h3>
-                </div>
+                </div>}
                 <div className="row jc-center">
                     <span className="text-red">{t("sell")}</span>
                     <span className="text-green">{t("buy")}</span>

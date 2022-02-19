@@ -5,7 +5,7 @@ import Icon from "../Icon/Icon";
 
 const NumberInput = (props) => {
 
-    const {maxDecimal, onchange, lead , after ,hint , alert, customClass, ...other} = props
+    const {maxDecimal, onchange, lead , after ,hint , alert , alerts, customClass, ...other} = props
 
     const selectInput = (event) => {
         if (event.target.value === "0") {
@@ -37,7 +37,7 @@ const NumberInput = (props) => {
 
     if (alert){
         alertSection =<div
-            className={`${classes.inputGroupHint} inputGroupHint `}
+            className={`${classes.inputGroupHint} inputGroupHint font-size-sm`}
             data-html={true}
             data-place="left"
             data-effect="float"
@@ -49,6 +49,25 @@ const NumberInput = (props) => {
             <span className="alert pr-05">{alert}</span>
         </div>
     }
+
+    if (alerts){
+        alertSection =<div
+            className={`${classes.inputGroupHint} inputGroupHint jc-start`}
+            data-html={true}
+            data-place="left"
+            data-effect="float"
+            data-tip={props.hint}>
+            <Icon
+                iconName={`${classes.iconInfo} icon-white font-size-sm flex`}
+                customClass="hint-icon"
+            />
+            <div className="column pt-05">
+                { alerts.map((alert , index) => <span key={index} className={`${classes.alert} pr-05 `}>{alert}</span>) }
+            </div>
+        </div>
+    }
+
+
 
     return (
         <div className={customClass ?? ""}>

@@ -10,7 +10,9 @@ export {
   setBestBuyPrice,
   setBestSellPrice,
   setPanelTokens,
-  setPanelTokensInitiate
+  setPanelTokensInitiate,
+  setIPG,
+  setIPGInitiate
 
 } from "./global";
 

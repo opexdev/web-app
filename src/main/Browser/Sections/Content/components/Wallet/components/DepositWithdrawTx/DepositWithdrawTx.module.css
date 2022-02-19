@@ -54,6 +54,18 @@
 .button.return {
   background-color: var(--orange);
 }
+.thisButton{
+  padding: 1vh 2vw;
+  height: inherit !important;
+}
+
+.thisButton.pay {
+  background-color: var(--bgGreen);
+}
+.thisButton.cancel {
+  background-color: var(--bgRed);
+}
+
 .filterBox {
   display: flex;
   margin: 4vh 1vw;

@@ -1,4 +1,6 @@
-const api_root = "https://api.binance.com/api/v3/klines";
+import { apiBaseUrl } from "../../constants/global";
+
+const api_root = `${apiBaseUrl}/binance/api/v3/klines`;
 const history = {};
 
 const fetchData = async function* (symbol, startTime, endTime, interval) {
@@ -24,9 +26,8 @@ const fetchData = async function* (symbol, startTime, endTime, interval) {
             volume: parseFloat(volume),
           };
         });
-        url = `${api_root}?symbol=${symbol}&endTime=${
-          rawBarData[0].time - 1000
-        }&interval=${interval}&limit=1000`;
+        url = `${api_root}?symbol=${symbol}&endTime=${rawBarData[0].time - 1000
+          }&interval=${interval}&limit=1000`;
         const filteredBarData = rawBarData.filter((v) => v.time > startTime);
         if (filteredBarData.length === 0) {
           isDone = true;

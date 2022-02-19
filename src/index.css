@@ -298,6 +298,9 @@
 .icon-blue {
   color: var(--iconBlue);
 }
+.icon-active {
+  color: var(--activeTab);
+}
 
 .card-background {
   background: var(--cardBody);
@@ -524,6 +527,11 @@ body {
   -ms-flex: 0.35;
   flex: 0.35;
 }
+.col-38 {
+  -webkit-box-flex: 0.38;
+  -ms-flex: 0.38;
+  flex: 0.38;
+}
 .col-25 {
   -webkit-box-flex: 0.25;
   -ms-flex: 0.25;
@@ -603,6 +611,11 @@ body {
   -webkit-box-flex: 0.7;
   -ms-flex: 0.7;
   flex: 0.7;
+}
+.col-44 {
+  -webkit-box-flex: 0.44;
+  -ms-flex: 0.44;
+  flex: 0.44;
 }
 .col-45 {
   -webkit-box-flex: 0.45;
@@ -714,6 +727,9 @@ body {
 }
 .width-50{
   width: 50%;
+}
+.width-70{
+  width: 70%;
 }
 .height-100{
   height: 100%;
