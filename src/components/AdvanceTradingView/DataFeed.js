@@ -85,7 +85,7 @@ export default {
             : `${parseInt(resolution.toLowerCase()) / 60}h`
           : resolution.toLowerCase();
         const symbol = symbolInfo.name.replace("/", "");
-        const url = `${apiBaseUrl}/binance.com/api/v3/klines?symbol=${symbol}&interval=${interval}&limit=1`;
+        const url = `${apiBaseUrl}/binance/api/v3/klines?symbol=${symbol}&interval=${interval}&limit=1`;
         fetch(url).then(async (res) => {
           const data = await res.json();
           if (res.status !== 200) {
