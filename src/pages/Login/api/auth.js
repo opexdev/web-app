@@ -1,12 +1,21 @@
 import axios from "axios";
 import {apiBaseUrl} from "../../../constants/global";
-import {authClientId, authClientSecret, authLoginClientId} from '../../../constants/auth';
 
-
+/*
 const Auth = axios.create({
     baseURL: apiBaseUrl,
     responseType: "json"
 });
+
+*/
+
+import userAxios from "../../../setup/axios/setupAxios";
+import {adminAxios} from "../../../setup/axios/setupAxios";
+
+const authClientSecret = process.env.REACT_APP_CLIENT_SECRET
+const authClientId = process.env.REACT_APP_CLIENT_ID
+const authLoginClientId = process.env.REACT_APP_LOGIN_CLIENT_ID
+
 
 export const getToken = async () => {
     const params = new URLSearchParams();
@@ -14,7 +23,7 @@ export const getToken = async () => {
     params.append('client_secret', authClientSecret);
     params.append('grant_type', 'client_credentials');
 
-    return await Auth.post('/auth/realms/opex/protocol/openid-connect/token', params)
+    return await adminAxios.post('/auth/realms/opex/protocol/openid-connect/token', params)
         .then((res) => {
             return res;
         }).catch((e) => {
@@ -32,7 +41,7 @@ export const login = async (credential) => {
     params.append('password', credential.password);
     params.append('grant_type', 'password');
 
-    return await Auth.post('/auth/realms/opex/protocol/openid-connect/token', params)
+    return await adminAxios.post('/auth/realms/opex/protocol/openid-connect/token', params)
         .then((res) => {
             return res;
         }).catch((e) => {
@@ -44,8 +53,8 @@ export const login = async (credential) => {
 };
 
 export const register = async (token, user) => {
-    Auth.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-    return await Auth.post('/auth/admin/realms/opex/users', {
+    adminAxios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+    return await adminAxios.post('/auth/admin/realms/opex/users', {
         "createdTimestamp": Date.now(),
         "username": user.username,
         "enabled": true,
@@ -77,8 +86,8 @@ export const register = async (token, user) => {
 }
 
 export const getUser = async (token, key , value) => {
-    Auth.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-    return await Auth.get(`/auth/admin/realms/opex/users?${key}=${value}`,)
+    adminAxios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+    return await adminAxios.get(`/auth/admin/realms/opex/users?${key}=${value}`,)
         .then((res) => {
             return res;
         }).catch((e) => {
@@ -91,8 +100,8 @@ export const getUser = async (token, key , value) => {
 
 
 export const sendVerifyEmail = async (token, userId) => {
-    Auth.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-    return await Auth.put(`/auth/admin/realms/opex/users/${userId}/send-verify-email`,)
+    adminAxios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+    return await adminAxios.put(`/auth/admin/realms/opex/users/${userId}/send-verify-email`,)
         .then((res) => {
             console.log(res.data);
         }).catch((e) => {
@@ -101,9 +110,9 @@ export const sendVerifyEmail = async (token, userId) => {
 }
 
 export const sendForgetPasswordEmail = async (token, userId) => {
-    Auth.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-    Auth.defaults.headers.common['Content-Type'] = "application/json";
-    return await Auth.put(`/auth/admin/realms/opex/users/${userId}/execute-actions-email`,
+    adminAxios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+    adminAxios.defaults.headers.common['Content-Type'] = "application/json";
+    return await adminAxios.put(`/auth/admin/realms/opex/users/${userId}/execute-actions-email`,
         ["UPDATE_PASSWORD"]
     ).then((res) => {
         return res;
@@ -132,10 +141,10 @@ export const parsePanelToken = ( data ) => {
 
 export const sendUpdateProfileReq = async (token, user, attributes ) => {
 
-    Auth.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-    Auth.defaults.headers.common['Content-Type'] = 'application/json';
+    adminAxios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+    adminAxios.defaults.headers.common['Content-Type'] = 'application/json';
 
-    return await Auth.put(`auth/admin/realms/opex/users/${user}`,{
+    return await adminAxios.put(`auth/admin/realms/opex/users/${user}`,{
         attributes ,
     }).then((res) => {
         return res;
@@ -148,13 +157,13 @@ export const sendUpdateProfileReq = async (token, user, attributes ) => {
 }
 export const sendUserFile = async (token, user, file ) => {
 
-    Auth.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-    Auth.defaults.headers.common['Content-Type'] = 'application/json';
+    adminAxios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+    adminAxios.defaults.headers.common['Content-Type'] = 'application/json';
 
     const data = new FormData();
     data.append('file', file);
 
-    return await Auth.post(`/storage/${user}`, data
+    return await adminAxios.post(`/storage/${user}`, data
     ).then((res) => {
         console.log(res)
         return res;
@@ -168,10 +177,10 @@ export const sendUserFile = async (token, user, file ) => {
 
 export const addToKycGroup = async (token, userId) => {
 
-    Auth.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-    Auth.defaults.headers.common['Content-Type'] = 'application/json';
+    adminAxios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+    adminAxios.defaults.headers.common['Content-Type'] = 'application/json';
 
-    return await Auth.put(`/auth/admin/realms/opex/users/${userId}/groups/24200655-dfef-4ed0-a8b8-925918793552`)
+    return await adminAxios.put(`/auth/admin/realms/opex/users/${userId}/groups/24200655-dfef-4ed0-a8b8-925918793552`)
         .then((res) => {
             return res;
         }).catch((e) => {
