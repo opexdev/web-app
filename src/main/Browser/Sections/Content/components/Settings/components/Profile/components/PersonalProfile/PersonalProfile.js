@@ -39,6 +39,8 @@ const PersonalProfile = (props) => {
 
 
 
+
+
   return (
   <div className="container py-2">
     <div className={`card-background card-border column ${classes.container}`}>

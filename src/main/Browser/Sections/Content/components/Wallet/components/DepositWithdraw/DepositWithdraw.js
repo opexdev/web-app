@@ -24,7 +24,7 @@ const DepositWithdraw = () => {
     ReactTooltip.rebuild();
   });
 
-
+//todo
   const transfer = (
     <div className={`px-1 py-2 column jc-between ${classes.content}`}>
       <div className="container row jc-between">

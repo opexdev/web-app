@@ -172,12 +172,7 @@ const Withdrawal = () => {
                 </div>
             </div>
             <div className="pt-1">
-                 <span>
-                       باتوجه به ملاحضات امنیتی ممکن است انتقال به حساب با کمی تاخیر صورت
-                      بگیرد. می توانید وضعیت برداشت را در همین صفحه از بخش ترکنش های{" "}
-                      <span className="text-orange">{`${t("DepositWithdraw.title")}`}</span>{" "}
-                     ببینید.
-                </span>
+                 <span>{t('DepositWithdraw.securityConsiderations')}</span>
             </div>
         </div>
     )
