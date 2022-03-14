@@ -1,27 +1,25 @@
-import {getToken, getUser, login, parsePanelToken, parseToken} from "../../api/auth";
-import {connect} from "react-redux";
+import {login, parseToken} from "../../api/auth";
+import {useDispatch} from "react-redux";
 import React, {useState} from "react";
 import classes from "../../Login.module.css";
 import TextInput from "../../../../components/TextInput/TextInput";
 import LoginFormLoading from "../LoginLoading/LoginFormLoading";
 import {
     setUserInfo,
-    setPanelTokensInitiate,
     setUserTokensInitiate
 } from "../../../../store/actions";
 import {useHistory} from "react-router-dom";
 import {useTranslation} from "react-i18next";
 import {setUserAccountInfo} from "../../../../store/actions/auth";
 import Button from "../../../../components/Button/Button";
-import {
-    getAccount,
-    parseWalletsResponse
-} from "../../../../main/Browser/Sections/SubMenu/components/WalletSubMenu/api/wallet";
+import {getAccount,} from "../../../../main/Browser/Sections/SubMenu/components/WalletSubMenu/api/wallet";
+import jwtDecode from "jwt-decode";
 
 
 const LoginForm = (props) => {
     const {t} = useTranslation();
     const history = useHistory();
+    const dispatch = useDispatch();
     const [isLoading, setLoading] = useState(false);
     const [loginError, setLoginError] = useState(false);
     const [credential, setCredential] = useState({username: "", password: ""});
@@ -39,7 +37,7 @@ const LoginForm = (props) => {
             return false;
         }
 
-        setLoginError(false)
+        setLoginError(false);
         setLoading(true);
 
         const submitResult = await login(credential);
@@ -54,25 +52,14 @@ const LoginForm = (props) => {
         }
         if (submitResult && submitResult.status === 200) {
             const userToken = parseToken(submitResult.data);
-            props.setToken(userToken)
-
-            let panelToken = await getToken()
-            panelToken = parsePanelToken(panelToken.data)
-            props.setPanelToken(panelToken)
-
-            let userInfo = await getUser(panelToken.panelAccessToken, "username", credential.username)
-            if (userInfo.status === 200) {
-                userInfo = userInfo.data.find(user => user.username === credential.username)
-                props.setUserInfo(userInfo)
-            }
+            dispatch(setUserTokensInitiate(userToken));
+            const jwt = jwtDecode(userToken.accessToken)
+            dispatch(setUserInfo(jwt));
             let account = await getAccount(userToken.accessToken)
-            if (account.status === 200) {
-                const parsedData = parseWalletsResponse(account.data);
-                props.setUserAccountInfo(parsedData)
+            if (account) {
+                dispatch(setUserAccountInfo(account))
             }
-
             return history.push("/");
-
         }
         setLoading(false);
     };
@@ -116,13 +103,4 @@ const LoginForm = (props) => {
     </form>
 }
 
-const mapDispatchToProps = (dispatch) => {
-    return {
-        setToken: (token) => dispatch(setUserTokensInitiate(token)),
-        setPanelToken: (token) => dispatch(setPanelTokensInitiate(token)),
-        setUserInfo: (token) => dispatch(setUserInfo(token)),
-        setUserAccountInfo: (info) => dispatch(setUserAccountInfo(info)),
-    };
-};
-
-export default connect(null, mapDispatchToProps)(LoginForm);
+export default LoginForm;

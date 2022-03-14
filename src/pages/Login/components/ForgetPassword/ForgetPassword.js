@@ -34,21 +34,7 @@ const ForgetPassword = (props) => {
         setLoading(true);
 
         let panelToken = await getToken();
-        panelToken = parsePanelToken(panelToken.data)
-
-        props.setPanelToken(panelToken)
-        let userInfo = await getUser(panelToken.panelAccessToken, "email", email)
-
-        if (userInfo.status === 200) {
-            userInfo = userInfo.data.find(user => user.email === email)
-        }
-
-        if (!userInfo) {
-            setError([t('login.notFoundEmail')])
-            setLoading(false);
-            return false
-        }
-        const submitResult = await sendForgetPasswordEmail(panelToken.panelAccessToken, userInfo.id);
+        const submitResult = await sendForgetPasswordEmail(panelToken, email);
 
         if( submitResult.status === 204){
             setSuccess(true)

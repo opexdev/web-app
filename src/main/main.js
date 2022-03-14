@@ -1,19 +1,23 @@
-import React, {useEffect, useState} from "react";
+import React, {useEffect, useState ,lazy} from "react";
 import {BrowserRouter as Router} from "react-router-dom";
-import {BrowserView, isSafari, MobileView} from "react-device-detect";
-import Browser from "./Browser/Browser";
-import Mobile from "./Mobile/Mobile";
+import {BrowserView, MobileView} from "react-device-detect";
+
 import i18n from "i18next";
-import {loadConfig, setThemeInitiate} from "../store/actions";
-import {connect} from "react-redux";
+import {loadConfig} from "../store/actions";
+import {useDispatch, useSelector} from "react-redux";
 
 
-const Main = (props) => {
+const Main = ({baseURL}) => {
+    const Mobile = lazy(() => import('./Mobile/Mobile'))
+    const Browser = lazy(() => import('./Browser/Browser'))
 
     const [ltr, setLtr] = useState(false);
 
+    const isDark = useSelector((state) => state.global.isDark)
+    const dispatch = useDispatch();
+
     useEffect(() => {
-        props.onLoad();
+        dispatch(loadConfig())
         i18n.language !== "fa" ? setLtr(true) : setLtr(false);
         i18n.on("languageChanged", (lng) => {
             lng !== "fa" ? setLtr(true) : setLtr(false);
@@ -21,11 +25,8 @@ const Main = (props) => {
     }, []);
 
     return (
-        /*basename={"demo"}*/
-        /*"homepage":"https://opex.dev"*/
-        /*${isSafari ? "" : "user-select"}*/
-        <div className={`container ${props.isDark ? "dark" : ""} ${ltr ? "ltr" : "rtl"}`}>
-            <Router>
+        <div className={`container ${isDark ? "dark" : ""} ${ltr ? "ltr" : "rtl"}`}>
+            <Router basename={baseURL}>
                 <BrowserView>
                     <Browser/>
                 </BrowserView>
@@ -37,20 +38,4 @@ const Main = (props) => {
 
     );
 };
-
-
-const mapStateToProps = (state) => {
-    return {
-        isLoading: state.global.isLoading,
-        isDark: state.global.isDark,
-        isLogin: state.auth.isLogin,
-    };
-};
-const mapDispatchToProps = (dispatch) => {
-    return {
-        onLoad: () => dispatch(loadConfig()),
-        onThemeChange: (isDark) => dispatch(setThemeInitiate(isDark)),
-    };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(Main);
+export default Main;

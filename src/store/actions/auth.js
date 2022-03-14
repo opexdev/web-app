@@ -38,27 +38,14 @@ export const setUserTokensInitiate = (token) => {
 export const setUserInfo = (info) => {
     return {
         type: actionTypes.SET_USER_INFO,
-        id: info.id,
-        username: info.username,
+        id: info.sub,
+        username: info.preferred_username,
         emailVerified: info.emailVerified,
-        firstName: info.firstName,
-        lastName: info.lastName,
+        firstName: info.given_name,
+        lastName: info.family_name,
         email: info.email,
     };
 };
-
-export const setUserInfoInitiate = (info) => {
-    return {
-        type: actionTypes.SET_USER_INFO_INITIATE,
-        id: info.id,
-        username: info.username,
-        emailVerified: info.emailVerified,
-        firstName: info.firstName,
-        lastName: info.lastName,
-        email: info.email,
-    };
-};
-
 
 export const setLastTransaction = (time) => {
     return {
