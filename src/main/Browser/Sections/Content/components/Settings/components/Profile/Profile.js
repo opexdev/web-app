@@ -12,7 +12,6 @@ const Profile = (props) => {
       <div className="row">
         <PersonalProfile />
       </div>
-      <div className="row"></div>
     </Fragment>
   );
 };

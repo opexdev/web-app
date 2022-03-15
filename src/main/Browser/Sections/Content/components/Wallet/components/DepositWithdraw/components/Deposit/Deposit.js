@@ -39,39 +39,86 @@ const Deposit = () => {
         })
     }, [id]);
 
+
     const helpText = () => {
         if (id === "ETH"){
             return <div>
-                <span className={`text-red font-weight-bold`}>مهم: </span>
-                فقط ETH تستی شبکه Ropsten مورد قبول قرار می‌گیرد! برای دریافت رایگان به <span className={`hover-text cursor-pointer`} onClick={()=>window.open('https://faucet.ropsten.be')}>https://faucet.ropsten.be</span> بروید. برای ارسال ETH تستی به این آدرس، باید شبکه اتریومی کیف پول خود را به Ropsten تغییر دهید. این شبکه به طور پیش‌فرض در فهرست شبکه‌های کیف پول Metamask وجود دارد.
-                هر تراکنشی با مقدار مساوی یا بیشتر از ۰.۰۰۱ ETH به آدرس بالا، به حساب شما افزوده می‌شود.
+                <span className={`text-red font-weight-bold`}>{t("DepositWithdraw.important")}: </span>
+               <div>
+                   <span>{t("DepositWithdraw.DepositETHContentBefore")}</span>
+                   <span className={`hover-text cursor-pointer`} onClick={()=>window.open('https://faucet.ropsten.be')}>https://faucet.ropsten.be</span>
+                   <span>{t("DepositWithdraw.DepositETHContentAfter")}</span>
+               </div>
                 <div>
-                    حداقل میزان قابل قبول ۰.۰۰۱ ETH
+                    <Trans
+                        i18nKey="DepositWithdraw.minDeposit"
+                        values={{
+                            min: 0.001,
+                            currency: t("currency." + id)
+                        }}
+                    />
                 </div>
                 <div>
-                     * موجودی شما ۲ دقیقه بعد از واریز به آدرس بالا، افزایش پیدا می‌کند.
+                    <Trans
+                        i18nKey="DepositWithdraw.depositTime"
+                        values={{
+                            time: 2
+                        }}
+                    />
                 </div>
             </div>
         }
         if (id === "BTC"){
             return <div>
-                <span className={`text-red font-weight-bold`}>مهم: </span>
-                فقط  BTC تستی مورد قبول قرار می‌گیرد! برای  دریافت رایگان به <span className={`hover-text cursor-pointer`} onClick={()=>window.open('https://testnet-faucet.com/btc-testnet')}>https://testnet-faucet.com/btc-testnet</span> بروید.
-                هر تراکنشی با مقدار مساوی یا بیشتر از ۰.۰۰۱ BTC به آدرس بالا، به حساب شما افزوده می‌شود.
-                <div>حداقل میزان قابل قبول ۰.۰۰۱ BTC</div>
+                <span className={`text-red font-weight-bold`}>{t("DepositWithdraw.important")}: </span>
                 <div>
-                    * موجودی شما ۱۰ دقیقه بعد از واریز به آدرس بالا، افزایش پیدا می‌کند.
+                    <span>{t("DepositWithdraw.DepositBTCContentBefore")}</span>
+                    <span className={`hover-text cursor-pointer`} onClick={()=>window.open('https://testnet-faucet.com/btc-testnet')}>https://testnet-faucet.com/btc-testnet</span>
+                    <span>{t("DepositWithdraw.DepositBTCContentAfter")}</span>
+                </div>
+                <div>
+                    <Trans
+                        i18nKey="DepositWithdraw.minDeposit"
+                        values={{
+                            min: 0.001,
+                            currency: t("currency." + id)
+                        }}
+                    />
+                </div>
+                <div>
+                    <Trans
+                        i18nKey="DepositWithdraw.depositTime"
+                        values={{
+                            time: 10
+                        }}
+                    />
                 </div>
             </div>
         }
         if (id === "USDT"){
             return <div>
-                <span className={`text-red font-weight-bold`}>مهم: </span>
-                فقط USDT تستی شبکه Ropsten مورد قبول قرار می‌گیرد! برای آشنایی با روش دریافت رایگان به <span className={`hover-text cursor-pointer`} onClick={()=>window.open('https://bit.ly/ROPTokens')}>https://bit.ly/ROPTokens</span> بروید. برای ارسال USDT تستی به این آدرس، باید شبکه اتریومی کیف پول خود را به Ropsten تغییر دهید. این شبکه به طور پیش‌فرض در فهرست شبکه‌های کیف پول Metamask وجود دارد.
-                هر تراکنشی با مقدار مساوی یا بیشتر از ۱۰ USDT به آدرس بالا، به حساب شما افزوده می‌شود.
-                <div>حداقل میزان قابل قبول ۱۰ USDT</div>
+                <span className={`text-red font-weight-bold`}>{t("DepositWithdraw.important")}: </span>
                 <div>
-                     * موجودی شما 2 دقیقه بعد از واریز به آدرس بالا، افزایش پیدا می‌کند.
+                    <span>{t("DepositWithdraw.DepositUSDTContentBefore")}</span>
+                    <span className={`hover-text cursor-pointer`} onClick={()=>window.open('https://bit.ly/ROPTokens')}>https://bit.ly/ROPTokens</span>
+                    <span>{t("DepositWithdraw.DepositUSDTContentAfter")}</span>
+                </div>
+                <div>
+                    <Trans
+                        i18nKey="DepositWithdraw.minDeposit"
+                        values={{
+                            min: 10,
+                            currency: t("currency." + id)
+                        }}
+                    />
+                </div>
+                <div>
+                    <Trans
+                        i18nKey="DepositWithdraw.depositTime"
+                        values={{
+                            time: 2
+                        }}
+                    />
                 </div>
             </div>
         }
@@ -102,7 +149,14 @@ const Deposit = () => {
 
                 <div className="col-80 column jc-between">
                     <span>
-                    هر تراکنشی با مقدار بیشتر از {lowestPrice(id)} {t("currency."+id)} به آدرس زیر ، به حساب شما افزوده می شود.{" "}
+                        <Trans
+                            i18nKey="DepositWithdraw.minDepositText"
+                            values={{
+                                min: lowestPrice(id),
+                                currency: t("currency." + id)
+                            }}
+                        />
+
                     </span>
                     <TextInput
                         after={

@@ -17,36 +17,36 @@ const PersonalizationForm = () => {
   });
 
   const defaultLanguageOptions = [
-    {value: "persian", label: "فارسی"},
-    {value: "english", label: "انگلیسی"},
-    {value: "arabic", label: "عربی"},
+    {value: "persian", label: t("Languages.Persian")},
+    {value: "english", label: t("Languages.English")},
+    {value: "arabic", label: t("Languages.Arabic")}
   ];
   const defaultThemeOptions = [
-    {value: "right", label: "روشن"},
-    {value: "dark", label: "تاریک"},
+    {value: "light", label: t("Theme.Light")},
+    {value: "dark", label: t("Theme.Dark")},
   ];
   const calendarSystemOptions = [
-    {value: "1", label: "هجری شمسی"},
-    {value: "2", label: "میلادی"},
+    {value: "1", label: t("Calendar.1")},
+    {value: "2", label: t("Calendar.2")},
   ];
   const timeZoneOptions = [
-    {value: "1", label: "آسیا/تهران/03:30+"},
+    {value: "1", label: t("TimeZone.1")},
     {value: "2", label: "..."},
     {value: "3", label: "..."},
   ];
   const referenceCurrencyOptions = [
-    {value: "IRT", label: "تومان"},
-    {value: "BTC", label: "بیتکوین"},
-    {value: "USDT", label: "تتر"},
-    {value: "ETH", label: "اتریوم"},
-    {value: "BCH", label: "بیتکوین کش"},
+    {value: "IRT", label: t("currency.IRT")},
+    {value: "BTC", label: t("currency.BTC")},
+    {value: "USDT", label: t("currency.USDT")},
+    {value: "ETH", label: t("currency.ETH")},
+    {value: "BCH", label: t("currency.BCH")},
   ];
   const referenceCryptoCurrencyOptions = [
-    {value: "IRT", label: "تومان"},
-    {value: "BTC", label: "بیتکوین"},
-    {value: "USDT", label: "تتر"},
-    {value: "ETH", label: "اتریوم"},
-    {value: "BCH", label: "بیتکوین کش"},
+    {value: "IRT", label: t("currency.IRT")},
+    {value: "BTC", label: t("currency.BTC")},
+    {value: "USDT", label: t("currency.USDT")},
+    {value: "ETH", label: t("currency.ETH")},
+    {value: "BCH", label: t("currency.BCH")},
   ];
 
   return (
@@ -56,7 +56,7 @@ const PersonalizationForm = () => {
         <div
           className={`column border-bottom jc-center card-header-bg  ${classes.header}`}>
           <div className="row jc-start ">
-            <h3>شخصی سازی</h3>
+            <h3>{t("PersonalizationForm.title")}</h3>
           </div>
         </div>
         <div
@@ -65,8 +65,8 @@ const PersonalizationForm = () => {
             <div className="col-49">
               <TextInput
                 select={true}
-                placeholder="انتخاب"
-                lead="زبان پیش فرض"
+                placeholder={t("PersonalizationForm.placeholder")}
+                lead={t("PersonalizationForm.defaultLang")}
                 type="text"
                 options={defaultLanguageOptions}
                 onchange={(e) =>
@@ -80,8 +80,8 @@ const PersonalizationForm = () => {
             <div className="col-49">
               <TextInput
                 select={true}
-                placeholder="انتخاب"
-                lead="تم پیش فرض"
+                placeholder={t("PersonalizationForm.placeholder")}
+                lead={t("PersonalizationForm.defaultTheme")}
                 type="text"
                 options={defaultThemeOptions}
                 onchange={(e) =>
@@ -97,8 +97,8 @@ const PersonalizationForm = () => {
             <div className="col-49">
               <TextInput
                 select={true}
-                placeholder="انتخاب"
-                lead="سیستم روزشماری"
+                placeholder={t("PersonalizationForm.placeholder")}
+                lead={t("PersonalizationForm.defaultCalendarSystem")}
                 type="text"
                 options={calendarSystemOptions}
                 onchange={(e) =>
@@ -112,8 +112,8 @@ const PersonalizationForm = () => {
             <div className="col-49">
               <TextInput
                 select={true}
-                placeholder="انتخاب"
-                lead="منطقه زمانی"
+                placeholder={t("PersonalizationForm.placeholder")}
+                lead={t("PersonalizationForm.defaultTimeZon")}
                 type="text"
                 options={timeZoneOptions}
                 onchange={(e) =>
@@ -126,8 +126,8 @@ const PersonalizationForm = () => {
             <div className="col-49">
               <TextInput
                 select={true}
-                placeholder="انتخاب"
-                lead="ارز مرجع"
+                placeholder={t("PersonalizationForm.placeholder")}
+                lead={t("PersonalizationForm.defaultReferenceCurrency")}
                 type="text"
                 options={referenceCurrencyOptions}
                 onchange={(e) =>
@@ -141,8 +141,8 @@ const PersonalizationForm = () => {
             <div className="col-49">
               <TextInput
                 select={true}
-                placeholder="انتخاب"
-                lead="رمز ارز مرجع"
+                placeholder={t("PersonalizationForm.placeholder")}
+                lead={t("PersonalizationForm.defaultReferenceCryptoCurrency")}
                 type="text"
                 options={referenceCryptoCurrencyOptions}
                 onchange={(e) =>
@@ -158,7 +158,7 @@ const PersonalizationForm = () => {
 
             <Button
                 buttonClass={`${classes.thisButton}`}
-                buttonTitle="ذخیره"
+                buttonTitle={t("PersonalizationForm.save")}
             />
           </div>
         </div>

@@ -43,13 +43,13 @@ const ImageInput = (props) => {
   const errorMsg = (code) => {
     switch (code) {
       case "file-too-large":
-        return "حجم فایل آپلود شده بیشتر از حد مجاز است!";
+        return t("ImageInput.fileTooLarge");
       case "file-invalid-type":
-        return "فرمت فایل آپلود شده قابل قبول نیست!";
+        return t("ImageInput.fileInvalidType");
       case "too-many-files":
-        return "آپلود بیشتر از یک عکس مجاز نیست!";
+        return t("ImageInput.tooManyFiles");
       default:
-        return "عکس آپلود شده معتبر نیست!";
+        return t("ImageInput.errorMsgDefault");
     }
   };
 
