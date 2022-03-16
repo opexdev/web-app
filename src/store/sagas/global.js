@@ -1,36 +1,32 @@
-import {put} from "redux-saga/effects";
+import {put,call} from "redux-saga/effects";
 import * as actions from "../actions/index";
 import jwtDecode from "jwt-decode";
 
 export function* setThemeSaga(action) {
-    yield localStorage.setItem("isDark", action.isDark);
+    yield call([localStorage, 'setItem'], "isDark", action.isDark)
     yield put(actions.setTheme(action.isDark));
 }
 
-export function* setPanelTokens(action) {
-    yield localStorage.setItem("panelAccessToken", action.panelAccessToken);
-    yield localStorage.setItem("panelAccessTokenExpires", action.panelAccessTokenExpires);
-    yield put(actions.setPanelTokens(action));
-}
-
 export function* setActivePair(action) {
-    yield localStorage.setItem("activePair",JSON.stringify(action.pair));
-    yield localStorage.setItem("activeMarketTab", action.activeTab);
+    yield call([localStorage, 'setItem'], "activePair", JSON.stringify(action.pair))
+    yield call([localStorage, 'setItem'], "activeMarketTab", action.activeTab)
     yield put(actions.setActivePair(action.pair));
 }
 
 export function* setIPGLock(action) {
-    yield localStorage.setItem("lockTime" , action.lockTime);
+    yield call([localStorage, 'setItem'], "activeMarketTab", action.activeTab)
+    yield call([localStorage, 'setItem'], "lockTime", action.lockTime)
     yield put(actions.setIPG(action.lockTime));
 }
 
 export function* loadConfig() {
-    const isDark = yield localStorage.getItem("isDark");
-    const activePair = yield localStorage.getItem("activePair");
-    const activeMarketTab = yield localStorage.getItem("activeMarketTab");
-    const lockTime = yield localStorage.getItem("lockTime");
-    yield put(actions.setIPG(lockTime));
-    yield put(actions.setTheme(isDark === "true"));
+    const isDark = yield call([localStorage, 'getItem'], 'isDark')
+    const activePair = yield call([localStorage, 'getItem'], 'activePair')
+    const activeMarketTab = yield call([localStorage, 'getItem'], 'activeMarketTab')
+    const lockTime = yield call([localStorage, 'getItem'], 'lockTime')
+
+    if (lockTime) yield put(actions.setIPG(lockTime));
+    if (isDark === "true") yield put(actions.setTheme(true));
     if (activePair !== null ) yield put(actions.setActivePair(JSON.parse( activePair ) ,activeMarketTab));
 
     const tokens = {
@@ -42,16 +38,8 @@ export function* loadConfig() {
 
     if (tokens.accessToken && tokens.accessTokenExpires > Date.now()) {
         const jwt = jwtDecode(tokens.accessToken)
-        const user = {
-            id: jwt.sub,
-            username: jwt.preferred_username,
-            email: jwt.email,
-            firstName: jwt.given_name,
-            lastName: jwt.family_name,
-            emailVerified: jwt.email_verified
-        }
         yield put(actions.setUserTokens(tokens));
-        yield put(actions.setUserInfo(user));
+        yield put(actions.setUserInfo(jwt));
 
     } else {
         yield put(actions.setLogoutInitiate());
