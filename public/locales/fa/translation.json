@@ -449,7 +449,8 @@
     "emptyCredentialError": "وارد کردن فیلد نام کاربری و رمز ورود الزامی است.",
     "minInput": "{{name}} حداقل باید {{min}} کاراکتر باشد.",
     "finishedWithError": "خطا در ایجاد کاربر جدید.",
-    "back": "بازگشت"
+    "back": "بازگشت",
+    "description": "OPen source EXchange"
   },
   "footer": {
     "changeColor": "تغییر رنگ",

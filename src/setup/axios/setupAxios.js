@@ -7,7 +7,7 @@ export default function setupAxios(axios , store) {
             const {auth: {accessToken}} = store.getState()
             if (accessToken) {
                 config.headers.Authorization = `Bearer ${accessToken}`
-            }g
+            }
             return config
         },
         (err) => Promise.reject(err)

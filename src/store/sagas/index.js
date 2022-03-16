@@ -1,7 +1,7 @@
 import {takeEvery} from "redux-saga/effects";
 import * as actionTypes from "../actions/actionTypes";
 
-import {setThemeSaga, loadConfig, setPanelTokens, setActivePair, setIPGLock} from "./global";
+import {setThemeSaga, loadConfig, setActivePair, setIPGLock} from "./global";
 
 import {logout, setUserTokens} from "./auth";
 
@@ -11,6 +11,5 @@ export function* watchGlobal() {
   yield takeEvery(actionTypes.SET_THEME_INITIATE, setThemeSaga);
   yield takeEvery(actionTypes.SET_ACTIVE_PAIR_INITIATE, setActivePair);
   yield takeEvery(actionTypes.SET_USER_TOKENS_INITIATE, setUserTokens);
-  yield takeEvery(actionTypes.SET_PANEL_TOKENS_INITIATE, setPanelTokens);
   yield takeEvery(actionTypes.SET_IPG_INITIATE, setIPGLock);
 }
