@@ -14,7 +14,6 @@ import Loading from "../../../../../../../../../../../../components/Loading/Load
 import Countdown from "react-countdown";
 import CallbackPage from "./components/CallbackPage/CallbackPage";
 import {setIPGInitiate} from "../../../../../../../../../../../../store/actions";
-import { apiBaseUrl } from "../../../../../../../../../../../../constants/global";
 
 const IRT = (props) => {
 
@@ -30,6 +29,8 @@ const IRT = (props) => {
         amount: {value: "", error: []},
     })
 
+    const apiBaseUrl = process.env.REACT_APP_API_BASE_URL;
+
     // const dataMin = 100000
     const dataMin = 1000
     const dataMax = 50000000
@@ -42,6 +43,7 @@ const IRT = (props) => {
     const {id} = useParams();
 
     const accessToken = useSelector(state => state.auth.accessToken);
+
 
 
     const openPayments = async () => {
@@ -166,6 +168,7 @@ const IRT = (props) => {
                     ...inputs,
                     [key]: {
                         ...inputs[key],
+
                         error: [<Trans
                             i18nKey="DepositWithdraw.emptyInput"
                             values={{

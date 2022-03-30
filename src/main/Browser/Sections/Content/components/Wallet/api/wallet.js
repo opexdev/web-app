@@ -2,7 +2,7 @@ import axios from "axios";
 import {apiBaseUrl} from "../../../../../../../constants/global";
 
 const Wallet = axios.create({
-    baseURL: apiBaseUrl,
+    baseURL: process.env.REACT_APP_API_BASE_URL,
 });
 
 export const sendWithdrawReq = async (token, amount, currency, address, fee, network) => {
@@ -94,7 +94,7 @@ export const sendIRTDepositReq = async (token, amount) => {
     const payload = {
         "amount": amount,
         "currency": "RIALS",
-        "callbackUrl": "https://opex.dev/wallet/IRT/",
+        "callbackUrl": "https://demo.opex.dev/wallet/IRT/",
         //"paymentGatewayName": "VandarPaymentService",
         "description": "test",
         "mobile": null,
