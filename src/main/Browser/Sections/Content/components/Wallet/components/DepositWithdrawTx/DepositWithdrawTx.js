@@ -9,7 +9,7 @@ import NumberInput from "../../../../../../../../components/NumberInput/NumberIn
 import TextInput from "../../../../../../../../components/TextInput/TextInput";
 import Icon from "../../../../../../../../components/Icon/Icon";
 import {useParams} from "react-router-dom";
-import {getDeposit, getDepositAddress, getWithdraw} from "../../api/wallet";
+import {getDeposit, getWithdraw} from "../../api/wallet";
 import Loading from "../../../../../../../../components/Loading/Loading";
 import Error from "../../../../../../../../components/Error/Error";
 import LastTradesTable from "../../../Dashboard/components/LastTrades/components/LastTradesTable/LastTradesTable";

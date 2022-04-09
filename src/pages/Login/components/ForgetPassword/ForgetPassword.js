@@ -3,9 +3,7 @@ import React, {Fragment, useState} from "react";
 import TextInput from "../../../../components/TextInput/TextInput";
 import LoginFormLoading from "../LoginLoading/LoginFormLoading";
 import {useTranslation} from "react-i18next";
-import {getToken, getUser, parsePanelToken, sendForgetPasswordEmail} from "../../api/auth";
-import {setPanelTokensInitiate} from "../../../../store/actions";
-import {connect} from "react-redux";
+import {getToken, sendForgetPasswordEmail} from "../../api/auth";
 import {validateEmail} from "../../../../utils/utils";
 import Button from "../../../../components/Button/Button";
 
@@ -97,10 +95,6 @@ const ForgetPassword = (props) => {
     )
 }
 
-const mapDispatchToProps = (dispatch) => {
-    return {
-        setPanelToken: (token) => dispatch(setPanelTokensInitiate(token)),
-    };
-};
 
-export default connect(null, mapDispatchToProps)(ForgetPassword);
+
+export default ForgetPassword;

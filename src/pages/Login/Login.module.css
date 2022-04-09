@@ -88,6 +88,9 @@
   background-color: #282a36 !important;*/
 }
 
+.loginInput.otpInput :global(input){
+  letter-spacing: 1rem !important;
+}
 
 .formBody{
   /*height: 80%;*/

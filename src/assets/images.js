@@ -17,6 +17,7 @@ import spaceStar from "./images/src/spaceStar.png";
 import astronaut from "./images/src/astronaut.svg";
 import approve from "./images/src/approve.svg";
 import reject from "./images/src/reject.svg";
+import security from "./images/src/security.svg";
 import squareLoading from "./images/src/squareLoading.gif";
 import squareLoadingLight from "./images/src/squareLoadingLight.gif";
 import linearLoading from "./images/src/linearLoading.gif";
@@ -43,6 +44,7 @@ export const images = {
   astronaut: astronaut,
   approve: approve,
   reject: reject,
+  security: security,
   squareLoading: squareLoading,
   squareLoadingLight: squareLoadingLight,
   linearLoading: linearLoading,

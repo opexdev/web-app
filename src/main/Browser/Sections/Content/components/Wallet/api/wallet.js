@@ -5,7 +5,7 @@ const Wallet = axios.create({
     baseURL: process.env.REACT_APP_API_BASE_URL,
 });
 
-export const sendWithdrawReq = async (token, amount, currency, address, fee, network) => {
+export const sendWithdrawReq = async (amount, currency, address, fee, network) => {
 
     const params = new URLSearchParams();
     params.append('fee', fee);
@@ -13,10 +13,12 @@ export const sendWithdrawReq = async (token, amount, currency, address, fee, net
     params.append('destAddress', address);
     params.append('destNetwork', network);
 
-    Wallet.defaults.headers.post['Authorization'] = `Bearer ${token}`;
-    Wallet.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
 
-    return await Wallet.post(`/wallet/withdraw/${amount}_${currency.toLowerCase()}`, params
+    return await axios.post(`/wallet/withdraw/${amount}_${currency.toLowerCase()}`, params ,{
+        headers : {
+            "Content-Type" : 'application/x-www-form-urlencoded'
+        }
+    }
     ).then((res) => {
         return res;
     }).catch((e) => {
@@ -27,12 +29,14 @@ export const sendWithdrawReq = async (token, amount, currency, address, fee, net
     })
 }
 
-export const getDepositAddress = async (token, currency) => {
+export const getDepositAddress = async (currency) => {
 
-    Wallet.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-    Wallet.defaults.headers.common['Content-Type'] = 'application/x-www-form-urlencoded';
 
-    return await Wallet.get(`sapi/v1/capital/deposit/address?coin=${currency.toLowerCase()}&timestamp=${Date.now()}`).then((res) => {
+    return await axios.get(`sapi/v1/capital/deposit/address?coin=${currency.toLowerCase()}&timestamp=${Date.now()}` ,{
+        headers : {
+            "Content-Type" : 'application/x-www-form-urlencoded'
+        }
+    }).then((res) => {
         return res;
     }).catch((e) => {
         if (!e.response) {

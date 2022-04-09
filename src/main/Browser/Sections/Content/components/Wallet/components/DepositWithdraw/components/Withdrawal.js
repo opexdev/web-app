@@ -15,7 +15,6 @@ import IRT from "./Deposit/components/IRT/IRT";
 const Withdrawal = () => {
     const {t} = useTranslation();
     const {id} = useParams();
-    const accessToken = useSelector(state => state.auth.accessToken);
     const wallets = useSelector(state => state.auth.wallets);
 
     const [amount, setAmount] = useState({
@@ -62,7 +61,7 @@ const Withdrawal = () => {
     const sendWithdrawHandler = async () => {
         if (isLoading) return false
         setIsLoading(true)
-        sendWithdrawReq(accessToken, amount.value, id, address.value, calculateFee(id), network(id)).then((r) =>{
+        sendWithdrawReq(amount.value, id, address.value, calculateFee(id), network(id)).then((r) =>{
             console.log(r)
             setIsLoading(false)
             setAmount({value: "0", alert: null})

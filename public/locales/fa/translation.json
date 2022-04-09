@@ -12,6 +12,9 @@
   "totalPrice": "قیمت کل",
   "averagePrice": "قیمت میانگین",
   "min": "حداقل",
+
+
+
   "max": "حداکثر",
   "buy": "خرید",
   "sell": "فروش",
@@ -33,6 +36,7 @@
   "submit": "ثبت",
   "username": "نام کاربری",
   "password": "رمز ورود",
+  "otp": "رمز دو عاملی",
   "firstName": "نام",
   "lastName": "نام خانوادگی",
   "email": "ایمیل",
@@ -363,7 +367,11 @@
     "title": "گزارش ورودها"
   },
   "ActiveSessions": {
-    "title": "نشست های فعال"
+    "title": "نشست های فعال",
+    "ip": "ip",
+    "LOGGED_IN": "ورود",
+    "LOGGING_OUT": "خروج",
+    "LOGGED_OUT": "خروج"
   },
   "ChangePassword": {
     "title": "تغییر رمز ورود",
@@ -372,7 +380,10 @@
     "currentPassword": "رمز ورود فعلی"
   },
   "SetTwoStepVerification": {
-    "title": "فعال سازی ورود دوعاملی"
+    "title": "فعال سازی ورود دوعاملی",
+    "code": "کد",
+    "success": "ورود دوعاملی با موفقیت فعال شد.",
+    "error": "ورود دوعاملی لغو شد."
   },
   "HelpStep": {
     "title": "گام 1 از 4: راهنما",
@@ -431,6 +442,7 @@
   "login": {
     "title": "ورود/ثبت نام",
     "wrongPassword": "نام کاربری یا رمز عبور صحیح نمی باشد!",
+    "wrongOTPPassword": "نام کاربری، رمز عبور یا رمز دو عاملی صحیح نمی باشد!",
     "forgetPassword": "فراموشی رمز عبور",
     "accountNotActive": "اکانت شما هنوز فعال نشده است",
     "enter": "ورود",
@@ -450,7 +462,10 @@
     "minInput": "{{name}} حداقل باید {{min}} کاراکتر باشد.",
     "finishedWithError": "خطا در ایجاد کاربر جدید.",
     "back": "بازگشت",
-    "description": "OPen source EXchange"
+    "description": "OPen source EXchange",
+    "OTPRequired": "وارد کردن رمز دوعاملی (OTP) الزامی است.",
+    "networkError": "خطا در ارتباط با سرور",
+    "otpLength": "رمز دوعاملی 6 کاراکتر است."
   },
   "footer": {
     "changeColor": "تغییر رنگ",

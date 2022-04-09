@@ -19,7 +19,6 @@ const Deposit = () => {
 
     const addressRef = useRef(null);
     const {id} = useParams();
-    const accessToken = useSelector(state => state.auth.accessToken);
 
     const copyToClipboard = () => {
         addressRef.current.select();
@@ -30,7 +29,7 @@ const Deposit = () => {
     };
 
     useEffect(() => {
-        getDepositAddress(accessToken ,id).then((res)=>{
+        getDepositAddress(id).then((res)=>{
             if (res && res.status === 200 ){
                 setAddress(res.data.address)
             }else {
