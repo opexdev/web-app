@@ -15,7 +15,6 @@ const SetTwoStepVerification = () => {
 
 
     const [error, setError] = useState(false);
-    // const [loading, setLoading] = useState(true);
     const [OTPStatus, setOTPStatus] = useState(undefined);
     const username = useSelector(state => state.auth.username);
 
@@ -60,7 +59,7 @@ const SetTwoStepVerification = () => {
                 <div
                     className={`column border-bottom jc-center card-header-bg  ${classes.header}`}>
                     <div className="row jc-start ">
-                        <h3>{t("SetTwoStepVerification.title")}</h3>
+                        <h3>{OTPStatus ? t("SetTwoStepVerification.!title"): t("SetTwoStepVerification.title")}</h3>
                     </div>
                 </div>
                 <div className={`container ${classes.content} px-1 py-2`}>

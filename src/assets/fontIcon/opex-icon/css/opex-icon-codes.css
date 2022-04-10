@@ -88,3 +88,5 @@
 .icon-braille:before { content: '\0186'; } /* 'Ɔ' */
 .icon-left-open:before { content: '\0187'; } /* 'Ƈ' */
 .icon-right-open:before { content: '\0188'; } /* 'ƈ' */
+.icon-eye-2:before { content: '\0189'; } /* 'Ɖ' */
+.icon-eye-off:before { content: '\0190'; } /* 'Ɛ' */

@@ -4,11 +4,12 @@ import {images} from "../../../../../../../../../../../assets/images";
 import Button from "../../../../../../../../../../../components/Button/Button";
 import {sendDisableOTP} from "../../../../../api/settings";
 import {toast} from "react-hot-toast";
-import {Trans} from "react-i18next";
+import {Trans, useTranslation} from "react-i18next";
 
 
 const DisableOTP = ({setOTP}) => {
 
+    const {t} = useTranslation();
 
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState(false);
@@ -33,7 +34,7 @@ const DisableOTP = ({setOTP}) => {
         if (isLoading) {
             return <img className={`${classes.thisLoading}`} src={images.linearLoadingBgOrange} alt="linearLoading"/>
         }
-        return "غیر فعال سازی"
+        return t("SetTwoStepVerification.deActive")
     }
 
 
@@ -44,7 +45,7 @@ const DisableOTP = ({setOTP}) => {
                 <img src={images.security} alt="security" className={`img-lg-2`}/>
             </div>
             <div className={`col-70 column jc-center height-100`}>
-                <span className={`mb-2`}>ورود دو عاملی فعال است، برای غیر فعال کردن دکمه لغو را بزنید.</span>
+                <span className={`mb-2`}>{t("SetTwoStepVerification.isActive")}</span>
                 <Button
                     buttonClass={`${classes.thisButton} ${classes.disableOtp} mt-2`}
 
@@ -53,7 +54,7 @@ const DisableOTP = ({setOTP}) => {
                     //buttonTitle={t("submit")}
                     onClick={disableOTPHandler}
                 />
-                {error ? <span className={`font-size-sm text-red mt-1`}>خطا در سرور، لظفا دوباره تلاش کنید.</span> : ""}
+                {error ? <span className={`font-size-sm text-red mt-1`}>{t("SetTwoStepVerification.serverError")}</span> : ""}
             </div>
 
         </div>

@@ -1,11 +1,11 @@
 @font-face {
   font-family: 'opex-icon';
-  src: url('../font/opex-icon.eot?40744030');
-  src: url('../font/opex-icon.eot?40744030#iefix') format('embedded-opentype'),
-       url('../font/opex-icon.woff2?40744030') format('woff2'),
-       url('../font/opex-icon.woff?40744030') format('woff'),
-       url('../font/opex-icon.ttf?40744030') format('truetype'),
-       url('../font/opex-icon.svg?40744030#opex-icon') format('svg');
+  src: url('../font/opex-icon.eot?12489611');
+  src: url('../font/opex-icon.eot?12489611#iefix') format('embedded-opentype'),
+       url('../font/opex-icon.woff2?12489611') format('woff2'),
+       url('../font/opex-icon.woff?12489611') format('woff'),
+       url('../font/opex-icon.ttf?12489611') format('truetype'),
+       url('../font/opex-icon.svg?12489611#opex-icon') format('svg');
   font-weight: normal;
   font-style: normal;
 }
@@ -15,7 +15,7 @@
 @media screen and (-webkit-min-device-pixel-ratio:0) {
   @font-face {
     font-family: 'opex-icon';
-    src: url('../font/opex-icon.svg?40744030#opex-icon') format('svg');
+    src: url('../font/opex-icon.svg?12489611#opex-icon') format('svg');
   }
 }
 */
@@ -143,3 +143,5 @@
 .icon-braille:before { content: '\0186'; } /* 'Ɔ' */
 .icon-left-open:before { content: '\0187'; } /* 'Ƈ' */
 .icon-right-open:before { content: '\0188'; } /* 'ƈ' */
+.icon-eye-2:before { content: '\0189'; } /* 'Ɖ' */
+.icon-eye-off:before { content: '\0190'; } /* 'Ɛ' */

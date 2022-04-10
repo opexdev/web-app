@@ -1,7 +1,7 @@
 <?xml version="1.0" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
 <svg xmlns="http://www.w3.org/2000/svg">
-<metadata>Copyright (C) 2021 by original authors @ fontello.com</metadata>
+<metadata>Copyright (C) 2022 by original authors @ fontello.com</metadata>
 <defs>
 <font id="opex-icon" horiz-adv-x="1000" >
 <font-face font-family="opex-icon" font-weight="400" font-stretch="normal" units-per-em="1000" ascent="850" descent="-150" />
@@ -183,6 +183,10 @@
 <glyph glyph-name="left-open" unicode="&#x187;" d="M0 350l148 149 352 351 148-148-351-352 351-352-148-148-352 352z" horiz-adv-x="648" />
 
 <glyph glyph-name="right-open" unicode="&#x188;" d="M0-2l352 352-352 352 148 148 352-351 148-149-148-148-352-352z" horiz-adv-x="648" />
+
+<glyph glyph-name="eye-2" unicode="&#x189;" d="M0 350q6 49 64 110 79 80 176 129 129 60 260 60 137-2 260-60 103-53 176-129 64-73 64-110-6-49-64-109-79-80-176-129-129-61-260-61-137 2-260 61-103 53-176 129-64 72-64 109z m264 0q0-94 69-159t167-65 167 65 69 159-69 159-167 66-167-66-69-159z m86 1q0 60 44 102t106 42 106-42 44-102-44-102-106-43-106 43-44 102z" horiz-adv-x="1000" />
+
+<glyph glyph-name="eye-off" unicode="&#x190;" d="M0 326q6 49 64 110 79 80 176 128 129 61 260 61 29 0 59-2l74 129q10 16 23 18 4 0 8-2l51-32q17-7 2-33l-57-101-47-79-41-72-144-250-41-72-47-80-57-100q-15-25-31-15l-53 31q-15 8 0 33l49 86-8 4q-103 53-176 129-64 72-64 109z m264 0q0-74 47-133l48 84q-9 24-9 49 0 51 34 91t85 50l49 84-18 0q-98 0-167-66t-69-159z m177-295l41 71 18 0q98 0 167 65t69 159q0 74-47 133l63 109q2-2 4-3t4-1q103-52 176-128 64-73 64-110-6-49-64-109-79-80-176-129-129-61-260-61-25 0-59 4z m90 155l110 189q9-25 9-49 0-51-34-90t-85-50z" horiz-adv-x="1000" />
 </font>
 </defs>
 </svg>

@@ -39,7 +39,7 @@ const ActivateOTP = ({setOTP}) => {
         if (isLoading) {
             return <img className={`${classes.thisLoading}`} src={images.linearLoadingBgOrange} alt="linearLoading"/>
         }
-        return t("SetTwoStepVerification.title")
+        return t("SetTwoStepVerification.active")
     }
 
     const sendReqActivateOTP = async () => {
@@ -55,14 +55,14 @@ const ActivateOTP = ({setOTP}) => {
             setIsLoading(false)
         }
     }
-    const submitActivation = async () => {
+    const submitActivation = async (e) => {
+        e.preventDefault();
 
         if (initialCode.toString().length === 6) {
             setAlert([])
             setLoading(true)
             const ActivateOTPReq = await sendActivateOTP(reqOTP.secret, initialCode);
             if (ActivateOTPReq && ActivateOTPReq.status === 204) {
-                setError(false)
                 //setOTP(ActivateOTPReq.data)
                 setLoading(false)
                 setOTP(true)
@@ -71,13 +71,12 @@ const ActivateOTP = ({setOTP}) => {
                 />);
 
             } else {
-                setError(true)
-                setAlert(["کد وارد شده صحیح نیست."])
+                setAlert([t("SetTwoStepVerification.initialCodeError")])
                 setLoading(false)
             }
 
         } else {
-            setAlert(["عدد باید 6 رقم باشد."])
+            setAlert([t("SetTwoStepVerification.initialCodeMin")])
         }
 
 
@@ -98,7 +97,7 @@ const ActivateOTP = ({setOTP}) => {
         if (reqOTP.uri !== "") {
             return <div className={`row container jc-between ai-center height-100`}>
                 <div className={`col-70 column jc-center`}>
-                    <span className={`mb-2`}>qr رو به رو را اسکن کنید و عدد را وارد نمایید</span>
+                    <span className={`mb-2`}>{t("SetTwoStepVerification.QRdescription")}</span>
                     <form onSubmit={submitActivation} className={`row ai-start  mt-2`}>
                         <div className={`col-50`}>
                             <TextInput
@@ -106,9 +105,6 @@ const ActivateOTP = ({setOTP}) => {
                                 value={initialCode}
                                 alerts={alert}
                                 customClass={classes.thisInput}
-                                /*onchange={(e) =>
-                                    setAmount({...amount, value: parsePriceString(e.target.value)})
-                                }*/
                                 onchange={(e) => OTPInputHandler(e.target.value)}
                                 type="text"
                                 //max="6"
@@ -126,7 +122,6 @@ const ActivateOTP = ({setOTP}) => {
                         bgColor="var(--cardBody)"
                         fgColor="var(--textColor)"
                         level='L'
-                        //className={classes.QRStyle}
                         size={140}
                     />
                 </div>
@@ -134,14 +129,20 @@ const ActivateOTP = ({setOTP}) => {
         }
         return <div className={`column container jc-around ai-center height-100`}>
 
-            <span>برای فعالسازی ورود دو مرحله ای کلیک کنید</span>
+            <span>{t("SetTwoStepVerification.description")}</span>
 
-            <Button
-                buttonClass={`${classes.thisButton} ${classes.withdrawal} ${isLoading ? "cursor-not-allowed" : "cursor-pointer"}`}
-                buttonTitle={submitButtonTextHandler()}
-                //disabled={!(new BN(amount.value).minus(new BN(calculateFee(id))).isGreaterThan(0)) || address.value.length <= 0 }
-                onClick={sendReqActivateOTP}
-            />
+            <div className={` container column jc-center ai-center`}>
+                <Button
+                    buttonClass={`${classes.thisButton} ${classes.withdrawal} ${isLoading ? "cursor-not-allowed" : "cursor-pointer"}`}
+                    buttonTitle={submitButtonTextHandler()}
+                    //disabled={!(new BN(amount.value).minus(new BN(calculateFee(id))).isGreaterThan(0)) || address.value.length <= 0 }
+                    onClick={sendReqActivateOTP}
+                />
+                <span className={`font-size-sm text-red mt-1`}>{error ? t("SetTwoStepVerification.serverError") : ""} </span>
+
+
+            </div>
+
 
 
         </div>

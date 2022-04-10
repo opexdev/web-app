@@ -747,6 +747,18 @@
       "css": "right-open",
       "code": 392,
       "src": "elusive"
+    },
+    {
+      "uid": "e45a3da2ebde8bc8e30a873f3bd51f30",
+      "css": "eye-2",
+      "code": 393,
+      "src": "elusive"
+    },
+    {
+      "uid": "d218294e6f9f7191f6b0b3d1ff6239ff",
+      "css": "eye-off",
+      "code": 400,
+      "src": "elusive"
     }
   ]
 }

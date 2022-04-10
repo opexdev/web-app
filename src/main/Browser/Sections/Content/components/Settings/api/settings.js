@@ -1,4 +1,5 @@
 import axios from "axios";
+import ChangePassword from "../components/Security/components/ChangePassword/ChangePassword";
 
 const Settings = axios.create({
     baseURL: process.env.REACT_APP_API_BASE_URL,
@@ -64,6 +65,18 @@ export const sendActivateOTP = async (secret, initialCode) => {
 
 export const sendDisableOTP  = async () => {
     return await axios.delete(`/auth/realms/opex/user-management/user/security/otp`).then((res) => {
+        return res;
+    }).catch((e) => {
+        if (!e.response) {
+            return false;
+        }
+        return e.response;
+    })
+}
+
+export const sendChangePassword = async (payload) => {
+    return await axios.put(`/auth/realms/opex/user-management/user/security/password`, payload
+    ).then((res) => {
         return res;
     }).catch((e) => {
         if (!e.response) {
