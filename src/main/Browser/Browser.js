@@ -1,11 +1,9 @@
-import React, {Fragment, useEffect, useState} from "react";
-import {connect} from "react-redux";
-import {BrowserRouter as Router, Switch, Route} from "react-router-dom";
+import React, {Fragment, useEffect} from "react";
+import {connect, useDispatch, useSelector} from "react-redux";
+import {Route, Switch} from "react-router-dom";
 import i18n from "i18next";
 import ReactTooltip from "react-tooltip";
 import * as Routes from "../../routes/routes";
-import {useTranslation} from "react-i18next";
-import {isSafari} from "react-device-detect";
 import {Toaster} from "react-hot-toast";
 import Login from "../../pages/Login/Login";
 import Guide from "../../pages/Guide/Guide";
@@ -15,19 +13,30 @@ import SubMenu from "./Sections/SubMenu/SubMenu";
 import Header from "./Sections/Header/Header";
 import Content from "./Sections/Content/Content";
 import FullWidthLoading from "../../components/FullWidthLoading/FullWidthLoading";
-import {loadConfig, setThemeInitiate} from "../../store/actions";
+import {loadConfig} from "../../store/actions";
 import TechnicalChart from "./Sections/Content/components/TechnicalChart/TechnicalChart";
 import "./Browser.css"
 
 
 const Browser = (props) => {
 
-    const [ltr, setLtr] = useState(false);
+    const isDark = useSelector((state) => state.global.isDark)
+    const dispatch = useDispatch();
+
+    isDark ? document.body.classList.add('dark') : document.body.classList.remove('dark');
+
+    useEffect(() => {
+        dispatch(loadConfig())
+        i18n.language !== "fa" ? document.body.classList.add('ltr') : document.body.classList.remove('ltr');
+        i18n.on("languageChanged", (lng) => {
+            lng !== "fa" ? document.body.classList.add('ltr') : document.body.classList.remove('ltr');
+        });
+    }, []);
 
 
     const Toast = () => <Toaster position="bottom-right" toastOptions={
         {
-            className: ltr ? "ltr" : "rtl",
+            className: "rtl",
             style: {
                 padding: "0.3vh 0.8vw 0.3vh 0",
                 color: "white",
@@ -68,26 +77,23 @@ const Browser = (props) => {
                 exact
                 path={Routes.Technical}
             />
-            <div>
+            <Route>
                 {props.isLoading ? (<FullWidthLoading/>) : (
-                    <Fragment>
-                        <ReactTooltip data-html={true} data-effect="float"/>
-                        <div className="row">
-                            <MainMenu isLogin={props.isLogin}/>
-                            <SubMenu isLogin={props.isLogin}/>
-                            <div className="column content">
-                                <Header/>
-                                <div style={{display: "flex", flex: 1}}>
-                                    <Content/>
-                                </div>
+                    <div className="row">
+                        <MainMenu isLogin={props.isLogin}/>
+                        <SubMenu isLogin={props.isLogin}/>
+                        <div className="column content">
+                            <Header/>
+                            <div style={{display: "flex", flex: 1}}>
+                                <Content/>
                             </div>
                         </div>
+                        <ReactTooltip data-html={true} data-effect="float"/>
                         <Toast/>
-                    </Fragment>
+                    </div>
                 )}
-            </div>
+            </Route>
         </Switch>
-
     );
 };
 
@@ -97,10 +103,5 @@ const mapStateToProps = (state) => {
         isLogin: state.auth.isLogin,
     };
 };
-const mapDispatchToProps = (dispatch) => {
-    return {
-        onLoad: () => dispatch(loadConfig()),
-    };
-};
 
-export default connect(mapStateToProps, mapDispatchToProps)(Browser);
+export default connect(mapStateToProps, null)(Browser);
