@@ -759,6 +759,18 @@
       "css": "eye-off",
       "code": 400,
       "src": "elusive"
+    },
+    {
+      "uid": "1e89103762be72b0720eda0468e62b90",
+      "css": "globe",
+      "code": 401,
+      "src": "linecons"
+    },
+    {
+      "uid": "22cfc7af2c4f158b37317c65c92b48c2",
+      "css": "location",
+      "code": 402,
+      "src": "elusive"
     }
   ]
 }

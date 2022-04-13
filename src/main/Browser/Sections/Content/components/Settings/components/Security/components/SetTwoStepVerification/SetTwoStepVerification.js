@@ -53,7 +53,7 @@ const SetTwoStepVerification = () => {
 
 
     return (
-        <div className="container py-2">
+        <div className="container pb-2">
             <div
                 className={`container card-background card-border column ${classes.container}`}>
                 <div

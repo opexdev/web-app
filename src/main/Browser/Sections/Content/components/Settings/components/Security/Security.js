@@ -11,11 +11,18 @@ const Security = (props) => {
       <div className="row">
         <LoginReports />
       </div>
-      <div className="row">
-        <ActiveSessions />
+      <div className="row py-2">
+
+          <div className="col-50 pl-05">
+              <ActiveSessions />
+          </div>
+          <div className="col-50 pr-05">
+              <ChangePassword />
+          </div>
+
       </div>
       <div className="row">
-        <ChangePassword />
+
       </div>
       <div className="row">
         <SetTwoStepVerification />

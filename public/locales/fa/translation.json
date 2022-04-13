@@ -371,7 +371,13 @@
     "ip": "ip",
     "LOGGED_IN": "ورود",
     "LOGGING_OUT": "خروج",
-    "LOGGED_OUT": "خروج"
+    "LOGGED_OUT": "خروج",
+    "details": "جزئیات",
+    "closeSession": "بستن نشست",
+    "success": "نشست {{location}} با موفقیت بسته شد.",
+    "noData": "موردی یافت نشد !",
+    "thisSession": "نشست فعلی",
+    "otherSession": "سایر نشست ها"
   },
   "ChangePassword": {
     "title": "تغییر رمز ورود",

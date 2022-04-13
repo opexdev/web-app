@@ -734,6 +734,13 @@ body {
 .width-70{
   width: 70%;
 }
+.width-90{
+  width: 90%;
+}
+.width-100{
+  width: 100%;
+}
+
 .height-100{
   height: 100%;
 }
@@ -1034,6 +1041,10 @@ table {
 .my-2 {
   margin-top: 2vh;
   margin-bottom: 2vh;
+}
+.my-1 {
+  margin-top: 1vh;
+  margin-bottom: 1vh;
 }
 .my-05 {
   margin-top: 0.5vh;

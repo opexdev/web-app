@@ -90,3 +90,5 @@
 .icon-right-open:before { content: '\0188'; } /* 'ƈ' */
 .icon-eye-2:before { content: '\0189'; } /* 'Ɖ' */
 .icon-eye-off:before { content: '\0190'; } /* 'Ɛ' */
+.icon-globe:before { content: '\0191'; } /* 'Ƒ' */
+.icon-location:before { content: '\0192'; } /* 'ƒ' */

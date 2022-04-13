@@ -85,3 +85,18 @@ export const sendChangePassword = async (payload) => {
         return e.response;
     })
 }
+
+export const LogoutUsingSessionId  = async (id) => {
+    return await axios.post(`/auth/realms/opex/user-management/user/sessions/${id}/logout`).then((res) => {
+        return res;
+    }).catch((e) => {
+        if (!e.response) {
+            return false;
+        }
+        return e.response;
+    })
+}
+
+
+
+

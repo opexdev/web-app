@@ -142,10 +142,28 @@ const ChangePassword = () => {
             return <Loading/>
         }
         return <form onSubmit={buttonClickHandler} className={`column jc-between ai-center px-1 py-2 ${classes.content}`}>
-            <div className="row jc-between">
-                <div className="col-49">
+            <div className={`col-80 width-90 column jc-center`}>
+                <TextInput
+                    customClass={`${classes.passwordInput}`}
+                    lead={t("ChangePassword.currentPassword")}
+                    after={
+                        <Icon
+                            iconName={`${isInputVisible.currentPassword ? ' icon-eye-2'  : 'icon-eye-off' } font-size-md-01 flex`}
+                            onClick={() => setIsInputVisible({ ...isInputVisible, currentPassword: !isInputVisible.currentPassword })}
+                        />
+                    }
+                    autocomplete="off"
+                    type={isInputVisible.currentPassword ? "text" : "password"}
+                    value={changePassword.currentPassword.value}
+                    data-name="currentPassword"
+                    data-type="input"
+                    data-min={5}
+                    onchange={(e) => inputHandler(e)}
+                    alerts={changePassword.currentPassword.error}
+                />
+                <div className={`my-1`}>
                     <TextInput
-                        customClass={classes.passwordInput}
+                        customClass={`${classes.passwordInput}`}
                         lead={t("ChangePassword.newPassword")}
                         after={
                             <Icon
@@ -163,56 +181,33 @@ const ChangePassword = () => {
                         alerts={changePassword.newPassword.error}
                     />
                 </div>
-                <div className="col-49">
-                    <TextInput
-                        customClass={classes.passwordInput}
-                        lead={t("ChangePassword.confirmation")}
-                        after={
-                            <Icon
-                                iconName={`${isInputVisible.confirmation ? ' icon-eye-2'  : 'icon-eye-off' } font-size-md-01 flex`}
-                                onClick={() => setIsInputVisible({ ...isInputVisible, confirmation: !isInputVisible.confirmation })}
-                            />
-                        }
-                        autocomplete="off"
-                        type={isInputVisible.confirmation ? "text" : "password"}
-                        value={changePassword.confirmation.value}
-                        data-name="confirmation"
-                        data-type="input"
-                        data-min={8}
-                        onchange={(e) => inputHandler(e)}
-                        alerts={changePassword.confirmation.error}
-                    />
-                </div>
-            </div>
-            <div className="row jc-between">
-                <div className="col-49">
-                    <TextInput
-                        customClass={classes.passwordInput}
-                        lead={t("ChangePassword.currentPassword")}
-                        after={
-                            <Icon
-                                iconName={`${isInputVisible.currentPassword ? ' icon-eye-2'  : 'icon-eye-off' } font-size-md-01 flex`}
-                                onClick={() => setIsInputVisible({ ...isInputVisible, currentPassword: !isInputVisible.currentPassword })}
-                            />
-                        }
-                        autocomplete="off"
-                        type={isInputVisible.currentPassword ? "text" : "password"}
-                        value={changePassword.currentPassword.value}
-                        data-name="currentPassword"
-                        data-type="input"
-                        data-min={5}
-                        onchange={(e) => inputHandler(e)}
-                        alerts={changePassword.currentPassword.error}
-                    />
-                </div>
-                <div className="col-49 flex jc-end ai-center">
-                    <Button
-                        buttonClass={`${classes.thisButton}`}
-                        buttonTitle={t("submit")}
-                    />
-                </div>
+                <TextInput
+                    customClass={`${classes.passwordInput}`}
+                    lead={t("ChangePassword.confirmation")}
+                    after={
+                        <Icon
+                            iconName={`${isInputVisible.confirmation ? ' icon-eye-2'  : 'icon-eye-off' } font-size-md-01 flex`}
+                            onClick={() => setIsInputVisible({ ...isInputVisible, confirmation: !isInputVisible.confirmation })}
+                        />
+                    }
+                    autocomplete="off"
+                    type={isInputVisible.confirmation ? "text" : "password"}
+                    value={changePassword.confirmation.value}
+                    data-name="confirmation"
+                    data-type="input"
+                    data-min={8}
+                    onchange={(e) => inputHandler(e)}
+                    alerts={changePassword.confirmation.error}
+                />
 
             </div>
+            <div className={`col-20 width-100 flex jc-center ai-center`}>
+                <Button
+                    buttonClass={`${classes.thisButton}`}
+                    buttonTitle={t("submit")}
+                />
+            </div>
+
         </form>
     }
 
