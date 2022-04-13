@@ -27,6 +27,7 @@ export const login = async (credential) => {
     params.append('username', credential.username);
     params.append('password', credential.password);
     params.append('otp', credential.otp);
+    params.append('agent', 'user-agent');
     params.append('grant_type', 'password');
     params.append('client_secret', clientSecret);
 

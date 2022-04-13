@@ -32,6 +32,10 @@ const LoginForm = (props) => {
 
     }, [credential.username])
 
+    useEffect(() => {
+        setLoginError(false)
+    }, [needOTP])
+
     const submit = async (e) => {
         e.preventDefault();
 
@@ -45,10 +49,16 @@ const LoginForm = (props) => {
             return false;
         }
 
+        if (needOTP && credential.otp.length < 6) {
+            setLoginError(t("login.otpLength"));
+            setLoading(false);
+            return false;
+        }
+
         setLoading(true);
         setLoginError(false);
 
-        if (typeof needOTP === "undefined") {
+        /*if (typeof needOTP === "undefined") {
 
             let panelToken = await getToken();
             const reqOTPState = await CheckUserSecurityConfigs(panelToken, credential.username)
@@ -72,7 +82,7 @@ const LoginForm = (props) => {
             setLoginError(t("login.otpLength"));
             setLoading(false);
             return false;
-        }
+        }*/
 
 
         const submitResult = await login(credential);
@@ -80,7 +90,11 @@ const LoginForm = (props) => {
             setLoginError(t("login.loginError"));
         }
         if (submitResult.status === 401) {
-            setLoginError( needOTP ? t("login.wrongOTPPassword") : t("login.wrongPassword"));
+            setLoginError(t("login.wrongPassword"));
+        }
+        if (submitResult.status === 403) {
+            setLoginError(t("login.wrongOTP"));
+            setNeedOTP(true)
 
         }
         if (submitResult.status === 400 && submitResult.data.error_description === "Account is not fully set up") {
