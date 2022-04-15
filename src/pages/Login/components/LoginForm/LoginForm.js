@@ -1,4 +1,4 @@
-import {getToken, login, parseToken} from "../../api/auth";
+import {login, parseToken} from "../../api/auth";
 import {useDispatch} from "react-redux";
 import React, {useEffect, useState} from "react";
 import classes from "../../Login.module.css";
@@ -14,8 +14,9 @@ import {setUserAccountInfo} from "../../../../store/actions/auth";
 import Button from "../../../../components/Button/Button";
 import {getAccount,} from "../../../../main/Browser/Sections/SubMenu/components/WalletSubMenu/api/wallet";
 import jwtDecode from "jwt-decode";
-import {CheckUserSecurityConfigs} from "../../../../main/Browser/Sections/Content/components/Settings/api/settings";
 import OTPForm from "../OTPForm/OTPForm";
+import {browserName, deviceType, fullBrowserVersion} from "react-device-detect";
+
 
 
 const LoginForm = (props) => {
@@ -26,6 +27,9 @@ const LoginForm = (props) => {
     const [loginError, setLoginError] = useState(false);
     const [needOTP, setNeedOTP] = useState(undefined);
     const [credential, setCredential] = useState({username: "", password: "", otp: ""});
+
+
+    const agent = [deviceType , browserName , fullBrowserVersion]
 
     useEffect(() => {
         setNeedOTP(undefined)
@@ -85,7 +89,7 @@ const LoginForm = (props) => {
         }*/
 
 
-        const submitResult = await login(credential);
+        const submitResult = await login(credential , agent);
         if (!submitResult) {
             setLoginError(t("login.loginError"));
         }

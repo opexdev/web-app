@@ -374,10 +374,13 @@
     "LOGGED_OUT": "خروج",
     "details": "جزئیات",
     "closeSession": "بستن نشست",
-    "success": "نشست {{location}} با موفقیت بسته شد.",
+    "success": "نشست با ip {{location}} با موفقیت بسته شد.",
+    "logOutAllSuccess": "سایر نشست ها با موفقیت بسته شد.",
+    "logOutAllError": "خطا در سرور، دوباره تلاش کنید.",
     "noData": "موردی یافت نشد !",
     "thisSession": "نشست فعلی",
-    "otherSession": "سایر نشست ها"
+    "otherSession": "سایر نشست ها",
+    "closeAllInusableSessions": "بستن سایر نشست ها"
   },
   "ChangePassword": {
     "title": "تغییر رمز ورود",

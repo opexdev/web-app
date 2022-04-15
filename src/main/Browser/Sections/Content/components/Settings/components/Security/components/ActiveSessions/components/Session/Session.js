@@ -25,7 +25,7 @@ const Session = ({list}) => {
             toast.success(<Trans
                 i18nKey="ActiveSessions.success"
                 values={{
-                    location: list?.geoIP?.regionName / list?.geoIP?.country,
+                    location: list?.ipAddress,
                 }}
             />);
         } else {
@@ -41,27 +41,50 @@ const Session = ({list}) => {
         return t("ActiveSessions.closeSession")
     }
 
+
+
     return (
         <div className={`container ${classes.striped}  py-1 px-1`}>
             <div className={`column ai-end`}>
                 <div className={`row jc-between width-100`}>
                     <div className={`col-40 text-center`}>
-                        <span className={`ml-05`}>{moment(list?.started*1000).format("HH:mm:ss , jYY/jMM/jDD")}</span>
+
                     </div>
                     <div className={`col-60 text-end`}>
-                        <span className={`ml-05`}>{list?.geoIP?.regionName} / {list?.geoIP?.country}</span>
-                        <Icon iconName="icon-location font-size-md"/>
+
                     </div>
                 </div>
                 <div className={`row jc-between width-100`}>
-                    <div className={`col-40 text-center`}>
+                    <div className={`col-40 column jc-center ai-center`}>
+                        <span>{moment(list?.started*1000).format("HH:mm:ss , jYY/jMM/jDD")}</span>
                         <span className={`cursor-pointer text-red font-size-sm`} onClick={clickHandler}>{TextHandler()}</span>
                     </div>
-                    <div className={`col-60 text-end text-color-gray`}>
-                        <span className={`ml-05`}>{list.ipAddress}</span>
-                        <Icon iconName="icon-globe font-size-md"/>
+
+                    <div className={`col-60 text-end`}>
+                        <div className={`row jc-end ai-center`}>
+                            <span className={`ml-05`}>{list?.geoIP?.regionName} / {list?.geoIP?.country}</span>
+                            <Icon iconName="icon-location font-size-md"/>
+                        </div>
+                        <div className={`row jc-end ai-center text-color-gray`}>
+                            <span className={`ml-05`}>{list?.ipAddress}</span>
+                            <Icon iconName="icon-globe font-size-md"/>
+                        </div>
+                        <div className={`row jc-end ai-center text-color-gray`}>
+                            <span className={`ml-05`}>{list?.agent}</span>
+                            <Icon iconName="icon-info font-size-md"/>
+                        </div>
+                    </div>
+
+                </div>
+
+
+                <div className={`row jc-between width-100`}>
+                    <div className={`col-100 text-end text-color-gray`}>
+
                     </div>
                 </div>
+
+
             </div>
         </div>
     );

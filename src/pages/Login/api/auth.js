@@ -21,13 +21,13 @@ export const getToken = async () => {
         })
 }
 
-export const login = async (credential) => {
+export const login = async (credential , agent) => {
     const params = new URLSearchParams();
     params.append('client_id', clientId);
     params.append('username', credential.username);
     params.append('password', credential.password);
     params.append('otp', credential.otp);
-    params.append('agent', 'user-agent');
+    params.append('agent', agent);
     params.append('grant_type', 'password');
     params.append('client_secret', clientSecret);
 

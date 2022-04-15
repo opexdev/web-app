@@ -97,6 +97,13 @@ export const LogoutUsingSessionId  = async (id) => {
     })
 }
 
-
-
-
+export const LogoutAllSessionsExceptCurrent  = async () => {
+    return await axios.post(`/auth/realms/opex/user-management/user/sessions/logout`).then((res) => {
+        return res;
+    }).catch((e) => {
+        if (!e.response) {
+            return false;
+        }
+        return e.response;
+    })
+}

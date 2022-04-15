@@ -857,6 +857,10 @@ body {
   text-decoration: underline;
 }
 
+.visibility-hidden{
+  visibility: hidden;
+}
+
 
 
 table {
@@ -872,6 +876,10 @@ table {
 }
 .p-025 {
   padding: 0.25vh 0.25vw;
+}
+.px-0 {
+  padding-right: 0;
+  padding-left: 0;
 }
 .px-1 {
   padding-right: 1vw;
@@ -900,6 +908,10 @@ table {
 .px-7 {
   padding-right: 7vw;
   padding-left: 7vw;
+}
+.py-0 {
+  padding-top: 0;
+  padding-bottom: 0;
 }
 .py-1 {
   padding-top: 1vh;
