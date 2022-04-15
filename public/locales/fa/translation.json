@@ -127,7 +127,9 @@
     "availableBalance": "موجودی قابل معامله",
     "free": "دارایی آزاد",
     "locked": "درگیر معامله",
-    "inWithdrawalProcess": "منتظر تسویه"
+    "inWithdrawalProcess": "منتظر تسویه",
+    "logOutSuccess": "خروج با موفقیت انجام شد.",
+    "logOutError": "خطایی رخ داده است، لطفا دوباره تلاش کنید!"
   },
   "market": {
     "title": "بازار"
