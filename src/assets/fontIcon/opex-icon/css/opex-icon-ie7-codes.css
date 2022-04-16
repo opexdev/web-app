@@ -63,7 +63,6 @@
 .icon-cancel-circled { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#x0161;&nbsp;'); }
 .icon-cancel-circle { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#x0162;&nbsp;'); }
 .icon-cancel-circle-1 { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#x0163;&nbsp;'); }
-.icon-cancel-circled2 { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#x0164;&nbsp;'); }
 .icon-cancel-circled-1 { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#x0165;&nbsp;'); }
 .icon-cancel-circle-2 { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#x0166;&nbsp;'); }
 .icon-profilesetting { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#x0167;&nbsp;'); }
@@ -92,3 +91,7 @@
 .icon-eye-off { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#x0190;&nbsp;'); }
 .icon-globe { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#x0191;&nbsp;'); }
 .icon-location { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#x0192;&nbsp;'); }
+.icon-loop { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#x0193;&nbsp;'); }
+.icon-arrows-cw { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#x0194;&nbsp;'); }
+.icon-arrows-cw-1 { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#x0195;&nbsp;'); }
+.icon-cancel-circled2 { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xe801;&nbsp;'); }

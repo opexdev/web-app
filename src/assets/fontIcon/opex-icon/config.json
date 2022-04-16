@@ -513,7 +513,7 @@
     {
       "uid": "74415da8e36ed0afcea9b2b1454f4176",
       "css": "cancel-circled2",
-      "code": 356,
+      "code": 59393,
       "src": "elusive"
     },
     {
@@ -770,6 +770,24 @@
       "uid": "22cfc7af2c4f158b37317c65c92b48c2",
       "css": "location",
       "code": 402,
+      "src": "elusive"
+    },
+    {
+      "uid": "5d3ef4b7c90d2931e641b840ee42f694",
+      "css": "loop",
+      "code": 403,
+      "src": "iconic"
+    },
+    {
+      "uid": "a73c5deb486c8d66249811642e5d719a",
+      "css": "arrows-cw",
+      "code": 404,
+      "src": "fontawesome"
+    },
+    {
+      "uid": "d5fabfa46384953ae055fceacb2229a7",
+      "css": "arrows-cw-1",
+      "code": 405,
       "src": "elusive"
     }
   ]

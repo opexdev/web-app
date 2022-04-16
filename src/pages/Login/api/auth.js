@@ -68,15 +68,14 @@ export const register = async (user , panelToken) => {
     })
 }
 
-const captchaURL = axios.create({
-    baseURL: 'https://api.opex.dev:8443',
-});
 
 export const getCaptcha = async () => {
-    return await captchaURL.post(`/captcha/session`, {
+    return await axios.post(`/captcha/session`, {} ,{
         headers : {
-            'Content-Type' : 'image/jpeg'
-        }
+            'Accept' : 'image/jpeg'
+
+        },
+        responseType: "arraybuffer"
     })
         .then((res) => {
             return res;
@@ -105,8 +104,10 @@ export const getUser = async (token, key , value) => {
 }
 
 
-export const sendForgetPasswordEmail = async (panelToken , email) => {
-    return await axios.post(`/auth/realms/opex/user-management/user/forgot?${email}`,null,{
+export const sendForgetPasswordEmail = async (panelToken , email ,captchaAnswer) => {
+    return await axios.post(`/auth/realms/opex/user-management/user/forgot?${email}`, {
+        captchaAnswer: captchaAnswer,
+    },{
         headers : {
             "Authorization" : "Bearer "+ panelToken
         }
