@@ -1,21 +1,42 @@
 import classes from "../../Login.module.css";
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import TextInput from "../../../../components/TextInput/TextInput";
 import LoginFormLoading from "../LoginLoading/LoginFormLoading";
 import {Trans, useTranslation} from "react-i18next";
-import {getToken, register} from "../../api/auth";
+import {getCaptcha, getToken, register} from "../../api/auth";
 import {validateEmail} from "../../../../utils/utils";
 import Button from "../../../../components/Button/Button";
+import {LogoutAllSessionsExceptCurrent} from "../../../../main/Browser/Sections/Content/components/Settings/api/settings";
+import {toast} from "react-hot-toast";
 
 const RegisterForm = () => {
     const {t} = useTranslation();
     const [registerStatus, setRegisterStatus] = useState("");
+    const [captcha, setCaptcha] = useState(undefined);
     const [userData, setUserData] = useState({
         firstName: {value: "", error: []},
         lastName: {value: "", error: []},
         username: {value: "", error: []},
         email: {value: "", error: []},
+        //captchaAnswer: {value: "", error: []},
     });
+
+
+    const captchaReq = async () => {
+        const captchaData = await getCaptcha()
+        if (captchaData && captchaData.status === 200) {
+            setCaptcha(captchaData.headers)
+        } else {
+
+        }
+    }
+
+    useEffect(()=>{
+        captchaReq()
+    }, [])
+
+    console.log("captcha Header: " , captcha)
+
 
     if (registerStatus === "loading") {
         return <LoginFormLoading/>
@@ -46,6 +67,7 @@ const RegisterForm = () => {
             lastName: userData.lastName.value,
             username: userData.username.value,
             email: userData.email.value.toLowerCase(),
+            //captchaAnswer: ${SessionKey}-userData.captchaAnswer.value,
         }
 
         let userInfo = await register(user,panelToken)

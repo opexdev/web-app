@@ -68,6 +68,28 @@ export const register = async (user , panelToken) => {
     })
 }
 
+const captchaURL = axios.create({
+    baseURL: 'https://api.opex.dev:8443',
+});
+
+export const getCaptcha = async () => {
+    return await captchaURL.post(`/captcha/session`, {
+        headers : {
+            'Content-Type' : 'image/jpeg'
+        }
+    })
+        .then((res) => {
+            return res;
+        }).catch((e) => {
+            if (!e.response) {
+                return false;
+            }
+            return e.response;
+        })
+};
+
+
+
 //Todo Remove getUser
 export const getUser = async (token, key , value) => {
     axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
