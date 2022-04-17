@@ -5,6 +5,10 @@ pipeline {
         COMPOSE_PROJECT_NAME = 'dev-web-app'
         DEFAULT_NETWORK_NAME = 'dev-opex'
         API_BASE_URL = 'https://api.opex.dev:8443'
+        CLIENT_ID='web-app'
+        LOGIN_CLIENT_ID='admin-cli'
+        CLIENT_SECRET='967ad4db-eec7-4a9e-b953-040ec75db8d9'
+        GENERATE_SOURCEMAP='true'
     }
 
     stages('Deploy') {
