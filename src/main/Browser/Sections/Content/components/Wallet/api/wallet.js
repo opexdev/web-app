@@ -95,10 +95,12 @@ export const getWithdraw = async (token , currency ) => {
 
 export const sendIRTDepositReq = async (token, amount) => {
 
+    const origin = window.location.origin
+
     const payload = {
         "amount": amount,
         "currency": "RIALS",
-        "callbackUrl": "https://demo.opex.dev/wallet/IRT/",
+        "callbackUrl": `${origin}/wallet/IRT/`,
         //"paymentGatewayName": "VandarPaymentService",
         "description": "test",
         "mobile": null,
