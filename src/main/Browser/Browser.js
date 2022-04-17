@@ -48,7 +48,6 @@ const Browser = (props) => {
             success: {
                 style: {
                     background: "var(--bgGreen)",
-
                 },
             },
             error: {

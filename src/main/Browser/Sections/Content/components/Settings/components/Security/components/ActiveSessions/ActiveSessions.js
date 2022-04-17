@@ -37,7 +37,11 @@
                 if (SessionsData.status === 200) {
                     //setSessions((SessionsData.data).sort((a,b) => b.started - a.started))
 
-                    const geo = SessionsData.data.map(async (r) => {
+
+                   /*
+                   --- get location from ip function
+
+                   const geo = SessionsData.data.map(async (r) => {
                         r.oo = "jj"
                         return getLocation('94.139.165.171').then((res) => {
                             if (res && res.status === 200) {
@@ -45,8 +49,6 @@
                             }
                             return r
                         })
-
-
                     })
                     Promise.all(geo).then(function (geo) {
                         setSessions(geo.filter((s) => !s.inUse).sort((a, b) => b.started - a.started))
@@ -55,6 +57,16 @@
                         setLoading(false)
                         setError(false)
                     })
+
+                    */
+
+                    setSessions(SessionsData.data.filter((s) => !s.inUse).sort((a, b) => b.started - a.started))
+                    setCurrentSession(SessionsData.data.filter((s) => s.inUse)[0])
+
+                    setLoading(false)
+                    setError(false)
+
+
 
 
                 } else {
@@ -109,10 +121,10 @@
                         </div>
                         <div className={`col-60 text-end`}>
 
-                            <div className={`row jc-end ai-center`}>
+                            {/*<div className={`row jc-end ai-center`}>
                                 <span className={`ml-05`}>{currentSession?.geoIP?.regionName} / {currentSession?.geoIP?.country}</span>
                                 <Icon iconName="icon-location font-size-md"/>
-                            </div>
+                            </div>*/}
                             <div className={`row jc-end ai-center text-color-gray`}>
                                 <span className={`ml-05`}>{currentSession?.ipAddress}</span>
                                 <Icon iconName="icon-globe font-size-md"/>

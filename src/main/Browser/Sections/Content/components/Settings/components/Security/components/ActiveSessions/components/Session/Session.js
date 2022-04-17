@@ -61,10 +61,10 @@ const Session = ({list}) => {
                     </div>
 
                     <div className={`col-60 text-end`}>
-                        <div className={`row jc-end ai-center`}>
+                        {/*<div className={`row jc-end ai-center`}>
                             <span className={`ml-05`}>{list?.geoIP?.regionName} / {list?.geoIP?.country}</span>
                             <Icon iconName="icon-location font-size-md"/>
-                        </div>
+                        </div>*/}
                         <div className={`row jc-end ai-center text-color-gray`}>
                             <span className={`ml-05`}>{list?.ipAddress}</span>
                             <Icon iconName="icon-globe font-size-md"/>
