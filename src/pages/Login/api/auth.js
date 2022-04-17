@@ -105,9 +105,7 @@ export const getUser = async (token, key , value) => {
 
 
 export const sendForgetPasswordEmail = async (panelToken , email ,captchaAnswer) => {
-    return await axios.post(`/auth/realms/opex/user-management/user/forgot?${email}`, {
-        captchaAnswer: captchaAnswer,
-    },{
+    return await axios.post(`/auth/realms/opex/user-management/user/forgot?email=${email}&captcha-answer=${captchaAnswer}`,null ,{
         headers : {
             "Authorization" : "Bearer "+ panelToken
         }

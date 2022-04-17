@@ -4,34 +4,25 @@ import TextInput from "../../../../components/TextInput/TextInput";
 import LoginFormLoading from "../LoginLoading/LoginFormLoading";
 import {useTranslation} from "react-i18next";
 import {getCaptcha, getToken, sendForgetPasswordEmail} from "../../api/auth";
-import {validateEmail} from "../../../../utils/utils";
 import Button from "../../../../components/Button/Button";
 import ReactTooltip from "react-tooltip";
 import Icon from "../../../../components/Icon/Icon";
 import {images} from "../../../../assets/images";
 
 const ForgetPassword = (props) => {
-    const [error, setError] = useState([]);
     const [loading, setLoading] = useState(false);
     const [isLoading, setIsLoading] = useState(true);
     const [success, setSuccess] = useState(false);
-    //const [email, setEmail] = useState("");
-
-
-    const [forgetPass, setForgetpass] = useState({
+    const [forgetPass, setForgetPass] = useState({
         email: {value: "", error: []},
         captchaAnswer: {value: "", error: []},
     });
-
     const [captcha, setCaptcha] = useState({
         image: {value: "", error: []},
         SessionKey: {value: "", error: []},
         expireTime: {value: "", error: []},
     });
-
     const {t} = useTranslation();
-
-
     const captchaReq = async () => {
         setIsLoading(true)
         const captchaData = await getCaptcha()
@@ -43,57 +34,43 @@ const ForgetPassword = (props) => {
                 expireTime: {value: captchaData.headers['captcha-expire-timestamp'], error: []},
             })
         } else {
-            setForgetpass({...forgetPass , captchaAnswer: {value: "" , error: [t("login.captchaServerError")] }})
+            setForgetPass({...forgetPass , captchaAnswer: {value: "" , error: [t("login.captchaServerError")] }})
             setCaptcha({...captcha , image: {value: undefined, error: []}})
             setIsLoading(false)
-
         }
     }
     useEffect(()=>{
         captchaReq().then(r => setIsLoading(false) )
     }, [])
-
     useEffect(() => {
         ReactTooltip.rebuild();
     });
-
-
-
     if (loading) {
         return <LoginFormLoading/>
     }
-
     const submit = async (e) => {
         e.preventDefault();
-
-
         if (forgetPass.email.value === ""){
-            setForgetpass({...forgetPass, email: {value: "", error: [t('login.emptyEmail')]}})
+            setForgetPass({...forgetPass, email: {value: "", error: [t('login.emptyEmail')]}})
             return false
         }
-
         if (forgetPass.captchaAnswer.value === ""){
-            setForgetpass({...forgetPass, captchaAnswer: {value: "", error: [t('login.emptyCaptcha')]}})
+            setForgetPass({...forgetPass, captchaAnswer: {value: "", error: [t('login.emptyCaptcha')]}})
             return false
         }
-
-       /* if (!validateEmail(forgetPass.email.value)) {
-            setForgetpass({...forgetPass, email: {value: "", error: [t('login.wrongEmail')]}})
-            return false
-        }*/
-
         setLoading(true);
-
         let panelToken = await getToken();
         const captchaValue = `${captcha.SessionKey.value}-${forgetPass.captchaAnswer.value}`
         const submitResult = await sendForgetPasswordEmail(panelToken, forgetPass.email.value , captchaValue);
-
         if( submitResult.status === 204){
             setSuccess(true)
+            setLoading(false);
         }
-        setLoading(false);
+        else {
+            setLoading(false);
+            setForgetPass({...forgetPass, captchaAnswer: {value: "" , error: [t('login.forgetPassServerError')] }})
+        }
     }
-
     const LeadCaptchaHandler = () => {
         if (isLoading) {
             return <img className={`${classes.thisLoading}`} src={images.linearLoadingBgOrange} alt="linearLoading"/>
@@ -120,7 +97,7 @@ const ForgetPassword = (props) => {
                 customClass={`${classes.forgetPasswordInput} ${classes.loginInput}`}
                 value={forgetPass.email.value}
                 onchange={(e) =>
-                    setForgetpass({...forgetPass, email: e.target.value})
+                    setForgetPass({...forgetPass, email: { value: e.target.value , error: []}})
                 }
 
                 alerts={forgetPass.email.error}
@@ -136,14 +113,13 @@ const ForgetPassword = (props) => {
                 type="text"
                 data-name="captchaAnswer"
                 data-type="input"
-                data-min={8}
+                data-min={5}
                 customClass={`${classes.loginInput} ${classes.captcha}`}
 
                 value={forgetPass.captchaAnswer.value}
                 onchange={(e) =>
-                    setForgetpass({...forgetPass, captchaAnswer: e.target.value})
+                    setForgetPass({...forgetPass, captchaAnswer: {value: e.target.value , error: []}})
                 }
-
                 alerts={forgetPass.captchaAnswer.error}
             />
         </Fragment>
@@ -168,7 +144,6 @@ const ForgetPassword = (props) => {
             <Button
                 type="submit"
                 buttonClass={`${classes.thisButton} ${classes.forgetPassButton} cursor-pointer mr-1`}
-
                 buttonTitle={t('login.resetPassword')}
             />
         </Fragment>

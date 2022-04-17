@@ -235,7 +235,7 @@ const RegisterForm = () => {
                     type="text"
                     data-name="captchaAnswer"
                     data-type="input"
-                    data-min={8}
+                    data-min={5}
                     customClass={`${classes.loginInput} ${classes.captcha}`}
                     value={userData.captchaAnswer.value}
                     onchange={(e) => inputHandler(e)}

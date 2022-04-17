@@ -492,7 +492,8 @@
     "otpLength": "رمز دوعاملی 6 کاراکتر است.",
     "refreshCaptcha": "نمایش دوباره captcha",
     "captchaServerError": "خطا در سرور برای گرفتن Captcha",
-    "emptyCaptcha": "وارد کردن Captcha الزامی است"
+    "emptyCaptcha": "وارد کردن Captcha الزامی است",
+    "forgetPassServerError": "خطا در بازیابی رمز، دوباره تلاش کنید"
   },
   "footer": {
     "changeColor": "تغییر رنگ",
