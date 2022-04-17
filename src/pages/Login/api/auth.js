@@ -68,6 +68,27 @@ export const register = async (user , panelToken) => {
     })
 }
 
+
+export const getCaptcha = async () => {
+    return await axios.post(`/captcha/session`, {} ,{
+        headers : {
+            'Accept' : 'image/jpeg'
+
+        },
+        responseType: "arraybuffer"
+    })
+        .then((res) => {
+            return res;
+        }).catch((e) => {
+            if (!e.response) {
+                return false;
+            }
+            return e.response;
+        })
+};
+
+
+
 //Todo Remove getUser
 export const getUser = async (token, key , value) => {
     axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
@@ -83,8 +104,8 @@ export const getUser = async (token, key , value) => {
 }
 
 
-export const sendForgetPasswordEmail = async (panelToken , email) => {
-    return await axios.post(`/auth/realms/opex/user-management/user/forgot?${email}`,null,{
+export const sendForgetPasswordEmail = async (panelToken , email ,captchaAnswer) => {
+    return await axios.post(`/auth/realms/opex/user-management/user/forgot?email=${email}&captcha-answer=${captchaAnswer}`,null ,{
         headers : {
             "Authorization" : "Bearer "+ panelToken
         }

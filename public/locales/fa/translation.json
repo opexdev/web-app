@@ -12,9 +12,6 @@
   "totalPrice": "قیمت کل",
   "averagePrice": "قیمت میانگین",
   "min": "حداقل",
-
-
-
   "max": "حداکثر",
   "buy": "خرید",
   "sell": "فروش",
@@ -40,6 +37,7 @@
   "firstName": "نام",
   "lastName": "نام خانوادگی",
   "email": "ایمیل",
+  "captchaAnswer": "Captcha",
   "desktopSupport": "اوپکس فعلاً برای نمایش در موبایل بهینه نشده است. لطفاً لینک را در کامپیوتر باز کنید! :)",
   "error": "خطا در دریافت اطلاعات ... !",
   "loading": "در حال دریافت اطلاعات ...",
@@ -491,7 +489,11 @@
     "description": "OPen source EXchange",
     "OTPRequired": "وارد کردن رمز دوعاملی (OTP) الزامی است.",
     "networkError": "خطا در ارتباط با سرور",
-    "otpLength": "رمز دوعاملی 6 کاراکتر است."
+    "otpLength": "رمز دوعاملی 6 کاراکتر است.",
+    "refreshCaptcha": "نمایش دوباره captcha",
+    "captchaServerError": "خطا در سرور برای گرفتن Captcha",
+    "emptyCaptcha": "وارد کردن Captcha الزامی است",
+    "forgetPassServerError": "خطا در بازیابی رمز، دوباره تلاش کنید"
   },
   "footer": {
     "changeColor": "تغییر رنگ",
