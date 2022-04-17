@@ -1,8 +1,8 @@
 .container {
-  height: 30vh;
+  height: 65vh;
 }
 .header {
-  height: 20%;
+  height: 12%;
   padding: 1vh 1vw;
 }
 .header span {
@@ -10,5 +10,11 @@
   text-align: center;
 }
 .content {
-  height: 80%;
+  height: 85%;
 }
+
+
+.thisSession {
+  background: var(--cardHeader);
+}
+

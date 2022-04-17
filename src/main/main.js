@@ -1,56 +1,21 @@
-import React, {useEffect, useState} from "react";
+import React, {lazy} from "react";
 import {BrowserRouter as Router} from "react-router-dom";
-import {BrowserView, isSafari, MobileView} from "react-device-detect";
-import Browser from "./Browser/Browser";
-import Mobile from "./Mobile/Mobile";
-import i18n from "i18next";
-import {loadConfig, setThemeInitiate} from "../store/actions";
-import {connect} from "react-redux";
+import {BrowserView, MobileView} from "react-device-detect";
 
 
-const Main = (props) => {
-
-    const [ltr, setLtr] = useState(false);
-
-    useEffect(() => {
-        props.onLoad();
-        i18n.language !== "fa" ? setLtr(true) : setLtr(false);
-        i18n.on("languageChanged", (lng) => {
-            lng !== "fa" ? setLtr(true) : setLtr(false);
-        });
-    }, []);
+const Main = ({baseURL}) => {
+    const Mobile = lazy(() => import('./Mobile/Mobile'))
+    const Browser = lazy(() => import('./Browser/Browser'))
 
     return (
-        /*basename={"demo"}*/
-        /*"homepage":"https://opex.dev"*/
-        /*${isSafari ? "" : "user-select"}*/
-        <div className={`container ${props.isDark ? "dark" : ""} ${ltr ? "ltr" : "rtl"}`}>
-            <Router>
-                <BrowserView>
-                    <Browser/>
-                </BrowserView>
-                <MobileView>
-                    <Mobile/>
-                </MobileView>
-            </Router>
-        </div>
-
+        <Router basename={baseURL}>
+            <BrowserView>
+                <Browser/>
+            </BrowserView>
+            <MobileView>
+                <Mobile/>
+            </MobileView>
+        </Router>
     );
 };
-
-
-const mapStateToProps = (state) => {
-    return {
-        isLoading: state.global.isLoading,
-        isDark: state.global.isDark,
-        isLogin: state.auth.isLogin,
-    };
-};
-const mapDispatchToProps = (dispatch) => {
-    return {
-        onLoad: () => dispatch(loadConfig()),
-        onThemeChange: (isDark) => dispatch(setThemeInitiate(isDark)),
-    };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(Main);
+export default Main;

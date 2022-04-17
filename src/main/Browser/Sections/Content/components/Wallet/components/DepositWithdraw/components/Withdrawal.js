@@ -15,7 +15,6 @@ import IRT from "./Deposit/components/IRT/IRT";
 const Withdrawal = () => {
     const {t} = useTranslation();
     const {id} = useParams();
-    const accessToken = useSelector(state => state.auth.accessToken);
     const wallets = useSelector(state => state.auth.wallets);
 
     const [amount, setAmount] = useState({
@@ -62,7 +61,7 @@ const Withdrawal = () => {
     const sendWithdrawHandler = async () => {
         if (isLoading) return false
         setIsLoading(true)
-        sendWithdrawReq(accessToken, amount.value, id, address.value, calculateFee(id), network(id)).then((r) =>{
+        sendWithdrawReq(amount.value, id, address.value, calculateFee(id), network(id)).then((r) =>{
             console.log(r)
             setIsLoading(false)
             setAmount({value: "0", alert: null})
@@ -172,12 +171,7 @@ const Withdrawal = () => {
                 </div>
             </div>
             <div className="pt-1">
-                 <span>
-                       باتوجه به ملاحضات امنیتی ممکن است انتقال به حساب با کمی تاخیر صورت
-                      بگیرد. می توانید وضعیت برداشت را در همین صفحه از بخش ترکنش های{" "}
-                      <span className="text-orange">{`${t("DepositWithdraw.title")}`}</span>{" "}
-                     ببینید.
-                </span>
+                 <span>{t('DepositWithdraw.securityConsiderations')}</span>
             </div>
         </div>
     )

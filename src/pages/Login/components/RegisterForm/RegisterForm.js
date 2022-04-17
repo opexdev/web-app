@@ -3,13 +3,11 @@ import React, {useState} from "react";
 import TextInput from "../../../../components/TextInput/TextInput";
 import LoginFormLoading from "../LoginLoading/LoginFormLoading";
 import {Trans, useTranslation} from "react-i18next";
-import {getToken, getUser, parsePanelToken, register, sendVerifyEmail} from "../../api/auth";
-import {setPanelTokensInitiate} from "../../../../store/actions";
-import {connect} from "react-redux";
+import {getToken, register} from "../../api/auth";
 import {validateEmail} from "../../../../utils/utils";
 import Button from "../../../../components/Button/Button";
 
-const RegisterForm = props => {
+const RegisterForm = () => {
     const {t} = useTranslation();
     const [registerStatus, setRegisterStatus] = useState("");
     const [userData, setUserData] = useState({
@@ -40,28 +38,19 @@ const RegisterForm = props => {
         if ( !isFormValid() ){
             return false
         }
-
         setRegisterStatus("loading");
         let panelToken = await getToken();
-        panelToken = parsePanelToken(panelToken.data)
 
-        props.setPanelToken(panelToken)
         const user = {
             firstName: userData.firstName.value,
             lastName: userData.lastName.value,
             username: userData.username.value,
             email: userData.email.value.toLowerCase(),
         }
-        let userInfo = await register(panelToken.panelAccessToken, user)
 
-        if (userInfo.status === 201) {
+        let userInfo = await register(user,panelToken)
 
-            let userInfo = await getUser(panelToken.panelAccessToken, "email", user.email)
-
-            if (userInfo.status === 200) {
-                userInfo = userInfo.data.find(userReq => userReq.email === user.email)
-            }
-            await sendVerifyEmail(panelToken.panelAccessToken, userInfo.id);
+        if (userInfo.status === 200) {
             setRegisterStatus("finish");
         }else {
             setRegisterStatus("finishedWithError");
@@ -183,10 +172,4 @@ const RegisterForm = props => {
     )
 }
 
-const mapDispatchToProps = (dispatch) => {
-    return {
-        setPanelToken: (token) => dispatch(setPanelTokensInitiate(token)),
-    };
-};
-
-export default connect(null, mapDispatchToProps)(RegisterForm);
+export default RegisterForm;

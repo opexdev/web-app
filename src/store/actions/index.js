@@ -22,5 +22,4 @@ export {
   setUserTokens,
   setUserTokensInitiate,
   setUserInfo,
-  setUserInfoInitiate,
 } from "./auth";

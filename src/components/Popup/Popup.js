@@ -6,7 +6,6 @@ import {setUserAccountInfo} from "../../store/actions/auth";
 import Button from "../Button/Button";
 import {Link} from "react-router-dom";
 import * as Routes from "../../routes/routes";
-import {images} from "../../assets/images";
 import {getDepositAddress} from "../../main/Browser/Sections/Content/components/Wallet/api/wallet";
 import QRCode from "react-qr-code";
 import Icon from "../Icon/Icon";

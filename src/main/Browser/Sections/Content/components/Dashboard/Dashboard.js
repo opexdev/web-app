@@ -6,7 +6,6 @@ import OrderBook from "./components/OrderBook/OrderBook";
 import MyOrders from "./components/MyOrders/MyOrders";
 import LastTrades from "./components/LastTrades/LastTrades";
 import TradingView from "./components/TradingView/TradingView";
-import {OrderData} from "../../../../../../FakeData/FakeData";
 
 const Dashboard = () => {
     return (
@@ -14,7 +13,7 @@ const Dashboard = () => {
             <div className="row px-1 py-1">
                 <div className="column col-35 pl-05">
                     <Overview/>
-                    <Order data={OrderData}/>
+                    <Order/>
                 </div>
                 <div className="column col-65 pr-05">
                     <TradingView/>

@@ -99,3 +99,7 @@
 .icon-braille { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#x0186;&nbsp;'); }
 .icon-left-open { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#x0187;&nbsp;'); }
 .icon-right-open { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#x0188;&nbsp;'); }
+.icon-eye-2 { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#x0189;&nbsp;'); }
+.icon-eye-off { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#x0190;&nbsp;'); }
+.icon-globe { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#x0191;&nbsp;'); }
+.icon-location { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#x0192;&nbsp;'); }

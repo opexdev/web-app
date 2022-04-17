@@ -17,9 +17,8 @@ const WalletSubMenu = (props) => {
     const getAccountUseEffect = async () => {
         let account = await getAccount(accessToken)
 
-        if (account.status === 200) {
-            const parsedData = parseWalletsResponse(account.data);
-            setUserAccountInfo(parsedData)
+        if (account) {
+            setUserAccountInfo(account)
         }
         if (!account) {
             setLoading(false);

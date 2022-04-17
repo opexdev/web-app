@@ -1,6 +1,6 @@
 import React, {useEffect} from "react";
 import classes from "./Header.module.css";
-import {useTranslation} from "react-i18next";
+import {Trans, useTranslation} from "react-i18next";
 import {connect} from "react-redux";
 import moment from "moment-jalaali";
 import {Link, Route, Switch} from "react-router-dom";
@@ -13,6 +13,9 @@ import SettingHeader from "./components/SettingsHeader/SettingsHeader";
 import ProtectedRoute from "../../../../components/ProtectedRoute/ProtectedRoute";
 import {images} from "../../../../assets/images";
 import {setLogoutInitiate} from "../../../../store/actions";
+import {LogoutAllSessionsExceptCurrent} from "../Content/components/Settings/api/settings";
+import {toast} from "react-hot-toast";
+import {logOut} from "../../../../pages/Login/api/auth";
 
 const Header = (props) => {
     const {t} = useTranslation();
@@ -21,6 +24,20 @@ const Header = (props) => {
     useEffect(() => {
         ReactTooltip.rebuild();
     });
+
+    const logOutHandler = async () => {
+        const logOutSession = await logOut()
+        if (logOutSession && logOutSession.status === 204) {
+            toast.success(<Trans
+                i18nKey="header.logOutSuccess"
+            />);
+        } else {
+            toast.error(<Trans
+                i18nKey="header.logOutError"
+            />);
+        }
+        props.onLogout()
+    }
     return (
         <div className={`container row jc-between ai-center px-1 py-1 ${classes.container}`}>
             <div className={`row jc-between ai-center ${classes.content}`}>
@@ -55,7 +72,7 @@ const Header = (props) => {
                         className="img-md-plus"
                         src={images.signOut}
                         alt={t("signOut")}
-                        onClick={(props.onLogout)}
+                        onClick={logOutHandler}
                         data-html={true}
                         data-place="right"
                         data-effect="float"
