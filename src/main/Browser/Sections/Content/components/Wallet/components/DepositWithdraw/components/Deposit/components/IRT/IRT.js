@@ -42,12 +42,8 @@ const IRT = (props) => {
 
     const {id} = useParams();
 
-    const accessToken = useSelector(state => state.auth.accessToken);
-
-
-
     const openPayments = async () => {
-        const openPaymentReq = await getOpenPayments(accessToken);
+        const openPaymentReq = await getOpenPayments();
         if (openPaymentReq && openPaymentReq.status === 200) {
             setError(false)
             setOpenPayment(openPaymentReq.data)
@@ -63,13 +59,13 @@ const IRT = (props) => {
     }, [props.wallet]);
 
 
-    const cancelIRTTx = async (accessToken, reference) => {
+    const cancelIRTTx = async (reference) => {
         setLoading(true)
         setOpenPayment([])
         setIRT({
             amount: {value: "", error: []},
         })
-        const cancelIRTReq = await cancelIRTDepositReq(accessToken, reference);
+        const cancelIRTReq = await cancelIRTDepositReq(reference);
         if (cancelIRTReq && cancelIRTReq.status === 200) {
             setCancel(true)
             setLoading(false)
@@ -97,7 +93,7 @@ const IRT = (props) => {
         setLoading(true)
         const amount = new BN(parsePriceString(IRT.amount.value)).multipliedBy(10)
 
-        const SendAmountReq = await sendIRTDepositReq(accessToken, amount);
+        const SendAmountReq = await sendIRTDepositReq(amount);
         if (SendAmountReq && SendAmountReq.status === 200) {
             setError(false)
             setResponse(SendAmountReq.data)
@@ -244,7 +240,7 @@ const IRT = (props) => {
                                 buttonClass={`${classes.cancel} ${classes.disable} px-2 mr-05`}
                                 buttonTitle={t('DepositWithdraw.cancel')}
                                 type="submit"
-                                onClick={() => cancelIRTTx(accessToken, openPayment[0].reference)}
+                                onClick={() => cancelIRTTx(openPayment[0].reference)}
                                 disabled={disable}
                             />
                         </div>

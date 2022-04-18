@@ -32,9 +32,9 @@ const Header = (props) => {
                 i18nKey="header.logOutSuccess"
             />);
         } else {
-            toast.error(<Trans
+            /*toast.error(<Trans
                 i18nKey="header.logOutError"
-            />);
+            />);*/
         }
         props.onLogout()
     }

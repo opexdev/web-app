@@ -28,10 +28,9 @@ const CallbackPage = (props) => {
 
     const history = useHistory();
     const {t} = useTranslation();
-    const accessToken = useSelector(state => state.auth.accessToken);
 
     const verify = async () => {
-        const verifyReq = await verifyIRTDepositReq(accessToken , paymentToken , paymentStatus);
+        const verifyReq = await verifyIRTDepositReq(paymentToken , paymentStatus);
         if (verifyReq && verifyReq.status === 200) {
 
             setVerifyResult(verifyReq.data)
@@ -45,7 +44,7 @@ const CallbackPage = (props) => {
 
 
     useEffect(() => {
-        verify(accessToken, paymentToken, paymentStatus)
+        verify(paymentToken, paymentStatus)
 
         if (paymentStatus === "OK") {
             setStatus(true)

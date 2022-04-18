@@ -9,7 +9,6 @@ import useInterval from "../../../../../../../../../../Hooks/useInterval";
 import ScrollBar from "../../../../../../../../../../components/ScrollBar";
 import NumberInput from "../../../../../../../../../../components/NumberInput/NumberInput";
 import TextInput from "../../../../../../../../../../components/TextInput/TextInput";
-import Icon from "../../../../../../../../../../components/Icon/Icon";
 import {BN} from "../../../../../../../../../../utils/utils";
 import Button from "../../../../../../../../../../components/Button/Button";
 import {toast} from "react-hot-toast";
@@ -31,7 +30,6 @@ const IRTTx = (props) => {
         address: null,
     });
     const {id} = useParams();
-    const accessToken = useSelector(state => state.auth.accessToken);
     const [alert, setAlert] = useState({
         fromTime: null,
         fromDate: null,
@@ -71,7 +69,7 @@ const IRTTx = (props) => {
     const getIRTTx = async () => {
 
         let newTx = []
-        const IRTTxData = await getAllPayments(accessToken)
+        const IRTTxData = await getAllPayments()
         if (IRTTxData && IRTTxData.status === 200 ){
             setError(false)
             newTx = IRTTxData.data.map((d)=>{
@@ -84,7 +82,7 @@ const IRTTx = (props) => {
             return setError(true)
         }
 
-        /*const withdraw = await getWithdraw(accessToken ,id)
+        /*const withdraw = await getWithdraw(id)
         if (withdraw && withdraw.status === 200 ){
             setError(false)
             newTx = [...newTx , ...withdraw.data.map(w => {
@@ -148,8 +146,8 @@ const IRTTx = (props) => {
         }
     };
 
-    const cancelIRTTx = async (accessToken, reference) => {
-        const cancelIRTReq = await cancelIRTDepositReq(accessToken, reference);
+    const cancelIRTTx = async (reference) => {
+        const cancelIRTReq = await cancelIRTDepositReq(reference);
         if (cancelIRTReq && cancelIRTReq.status === 200) {
             setCancel(true)
             toast.success(<Trans

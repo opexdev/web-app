@@ -1,6 +1,6 @@
 import axios from "axios";
 
-export const getAccount = async (token) => {
+export const getAccount = async () => {
     const timestamp = Date.now()
     const params = new URLSearchParams();
     params.append('timestamp', timestamp.toString());
@@ -8,7 +8,6 @@ export const getAccount = async (token) => {
     return await axios.get(`/api/v3/account?timestamp=${timestamp.toString()}`, {
         data:params,
         headers : {
-            'Authorization': `Bearer ${token}`,
             'content-type': 'application/x-www-form-urlencoded'
         },
     }).then((res) => {
