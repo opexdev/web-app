@@ -8,9 +8,13 @@ import SetTwoStepVerification from "./components/SetTwoStepVerification/SetTwoSt
 const Security = (props) => {
   return (
     <Fragment>
+
+      {/*
       <div className="row">
         <LoginReports />
       </div>
+      */}
+
       <div className="row py-2">
 
           <div className="col-50 pl-05">

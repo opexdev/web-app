@@ -9,15 +9,10 @@ const OTPForm = ({initialVal , setOTP}) => {
 
 
     const OTPInputHandler = (value) => {
-        console.log("value", value)
-        console.log("before")
         const userInput = value.replace(/[^0-9]+/g, "").slice(0,6)
         setOTP(userInput)
-        console.log("userInput" , userInput)
-        console.log("after")
     }
 
-    console.log("out")
 
 
 

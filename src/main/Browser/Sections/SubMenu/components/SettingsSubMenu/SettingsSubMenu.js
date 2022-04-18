@@ -16,7 +16,9 @@ const SettingsSubMenu = () => {
         </div>
       </div>
       <div className={`column container  ${classes.content}`}>
-        <NavLink
+
+
+       {/* <NavLink
           exact={true}
           activeClassName={classes.selected}
           className="row jc-around ai-center cursor-pointer px-1 py-1"
@@ -36,7 +38,9 @@ const SettingsSubMenu = () => {
               {t("PersonalProfile.title")}
             </span>
           </div>
-        </NavLink>
+        </NavLink>*/}
+
+
         <NavLink
           exact={true}
           activeClassName={classes.selected}
@@ -64,7 +68,7 @@ const SettingsSubMenu = () => {
             </span>
           </div>
         </NavLink>
-        <NavLink
+       {/* <NavLink
           exact={true}
           activeClassName={classes.selected}
           className="row jc-around ai-center cursor-pointer px-1 py-1"
@@ -81,7 +85,7 @@ const SettingsSubMenu = () => {
               {t("SettingsSubMenu.personalization")}
             </span>
           </div>
-        </NavLink>
+        </NavLink>*/}
         <NavLink
           exact={true}
           activeClassName={classes.selected}

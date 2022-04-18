@@ -20,9 +20,6 @@ const MarketHeader = (props) => {
     const [showPopUpAsset, setShowPopUpAsset] = useState(null);
 
     const getWallet = async () => {
-
-        console.log("in")
-
         let parsedData = await getAccount(accessToken)
         if (parsedData) {
             let base = "0";
@@ -31,9 +28,6 @@ const MarketHeader = (props) => {
             if(typeof parsedData.wallets[activePair.baseAsset] !== 'undefined'){
                 base = new BN(parsedData.wallets[activePair.baseAsset].free).decimalPlaces(activePair.baseAssetPrecision).toFormat();
             }
-
-            console.log("parsedData", parsedData)
-
             if(typeof parsedData.wallets[activePair.quoteAsset] !== 'undefined') {
                 quote = new BN(parsedData.wallets[activePair.quoteAsset].free).decimalPlaces(activePair.quoteAssetPrecision).toFormat();
             }
@@ -63,8 +57,6 @@ const MarketHeader = (props) => {
         setShowPopUp(false)
         setShowPopUpAsset(null)
     }
-
-    console.log("currentWallet ... " , currentWallet)
 
     return (
         <Fragment>

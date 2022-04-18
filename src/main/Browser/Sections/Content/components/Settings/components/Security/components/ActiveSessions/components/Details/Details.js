@@ -15,7 +15,6 @@ import {
 const Details = ({details , setWrapper}) => {
 
     const {t} = useTranslation();
-    console.log(details)
 
     const [close, setClose] = useState(false);
 

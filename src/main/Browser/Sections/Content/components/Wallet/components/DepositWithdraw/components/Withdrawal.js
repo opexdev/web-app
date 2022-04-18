@@ -62,7 +62,6 @@ const Withdrawal = () => {
         if (isLoading) return false
         setIsLoading(true)
         sendWithdrawReq(amount.value, id, address.value, calculateFee(id), network(id)).then((r) =>{
-            console.log(r)
             setIsLoading(false)
             setAmount({value: "0", alert: null})
             setAddress({value: "", alert: null})
