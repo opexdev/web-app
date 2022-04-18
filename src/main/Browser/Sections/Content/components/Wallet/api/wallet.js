@@ -1,19 +1,11 @@
 import axios from "axios";
-import {apiBaseUrl} from "../../../../../../../constants/global";
-
-const Wallet = axios.create({
-    baseURL: process.env.REACT_APP_API_BASE_URL,
-});
 
 export const sendWithdrawReq = async (amount, currency, address, fee, network) => {
-
     const params = new URLSearchParams();
     params.append('fee', fee);
     params.append('destCurrency', currency.toLowerCase());
     params.append('destAddress', address);
     params.append('destNetwork', network);
-
-
     return await axios.post(`/wallet/withdraw/${amount}_${currency.toLowerCase()}`, params ,{
         headers : {
             "Content-Type" : 'application/x-www-form-urlencoded'
@@ -30,8 +22,6 @@ export const sendWithdrawReq = async (amount, currency, address, fee, network) =
 }
 
 export const getDepositAddress = async (currency) => {
-
-
     return await axios.get(`sapi/v1/capital/deposit/address?coin=${currency.toLowerCase()}&timestamp=${Date.now()}` ,{
         headers : {
             "Content-Type" : 'application/x-www-form-urlencoded'
@@ -47,17 +37,14 @@ export const getDepositAddress = async (currency) => {
 }
 
 
-export const getDeposit = async (token , currency ) => {
+export const getDeposit = async (currency) => {
     const timestamp = Date.now()
-
     const params = new URLSearchParams();
     params.append('coin', currency.toLowerCase());
     params.append('timestamp', timestamp.toString());
-
-    return await Wallet.get(`/sapi/v1/capital/deposit/hisrec?${params.toString()}`, {
+    return await axios.get(`/sapi/v1/capital/deposit/hisrec?${params.toString()}`, {
         data:params,
         headers : {
-            'Authorization': `Bearer ${token}`,
             'content-type': 'application/x-www-form-urlencoded'
         },
     }).then((res) => {
@@ -70,17 +57,14 @@ export const getDeposit = async (token , currency ) => {
     })
 }
 
-export const getWithdraw = async (token , currency ) => {
+export const getWithdraw = async (currency) => {
     const timestamp = Date.now()
-
     const params = new URLSearchParams();
     params.append('coin', currency.toLowerCase());
     params.append('timestamp', timestamp.toString());
-
-    return await Wallet.get(`/sapi/v1/capital/withdraw/history?${params.toString()}`, {
+    return await axios.get(`/sapi/v1/capital/withdraw/history?${params.toString()}`, {
         data:params,
         headers : {
-            'Authorization': `Bearer ${token}`,
             'content-type': 'application/x-www-form-urlencoded'
         },
     }).then((res) => {
@@ -93,10 +77,8 @@ export const getWithdraw = async (token , currency ) => {
     })
 }
 
-export const sendIRTDepositReq = async (token, amount) => {
-
+export const sendIRTDepositReq = async (amount) => {
     const origin = window.location.origin
-
     const payload = {
         "amount": amount,
         "currency": "RIALS",
@@ -107,10 +89,7 @@ export const sendIRTDepositReq = async (token, amount) => {
         "cardNumber": null,
         "nationalCode": null
     }
-
-    axios.defaults.headers.post['Authorization'] = `Bearer ${token}`;
-
-    return await Wallet.post(`/ipg/v1/payment/request`, payload
+    return await axios.post(`/ipg/v1/payment/request`, payload
     ).then((res) => {
         return res;
     }).catch((e) => {
@@ -120,17 +99,10 @@ export const sendIRTDepositReq = async (token, amount) => {
         return e.response;
     })
 }
-export const verifyIRTDepositReq = async (token , paymentToken , paymentStatus) => {
-
+export const verifyIRTDepositReq = async (paymentToken , paymentStatus) => {
     const params = new URLSearchParams();
     params.append('status', paymentStatus);
-
-    return await Wallet.post(`/ipg/v1/payment/verify/${paymentToken}?${params.toString()}`, {
-        data:params,
-        headers : {
-            'Authorization': `Bearer ${token}`,
-        },
-    }).then((res) => {
+    return await axios.post(`/ipg/v1/payment/verify/${paymentToken}?${params.toString()}`, {data:params}).then((res) => {
         return res;
     }).catch((e) => {
         if (!e.response) {
@@ -140,16 +112,9 @@ export const verifyIRTDepositReq = async (token , paymentToken , paymentStatus) 
     })
 }
 
-export const getAllPayments = async (token) => {
-
+export const getAllPayments = async () => {
     const params = new URLSearchParams();
-
-    return await Wallet.get(`/ipg/v1/invoice`, {
-        data:params,
-        headers : {
-            'Authorization': `Bearer ${token}`,
-        },
-    }).then((res) => {
+    return await axios.get(`/ipg/v1/invoice`, {data:params}).then((res) => {
         return res;
     }).catch((e) => {
         if (!e.response) {
@@ -158,16 +123,9 @@ export const getAllPayments = async (token) => {
         return e.response;
     })
 }
-export const getOpenPayments = async (token) => {
-
+export const getOpenPayments = async () => {
     const params = new URLSearchParams();
-
-    return await Wallet.get(`/ipg/v1/invoice/open`, {
-        data:params,
-        headers : {
-            'Authorization': `Bearer ${token}`,
-        },
-    }).then((res) => {
+    return await axios.get(`/ipg/v1/invoice/open`, {data:params}).then((res) => {
         return res;
     }).catch((e) => {
         if (!e.response) {
@@ -177,11 +135,8 @@ export const getOpenPayments = async (token) => {
     })
 }
 
-export const cancelIRTDepositReq = async (token, reference) => {
-
-    Wallet.defaults.headers.post['Authorization'] = `Bearer ${token}`;
-
-    return await Wallet.post(`/ipg/v1/payment/cancel/${reference}`).then((res) => {
+export const cancelIRTDepositReq = async (reference) => {
+    return await axios.post(`/ipg/v1/payment/cancel/${reference}`).then((res) => {
         return res;
     }).catch((e) => {
         if (!e.response) {

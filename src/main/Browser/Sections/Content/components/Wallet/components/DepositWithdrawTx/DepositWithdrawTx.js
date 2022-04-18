@@ -32,7 +32,6 @@ const DepositWithdrawTx = (props) => {
     address: null,
   });
   const {id} = useParams();
-  const accessToken = useSelector(state => state.auth.accessToken);
   const [alert, setAlert] = useState({
     fromTime: null,
     fromDate: null,
@@ -73,7 +72,7 @@ const DepositWithdrawTx = (props) => {
   const getTx = async () => {
 
     let newTx = []
-    const deposit = await getDeposit(accessToken ,id)
+    const deposit = await getDeposit(id)
     if (deposit && deposit.status === 200 ){
       setError(false)
       newTx = deposit.data.map((d)=>{
@@ -85,7 +84,7 @@ const DepositWithdrawTx = (props) => {
       return setError(true)
     }
 
-    const withdraw = await getWithdraw(accessToken ,id)
+    const withdraw = await getWithdraw(id)
     if (withdraw && withdraw.status === 200 ){
       setError(false)
       newTx = [...newTx , ...withdraw.data.map(w => {

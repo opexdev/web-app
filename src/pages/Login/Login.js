@@ -37,21 +37,10 @@ const Login = () => {
     const getLoginByAdminToken = async (token) => {
         dispatch(setImpersonateTokens(token))
         const jwt = jwtDecode(token)
-
-        let panelToken = await getToken()
-        panelToken = parsePanelToken(panelToken.data)
-        dispatch(setPanelTokensInitiate(panelToken))
-
-        //preferred_username
-        let userInfo = await getUser(panelToken.panelAccessToken, "username", jwt.preferred_username)
-        if (userInfo.status === 200) {
-            userInfo = userInfo.data.find(user => user.username === jwt.preferred_username)
-            dispatch(setUserInfo(userInfo))
-        }
-        let account = await getAccount(token)
-        if (account.status === 200) {
-            const parsedData = parseWalletsResponse(account.data);
-            dispatch(setUserAccountInfo(parsedData))
+        dispatch(setUserInfo(jwt));
+        let account = await getAccount()
+        if (account) {
+            dispatch(setUserAccountInfo(account))
         }
         return history.push("/");
     }

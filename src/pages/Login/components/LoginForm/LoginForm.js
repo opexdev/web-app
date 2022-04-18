@@ -62,32 +62,6 @@ const LoginForm = (props) => {
         setLoading(true);
         setLoginError(false);
 
-        /*if (typeof needOTP === "undefined") {
-
-            let panelToken = await getToken();
-            const reqOTPState = await CheckUserSecurityConfigs(panelToken, credential.username)
-            if (reqOTPState && reqOTPState.status === 200) {
-                setNeedOTP(reqOTPState.data.otp)
-
-                if (reqOTPState.data.otp) {
-                    setLoading(false);
-                    return false;
-                }
-
-            } else {
-                setLoading(false);
-                setLoginError(t("login.networkError"));
-                return false;
-            }
-
-        }
-
-        if (needOTP && credential.otp.length < 6) {
-            setLoginError(t("login.otpLength"));
-            setLoading(false);
-            return false;
-        }*/
-
 
         const submitResult = await login(credential , agent);
         if (!submitResult) {
@@ -109,7 +83,7 @@ const LoginForm = (props) => {
             dispatch(setUserTokensInitiate(userToken));
             const jwt = jwtDecode(userToken.accessToken)
             dispatch(setUserInfo(jwt));
-            let account = await getAccount(userToken.accessToken)
+            let account = await getAccount()
             if (account) {
                 dispatch(setUserAccountInfo(account))
             }
