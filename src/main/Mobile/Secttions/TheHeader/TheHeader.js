@@ -11,8 +11,6 @@ const TheHeader = (props) => {
 
     const [showAction, setShowAction] = useState(false);
 
-    console.log("before click showAction: ", showAction)
-
 
     return (
         <Fragment>

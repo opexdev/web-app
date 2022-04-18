@@ -58,13 +58,11 @@ username: "demo1"*/
 
     useEffect(async () => {
         let panelToken = await getToken()
-        panelToken = parsePanelToken(panelToken.data)
-
+        // panelToken = parsePanelToken(panelToken.data)
         let userInfo = await getUser(panelToken.panelAccessToken, "username", username)
         if (userInfo.status === 200) {
             userInfo = userInfo.data.find(user => user.username === username)
         }
-
         setProfile({
             ...userInfo.attributes,
             email:  userInfo.email,

@@ -86,8 +86,6 @@
              await getSessionsData();
          }, 3000);
 
-        // console.log("sessions :", sessions)
-        // console.log("setCurrentSession :", currentSession)
 
 
         const clickHandler = async () => {

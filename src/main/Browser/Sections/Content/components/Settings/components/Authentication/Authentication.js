@@ -43,7 +43,7 @@ const Authentication = (props) => {
                 <div className={`column jc-between ${classes.wizardBox}`}>
                     <ul className="row position-relative ai-center">
                         <li className={`col-25 text-center  ${step === 1 ? classes.activeStep : ""}`}>{t("Authentication.HelpStep")}</li>
-                        <li className={`col-25 text-center ${step === 2 ? classes.activeStep : ""}`}>{t("Authentication.HelpStep")}</li>
+                        <li className={`col-25 text-center ${step === 2 ? classes.activeStep : ""}`}>{t("Authentication.PersonalProfileStep")}</li>
                         <li className={`col-25 text-center ${step === 3 ? classes.activeStep : ""}`}>{t("Authentication.SendPhotosStep")}</li>
                         <li className={`col-25 text-center ${step === 4 ? classes.activeStep : ""}`}>{t("Authentication.SendToExpertStep")}</li>
                         <div className={`container position-absolute  row jc-center`} style={{padding: "0 10%"}}>

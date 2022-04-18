@@ -3,7 +3,6 @@ import classes from "./DepositWithdrawTx.module.css";
 import moment from "moment-jalaali";
 import {connect, useSelector} from "react-redux";
 import {Trans, useTranslation} from "react-i18next";
-import {DTAllTransactionsData} from "../../../../../../../../FakeData/FakeData";
 import ScrollBar from "../../../../../../../../components/ScrollBar";
 import NumberInput from "../../../../../../../../components/NumberInput/NumberInput";
 import TextInput from "../../../../../../../../components/TextInput/TextInput";
@@ -12,7 +11,6 @@ import {useParams} from "react-router-dom";
 import {getDeposit, getWithdraw} from "../../api/wallet";
 import Loading from "../../../../../../../../components/Loading/Loading";
 import Error from "../../../../../../../../components/Error/Error";
-import LastTradesTable from "../../../Dashboard/components/LastTrades/components/LastTradesTable/LastTradesTable";
 import useInterval from "../../../../../../../../Hooks/useInterval";
 import {BN} from "../../../../../../../../utils/utils";
 import IRTTx from "./components/IRTTx/IRTTx";
@@ -288,7 +286,7 @@ const DepositWithdrawTx = (props) => {
                     </td>
                     {/*<td>{tr.amount}</td>*/}
                    {/* <td>{t("ordersStatus.FILLED")}</td>*/}
-                    <td>{txStatus(tr.status)}</td>
+                    <td className={`text-color`}>{txStatus(tr.status)}</td>
                     {openItem === index ? (
                         <td onClick={() => setOpenItem(null)}>
                           <Icon
