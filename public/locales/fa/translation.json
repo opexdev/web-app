@@ -51,6 +51,7 @@
     "uk": "انگلستان",
     "turkey" : "ترکیه"
   },
+
   "currency": {
     "IRT": "تومان",
     "Euro": "یورو",
@@ -63,12 +64,14 @@
     "BCH": "بیتکوین کش",
     "NLN": "اپکس"
   },
+
   "routes": {
     "/settings/profile": "مشخصات کاربری",
     "/settings/security": "امنیت",
     "/settings/personalization": "شخصی سازی",
     "/settings/authentication": "احراز هویت کاربری"
   },
+
   "ordersStatus": {
     "NEW": "جاری شده",
     "REJECTED": "رد شده",
@@ -78,6 +81,7 @@
     "EXPIRED": "منقضی شده",
     "PARTIALLY_FILLED": "کامل نشده"
   },
+
   "paymentStatus": {
     "Open": "جاری شده",
     "Canceled": "لغو شده",
@@ -86,6 +90,7 @@
     "Failed": "رد شده",
     "Undefined": "تعریف نشده"
   },
+
   "messagesTitle": {
     "successful": "عدم تائید معامله",
     "login": "ورود موفق",
@@ -93,6 +98,7 @@
     "done": "سفارش موفق",
     "incompleted": "سفارش نیمه تمام"
   },
+
   "orderTypes": {
     "LIMIT": "محدود",
     "MARKET": "بازار",
@@ -102,6 +108,7 @@
     "TAKE_PROFIT_LIMIT": "*متوقف محدود",
     "LIMIT_MAKER": "*متوقف محدود"
   },
+
   "pair": {
     "BTC/IRT": "بیتکوین/تومان",
     "ETH/IRT": "اتر/تومان",
@@ -120,6 +127,7 @@
     "NLN/BTC": "اپکس/بیتکوین",
     "NLN/USDT": "اپکس/تتر"
   },
+
   "header": {
     "lastPrice": "آخرین قیمت",
     "availableBalance": "موجودی قابل معامله",
@@ -129,37 +137,47 @@
     "logOutSuccess": "خروج با موفقیت انجام شد.",
     "logOutError": "خطایی رخ داده است، لطفا دوباره تلاش کنید!"
   },
+
   "market": {
     "title": "بازار"
   },
+
   "wallet": {
     "title": "دارایی ها"
   },
+
   "technical": {
     "title": "تکنیکال"
   },
+
   "messages": {
     "title": "پیام ها"
   },
+
   "settings": {
     "title": "تنظیمات"
   },
+
   "Languages": {
     "Persian": "فارسی",
     "English": "English",
     "Arabic": "عربی"
   },
+
   "Theme": {
     "Light": "روشن",
     "Dark": "تاریک"
   },
+
   "Calendar": {
     "1": "هجری شمسی",
     "2": "میلادی"
   },
+
   "TimeZone": {
     "1": "آسیا/تهران/03:30+"
   },
+
   "overview": {
     "title": "نمای کلی",
     "change": "تغییر",
@@ -168,6 +186,7 @@
     "lastWeek": "7روز",
     "lastMonth": "30روز"
   },
+
   "orders": {
     "title": "سفارش",
     "minOrder": "حداقل مقدار سفارش {{min}} {{currency}} میباشد",
@@ -188,17 +207,21 @@
     "error": "خطایی در ثبت سفارش رخ داده‌ است",
     "success": "ثبت سفارش {{type}} {{reqAmount}} {{base}} با قیمت {{pricePerUnit}} {{quote}} با موفقیت انجام شد"
   },
+
   "LastTrades": {
     "title": "معامله های اخیر"
   },
+
   "charts": {
     "title": "نمودار قیمت",
     "globalChart": "جهانی",
     "opexChart": "داخلی"
   },
+
   "orderBook": {
     "title": "دفتر پیشنهادها"
   },
+
   "myOrders": {
     "title": "سفارش ها و معامله های من",
     "donePercentage": "درصد انجام",
@@ -216,6 +239,7 @@
     "cancelOrder": "لغو سفارش",
     "orders": "معامله ها"
   },
+
   "WalletSubMenu": {
     "title": "دارایی ها ",
     "totalValue": "ارزش کل",
@@ -223,6 +247,7 @@
     "equivalent": "معادل",
     "showZeroBalance": "عدم نمایش موجودی صفر"
   },
+
   "DepositWithdraw": {
     "title": "واریز/برداشت",
     "success": "آدرس کپی شد",
@@ -236,36 +261,32 @@
     "seconds": "ثانیه",
     "submitPaymentReq": "ثبت درخواست واریز",
     "important": "مهم",
-
-
     "DepositETHContentBefore": "فقط ETH تستی شبکه Ropsten مورد قبول قرار می گیرد! برای دریافت رایگان به ",
     "DepositETHContentAfter": " بروید. برای ارسال ETH تستی به این آدرس، باید شبکه اتریومی کیف پول خود را به Ropsten تغییر دهید. این شبکه به طور پیش فرض در فهرست شبکه های کیف پول Metamask وجود دارد. هر تراکنشی با مقدار مساوی یا بیشتر از ۰.۰۰۱ ETH به آدرس بالا، به حساب شما افزوده می شود.",
     "minDeposit": "حداقل میزان قابل قبول {{min}} {{currency}}",
     "minDepositText": "هر تراکنشی با مقدار بیشتر از {{min}} {{currency}} به آدرس زیر ، به حساب شما افزوده می شود.",
-
-
     "DepositBTCContentBefore": "فقط BTC تستی مورد قبول قرار می گیرد! برای دریافت رایگان به ",
     "DepositBTCContentAfter": " بروید. هر تراکنشی با مقدار مساوی یا بیشتر از ۰.۰۰۱ BTC به آدرس بالا، به حساب شما افزوده می شود.",
-
     "DepositUSDTContentBefore": "فقط USDT تستی شبکه Ropsten مورد قبول قرار می گیرد! برای آشنایی با روش دریافت رایگان به ",
     "DepositUSDTContentAfter": " بروید. برای ارسال USDT تستی به این آدرس، باید شبکه اتریومی کیف پول خود را به Ropsten تغییر دهید. این شبکه به طور پیش فرض در فهرست شبکه های کیف پول Metamask وجود دارد. هر تراکنشی با مقدار مساوی یا بیشتر از ۱۰ USDT به آدرس بالا، به حساب شما افزوده می شود.",
-
-
-
-
     "depositTime": "* موجودی شما {{time}} دقیقه بعد از واریز به آدرس بالا، افزایش پیدا می کند.",
     "securityConsiderations": "باتوجه به ملاحضات امنیتی ممکن است انتقال به حساب با کمی تاخیر صورت بگیرد. می توانید وضعیت برداشت را در همین صفحه از بخش ترکنش های واریز/برداشت ببینید."
   },
 
-
-
-
-
   "CallbackPage": {
     "ok": "واریز وجه با موفقیت انجام شد.",
     "failed": "واریز وجه با خطا مواجه شد.",
-    "noData": "موردی برای نمایش وجود ندارد."
+    "noData": "موردی برای نمایش وجود ندارد.",
+    "errorMessage": "متن خطا"
   },
+
+  "IPGErrorCode": {
+    "13003": "اجازه پرداخت ندارید.",
+    "13004": "یک درخواست پرداخت نشده دارید.",
+    "13005": "درخواست قفل شده.",
+    "13007": "خطای ناشناخته"
+  },
+
   "DepositWithdrawTx": {
     "title": "تراکنش های واریز/برداشت",
     "depositWithdrawal": "واریز/دریافت",
@@ -292,12 +313,14 @@
     "cancelPayment": "عملیات واریز لغو شد!"
 
   },
+
   "transactionType": {
     "deposit": "واریز",
     "withdrawal": "برداشت",
     "Received": "دریافت",
     "send": "ارسال"
   },
+
   "OrdersTrades": {
     "title": "سفارش ها و معامله ها",
     "aliveOrder": "سفارش های جاری",
@@ -315,11 +338,13 @@
     "limit": "محدود",
     "paid": "پرداخت شده"
   },
+
   "MessagesSubMenu": {
     "title": "اطلاع رسانی",
     "myMessages": "پیام های من",
     "news": "اطلاعیه ها"
   },
+
   "SettingsSubMenu": {
     "title": "تنظیمات",
     "userProfile": "مشخصات کاربری",
@@ -327,6 +352,7 @@
     "personalization": "شخصی سازی",
     "authentication": "احراز هویت کاربری"
   },
+
   "UserAccountStatus": {
     "title": "وضعیت حساب کاربری",
     "userAccountLevel1": "سطح کاربری 1",
@@ -342,6 +368,7 @@
     "monthlyDepositCryptoCurrency": "واریز ماهانه رمزارزی: معادل {{amount}} تومان از 20،000،000 تومان",
     "tradesCommission": "کارمزد معاملات: {{amount}} تیکر، {{num}}"
   },
+
   "PersonalProfile": {
     "title": "مشخصات فردی",
     "userLevel/fee": "سطح کاربری/کارمزدها",
@@ -363,9 +390,11 @@
     "selectNationality": "ملیت خود را انتخاب کنید",
     "selectResidence": "کشور محل اقامت خود را انتخاب کنید"
   },
+
   "LoginReports": {
     "title": "گزارش ورودها"
   },
+
   "ActiveSessions": {
     "title": "نشست های فعال",
     "ip": "ip",
@@ -382,6 +411,7 @@
     "otherSession": "سایر نشست ها",
     "closeAllInusableSessions": "بستن سایر نشست ها"
   },
+
   "ChangePassword": {
     "title": "تغییر رمز ورود",
     "newPassword": "رمز ورود جدید",
@@ -394,6 +424,7 @@
     "confirmationError": "رمز ورود جدید و تکرار آن باهم مطابقت نداردن.",
     "currentPasswordError": "رمز ورود فعلی اشتباه وارد شده است."
   },
+
   "SetTwoStepVerification": {
     "title": "فعال سازی ورود دو مرحله ای",
     "!title": "غیرفعال سازی ورود دو مرحله ای",
@@ -409,13 +440,16 @@
     "description": "در صورت فعال سازی ورود دو مرحله ای، برای هر بار ورود به پنل کاربری، رمز دو مرحله ای درخواست می شود.",
     "QRdescription": "پس از اسکن کد QR رو به رو با نرم افزار Google Authenticator (یا نرم افزار مشابه) عدد 6 رقمی درج شده را وارد و ثبت کنید ."
   },
+
   "HelpStep": {
     "title": "گام 1 از 4: راهنما",
     "content": "به منظور استفاده از تمامی خدمات این صرافی و فعال شدن امکان برداشت دارایی ها، باید احراز هویت شوید. فرایند احراز هویت ساده و آنلاین است. در مراحل بعد از شما درخواست خواهد شد تا اطلاعات فردی خود را در فرم مربوطه وارد کرده و تصاویر پرتره، کارت ملی و رضایت نامه استفاده از خدمات را ارسال بفرمایید."
   },
+
   "PersonalProfileStep": {
     "title": "گام 2 از 4: ورود اطلاعات فردی"
   },
+
   "SendPhotosStep": {
     "title": "گام 3 از 4: ارسال تصاویر",
     "content": "برای تکمیل احراز هویت لطفا مراحل زیر را انجام دهید!",
@@ -431,8 +465,6 @@
     "sendingData": "در حال ارسال اطلاعات...",
     "imageAcceptedFormat": "- لطفا عکس ها را فقط با فرمت JPEG و PNG آپلود کنید!",
     "imageAcceptedSize": "- حداکثر حجم قابل قبول برای آپلود عکس ها ، 1 مگابایت است!"
-
-
   },
 
   "SendToExpertStep": {
@@ -440,14 +472,12 @@
     "content": "ارسال به کارشناس"
   },
 
-
   "Authentication": {
     "title": "",
     "HelpStep": "راهنما",
     "PersonalProfileStep": "اطلاعات فردی",
     "SendPhotosStep": "ارسال تصاویر",
     "SendToExpertStep": "ارسال به کارشناس"
-
   },
 
   "PersonalizationForm": {
@@ -461,7 +491,6 @@
     "defaultReferenceCryptoCurrency": "رمز ارز مرجع",
     "save": "ذخیره"
   },
-
 
   "login": {
     "title": "ورود/ثبت نام",
@@ -495,6 +524,7 @@
     "emptyCaptcha": "وارد کردن Captcha الزامی است",
     "forgetPassServerError": "خطا در بازیابی رمز، دوباره تلاش کنید"
   },
+
   "footer": {
     "changeColor": "تغییر رنگ",
     "aboutUs": "درباره ما",
@@ -509,8 +539,6 @@
     "copyright": "1400 - کلیه حقوق برای شرکت تجربه کاربری متن باز (در شرف تاُسیس) محفوظ است."
   },
 
-
-
   "ImageInput": {
     "title": "",
     "dropText": "را با کشیدن روی کادر یا کلیک کردن و انتخاب فایل آپلود کنید!",
@@ -520,12 +548,6 @@
     "tooManyFiles": "آپلود بیشتر از یک عکس مجاز نیست!",
     "errorMsgDefault": "عکس آپلود شده معتبر نیست!"
   },
-
-
-
-
-
-
 
   "junk": {
     "t": "ت",

@@ -2,13 +2,10 @@ import React, {Fragment, useEffect, useState} from "react";
 import classes from "./CallbackPage.module.css";
 import {images} from "../../../../../../../../../../../../../../assets/images";
 import Button from "../../../../../../../../../../../../../../components/Button/Button";
-import {Trans, useTranslation} from "react-i18next";
+import {useTranslation} from "react-i18next";
 import * as Routes from "../../../../../../../../../../../../../../routes/routes";
 import {Link, useHistory} from "react-router-dom";
-import {BN, parsePriceString} from "../../../../../../../../../../../../../../utils/utils";
-import {getOpenPayments, sendIRTDepositReq, verifyIRTDepositReq} from "../../../../../../../../api/wallet";
-import {toast} from "react-hot-toast";
-import {useSelector} from "react-redux";
+import {verifyIRTDepositReq} from "../../../../../../../../api/wallet";
 import Loading from "../../../../../../../../../../../../../../components/Loading/Loading";
 
 
@@ -16,9 +13,7 @@ import Loading from "../../../../../../../../../../../../../../components/Loadin
 
 const CallbackPage = (props) => {
 
-    const {paymentToken , paymentStatus} = props
-
-    console.log("paymentStatus :::: " , paymentStatus)
+    const {paymentToken , paymentStatus , errorCode} = props
 
     const [status , setStatus] = useState()
     const [noData , setNoData] = useState()
@@ -34,7 +29,6 @@ const CallbackPage = (props) => {
         if (verifyReq && verifyReq.status === 200) {
 
             setVerifyResult(verifyReq.data)
-            //console.log("verify :)")
 
         } else {
             setError(true)
@@ -44,23 +38,23 @@ const CallbackPage = (props) => {
 
 
     useEffect(() => {
-        verify(paymentToken, paymentStatus)
+        verify(paymentToken, paymentStatus).then(r => {
+            if (paymentStatus === "OK") {
+                setStatus(true)
+            }
+            if (paymentStatus === "FAILED") {
+                setStatus(false)
+            }
+            if (paymentStatus !== "OK" && paymentStatus !== "FAILED") {
+                setNoData(true)
+            }
 
-        if (paymentStatus === "OK") {
-            setStatus(true)
+            if (errorCode !== null){
+
+            }
+
             setLoading(false)
-        }
-        if (paymentStatus === "FAILED") {
-            setStatus(false)
-            setLoading(false)
-        }
-        if (paymentStatus !== "OK" && paymentStatus !== "FAILED") {
-            setLoading(false)
-            setNoData(true)
-        }
-
-
-
+        })
     }, []);
 
 
@@ -89,7 +83,11 @@ const CallbackPage = (props) => {
                     {noData ? <span className={`text-color`}>{t("CallbackPage.noData")}</span> :
                         <Fragment>
                             <img src={status ? images.approve : images.reject} alt={paymentStatus}/>
-                            <span>{status ? t("CallbackPage.ok") : t("CallbackPage.failed")}</span>
+                            <div className={`column jc-center ai-center`}>
+                                <span>{status ? t("CallbackPage.ok") : t("CallbackPage.failed")}</span>
+                                {errorCode !== null && <span className={`text-color font-size-sm`}>{t("CallbackPage.errorMessage")} : <span>{t("IPGErrorCode." + errorCode)}</span></span>}
+
+                            </div>
                         </Fragment>
                     }
                     <Link

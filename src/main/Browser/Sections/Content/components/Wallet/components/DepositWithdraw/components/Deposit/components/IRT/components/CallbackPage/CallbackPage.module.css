@@ -23,6 +23,6 @@
 .thisButton {
     width: 100%;
     background-color: var(--orange);
-    color: #000;
+    color: #000 !important;
 
 }
