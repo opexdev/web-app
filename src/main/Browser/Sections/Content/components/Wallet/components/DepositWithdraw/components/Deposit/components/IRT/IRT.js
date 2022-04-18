@@ -35,10 +35,10 @@ const IRT = (props) => {
     const dataMin = 1000
     const dataMax = 50000000
 
-
-    const paymentToken = new URLSearchParams(useLocation().search).get("token");
-    const paymentStatus = new URLSearchParams(useLocation().search).get("payment_status");
-
+    const params = new URLSearchParams(useLocation().search);
+    const paymentToken = params.get("token");
+    const paymentStatus = params.get("payment_status");
+    const errorCode = params.get("error_code");
 
     const {id} = useParams();
 
@@ -298,7 +298,7 @@ const IRT = (props) => {
 
     return (
         <>
-            {paymentToken !== null ? <CallbackPage paymentToken={paymentToken} paymentStatus={paymentStatus}/> : ""}
+            {paymentStatus !== null ? <CallbackPage paymentToken={paymentToken} paymentStatus={paymentStatus} errorCode={errorCode}/> : ""}
             { content()}
         </>
 
