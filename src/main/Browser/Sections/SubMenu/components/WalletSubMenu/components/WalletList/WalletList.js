@@ -85,7 +85,7 @@ const WalletList = (props) => {
             </div>*/}
             {Object.keys(wallets).map((name) => {
                 if(wallets[name].free !== 0.0 || !showZero) {
-                    return <WalletListItem key={name} name={name} route={Routes.Wallet + "/" + name} amount={wallets[name].free}/>
+                    return <WalletListItem key={name} name={name} route={Routes.Wallet + "/" + name} amount={wallets[name].free.toLocaleString()}/>
                 }
                 return null
             })}

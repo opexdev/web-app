@@ -1,7 +1,7 @@
 import classes from "../DepositWithdraw.module.css";
 import TextInput from "../../../../../../../../../components/TextInput/TextInput";
 import Button from "../../../../../../../../../components/Button/Button";
-import React, {useEffect, useState} from "react";
+import React, {useEffect, useRef, useState} from "react";
 import {useSelector} from "react-redux";
 import {useParams} from "react-router-dom";
 import {Trans, useTranslation} from "react-i18next";
@@ -11,26 +11,37 @@ import {toast} from "react-hot-toast";
 import {images} from "../../../../../../../../../assets/images";
 import NumberInput from "../../../../../../../../../components/NumberInput/NumberInput";
 import IRT from "./Deposit/components/IRT/IRT";
+import ReactTooltip from "react-tooltip";
 
 const Withdrawal = () => {
     const {t} = useTranslation();
     const {id} = useParams();
     const wallets = useSelector(state => state.auth.wallets);
 
+    const tooltip = useRef()
+
+    useEffect(() => {
+        ReactTooltip.rebuild();
+    }, []);
+
     const [amount, setAmount] = useState({
         value: "0",
-        alert: null,
+        error: [],
     });
     const [address, setAddress] = useState({
         value: "",
-        alert: null,
+        error: [],
     });
 
     const [isLoading, setIsLoading] = useState(false)
+    const [error, setError] = useState("")
 
     useEffect(() => {
-        setAmount({value: "0", alert: null})
-        setAddress({value: "", alert: null})
+        setAmount({value: "0", error: []})
+        setAddress({value: "", error: []})
+
+        validation()
+
     }, [id]);
 
     const network = (id) => {
@@ -45,7 +56,10 @@ const Withdrawal = () => {
                 return 'ethereum-ropsten';
         }
     };
-    const calculateFee = (id) => {
+    const calculateFee = (
+
+
+    ) => {
         switch (id) {
             case "BTC":
                 return 0.00035;
@@ -58,13 +72,31 @@ const Withdrawal = () => {
         }
     };
 
+    const isDisable =useRef()
+
+
+   // console.log("isDisable current :-> " , isDisable.current.disabled)
+
+    const validation = () => {
+        if (new BN(amount.value).isGreaterThan(wallets[id].free)) {
+            return  t('DepositWithdraw.noInventory')
+        }
+        if (!(new BN(amount.value).minus(new BN(calculateFee(id))).isGreaterThan(0))) {
+            return  t('DepositWithdraw.allowableWithdraw')
+        }
+        if (address.value.length <= 0) {
+            return t('DepositWithdraw.fillAddress')
+        }
+    }
+
+
     const sendWithdrawHandler = async () => {
         if (isLoading) return false
         setIsLoading(true)
         sendWithdrawReq(amount.value, id, address.value, calculateFee(id), network(id)).then((r) =>{
             setIsLoading(false)
-            setAmount({value: "0", alert: null})
-            setAddress({value: "", alert: null})
+            setAmount({value: "0", error: []})
+            setAddress({value: "", error: []})
             toast.success(<Trans
                 i18nKey="DepositWithdrawTx.success"
                 values={{
@@ -85,7 +117,7 @@ const Withdrawal = () => {
     const fillByWallet = () => {
         setAmount({
             value: wallets[id].free,
-            alert: null
+            error: []
         })
     };
 
@@ -93,9 +125,14 @@ const Withdrawal = () => {
     const fillByMinWithdraw = () => {
         setAmount({
             value: new BN(calculateFee(id)).multipliedBy(1.1).toString(),
-            alert: null
+            error: []
         })
     };
+
+    const enableButton = !(new BN(amount.value).minus(new BN(calculateFee(id))).isGreaterThan(0)) || new BN(amount.value).isGreaterThan(wallets[id].free)  || address.value.length <= 0
+    useEffect(() => {
+        ReactTooltip.hide(tooltip.current)
+    }, [enableButton]);
 
 
     if(id === "IRT") {
@@ -104,8 +141,6 @@ const Withdrawal = () => {
         </div>
     }
 
-
-
     return (
         <div className={`px-1 py-2 column jc-between ${classes.content}`}>
             <div className="container row jc-between height-100">
@@ -113,7 +148,7 @@ const Withdrawal = () => {
                     <NumberInput
                         lead={t('volume') + " " + t("currency." + id)}
                         value={amount.value}
-                        alert={amount.alert}
+                        alerts={amount.error}
                         customClass={classes.withdrawNumberInput}
                         onchange={(e) =>
                             setAmount({...amount, value: parsePriceString(e.target.value)})
@@ -144,7 +179,7 @@ const Withdrawal = () => {
                             customClass={classes.withdrawalInput}
                             type="text"
                             value={address.value}
-                            alert={address.alert}
+                            alerts={address.error}
                             onchange={(e) =>
                                 setAddress({...address, value: e.target.value})
                             }
@@ -160,12 +195,20 @@ const Withdrawal = () => {
                                 {t('DepositWithdrawTx.reqAmount')}: <span className={`text-green`}>{new BN(amount.value).minus(new BN(calculateFee(id))).isGreaterThan(0) ? new BN(amount.value).minus(new BN(calculateFee(id))).toFormat() : 0} </span> <span>{t("currency." + id)}</span>
                             </span>
                         </div>
-                        <Button
+                        <span
+                            ref={tooltip}
+                            style={{width:"40%"}}
+                            data-html={true}
+                            data-place="top"
+                            data-effect="float"
+                            data-tip={enableButton ? `<span class="column jc-between col-100 text-red">${validation()}</span>` : ""}
+                        ><Button
                             buttonClass={`${classes.thisButton} ${classes.withdrawal} ${isLoading ? "cursor-not-allowed" : "cursor-pointer"}`}
                             buttonTitle={submitButtonTextHandler()}
-                            disabled={!(new BN(amount.value).minus(new BN(calculateFee(id))).isGreaterThan(0)) || address.value.length <= 0 }
+                            disabled={!(new BN(amount.value).minus(new BN(calculateFee(id))).isGreaterThan(0)) || new BN(amount.value).isGreaterThan(wallets[id].free)  || address.value.length <= 0}
                             onClick={sendWithdrawHandler}
                         />
+                            </span>
                     </div>
                 </div>
             </div>
