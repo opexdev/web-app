@@ -18,14 +18,12 @@ import {Login} from "../../routes/routes";
 
 const Popup = (props) => {
     const {t} = useTranslation();
-    const {currency, isLogin, closePopup, activePair} = props
+    const {currency, isLogin, closePopup,} = props
     const [address , setAddress] = useState("")
     const addressRef = useRef(null);
 
-    const accessToken = useSelector(state => state.auth.accessToken);
-
     useEffect(() => {
-        getDepositAddress(accessToken ,currency).then((res)=>{
+        getDepositAddress(currency).then((res)=>{
             if (res && res.status === 200 ){
                 setAddress(res.data.address)
             }else {
