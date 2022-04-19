@@ -1,14 +1,13 @@
 import React from "react";
 
-const Button = (props) => {
+const Button = ({buttonTitle,buttonClass,innerRef, ...rest}) => {
     return (
         <button
-            className={`${props.buttonClass} button cursor-pointer`}
-            onClick={props.onClick}
-            type={props.type}
-            disabled={props.disabled}
+            className={`${buttonClass} button cursor-pointer`}
+            {...rest}
+            ref={innerRef}
             >
-            {props.buttonTitle}
+            {buttonTitle}
         </button>
     );
 };

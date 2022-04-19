@@ -54,9 +54,9 @@ const SettingsSubMenu = () => {
           <div
             className={` column position-relative font-size-sm mr-1 ${classes.listBox}`}
             style={{width: "60%"}}>
-            <span className={`flex ai-center my-05 pr-2 ${classes.list}`}>
+            {/*<span className={`flex ai-center my-05 pr-2 ${classes.list}`}>
               {t("LoginReports.title")}
-            </span>
+            </span>*/}
             <span className={`flex ai-center my-05 pr-2 ${classes.list}`}>
               {t("ActiveSessions.title")}
             </span>

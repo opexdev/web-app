@@ -1,10 +1,8 @@
-import React, {useEffect, useRef, useState} from "react";
+import React, {useEffect, useState} from "react";
 import classes from "./DepositWithdraw.module.css";
 import {useTranslation} from "react-i18next";
 import ReactTooltip from "react-tooltip";
 import TextInput from "../../../../../../../../components/TextInput/TextInput";
-import Icon from "../../../../../../../../components/Icon/Icon";
-import {images} from "../../../../../../../../assets/images";
 import Button from "../../../../../../../../components/Button/Button";
 import AccordionBox from "../../../../../../../../components/AccordionBox/AccordionBox";
 import Withdrawal from "./components/Withdrawal";

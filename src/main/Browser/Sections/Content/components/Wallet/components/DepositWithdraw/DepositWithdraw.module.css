@@ -43,7 +43,7 @@
 
 
 .thisButton {
-  width: 40%;
+  width: 100%;
 }
 .IRTButton{
   width: 20%;
@@ -73,6 +73,14 @@
   color: var(--textColor);
   cursor: not-allowed;
 }
+
+.thisButton:disabled,.button[disabled] {
+  border: 0.3vh solid var(--cardHeader);
+  background: var(--cardHeader);
+  color: var(--textColor);
+  cursor: not-allowed;
+}
+
 .iconBG {
   vertical-align: middle;
 
