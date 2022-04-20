@@ -33,7 +33,6 @@ const BuyOrder = (props) => {
         totalPrice: new BN(0),
     });
 
-
     useEffect(() => {
         if (alert.submit) {
             setAlert({

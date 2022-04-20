@@ -26,7 +26,6 @@ const RegisterForm = () => {
     const [userData, setUserData] = useState({
         firstName: {value: "", error: []},
         lastName: {value: "", error: []},
-        username: {value: "", error: []},
         email: {value: "", error: []},
         captchaAnswer: {value: "", error: []},
     });
@@ -93,8 +92,8 @@ const RegisterForm = () => {
         const user = {
             firstName: userData.firstName.value,
             lastName: userData.lastName.value,
-            username: userData.username.value,
             email: userData.email.value.toLowerCase(),
+            //email: userData.email.value.toLowerCase(),
             captchaAnswer: `${captcha.SessionKey.value}-${userData.captchaAnswer.value}`,
         }
 
@@ -158,9 +157,6 @@ const RegisterForm = () => {
     }
 
 
-
-
-
     const LeadCaptchaHandler = () => {
         if (isLoading) {
             return <img className={`${classes.thisLoading}`} src={images.linearLoadingBgOrange} alt="linearLoading"/>
@@ -202,18 +198,6 @@ const RegisterForm = () => {
                     value={userData.lastName.value}
                     onchange={(e) => inputHandler(e)}
                     alerts={userData.lastName.error}
-                />
-                <TextInput
-                    lead={t('username')}
-                    data-name="username"
-                    data-type="input"
-                    data-min={5}
-                    data-letter="en"
-                    type="text"
-                    customClass={`${classes.loginInput}`}
-                    value={userData.username.value}
-                    onchange={(e) => inputHandler(e)}
-                    alerts={userData.username.error}
                 />
                 <TextInput
                     lead={t('email')}

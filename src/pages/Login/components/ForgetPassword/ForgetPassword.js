@@ -8,6 +8,7 @@ import Button from "../../../../components/Button/Button";
 import ReactTooltip from "react-tooltip";
 import Icon from "../../../../components/Icon/Icon";
 import {images} from "../../../../assets/images";
+import {validateEmail} from "../../../../utils/utils";
 
 const ForgetPassword = (props) => {
     const [loading, setLoading] = useState(false);
@@ -54,6 +55,10 @@ const ForgetPassword = (props) => {
             setForgetPass({...forgetPass, email: {value: "", error: [t('login.emptyEmail')]}})
             return false
         }
+        if (!validateEmail(forgetPass.email.value)){
+            setForgetPass({...forgetPass, email: {value: "", error: [t('login.forgetPassEmailForgetError')]}})
+            return false
+        }
         if (forgetPass.captchaAnswer.value === ""){
             setForgetPass({...forgetPass, captchaAnswer: {value: "", error: [t('login.emptyCaptcha')]}})
             return false
@@ -91,7 +96,7 @@ const ForgetPassword = (props) => {
             <TextInput
                 lead={t('email')}
                 // type="text"
-                type="email"
+                type="text"
                 data-name="email"
                 data-type="email"
                 customClass={`${classes.forgetPasswordInput} ${classes.loginInput}`}

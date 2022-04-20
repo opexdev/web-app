@@ -58,6 +58,9 @@
     "USD": "دلار",
     "BTC": "بیتکوین",
     "ETH": "اتر",
+    "TBTC": "بیتکوین (تست)",
+    "TETH": "اتر (تست)",
+    "TUSDT": "تتر (تست)",
     "USDT": "تتر",
     "DOGE": "دوج کوین",
     "LTC": "لایت کوین",
@@ -114,6 +117,8 @@
     "ETH/IRT": "اتر/تومان",
     "ETH/BTC": "اتر/بیتکوین",
     "BTC/USDT": "بیتکوین/تتر",
+    "TBTC/TUSDT": "بیتکوین (تست)/تتر (تست)",
+    "TETH/TUSDT": "اتر (تست)/تتر (تست)",
     "LTC/BTC": "لایت کوین/بیتکوین",
     "DOGE/BTC": "دوج کوین/بیتکوین",
     "BCH/BTC": "بیتکوین کش/بیتکوین",
@@ -497,13 +502,13 @@
 
   "login": {
     "title": "ورود/ثبت نام",
-    "wrongPassword": "نام کاربری یا رمز عبور صحیح نمی باشد!",
+    "wrongPassword": "ایمیل یا رمز عبور صحیح نمی باشد!",
     "wrongOTP": "رمز دو مرحله ای صحیح نمی باشد!",
     "forgetPassword": "فراموشی رمز عبور",
     "accountNotActive": "اکانت شما هنوز فعال نشده است",
     "enter": "ورود",
     "resetPassword": "بازیابی رمز",
-    "inputError": "تعداد کاراکتر نام کاربری یا رمز ورود مجاز نیست.",
+    "inputError": "فرمت ایمیل یا تعداد کاراکتر رمز ورود درست نیست.",
     "loginError": "خطا در ارتباط با سرور",
     "registerFinished": "ثبت نام با موفقیت انجام شد :)",
     "forgetPasswordFinished": "درخواست بازیابی رمز عبور با موفقیت ارسال شد :)",
@@ -514,7 +519,7 @@
     "notFoundEmail": "ایمیل وارد شده یافت نشد.",
     "emptyEmail": "ایمیل را وارد کنید.",
     "emptyInput": "وارد کردن فیلد {{name}} الزامی است.",
-    "emptyCredentialError": "وارد کردن فیلد نام کاربری و رمز ورود الزامی است.",
+    "emptyCredentialError": "وارد کردن فیلد ایمیل و رمز ورود الزامی است.",
     "minInput": "{{name}} حداقل باید {{min}} کاراکتر باشد.",
     "finishedWithError": "خطا در ایجاد کاربر جدید.",
     "back": "بازگشت",
@@ -525,7 +530,8 @@
     "refreshCaptcha": "نمایش دوباره captcha",
     "captchaServerError": "خطا در سرور برای گرفتن Captcha",
     "emptyCaptcha": "وارد کردن Captcha الزامی است",
-    "forgetPassServerError": "خطا در بازیابی رمز، دوباره تلاش کنید"
+    "forgetPassServerError": "خطا در بازیابی رمز، دوباره تلاش کنید",
+    "forgetPassEmailForgetError": "فرمت ایمیل صحیح نیست."
   },
 
   "footer": {

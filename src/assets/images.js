@@ -7,6 +7,9 @@ import opexQrCode from "./images/src/opex-qr-code.svg";
 import safe from "./images/src/safe.svg";
 import opexCoin from "./images/src/opexCoin.svg";
 import bitcoin from "./images/src/bitcoin.svg";
+import testBitcoin from "./images/src/testBitcoin.svg";
+import testEthereumLight from "./images/src/testEthereumLight.svg";
+import testTether from "./images/src/testTether.svg";
 import dogecoin from "./images/src/dogecoin.svg";
 import bitcoinCash from "./images/src/bitcoinCash.svg";
 import litecoin from "./images/src/litecoin.svg";
@@ -34,6 +37,9 @@ export const images = {
   safe: safe,
   NLN: opexCoin,
   BTC: bitcoin,
+  TBTC: testBitcoin,
+  TETH: testEthereumLight,
+  TUSDT: testTether,
   DOGE: dogecoin,
   BCH: bitcoinCash,
   LTC: litecoin,
