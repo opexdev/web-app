@@ -6,11 +6,13 @@ export const sendWithdrawReq = async (amount, currency, address, fee, network) =
     params.append('destCurrency', currency.toLowerCase());
     params.append('destAddress', address);
     params.append('destNetwork', network);
-    return await axios.post(`/wallet/withdraw/${amount}_${currency.toLowerCase()}`, params ,{
-        headers : {
-            "Content-Type" : 'application/x-www-form-urlencoded'
+    return await axios.post(`/wallet/withdraw/${amount}_${currency.toLowerCase()}`, null,
+        {
+            params,
+            headers: {
+                "Content-Type": 'application/x-www-form-urlencoded'
+            }
         }
-    }
     ).then((res) => {
         return res;
     }).catch((e) => {
@@ -22,9 +24,9 @@ export const sendWithdrawReq = async (amount, currency, address, fee, network) =
 }
 
 export const getDepositAddress = async (currency) => {
-    return await axios.get(`sapi/v1/capital/deposit/address?coin=${currency.toLowerCase()}&timestamp=${Date.now()}` ,{
-        headers : {
-            "Content-Type" : 'application/x-www-form-urlencoded'
+    return await axios.get(`sapi/v1/capital/deposit/address?coin=${currency.toLowerCase()}&timestamp=${Date.now()}`, {
+        headers: {
+            "Content-Type": 'application/x-www-form-urlencoded'
         }
     }).then((res) => {
         return res;
@@ -43,8 +45,8 @@ export const getDeposit = async (currency) => {
     params.append('coin', currency.toLowerCase());
     params.append('timestamp', timestamp.toString());
     return await axios.get(`/sapi/v1/capital/deposit/hisrec?${params.toString()}`, {
-        data:params,
-        headers : {
+        data: params,
+        headers: {
             'content-type': 'application/x-www-form-urlencoded'
         },
     }).then((res) => {
@@ -63,8 +65,8 @@ export const getWithdraw = async (currency) => {
     params.append('coin', currency.toLowerCase());
     params.append('timestamp', timestamp.toString());
     return await axios.get(`/sapi/v1/capital/withdraw/history?${params.toString()}`, {
-        data:params,
-        headers : {
+        data: params,
+        headers: {
             'content-type': 'application/x-www-form-urlencoded'
         },
     }).then((res) => {
@@ -99,10 +101,10 @@ export const sendIRTDepositReq = async (amount) => {
         return e.response;
     })
 }
-export const verifyIRTDepositReq = async (paymentToken , paymentStatus) => {
+export const verifyIRTDepositReq = async (paymentToken, paymentStatus) => {
     const params = new URLSearchParams();
     params.append('status', paymentStatus);
-    return await axios.post(`/ipg/v1/payment/verify/${paymentToken}?${params.toString()}`, {data:params}).then((res) => {
+    return await axios.post(`/ipg/v1/payment/verify/${paymentToken}?${params.toString()}`, {data: params}).then((res) => {
         return res;
     }).catch((e) => {
         if (!e.response) {
@@ -114,7 +116,7 @@ export const verifyIRTDepositReq = async (paymentToken , paymentStatus) => {
 
 export const getAllPayments = async () => {
     const params = new URLSearchParams();
-    return await axios.get(`/ipg/v1/invoice`, {data:params}).then((res) => {
+    return await axios.get(`/ipg/v1/invoice`, {data: params}).then((res) => {
         return res;
     }).catch((e) => {
         if (!e.response) {
@@ -125,7 +127,7 @@ export const getAllPayments = async () => {
 }
 export const getOpenPayments = async () => {
     const params = new URLSearchParams();
-    return await axios.get(`/ipg/v1/invoice/open`, {data:params}).then((res) => {
+    return await axios.get(`/ipg/v1/invoice/open`, {data: params}).then((res) => {
         return res;
     }).catch((e) => {
         if (!e.response) {
