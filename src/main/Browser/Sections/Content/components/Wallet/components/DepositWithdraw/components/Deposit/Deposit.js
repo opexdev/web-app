@@ -45,7 +45,7 @@ const Deposit = () => {
                 <span className={`text-red font-weight-bold`}>{t("DepositWithdraw.important")}: </span>
                <div>
                    <span>{t("DepositWithdraw.DepositETHContentBefore")}</span>
-                   <span className={`hover-text cursor-pointer`} onClick={()=>window.open('https://faucet.ropsten.be')}>https://faucet.ropsten.be</span>
+                   <span className={`hover-text cursor-pointer`} onClick={()=>window.open('https://faucet.dimensions.network/')}>https://faucet.ropsten.be</span>
                    <span>{t("DepositWithdraw.DepositETHContentAfter")}</span>
                </div>
                 <div>
@@ -121,6 +121,7 @@ const Deposit = () => {
                 </div>
             </div>
         }
+
     }
 
     const lowestPrice = (id) => {

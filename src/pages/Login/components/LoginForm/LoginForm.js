@@ -16,6 +16,7 @@ import {getAccount,} from "../../../../main/Browser/Sections/SubMenu/components/
 import jwtDecode from "jwt-decode";
 import OTPForm from "../OTPForm/OTPForm";
 import {browserName, deviceType, fullBrowserVersion} from "react-device-detect";
+import {validateEmail} from "../../../../utils/utils";
 
 
 
@@ -48,8 +49,9 @@ const LoginForm = (props) => {
             return false;
         }
 
-        if (credential.username.length < 5 || credential.password.length < 4) {
+        if ( !validateEmail(credential.username) || credential.password.length < 4) {
             setLoginError(t("login.inputError"));
+
             return false;
         }
 
@@ -113,17 +115,17 @@ const LoginForm = (props) => {
             {!needOTP ? <div className={`font-weight-300 mb-2`}>
                 <span>برای ورود آزمایشی می توانید از <span className={`hover-text cursor-pointer`}
                                                            onClick={() => setCredential({
-                                                               username: "demo1",
+                                                               username: "demo1@opex.dev",
                                                                password: "demo1",
                                                                otp: ""
-                                                           })}>نام کاربری و رمز عبور demo1</span> استفاده کنید.</span>
+                                                           })}>ایمیل demo1@opex.dev و رمز عبور demo1</span> استفاده کنید.</span>
             </div> : ""}
             {needOTP ?
                 <OTPForm setOTP={setOTPInputHandler} initialVal={credential.otp}/>
                 :
                 <>
                     <TextInput
-                        lead={t('username')}
+                        lead={t('email')}
                         type="text"
                         customClass={classes.loginInput}
                         value={credential.username}
