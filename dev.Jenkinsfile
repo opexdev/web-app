@@ -7,7 +7,7 @@ pipeline {
         API_BASE_URL = 'https://api.opex.dev:8443'
         CLIENT_ID='web-app'
         LOGIN_CLIENT_ID='admin-cli'
-        CLIENT_SECRET='967ad4db-eec7-4a9e-b953-040ec75db8d9'
+        CLIENT_SECRET='732494ea-f894-4f18-a915-0e50ca0928c0'
         GENERATE_SOURCEMAP='true'
     }
 
