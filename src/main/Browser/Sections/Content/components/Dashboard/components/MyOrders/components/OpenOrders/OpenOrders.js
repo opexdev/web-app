@@ -12,7 +12,7 @@ import Icon from "../../../../../../../../../../components/Icon/Icon";
 
 const OpenOrders = (props) => {
 
-    const {activePair, accessToken, lastTransaction} = props
+    const {activePair , lastTransaction} = props
 
     const {t} = useTranslation();
     const [orders, setOrders] = useState([])
@@ -20,7 +20,7 @@ const OpenOrders = (props) => {
     const [isLoading, setIsLoading] = useState(true)
 
     const getOpenOrderData = async () => {
-        const openOrder = await getOpenOrder(activePair, accessToken)
+        const openOrder = await getOpenOrder(activePair)
         if (openOrder.status === 200) {
             setOrders(openOrder.data)
         }
@@ -31,7 +31,7 @@ const OpenOrders = (props) => {
     }, [activePair, lastTransaction])
 
     const cancelOrder = async (orderId) => {
-        await cancelOpenOrders(activePair, accessToken, orderId)
+        await cancelOpenOrders(activePair , orderId)
         await getOpenOrderData()
     }
     if (isLoading) {
@@ -139,7 +139,6 @@ const OpenOrders = (props) => {
 const mapStateToProps = (state) => {
     return {
         activePair: state.global.activePair,
-        accessToken: state.auth.accessToken,
         lastTransaction: state.auth.lastTransaction,
     };
 };

@@ -16,7 +16,7 @@ const BuyOrder = (props) => {
     const history = useHistory();
     const {t} = useTranslation();
     const [isLoading, setIsLoading] = useState(false)
-    const {wallets, activePair, tradeFee, bestBuyPrice, accessToken, isLogin, selectedBuyOrder} = props
+    const {wallets, activePair, tradeFee, bestBuyPrice, isLogin, selectedBuyOrder} = props
     const [alert, setAlert] = useState({
         submit: false,
         reqAmount: null,
@@ -198,7 +198,7 @@ const BuyOrder = (props) => {
             return false
         }
         setIsLoading(true)
-        const submitOrder = await createOrder(activePair, "BUY", accessToken, order)
+        const submitOrder = await createOrder(activePair, "BUY", order)
         if (!submitOrder) {
             setIsLoading(false)
         }
@@ -368,7 +368,6 @@ const mapStateToProps = (state) => {
         selectedBuyOrder: state.global.activePairOrders.selectedBuyOrder,
         wallets: state.auth.wallets,
         tradeFee: state.auth.tradeFee,
-        accessToken: state.auth.accessToken,
         isLogin: state.auth.isLogin,
     };
 };

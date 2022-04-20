@@ -2,7 +2,7 @@ import React, {Fragment, useEffect, useState} from "react";
 import moment from "moment-jalaali";
 import classes from "../../MyOrders.module.css";
 import {useTranslation} from "react-i18next";
-import {getOrdersHistory, getTrades} from "../api/myOrders";
+import {getTrades} from "../api/myOrders";
 import {connect} from "react-redux";
 import Loading from "../../../../../../../../../../components/Loading/Loading";
 import ScrollBar from "../../../../../../../../../../components/ScrollBar";
@@ -10,7 +10,7 @@ import Icon from "../../../../../../../../../../components/Icon/Icon";
 
 const Trades = (props) => {
 
-    const {activePair, accessToken, lastTransaction} = props
+    const {activePair , lastTransaction} = props
 
     const {t} = useTranslation();
     const [trades, setTrades] = useState([])
@@ -18,7 +18,7 @@ const Trades = (props) => {
     const [isLoading, setIsLoading] = useState(true)
 
     useEffect(() => {
-        getTrades(activePair, accessToken)
+        getTrades(activePair)
             .then((trades) => {
                 if (trades.status === 200) {
                     setTrades(trades.data.sort((a,b) => a.time - b.time).slice(0 , 50))
@@ -104,7 +104,6 @@ const Trades = (props) => {
 const mapStateToProps = (state) => {
     return {
         activePair: state.global.activePair,
-        accessToken: state.auth.accessToken,
         lastTransaction: state.auth.lastTransaction,
     };
 };

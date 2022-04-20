@@ -1,10 +1,6 @@
 import {mock} from "../mockData";
 import axios from "axios";
-import {apiBaseUrl} from "../../../../../../../../../constants/global";
 
-const myOrder = axios.create({
-    baseURL: apiBaseUrl,
-});
 
 export const getOpexChartData = async (symbol, interval = "1h", limit = "200") => {
 
@@ -13,7 +9,7 @@ export const getOpexChartData = async (symbol, interval = "1h", limit = "200") =
     params.append('interval', interval);
     params.append('limit', limit);
 
-    return await myOrder.get(`/api/v3/klines?${params.toString()}`).then((res) => {
+    return await axios.get(`/api/v3/klines?${params.toString()}`).then((res) => {
         return parseCandleData(res.data.reverse());
     }).catch((e) => {
         console.log(e)
@@ -27,7 +23,7 @@ export const getGlobalChartData = async (symbol, interval = "1d", limit = "200")
     params.append('interval', interval);
     params.append('limit', limit);
 
-    return await myOrder.get(`/binance/api/v3/klines?${params.toString()}`).then((res) => {
+    return await axios.get(`/binance/api/v3/klines?${params.toString()}`).then((res) => {
         return parseCandleData(res.data);
     }).catch((e) => {
         console.log(e)
