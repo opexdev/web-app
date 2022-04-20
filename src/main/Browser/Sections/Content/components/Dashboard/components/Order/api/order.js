@@ -1,13 +1,7 @@
 import axios from "axios";
-import {apiBaseUrl} from "../../../../../../../../../constants/global";
 
-const Order = axios.create({
-    baseURL: apiBaseUrl,
-});
-
-export const createOrder = async (activePair , side , token , order) => {
+export const createOrder = async (activePair , side , order) => {
     const timestamp = Date.now()
-
     const params = new URLSearchParams();
     params.append('symbol', activePair.symbol);
     params.append('side', side);
@@ -16,11 +10,12 @@ export const createOrder = async (activePair , side , token , order) => {
     params.append('timestamp', timestamp.toString());
     params.append('quantity', order.reqAmount.toString());
     params.append('price', order.pricePerUnit.toString());
-
-    Order.defaults.headers.post['Authorization'] = `Bearer ${token}`;
-    Order.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
-
-    return await Order.post(`/api/v3/order?${params.toString()}` ,params).then((res) => {
+    return await axios.post(`/api/v3/order?${params.toString()}`, {
+        params,
+        headers : {
+            'Content-Type':'application/x-www-form-urlencoded'
+        }
+    }).then((res) => {
         return res;
     }).catch((e) => {
         if (!e.response) {
