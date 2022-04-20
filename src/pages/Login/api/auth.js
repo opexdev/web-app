@@ -67,7 +67,7 @@ export const register = async (user , panelToken) => {
 }
 
 export const getCaptcha = async () => {
-    return await axios.post(`/captcha/session`, {} ,{
+    return await axios.post(`/captcha/session`, null ,{
         headers : {
             'Accept' : 'image/jpeg'
 

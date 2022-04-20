@@ -10,7 +10,7 @@ export const createOrder = async (activePair , side , order) => {
     params.append('timestamp', timestamp.toString());
     params.append('quantity', order.reqAmount.toString());
     params.append('price', order.pricePerUnit.toString());
-    return await axios.post(`/api/v3/order?${params.toString()}`, {
+    return await axios.post(`/api/v3/order?${params.toString()}`, null , {
         params,
         headers : {
             'Content-Type':'application/x-www-form-urlencoded'
