@@ -4,9 +4,6 @@ pipeline {
     environment {
         COMPOSE_PROJECT_NAME = 'dev-web-app'
         DEFAULT_NETWORK_NAME = 'dev-opex'
-        API_BASE_URL = 'https://api.opex.dev:8443'
-        CLIENT_ID = 'web-app'
-        CLIENT_SECRET = '732494ea-f894-4f18-a915-0e50ca0928c0'
         GENERATE_SOURCEMAP = 'true'
     }
 
