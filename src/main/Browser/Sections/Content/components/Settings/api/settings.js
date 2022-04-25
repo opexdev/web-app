@@ -1,8 +1,8 @@
 import axios from "axios";
-import ChangePassword from "../components/Security/components/ChangePassword/ChangePassword";
 
 const Settings = axios.create({
     baseURL: process.env.REACT_APP_API_BASE_URL,
+    timeout: 15000,
 });
 
 export const CheckUserSecurityConfigs = async (panelToken, username) => {

@@ -40,13 +40,13 @@ const Deposit = () => {
 
 
     const helpText = () => {
-        if (id === "ETH"){
+        if (id === "TETH"){
             return <div>
                 <span className={`text-red font-weight-bold`}>{t("DepositWithdraw.important")}: </span>
                <div>
-                   <span>{t("DepositWithdraw.DepositETHContentBefore")}</span>
+                   <span>{t("DepositWithdraw.DepositTETHContentBefore")}</span>
                    <span className={`hover-text cursor-pointer`} onClick={()=>window.open('https://faucet.dimensions.network/')}>https://faucet.ropsten.be</span>
-                   <span>{t("DepositWithdraw.DepositETHContentAfter")}</span>
+                   <span>{t("DepositWithdraw.DepositTETHContentAfter")}</span>
                </div>
                 <div>
                     <Trans
@@ -67,13 +67,13 @@ const Deposit = () => {
                 </div>
             </div>
         }
-        if (id === "BTC"){
+        if (id === "TBTC"){
             return <div>
                 <span className={`text-red font-weight-bold`}>{t("DepositWithdraw.important")}: </span>
                 <div>
-                    <span>{t("DepositWithdraw.DepositBTCContentBefore")}</span>
+                    <span>{t("DepositWithdraw.DepositTBTCContentBefore")}</span>
                     <span className={`hover-text cursor-pointer`} onClick={()=>window.open('https://testnet-faucet.com/btc-testnet')}>https://testnet-faucet.com/btc-testnet</span>
-                    <span>{t("DepositWithdraw.DepositBTCContentAfter")}</span>
+                    <span>{t("DepositWithdraw.DepositTBTCContentAfter")}</span>
                 </div>
                 <div>
                     <Trans
@@ -94,13 +94,13 @@ const Deposit = () => {
                 </div>
             </div>
         }
-        if (id === "USDT"){
+        if (id === "TUSDT"){
             return <div>
                 <span className={`text-red font-weight-bold`}>{t("DepositWithdraw.important")}: </span>
                 <div>
-                    <span>{t("DepositWithdraw.DepositUSDTContentBefore")}</span>
+                    <span>{t("DepositWithdraw.DepositTUSDTContentBefore")}</span>
                     <span className={`hover-text cursor-pointer`} onClick={()=>window.open('https://bit.ly/ROPTokens')}>https://bit.ly/ROPTokens</span>
-                    <span>{t("DepositWithdraw.DepositUSDTContentAfter")}</span>
+                    <span>{t("DepositWithdraw.DepositTUSDTContentAfter")}</span>
                 </div>
                 <div>
                     <Trans
