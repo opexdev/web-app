@@ -1,6 +1,7 @@
 {
   "name": "opex",
   "version": "0.1.1",
+  "homepage": "",
   "private": true,
   "dependencies": {
     "@nivo/core": "^0.67.0",

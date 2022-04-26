@@ -20,11 +20,10 @@ const MarketHeader = (props) => {
     const [showPopUpAsset, setShowPopUpAsset] = useState(null);
 
     const getWallet = async () => {
-        let accountWallet = await getAccount(accessToken)
-        if (accountWallet.status === 200) {
-            let base = "-";
-            let quote = "-";
-            const parsedData = parseWalletsResponse(accountWallet.data);
+        let parsedData = await getAccount(accessToken)
+        if (parsedData) {
+            let base = "0";
+            let quote = "0";
             setUserAccountInfo(parsedData)
             if(typeof parsedData.wallets[activePair.baseAsset] !== 'undefined'){
                 base = new BN(parsedData.wallets[activePair.baseAsset].free).decimalPlaces(activePair.baseAssetPrecision).toFormat();

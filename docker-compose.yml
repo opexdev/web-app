@@ -5,6 +5,9 @@ services:
       context: .
       args:
         - API_BASE_URL=${API_BASE_URL}
+        - CLIENT_ID=${CLIENT_ID}
+        - CLIENT_SECRET=${CLIENT_SECRET}
+        - GENERATE_SOURCEMAP=$GENERATE_SOURCEMAP
     networks:
       - default
     deploy:

@@ -7,6 +7,9 @@ import opexQrCode from "./images/src/opex-qr-code.svg";
 import safe from "./images/src/safe.svg";
 import opexCoin from "./images/src/opexCoin.svg";
 import bitcoin from "./images/src/bitcoin.svg";
+import testBitcoin from "./images/src/testBitcoin.svg";
+import testEthereumLight from "./images/src/testEthereumLight.svg";
+import testTether from "./images/src/testTether.svg";
 import dogecoin from "./images/src/dogecoin.svg";
 import bitcoinCash from "./images/src/bitcoinCash.svg";
 import litecoin from "./images/src/litecoin.svg";
@@ -17,6 +20,7 @@ import spaceStar from "./images/src/spaceStar.png";
 import astronaut from "./images/src/astronaut.svg";
 import approve from "./images/src/approve.svg";
 import reject from "./images/src/reject.svg";
+import security from "./images/src/security.svg";
 import squareLoading from "./images/src/squareLoading.gif";
 import squareLoadingLight from "./images/src/squareLoadingLight.gif";
 import linearLoading from "./images/src/linearLoading.gif";
@@ -33,6 +37,9 @@ export const images = {
   safe: safe,
   NLN: opexCoin,
   BTC: bitcoin,
+  TBTC: testBitcoin,
+  TETH: testEthereumLight,
+  TUSDT: testTether,
   DOGE: dogecoin,
   BCH: bitcoinCash,
   LTC: litecoin,
@@ -43,6 +50,7 @@ export const images = {
   astronaut: astronaut,
   approve: approve,
   reject: reject,
+  security: security,
   squareLoading: squareLoading,
   squareLoadingLight: squareLoadingLight,
   linearLoading: linearLoading,

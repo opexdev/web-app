@@ -5,13 +5,14 @@ import {Provider} from "react-redux";
 import {createStore, applyMiddleware, combineReducers, compose} from "redux";
 import createSagaMiddleware from "redux-saga";
 import globalReducer from "./store/reducers/globalReducer";
-//import reportWebVitals from "./reportWebVitals";
 import "normalize.css";
 import "./index.css";
 import authReducer from "./store/reducers/authReducer";
 import {watchGlobal} from "./store/sagas";
 import "./assets/fontIcon/opex-icon/css/opex-icon.css";
 import Main from "./main/main";
+import setupAxios from "./setup/axios/setupAxios";
+import axios from "axios";
 
 const sagaMiddleware = createSagaMiddleware();
 const rootReducer = combineReducers({
@@ -19,34 +20,34 @@ const rootReducer = combineReducers({
     auth: authReducer,
 });
 
+/**
+ * Base URL of the website.
+ *
+ * @see https://facebook.github.io/create-react-app/docs/using-the-public-folder
+ */
+const {PUBLIC_URL} = process.env
 
-const composeEnhancers =
-    typeof window === 'object' &&
-    window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ ?
-        window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({}) : compose;
 
-const enhancer = composeEnhancers(
-    applyMiddleware(sagaMiddleware),
-);
+const composeEnhancers = (process.env.NODE_ENV === "development" &&
+    typeof window !== 'undefined' &&
+    window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__) ||
+compose;
+
+const enhancer = composeEnhancers(applyMiddleware(sagaMiddleware));
+
 const store = createStore(rootReducer, enhancer);
 
-
-//const store = createStore(rootReducer, applyMiddleware(sagaMiddleware));
-
 sagaMiddleware.run(watchGlobal);
+
+setupAxios(axios,store);
 
 ReactDOM.render(
     <React.StrictMode>
         <Suspense fallback={"loading"}>
             <Provider store={store}>
-                <Main/>
+                <Main baseURL={PUBLIC_URL}/>
             </Provider>
         </Suspense>
     </React.StrictMode>,
     document.getElementById("root"),
 );
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-//reportWebVitals(console.log);

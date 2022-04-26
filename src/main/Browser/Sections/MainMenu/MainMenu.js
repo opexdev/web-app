@@ -82,7 +82,7 @@ const MainMenu = () => {
                          data-html={true} data-place="left" data-effect="float" data-tip={`<span class="column jc-between col-100">${t("messages.title")}</span>`}><Icon iconName="icon-messages-dotted font-size-lg"/>
                      </span>
                         <NavLink
-                            to={Routes.Settings}
+                            to={Routes.Security}
                             activeClassName={classes.selected}
                             onClick={() => setShowMessages(false)}
                             data-html={true}

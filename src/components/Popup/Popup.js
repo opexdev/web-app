@@ -6,7 +6,6 @@ import {setUserAccountInfo} from "../../store/actions/auth";
 import Button from "../Button/Button";
 import {Link} from "react-router-dom";
 import * as Routes from "../../routes/routes";
-import {images} from "../../assets/images";
 import {getDepositAddress} from "../../main/Browser/Sections/Content/components/Wallet/api/wallet";
 import QRCode from "react-qr-code";
 import Icon from "../Icon/Icon";
@@ -19,14 +18,12 @@ import {Login} from "../../routes/routes";
 
 const Popup = (props) => {
     const {t} = useTranslation();
-    const {currency, isLogin, closePopup, activePair} = props
+    const {currency, isLogin, closePopup,} = props
     const [address , setAddress] = useState("")
     const addressRef = useRef(null);
 
-    const accessToken = useSelector(state => state.auth.accessToken);
-
     useEffect(() => {
-        getDepositAddress(accessToken ,currency).then((res)=>{
+        getDepositAddress(currency).then((res)=>{
             if (res && res.status === 200 ){
                 setAddress(res.data.address)
             }else {

@@ -10,7 +10,7 @@ import Icon from "../../../../../../../../../../components/Icon/Icon";
 
 const OrdersHistory = (props) => {
 
-    const {activePair, accessToken, lastTransaction} = props
+    const {activePair , lastTransaction} = props
 
     const {t} = useTranslation();
     const [orders, setOrders] = useState([])
@@ -18,7 +18,7 @@ const OrdersHistory = (props) => {
     const [isLoading, setIsLoading] = useState(true)
 
     useEffect(() => {
-        getOrdersHistory(activePair, accessToken)
+        getOrdersHistory(activePair)
             .then((ordersHistory) => {
                 if (ordersHistory.status === 200) {
                     setOrders(ordersHistory.data.sort((a,b) => a.time - b.time).slice(0 , 50))
@@ -127,7 +127,6 @@ const OrdersHistory = (props) => {
 const mapStateToProps = (state) => {
     return {
         activePair: state.global.activePair,
-        accessToken: state.auth.accessToken,
         lastTransaction: state.auth.lastTransaction,
     };
 };

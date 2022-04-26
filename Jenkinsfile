@@ -4,7 +4,7 @@ pipeline {
     environment {
         COMPOSE_PROJECT_NAME = 'demo-web-app'
         DEFAULT_NETWORK_NAME = 'demo-opex'
-        API_BASE_URL = 'https://api.opex.dev'
+        GENERATE_SOURCEMAP = 'false'
     }
 
     stages('Deploy') {

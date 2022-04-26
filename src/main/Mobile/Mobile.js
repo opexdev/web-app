@@ -1,9 +1,8 @@
 import React, {Fragment} from "react";
 import {connect} from "react-redux";
-import {useTranslation} from "react-i18next";
 import {loadConfig} from "../../store/actions";
 import "./Mobille.css";
-import {Switch, Route, Redirect} from "react-router-dom";
+import {Redirect, Route, Switch} from "react-router-dom";
 import FullWidthLoading from "../../components/FullWidthLoading/FullWidthLoading";
 import ReactTooltip from "react-tooltip";
 import TheHeader from "./Secttions/TheHeader/TheHeader";

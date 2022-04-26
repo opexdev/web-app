@@ -3,16 +3,14 @@ import classes from "./DepositWithdrawTx.module.css";
 import moment from "moment-jalaali";
 import {connect, useSelector} from "react-redux";
 import {Trans, useTranslation} from "react-i18next";
-import {DTAllTransactionsData} from "../../../../../../../../FakeData/FakeData";
 import ScrollBar from "../../../../../../../../components/ScrollBar";
 import NumberInput from "../../../../../../../../components/NumberInput/NumberInput";
 import TextInput from "../../../../../../../../components/TextInput/TextInput";
 import Icon from "../../../../../../../../components/Icon/Icon";
 import {useParams} from "react-router-dom";
-import {getDeposit, getDepositAddress, getWithdraw} from "../../api/wallet";
+import {getDeposit, getWithdraw} from "../../api/wallet";
 import Loading from "../../../../../../../../components/Loading/Loading";
 import Error from "../../../../../../../../components/Error/Error";
-import LastTradesTable from "../../../Dashboard/components/LastTrades/components/LastTradesTable/LastTradesTable";
 import useInterval from "../../../../../../../../Hooks/useInterval";
 import {BN} from "../../../../../../../../utils/utils";
 import IRTTx from "./components/IRTTx/IRTTx";
@@ -32,7 +30,6 @@ const DepositWithdrawTx = (props) => {
     address: null,
   });
   const {id} = useParams();
-  const accessToken = useSelector(state => state.auth.accessToken);
   const [alert, setAlert] = useState({
     fromTime: null,
     fromDate: null,
@@ -73,7 +70,7 @@ const DepositWithdrawTx = (props) => {
   const getTx = async () => {
 
     let newTx = []
-    const deposit = await getDeposit(accessToken ,id)
+    const deposit = await getDeposit(id)
     if (deposit && deposit.status === 200 ){
       setError(false)
       newTx = deposit.data.map((d)=>{
@@ -85,7 +82,7 @@ const DepositWithdrawTx = (props) => {
       return setError(true)
     }
 
-    const withdraw = await getWithdraw(accessToken ,id)
+    const withdraw = await getWithdraw(id)
     if (withdraw && withdraw.status === 200 ){
       setError(false)
       newTx = [...newTx , ...withdraw.data.map(w => {
@@ -289,7 +286,7 @@ const DepositWithdrawTx = (props) => {
                     </td>
                     {/*<td>{tr.amount}</td>*/}
                    {/* <td>{t("ordersStatus.FILLED")}</td>*/}
-                    <td>{txStatus(tr.status)}</td>
+                    <td className={`text-color`}>{txStatus(tr.status)}</td>
                     {openItem === index ? (
                         <td onClick={() => setOpenItem(null)}>
                           <Icon

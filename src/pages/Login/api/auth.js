@@ -1,22 +1,17 @@
 import axios from "axios";
-import {apiBaseUrl} from "../../../constants/global";
-import {authClientId, authClientSecret, authLoginClientId} from '../../../constants/auth';
 
+const clientSecret = process.env.REACT_APP_CLIENT_SECRET
+const clientId = process.env.REACT_APP_CLIENT_ID
 
-const Auth = axios.create({
-    baseURL: apiBaseUrl,
-    responseType: "json"
-});
 
 export const getToken = async () => {
     const params = new URLSearchParams();
-    params.append('client_id', authClientId);
-    params.append('client_secret', authClientSecret);
+    params.append('client_id', clientId);
+    params.append('client_secret', clientSecret);
     params.append('grant_type', 'client_credentials');
-
-    return await Auth.post('/auth/realms/opex/protocol/openid-connect/token', params)
+    return await axios.post('/auth/realms/opex/protocol/openid-connect/token', params)
         .then((res) => {
-            return res;
+            return  res.data.access_token;
         }).catch((e) => {
             if (!e.response) {
                 return false;
@@ -25,14 +20,16 @@ export const getToken = async () => {
         })
 }
 
-export const login = async (credential) => {
+export const login = async (credential , agent) => {
     const params = new URLSearchParams();
-    params.append('client_id', authLoginClientId);
+    params.append('client_id', clientId);
     params.append('username', credential.username);
     params.append('password', credential.password);
+    params.append('otp', credential.otp);
+    params.append('agent', agent);
     params.append('grant_type', 'password');
-
-    return await Auth.post('/auth/realms/opex/protocol/openid-connect/token', params)
+    params.append('client_secret', clientSecret);
+    return await axios.post('/auth/realms/opex/protocol/openid-connect/token', params)
         .then((res) => {
             return res;
         }).catch((e) => {
@@ -43,28 +40,22 @@ export const login = async (credential) => {
         })
 };
 
-export const register = async (token, user) => {
-    Auth.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-    return await Auth.post('/auth/admin/realms/opex/users', {
-        "createdTimestamp": Date.now(),
-        "username": user.username,
-        "enabled": true,
-        "totp": false,
-        "emailVerified": false,
-        "firstName": user.firstName,
-        "lastName": user.lastName,
-        "email": user.email,
-        "disableableCredentialTypes": [],
-        "requiredActions": ["VERIFY_EMAIL", "UPDATE_PASSWORD"],
-        "notBefore": 0,
-        "access": {
-            "manageGroupMembership": true,
-            "view": true,
-            "mapRoles": true,
-            "impersonate": true,
-            "manage": true
-        },
-        "realmRoles": ["mb-user"]
+export const logOut = async () => {
+    return await axios.post(`/auth/realms/opex/user-management/user/logout`).then((res) => {
+        return res;
+    }).catch((e) => {
+        if (!e.response) {
+            return false;
+        }
+        return e.response;
+    })
+}
+
+export const register = async (user , panelToken) => {
+    return await axios.post('/auth/realms/opex/user-management/user', user ,{
+        headers : {
+            "Authorization" : "Bearer "+ panelToken
+        }
     }).then((res) => {
         return res;
     }).catch((e) => {
@@ -73,12 +64,31 @@ export const register = async (token, user) => {
         }
         return e.response;
     })
-
 }
 
+export const getCaptcha = async () => {
+    return await axios.post(`/captcha/session`, null ,{
+        headers : {
+            'Accept' : 'image/jpeg'
+
+        },
+        responseType: "arraybuffer"
+    })
+        .then((res) => {
+            return res;
+        }).catch((e) => {
+            if (!e.response) {
+                return false;
+            }
+            return e.response;
+        })
+};
+
+
+//Todo Remove getUser
 export const getUser = async (token, key , value) => {
-    Auth.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-    return await Auth.get(`/auth/admin/realms/opex/users?${key}=${value}`,)
+    axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+    return await axios.get(`/auth/admin/realms/opex/users?${key}=${value}`,)
         .then((res) => {
             return res;
         }).catch((e) => {
@@ -89,23 +99,12 @@ export const getUser = async (token, key , value) => {
         })
 }
 
-
-export const sendVerifyEmail = async (token, userId) => {
-    Auth.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-    return await Auth.put(`/auth/admin/realms/opex/users/${userId}/send-verify-email`,)
-        .then((res) => {
-            console.log(res.data);
-        }).catch((e) => {
-            console.log(e);
-        })
-}
-
-export const sendForgetPasswordEmail = async (token, userId) => {
-    Auth.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-    Auth.defaults.headers.common['Content-Type'] = "application/json";
-    return await Auth.put(`/auth/admin/realms/opex/users/${userId}/execute-actions-email`,
-        ["UPDATE_PASSWORD"]
-    ).then((res) => {
+export const sendForgetPasswordEmail = async (panelToken , email ,captchaAnswer) => {
+    return await axios.post(`/auth/realms/opex/user-management/user/forgot?email=${email}&captcha-answer=${captchaAnswer}`,null ,{
+        headers : {
+            "Authorization" : "Bearer "+ panelToken
+        }
+    }).then((res) => {
         return res;
     }).catch((e) => {
         if (!e.response) {
@@ -131,11 +130,9 @@ export const parsePanelToken = ( data ) => {
 }
 
 export const sendUpdateProfileReq = async (token, user, attributes ) => {
-
-    Auth.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-    Auth.defaults.headers.common['Content-Type'] = 'application/json';
-
-    return await Auth.put(`auth/admin/realms/opex/users/${user}`,{
+    axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+    axios.defaults.headers.common['Content-Type'] = 'application/json';
+    return await axios.put(`auth/admin/realms/opex/users/${user}`,{
         attributes ,
     }).then((res) => {
         return res;
@@ -147,16 +144,13 @@ export const sendUpdateProfileReq = async (token, user, attributes ) => {
     })
 }
 export const sendUserFile = async (token, user, file ) => {
-
-    Auth.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-    Auth.defaults.headers.common['Content-Type'] = 'application/json';
-
+    axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+    axios.defaults.headers.common['Content-Type'] = 'application/json';
     const data = new FormData();
     data.append('file', file);
 
-    return await Auth.post(`/storage/${user}`, data
+    return await axios.post(`/storage/${user}`, data
     ).then((res) => {
-        console.log(res)
         return res;
     }).catch((e) => {
         if (!e.response) {
@@ -167,11 +161,9 @@ export const sendUserFile = async (token, user, file ) => {
 }
 
 export const addToKycGroup = async (token, userId) => {
-
-    Auth.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-    Auth.defaults.headers.common['Content-Type'] = 'application/json';
-
-    return await Auth.put(`/auth/admin/realms/opex/users/${userId}/groups/24200655-dfef-4ed0-a8b8-925918793552`)
+    axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+    axios.defaults.headers.common['Content-Type'] = 'application/json';
+    return await axios.put(`/auth/admin/realms/opex/users/${userId}/groups/24200655-dfef-4ed0-a8b8-925918793552`)
         .then((res) => {
             return res;
         }).catch((e) => {

@@ -14,7 +14,6 @@ import Loading from "../../../../../../../../../../../../components/Loading/Load
 import Countdown from "react-countdown";
 import CallbackPage from "./components/CallbackPage/CallbackPage";
 import {setIPGInitiate} from "../../../../../../../../../../../../store/actions";
-import { apiBaseUrl } from "../../../../../../../../../../../../constants/global";
 
 const IRT = (props) => {
 
@@ -30,22 +29,21 @@ const IRT = (props) => {
         amount: {value: "", error: []},
     })
 
+    const apiBaseUrl = process.env.REACT_APP_API_BASE_URL;
+
     // const dataMin = 100000
     const dataMin = 1000
     const dataMax = 50000000
 
-
-    const paymentToken = new URLSearchParams(useLocation().search).get("token");
-    const paymentStatus = new URLSearchParams(useLocation().search).get("payment_status");
-
+    const params = new URLSearchParams(useLocation().search);
+    const paymentToken = params.get("token");
+    const paymentStatus = params.get("payment_status");
+    const errorCode = params.get("error_code");
 
     const {id} = useParams();
 
-    const accessToken = useSelector(state => state.auth.accessToken);
-
-
     const openPayments = async () => {
-        const openPaymentReq = await getOpenPayments(accessToken);
+        const openPaymentReq = await getOpenPayments();
         if (openPaymentReq && openPaymentReq.status === 200) {
             setError(false)
             setOpenPayment(openPaymentReq.data)
@@ -61,13 +59,13 @@ const IRT = (props) => {
     }, [props.wallet]);
 
 
-    const cancelIRTTx = async (accessToken, reference) => {
+    const cancelIRTTx = async (reference) => {
         setLoading(true)
         setOpenPayment([])
         setIRT({
             amount: {value: "", error: []},
         })
-        const cancelIRTReq = await cancelIRTDepositReq(accessToken, reference);
+        const cancelIRTReq = await cancelIRTDepositReq(reference);
         if (cancelIRTReq && cancelIRTReq.status === 200) {
             setCancel(true)
             setLoading(false)
@@ -95,7 +93,7 @@ const IRT = (props) => {
         setLoading(true)
         const amount = new BN(parsePriceString(IRT.amount.value)).multipliedBy(10)
 
-        const SendAmountReq = await sendIRTDepositReq(accessToken, amount);
+        const SendAmountReq = await sendIRTDepositReq(amount);
         if (SendAmountReq && SendAmountReq.status === 200) {
             setError(false)
             setResponse(SendAmountReq.data)
@@ -166,6 +164,7 @@ const IRT = (props) => {
                     ...inputs,
                     [key]: {
                         ...inputs[key],
+
                         error: [<Trans
                             i18nKey="DepositWithdraw.emptyInput"
                             values={{
@@ -241,7 +240,7 @@ const IRT = (props) => {
                                 buttonClass={`${classes.cancel} ${classes.disable} px-2 mr-05`}
                                 buttonTitle={t('DepositWithdraw.cancel')}
                                 type="submit"
-                                onClick={() => cancelIRTTx(accessToken, openPayment[0].reference)}
+                                onClick={() => cancelIRTTx(openPayment[0].reference)}
                                 disabled={disable}
                             />
                         </div>
@@ -299,7 +298,7 @@ const IRT = (props) => {
 
     return (
         <>
-            {paymentToken !== null ? <CallbackPage paymentToken={paymentToken} paymentStatus={paymentStatus}/> : ""}
+            {paymentStatus !== null ? <CallbackPage paymentToken={paymentToken} paymentStatus={paymentStatus} errorCode={errorCode}/> : ""}
             { content()}
         </>
 

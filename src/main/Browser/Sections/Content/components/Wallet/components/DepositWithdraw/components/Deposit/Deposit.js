@@ -19,7 +19,6 @@ const Deposit = () => {
 
     const addressRef = useRef(null);
     const {id} = useParams();
-    const accessToken = useSelector(state => state.auth.accessToken);
 
     const copyToClipboard = () => {
         addressRef.current.select();
@@ -30,7 +29,7 @@ const Deposit = () => {
     };
 
     useEffect(() => {
-        getDepositAddress(accessToken ,id).then((res)=>{
+        getDepositAddress(id).then((res)=>{
             if (res && res.status === 200 ){
                 setAddress(res.data.address)
             }else {
@@ -39,42 +38,90 @@ const Deposit = () => {
         })
     }, [id]);
 
+
     const helpText = () => {
-        if (id === "ETH"){
+        if (id === "TETH"){
             return <div>
-                <span className={`text-red font-weight-bold`}>مهم: </span>
-                فقط ETH تستی شبکه Ropsten مورد قبول قرار می‌گیرد! برای دریافت رایگان به <span className={`hover-text cursor-pointer`} onClick={()=>window.open('https://faucet.ropsten.be')}>https://faucet.ropsten.be</span> بروید. برای ارسال ETH تستی به این آدرس، باید شبکه اتریومی کیف پول خود را به Ropsten تغییر دهید. این شبکه به طور پیش‌فرض در فهرست شبکه‌های کیف پول Metamask وجود دارد.
-                هر تراکنشی با مقدار مساوی یا بیشتر از ۰.۰۰۱ ETH به آدرس بالا، به حساب شما افزوده می‌شود.
+                <span className={`text-red font-weight-bold`}>{t("DepositWithdraw.important")}: </span>
+               <div>
+                   <span>{t("DepositWithdraw.DepositTETHContentBefore")}</span>
+                   <span className={`hover-text cursor-pointer`} onClick={()=>window.open('https://faucet.dimensions.network/')}>https://faucet.ropsten.be</span>
+                   <span>{t("DepositWithdraw.DepositTETHContentAfter")}</span>
+               </div>
                 <div>
-                    حداقل میزان قابل قبول ۰.۰۰۱ ETH
+                    <Trans
+                        i18nKey="DepositWithdraw.minDeposit"
+                        values={{
+                            min: 0.001,
+                            currency: t("currency." + id)
+                        }}
+                    />
                 </div>
                 <div>
-                     * موجودی شما ۲ دقیقه بعد از واریز به آدرس بالا، افزایش پیدا می‌کند.
+                    <Trans
+                        i18nKey="DepositWithdraw.depositTime"
+                        values={{
+                            time: 2
+                        }}
+                    />
                 </div>
             </div>
         }
-        if (id === "BTC"){
+        if (id === "TBTC"){
             return <div>
-                <span className={`text-red font-weight-bold`}>مهم: </span>
-                فقط  BTC تستی مورد قبول قرار می‌گیرد! برای  دریافت رایگان به <span className={`hover-text cursor-pointer`} onClick={()=>window.open('https://testnet-faucet.com/btc-testnet')}>https://testnet-faucet.com/btc-testnet</span> بروید.
-                هر تراکنشی با مقدار مساوی یا بیشتر از ۰.۰۰۱ BTC به آدرس بالا، به حساب شما افزوده می‌شود.
-                <div>حداقل میزان قابل قبول ۰.۰۰۱ BTC</div>
+                <span className={`text-red font-weight-bold`}>{t("DepositWithdraw.important")}: </span>
                 <div>
-                    * موجودی شما ۱۰ دقیقه بعد از واریز به آدرس بالا، افزایش پیدا می‌کند.
+                    <span>{t("DepositWithdraw.DepositTBTCContentBefore")}</span>
+                    <span className={`hover-text cursor-pointer`} onClick={()=>window.open('https://testnet-faucet.com/btc-testnet')}>https://testnet-faucet.com/btc-testnet</span>
+                    <span>{t("DepositWithdraw.DepositTBTCContentAfter")}</span>
+                </div>
+                <div>
+                    <Trans
+                        i18nKey="DepositWithdraw.minDeposit"
+                        values={{
+                            min: 0.001,
+                            currency: t("currency." + id)
+                        }}
+                    />
+                </div>
+                <div>
+                    <Trans
+                        i18nKey="DepositWithdraw.depositTime"
+                        values={{
+                            time: 10
+                        }}
+                    />
                 </div>
             </div>
         }
-        if (id === "USDT"){
+        if (id === "TUSDT"){
             return <div>
-                <span className={`text-red font-weight-bold`}>مهم: </span>
-                فقط USDT تستی شبکه Ropsten مورد قبول قرار می‌گیرد! برای آشنایی با روش دریافت رایگان به <span className={`hover-text cursor-pointer`} onClick={()=>window.open('https://bit.ly/ROPTokens')}>https://bit.ly/ROPTokens</span> بروید. برای ارسال USDT تستی به این آدرس، باید شبکه اتریومی کیف پول خود را به Ropsten تغییر دهید. این شبکه به طور پیش‌فرض در فهرست شبکه‌های کیف پول Metamask وجود دارد.
-                هر تراکنشی با مقدار مساوی یا بیشتر از ۱۰ USDT به آدرس بالا، به حساب شما افزوده می‌شود.
-                <div>حداقل میزان قابل قبول ۱۰ USDT</div>
+                <span className={`text-red font-weight-bold`}>{t("DepositWithdraw.important")}: </span>
                 <div>
-                     * موجودی شما 2 دقیقه بعد از واریز به آدرس بالا، افزایش پیدا می‌کند.
+                    <span>{t("DepositWithdraw.DepositTUSDTContentBefore")}</span>
+                    <span className={`hover-text cursor-pointer`} onClick={()=>window.open('https://bit.ly/ROPTokens')}>https://bit.ly/ROPTokens</span>
+                    <span>{t("DepositWithdraw.DepositTUSDTContentAfter")}</span>
+                </div>
+                <div>
+                    <Trans
+                        i18nKey="DepositWithdraw.minDeposit"
+                        values={{
+                            min: 10,
+                            currency: t("currency." + id)
+                        }}
+                    />
+                </div>
+                <div>
+                    <Trans
+                        i18nKey="DepositWithdraw.depositTime"
+                        values={{
+                            time: 2
+                        }}
+                    />
                 </div>
             </div>
         }
+
     }
 
     const lowestPrice = (id) => {
@@ -102,7 +149,14 @@ const Deposit = () => {
 
                 <div className="col-80 column jc-between">
                     <span>
-                    هر تراکنشی با مقدار بیشتر از {lowestPrice(id)} {t("currency."+id)} به آدرس زیر ، به حساب شما افزوده می شود.{" "}
+                        <Trans
+                            i18nKey="DepositWithdraw.minDepositText"
+                            values={{
+                                min: lowestPrice(id),
+                                currency: t("currency." + id)
+                            }}
+                        />
+
                     </span>
                     <TextInput
                         after={

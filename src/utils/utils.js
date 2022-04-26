@@ -21,7 +21,7 @@ export const parsePriceString = (value) => {
 };
 
 export const validateEmail = (email) => {
-  return /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(email);
+  return /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,10})+$/.test(email);
 }
 
 export const encodeQueryData = (params) => {
