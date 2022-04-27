@@ -8,6 +8,7 @@ import {isSafari} from "react-device-detect";
 import {getOrderBook} from "./api/orderBook";
 import useInterval from "../../../../../../../../Hooks/useInterval";
 import Error from "../../../../../../../../components/Error/Error";
+import Loading from "../../../../../../../../components/Loading/Loading";
 
 
 const OrderBook = (props) => {
@@ -44,8 +45,7 @@ const OrderBook = (props) => {
 
     const tableRender = () => {
         if (error)  return <Error/>
-        if (isLoading)  return <div className="container flex ai-center jc-center flashit">{t('loading')}</div>
-        if (error)  return <Error/>
+        if (isLoading)  return <Loading/>
 
         if (isSafari) {
             return <Fragment>

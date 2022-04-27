@@ -51,7 +51,7 @@ const Header = (props) => {
                         <h4>{t("comingSoon")}</h4>
                     </Route>
                 </Switch>
-                <div className={`col-35 column ai-end`}>
+                <div className={`col-25 column ai-end`}>
                     {firstName === null ? (
                         <Link to={Login} className="hover-text">
                             <p>{t("pleaseLogin")}</p>

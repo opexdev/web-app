@@ -248,7 +248,7 @@ const IRT = (props) => {
                     </div>
                     <div className={`col-30 flex jc-center ai-center`}>
                         {!disable ?<QRCode
-                            value={`${apiBaseUrl}/v1/payment/pay/${openPayment[0].reference}`}
+                            value={`${apiBaseUrl}/ipg/v1/payment/pay/${openPayment[0].reference}`}
                             bgColor="var(--cardBody)"
                             fgColor="var(--textColor)"
                             level='L'

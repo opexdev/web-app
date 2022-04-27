@@ -13,7 +13,7 @@ const WalletHeader = (props) => {
 
     return (
         <Fragment>
-            <div className={`col-35`} style={{backgroundColor: "var(--blue)"}}>
+            <div className={`col-25`} style={{backgroundColor: "var(--blue)"}}>
                 <h2 style={{color: "var(--orange)"}}>{t("currency." + id)}</h2>
                 <span style={{color: "var(--orange)"}}>{id}</span>
             </div>
