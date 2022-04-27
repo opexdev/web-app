@@ -5,9 +5,7 @@ export const setUserTokens = (token) => {
     return {
         type: actionTypes.SET_USER_TOKENS,
         accessToken: token.accessToken,
-        accessTokenExpires: token.accessTokenExpires,
         refreshToken: token.refreshToken,
-        refreshTokenExpires: token.refreshTokenExpires,
     };
 };
 
@@ -29,9 +27,7 @@ export const setUserTokensInitiate = (token) => {
     return {
         type: actionTypes.SET_USER_TOKENS_INITIATE,
         accessToken: token.accessToken,
-        accessTokenExpires: token.accessTokenExpires,
         refreshToken: token.refreshToken,
-        refreshTokenExpires: token.refreshTokenExpires,
     };
 };
 

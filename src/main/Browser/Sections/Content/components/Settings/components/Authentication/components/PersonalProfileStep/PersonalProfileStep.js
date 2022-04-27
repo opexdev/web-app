@@ -42,19 +42,6 @@ const PersonalProfileStep = (props) => {
         {value: "turkey", label: t('country.turkey')},
     ]
 
-    /*access: {manageGroupMembership: true, view: true, mapRoles: true, impersonate: true, manage: true}
-createdTimestamp: 1634894709039
-disableableCredentialTypes: []
-email: "demo1@nilin.co"
-emailVerified: false
-enabled: true
-firstName: "کاربر نمایشی"
-id: "27a4bebf-e470-46c3-9baf-883de8eb34b0"
-lastName: "یکم"
-notBefore: 0
-requiredActions: []
-totp: false
-username: "demo1"*/
 
     useEffect(async () => {
         let panelToken = await getToken()

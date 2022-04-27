@@ -1,4 +1,4 @@
-import React, {useState, Fragment} from "react";
+import React, {Fragment, useState} from "react";
 import classes from "./SendPhotosStep.module.css";
 import {useTranslation} from "react-i18next";
 import Button from "../../../../../../../../../../components/Button/Button";
@@ -12,13 +12,11 @@ import {
     sendUserFile
 } from "../../../../../../../../../../pages/Login/api/auth";
 import {useSelector} from "react-redux";
-import Loading from "../../../../../../../../../../components/Loading/Loading";
 
 
 const SendPhotosStep = (props) => {
     const {t} = useTranslation();
 
-    const [error, setError] = useState(false);
     const [sending, setSending] = useState(false);
 
     const [images, setImages] = useState({

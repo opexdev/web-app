@@ -1,6 +1,7 @@
-import {put,call} from "redux-saga/effects";
+import {put, call} from "redux-saga/effects";
 import * as actions from "../actions/index";
 import jwtDecode from "jwt-decode";
+import axios from "axios";
 
 export function* setThemeSaga(action) {
     yield call([localStorage, 'setItem'], "isDark", action.isDark)
@@ -27,21 +28,23 @@ export function* loadConfig() {
 
     if (lockTime) yield put(actions.setIPG(lockTime));
     if (isDark === "true") yield put(actions.setTheme(true));
-    if (activePair !== null ) yield put(actions.setActivePair(JSON.parse( activePair ) ,activeMarketTab));
+    if (activePair !== null) yield put(actions.setActivePair(JSON.parse(activePair), activeMarketTab));
 
-    const tokens = {
-        accessToken: yield localStorage.getItem("accessToken"),
-        accessTokenExpires: yield localStorage.getItem("accessTokenExpires"),
-        refreshToken: yield localStorage.getItem("refreshToken"),
-        refreshTokenExpires: yield localStorage.getItem("refreshTokenExpires")
-    };
+    const refreshToken = localStorage.getItem("refreshToken")
 
-    if (tokens.accessToken && tokens.accessTokenExpires > Date.now()) {
-        const jwt = jwtDecode(tokens.accessToken)
-        yield put(actions.setUserTokens(tokens));
+    const params = new URLSearchParams();
+    params.append('client_id', process.env.REACT_APP_CLIENT_ID);
+    params.append('client_secret', process.env.REACT_APP_CLIENT_SECRET);
+    params.append('grant_type', 'refresh_token');
+    params.append('refresh_token', refreshToken);
+
+    try {
+        const {data: {access_token}} = yield call(axios.post, '/auth/realms/opex/protocol/openid-connect/token', params)
+
+        const jwt = jwtDecode(access_token)
+        yield put(actions.setUserTokens({refreshToken, accessToken: access_token}));
         yield put(actions.setUserInfo(jwt));
-
-    } else {
+    } catch (e) {
         yield put(actions.setLogoutInitiate());
     }
 

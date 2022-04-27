@@ -7,9 +7,7 @@ const initialState = {
     firstName: null,
     lastName: null,
     accessToken: null,
-    accessTokenExpires: null,
     refreshToken: null,
-    refreshTokenExpires: null,
     makerCommission: 0,
     takerCommission: 0,
     buyerCommission: 0,
@@ -27,7 +25,6 @@ const initialState = {
         TBTC: {free: 0.0, locked: 0.0, withdraw: 0.0},
         TETH: {free: 0.0, locked: 0.0, withdraw: 0.0},
         TUSDT: {free: 0.0, locked: 0.0, withdraw: 0.0},
-        //BCH: {free: 0.0, locked: 0.0, inWithdrawalProcess: 0.0},
         USDT: {free: 0.0, locked: 0.0, withdraw: 0.0},
     },
     tradeFee: {
@@ -71,9 +68,7 @@ const reducer = (state = initialState, action) => {
             return {
                 ...state,
                 accessToken: action.accessToken,
-                accessTokenExpires: action.accessTokenExpires,
                 refreshToken: action.refreshToken,
-                refreshTokenExpires: action.refreshTokenExpires,
                 isLogin: true,
             }
         case actionTypes.SET_USER_ACCOUNT_INFO:
