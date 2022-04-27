@@ -52,7 +52,7 @@ const OpenOrders = (props) => {
                     </th>
                     <th>{t("totalPrice")}</th>
                     <th>{t("myOrders.donePercentage")}</th>
-                    <th/>
+                    {/*<th/>*/}
                     <th/>
                 </tr>
                 </thead>
@@ -71,7 +71,9 @@ const OpenOrders = (props) => {
                                 <td>{pricePerUnit.decimalPlaces(activePair.quoteAssetPrecision).toFormat()}</td>
                                 <td>{totalPrice.decimalPlaces(activePair.quoteAssetPrecision).toFormat()}</td>
                                 <td>{executedQty.dividedBy(origQty).multipliedBy(100).toFormat(0)}</td>
-                                <td
+
+
+                               {/* <td
                                     onClick={() => cancelOrder(tr.orderId)}
                                     data-html={true}
                                     data-place="bottom"
@@ -83,6 +85,9 @@ const OpenOrders = (props) => {
                                         customClass={`${classes.iconBG} cursor-pointer`}
                                     />
                                 </td>
+                                */}
+
+
                                 {openOrder === index ? (
                                     <td onClick={() => setOpenOrder(null)}>
                                         <Icon

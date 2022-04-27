@@ -1,5 +1,5 @@
-import React, {Fragment} from "react";
-import {connect} from "react-redux";
+import React, {Fragment, useEffect} from "react";
+import {connect, useDispatch, useSelector} from "react-redux";
 import {loadConfig} from "../../store/actions";
 import "./Mobille.css";
 import {Redirect, Route, Switch} from "react-router-dom";
@@ -10,9 +10,26 @@ import TheContent from "./Secttions/TheContent/TheContent";
 import {Overview} from "../../routes/routes";
 import TheSubHeader from "./Secttions/TheSubHeader/TheSubHeader";
 import Login from "../../pages/Login/Login";
+import i18n from "i18next";
 
 
 const Mobile = (props) => {
+
+
+    const isDark = useSelector((state) => state.global.isDark)
+    const dispatch = useDispatch();
+
+    isDark ? document.body.classList.add('dark') : document.body.classList.remove('dark');
+
+    useEffect(() => {
+        dispatch(loadConfig())
+        i18n.language !== "fa" ? document.body.classList.add('ltr') : document.body.classList.remove('ltr');
+        i18n.on("languageChanged", (lng) => {
+            lng !== "fa" ? document.body.classList.add('ltr') : document.body.classList.remove('ltr');
+        });
+    }, []);
+
+
 
     return (
         <Switch>

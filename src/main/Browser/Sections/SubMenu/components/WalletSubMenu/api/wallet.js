@@ -1,22 +1,15 @@
 import axios from "axios";
 
-export const getAccount = async () => {
+export const getAccount = () => {
     const timestamp = Date.now()
     const params = new URLSearchParams();
     params.append('timestamp', timestamp.toString());
 
-    return await axios.get(`/api/v3/account?timestamp=${timestamp.toString()}`, {
+    return axios.get(`/api/v3/account?timestamp=${timestamp.toString()}`, {
         data:params,
         headers : {
             'content-type': 'application/x-www-form-urlencoded'
         },
-    }).then((res) => {
-        return parseWalletsResponse(res.data);
-    }).catch((e) => {
-        if (!e.response) {
-            return false;
-        }
-        return e.response;
     })
 
 }

@@ -19,9 +19,9 @@ const MarketHeader = (props) => {
     const [showPopUp, setShowPopUp] = useState(false);
     const [showPopUpAsset, setShowPopUpAsset] = useState(null);
 
-    const getWallet = async () => {
-        let parsedData = await getAccount(accessToken)
-        if (parsedData) {
+    const getWallet = () => {
+         getAccount(accessToken).then((res)=>{
+            const parsedData = parseWalletsResponse(res.data)
             let base = "0";
             let quote = "0";
             setUserAccountInfo(parsedData)
@@ -34,7 +34,7 @@ const MarketHeader = (props) => {
             if (currentWallet.base !== base || currentWallet.quote !== quote) {
                 setCurrentWallet({base, quote})
             }
-        }
+        })
     }
 
     useInterval(() => {
@@ -58,13 +58,14 @@ const MarketHeader = (props) => {
         setShowPopUpAsset(null)
     }
 
+
     return (
         <Fragment>
-            <div className={`col-35 column ai-start`}>
+            <div className={`col-25 column ai-start`}>
                 <h2 className="mb-05">{t(`pair.${activePair.name}`)}</h2>
-                <p>{t("header.lastPrice")}:{" "}<span/>{" "}{lastTradePrice === null ? "" : t("currency." + activePair.quoteAsset)}</p>
+                <p>{t("header.lastPrice")}:{" "}<span/>{" "}{!lastTradePrice ? "---" : t("currency." + activePair.quoteAsset)}</p>
             </div>
-            <div className={`col-30 column ai-center`}>
+            <div className={`col-50 column ai-center`}>
                 <p className="mb-05">{t("header.availableBalance")}</p>
                 <div className={`container row ai-center ${classes.inventory}`}>
                     <div className="col-50 flex ai-center jc-end">

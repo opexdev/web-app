@@ -81,6 +81,8 @@ export const getWithdraw = async (currency) => {
 
 export const sendIRTDepositReq = async (amount) => {
     const origin = window.location.origin
+
+    console.log("origin :" , origin)
     const payload = {
         "amount": amount,
         "currency": "RIALS",
