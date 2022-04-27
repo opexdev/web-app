@@ -1,7 +1,7 @@
 FROM node:lts-fermium AS build
 ADD . /OPEX-Web-APP
 WORKDIR /OPEX-Web-APP
-RUN yarn install
+RUN yarn install --immutable
 ARG API_BASE_URL='https://api.opex.dev'
 ENV REACT_APP_API_BASE_URL $API_BASE_URL
 ARG CLIENT_ID='web-app'
