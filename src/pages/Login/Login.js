@@ -3,14 +3,13 @@ import {useDispatch, useSelector} from "react-redux";
 import classes from "./Login.module.css";
 import {images} from "../../assets/images";
 import AccordionBox from "../../components/AccordionBox/AccordionBox";
-import {setPanelTokensInitiate, setUserInfo} from "../../store/actions";
+import {setLoading, setUserInfo} from "../../store/actions";
 import i18n from "i18next";
 import LoginForm from "./components/LoginForm/LoginForm";
 import RegisterForm from "./components/RegisterForm/RegisterForm";
 import ForgetPassword from "./components/ForgetPassword/ForgetPassword";
 import {useTranslation} from "react-i18next";
 import useQuery from "../../Hooks/useQuery";
-import {getToken, getUser, parsePanelToken} from "./api/auth";
 import {getAccount, parseWalletsResponse} from "../../main/Browser/Sections/SubMenu/components/WalletSubMenu/api/wallet";
 import jwtDecode from "jwt-decode";
 import {setImpersonateTokens, setUserAccountInfo} from "../../store/actions/auth";
@@ -38,17 +37,17 @@ const Login = () => {
         dispatch(setImpersonateTokens(token))
         const jwt = jwtDecode(token)
         dispatch(setUserInfo(jwt));
-        let account = await getAccount()
-        if (account) {
-            dispatch(setUserAccountInfo(account))
-        }
-        return history.push("/");
+        await getAccount(token)
+            .then((res)=>dispatch((setUserAccountInfo(parseWalletsResponse(res.data)))))
+            .catch((err)=>console.log(err))
+            .finally(()=> {
+                dispatch(setLoading(false))
+                history.push("/")
+            })
     }
 
     useEffect(() =>{
-        if (token){
-            getLoginByAdminToken(token)
-        }
+        if (token) getLoginByAdminToken(token)
     },[])
 
     const data = [

@@ -16,17 +16,20 @@ import FullWidthLoading from "../../components/FullWidthLoading/FullWidthLoading
 import {loadConfig} from "../../store/actions";
 import TechnicalChart from "./Sections/Content/components/TechnicalChart/TechnicalChart";
 import "./Browser.css"
+import useQuery from "../../Hooks/useQuery";
 
 
 const Browser = (props) => {
 
     const isDark = useSelector((state) => state.global.isDark)
+    const query = useQuery();
     const dispatch = useDispatch();
 
     isDark ? document.body.classList.add('dark') : document.body.classList.remove('dark');
 
     useEffect(() => {
-        dispatch(loadConfig())
+        const token = query.get("token");
+        if(!token) dispatch(loadConfig())
         i18n.language !== "fa" ? document.body.classList.add('ltr') : document.body.classList.remove('ltr');
         i18n.on("languageChanged", (lng) => {
             lng !== "fa" ? document.body.classList.add('ltr') : document.body.classList.remove('ltr');
