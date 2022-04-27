@@ -6,6 +6,8 @@ import {connect} from "react-redux";
 import {getExchange} from "./api/market";
 import Icon from "../../../../../../components/Icon/Icon";
 import AccordionBox from "../../../../../../components/AccordionBox/AccordionBox";
+import Loading from "../../../../../../components/Loading/Loading";
+import Error from "../../../../../../components/Error/Error";
 
 const Market = (props) => {
 
@@ -13,6 +15,8 @@ const Market = (props) => {
     const [pairs, setPairs] = useState([]);
     const [fav, setFav] = useState(["BTCUSDT", "ETHUSDT"]);
     const [activeTab, setActiveTab] = useState(undefined);
+    const [loading, setLoading] = useState(true)
+    const [error, setError] = useState(false)
 
     const tabPairFilter = (selected, pairs) => {
         return pairs.filter((pair) => pair.baseAsset === selected || pair.quoteAsset === selected );
@@ -27,18 +31,24 @@ const Market = (props) => {
         }
     };
 
+
     useEffect(() => {
         getExchange()
             .then((info) => {
                 if (info && info.status === 200) {
+
                     const removedNLN = info.data.symbols.filter((pair)=>{
                         if( pair.baseAsset !== "NLN"){
                             return pair
                         }
                     });
                     setPairs(removedNLN)
+                    setLoading(false)
                 }
-            })
+            }).catch(()=>{
+                setLoading(false)
+                setError(true)
+        })
         if (props.activeMarketTab) setActiveTab(parseInt(props.activeMarketTab))
     }, [])
 
@@ -46,7 +56,7 @@ const Market = (props) => {
         {
             title: <Icon iconName="icon-star-1 font-size-md"/>,
             body: (
-                <MarketCard
+                loading ? <Loading/> : error ? <Error/> :<MarketCard
                     id="0"
                     pairs={pairs.filter((pair) => fav.includes(pair.symbol))}
                     favPair={fav}
@@ -57,7 +67,7 @@ const Market = (props) => {
         {
             title: t("all"),
             body: (
-                <MarketCard
+                loading ? <Loading/> : error ? <Error/> :<MarketCard
                     id="1"
                     pairs={pairs}
                     favPair={fav}
@@ -69,7 +79,7 @@ const Market = (props) => {
             id: 2,
             title: t("currency.BTC"),
             body: (
-                <MarketCard
+                loading ? <Loading/> : error ? <Error/> :<MarketCard
                     id="2"
                     pairs={tabPairFilter("BTC", pairs)}
                     favPair={fav}
@@ -93,7 +103,7 @@ const Market = (props) => {
             id: 4,
             title: t("currency.USDT"),
             body: (
-                <MarketCard
+                loading ? <Loading/> : error ? <Error/> :<MarketCard
                     id="4"
                     pairs={tabPairFilter("USDT", pairs)}
                     favPair={fav}
@@ -105,7 +115,7 @@ const Market = (props) => {
 
     return (
         <div className={`container card-background ${classes.container}`}>
-            <AccordionBox
+           <AccordionBox
                 title={t("market.title")}
                 style={classes}
                 ItemsBorderTop="true"

@@ -1,6 +1,6 @@
 
 <p align="center">
-  <img width="256px" src="https://opex.dev/demo/static/media/opexLogoPlus.2858c980.svg" alt="Opex" title="Opex">
+  <img width="256px" src="https://opex.dev/github/opexLogoPlus.svg" alt="Opex" title="Opex">
 </p>
 
 # OPEX Web APP
