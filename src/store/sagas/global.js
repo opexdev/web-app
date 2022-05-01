@@ -33,8 +33,8 @@ export function* loadConfig() {
     const refreshToken = localStorage.getItem("refreshToken")
 
     const params = new URLSearchParams();
-    params.append('client_id', process.env.REACT_APP_CLIENT_ID);
-    params.append('client_secret', process.env.REACT_APP_CLIENT_SECRET);
+    params.append('client_id', env.REACT_APP_CLIENT_ID);
+    params.append('client_secret', env.REACT_APP_CLIENT_SECRET);
     params.append('grant_type', 'refresh_token');
     params.append('refresh_token', refreshToken);
 

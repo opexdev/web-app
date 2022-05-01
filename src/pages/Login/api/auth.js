@@ -1,7 +1,7 @@
 import axios from "axios";
 
-const clientSecret = process.env.REACT_APP_CLIENT_SECRET
-const clientId = process.env.REACT_APP_CLIENT_ID
+const clientSecret = env.REACT_APP_CLIENT_SECRET
+const clientId = env.REACT_APP_CLIENT_ID
 
 
 export const getToken = async () => {
