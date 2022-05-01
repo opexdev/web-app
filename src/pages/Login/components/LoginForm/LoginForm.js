@@ -4,20 +4,16 @@ import React, {useEffect, useState} from "react";
 import classes from "../../Login.module.css";
 import TextInput from "../../../../components/TextInput/TextInput";
 import LoginFormLoading from "../LoginLoading/LoginFormLoading";
-import {
-    setUserInfo,
-    setUserTokensInitiate
-} from "../../../../store/actions";
+import {setUserInfo, setUserTokensInitiate} from "../../../../store/actions";
 import {useHistory} from "react-router-dom";
 import {useTranslation} from "react-i18next";
-import {setUserAccountInfo} from "../../../../store/actions/auth";
+import {setKYCStatusInitiate, setUserAccountInfo} from "../../../../store/actions/auth";
 import Button from "../../../../components/Button/Button";
 import {getAccount,} from "../../../../main/Browser/Sections/SubMenu/components/WalletSubMenu/api/wallet";
 import jwtDecode from "jwt-decode";
 import OTPForm from "../OTPForm/OTPForm";
 import {browserName, deviceType, fullBrowserVersion} from "react-device-detect";
 import {validateEmail} from "../../../../utils/utils";
-
 
 
 const LoginForm = (props) => {
@@ -85,6 +81,16 @@ const LoginForm = (props) => {
             dispatch(setUserTokensInitiate(userToken));
             const jwt = jwtDecode(userToken.accessToken)
             dispatch(setUserInfo(jwt));
+
+            /*const KYCStatusReq = await KYCStatus()
+            if (KYCStatusReq && KYCStatusReq.status === 200) {
+                dispatch(setKYCStatus(KYCStatusReq.data.status))
+            }*/
+
+            dispatch(setKYCStatusInitiate())
+
+
+
             let account = await getAccount()
             if (account) {
                 dispatch(setUserAccountInfo(account))

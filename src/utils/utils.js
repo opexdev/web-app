@@ -36,3 +36,5 @@ export const BN = BigNumber.clone({ FORMAT: {
     groupSeparator: ',',
     decimalSeparator: '.',
   }})
+
+export const isEn = str => /^[a-zA-Z ]*$/.test(str);

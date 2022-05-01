@@ -22,4 +22,8 @@ export {
   setUserTokens,
   setUserTokensInitiate,
   setUserInfo,
+  changeUserInfo,
+  setKYCStatus
 } from "./auth";
+
+

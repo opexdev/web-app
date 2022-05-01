@@ -16,6 +16,7 @@ const initialState = {
     canWithdraw: false,
     canDeposit: false,
     accountType: null,
+    kyc: null,
     permissions: [],
     lastTransaction: null,
     wallets: {
@@ -57,6 +58,17 @@ const reducer = (state = initialState, action) => {
                 firstName: action.firstName,
                 lastName: action.lastName,
                 email: action.email,
+            };
+        case actionTypes.SET_CHANGE_USER_INFO:
+            return {
+                ...state,
+                firstName: action.firstName,
+                lastName: action.lastName,
+            };
+        case actionTypes.SET_KYC_STATUS:
+            return {
+                ...state,
+                kyc: action.status
             };
         case actionTypes.SET_IMPERSONATE_TOKENS:
             return {

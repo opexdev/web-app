@@ -1,5 +1,5 @@
-import React, {Fragment, useState} from "react";
-import {connect} from "react-redux";
+import React, {Fragment, useEffect, useState} from "react";
+import {connect, useSelector} from "react-redux";
 import classes from "./Authentication.module.css";
 import HelpStep from "./components/HelpStep/HelpStep";
 import PersonalProfileStep from "./components/PersonalProfileStep/PersonalProfileStep";
@@ -7,10 +7,18 @@ import SendPhotosStep from "./components/SendPhotosStep/SendPhotosStep";
 import SendToExpertStep from "./components/SendToExpertStep/SendToExpertStep";
 import {useTranslation} from "react-i18next";
 
-const Authentication = (props) => {
+const Authentication = () => {
 
     const {t} = useTranslation();
     const [step, setStep] = useState(1);
+
+    const KYCStatus = useSelector(state => state.auth.kyc);
+
+    useEffect(()=>{
+        if (KYCStatus !== "NOT_REQUESTED" ) {
+            setStep(4)
+        }
+    }, [])
 
     const stepSwitch = (step) => {
         switch (step) {
@@ -42,10 +50,10 @@ const Authentication = (props) => {
             <div className={`row jc-center ai-center mb-3 `}>
                 <div className={`column jc-between ${classes.wizardBox}`}>
                     <ul className="row position-relative ai-center">
-                        <li className={`col-25 text-center  ${step === 1 ? classes.activeStep : ""}`}>{t("Authentication.HelpStep")}</li>
-                        <li className={`col-25 text-center ${step === 2 ? classes.activeStep : ""}`}>{t("Authentication.PersonalProfileStep")}</li>
-                        <li className={`col-25 text-center ${step === 3 ? classes.activeStep : ""}`}>{t("Authentication.SendPhotosStep")}</li>
-                        <li className={`col-25 text-center ${step === 4 ? classes.activeStep : ""}`}>{t("Authentication.SendToExpertStep")}</li>
+                        <li className={`col-25 text-center  ${step === 1 && classes.activeStep}`}>{t("Authentication.HelpStep")}</li>
+                        <li className={`col-25 text-center ${step === 2 && classes.activeStep}`}>{t("Authentication.PersonalProfileStep")}</li>
+                        <li className={`col-25 text-center ${step === 3 && classes.activeStep}`}>{t("Authentication.SendPhotosStep")}</li>
+                        <li className={`col-25 text-center ${step === 4 && classes.activeStep}`}>{t("Authentication.SendToExpertStep")}</li>
                         <div className={`container position-absolute  row jc-center`} style={{padding: "0 10%"}}>
                             <span className={`col-15`}
                                   style={{height: "0.2vh", backgroundColor: "var(--orange)"}}/>

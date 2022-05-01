@@ -43,6 +43,26 @@ export const setUserInfo = (info) => {
     };
 };
 
+export const changeUserInfo = (firstName , lastName) => {
+    return {
+        type: actionTypes.SET_CHANGE_USER_INFO,
+        firstName,
+        lastName,
+    };
+};
+
+export const setKYCStatus = (status) => {
+    return {
+        type: actionTypes.SET_KYC_STATUS,
+        status
+    };
+};
+export const setKYCStatusInitiate = () => {
+    return {
+        type: actionTypes.SET_KYC_STATUS_INITIATE,
+    };
+};
+
 export const setLastTransaction = (time) => {
     return {
         type: actionTypes.SET_LAST_TRANSACTION,
