@@ -1,12 +1,11 @@
 .container {
-  height: 75vh;
-  border-radius: 9px;
+  height: 70vh;
 }
-
+.header {
+  height: 10%;
+}
 .content {
-  height: 100%;
-  width: 100%;
-  padding: 1.8vh 1vw;
+  height: 90%;
 }
 .content :global(.row) {
   width: 100%;
@@ -17,29 +16,15 @@
 .addressInput :global(input) {
   width: 75.5%;
 }
-.iconBG {
-  vertical-align: middle;
-  border-radius: 50vw;
-}
-.close {
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.3s;
-  opacity: 0;
-  line-height: 0;
-  visibility: collapse;
-}
-.open {
-  max-height: 2vh;
-  transition: max-height 0.6s;
-}
 .thisButton {
-  width: 10%;
+  width: 20%;
+}
+.thisButton.prev{
+  background-color: var(--orange);
+}
+.thisButton.next{
   background-color: var(--bgGreen);
 }
-.safariFlexSize :global(.accordion-header) {
-  flex: 22;
-}
-.safariFlexSize :global(.accordion-body) {
-  flex: 77;
+.content :global(input){
+  cursor: not-allowed;
 }

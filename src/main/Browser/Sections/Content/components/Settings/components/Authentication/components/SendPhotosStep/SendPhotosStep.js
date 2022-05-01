@@ -1,6 +1,6 @@
-import React, {useState, Fragment} from "react";
+import React, {Fragment, useState} from "react";
 import classes from "./SendPhotosStep.module.css";
-import {useTranslation} from "react-i18next";
+import {Trans, useTranslation} from "react-i18next";
 import Button from "../../../../../../../../../../components/Button/Button";
 import ImageInput from "../../../../../../../../../../components/ImageInput/ImageInput";
 import {
@@ -9,56 +9,69 @@ import {
     getUser,
     parsePanelToken,
     sendUpdateProfileReq,
-    sendUserFile
 } from "../../../../../../../../../../pages/Login/api/auth";
 import {useSelector} from "react-redux";
-import Loading from "../../../../../../../../../../components/Loading/Loading";
+import {KYCImagePaths, sendUserFile} from "../../api/kyc";
+import * as path from "path";
+import {toast} from "react-hot-toast";
 
 
 const SendPhotosStep = (props) => {
     const {t} = useTranslation();
 
-    const [error, setError] = useState(false);
     const [sending, setSending] = useState(false);
-
     const [images, setImages] = useState({
         img1: "",
         img2: "",
         img3: "",
     });
     const id = useSelector(state => state.auth.id);
-    const token = useSelector(state => state.auth.accessToken);
 
     const sendImageHandler = async () => {
-        setSending(true)
-        const acceptForm = await sendUserFile(token, id, images.img1)
-        const selfie = await sendUserFile(token, id, images.img2)
-        const idCard = await sendUserFile(token, id, images.img3)
 
+        if (images.img1 === "") {
+            toast.error(<Trans
+                i18nKey="SendPhotosStep.acceptFormEmpty"
+            />);
+            return false;
+        }
+
+        if (images.img2 === "") {
+            toast.error(<Trans
+                i18nKey="SendPhotosStep.selfieEmpty"
+            />);
+            return false;
+        }
+
+        if (images.img3 === "") {
+            toast.error(<Trans
+                i18nKey="SendPhotosStep.idCardEmpty"
+            />);
+            return false;
+        }
+
+
+        setSending(true)
+        const acceptForm = await sendUserFile(id, images.img1)
+        const selfie = await sendUserFile(id, images.img2)
+        const idCard = await sendUserFile(id, images.img3)
         if (acceptForm.status === 200 && selfie.status === 200 && idCard.status === 200) {
-            let panelToken = await getToken()
-            panelToken = parsePanelToken(panelToken.data)
-            let userInfo = await getUser(panelToken.panelAccessToken, "id", id)
-            if (userInfo.status === 200) {
-                userInfo = userInfo.data.find(user => user.id === id)
+            const path = {
+                selfiePath: `${selfie.data.path}`,
+                idCardPath: `${idCard.data.path}`,
+                acceptFormPath: `${acceptForm.data.path}`
             }
-            const update = await sendUpdateProfileReq(panelToken.panelAccessToken, userInfo.id,
-                {
-                    ...userInfo.attributes,
-                    acceptForm: acceptForm.data.path,
-                    selfie: selfie.data.path,
-                    idCard: idCard.data.path,
-                }
-            )
-            setSending(false)
-            if (update.status === 204) {
-                await addToKycGroup(panelToken.panelAccessToken, id)
+            const sendKYCFiles = await KYCImagePaths(path)
+            if (sendKYCFiles && sendKYCFiles.status === 204) {
+                setSending(false)
                 props.nextStep()
+            }else {
+                toast.error(<Trans
+                    i18nKey="SendPhotosStep.serverError"
+                />);
             }
         }
         setSending(false)
-
-
     }
 
 

@@ -3,37 +3,36 @@ import classes from "./PersonalProfileStep.module.css";
 import {useTranslation} from "react-i18next";
 import TextInput from "../../../../../../../../../../components/TextInput/TextInput";
 import Button from "../../../../../../../../../../components/Button/Button";
-import {useSelector} from "react-redux";
-import Loading from "../../../../../../../../../../components/Loading/Loading";
-import {
-    getToken,
-    getUser,
-    parsePanelToken,
-    sendUpdateProfileReq
-} from "../../../../../../../../../../pages/Login/api/auth";
+import {useDispatch, useSelector} from "react-redux";
+import Loading from "../../../../../../../../../../components/Loading/Loading"
+import {addAttributes, getAttributes} from "../../api/kyc";
+import {changeUserInfo} from "../../../../../../../../../../store/actions/auth";
 
 
 const PersonalProfileStep = (props) => {
     const {t} = useTranslation();
-    const [isLoading, setIsLoading] = useState(true)
-    const username = useSelector(state => state.auth.username);
-    const token = useSelector(state => state.auth.accessToken);
+    const [loading, setLoading] = useState(true)
+    const [error, setError] = useState([])
+    const dispatch = useDispatch();
+
+
 
     const [profile, setProfile] = useState({
-        firstNameEn: "",
-        lastNameEn: "",
+        firstName: "",
+        lastName: "",
         firstNameMain: "",
         lastNameMain: "",
         nationality: "",
         residence: "",
-        birthday: "",
-        birthdayAlt: "",
-        nationalID: "",
+        birthdayJ: "",
+        birthdayG: "",
+        nationalId: "",
         passportNumber: "",
-        phoneNumber: "",
+        mobile: "",
         telephone: "",
         postalCode: "",
         address: "",
+      /*  email: "",*/
     });
     const countries = [
         {value: "iran", label: t('country.iran')},
@@ -42,55 +41,42 @@ const PersonalProfileStep = (props) => {
         {value: "turkey", label: t('country.turkey')},
     ]
 
-    /*access: {manageGroupMembership: true, view: true, mapRoles: true, impersonate: true, manage: true}
-createdTimestamp: 1634894709039
-disableableCredentialTypes: []
-email: "demo1@nilin.co"
-emailVerified: false
-enabled: true
-firstName: "کاربر نمایشی"
-id: "27a4bebf-e470-46c3-9baf-883de8eb34b0"
-lastName: "یکم"
-notBefore: 0
-requiredActions: []
-totp: false
-username: "demo1"*/
+    const userInfoReq = async () => {
+        setLoading(true)
+        setError([])
+        const userInfo = await getAttributes()
+        if (userInfo && userInfo.status === 200) {
+            /*if (isEn(userInfo.data.firstName)) {
+                console.log("en")
+            }*/
+            setProfile(userInfo.data)
+            setLoading(false)
+            setError([])
+        } else {
+            setError([t("PersonalProfileStep.serverError")])
+        }
+    }
 
     useEffect(async () => {
-        let panelToken = await getToken()
-        // panelToken = parsePanelToken(panelToken.data)
-        let userInfo = await getUser(panelToken.panelAccessToken, "username", username)
-        if (userInfo.status === 200) {
-            userInfo = userInfo.data.find(user => user.username === username)
-        }
-        setProfile({
-            ...userInfo.attributes,
-            email:  userInfo.email,
-        })
-        setIsLoading(false)
+        userInfoReq()
     }, [])
 
     const sendProfile = async () => {
-        setIsLoading(true)
-        let panelToken = await getToken()
-        panelToken = parsePanelToken(panelToken.data)
-
-        let userInfo = await getUser(panelToken.panelAccessToken, "username", username)
-        if (userInfo.status === 200) {
-            userInfo = userInfo.data.find(user => user.username === username)
-        }
-        const update = await sendUpdateProfileReq(panelToken.panelAccessToken, userInfo.id, attributeHandler(userInfo))
-        if (update.status === 204) {
+        setLoading(true)
+        delete profile.email;
+        delete profile.username;
+        delete profile.selfiePath;
+        delete profile.idCardPath;
+        delete profile.acceptFormPath;
+        const addAttributesReq = await addAttributes(profile)
+        if (addAttributesReq && addAttributesReq.status === 204) {
+            setLoading(false)
+            setError([])
+            dispatch(changeUserInfo(profile.firstName, profile.lastName))
             props.nextStep()
-        }
-        setIsLoading(false)
-        props.nextStep()
-    }
-
-    const attributeHandler = (userInfo) => {
-        return {
-            ...userInfo.attributes,
-            ...profile
+        } else {
+            setLoading(false)
+            setError([t("PersonalProfileStep.serverError")])
         }
     }
 
@@ -103,31 +89,33 @@ username: "demo1"*/
                     <h3>{t("PersonalProfileStep.title")}</h3>
                 </div>
             </div>
-            {isLoading ? <Loading/> :
+            {loading ? <Loading/> :
                 <div
                     className={`column jc-between ai-center px-1 py-2 ${classes.content}`}>
                     <div className="row jc-between">
                         <div className="col-49">
                             <TextInput
-                                lead={t('PersonalProfile.firstNameEn')}
+                                lead={t('PersonalProfile.firstName')}
                                 type="text"
-                                value={profile.firstNameEn}
+                                value={profile.firstName}
                                 onchange={(e) =>
-                                    setProfile({...profile, firstNameEn: e.target.value})
+                                    setProfile({...profile, firstName: e.target.value})
                                 }
                             />
                         </div>
                         <div className="col-49">
                             <TextInput
-                                lead={t('PersonalProfile.lastNameEn')}
+                                lead={t('PersonalProfile.lastName')}
                                 type="text"
-                                value={profile.lastNameEn}
+                                value={profile.lastName}
                                 onchange={(e) =>
-                                    setProfile({...profile, lastNameEn: e.target.value})
+                                    setProfile({...profile, lastName: e.target.value})
                                 }
                             />
                         </div>
                     </div>
+                    {/*
+
                     <div className="row jc-between">
                         <div className="col-49">
                             <TextInput
@@ -150,15 +138,17 @@ username: "demo1"*/
                             />
                         </div>
                     </div>
+
+                    */}
                   <div className="row jc-between">
                         <div className="col-49">
                             <TextInput
                                 select={true}
                                 placeholder={t('PersonalProfile.selectNationality')}
                                 options={countries}
-                                defaultInputValue = {profile.nationality}
+                                defaultValue={countries.filter((v)=>v.value === profile.nationality)}
                                 lead={t('PersonalProfile.nationality')}
-                                type="text"
+                                type="select"
                                 onchange={(e) => setProfile({...profile, nationality: e.value})}
                             />
                         </div>
@@ -167,8 +157,8 @@ username: "demo1"*/
                                 select={true}
                                 placeholder={t('PersonalProfile.selectResidence')}
                                 lead={t('PersonalProfile.residence')}
-                                defaultInputValue = {profile.residence}
-                                type="text"
+                                defaultValue={countries.filter((v)=>v.value === profile.residence)}
+                                type="select"
                                 options={countries}
                                 onchange={(e) =>
                                     setProfile({...profile, residence: e.value})
@@ -179,21 +169,21 @@ username: "demo1"*/
                     <div className="row jc-between">
                         <div className="col-49">
                             <TextInput
-                                lead={t('PersonalProfile.birthday')}
+                                lead={t('PersonalProfile.birthdayJ')}
                                 type="text"
-                                value={profile.birthday}
+                                value={profile.birthdayJ}
                                 onchange={(e) =>
-                                    setProfile({...profile, birthday: e.target.value})
+                                    setProfile({...profile, birthdayJ: e.target.value})
                                 }
                             />
                         </div>
                         <div className="col-49">
                             <TextInput
-                                lead={t('PersonalProfile.birthdayAlt')}
+                                lead={t('PersonalProfile.birthdayG')}
                                 type="text"
-                                value={profile.birthdayAlt}
+                                value={profile.birthdayG}
                                 onchange={(e) =>
-                                    setProfile({...profile, birthdayAlt: e.target.value})
+                                    setProfile({...profile, birthdayG: e.target.value})
                                 }
                             />
                         </div>
@@ -201,11 +191,11 @@ username: "demo1"*/
                     <div className="row jc-between">
                         <div className="col-49">
                             <TextInput
-                                lead={t('PersonalProfile.nationalID')}
+                                lead={t('PersonalProfile.nationalId')}
                                 type="text"
-                                value={profile.nationalID}
+                                value={profile.nationalId}
                                 onchange={(e) =>
-                                    setProfile({...profile, nationalID: e.target.value})
+                                    setProfile({...profile, nationalId: e.target.value})
                                 }
                             />
                         </div>
@@ -223,11 +213,11 @@ username: "demo1"*/
                     <div className="row jc-between">
                         <div className="col-49">
                             <TextInput
-                                lead={t('PersonalProfile.phoneNumber')}
+                                lead={t('PersonalProfile.mobile')}
                                 type="text"
-                                value={profile.phoneNumber}
+                                value={profile.mobile}
                                 onchange={(e) =>
-                                    setProfile({...profile, phoneNumber: e.target.value})
+                                    setProfile({...profile, mobile: e.target.value})
                                 }
                             />
                         </div>
@@ -249,7 +239,8 @@ username: "demo1"*/
                                 type="email"
                                 disabled={true}
                                 value={profile.email}
-                                onchange={(e) => setProfile({...profile, email: e.target.value})}
+                                customClass={`${classes.email}`}
+                                //onchange={(e) => setProfile({...profile, email: e.target.value})}
                             />
                         </div>
                         <div className="col-49">
@@ -276,17 +267,22 @@ username: "demo1"*/
                             />
                         </div>
                     </div>
-                    <div className="row pt-1 jc-end">
-                        <Button
-                            buttonClass={`${classes.thisButton} ${classes.prev} ml-05`}
-                            onClick={props.prevStep}
-                            buttonTitle={t("prevStep")}
-                        />
-                        <Button
-                            buttonClass={`${classes.thisButton} ${classes.next}`}
-                            onClick={sendProfile}
-                            buttonTitle={t("nextStep")}
-                        />
+                    <div className="row pt-1 jc-between">
+                        <div className={`col-50 flex jc-start ai-end`}>
+                            <span className={` text-red font-size-sm-plus cursor-pointer`} onClick={()=>userInfoReq()}>{error.length !== 0 && error}</span>
+                        </div>
+                        <div className={`col-50 row jc-end ai-center`}>
+                            <Button
+                                buttonClass={`${classes.thisButton} ${classes.prev} ml-05`}
+                                onClick={props.prevStep}
+                                buttonTitle={t("prevStep")}
+                            />
+                            <Button
+                                buttonClass={`${classes.thisButton} ${classes.next}`}
+                                onClick={sendProfile}
+                                buttonTitle={t("nextStep")}
+                            />
+                        </div>
                     </div>
                 </div>
             }

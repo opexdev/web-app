@@ -17,11 +17,15 @@
   width: 75.5%;
 }
 .thisButton {
-  width: 10%;
+  width: 20%;
 }
 .thisButton.prev{
   background-color: var(--orange);
 }
 .thisButton.next{
   background-color: var(--bgGreen);
+}
+.email :global(input){
+  background-color: var(--cardHeader);
+  cursor: not-allowed;
 }

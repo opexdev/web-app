@@ -3,9 +3,11 @@ import classes from "./SettingsSubMenu.module.css";
 import {useTranslation} from "react-i18next";
 import * as Routes from "../../../../../../routes/routes";
 import {NavLink} from "react-router-dom";
+import {useSelector} from "react-redux";
 
 const SettingsSubMenu = () => {
   const {t} = useTranslation();
+  const KYCStatus = useSelector(state => state.auth.kyc);
 
   return (
     <div className={`container card-background column ${classes.container}`}>
@@ -17,29 +19,31 @@ const SettingsSubMenu = () => {
       </div>
       <div className={`column container  ${classes.content}`}>
 
-
-       {/* <NavLink
-          exact={true}
-          activeClassName={classes.selected}
-          className="row jc-around ai-center cursor-pointer px-1 py-1"
-          to={Routes.Profile}>
-          <div className="row ai-center" style={{width: "40%"}}>
+        {
+          KYCStatus === "ACCEPTED" &&
+            <NavLink
+                exact={true}
+                activeClassName={classes.selected}
+                className="row jc-around ai-center cursor-pointer px-1 py-1"
+                to={Routes.Profile}>
+              <div className="row ai-center" style={{width: "40%"}}>
             <span className={`font-weight-bold pr-05 ${classes.topic}`}>
               {t("SettingsSubMenu.userProfile")}
             </span>
-          </div>
-          <div
-            className={`column position-relative font-size-sm mr-1 ${classes.listBox}`}
-            style={{width: "60%"}}>
-            <span className={`flex ai-center my-05 pr-2 ${classes.list}`}>
+              </div>
+              <div
+                  className={`column position-relative font-size-sm mr-1 ${classes.listBox}`}
+                  style={{width: "60%"}}>
+            {/*<span className={`flex ai-center my-05 pr-2 ${classes.list}`}>
               {t("UserAccountStatus.title")}
-            </span>
-            <span className={`flex ai-center my-05 pr-2 ${classes.list}`}>
+            </span>*/}
+                <span className={`flex ai-center my-05 pr-2 ${classes.list}`}>
               {t("PersonalProfile.title")}
             </span>
-          </div>
-        </NavLink>*/}
+              </div>
+            </NavLink>
 
+        }
 
         <NavLink
           exact={true}
