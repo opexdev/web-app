@@ -1,6 +1,6 @@
 import historyProvider from "./HistoryProvider";
 
-const apiBaseUrl = env.REACT_APP_API_BASE_URL
+const apiBaseUrl = window.env.REACT_APP_API_BASE_URL
 const api_root = `${apiBaseUrl}/binance/api/v1/exchangeInfo`;
 
 const supportedResolutions = [

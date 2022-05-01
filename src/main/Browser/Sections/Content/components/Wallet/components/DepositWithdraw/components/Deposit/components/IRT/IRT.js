@@ -29,7 +29,7 @@ const IRT = (props) => {
         amount: {value: "", error: []},
     })
 
-    const apiBaseUrl = env.REACT_APP_API_BASE_URL;
+    const apiBaseUrl = window.env.REACT_APP_API_BASE_URL;
 
     // const dataMin = 100000
     const dataMin = 1000

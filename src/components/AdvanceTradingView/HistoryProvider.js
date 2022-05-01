@@ -1,5 +1,5 @@
 
-const apiBaseUrl = env.REACT_APP_API_BASE_URL
+const apiBaseUrl = window.env.REACT_APP_API_BASE_URL
 const api_root = `${apiBaseUrl}/binance/api/v3/klines`;
 const history = {};
 
