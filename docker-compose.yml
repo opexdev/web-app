@@ -1,6 +1,6 @@
 version: "3.8"
 services:
-  app:
+  web-app:
     image: ghcr.io/opexdev/web-app:$OPEX_TAG
     environment:
       - API_BASE_URL=$API_BASE_URL
