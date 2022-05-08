@@ -23,6 +23,8 @@ export {
   setUserTokensInitiate,
   setUserInfo,
   changeUserInfo,
+  setUserAccountInfo,
+  setUserAccountInfoInitiate,
   setKYCStatus
 } from "./auth";
 

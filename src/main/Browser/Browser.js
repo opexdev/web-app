@@ -1,5 +1,5 @@
-import React, {Fragment, useEffect} from "react";
-import {connect, useDispatch, useSelector} from "react-redux";
+import React, {useEffect} from "react";
+import {useDispatch, useSelector} from "react-redux";
 import {Route, Switch} from "react-router-dom";
 import i18n from "i18next";
 import ReactTooltip from "react-tooltip";
@@ -13,29 +13,36 @@ import SubMenu from "./Sections/SubMenu/SubMenu";
 import Header from "./Sections/Header/Header";
 import Content from "./Sections/Content/Content";
 import FullWidthLoading from "../../components/FullWidthLoading/FullWidthLoading";
-import {loadConfig} from "../../store/actions";
+import {loadConfig, setUserAccountInfoInitiate} from "../../store/actions";
 import TechnicalChart from "./Sections/Content/components/TechnicalChart/TechnicalChart";
 import "./Browser.css"
 import useQuery from "../../Hooks/useQuery";
+import useInterval from "../../Hooks/useInterval";
 
 
-const Browser = (props) => {
+const Browser = () => {
+    const dispatch = useDispatch();
+    const query = useQuery();
 
     const isDark = useSelector((state) => state.global.isDark)
-    const query = useQuery();
-    const dispatch = useDispatch();
+    const isLoading = useSelector((state) => state.global.isLoading)
+    const isLogin = useSelector((state) => state.auth.isLogin)
 
     isDark ? document.body.classList.add('dark') : document.body.classList.remove('dark');
 
     useEffect(() => {
         const token = query.get("token");
-        if(!token) dispatch(loadConfig())
+        if (!token) dispatch(loadConfig())
         i18n.language !== "fa" ? document.body.classList.add('ltr') : document.body.classList.remove('ltr');
         i18n.on("languageChanged", (lng) => {
             lng !== "fa" ? document.body.classList.add('ltr') : document.body.classList.remove('ltr');
         });
     }, []);
 
+
+    useInterval(() => {
+        dispatch(setUserAccountInfoInitiate());
+    }, isLogin ? 3000 : null)
 
     const Toast = () => <Toaster position="bottom-right" toastOptions={
         {
@@ -75,15 +82,15 @@ const Browser = (props) => {
             </Route>
             <ProtectedRoute
                 component={TechnicalChart}
-                isLogin={props.isLogin}
+                isLogin={isLogin}
                 exact
                 path={Routes.Technical}
             />
             <Route>
-                {props.isLoading ? (<FullWidthLoading/>) : (
+                {isLoading ? (<FullWidthLoading/>) : (
                     <div className="row">
-                        <MainMenu isLogin={props.isLogin}/>
-                        <SubMenu isLogin={props.isLogin}/>
+                        <MainMenu isLogin={isLogin}/>
+                        <SubMenu isLogin={isLogin}/>
                         <div className="column content">
                             <Header/>
                             <div style={{display: "flex", flex: 1}}>
@@ -99,11 +106,4 @@ const Browser = (props) => {
     );
 };
 
-const mapStateToProps = (state) => {
-    return {
-        isLoading: state.global.isLoading,
-        isLogin: state.auth.isLogin,
-    };
-};
-
-export default connect(mapStateToProps, null)(Browser);
+export default Browser;

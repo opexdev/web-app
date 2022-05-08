@@ -46,6 +46,7 @@ const initialState = {
         BUSD: 0.01,
     },
     isLogin: false,
+    isServerData : false
 };
 
 const reducer = (state = initialState, action) => {

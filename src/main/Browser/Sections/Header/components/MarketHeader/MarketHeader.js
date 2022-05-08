@@ -1,45 +1,24 @@
 import React, {Fragment, useEffect, useState} from "react";
 import classes from "./MarketHeader.module.css";
 import {useTranslation} from "react-i18next";
-import {connect} from "react-redux";
-import {getAccount, parseWalletsResponse} from "../../../SubMenu/components/WalletSubMenu/api/wallet";
+import {useSelector} from "react-redux";
 import {BN} from "../../../../../../utils/utils";
-import useInterval from "../../../../../../Hooks/useInterval";
 import Icon from "../../../../../../components/Icon/Icon";
-import {setUserAccountInfo} from "../../../../../../store/actions/auth";
 import Popup from "../../../../../../components/Popup/Popup";
 
 
 
-const MarketHeader = (props) => {
+const MarketHeader = () => {
     const {t} = useTranslation();
-    const [currentWallet, setCurrentWallet] = useState({base: "-", quote: "-"})
-    const {accessToken, isLogin, setUserAccountInfo, lastTradePrice, activePair} = props
+
+    const activePair = useSelector((state) => state.global.activePair)
+    const lastTradePrice = useSelector((state) => state.global.activePairOrders.lastTradePrice)
+
+    const base = useSelector((state) => state.auth.wallets[activePair.baseAsset].free)
+    const quote = useSelector((state) => state.auth.wallets[activePair.quoteAsset].free)
 
     const [showPopUp, setShowPopUp] = useState(false);
     const [showPopUpAsset, setShowPopUpAsset] = useState(null);
-
-    const getWallet = () => {
-         getAccount(accessToken).then((res)=>{
-            const parsedData = parseWalletsResponse(res.data)
-            let base = "0";
-            let quote = "0";
-            setUserAccountInfo(parsedData)
-            if(typeof parsedData.wallets[activePair.baseAsset] !== 'undefined'){
-                base = new BN(parsedData.wallets[activePair.baseAsset].free).decimalPlaces(activePair.baseAssetPrecision).toFormat();
-            }
-            if(typeof parsedData.wallets[activePair.quoteAsset] !== 'undefined') {
-                quote = new BN(parsedData.wallets[activePair.quoteAsset].free).decimalPlaces(activePair.quoteAssetPrecision).toFormat();
-            }
-            if (currentWallet.base !== base || currentWallet.quote !== quote) {
-                setCurrentWallet({base, quote})
-            }
-        })
-    }
-
-    useInterval(() => {
-        getWallet()
-    }, isLogin ? 1500 : null);
 
     const ClickHandler = (currency) => {
         if (currency === showPopUpAsset || !showPopUpAsset) {
@@ -70,11 +49,11 @@ const MarketHeader = (props) => {
                 <div className={`container row ai-center ${classes.inventory}`}>
                     <div className="col-50 flex ai-center jc-end">
                         <Icon iconName="icon-plus icon-white font-size-sm flex" customClass={`mx-05 cursor-pointer ${classes.iconBG}`} onClick={()=>ClickHandler(activePair.baseAsset)}/>
-                        <span>{currentWallet.base}</span>
+                        <span>{ new BN (base).decimalPlaces(activePair.baseAssetPrecision).toFormat()}</span>
                         <span>{t("currency." + activePair.baseAsset)}</span>
                     </div>
                     <div className="col-50 flex ai-center  jc-start">
-                        <span>{currentWallet.quote}</span>
+                        <span>{ new BN(quote).decimalPlaces(activePair.quoteAssetPrecision).toFormat()}</span>
                         <span>{t("currency." + activePair.quoteAsset)}</span>
                         <Icon iconName="icon-plus icon-white font-size-sm flex" customClass={`mx-05 cursor-pointer ${classes.iconBG}`} onClick={()=>ClickHandler(activePair.quoteAsset)}/>
                     </div>
@@ -89,18 +68,5 @@ const MarketHeader = (props) => {
 };
 
 
-const mapStateToProps = (state) => {
-    return {
-        isLogin: state.auth.isLogin,
-        accessToken: state.auth.accessToken,
-        activePair: state.global.activePair,
-        lastTradePrice: state.global.activePairOrders.lastTradePrice
-    };
-};
-const mapDispatchToProps = (dispatch) => {
-    return {
-        setUserAccountInfo: (info) => dispatch(setUserAccountInfo(info)),
-    };
-};
 
-export default connect(mapStateToProps, mapDispatchToProps)(MarketHeader);
+export default MarketHeader;

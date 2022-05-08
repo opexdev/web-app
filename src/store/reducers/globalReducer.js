@@ -1,8 +1,7 @@
 import * as actionTypes from "../actions/actionTypes";
 
 const initialState = {
-    panelAccessToken: null,
-    panelAccessTokenExpires: null,
+    pairs:["IRT", "BTC", "TBTC","ETH","TETH","BNB","TUSDT", "USDT","BUSD"],
     activePair: {
         name: "BTC/USDT",
         baseAsset: "BTC",
