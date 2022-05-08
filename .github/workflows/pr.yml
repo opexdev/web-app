@@ -11,8 +11,7 @@ jobs:
     steps:
       - name: Checkout Source Code
         uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
-        with:
-          node-version: '16.x'
-      - run: yarn install --immutable
-      - run: CI=false yarn build
+      - name: Build Docker images
+        env:
+          OPEX_TAG: latest
+        run: docker-compose -f docker-compose.build.yml build

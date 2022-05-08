@@ -2,14 +2,14 @@ import axios from "axios";
 
 const defaultAxios = axios.create({
     timeout :15000,
-    baseURL:process.env.REACT_APP_API_BASE_URL,
+    baseURL:window.env.REACT_APP_API_BASE_URL,
     headers : {
         Accept : 'application/json'
     }
 })
 
 export default function setupAxios(axios , store) {
-    axios.defaults.baseURL = process.env.REACT_APP_API_BASE_URL;
+    axios.defaults.baseURL = window.env.REACT_APP_API_BASE_URL;
     axios.defaults.headers.Accept = 'application/json';
     axios.defaults.timeout = 15000;
     axios.interceptors.request.use(
@@ -42,8 +42,8 @@ export default function setupAxios(axios , store) {
 const refresh = async (store) => {
     let {auth: {refreshToken}} = store.getState()
     const params = new URLSearchParams();
-    params.append('client_id', process.env.REACT_APP_CLIENT_ID);
-    params.append('client_secret', process.env.REACT_APP_CLIENT_SECRET);
+    params.append('client_id', window.env.REACT_APP_CLIENT_ID);
+    params.append('client_secret', window.env.REACT_APP_CLIENT_SECRET);
     params.append('grant_type', 'refresh_token');
     params.append('refresh_token', refreshToken );
 
