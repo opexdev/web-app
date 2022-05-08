@@ -17,6 +17,7 @@ const initialState = {
     canDeposit: false,
     accountType: null,
     kyc: null,
+    kycReason: null,
     permissions: [],
     lastTransaction: null,
     wallets: {
@@ -68,7 +69,8 @@ const reducer = (state = initialState, action) => {
         case actionTypes.SET_KYC_STATUS:
             return {
                 ...state,
-                kyc: action.status
+                kyc: action.status,
+                kycReason: action.reason
             };
         case actionTypes.SET_IMPERSONATE_TOKENS:
             return {

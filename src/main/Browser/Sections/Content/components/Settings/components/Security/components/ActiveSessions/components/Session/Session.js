@@ -8,7 +8,7 @@ import {images} from "../../../../../../../../../../../../assets/images";
 import {toast} from "react-hot-toast";
 
 
-const Session = ({list}) => {
+const Session = ({list , gs}) => {
 
     const {t} = useTranslation();
 
@@ -28,6 +28,7 @@ const Session = ({list}) => {
                     location: list?.ipAddress,
                 }}
             />);
+            gs()
         } else {
             setError(true)
             setIsLoading(false)

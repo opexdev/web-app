@@ -51,10 +51,11 @@ export const changeUserInfo = (firstName , lastName) => {
     };
 };
 
-export const setKYCStatus = (status) => {
+export const setKYCStatus = (data) => {
     return {
         type: actionTypes.SET_KYC_STATUS,
-        status
+        status: data.status,
+        reason: data.rejectReason
     };
 };
 export const setKYCStatusInitiate = () => {

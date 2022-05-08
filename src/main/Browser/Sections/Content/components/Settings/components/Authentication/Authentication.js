@@ -15,10 +15,10 @@ const Authentication = () => {
     const KYCStatus = useSelector(state => state.auth.kyc);
 
     useEffect(()=>{
-        if (KYCStatus !== "NOT_REQUESTED" ) {
+        if (KYCStatus && KYCStatus !== "NOT_REQUESTED" ) {
             setStep(4)
         }
-    }, [])
+    }, [KYCStatus])
 
     const stepSwitch = (step) => {
         switch (step) {

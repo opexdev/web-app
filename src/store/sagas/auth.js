@@ -14,8 +14,8 @@ export function* setUserTokens(action) {
 
 export function* getUserKYCStatus() {
     try {
-        const {data : {status}} = yield call(axios.get, '/auth/realms/opex/user-profile/kyc/status')
-        yield put(actions.setKYCStatus(status));
+        const {data} = yield call(axios.get, '/auth/realms/opex/user-profile/kyc/status')
+        yield put(actions.setKYCStatus(data));
     } catch (e) {
         console.log(e)
     }
