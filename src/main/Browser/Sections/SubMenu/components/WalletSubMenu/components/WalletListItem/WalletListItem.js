@@ -7,12 +7,11 @@ import {useSelector} from "react-redux";
 import * as Routes from "../../../../../../../../routes/routes";
 
 
-const WalletListItem = (props) => {
+const WalletListItem = ({name , showZero}) => {
 
     const {t} = useTranslation();
-    const {name,} = props
     const free = useSelector((state) => state.auth.wallets[name].free)
-
+    if (showZero && free === 0 ) return <></>
     return (
         <NavLink
             exact={true}

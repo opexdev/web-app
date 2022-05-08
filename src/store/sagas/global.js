@@ -2,6 +2,7 @@ import {put, call} from "redux-saga/effects";
 import * as actions from "../actions/index";
 import jwtDecode from "jwt-decode";
 import axios from "axios";
+import {getUserAccount} from "./auth";
 
 export function* setThemeSaga(action) {
     yield call([localStorage, 'setItem'], "isDark", action.isDark)
@@ -44,6 +45,7 @@ export function* loadConfig() {
         const jwt = jwtDecode(access_token)
         yield put(actions.setUserTokens({refreshToken, accessToken: access_token}));
         yield put(actions.setUserInfo(jwt));
+        yield getUserAccount();
     } catch (e) {
         yield put(actions.setLogoutInitiate());
     }

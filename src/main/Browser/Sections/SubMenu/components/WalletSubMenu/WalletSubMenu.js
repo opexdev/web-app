@@ -21,11 +21,11 @@ const WalletSubMenu = () => {
                 </div>
             </div>
             <div className={`column container  ${classes.content}`}>
-                    <div className={`container row jc-around ai-center py-2 border-bottom`}>
-                        <span className={`font-size-sm`}>{t("WalletSubMenu.showZeroBalance")}</span>
-                        <ToggleSwitch onchange={()=>setShowZero(prevState => !prevState)} checked={showZero}/>
-                    </div>
-                    { isServerData ? pairs.map((name) => <WalletListItem key={name} name={name}/> ) : <WalletLoading/>}
+                <div className={`container row jc-around ai-center py-2 border-bottom`}>
+                    <span className={`font-size-sm`}>{t("WalletSubMenu.showZeroBalance")}</span>
+                    <ToggleSwitch onchange={()=>setShowZero(prevState => !prevState)} checked={showZero}/>
+                </div>
+                { isServerData ? pairs.map((name) => <WalletListItem key={name} name={name} showZero={showZero}/> ) : <WalletLoading/>}
             </div>
         </div>
     );
