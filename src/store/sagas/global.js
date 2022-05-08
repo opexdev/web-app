@@ -27,7 +27,7 @@ export function* loadConfig() {
     const lockTime = yield call([localStorage, 'getItem'], 'lockTime')
 
     if (lockTime) yield put(actions.setIPG(lockTime));
-    if (isDark === "true") yield put(actions.setTheme(true));
+    if (isDark) yield put(actions.setTheme(JSON.parse(isDark)));
     if (activePair !== null) yield put(actions.setActivePair(JSON.parse(activePair), activeMarketTab));
 
     const refreshToken = localStorage.getItem("refreshToken")

@@ -1,15 +1,17 @@
 import React, {Fragment} from "react";
 import classes from "./WalletHeader.module.css";
 import {useTranslation} from "react-i18next";
-import {connect} from "react-redux";
+import {useSelector} from "react-redux";
 import {useParams} from "react-router-dom";
 
 
-const WalletHeader = (props) => {
+const WalletHeader = () => {
     const { id } = useParams()
     const {t} = useTranslation()
-    const {wallets} = props
 
+    const free = useSelector((state) => state.auth.wallets[id].free)
+    const locked = useSelector((state) => state.auth.wallets[id].locked)
+    const withdraw = useSelector((state) => state.auth.wallets[id].withdraw)
 
     return (
         <Fragment>
@@ -19,24 +21,18 @@ const WalletHeader = (props) => {
             </div>
             <div className={`col-35 column ai-center`}>
                 <span>{t("header.free")}</span>
-                <span>{wallets[id].free}{/* <span className={`font-size-sm text-color-gray`}>( --- {t("currency.IRT")} )</span>*/}</span>
+                <span>{free}{/* <span className={`font-size-sm text-color-gray`}>( --- {t("currency.IRT")} )</span>*/}</span>
             </div>
             <div className={`col-35 column ai-center ${classes.border}`}>
                 <span>{t("header.locked")}</span>
-                <span>{wallets[id].locked} {/*<span className={`font-size-sm text-color-gray`}>( --- {t("currency.IRT")} )</span>*/}</span>
+                <span>{locked} {/*<span className={`font-size-sm text-color-gray`}>( --- {t("currency.IRT")} )</span>*/}</span>
             </div>
             <div className={`col-35 column ai-center`}>
                 <span>{t("header.inWithdrawalProcess")}</span>
-                <span>{wallets[id].withdraw} {/*<span className={`font-size-sm text-color-gray`}>( --- {t("currency.IRT")} )</span>*/}</span>
+                <span>{withdraw} {/*<span className={`font-size-sm text-color-gray`}>( --- {t("currency.IRT")} )</span>*/}</span>
             </div>
         </Fragment>
     );
 };
 
-const mapStateToProps = (state) => {
-    return {
-        wallets: state.auth.wallets,
-    };
-};
-
-export default connect(mapStateToProps, null)(WalletHeader);
+export default WalletHeader;

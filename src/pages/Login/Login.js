@@ -4,7 +4,6 @@ import classes from "./Login.module.css";
 import {images} from "../../assets/images";
 import AccordionBox from "../../components/AccordionBox/AccordionBox";
 import {setLoading, setUserInfo} from "../../store/actions";
-import i18n from "i18next";
 import LoginForm from "./components/LoginForm/LoginForm";
 import RegisterForm from "./components/RegisterForm/RegisterForm";
 import ForgetPassword from "./components/ForgetPassword/ForgetPassword";
@@ -17,21 +16,16 @@ import {useHistory} from "react-router-dom";
 
 const Login = () => {
     const {t} = useTranslation();
-    const [ltr, setLtr] = useState(false);
-    const [forgetPassword, setForgetPassword] = useState(false);
-    const dispatch = useDispatch();
     const history = useHistory();
-    const isDark = useSelector((state) => state.global.isDark)
+    const dispatch = useDispatch();
+
+    const [forgetPassword, setForgetPassword] = useState(false);
+    const isLogin = useSelector((state) => state.auth.isLogin)
 
     let query = useQuery();
     const token = query.get("token");
 
-    useEffect(() => {
-        i18n.language !== "fa" ? setLtr(true) : setLtr(false);
-        i18n.on("languageChanged", (lng) => {
-            lng !== "fa" ? setLtr(true) : setLtr(false);
-        });
-    }, []);
+    if (isLogin) history.push("/")
 
     const getLoginByAdminToken = async (token) => {
         dispatch(setImpersonateTokens(token))
@@ -56,14 +50,12 @@ const Login = () => {
             title: t('signIn'),
             body: forgetPassword ? <ForgetPassword forgetPass={() => setForgetPassword(false)}/> :
                 <LoginForm forgetPass={() => setForgetPassword(true)}/>
-
         },
         {id: 2, title: t('signUp'), body: <RegisterForm/>},
     ];
 
     return (
-        <div className={`container row col-100 ai-center jc-center px-1 
-        ${classes.container} ${classes.moveImage} ${isDark ? "dark" : ""} ${ltr ? "ltr" : "rtl"}`}
+        <div className={`container row col-100 ai-center jc-center px-1 ${classes.container} ${classes.moveImage}`}
              style={{backgroundImage: `url("${images.spaceStar}")`}}>
             <div className={`col-60  flex jc-center ai-center `} style={{height: "100%"}}>
                 <div className={`${classes.content}`}>
@@ -82,6 +74,4 @@ const Login = () => {
     );
 };
 
-export default  Login;
-
-
+export default Login;

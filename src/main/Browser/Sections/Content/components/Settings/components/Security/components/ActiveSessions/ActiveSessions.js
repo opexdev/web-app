@@ -1,21 +1,14 @@
 import React, {useEffect, useState} from "react";
 import classes from "./ActiveSessions.module.css";
 import {Trans, useTranslation} from "react-i18next";
-import {
-    CheckUserSecurityConfigs,
-    getLocation,
-    getSessions,
-    LogoutAllSessionsExceptCurrent
-} from "../../../../api/settings";
+import {getSessions, LogoutAllSessionsExceptCurrent} from "../../../../api/settings";
 import moment from "moment-jalaali";
 import ScrollBar from "../../../../../../../../../../components/ScrollBar";
 import Loading from "../../../../../../../../../../components/Loading/Loading";
 import Error from "../../../../../../../../../../components/Error/Error";
-import useInterval from "../../../../../../../../../../Hooks/useInterval";
 import Session from "./components/Session/Session";
 import Icon from "../../../../../../../../../../components/Icon/Icon";
 import ReactTooltip from "react-tooltip";
-import Detailes from "./components/Details/Details";
 import {toast} from "react-hot-toast";
 
 const ActiveSessions = () => {
@@ -23,7 +16,6 @@ const ActiveSessions = () => {
 
     const [sessions, setSessions] = useState([]);
     const [currentSession, setCurrentSession] = useState([]);
-    const [details, setDetails] = useState(false);
     const [error, setError] = useState(false);
     const [loading, setLoading] = useState(true)
 
@@ -36,8 +28,6 @@ const ActiveSessions = () => {
         if (SessionsData) {
             if (SessionsData.status === 200) {
                 //setSessions((SessionsData.data).sort((a,b) => b.started - a.started))
-
-
                 /*
                 --- get location from ip function
 
@@ -56,17 +46,12 @@ const ActiveSessions = () => {
                  }).then(() => {
                      setLoading(false)
                      setError(false)
-                 })
-
-                 */
-
+                 })*/
                 setSessions(SessionsData.data.filter((s) => !s.inUse).sort((a, b) => b.started - a.started))
                 setCurrentSession(SessionsData.data.filter((s) => s.inUse)[0])
 
                 setLoading(false)
                 setError(false)
-
-
             } else {
                 setError(true)
                 setLoading(false)
@@ -79,11 +64,6 @@ const ActiveSessions = () => {
     useEffect(() => {
         getSessionsData()
     }, []);
-
-    /*useInterval(async () => {
-        await getSessionsData();
-    }, 3000);*/
-
 
     const clickHandler = async () => {
         const logOutAll = await LogoutAllSessionsExceptCurrent()
@@ -130,8 +110,6 @@ const ActiveSessions = () => {
                             <span className={`ml-05`}>{currentSession?.agent}</span>
                             <Icon iconName="icon-info font-size-md"/>
                         </div>
-
-
                     </div>
                 </div>
 
@@ -141,17 +119,14 @@ const ActiveSessions = () => {
             </div>
             <ScrollBar>
                 {sessions.length > 0 ?
-                    sessions.map((list) => <Session list={list} key={list.key} gs={()=>getSessionsData()}/>)
+                    sessions.map((list) => <Session list={list} key={list.id} gs={()=>getSessionsData()}/>)
                     : <div className={`flex jc-center ai-center height-100 font-size-sm-plus`}>
                         <span>{t("ActiveSessions.noData")}</span>
                     </div>
                 }
             </ScrollBar>
-
-
         </>
     }
-
 
     return (
         <div className="container">

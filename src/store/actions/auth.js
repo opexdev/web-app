@@ -22,6 +22,11 @@ export const setUserAccountInfo = (info) => {
         info: info,
     };
 };
+export const setUserAccountInfoInitiate = () => {
+    return {
+        type: actionTypes.SET_USER_ACCOUNT_INFO_INITIATE,
+    };
+};
 
 export const setUserTokensInitiate = (token) => {
     return {

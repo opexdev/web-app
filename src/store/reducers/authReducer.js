@@ -28,6 +28,8 @@ const initialState = {
         TETH: {free: 0.0, locked: 0.0, withdraw: 0.0},
         TUSDT: {free: 0.0, locked: 0.0, withdraw: 0.0},
         USDT: {free: 0.0, locked: 0.0, withdraw: 0.0},
+        BNB: {free: 0.0, locked: 0.0, withdraw: 0.0},
+        BUSD: {free: 0.0, locked: 0.0, withdraw: 0.0},
     },
     tradeFee: {
         IRT: 0.01,
@@ -40,8 +42,11 @@ const initialState = {
         DOGE: 0.01,
         BCH: 0.01,
         USDT: 0.01,
+        BNB: 0.01,
+        BUSD: 0.01,
     },
     isLogin: false,
+    isServerData : false
 };
 
 const reducer = (state = initialState, action) => {

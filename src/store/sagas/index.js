@@ -3,7 +3,7 @@ import * as actionTypes from "../actions/actionTypes";
 
 import {setThemeSaga, loadConfig, setActivePair, setIPGLock} from "./global";
 
-import {getUserKYCStatus, logout, setUserTokens} from "./auth";
+import {getUserAccount, getUserKYCStatus, logout, setUserTokens} from "./auth";
 
 export function* watchGlobal() {
   yield takeEvery(actionTypes.LOGOUT_INITIATE, logout);
@@ -13,5 +13,6 @@ export function* watchGlobal() {
   yield takeEvery(actionTypes.SET_USER_TOKENS_INITIATE, setUserTokens);
   yield takeEvery(actionTypes.SET_IPG_INITIATE, setIPGLock);
   yield takeEvery(actionTypes.SET_KYC_STATUS_INITIATE, getUserKYCStatus);
+  yield takeEvery(actionTypes.SET_USER_ACCOUNT_INFO_INITIATE, getUserAccount);
 
 }
