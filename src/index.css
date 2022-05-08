@@ -1116,6 +1116,13 @@ h6 {
   font-family: 'Roboto', sans-serif;
 }
 
+input {
+  direction: rtl;
+}
+.ltr input {
+  direction: ltr;
+}
+
 
 
 /*
@@ -1408,5 +1415,41 @@ table th {
     opacity: 1;
     -webkit-transform: scale(1) translateY(0);
     transform: scale(1) translateY(0);
+  }
+}
+
+
+.floating {
+  -webkit-animation: floating 5s ease-in-out infinite;
+  -moz-animation: floating 5s ease-in-out infinite;
+  animation: floating 5s ease-in-out infinite;
+}
+
+@keyframes floating {
+  0% {
+    -webkit-transform: translateY(0);
+    -moz-transform: translateY(0);
+    -ms-transform: translateY(0);
+    -o-transform: translateY(0);
+    transform: translateY(0);
+    -moz-transform: translateY(0) rotate(.2deg);
+  }
+
+  50% {
+    -webkit-transform: translateY(20px);
+    -moz-transform: translateY(20px);
+    -ms-transform: translateY(20px);
+    -o-transform: translateY(20px);
+    transform: translateY(20px);
+    -moz-transform: translateY(20px) rotate(.2deg);
+  }
+
+  100% {
+    -webkit-transform: translateY(0);
+    -moz-transform: translateY(0);
+    -ms-transform: translateY(0);
+    -o-transform: translateY(0);
+    transform: translateY(0);
+    -moz-transform: translateY(0) rotate(.2deg);
   }
 }

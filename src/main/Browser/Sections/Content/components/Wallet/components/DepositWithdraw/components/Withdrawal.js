@@ -75,7 +75,6 @@ const Withdrawal = () => {
     const isDisable =useRef()
 
 
-   // console.log("isDisable current :-> " , isDisable.current.disabled)
 
     const validation = () => {
         if (new BN(amount.value).isGreaterThan(wallets[id].free)) {
