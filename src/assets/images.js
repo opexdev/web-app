@@ -14,6 +14,8 @@ import dogecoin from "./images/src/dogecoin.svg";
 import bitcoinCash from "./images/src/bitcoinCash.svg";
 import litecoin from "./images/src/litecoin.svg";
 import tether from "./images/src/tether.svg";
+import binance from "./images/src/binance.svg";
+import binanceUSD from "./images/src/binanceUSD.svg";
 import ethereumLight from "./images/src/ethereumLight.svg";
 import toman from "./images/src/toman.svg";
 import spaceStar from "./images/src/spaceStar.png";
@@ -47,6 +49,8 @@ export const images = {
   BCH: bitcoinCash,
   LTC: litecoin,
   USDT: tether,
+  BNB: binance,
+  BUSD: binanceUSD,
   ETH: ethereumLight,
   IRT: toman,
   spaceStar: spaceStar,
