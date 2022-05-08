@@ -91,6 +91,7 @@ const ActiveSessions = () => {
             toast.success(<Trans
                 i18nKey="ActiveSessions.logOutAllSuccess"
             />);
+            getSessionsData()
         } else {
             toast.error(<Trans
                 i18nKey="ActiveSessions.logOutAllError"
