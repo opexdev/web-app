@@ -9,7 +9,7 @@ import ToggleSwitch from "../../../../../../../../components/ToggleSwitch/Toggle
 
 
 const WalletList = (props) => {
-    console.log("JJ")
+
     const {t} = useTranslation();
     let {wallets, isLoading} = props
     const [showZero, setShowZero] = useState(false);
