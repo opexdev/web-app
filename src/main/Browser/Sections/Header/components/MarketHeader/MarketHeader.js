@@ -7,7 +7,6 @@ import Icon from "../../../../../../components/Icon/Icon";
 import Popup from "../../../../../../components/Popup/Popup";
 
 
-
 const MarketHeader = () => {
     const {t} = useTranslation();
 
@@ -37,12 +36,11 @@ const MarketHeader = () => {
         setShowPopUpAsset(null)
     }
 
-
     return (
         <Fragment>
             <div className={`col-25 column ai-start`}>
                 <h2 className="mb-05">{t(`pair.${activePair.name}`)}</h2>
-                <p>{t("header.lastPrice")}:{" "}<span/>{" "}{!lastTradePrice ? "---" : t("currency." + activePair.quoteAsset)}</p>
+                <p>{t("header.lastPrice")}:{" "}<span/>{" "}{!lastTradePrice ? "---" :  lastTradePrice.toLocaleString()+" "+t("currency." + activePair.quoteAsset)}</p>
             </div>
             <div className={`col-50 column ai-center`}>
                 <p className="mb-05">{t("header.availableBalance")}</p>
@@ -66,7 +64,5 @@ const MarketHeader = () => {
         </Fragment>
     );
 };
-
-
 
 export default MarketHeader;

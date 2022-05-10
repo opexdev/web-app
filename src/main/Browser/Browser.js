@@ -1,6 +1,6 @@
 import React, {useEffect} from "react";
 import {useDispatch, useSelector} from "react-redux";
-import {Route, Switch} from "react-router-dom";
+import {Route, Switch, useHistory} from "react-router-dom";
 import i18n from "i18next";
 import ReactTooltip from "react-tooltip";
 import * as Routes from "../../routes/routes";
@@ -13,15 +13,18 @@ import SubMenu from "./Sections/SubMenu/SubMenu";
 import Header from "./Sections/Header/Header";
 import Content from "./Sections/Content/Content";
 import FullWidthLoading from "../../components/FullWidthLoading/FullWidthLoading";
-import {loadConfig, setUserAccountInfoInitiate} from "../../store/actions";
+import {loadConfig, setLoading, setUserAccountInfoInitiate, setUserInfo} from "../../store/actions";
 import TechnicalChart from "./Sections/Content/components/TechnicalChart/TechnicalChart";
 import "./Browser.css"
 import useQuery from "../../Hooks/useQuery";
 import useInterval from "../../Hooks/useInterval";
+import {setImpersonateTokens} from "../../store/actions/auth";
+import jwtDecode from "jwt-decode";
 
 
 const Browser = () => {
     const dispatch = useDispatch();
+    const history = useHistory();
     const query = useQuery();
 
     const isDark = useSelector((state) => state.global.isDark)
@@ -31,14 +34,26 @@ const Browser = () => {
     isDark ? document.body.classList.add('dark') : document.body.classList.remove('dark');
 
     useEffect(() => {
-        const token = query.get("token");
-        if (!token) dispatch(loadConfig())
+        const impersonate = query.get("impersonate");
+        if (impersonate) getLoginByAdminToken(impersonate)
+            .catch((err) => console.log(err))
+            .finally(() => {
+                dispatch(setLoading(false))
+                history.push("/")
+            })
+        if (!impersonate) dispatch(loadConfig())
         i18n.language !== "fa" ? document.body.classList.add('ltr') : document.body.classList.remove('ltr');
         i18n.on("languageChanged", (lng) => {
             lng !== "fa" ? document.body.classList.add('ltr') : document.body.classList.remove('ltr');
         });
     }, []);
 
+    const getLoginByAdminToken = async (token) => {
+        dispatch(setImpersonateTokens(token))
+        const jwt = jwtDecode(token)
+        dispatch(setUserInfo(jwt));
+        dispatch(setUserAccountInfoInitiate())
+    }
 
     useInterval(() => {
         dispatch(setUserAccountInfoInitiate());

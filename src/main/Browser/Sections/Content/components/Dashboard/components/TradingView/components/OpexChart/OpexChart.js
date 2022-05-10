@@ -17,13 +17,10 @@ const TradingView = (props) => {
 
     const timeScale = {
         tickMarkFormatter: (time) => {
-            return moment(time * 1000).format("jYYYY/jM/jD");
+            if (i18n.language === "fa") moment(time * 1000).format("jYYYY/jM/jD")
+            return moment(time * 1000).format("YYYY/M/D");
         },
     }
-
-    useEffect(() => {
-        console.log("Lang", i18n.language)
-    }, [i18n.language])
 
     useEffect(() => {
         let theme = candleColors;
