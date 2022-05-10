@@ -4,8 +4,10 @@ import {BrowserView, MobileView} from "react-device-detect";
 
 
 const Main = ({baseURL}) => {
+
     const Mobile = lazy(() => import('./Mobile/Mobile'))
     const Browser = lazy(() => import('./Browser/Browser'))
+
 
     return (
         <Router basename={baseURL}>

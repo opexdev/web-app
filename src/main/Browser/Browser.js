@@ -13,13 +13,14 @@ import SubMenu from "./Sections/SubMenu/SubMenu";
 import Header from "./Sections/Header/Header";
 import Content from "./Sections/Content/Content";
 import FullWidthLoading from "../../components/FullWidthLoading/FullWidthLoading";
-import {loadConfig, setLoading, setUserAccountInfoInitiate, setUserInfo} from "../../store/actions";
+import {loadConfig, setInfoMessage, setLoading, setUserAccountInfoInitiate, setUserInfo} from "../../store/actions";
 import TechnicalChart from "./Sections/Content/components/TechnicalChart/TechnicalChart";
 import "./Browser.css"
 import useQuery from "../../Hooks/useQuery";
 import useInterval from "../../Hooks/useInterval";
 import {setImpersonateTokens} from "../../store/actions/auth";
 import jwtDecode from "jwt-decode";
+import Info from "../../components/Info/Info";
 
 
 const Browser = () => {
@@ -46,6 +47,14 @@ const Browser = () => {
         i18n.on("languageChanged", (lng) => {
             lng !== "fa" ? document.body.classList.add('ltr') : document.body.classList.remove('ltr');
         });
+
+        window.addEventListener('offline', () => dispatch(setInfoMessage(null, "offline")));
+        window.addEventListener('online', () => dispatch(setInfoMessage(null, null)));
+        return () => {
+            window.removeEventListener('offline', () => dispatch(setInfoMessage(null, "offline")));
+            window.removeEventListener('online', () => dispatch(setInfoMessage(null, null)));
+        }
+
     }, []);
 
     const getLoginByAdminToken = async (token) => {
@@ -108,6 +117,7 @@ const Browser = () => {
                         <SubMenu isLogin={isLogin}/>
                         <div className="column content">
                             <Header/>
+                            <Info/>
                             <div style={{display: "flex", flex: 1}}>
                                 <Content/>
                             </div>

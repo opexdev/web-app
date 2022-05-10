@@ -45,6 +45,10 @@ const initialState = {
     isLoading: true,
     isDark: true,
     ipgLock: null,
+    info: {
+        type: null,
+        message: null,
+    },
 };
 
 const globalReducer = (state = initialState, action) => {
@@ -59,6 +63,15 @@ const globalReducer = (state = initialState, action) => {
             return {
                 ...state,
                 ipgLock: action.lockTime,
+            };
+
+        case actionTypes.SET_INFO_MESSAGE:
+            return {
+                ...state,
+                info: {
+                    type: action.messageType,
+                    message: action.message,
+                }
             };
 
         case actionTypes.SET_LOADING:

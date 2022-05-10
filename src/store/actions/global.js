@@ -99,6 +99,14 @@ export const setIPG = (lockTime) => {
   };
 };
 
+export const setInfoMessage = (messageType, message) => {
+  return {
+    type: actionTypes.SET_INFO_MESSAGE,
+    messageType,
+    message,
+  };
+};
+
 export const setIPGInitiate = (lockTime) => {
   return {
     type: actionTypes.SET_IPG_INITIATE,

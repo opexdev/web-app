@@ -45,6 +45,7 @@
   "noTx": "تراکنشی وجود ندارد",
   "close": "بستن",
   "unit": "واحد",
+  "offline": "اتصال اینترنت را برسی کنید!",
   "country": {
     "iran" : "جمهوری اسلامی ایران",
     "germany" : "آلمان",
@@ -554,6 +555,8 @@
     "otpLength": "رمز دوعاملی 6 کاراکتر است.",
     "refreshCaptcha": "نمایش دوباره captcha",
     "captchaServerError": "خطا در سرور برای گرفتن Captcha",
+    "InvalidCaptcha": "Captcha اشتباه وارد شده است!",
+    "minCaptcha": "Captcha باید ۵ کاراکتر باشد!",
     "emptyCaptcha": "وارد کردن Captcha الزامی است",
     "forgetPassServerError": "خطا در بازیابی رمز، دوباره تلاش کنید",
     "forgetPassEmailForgetError": "فرمت ایمیل صحیح نیست."

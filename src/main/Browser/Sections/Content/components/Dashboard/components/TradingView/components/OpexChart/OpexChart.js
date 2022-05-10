@@ -17,7 +17,7 @@ const TradingView = (props) => {
 
     const timeScale = {
         tickMarkFormatter: (time) => {
-            if (i18n.language === "fa") moment(time * 1000).format("jYYYY/jM/jD")
+            if (i18n.language === "fa") return moment(time * 1000).format("jYYYY/jM/jD")
             return moment(time * 1000).format("YYYY/M/D");
         },
     }

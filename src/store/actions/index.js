@@ -11,6 +11,7 @@ export {
   setBestSellPrice,
   setPanelTokens,
   setPanelTokensInitiate,
+  setInfoMessage,
   setIPG,
   setIPGInitiate
 

@@ -158,7 +158,9 @@
   background-color: var(--textRed);
 }
 
-
+.ltrInput :global(input) {
+  direction: ltr !important;
+}
 
 
 

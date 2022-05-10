@@ -15,6 +15,10 @@ export default function setupAxios(axios , store) {
     axios.interceptors.request.use(
         (config) => {
             const {auth: {accessToken}} = store.getState()
+            const {global: {info: {message}} } = store.getState()
+            if (message === "offline") {
+                throw new axios.Cancel('Operation canceled by the user.');
+            }
             if (accessToken) {
                 config.headers.Authorization = `Bearer ${accessToken}`
             }
