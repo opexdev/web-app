@@ -22,7 +22,7 @@ const OpenOrders = (props) => {
     const getOpenOrderData = async () => {
         const openOrder = await getOpenOrder(activePair)
         if (openOrder.status === 200) {
-            setOrders(openOrder.data)
+             setOrders(openOrder.data.sort((a,b) => moment(b.time).unix() - moment(a.time).unix()))
         }
     }
 
@@ -37,6 +37,11 @@ const OpenOrders = (props) => {
     if (isLoading) {
         return <Loading/>
     }
+
+    if (orders.length === 0) {
+        return <div className={`height-100 flex jc-center ai-center`}>{t("noData")}</div>
+    }
+
     return (
         <ScrollBar>
             <table className="text-center double-striped" cellSpacing="0" cellPadding="0">
