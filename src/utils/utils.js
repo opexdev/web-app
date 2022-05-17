@@ -36,3 +36,18 @@ export const BN = BigNumber.clone({ FORMAT: {
     groupSeparator: ',',
     decimalSeparator: '.',
   }})
+
+export const isEn = str => /^[a-zA-Z ]*$/.test(str);
+
+export const isValidNationalCode = (input) => {
+  if (!/^\d{10}$/.test(input)) return false;
+  const check = +input[9];
+  const sum = input.split('').slice(0, 9).reduce((acc, x, i) => acc + +x * (10 - i), 0) % 11;
+  return sum < 2 ? check === sum : check + sum === 11;
+}
+
+export const isValidPassportCode = (input) => {
+  if (!/^[A-Z][0-9]{8}$/.test(input)) return false;
+  return true;
+}
+

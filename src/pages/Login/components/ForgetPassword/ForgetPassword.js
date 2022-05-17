@@ -63,6 +63,10 @@ const ForgetPassword = (props) => {
             setForgetPass({...forgetPass, captchaAnswer: {value: "", error: [t('login.emptyCaptcha')]}})
             return false
         }
+        if (forgetPass.captchaAnswer.value.length < 5){
+            setForgetPass({...forgetPass, captchaAnswer: {value: "", error: [t('login.minCaptcha')]}})
+            return false
+        }
         setLoading(true);
         let panelToken = await getToken();
         const captchaValue = `${captcha.SessionKey.value}-${forgetPass.captchaAnswer.value}`
@@ -73,7 +77,11 @@ const ForgetPassword = (props) => {
         }
         else {
             setLoading(false);
-            setForgetPass({...forgetPass, captchaAnswer: {value: "" , error: [t('login.forgetPassServerError')] }})
+            if (submitResult.status === 400 && submitResult.data.error === "InvalidCaptcha" ) {
+                setForgetPass({...forgetPass , captchaAnswer: {value: "", error: [t("login.InvalidCaptcha")]}})
+            } else {
+                setForgetPass({...forgetPass, captchaAnswer: {value: "" , error: [t('login.forgetPassServerError')] }})
+            }
         }
     }
     const LeadCaptchaHandler = () => {
@@ -126,6 +134,8 @@ const ForgetPassword = (props) => {
                     setForgetPass({...forgetPass, captchaAnswer: {value: e.target.value , error: []}})
                 }
                 alerts={forgetPass.captchaAnswer.error}
+                maxLength="5"
+                //minLength="5"
             />
         </Fragment>
     }

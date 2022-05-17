@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from "react";
+import React from "react";
 import classes from "./HelpStep.module.css";
 import {useTranslation} from "react-i18next";
 import Button from "../../../../../../../../../../components/Button/Button";
@@ -7,10 +7,8 @@ const HelpStep = (props) => {
   const {t} = useTranslation();
 
   return (
-    <div
-      className={`container card-background card-border column ${classes.container}`}>
-      <div
-        className={`column border-bottom jc-center card-header-bg px-1 py-1 ${classes.header}`}>
+    <div className={`container card-background card-border column ${classes.container}`}>
+      <div className={`column border-bottom jc-center card-header-bg px-1 py-1 ${classes.header}`}>
         <div className="row jc-start ">
           <h3>{t("HelpStep.title")}</h3>
         </div>

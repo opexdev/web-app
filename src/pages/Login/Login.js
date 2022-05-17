@@ -1,55 +1,21 @@
-import React, {useEffect, useState} from "react";
-import {useDispatch, useSelector} from "react-redux";
+import React, {useState} from "react";
+import {useSelector} from "react-redux";
 import classes from "./Login.module.css";
 import {images} from "../../assets/images";
 import AccordionBox from "../../components/AccordionBox/AccordionBox";
-import {setPanelTokensInitiate, setUserInfo} from "../../store/actions";
-import i18n from "i18next";
 import LoginForm from "./components/LoginForm/LoginForm";
 import RegisterForm from "./components/RegisterForm/RegisterForm";
 import ForgetPassword from "./components/ForgetPassword/ForgetPassword";
 import {useTranslation} from "react-i18next";
-import useQuery from "../../Hooks/useQuery";
-import {getToken, getUser, parsePanelToken} from "./api/auth";
-import {getAccount, parseWalletsResponse} from "../../main/Browser/Sections/SubMenu/components/WalletSubMenu/api/wallet";
-import jwtDecode from "jwt-decode";
-import {setImpersonateTokens, setUserAccountInfo} from "../../store/actions/auth";
 import {useHistory} from "react-router-dom";
 
 const Login = () => {
     const {t} = useTranslation();
-    const [ltr, setLtr] = useState(false);
-    const [forgetPassword, setForgetPassword] = useState(false);
-    const dispatch = useDispatch();
     const history = useHistory();
-    const isDark = useSelector((state) => state.global.isDark)
+    const [forgetPassword, setForgetPassword] = useState(false);
+    const isLogin = useSelector((state) => state.auth.isLogin)
 
-    let query = useQuery();
-    const token = query.get("token");
-
-    useEffect(() => {
-        i18n.language !== "fa" ? setLtr(true) : setLtr(false);
-        i18n.on("languageChanged", (lng) => {
-            lng !== "fa" ? setLtr(true) : setLtr(false);
-        });
-    }, []);
-
-    const getLoginByAdminToken = async (token) => {
-        dispatch(setImpersonateTokens(token))
-        const jwt = jwtDecode(token)
-        dispatch(setUserInfo(jwt));
-        let account = await getAccount()
-        if (account) {
-            dispatch(setUserAccountInfo(account))
-        }
-        return history.push("/");
-    }
-
-    useEffect(() =>{
-        if (token){
-            getLoginByAdminToken(token)
-        }
-    },[])
+    if (isLogin) history.push("/")
 
     const data = [
         {
@@ -57,14 +23,12 @@ const Login = () => {
             title: t('signIn'),
             body: forgetPassword ? <ForgetPassword forgetPass={() => setForgetPassword(false)}/> :
                 <LoginForm forgetPass={() => setForgetPassword(true)}/>
-
         },
         {id: 2, title: t('signUp'), body: <RegisterForm/>},
     ];
 
     return (
-        <div className={`container row col-100 ai-center jc-center px-1 
-        ${classes.container} ${classes.moveImage} ${isDark ? "dark" : ""} ${ltr ? "ltr" : "rtl"}`}
+        <div className={`container row col-100 ai-center jc-center px-1 ${classes.container} ${classes.moveImage}`}
              style={{backgroundImage: `url("${images.spaceStar}")`}}>
             <div className={`col-60  flex jc-center ai-center `} style={{height: "100%"}}>
                 <div className={`${classes.content}`}>
@@ -83,6 +47,4 @@ const Login = () => {
     );
 };
 
-export default  Login;
-
-
+export default Login;

@@ -1,9 +1,9 @@
-import {connect} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {toast} from "react-hot-toast";
 import {createOrder} from "../../api/order";
 import classes from "../../Order.module.css";
-import React, {useState, useEffect} from "react";
-import {useTranslation, Trans} from "react-i18next";
+import React, {useEffect, useState} from "react";
+import {Trans, useTranslation} from "react-i18next";
 import {Login as LoginRoute} from "../../../../../../../../../../routes/routes";
 import {useHistory} from "react-router-dom";
 import {BN, parsePriceString} from "../../../../../../../../../../utils/utils";
@@ -12,11 +12,21 @@ import Button from "../../../../../../../../../../components/Button/Button";
 import {setLastTransaction} from "../../../../../../../../../../store/actions/auth";
 import {images} from "../../../../../../../../../../assets/images";
 
-const BuyOrder = (props) => {
+const BuyOrder = () => {
+
     const history = useHistory();
     const {t} = useTranslation();
+    const dispatch = useDispatch();
+
     const [isLoading, setIsLoading] = useState(false)
-    const {wallets, activePair, tradeFee, bestBuyPrice, isLogin, selectedBuyOrder} = props
+    const activePair = useSelector((state) => state.global.activePair)
+    const quote = useSelector((state) => state.auth.wallets[activePair.quoteAsset].free)
+    const bestBuyPrice = useSelector((state) => state.global.activePairOrders.bestBuyPrice)
+
+    const selectedBuyOrder = useSelector((state) => state.global.activePairOrders.selectedBuyOrder)
+    const tradeFee = useSelector((state) => state.auth.tradeFee)
+    const isLogin = useSelector((state) => state.auth.isLogin)
+
     const [alert, setAlert] = useState({
         submit: false,
         reqAmount: null,
@@ -121,7 +131,7 @@ const BuyOrder = (props) => {
     };
 
     useEffect(() => {
-        if(order.totalPrice.isGreaterThan(wallets[activePair.quoteAsset].free)){
+        if(order.totalPrice.isGreaterThan(quote)){
             return setAlert({
                 ...alert,
                 totalPrice: t('orders.notEnoughBalance')
@@ -164,7 +174,7 @@ const BuyOrder = (props) => {
 
     const fillBuyByWallet = () => {
         if (order.pricePerUnit.isEqualTo(0)) {
-            const totalPrice = new BN(wallets[activePair.quoteAsset].free);
+            const totalPrice = new BN(quote);
             setOrder({
                 ...order,
                 reqAmount: totalPrice.dividedBy(bestBuyPrice).decimalPlaces(activePair.baseAssetPrecision),
@@ -174,7 +184,7 @@ const BuyOrder = (props) => {
             });
         } else {
             buyPriceHandler(
-                wallets[activePair.quoteAsset].free.toString(),
+                quote.toString(),
                 "totalPrice",
             );
         }
@@ -221,7 +231,7 @@ const BuyOrder = (props) => {
                     pricePerUnit: order.pricePerUnit,
                 }}
             />);
-            setTimeout(() => props.setLastTransaction(submitOrder.data.transactTime), 2000);
+            setTimeout(() => dispatch(setLastTransaction(submitOrder.data.transactTime)), 2000);
         } else {
             toast.error(t("orders.error"));
             setAlert({
@@ -243,6 +253,7 @@ const BuyOrder = (props) => {
         return t("pleaseLogin")
     }
 
+
     return (
         <div className={`column jc-between ${classes.content}`}>
             <div className="column jc-between">
@@ -251,7 +262,7 @@ const BuyOrder = (props) => {
                 }}>
                     {t("orders.availableAmount")}:{" "}
                     <span className="cursor-pointer">
-              {wallets[activePair.quoteAsset].free.toLocaleString()}{" "}
+              {quote.toLocaleString()}{" "}
                         {t("currency." + activePair.quoteAsset)}
             </span>
                 </p>
@@ -353,28 +364,11 @@ const BuyOrder = (props) => {
                 buttonClass={`${classes.thisButton} ${alert.submit ? classes.alertSubmit : classes.buyOrder} ${isLoading ? "cursor-not-allowed" : "cursor-pointer"} flex jc-center ai-center`}
                 type="submit"
                 onClick={submit}
-                disabled={alert.reqAmount || order.reqAmount.isZero() || order.pricePerUnit.isZero() || !isLogin}
+                disabled={alert.reqAmount || order.reqAmount.isZero() || order.pricePerUnit.isZero() || !isLogin || alert.totalPrice}
                 buttonTitle={submitButtonTextHandler()}
             />
         </div>
     );
 };
 
-const mapStateToProps = (state) => {
-    return {
-        activePair: state.global.activePair,
-        bestBuyPrice: state.global.activePairOrders.bestBuyPrice,
-        selectedBuyOrder: state.global.activePairOrders.selectedBuyOrder,
-        wallets: state.auth.wallets,
-        tradeFee: state.auth.tradeFee,
-        isLogin: state.auth.isLogin,
-    };
-};
-
-const mapDispatchToProps = (dispatch) => {
-    return {
-        setLastTransaction: (time) => dispatch(setLastTransaction(time)),
-    };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(BuyOrder);
+export default BuyOrder;

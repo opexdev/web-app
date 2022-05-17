@@ -31,7 +31,16 @@
     "USD" : "USD",
     "BTC" : "BTC",
     "ETH" : "ETH",
-    "USDT": "USDT"
+    "USDT": "USDT",
+    "TBTC": "TBTC",
+    "TETH": "TETH",
+    "TUSDT": "TUSDT",
+    "BNB": "BNB",
+    "BUSD": "BUSD",
+    "DOGE": "DOGE",
+    "LTC": "LTC",
+    "BCH": "BCH",
+    "NLN": "NLN"
   },
   "ordersStatus": {
     "live": "Live",
@@ -49,15 +58,23 @@
     "ETH/IRT" : "ETH/IRT",
     "ETH/BTC": "ETH/BTC",
     "BTC/USDT": "BTC/USDT",
+    "TBTC/TUSDT": "TBTC/TUSDT",
+    "TETH/TUSDT": "TETH/TUSDT",
     "LTC/BTC": "LTC/BTC",
     "DOGE/BTC": "DOGE/BTC",
     "BCH/BTC": "BCH/BTC",
     "LTC/IRT": "LTC/IRT",
+    "LTC/USDT": "LTC/USDT",
     "DOGE/IRT": "DOGE/IRT",
     "BCH/IRT": "BCH/IRT",
     "ETH/USDT": "ETH/USDT",
+    "BNB/IRT": "BNB/IRT",
+    "BNB/USDT": "BNB/USDT",
+    "BUSD/IRT": "BUSD/IRT",
     "DOGE/USDT": "DOGE/USDT",
-    "BCH/USDT": "BCH/USDT"
+    "BCH/USDT": "BCH/USDT",
+    "NLN/BTC": "NLN/BTC",
+    "NLN/USDT": "NLN/USDT"
   },
   "header": {
     "lastPrice" : "Last Price",

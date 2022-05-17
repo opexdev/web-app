@@ -1,8 +1,7 @@
 import * as actionTypes from "../actions/actionTypes";
 
 const initialState = {
-    panelAccessToken: null,
-    panelAccessTokenExpires: null,
+    pairs:["IRT", "BTC", "TBTC","ETH","TETH","BNB","TUSDT", "USDT","BUSD"],
     activePair: {
         name: "BTC/USDT",
         baseAsset: "BTC",
@@ -46,6 +45,10 @@ const initialState = {
     isLoading: true,
     isDark: true,
     ipgLock: null,
+    info: {
+        type: null,
+        message: null,
+    },
 };
 
 const globalReducer = (state = initialState, action) => {
@@ -60,6 +63,15 @@ const globalReducer = (state = initialState, action) => {
             return {
                 ...state,
                 ipgLock: action.lockTime,
+            };
+
+        case actionTypes.SET_INFO_MESSAGE:
+            return {
+                ...state,
+                info: {
+                    type: action.messageType,
+                    message: action.message,
+                }
             };
 
         case actionTypes.SET_LOADING:

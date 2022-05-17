@@ -14,13 +14,18 @@ import dogecoin from "./images/src/dogecoin.svg";
 import bitcoinCash from "./images/src/bitcoinCash.svg";
 import litecoin from "./images/src/litecoin.svg";
 import tether from "./images/src/tether.svg";
+import binance from "./images/src/binance.svg";
+import binanceUSD from "./images/src/binanceUSD.svg";
 import ethereumLight from "./images/src/ethereumLight.svg";
 import toman from "./images/src/toman.svg";
 import spaceStar from "./images/src/spaceStar.png";
 import astronaut from "./images/src/astronaut.svg";
 import approve from "./images/src/approve.svg";
+import pending from "./images/src/pending.svg";
+import block from "./images/src/block.svg";
 import reject from "./images/src/reject.svg";
 import security from "./images/src/security.svg";
+import authentication from "./images/src/authentication.svg";
 import squareLoading from "./images/src/squareLoading.gif";
 import squareLoadingLight from "./images/src/squareLoadingLight.gif";
 import linearLoading from "./images/src/linearLoading.gif";
@@ -44,13 +49,18 @@ export const images = {
   BCH: bitcoinCash,
   LTC: litecoin,
   USDT: tether,
+  BNB: binance,
+  BUSD: binanceUSD,
   ETH: ethereumLight,
   IRT: toman,
   spaceStar: spaceStar,
   astronaut: astronaut,
   approve: approve,
   reject: reject,
+  pending: pending,
+  block: block,
   security: security,
+  authentication: authentication,
   squareLoading: squareLoading,
   squareLoadingLight: squareLoadingLight,
   linearLoading: linearLoading,

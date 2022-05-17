@@ -12,6 +12,8 @@ import TextInput from "../../../../../../../../../../components/TextInput/TextIn
 import {BN} from "../../../../../../../../../../utils/utils";
 import Button from "../../../../../../../../../../components/Button/Button";
 import {toast} from "react-hot-toast";
+import Loading from "../../../../../../../../../../components/Loading/Loading";
+import Error from "../../../../../../../../../../components/Error/Error";
 
 
 
@@ -164,6 +166,74 @@ const IRTTx = (props) => {
     }
 
 
+    const content = () => {
+        if(isLoading) {
+            return <Loading/>
+        }
+        if (error) {
+            return <Error/>
+        }
+
+        if( tx.length === 0) {
+            return <div className="container height-100 flex ai-center jc-center">{t("noTx")}</div>
+        }
+        return <table
+            className="text-center striped"
+            cellSpacing="0"
+            cellPadding="0">
+            <thead className="th-border-y">
+            <tr>
+                <th>{t("date")}</th>
+                <th>{t("time")}</th>
+                <th>{t("DepositWithdrawTx.transactionType")}</th>
+                <th>{t("volume")} ({id})</th>
+                <th>{t("unit")}</th>
+                <th>{t("status")}</th>
+
+                {/*<th></th>
+                        <th></th>*/}
+
+                {/*<th>{t("details")}</th>*/}
+            </tr>
+            </thead>
+            <tbody>{tx.map((tr, index) => (
+                <Fragment key={index}>
+                    <tr>
+                        <td>{moment(tr.time).format("jYY/jMM/jDD")}</td>
+                        <td>{moment(tr.time).format("HH:mm:ss")}</td>
+                        <td className={tr.isDeposit === true ? "text-green" : "text-red"}>{tr.isDeposit === true ? t("deposit") : t("withdrawal")}</td>
+                        <td className={tr.isDeposit === true ? "text-green" : "text-red"}>{new BN(tr.amount).multipliedBy(0.1).toFormat()}{" "}{tr.isDeposit === true ? "+" : "-"}</td>
+                        <td>{t("currency." + id)}</td>
+                        <td className={`${IRTtxStatusClassHandler(tr.status)}`}>{t("paymentStatus." + tr.status)}</td>
+
+                        {/* <td>{payButton(tr.status , tr.id)}</td>
+                                <td>{cancelButton(tr.status, tr.reference)}</td>*/}
+
+                        {/*
+                                {openItem === index ? (
+                                    <td onClick={() => setOpenItem(null)}>
+                                        <Icon
+                                            iconName="icon-up-open icon-blue font-size-sm cursor-pointer"
+                                            customClass={classes.iconBG}
+                                        />
+                                    </td>
+                                ) : (
+                                    <td onClick={() => setOpenItem(index)}>
+                                        <Icon
+                                            iconName="icon-down-open icon-blue font-size-sm cursor-pointer"
+                                            customClass={classes.iconBG}
+                                        />
+                                    </td>
+                                )}
+                                */}
+                    </tr>
+                </Fragment>
+            ))}
+            </tbody>
+        </table>
+
+    }
+
 
 
     return (
@@ -261,60 +331,7 @@ const IRTTx = (props) => {
                     </div>
                 </Fragment>
             ) : (
-                <table
-                    className="text-center striped"
-                    cellSpacing="0"
-                    cellPadding="0">
-                    <thead className="th-border-y">
-                    <tr>
-                        <th>{t("date")}</th>
-                        <th>{t("time")}</th>
-                        <th>{t("DepositWithdrawTx.transactionType")}</th>
-                        <th>{t("volume")} ({id})</th>
-                        <th>{t("unit")}</th>
-                        <th>{t("status")}</th>
-
-                        {/*<th></th>
-                        <th></th>*/}
-
-                        {/*<th>{t("details")}</th>*/}
-                    </tr>
-                    </thead>
-                    <tbody>{tx.map((tr, index) => (
-                        <Fragment key={index}>
-                            <tr>
-                                <td>{moment(tr.time).format("jYY/jMM/jDD")}</td>
-                                <td>{moment(tr.time).format("HH:mm:ss")}</td>
-                                <td className={tr.isDeposit === true ? "text-green" : "text-red"}>{tr.isDeposit === true ? t("deposit") : t("withdrawal")}</td>
-                                <td className={tr.isDeposit === true ? "text-green" : "text-red"}>{new BN(tr.amount).multipliedBy(0.1).toFormat()}{" "}{tr.isDeposit === true ? "+" : "-"}</td>
-                                <td>{t("currency." + id)}</td>
-                                <td className={`${IRTtxStatusClassHandler(tr.status)}`}>{t("paymentStatus." + tr.status)}</td>
-
-                               {/* <td>{payButton(tr.status , tr.id)}</td>
-                                <td>{cancelButton(tr.status, tr.reference)}</td>*/}
-
-                                {/*
-                                {openItem === index ? (
-                                    <td onClick={() => setOpenItem(null)}>
-                                        <Icon
-                                            iconName="icon-up-open icon-blue font-size-sm cursor-pointer"
-                                            customClass={classes.iconBG}
-                                        />
-                                    </td>
-                                ) : (
-                                    <td onClick={() => setOpenItem(index)}>
-                                        <Icon
-                                            iconName="icon-down-open icon-blue font-size-sm cursor-pointer"
-                                            customClass={classes.iconBG}
-                                        />
-                                    </td>
-                                )}
-                                */}
-                            </tr>
-                        </Fragment>
-                    ))}
-                    </tbody>
-                </table>
+                content()
             )}
         </ScrollBar>
     );

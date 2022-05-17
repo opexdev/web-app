@@ -11,6 +11,7 @@ export {
   setBestSellPrice,
   setPanelTokens,
   setPanelTokensInitiate,
+  setInfoMessage,
   setIPG,
   setIPGInitiate
 
@@ -22,4 +23,10 @@ export {
   setUserTokens,
   setUserTokensInitiate,
   setUserInfo,
+  changeUserInfo,
+  setUserAccountInfo,
+  setUserAccountInfoInitiate,
+  setKYCStatus
 } from "./auth";
+
+

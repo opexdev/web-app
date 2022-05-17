@@ -1,15 +1,17 @@
 import axios from "axios";
 
-export const getAccount = () => {
+export const getAccount = (token) => {
     const timestamp = Date.now()
     const params = new URLSearchParams();
     params.append('timestamp', timestamp.toString());
 
+    const headers = {
+        'content-type': 'application/x-www-form-urlencoded'
+    }
+    if (token) headers.Authorization = "Bearer "+token;
     return axios.get(`/api/v3/account?timestamp=${timestamp.toString()}`, {
         data:params,
-        headers : {
-            'content-type': 'application/x-www-form-urlencoded'
-        },
+        headers
     })
 
 }

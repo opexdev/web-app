@@ -1,17 +1,26 @@
 name: Deploy OPEX-Web-APP - Demo
+
 on:
   push:
     branches:
       - main
+
 jobs:
-  jenkinsJob:
-    name: Deploy OPEX-Web-APP new demo version
-    runs-on: ubuntu-latest
+  build:
+    runs-on: ubuntu-20.04
+    name: Opex web app build
+    env:
+      OPEX_TAG: latest
     steps:
-      - name: Trigger opex-web-app-demo on Jenkins
-        uses: appleboy/jenkins-action@master
+      - name: Checkout Source Code
+        uses: actions/checkout@v2
+      - name: Build Docker images
+        run: docker-compose -f docker-compose.build.yml build
+      - name: Login to GitHub Container Registry
+        uses: docker/login-action@v1
         with:
-          url: ${{ secrets.JENKINS_URL }}
-          user: ${{ secrets.JENKINS_USER }}
-          token: ${{ secrets.JENKINS_TOKEN }}
-          job: "opex-web-app-demo"
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - name: Push images to GitHub Container Registry
+        run: docker-compose -f docker-compose.build.yml push

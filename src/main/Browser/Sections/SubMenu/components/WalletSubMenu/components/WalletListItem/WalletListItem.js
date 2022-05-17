@@ -3,19 +3,21 @@ import classes from "../../WalletSubMenu.module.css";
 import {NavLink} from "react-router-dom";
 import {useTranslation} from "react-i18next";
 import {images} from "../../../../../../../../assets/images";
+import {useSelector} from "react-redux";
+import * as Routes from "../../../../../../../../routes/routes";
 
 
-const WalletListItem = (props) => {
+const WalletListItem = ({name , showZero}) => {
 
     const {t} = useTranslation();
-    const {route, name, amount} = props
-
+    const free = useSelector((state) => state.auth.wallets[name].free)
+    if (showZero && free === 0 ) return <></>
     return (
         <NavLink
             exact={true}
             activeClassName={classes.selected}
             className="container row ai-center cursor-pointer position-relative px-1 py-05"
-            to={route}>
+            to={Routes.Wallet + "/" + name}>
             <div className={` row jc-center ai-center ${classes.PairImage}`}>
                 <img
                     className={`img-md flex`}
@@ -31,7 +33,7 @@ const WalletListItem = (props) => {
                 </div>
                 <div className="column ai-end">
               <span>
-                {amount + " "}
+                {free.toLocaleString() + " "}
                   <span className="font-size-sm">{t("currency." + name)}</span>
               </span>
                     {/*<span className="font-size-sm text-color-gray">

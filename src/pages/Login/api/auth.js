@@ -1,7 +1,7 @@
 import axios from "axios";
 
-const clientSecret = process.env.REACT_APP_CLIENT_SECRET
-const clientId = process.env.REACT_APP_CLIENT_ID
+const clientSecret = window.env.REACT_APP_CLIENT_SECRET
+const clientId = window.env.REACT_APP_CLIENT_ID
 
 
 export const getToken = async () => {
@@ -143,22 +143,8 @@ export const sendUpdateProfileReq = async (token, user, attributes ) => {
         return e.response;
     })
 }
-export const sendUserFile = async (token, user, file ) => {
-    axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-    axios.defaults.headers.common['Content-Type'] = 'application/json';
-    const data = new FormData();
-    data.append('file', file);
 
-    return await axios.post(`/storage/${user}`, data
-    ).then((res) => {
-        return res;
-    }).catch((e) => {
-        if (!e.response) {
-            return false;
-        }
-        return e.response;
-    })
-}
+
 
 export const addToKycGroup = async (token, userId) => {
     axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;

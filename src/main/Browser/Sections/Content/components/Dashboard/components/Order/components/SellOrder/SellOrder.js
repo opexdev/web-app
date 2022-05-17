@@ -1,12 +1,8 @@
-import React, {useState, useEffect} from "react";
-import {useTranslation, Trans} from "react-i18next";
+import React, {useEffect, useState} from "react";
+import {Trans, useTranslation} from "react-i18next";
 import classes from "../../Order.module.css";
-
-import {connect} from "react-redux";
-
+import {useDispatch, useSelector} from "react-redux";
 import {createOrder} from "../../api/order";
-
-
 import {toast} from "react-hot-toast";
 import {useHistory} from "react-router-dom";
 import {Login as LoginRoute} from "../../../../../../../../../../routes/routes";
@@ -16,11 +12,23 @@ import Button from "../../../../../../../../../../components/Button/Button";
 import {setLastTransaction} from "../../../../../../../../../../store/actions/auth";
 import {images} from "../../../../../../../../../../assets/images";
 
-const SellOrder = (props) => {
+const SellOrder = () => {
+
     const history = useHistory();
     const {t} = useTranslation();
+    const dispatch = useDispatch();
+
     const [isLoading, setIsLoading] = useState(false)
-    const {wallets, activePair, tradeFee, bestSellPrice, isLogin, selectedSellOrder} = props
+
+    const tradeFee = useSelector((state) => state.auth.tradeFee)
+    const isLogin = useSelector((state) => state.auth.isLogin)
+    const activePair = useSelector((state) => state.global.activePair)
+    const bestSellPrice = useSelector((state) => state.global.activePairOrders.bestSellPrice)
+    const selectedSellOrder = useSelector((state) => state.global.activePairOrders.selectedSellOrder)
+
+    const base = useSelector((state) => state.auth.wallets[activePair.baseAsset].free)
+    const quote = useSelector((state) => state.auth.wallets[activePair.quoteAsset].free)
+
     const [alert, setAlert] = useState({
         reqAmount: null,
         submit: false,
@@ -151,7 +159,7 @@ const SellOrder = (props) => {
 
     const fillSellByWallet = () => {
         if (order.pricePerUnit.isEqualTo(0)) {
-            const totalPrice = new BN(wallets[activePair.quoteAsset].free);
+            const totalPrice = new BN(quote);
             setOrder({
                 ...order,
                 reqAmount: totalPrice.dividedBy(bestSellPrice).decimalPlaces(activePair.baseAssetPrecision),
@@ -161,7 +169,7 @@ const SellOrder = (props) => {
             });
         } else {
             sellPriceHandler(
-                wallets[activePair.quoteAsset].free.toString(),
+                quote.toString(),
                 "totalPrice",
             );
         }
@@ -175,7 +183,7 @@ const SellOrder = (props) => {
     };
 
     useEffect(() => {
-        if(order.reqAmount.isGreaterThan(wallets[activePair.baseAsset].free)){
+        if(order.reqAmount.isGreaterThan(base)){
             return setAlert({
                 ...alert,
                 reqAmount: t('orders.notEnoughBalance')
@@ -219,7 +227,7 @@ const SellOrder = (props) => {
                     pricePerUnit: order.pricePerUnit,
                 }}
             />);
-            setTimeout(() => props.setLastTransaction(submitOrder.data.transactTime), 2000);
+            setTimeout(() => dispatch(setLastTransaction(submitOrder.data.transactTime)), 2000);
         } else {
             toast.error(t("orders.error"));
             setAlert({
@@ -247,7 +255,7 @@ const SellOrder = (props) => {
                 <p onClick={() => fillSellByWallet()}>
                     {t("orders.availableAmount")}:{" "}
                     <span className="cursor-pointer">
-            {wallets[activePair.baseAsset].free.toLocaleString()}{" "}
+            {base.toLocaleString()}{" "}
                         {t("currency." + activePair.baseAsset)}
           </span>
                 </p>
@@ -353,20 +361,4 @@ const SellOrder = (props) => {
     );
 };
 
-const mapStateToProps = (state) => {
-    return {
-        activePair: state.global.activePair,
-        bestSellPrice: state.global.activePairOrders.bestSellPrice,
-        selectedSellOrder: state.global.activePairOrders.selectedSellOrder,
-        wallets: state.auth.wallets,
-        tradeFee: state.auth.tradeFee,
-        isLogin: state.auth.isLogin,
-    };
-};
-const mapDispatchToProps = (dispatch) => {
-    return {
-        setLastTransaction: (time) => dispatch(setLastTransaction(time)),
-    };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(SellOrder);
+export default SellOrder;

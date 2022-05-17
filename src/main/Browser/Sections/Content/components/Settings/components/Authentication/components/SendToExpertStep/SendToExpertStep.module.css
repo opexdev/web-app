@@ -16,3 +16,6 @@
 .thisButton.submit{
   background-color: var(--bgGreen);
 }
+.content img{
+  width: 8vw;
+}

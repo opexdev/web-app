@@ -5,9 +5,7 @@ export const setUserTokens = (token) => {
     return {
         type: actionTypes.SET_USER_TOKENS,
         accessToken: token.accessToken,
-        accessTokenExpires: token.accessTokenExpires,
         refreshToken: token.refreshToken,
-        refreshTokenExpires: token.refreshTokenExpires,
     };
 };
 
@@ -24,14 +22,17 @@ export const setUserAccountInfo = (info) => {
         info: info,
     };
 };
+export const setUserAccountInfoInitiate = () => {
+    return {
+        type: actionTypes.SET_USER_ACCOUNT_INFO_INITIATE,
+    };
+};
 
 export const setUserTokensInitiate = (token) => {
     return {
         type: actionTypes.SET_USER_TOKENS_INITIATE,
         accessToken: token.accessToken,
-        accessTokenExpires: token.accessTokenExpires,
         refreshToken: token.refreshToken,
-        refreshTokenExpires: token.refreshTokenExpires,
     };
 };
 
@@ -44,6 +45,27 @@ export const setUserInfo = (info) => {
         firstName: info.given_name,
         lastName: info.family_name,
         email: info.email,
+    };
+};
+
+export const changeUserInfo = (firstName , lastName) => {
+    return {
+        type: actionTypes.SET_CHANGE_USER_INFO,
+        firstName,
+        lastName,
+    };
+};
+
+export const setKYCStatus = (data) => {
+    return {
+        type: actionTypes.SET_KYC_STATUS,
+        status: data.status,
+        reason: data.rejectReason
+    };
+};
+export const setKYCStatusInitiate = () => {
+    return {
+        type: actionTypes.SET_KYC_STATUS_INITIATE,
     };
 };
 

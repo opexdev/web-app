@@ -7,9 +7,7 @@ const initialState = {
     firstName: null,
     lastName: null,
     accessToken: null,
-    accessTokenExpires: null,
     refreshToken: null,
-    refreshTokenExpires: null,
     makerCommission: 0,
     takerCommission: 0,
     buyerCommission: 0,
@@ -18,6 +16,8 @@ const initialState = {
     canWithdraw: false,
     canDeposit: false,
     accountType: null,
+    kyc: null,
+    kycReason: null,
     permissions: [],
     lastTransaction: null,
     wallets: {
@@ -27,8 +27,9 @@ const initialState = {
         TBTC: {free: 0.0, locked: 0.0, withdraw: 0.0},
         TETH: {free: 0.0, locked: 0.0, withdraw: 0.0},
         TUSDT: {free: 0.0, locked: 0.0, withdraw: 0.0},
-        //BCH: {free: 0.0, locked: 0.0, inWithdrawalProcess: 0.0},
         USDT: {free: 0.0, locked: 0.0, withdraw: 0.0},
+        BNB: {free: 0.0, locked: 0.0, withdraw: 0.0},
+        BUSD: {free: 0.0, locked: 0.0, withdraw: 0.0},
     },
     tradeFee: {
         IRT: 0.01,
@@ -41,8 +42,11 @@ const initialState = {
         DOGE: 0.01,
         BCH: 0.01,
         USDT: 0.01,
+        BNB: 0.01,
+        BUSD: 0.01,
     },
     isLogin: false,
+    isServerData : false
 };
 
 const reducer = (state = initialState, action) => {
@@ -61,6 +65,18 @@ const reducer = (state = initialState, action) => {
                 lastName: action.lastName,
                 email: action.email,
             };
+        case actionTypes.SET_CHANGE_USER_INFO:
+            return {
+                ...state,
+                firstName: action.firstName,
+                lastName: action.lastName,
+            };
+        case actionTypes.SET_KYC_STATUS:
+            return {
+                ...state,
+                kyc: action.status,
+                kycReason: action.reason
+            };
         case actionTypes.SET_IMPERSONATE_TOKENS:
             return {
                 ...state,
@@ -71,9 +87,7 @@ const reducer = (state = initialState, action) => {
             return {
                 ...state,
                 accessToken: action.accessToken,
-                accessTokenExpires: action.accessTokenExpires,
                 refreshToken: action.refreshToken,
-                refreshTokenExpires: action.refreshTokenExpires,
                 isLogin: true,
             }
         case actionTypes.SET_USER_ACCOUNT_INFO:

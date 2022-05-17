@@ -1,6 +1,6 @@
-import React, {Fragment, useEffect} from "react";
-import {connect, useDispatch, useSelector} from "react-redux";
-import {Route, Switch} from "react-router-dom";
+import React, {useEffect} from "react";
+import {useDispatch, useSelector} from "react-redux";
+import {Route, Switch, useHistory} from "react-router-dom";
 import i18n from "i18next";
 import ReactTooltip from "react-tooltip";
 import * as Routes from "../../routes/routes";
@@ -13,26 +13,60 @@ import SubMenu from "./Sections/SubMenu/SubMenu";
 import Header from "./Sections/Header/Header";
 import Content from "./Sections/Content/Content";
 import FullWidthLoading from "../../components/FullWidthLoading/FullWidthLoading";
-import {loadConfig} from "../../store/actions";
+import {loadConfig, setInfoMessage, setLoading, setUserAccountInfoInitiate, setUserInfo} from "../../store/actions";
 import TechnicalChart from "./Sections/Content/components/TechnicalChart/TechnicalChart";
 import "./Browser.css"
+import useQuery from "../../Hooks/useQuery";
+import useInterval from "../../Hooks/useInterval";
+import {setImpersonateTokens} from "../../store/actions/auth";
+import jwtDecode from "jwt-decode";
+import Info from "../../components/Info/Info";
 
 
-const Browser = (props) => {
+const Browser = () => {
+    const dispatch = useDispatch();
+    const history = useHistory();
+    const query = useQuery();
 
     const isDark = useSelector((state) => state.global.isDark)
-    const dispatch = useDispatch();
+    const isLoading = useSelector((state) => state.global.isLoading)
+    const isLogin = useSelector((state) => state.auth.isLogin)
 
     isDark ? document.body.classList.add('dark') : document.body.classList.remove('dark');
 
     useEffect(() => {
-        dispatch(loadConfig())
+        const impersonate = query.get("impersonate");
+        if (impersonate) getLoginByAdminToken(impersonate)
+            .catch((err) => console.log(err))
+            .finally(() => {
+                dispatch(setLoading(false))
+                history.push("/")
+            })
+        if (!impersonate) dispatch(loadConfig())
         i18n.language !== "fa" ? document.body.classList.add('ltr') : document.body.classList.remove('ltr');
         i18n.on("languageChanged", (lng) => {
             lng !== "fa" ? document.body.classList.add('ltr') : document.body.classList.remove('ltr');
         });
+
+        window.addEventListener('offline', () => dispatch(setInfoMessage(null, "offline")));
+        window.addEventListener('online', () => dispatch(setInfoMessage(null, null)));
+        return () => {
+            window.removeEventListener('offline', () => dispatch(setInfoMessage(null, "offline")));
+            window.removeEventListener('online', () => dispatch(setInfoMessage(null, null)));
+        }
+
     }, []);
 
+    const getLoginByAdminToken = async (token) => {
+        dispatch(setImpersonateTokens(token))
+        const jwt = jwtDecode(token)
+        dispatch(setUserInfo(jwt));
+        dispatch(setUserAccountInfoInitiate())
+    }
+
+    useInterval(() => {
+        dispatch(setUserAccountInfoInitiate());
+    }, isLogin ? 3000 : null)
 
     const Toast = () => <Toaster position="bottom-right" toastOptions={
         {
@@ -72,17 +106,18 @@ const Browser = (props) => {
             </Route>
             <ProtectedRoute
                 component={TechnicalChart}
-                isLogin={props.isLogin}
+                isLogin={isLogin}
                 exact
                 path={Routes.Technical}
             />
             <Route>
-                {props.isLoading ? (<FullWidthLoading/>) : (
+                {isLoading ? (<FullWidthLoading/>) : (
                     <div className="row">
-                        <MainMenu isLogin={props.isLogin}/>
-                        <SubMenu isLogin={props.isLogin}/>
+                        <MainMenu isLogin={isLogin}/>
+                        <SubMenu isLogin={isLogin}/>
                         <div className="column content">
                             <Header/>
+                            <Info/>
                             <div style={{display: "flex", flex: 1}}>
                                 <Content/>
                             </div>
@@ -96,11 +131,4 @@ const Browser = (props) => {
     );
 };
 
-const mapStateToProps = (state) => {
-    return {
-        isLoading: state.global.isLoading,
-        isLogin: state.auth.isLogin,
-    };
-};
-
-export default connect(mapStateToProps, null)(Browser);
+export default Browser;

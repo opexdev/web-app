@@ -1,41 +1,17 @@
-import React, {useEffect, useState} from "react";
-import {connect} from "react-redux";
-import {getAccount, parseWalletsResponse} from "./api/wallet";
+import React, {useState} from "react";
+import {useSelector} from "react-redux";
 import {useTranslation} from "react-i18next";
 import classes from "./WalletSubMenu.module.css";
-import WalletList from "./components/WalletList/WalletList";
-import {setUserAccountInfo} from "../../../../../../store/actions/auth";
-import useInterval from "../../../../../../Hooks/useInterval";
-import {useParams} from "react-router-dom";
+import ToggleSwitch from "../../../../../../components/ToggleSwitch/ToggleSwitch";
+import WalletListItem from "./components/WalletListItem/WalletListItem";
+import WalletLoading from "./components/WalletLoading/WalletLoading";
 
 
-const WalletSubMenu = (props) => {
+const WalletSubMenu = () => {
     const {t} = useTranslation();
-    const [isLoading, setLoading] = useState(true);
-    const {accessToken, setUserAccountInfo,wallets} = props;
-
-    const getAccountUseEffect = async () => {
-        let account = await getAccount(accessToken)
-
-        if (account) {
-            setUserAccountInfo(account)
-        }
-        if (!account) {
-            setLoading(false);
-            return false
-        }
-    }
-
-    useEffect(() => {
-        getAccountUseEffect().then(()=>{
-            setLoading(false)
-        })
-    }, []);
-
-    useInterval(async () => {
-        await getAccountUseEffect();
-    }, 3000);
-
+    const [showZero, setShowZero] = useState(false);
+    const pairs = useSelector((state) => state.global.pairs)
+    const isServerData = useSelector((state) => state.auth.isServerData)
 
     return (
         <div className={`container card-background column ${classes.container}`}>
@@ -45,22 +21,14 @@ const WalletSubMenu = (props) => {
                 </div>
             </div>
             <div className={`column container  ${classes.content}`}>
-                <WalletList wallets={wallets} isLoading={isLoading}/>
+                <div className={`container row jc-around ai-center py-2 border-bottom`}>
+                    <span className={`font-size-sm`}>{t("WalletSubMenu.showZeroBalance")}</span>
+                    <ToggleSwitch onchange={()=>setShowZero(prevState => !prevState)} checked={showZero}/>
+                </div>
+                { isServerData ? pairs.map((name) => <WalletListItem key={name} name={name} showZero={showZero}/> ) : <WalletLoading/>}
             </div>
         </div>
     );
 };
 
-const mapStateToProps = (state) => {
-    return {
-        accessToken: state.auth.accessToken,
-        wallets: state.auth.wallets,
-    };
-};
-const mapDispatchToProps = (dispatch) => {
-    return {
-        setUserAccountInfo: (info) => dispatch(setUserAccountInfo(info)),
-    };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(WalletSubMenu);
+export default WalletSubMenu;

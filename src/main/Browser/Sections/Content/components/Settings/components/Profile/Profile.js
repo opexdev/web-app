@@ -3,12 +3,12 @@ import {connect} from "react-redux";
 import UserAccountStatus from "./components/UserAccountStatus/UserAccountStatus";
 import PersonalProfile from "./components/PersonalProfile/PersonalProfile";
 
-const Profile = (props) => {
+const Profile = () => {
   return (
     <Fragment>
-      <div className="row">
+      {/*<div className="row">
         <UserAccountStatus />
-      </div>
+      </div>*/}
       <div className="row">
         <PersonalProfile />
       </div>

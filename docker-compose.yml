@@ -1,13 +1,11 @@
 version: "3.8"
 services:
-  app:
-    build:
-      context: .
-      args:
-        - API_BASE_URL=${API_BASE_URL}
-        - CLIENT_ID=${CLIENT_ID}
-        - CLIENT_SECRET=${CLIENT_SECRET}
-        - GENERATE_SOURCEMAP=$GENERATE_SOURCEMAP
+  web-app:
+    image: ghcr.io/opexdev/web-app:$OPEX_TAG
+    environment:
+      - API_BASE_URL=$API_BASE_URL
+      - CLIENT_ID=$CLIENT_ID
+      - CLIENT_SECRET=$CLIENT_SECRET
     networks:
       - default
     deploy:
@@ -16,4 +14,3 @@ services:
 networks:
   default:
     driver: bridge
-    name: ${DEFAULT_NETWORK_NAME:-opex}

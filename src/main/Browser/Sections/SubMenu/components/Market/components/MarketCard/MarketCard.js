@@ -33,7 +33,7 @@ const MarketCard = (props) => {
                 {symbols.map((pair) => (
                     <div onClick={() => props.onSetActivePair(pair, props.id)}
                          key={pair.symbol}
-                         className={`container row jc-between ai-center px-05 py-05 cursor-pointer double-striped ${classes.container} ${props.activePair === pair.symbol ? classes.selected : ""} `}>
+                         className={`container row jc-between ai-center px-1 py-05 cursor-pointer double-striped ${classes.container} ${props.activePair === pair.symbol ? classes.selected : ""} `}>
                         <div className={` row jc-between ai-center ${classes.marketCardImage}`}>
                             <img
                                 className="img-md flex"
