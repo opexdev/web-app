@@ -1,7 +1,7 @@
-import React, {Fragment, useState, useEffect, useRef} from "react";
+import React, {Fragment, useEffect, useRef, useState} from "react";
 import classes from "./DepositWithdrawTx.module.css";
 import moment from "moment-jalaali";
-import {connect, useSelector} from "react-redux";
+import {connect} from "react-redux";
 import {Trans, useTranslation} from "react-i18next";
 import ScrollBar from "../../../../../../../../components/ScrollBar";
 import NumberInput from "../../../../../../../../components/NumberInput/NumberInput";
@@ -38,7 +38,6 @@ const DepositWithdrawTx = (props) => {
   });
   const [tx, setTx] = useState(null);
   const [error, setError] = useState(false);
-  // const wallets = useSelector(state => state.auth.wallets);
 
   function timeValidator(inputField, key) {
     const isValid = /^(2[0-3]|[01]?[0-9]):([0-5]?[0-9])$/.test(inputField);
@@ -269,14 +268,12 @@ const DepositWithdrawTx = (props) => {
             </thead>
             <tbody>{tx.map((tr, index) => (
 
-
-
                 <Fragment key={index}>
                   <tr className={tr.isDeposit === true ? "text-green" : "text-red"}>
                     <td>{moment(tr.time).format("jYY/jMM/jDD")}</td>
                     <td>{moment(tr.time).format("HH:mm:ss")}</td>
                     <td>{tr.isDeposit === true ? t("deposit") : t("withdrawal")}</td>
-                    <td>{tr.network}</td>
+                    <td style={{width:"15%"}}>{tr.network}</td>
                     {/*<td className="direction-ltr">{tr.destination}</td>*/}
                     <td>
                       {new BN(tr.amount).toFormat()}{" "}

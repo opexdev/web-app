@@ -16,8 +16,9 @@ export const getOpexChartData = async (symbol, interval = "1h", limit = "200") =
         return parseCandleData(JSON.parse(mock))
     })
 }
-export const getGlobalChartData = async (symbol, interval = "1d", limit = "200") => {
+export const getGlobalChartData = async (activePair, interval = "1d", limit = "200") => {
 
+    const symbol = activePair.symbol.replace("IRT", "USDT").replace("TBTC", "BTC").replace("TETH", "ETH").replace("TUSDT", "USDT")
     const params = new URLSearchParams();
     params.append('symbol', symbol);
     params.append('interval', interval);

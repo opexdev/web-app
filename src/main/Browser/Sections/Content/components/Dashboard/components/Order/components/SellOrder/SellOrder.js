@@ -238,7 +238,8 @@ const SellOrder = () => {
             toast.success(<Trans
                 i18nKey="orders.success"
                 values={{
-                    name: t("currency." + activePair.baseAsset),
+                    base: t("currency." + activePair.baseAsset),
+                    quote: t("currency." + activePair.quoteAsset),
                     type: t("sell"),
                     reqAmount: order.reqAmount,
                     pricePerUnit: order.pricePerUnit,
