@@ -2,31 +2,37 @@ import React, {useEffect, useState} from "react";
 import classes from "../../Overview.module.css";
 import {useTranslation} from "react-i18next";
 import {getOverview} from "../../api/overview";
-import {connect} from "react-redux";
+import {useSelector} from "react-redux";
 import Loading from "../../../../../../../../../../components/Loading/Loading";
 import Error from "../../../../../../../../../../components/Error/Error";
 
 
-const InformationBlock = (props) => {
+const InformationBlock = ({period}) => {
 
     const {t} = useTranslation();
-    const {activePair,period} = props
     const [error, setError] = useState(false);
     const [isLoading, setIsLoading] = useState(true);
-    const [information , setInformation] = useState(null)
+    const [information, setInformation] = useState(null)
+    const activePair = useSelector((state) => state.exchange.activePair)
 
-    useEffect(async () => {
+    useEffect(() => {
+        let isMounted = true;
         setIsLoading(true)
         setError(false)
-        const info = await getOverview(activePair,period);
-        if (info.status === 200) {
-            setInformation(info.data[0])
-        } else {
-            setError(true)
+        const infoBlockController = new AbortController();
+        getOverview(activePair, period, infoBlockController)
+            .then((res) => {
+                isMounted && setInformation(res.data[0])
+            }).catch(() => {
+                setError(true)
+            }).finally(() => {
+                setIsLoading(false)
+            });
+        return () => {
+            isMounted = false;
+            infoBlockController.abort();
         }
-        setIsLoading(false)
-    }, [activePair,period]);
-
+    }, [activePair, period]);
 
     if (isLoading) {
         return <Loading/>
@@ -60,10 +66,4 @@ const InformationBlock = (props) => {
     </div>)
 }
 
-const mapStateToProps = (state) => {
-    return {
-        activePair: state.global.activePair,
-    };
-};
-
-export default connect(mapStateToProps, null)(InformationBlock);
+export default InformationBlock;

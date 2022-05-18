@@ -20,40 +20,21 @@ const initialState = {
     kycReason: null,
     permissions: [],
     lastTransaction: null,
-    wallets: {
-        IRT: {free: 0.0, locked: 0.0, withdraw: 0.0},
-        BTC: {free: 0.0, locked: 0.0, withdraw: 0.0},
-        ETH: {free: 0.0, locked: 0.0, withdraw: 0.0},
-        TBTC: {free: 0.0, locked: 0.0, withdraw: 0.0},
-        TETH: {free: 0.0, locked: 0.0, withdraw: 0.0},
-        TUSDT: {free: 0.0, locked: 0.0, withdraw: 0.0},
-        USDT: {free: 0.0, locked: 0.0, withdraw: 0.0},
-        BNB: {free: 0.0, locked: 0.0, withdraw: 0.0},
-        BUSD: {free: 0.0, locked: 0.0, withdraw: 0.0},
-    },
-    tradeFee: {
-        IRT: 0.01,
-        BTC: 0.01,
-        ETH: 0.01,
-        TBTC: 0.01,
-        TETH: 0.01,
-        TUSDT: 0.01,
-        LTC: 0.01,
-        DOGE: 0.01,
-        BCH: 0.01,
-        USDT: 0.01,
-        BNB: 0.01,
-        BUSD: 0.01,
-    },
+    wallets: {},
+    tradeFee: {},
     isLogin: false,
-    isServerData : false
 };
 
 const reducer = (state = initialState, action) => {
     switch (action.type) {
         case actionTypes.LOGOUT:
+            const resetWallet = {...state.wallets}
+            Object.keys(resetWallet).forEach(key => {
+                resetWallet[key] = {free: 0.0, locked: 0.0, withdraw: 0.0};
+            });
             return {
                 ...initialState,
+                wallets: resetWallet
             };
         case actionTypes.SET_USER_INFO:
             return {
@@ -102,7 +83,7 @@ const reducer = (state = initialState, action) => {
         case actionTypes.SET_LAST_TRANSACTION:
             return {
                 ...state,
-                lastTransaction : action.time
+                lastTransaction: action.time
             }
         default:
             return state;

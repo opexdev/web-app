@@ -22,9 +22,9 @@ const SellOrder = () => {
 
     const tradeFee = useSelector((state) => state.auth.tradeFee)
     const isLogin = useSelector((state) => state.auth.isLogin)
-    const activePair = useSelector((state) => state.global.activePair)
-    const bestSellPrice = useSelector((state) => state.global.activePairOrders.bestSellPrice)
-    const selectedSellOrder = useSelector((state) => state.global.activePairOrders.selectedSellOrder)
+    const activePair = useSelector((state) => state.exchange.activePair)
+    const bestSellPrice = useSelector((state) => state.exchange.activePairOrders.bestSellPrice)
+    const selectedSellOrder = useSelector((state) => state.exchange.activePairOrders.selectedSellOrder)
 
     const base = useSelector((state) => state.auth.wallets[activePair.baseAsset].free)
     const quote = useSelector((state) => state.auth.wallets[activePair.quoteAsset].free)
@@ -50,7 +50,24 @@ const SellOrder = () => {
                 ...alert, submit: false
             })
         }
-    }, [order, activePair])
+    }, [order])
+
+    useEffect(() => {
+        setOrder({
+            tradeFee: new BN(0),
+            stopLimit: false,
+            stopMarket: false,
+            stopPrice: new BN(0),
+            reqAmount: new BN(0),
+            pricePerUnit: new BN(0),
+            totalPrice: new BN(0),
+        })
+        setAlert({
+            submit: false,
+            reqAmount: null,
+            totalPrice: null,
+        })
+    }, [activePair])
 
 
     const currencyValidator = (key, val, rule) => {

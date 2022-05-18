@@ -3,10 +3,10 @@ import axios from "axios";
 export const sendWithdrawReq = async (amount, currency, address, fee, network) => {
     const params = new URLSearchParams();
     params.append('fee', fee);
-    params.append('destCurrency', currency.toLowerCase());
+    params.append('destCurrency', currency.toUpperCase());
     params.append('destAddress', address);
     params.append('destNetwork', network);
-    return await axios.post(`/wallet/withdraw/${amount}_${currency.toLowerCase()}`, null,
+    return await axios.post(`/wallet/withdraw/${amount}_${currency.toUpperCase()}`, null,
         {
             params,
             headers: {
@@ -24,7 +24,7 @@ export const sendWithdrawReq = async (amount, currency, address, fee, network) =
 }
 
 export const getDepositAddress = async (currency) => {
-    return await axios.get(`sapi/v1/capital/deposit/address?coin=${currency.toLowerCase()}&timestamp=${Date.now()}`, {
+    return await axios.get(`sapi/v1/capital/deposit/address?coin=${currency.toUpperCase()}&timestamp=${Date.now()}`, {
         headers: {
             "Content-Type": 'application/x-www-form-urlencoded'
         }
@@ -42,7 +42,7 @@ export const getDepositAddress = async (currency) => {
 export const getDeposit = async (currency) => {
     const timestamp = Date.now()
     const params = new URLSearchParams();
-    params.append('coin', currency.toLowerCase());
+    params.append('coin', currency.toUpperCase());
     params.append('timestamp', timestamp.toString());
     return await axios.get(`/sapi/v1/capital/deposit/hisrec?${params.toString()}`, {
         data: params,
@@ -62,7 +62,7 @@ export const getDeposit = async (currency) => {
 export const getWithdraw = async (currency) => {
     const timestamp = Date.now()
     const params = new URLSearchParams();
-    params.append('coin', currency.toLowerCase());
+    params.append('coin', currency.toUpperCase());
     params.append('timestamp', timestamp.toString());
     return await axios.get(`/sapi/v1/capital/withdraw/history?${params.toString()}`, {
         data: params,

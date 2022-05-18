@@ -134,7 +134,7 @@ const OrdersHistory = (props) => {
 
 const mapStateToProps = (state) => {
     return {
-        activePair: state.global.activePair,
+        activePair: state.exchange.activePair,
         lastTransaction: state.auth.lastTransaction,
     };
 };

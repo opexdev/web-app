@@ -2,9 +2,7 @@ import React, {useEffect, useRef, useState} from "react";
 import classes from "../../DepositWithdraw.module.css";
 import TextInput from "../../../../../../../../../../components/TextInput/TextInput";
 import Icon from "../../../../../../../../../../components/Icon/Icon";
-import {images} from "../../../../../../../../../../assets/images";
 import {useParams} from "react-router-dom";
-import {useSelector} from "react-redux";
 import {Trans, useTranslation} from "react-i18next";
 import {getDepositAddress} from "../../../../api/wallet";
 import QRCode from "react-qr-code";
@@ -29,6 +27,7 @@ const Deposit = () => {
     };
 
     useEffect(() => {
+        setAddress("")
         getDepositAddress(id).then((res)=>{
             if (res && res.status === 200 ){
                 setAddress(res.data.address)
@@ -37,7 +36,6 @@ const Deposit = () => {
             }
         })
     }, [id]);
-
 
     const helpText = () => {
         if (id === "TETH"){
@@ -137,12 +135,9 @@ const Deposit = () => {
         }
     };
 
-
     if(id === "IRT") {
         return <IRT/>
     }
-
-
 
     return (
         <div className={`px-1 py-2 row jc-between ${classes.content}`}>
@@ -186,7 +181,6 @@ const Deposit = () => {
                         size={140}
                     />
                 </div>
-
         </div>
     )
 

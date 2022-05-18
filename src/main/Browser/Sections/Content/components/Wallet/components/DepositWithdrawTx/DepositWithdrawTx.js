@@ -385,7 +385,7 @@ const DepositWithdrawTx = (props) => {
 
 const mapStateToProps = (state) => {
   return {
-    activePair: state.global.activePair,
+    activePair: state.exchange.activePair,
   };
 };
 
