@@ -17,7 +17,7 @@ const Profile = () => {
 };
 const mapStateToProps = (state) => {
   return {
-    activePair: state.global.activePair,
+    activePair: state.exchange.activePair,
   };
 };
 

@@ -2,25 +2,18 @@ import React, {useEffect, useState} from "react";
 import classes from "./Market.module.css";
 import MarketCard from "./components/MarketCard/MarketCard";
 import {useTranslation} from "react-i18next";
-import {connect} from "react-redux";
-import {getExchange} from "./api/market";
 import Icon from "../../../../../../components/Icon/Icon";
 import AccordionBox from "../../../../../../components/AccordionBox/AccordionBox";
-import Loading from "../../../../../../components/Loading/Loading";
-import Error from "../../../../../../components/Error/Error";
 
-const Market = (props) => {
+const Market = () => {
 
     const {t} = useTranslation();
-    const [pairs, setPairs] = useState([]);
-    const [fav, setFav] = useState(["BTCUSDT", "ETHUSDT"]);
-    const [activeTab, setActiveTab] = useState(undefined);
-    const [loading, setLoading] = useState(true)
-    const [error, setError] = useState(false)
+    const [activeTab] = useState(JSON.parse(localStorage.getItem("activeMarketTab")) || 0);
+    const [fav, setFav] = useState(JSON.parse(localStorage.getItem("favPair")) || []);
 
-    const tabPairFilter = (selected, pairs) => {
-        return pairs.filter((pair) => pair.baseAsset === selected || pair.quoteAsset === selected );
-    };
+    useEffect(() => {
+        localStorage.setItem("favPair", JSON.stringify(fav))
+    }, [fav])
 
     const addToFav = (selected) => {
         if (fav.includes(selected)) {
@@ -31,34 +24,13 @@ const Market = (props) => {
         }
     };
 
-
-    useEffect(() => {
-        getExchange()
-            .then((info) => {
-                if (info && info.status === 200) {
-
-                    const removedNLN = info.data.symbols.filter((pair)=>{
-                        if( pair.baseAsset !== "NLN"){
-                            return pair
-                        }
-                    });
-                    setPairs(removedNLN)
-                    setLoading(false)
-                }
-            }).catch(()=>{
-                setLoading(false)
-                setError(true)
-        })
-        if (props.activeMarketTab) setActiveTab(parseInt(props.activeMarketTab))
-    }, [])
-
     const data = [
         {
             title: <Icon iconName="icon-star-1 font-size-md"/>,
             body: (
-                loading ? <Loading/> : error ? <Error/> :<MarketCard
+                <MarketCard
                     id="0"
-                    pairs={pairs.filter((pair) => fav.includes(pair.symbol))}
+                    type="fav"
                     favPair={fav}
                     addFav={(selected) => addToFav(selected)}
                 />
@@ -67,9 +39,9 @@ const Market = (props) => {
         {
             title: t("all"),
             body: (
-                loading ? <Loading/> : error ? <Error/> :<MarketCard
+                <MarketCard
                     id="1"
-                    pairs={pairs}
+                    type="all"
                     favPair={fav}
                     addFav={(selected) => addToFav(selected)}
                 />
@@ -79,33 +51,21 @@ const Market = (props) => {
             id: 2,
             title: t("currency.BTC"),
             body: (
-                loading ? <Loading/> : error ? <Error/> :<MarketCard
+                <MarketCard
                     id="2"
-                    pairs={tabPairFilter("BTC", pairs)}
+                    type="BTC"
                     favPair={fav}
                     addFav={(selected) => addToFav(selected)}
                 />
             ),
         },
-        /*{
-            id: 3,
-            title: t("currency.IRT"),
-            body: (
-                <MarketCard
-                    id="3"
-                    pairs={tabPairFilter("IRT", pairs)}
-                    favPair={fav}
-                    addFav={(selected) => addToFav(selected)}
-                />
-            ),
-        },*/
         {
             id: 4,
             title: t("currency.USDT"),
             body: (
-                loading ? <Loading/> : error ? <Error/> :<MarketCard
+                <MarketCard
                     id="4"
-                    pairs={tabPairFilter("USDT", pairs)}
+                    type="USDT"
                     favPair={fav}
                     addFav={(selected) => addToFav(selected)}
                 />
@@ -115,7 +75,7 @@ const Market = (props) => {
 
     return (
         <div className={`container card-background ${classes.container}`}>
-           <AccordionBox
+            <AccordionBox
                 title={t("market.title")}
                 style={classes}
                 ItemsBorderTop="true"
@@ -130,11 +90,4 @@ const Market = (props) => {
     );
 };
 
-const mapStateToProps = (state) => {
-    return {
-        activeMarketTab: state.global.activeMarketTab,
-    };
-};
-
-export default connect(mapStateToProps, null)(Market);
-
+export default Market;

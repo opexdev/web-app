@@ -20,6 +20,7 @@ import useQuery from "../../Hooks/useQuery";
 import useInterval from "../../Hooks/useInterval";
 import {setImpersonateTokens} from "../../store/actions/auth";
 import jwtDecode from "jwt-decode";
+import {setLastPriceInitiate} from "../../store/actions/exchange";
 
 
 const Browser = () => {
@@ -58,6 +59,10 @@ const Browser = () => {
     useInterval(() => {
         dispatch(setUserAccountInfoInitiate());
     }, isLogin ? 3000 : null)
+
+    useInterval(() => {
+        dispatch(setLastPriceInitiate());
+    },  3000)
 
     const Toast = () => <Toaster position="bottom-right" toastOptions={
         {

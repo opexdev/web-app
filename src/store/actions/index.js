@@ -1,31 +1,35 @@
 export {
-  loadConfig,
-  setLoading,
-  setActivePair,
-  setActivePairInitiate,
-  setThemeInitiate,
-  setTheme,
-  setBuyOrder,
-  setSellOrder,
-  setBestBuyPrice,
-  setBestSellPrice,
-  setPanelTokens,
-  setPanelTokensInitiate,
-  setIPG,
-  setIPGInitiate
-
+    loadConfig,
+    setLoading,
+    setThemeInitiate,
+    setTheme,
 } from "./global";
 
 export {
-  logout,
-  setLogoutInitiate,
-  setUserTokens,
-  setUserTokensInitiate,
-  setUserInfo,
-  changeUserInfo,
-  setUserAccountInfo,
-  setUserAccountInfoInitiate,
-  setKYCStatus
+    setActivePair,
+    setActivePairInitiate,
+    setBuyOrder,
+    setSellOrder,
+    setBestBuyPrice,
+    setBestSellPrice,
+    setExchange,
+    setLastPrice,
+    setLastTradePrice,
+    setIPG,
+    setIPGInitiate
+
+} from "./exchange";
+
+export {
+    logout,
+    setLogoutInitiate,
+    setUserTokens,
+    setUserTokensInitiate,
+    setUserInfo,
+    changeUserInfo,
+    setUserAccountInfo,
+    setUserAccountInfoInitiate,
+    setKYCStatus
 } from "./auth";
 
 

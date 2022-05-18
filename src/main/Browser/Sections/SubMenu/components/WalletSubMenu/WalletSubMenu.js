@@ -10,7 +10,7 @@ import WalletLoading from "./components/WalletLoading/WalletLoading";
 const WalletSubMenu = () => {
     const {t} = useTranslation();
     const [showZero, setShowZero] = useState(false);
-    const pairs = useSelector((state) => state.global.pairs)
+    const assets = useSelector((state) => state.exchange.assets)
     const isServerData = useSelector((state) => state.auth.isServerData)
 
     return (
@@ -25,7 +25,7 @@ const WalletSubMenu = () => {
                     <span className={`font-size-sm`}>{t("WalletSubMenu.showZeroBalance")}</span>
                     <ToggleSwitch onchange={()=>setShowZero(prevState => !prevState)} checked={showZero}/>
                 </div>
-                { isServerData ? pairs.map((name) => <WalletListItem key={name} name={name} showZero={showZero}/> ) : <WalletLoading/>}
+                { isServerData ? assets.map((name) => <WalletListItem key={name} name={name} showZero={showZero}/> ) : <WalletLoading/>}
             </div>
         </div>
     );

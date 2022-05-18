@@ -10,8 +10,8 @@ import Popup from "../../../../../../components/Popup/Popup";
 const MarketHeader = () => {
     const {t} = useTranslation();
 
-    const activePair = useSelector((state) => state.global.activePair)
-    const lastTradePrice = useSelector((state) => state.global.activePairOrders.lastTradePrice)
+    const activePair = useSelector((state) => state.exchange.activePair)
+    const lastTradePrice = useSelector((state) => state.exchange.activePairOrders.lastTradePrice)
 
     const base = useSelector((state) => state.auth.wallets[activePair.baseAsset].free)
     const quote = useSelector((state) => state.auth.wallets[activePair.quoteAsset].free)

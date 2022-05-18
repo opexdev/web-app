@@ -99,7 +99,7 @@ const MyOrders = (props) => {
 
 const mapStateToProps = (state) => {
   return {
-    activePair: state.global.activePair,
+    activePair: state.exchange.activePair,
     isLogin: state.auth.isLogin,
   };
 };

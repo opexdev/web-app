@@ -1,5 +1,5 @@
-import React, {useState, useEffect, useMemo} from "react";
-import {connect} from "react-redux";
+import React, {useEffect, useState} from "react";
+import {useDispatch, useSelector} from "react-redux";
 import {useTranslation} from "react-i18next";
 import classes from "./LastTrades.module.css";
 import {getLastTrades} from "./api/lastTrades";
@@ -7,26 +7,27 @@ import LastTradesTable from "./components/LastTradesTable/LastTradesTable";
 import useInterval from "../../../../../../../../Hooks/useInterval";
 import Error from "../../../../../../../../components/Error/Error";
 import Loading from "../../../../../../../../components/Loading/Loading";
-import {setLastTradePrice} from "../../../../../../../../store/actions/global";
+import {setLastTradePrice} from "../../../../../../../../store/actions";
 
-const LastTrades = (props) => {
+const LastTrades = () => {
     const {t} = useTranslation();
-    const {activePair, setLastTradePrice} = props
+    const dispatch = useDispatch();
 
     const [error, setError] = useState(false);
     const [lastTrades, setLastTrades] = useState(null);
 
+    const activePair = useSelector((state) => state.exchange.activePair)
+
     const getLastTradesData = async () => {
-        const lastTradesReq = await getLastTrades(activePair);
-        if (lastTradesReq && lastTradesReq.status === 200) {
+        getLastTrades(activePair).then((res) => {
             setError(false)
-            if (JSON.stringify(lastTradesReq.data) !== JSON.stringify(lastTrades)) {
-                setLastTrades(lastTradesReq.data)
-                if (lastTradesReq.data.length) setLastTradePrice(lastTradesReq.data[0].price)
+            if (JSON.stringify(res.data) !== JSON.stringify(lastTrades)) {
+                setLastTrades(res.data)
+                if (res.data.length) dispatch(setLastTradePrice(res.data[0].price))
             }
-        } else {
+        }).catch(() => {
             setError(true)
-        }
+        });
     }
 
     useEffect(() => {
@@ -70,14 +71,4 @@ const LastTrades = (props) => {
     );
 };
 
-const mapStateToProps = (state) => {
-    return {
-        activePair: state.global.activePair,
-    };
-};
-const mapDispatchToProps = (dispatch) => {
-    return {
-        setLastTradePrice: (lastTradePrice) => dispatch(setLastTradePrice(lastTradePrice)),
-    };
-};
-export default connect(mapStateToProps, mapDispatchToProps)(LastTrades);
+export default LastTrades;

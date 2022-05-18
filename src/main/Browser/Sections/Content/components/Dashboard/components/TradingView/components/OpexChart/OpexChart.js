@@ -136,7 +136,7 @@ const TradingView = (props) => {
 
 const mapStateToProps = (state) => {
     return {
-        activePair: state.global.activePair.symbol,
+        activePair: state.exchange.activePair.symbol,
         isDark: state.global.isDark,
     };
 };

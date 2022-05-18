@@ -36,7 +36,7 @@ const Security = (props) => {
 };
 const mapStateToProps = (state) => {
   return {
-    activePair: state.global.activePair,
+    activePair: state.exchange.activePair,
   };
 };
 

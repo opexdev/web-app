@@ -6,13 +6,5 @@ export const getLastTrades = async (activePair) => {
     params.append('limit', "25");
     return await axios.get(`/api/v3/trades?${params.toString()}`, {
         data:params,
-    }).then((res) => {
-        return res;
-    }).catch((e) => {
-        if (!e.response) {
-            return false;
-        }
-        return e.response;
     })
-
 }

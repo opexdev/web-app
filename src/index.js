@@ -13,9 +13,11 @@ import "./assets/fontIcon/opex-icon/css/opex-icon.css";
 import Main from "./main/main";
 import setupAxios from "./setup/axios/setupAxios";
 import axios from "axios";
+import exchangeReducer from "./store/reducers/exchangeReducer";
 
 const sagaMiddleware = createSagaMiddleware();
 const rootReducer = combineReducers({
+    exchange: exchangeReducer,
     global: globalReducer,
     auth: authReducer,
 });
@@ -26,7 +28,6 @@ const rootReducer = combineReducers({
  * @see https://facebook.github.io/create-react-app/docs/using-the-public-folder
  */
 const {PUBLIC_URL} = process.env
-
 
 const composeEnhancers = (process.env.NODE_ENV === "development" &&
     typeof window !== 'undefined' &&

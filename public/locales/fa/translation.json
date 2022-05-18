@@ -247,6 +247,8 @@
     "stopOrderTime": "زمان آخرین معامله",
     "startOrderTime": "زمان ثبت سفارش",
     "cancelOrder": "لغو سفارش",
+    "cancelSuccess": "سفارش با موفقیت لغو شد!",
+    "cancelError": "خطا در لغو سفارش",
     "orders": "معامله ها"
   },
 

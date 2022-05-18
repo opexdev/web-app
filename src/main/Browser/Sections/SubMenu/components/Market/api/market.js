@@ -5,13 +5,5 @@ export const getExchange = () => {
 }
 
 export const getPrice = async () => {
-    return await axios.get(`/api/v3/ticker/price`)
-        .then((res) => {
-            return res;
-        }).catch((e) => {
-            if (!e.response) {
-                return false;
-            }
-            return e.response;
-        })
+    return axios.get(`/api/v3/ticker/price`)
 }
