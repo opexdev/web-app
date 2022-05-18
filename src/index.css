@@ -862,6 +862,13 @@ body {
 }
 
 
+.alert-box {
+  background-color: var(--textRedAlpha);
+  /*border: 0.1vh solid var(--bgRed);*/
+  border-radius: 9px;
+  /*background-color: var(--cardHeader);*/
+}
+
 
 table {
   width: 100%;

@@ -14,8 +14,8 @@ const Security = (props) => {
         <LoginReports />
       </div>
       */}
-
-      <div className="row py-2">
+      {/* down row   ---  py-2*/}
+      <div className="row pb-2">
 
           <div className="col-50 pl-05">
               <ActiveSessions />

@@ -46,9 +46,7 @@ const PersonalProfile = (props) => {
     setError([])
     const userInfo = await getAttributes()
     if (userInfo && userInfo.status === 200) {
-      /*if (isEn(userInfo.data.firstName)) {
-          console.log("en")
-      }*/
+      /*if (isEn(userInfo.data.firstName)) */
       setProfile(userInfo.data)
       setLoading(false)
       setError([])

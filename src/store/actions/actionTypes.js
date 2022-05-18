@@ -6,9 +6,13 @@ export const SET_THEME_INITIATE = "SET_THEME_INITIATE";
 export const SET_IPG = "SET_IPG";
 export const SET_IPG_INITIATE = "SET_IPG_INITIATE";
 
+export const SET_INFO_MESSAGE = "SET_INFO_MESSAGE";
+
 export const SET_ACTIVE_PAIR = "SET_ACTIVE_PAIR";
 export const SET_ACTIVE_PAIR_INITIATE = "SET_ACTIVE_PAIR_INITIATE";
+
 export const LOAD_CONFIG = "LOAD_CONFIG";
+
 
 export const SET_BUY_ORDERS = "SET_BUY_ORDERS";
 export const SET_SELL_ORDERS = "SET_SELL_ORDERS";

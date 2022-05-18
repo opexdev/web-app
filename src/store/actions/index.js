@@ -3,6 +3,7 @@ export {
     setLoading,
     setThemeInitiate,
     setTheme,
+    setInfoMessage,
 } from "./global";
 
 export {

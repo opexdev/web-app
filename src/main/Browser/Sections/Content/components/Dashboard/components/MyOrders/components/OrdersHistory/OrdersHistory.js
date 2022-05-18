@@ -21,7 +21,11 @@ const OrdersHistory = (props) => {
         getOrdersHistory(activePair)
             .then((ordersHistory) => {
                 if (ordersHistory.status === 200) {
-                    setOrders(ordersHistory.data.sort((a,b) => a.time - b.time).slice(0 , 50))
+                    setOrders(ordersHistory.data.sort((a,b) => moment(b.time).unix() - moment(a.time).unix()).slice(0 , 50))
+
+
+
+                    
                 }
                 setIsLoading(false)
             })
@@ -29,6 +33,10 @@ const OrdersHistory = (props) => {
 
     if (isLoading) {
         return <Loading/>
+    }
+
+    if (orders.length === 0) {
+        return <div className={`height-100 flex jc-center ai-center`}>{t("noData")}</div>
     }
 
     return (

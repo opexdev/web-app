@@ -101,9 +101,17 @@ const RegisterForm = () => {
 
         if (userInfo.status === 200) {
             setRegisterStatus("finish");
-        }else {
-            setRegisterStatus("finishedWithError");
         }
+        else{
+            if (userInfo.status === 400 && userInfo.data.error === "InvalidCaptcha" ) {
+                setUserData({...userData , captchaAnswer: {value: "", error: [t("login.InvalidCaptcha")]}})
+                setRegisterStatus("")
+            }
+            else {
+                setRegisterStatus("finishedWithError");
+            }
+        }
+
     };
 
     const inputHandler = (e) => {
@@ -204,7 +212,7 @@ const RegisterForm = () => {
                     type="email"
                     data-name="email"
                     data-type="email"
-                    customClass={`${classes.loginInput}`}
+                    customClass={`${classes.loginInput} ${classes.ltrInput}`}
                     value={userData.email.value}
                     onchange={(e) => inputHandler(e)}
                     alerts={userData.email.error}
@@ -224,6 +232,7 @@ const RegisterForm = () => {
                     value={userData.captchaAnswer.value}
                     onchange={(e) => inputHandler(e)}
                     alerts={userData.captchaAnswer.error}
+                    maxLength="5"
                 />
             </div>
             <div className={`container flex jc-center ai-center ${classes.formFooter}`}>

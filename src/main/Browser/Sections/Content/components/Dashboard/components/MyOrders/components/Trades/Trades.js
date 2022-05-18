@@ -21,7 +21,7 @@ const Trades = (props) => {
         getTrades(activePair)
             .then((trades) => {
                 if (trades.status === 200) {
-                    setTrades(trades.data.sort((a,b) => a.time - b.time).slice(0 , 50))
+                    setTrades(trades.data.sort((a,b) => moment(b.time).unix() - moment(a.time).unix()).slice(0 , 50))
                 }
                 setIsLoading(false)
             })
@@ -31,6 +31,9 @@ const Trades = (props) => {
         return <Loading/>
     }
 
+    if (trades.length === 0) {
+        return <div className={`height-100 flex jc-center ai-center`}>{t("noData")}</div>
+    }
 
     return (
         <ScrollBar>

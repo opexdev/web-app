@@ -26,3 +26,11 @@ export const loadConfig = () => {
     type: actionTypes.LOAD_CONFIG,
   };
 };
+
+export const setInfoMessage = (messageType, message) => {
+  return {
+    type: actionTypes.SET_INFO_MESSAGE,
+    messageType,
+    message,
+  };
+};
