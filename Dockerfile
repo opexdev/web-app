@@ -1,9 +1,9 @@
 FROM node:lts-fermium AS build
-COPY . /OPEX-Web-APP
-WORKDIR /OPEX-Web-APP
+COPY . /web-app
+WORKDIR /web-app
 ENV NODE_ENV production
 RUN yarn install --immutable
-ARG GENERATE_SOURCEMAP='false'
+ARG GENERATE_SOURCEMAP=false
 ENV GENERATE_SOURCEMAP $GENERATE_SOURCEMAP
 RUN yarn build
 

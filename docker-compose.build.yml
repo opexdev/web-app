@@ -1,7 +1,7 @@
 version: "3.8"
 services:
   web-app:
-    image: ghcr.io/opexdev/web-app:$OPEX_TAG
+    image: ghcr.io/opexdev/web-app:$TAG
     build:
       context: .
       args:
