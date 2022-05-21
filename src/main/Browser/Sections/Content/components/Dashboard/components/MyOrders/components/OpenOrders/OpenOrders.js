@@ -8,11 +8,12 @@ import Loading from "../../../../../../../../../../components/Loading/Loading";
 import ScrollBar from "../../../../../../../../../../components/ScrollBar";
 import {BN} from "../../../../../../../../../../utils/utils";
 import Icon from "../../../../../../../../../../components/Icon/Icon";
+import {toast} from "react-hot-toast";
 
 
 const OpenOrders = (props) => {
 
-    const {activePair , lastTransaction} = props
+    const {activePair, lastTransaction} = props
 
     const {t} = useTranslation();
     const [orders, setOrders] = useState([])
@@ -27,11 +28,13 @@ const OpenOrders = (props) => {
     }
 
     useEffect(async () => {
-        getOpenOrderData().then(()=>setIsLoading(false))
+        getOpenOrderData().then(() => setIsLoading(false))
     }, [activePair, lastTransaction])
 
     const cancelOrder = async (orderId) => {
-        await cancelOpenOrders(activePair , orderId)
+        await cancelOpenOrders(activePair, orderId)
+            .then(() => toast.success(t('myOrders.cancelSuccess')))
+            .catch(() => toast.error(t('myOrders.cancelError')))
         await getOpenOrderData()
     }
     if (isLoading) {
@@ -57,7 +60,7 @@ const OpenOrders = (props) => {
                     </th>
                     <th>{t("totalPrice")}</th>
                     <th>{t("myOrders.donePercentage")}</th>
-                    {/*<th/>*/}
+                    <th/>
                     <th/>
                 </tr>
                 </thead>
@@ -67,7 +70,6 @@ const OpenOrders = (props) => {
                         const executedQty = new BN(tr.executedQty)
                         const pricePerUnit = new BN(tr.price)
                         const totalPrice = pricePerUnit.multipliedBy(origQty)
-
                         return (<Fragment key={index}>
                             <tr className={tr.side === "BUY" ? "text-green" : "text-red"}>
                                 <td>{moment(tr.time).format("jYY/jMM/jDD")}</td>
@@ -76,9 +78,7 @@ const OpenOrders = (props) => {
                                 <td>{pricePerUnit.decimalPlaces(activePair.quoteAssetPrecision).toFormat()}</td>
                                 <td>{totalPrice.decimalPlaces(activePair.quoteAssetPrecision).toFormat()}</td>
                                 <td>{executedQty.dividedBy(origQty).multipliedBy(100).toFormat(0)}</td>
-
-
-                               {/* <td
+                                <td
                                     onClick={() => cancelOrder(tr.orderId)}
                                     data-html={true}
                                     data-place="bottom"
@@ -90,9 +90,6 @@ const OpenOrders = (props) => {
                                         customClass={`${classes.iconBG} cursor-pointer`}
                                     />
                                 </td>
-                                */}
-
-
                                 {openOrder === index ? (
                                     <td onClick={() => setOpenOrder(null)}>
                                         <Icon
@@ -148,7 +145,7 @@ const OpenOrders = (props) => {
 
 const mapStateToProps = (state) => {
     return {
-        activePair: state.global.activePair,
+        activePair: state.exchange.activePair,
         lastTransaction: state.auth.lastTransaction,
     };
 };

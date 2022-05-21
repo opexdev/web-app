@@ -323,9 +323,9 @@ const TheBuyOrder = (props) => {
 
 const mapStateToProps = (state) => {
     return {
-        activePair: state.global.activePair,
-        bestBuyPrice: state.global.activePairOrders.bestBuyPrice,
-        selectedBuyOrder: state.global.activePairOrders.selectedBuyOrder,
+        activePair: state.exchange.activePair,
+        bestBuyPrice: state.exchange.activePairOrders.bestBuyPrice,
+        selectedBuyOrder: state.exchange.activePairOrders.selectedBuyOrder,
         wallets: state.auth.wallets,
         tradeFee: state.auth.tradeFee,
         accessToken: state.auth.accessToken,

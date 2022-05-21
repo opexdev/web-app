@@ -47,19 +47,14 @@ const Withdrawal = () => {
     const network = (id) => {
         switch (id) {
             case  "BTC":
-                return 'Bit';
+                return 'BTC Network';
             case "ETH":
-                return 'ethereum-ropsten';
-            /*case "USDT":
-                return '';*/
+                return 'mainnet';
             default:
-                return 'ethereum-ropsten';
+                return id+" network";
         }
     };
-    const calculateFee = (
-
-
-    ) => {
+    const calculateFee = () => {
         switch (id) {
             case "BTC":
                 return 0.00035;
@@ -72,7 +67,7 @@ const Withdrawal = () => {
         }
     };
 
-    const isDisable =useRef()
+    const isDisable = useRef()
 
 
 

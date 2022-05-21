@@ -1,0 +1,65 @@
+.container {
+  height: 8.5vh;
+  position: relative;
+}
+.marketCardImage {
+  width: 14%;
+}
+.marketCardContent {
+  width: 86%;
+}
+.selected {
+  background-color: var(--mainContent);
+  border-radius: 0 10px 10px 0;
+  transition: 0.4s background-color;
+  width: 97% !important;
+  margin-right: 3% !important;
+}
+:global(.ltr) .selected {
+  border-radius: 10px 0 0 10px;
+  margin-left: 3% !important;
+  margin-right: 0 !important;
+}
+
+.selected:before {
+  content: "";
+  position: absolute;
+  background-color: var(--cardBody);
+  width: 15px;
+  height: 15px;
+  border-top-left-radius: 10px;
+  bottom: -15px;
+  left: 0;
+  box-shadow: -3px -7px 0 0 var(--mainContent);
+  transition: background-color 0.4s, box-shadow 0.4s;
+}
+:global(.ltr) .selected:before {
+  right: 0;
+  left: initial;
+  border-top-right-radius: 10px;
+  box-shadow: 5px -10px 0 0 var(--mainContent);
+}
+.selected:after {
+  content: "";
+  position: absolute;
+  background-color: var(--cardBody);
+  width: 15px;
+  height: 15px;
+  border-bottom-left-radius: 10px;
+  top: -15px;
+  left: 0;
+  box-shadow: -3px 7px 0 0 var(--mainContent);
+  transition: background-color 0.4s, box-shadow 0.4s;
+}
+:global(.ltr) .selected:after {
+  right: 0;
+  left: initial;
+  border-bottom-right-radius: 10px;
+  box-shadow: 5px 10px 0 0 var(--mainContent);
+}
+.selected:first-child:after {
+  width: 0;
+}
+.selected:last-child:before{
+  width: 0;
+}

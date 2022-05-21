@@ -53,8 +53,8 @@ const Order = (props) => {
 
 const mapStateToProps = (state) => {
   return {
-    selectedSellOrder: state.global.activePairOrders.selectedSellOrder,
-    selectedBuyOrder: state.global.activePairOrders.selectedBuyOrder,
+    selectedSellOrder: state.exchange.activePairOrders.selectedSellOrder,
+    selectedBuyOrder: state.exchange.activePairOrders.selectedBuyOrder,
   };
 };
 export default connect(mapStateToProps, null)(Order);

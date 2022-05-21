@@ -1,6 +1,5 @@
 import React, {useState, useEffect} from "react";
 import classes from "./AccordionBox.module.css";
-import PropTypes from "prop-types";
 import {isMobile, isSafari} from "react-device-detect";
 
 const AccordionBox = ({title, customClass, content, activeTab, setActiveTab ,...props}) => {
@@ -20,11 +19,7 @@ const AccordionBox = ({title, customClass, content, activeTab, setActiveTab ,...
     }, [active]);
 
     return (
-        <div
-
-            className={`${customClass} ${classes.container} ${
-                isSafari ? props.safari : ""
-            }`}>
+        <div className={`${customClass} ${classes.container} ${isSafari ? props.safari : ""}`}>
             <div className={`card-header-bg accordion-header ${classes.header}`}>
                 {isMobile ? "" : <h3 className={`${props.titleClassName} ${classes.title}`}>{title}</h3>}
                 <div className={`${classes.items} ${props.headerClassName}`}>
@@ -47,12 +42,6 @@ const AccordionBox = ({title, customClass, content, activeTab, setActiveTab ,...
             </div>
         </div>
     );
-};
-
-AccordionBox.prototype = {
-    title: PropTypes.string,
-    customClass: PropTypes.array,
-    content: PropTypes.array,
 };
 
 export default AccordionBox;

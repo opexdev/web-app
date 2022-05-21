@@ -102,7 +102,7 @@ const mapStateToProps = (state) => {
     return {
         isLogin: state.auth.isLogin,
         accessToken: state.auth.accessToken,
-        activePair: state.global.activePair
+        activePair: state.exchange.activePair
     };
 };
 const mapDispatchToProps = (dispatch) => {

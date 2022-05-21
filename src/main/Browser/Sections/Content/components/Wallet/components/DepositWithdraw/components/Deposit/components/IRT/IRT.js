@@ -308,7 +308,7 @@ const IRT = (props) => {
 const mapStateToProps = (state) => {
     return {
         wallet: state.auth.wallets.IRT.free,
-        lockTime: state.global.ipgLock
+        lockTime: state.exchange.ipgLock
     };
 };
 const mapDispatchToProps = (dispatch) => {

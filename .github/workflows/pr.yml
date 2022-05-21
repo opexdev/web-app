@@ -7,11 +7,12 @@ on:
 jobs:
   build:
     runs-on: ubuntu-20.04
-    name: Opex web app build
+    name: OPEX web app build
     steps:
       - name: Checkout Source Code
         uses: actions/checkout@v2
       - name: Build Docker images
         env:
-          OPEX_TAG: latest
+          TAG: latest
+          GENERATE_SOURCEMAP: false
         run: docker-compose -f docker-compose.build.yml build

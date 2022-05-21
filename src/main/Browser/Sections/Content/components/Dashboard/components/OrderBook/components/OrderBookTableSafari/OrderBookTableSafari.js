@@ -162,8 +162,8 @@ const OrderBookTableSafari = (props) => {
 
 const mapStateToProps = (state) => {
   return {
-    activePair: state.global.activePair,
-    activePairOrders: state.global.activePairOrders,
+    activePair: state.exchange.activePair,
+    activePairOrders: state.exchange.activePairOrders,
   };
 };
 
