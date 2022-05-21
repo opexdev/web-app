@@ -99,3 +99,49 @@ export function* loadConfig() {
 
     yield put(actions.setLoading(false));
 }
+
+export function* load_impersonate() {
+    const pairs = [];
+    const assets = [];
+    const wallets = {};
+    const tradeFee = {};
+    const lastPrice = {};
+
+    const {data: {symbols}} = yield call(axios.get, '/api/v3/exchangeInfo')
+
+    for (const symbol of symbols) {
+        if (symbol.symbol.toUpperCase().includes("NLN")) continue
+        if (!assets.includes(symbol.baseAsset)) {
+            assets.push(symbol.baseAsset)
+            wallets[symbol.baseAsset] = {free: 0.0, locked: 0.0, withdraw: 0.0}
+            tradeFee[symbol.baseAsset] = 0.01
+        }
+        if (!assets.includes(symbol.quoteAsset)) {
+            assets.push(symbol.quoteAsset)
+            wallets[symbol.quoteAsset] = {free: 0.0, locked: 0.0, withdraw: 0.0}
+            tradeFee[symbol.quoteAsset] = 0.01
+        }
+        if (!pairs.includes(symbol.symbol)) pairs.push(symbol.symbol)
+        symbol.baseRange = {min: 0.000001, max: 100000, step: 0.00001}
+        symbol.quoteRange = {min: 0.000001, max: 100000, step: 0.00001}
+        symbol.name = symbol.baseAsset+"/"+symbol.quoteAsset
+        lastPrice[symbol.symbol] = 0
+    }
+    yield put(actions.setExchange({pairs, assets, symbols, lastPrice}));
+    yield put(actions.setUserAccountInfo({wallets, tradeFee}));
+
+    const isDark = yield call([localStorage, 'getItem'], 'isDark')
+    const lockTime = yield call([localStorage, 'getItem'], 'lockTime')
+
+    const activePair = yield call([localStorage, 'getItem'], 'activePair')
+    const activeMarketTab = yield call([localStorage, 'getItem'], 'activeMarketTab')
+
+    if (lockTime) yield put(actions.setIPG(lockTime));
+    if (isDark) yield put(actions.setTheme(JSON.parse(isDark)));
+
+    const lastActivePair = symbols.find(symbol => symbol.symbol === activePair)
+
+    yield put(actions.setActivePair(lastActivePair || symbols[0], activeMarketTab));
+
+    yield put(actions.setLoading(false));
+}

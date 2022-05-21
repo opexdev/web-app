@@ -30,6 +30,7 @@ export {
     changeUserInfo,
     setUserAccountInfo,
     setUserAccountInfoInitiate,
+    loadImpersonate,
     setKYCStatus
 } from "./auth";
 

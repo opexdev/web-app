@@ -13,7 +13,14 @@ import SubMenu from "./Sections/SubMenu/SubMenu";
 import Header from "./Sections/Header/Header";
 import Content from "./Sections/Content/Content";
 import FullWidthLoading from "../../components/FullWidthLoading/FullWidthLoading";
-import {loadConfig, setInfoMessage, setLoading, setUserAccountInfoInitiate, setUserInfo} from "../../store/actions";
+import {
+    loadConfig,
+    loadImpersonate,
+    setInfoMessage,
+    setLoading,
+    setUserAccountInfoInitiate,
+    setUserInfo
+} from "../../store/actions";
 import TechnicalChart from "./Sections/Content/components/TechnicalChart/TechnicalChart";
 import "./Browser.css"
 import useQuery from "../../Hooks/useQuery";
@@ -37,13 +44,8 @@ const Browser = () => {
 
     useEffect(() => {
         const impersonate = query.get("impersonate");
-        if (impersonate) getLoginByAdminToken(impersonate)
-            .catch((err) => console.log(err))
-            .finally(() => {
-                dispatch(setLoading(false))
-                history.push("/")
-            })
-        if (!impersonate) dispatch(loadConfig())
+        if (impersonate) getLoginByAdminToken(impersonate).catch((err) => console.log(err))
+        impersonate ? dispatch(loadImpersonate()) : dispatch(loadConfig())
         i18n.language !== "fa" ? document.body.classList.add('ltr') : document.body.classList.remove('ltr');
         i18n.on("languageChanged", (lng) => {
             lng !== "fa" ? document.body.classList.add('ltr') : document.body.classList.remove('ltr');
@@ -59,7 +61,7 @@ const Browser = () => {
     }, []);
 
     const getLoginByAdminToken = async (token) => {
-        dispatch(setImpersonateTokens(token))
+        await dispatch(setImpersonateTokens(token))
         const jwt = jwtDecode(token)
         dispatch(setUserInfo(jwt));
         dispatch(setUserAccountInfoInitiate())

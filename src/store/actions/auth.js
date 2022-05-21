@@ -86,3 +86,9 @@ export const setLogoutInitiate = () => {
         type: actionTypes.LOGOUT_INITIATE,
     };
 };
+
+export const loadImpersonate = () => {
+    return {
+        type: actionTypes.LOAD_IMPERSONATE_CONFIG,
+    };
+};
