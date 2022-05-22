@@ -58,12 +58,6 @@ const reducer = (state = initialState, action) => {
                 kyc: action.status,
                 kycReason: action.reason
             };
-        case actionTypes.SET_IMPERSONATE_TOKENS:
-            return {
-                ...state,
-                accessToken: action.accessToken,
-                isLogin: true,
-            }
         case actionTypes.SET_USER_TOKENS:
             return {
                 ...state,

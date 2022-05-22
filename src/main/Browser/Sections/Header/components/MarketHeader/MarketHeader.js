@@ -1,4 +1,4 @@
-import React, {Fragment, useEffect, useState} from "react";
+import React, {useEffect, useState} from "react";
 import classes from "./MarketHeader.module.css";
 import {useTranslation} from "react-i18next";
 import {useSelector} from "react-redux";
@@ -37,9 +37,9 @@ const MarketHeader = () => {
     }
 
     return (
-        <Fragment>
+        <>
             <div className={`col-25 column ai-start`}>
-                <h2 className="mb-05">{t(`pair.${activePair.name}`)}</h2>
+                <h2 className="mb-05">{t("currency." + activePair.baseAsset)}/{t("currency." + activePair.quoteAsset)}</h2>
                 <p>{t("header.lastPrice")}:{" "}<span/>{" "}{!lastTradePrice ? "---" :  lastTradePrice.toLocaleString()+" "+t("currency." + activePair.quoteAsset)}</p>
             </div>
             <div className={`col-50 column ai-center`}>
@@ -58,10 +58,8 @@ const MarketHeader = () => {
 
                 </div>
             </div>
-
             {showPopUp ? <Popup currency={showPopUpAsset} closePopup={closePopup}/> : ""}
-
-        </Fragment>
+        </>
     );
 };
 

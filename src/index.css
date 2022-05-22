@@ -1460,3 +1460,9 @@ table th {
     -moz-transform: translateY(0) rotate(.2deg);
   }
 }
+
+.reload-btn {
+  background: var(--bgGreen);
+  padding: 10px 20px;
+  text-align: center;
+}

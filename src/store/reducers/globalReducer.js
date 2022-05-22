@@ -1,9 +1,9 @@
 import * as actionTypes from "../actions/actionTypes";
 
 const initialState = {
-    activeMarketTab: 0,
-    isLoading: true,
     isDark: true,
+    isLoading: true,
+    hasError: false,
     info: {
         type: null,
         message: null,
@@ -29,6 +29,11 @@ const globalReducer = (state = initialState, action) => {
             return {
                 ...state,
                 isLoading: action.isLoading,
+            };
+        case actionTypes.SET_ERROR:
+            return {
+                ...state,
+                hasError: action.error,
             };
         default:
             return state;

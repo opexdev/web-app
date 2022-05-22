@@ -9,13 +9,6 @@ export const setUserTokens = (token) => {
     };
 };
 
-export const setImpersonateTokens = (token) => {
-    return {
-        type: actionTypes.SET_IMPERSONATE_TOKENS,
-        accessToken: token,
-    };
-};
-
 export const setUserAccountInfo = (info) => {
     return {
         type: actionTypes.SET_USER_ACCOUNT_INFO,
@@ -84,11 +77,5 @@ export const logout = () => {
 export const setLogoutInitiate = () => {
     return {
         type: actionTypes.LOGOUT_INITIATE,
-    };
-};
-
-export const loadImpersonate = () => {
-    return {
-        type: actionTypes.LOAD_IMPERSONATE_CONFIG,
     };
 };

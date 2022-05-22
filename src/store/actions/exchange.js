@@ -8,10 +8,9 @@ export const setActivePairInitiate = (pair, activeTab) => {
     };
 };
 
-export const setActivePair = (pair , activeTab) => {
+export const setActivePair = (pair) => {
     return {
         type: actionTypes.SET_ACTIVE_PAIR,
-        activeTab: activeTab,
         pair: pair,
     };
 };

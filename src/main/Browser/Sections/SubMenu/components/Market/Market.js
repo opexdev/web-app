@@ -8,7 +8,7 @@ import AccordionBox from "../../../../../../components/AccordionBox/AccordionBox
 const Market = () => {
 
     const {t} = useTranslation();
-    const [activeTab] = useState(JSON.parse(localStorage.getItem("activeMarketTab")) || 0);
+    const [activeTab] = useState(JSON.parse(localStorage.getItem("activeMarketTab")) || 1);
     const [fav, setFav] = useState(JSON.parse(localStorage.getItem("favPair")) || []);
 
     useEffect(() => {

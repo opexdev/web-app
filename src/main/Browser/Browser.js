@@ -1,6 +1,6 @@
 import React, {useEffect} from "react";
 import {useDispatch, useSelector} from "react-redux";
-import {Route, Switch, useHistory} from "react-router-dom";
+import {Route, Switch} from "react-router-dom";
 import i18n from "i18next";
 import ReactTooltip from "react-tooltip";
 import * as Routes from "../../routes/routes";
@@ -13,39 +13,30 @@ import SubMenu from "./Sections/SubMenu/SubMenu";
 import Header from "./Sections/Header/Header";
 import Content from "./Sections/Content/Content";
 import FullWidthLoading from "../../components/FullWidthLoading/FullWidthLoading";
-import {
-    loadConfig,
-    loadImpersonate,
-    setInfoMessage,
-    setLoading,
-    setUserAccountInfoInitiate,
-    setUserInfo
-} from "../../store/actions";
+import {loadConfig, setInfoMessage, setUserAccountInfoInitiate} from "../../store/actions";
 import TechnicalChart from "./Sections/Content/components/TechnicalChart/TechnicalChart";
 import "./Browser.css"
 import useQuery from "../../Hooks/useQuery";
 import useInterval from "../../Hooks/useInterval";
-import {setImpersonateTokens} from "../../store/actions/auth";
-import jwtDecode from "jwt-decode";
 import {setLastPriceInitiate} from "../../store/actions/exchange";
 import Info from "../../components/Info/Info";
+import FullWidthError from "../../components/FullWidthError/FullWidthError";
 
 
 const Browser = () => {
     const dispatch = useDispatch();
-    const history = useHistory();
     const query = useQuery();
 
     const isDark = useSelector((state) => state.global.isDark)
     const isLoading = useSelector((state) => state.global.isLoading)
+    const hasError = useSelector((state) => state.global.hasError)
     const isLogin = useSelector((state) => state.auth.isLogin)
 
     isDark ? document.body.classList.add('dark') : document.body.classList.remove('dark');
 
     useEffect(() => {
         const impersonate = query.get("impersonate");
-        if (impersonate) getLoginByAdminToken(impersonate).catch((err) => console.log(err))
-        impersonate ? dispatch(loadImpersonate()) : dispatch(loadConfig())
+        dispatch(loadConfig(impersonate))
         i18n.language !== "fa" ? document.body.classList.add('ltr') : document.body.classList.remove('ltr');
         i18n.on("languageChanged", (lng) => {
             lng !== "fa" ? document.body.classList.add('ltr') : document.body.classList.remove('ltr');
@@ -57,15 +48,8 @@ const Browser = () => {
             window.removeEventListener('offline', () => dispatch(setInfoMessage(null, "offline")));
             window.removeEventListener('online', () => dispatch(setInfoMessage(null, null)));
         }
-
     }, []);
 
-    const getLoginByAdminToken = async (token) => {
-        await dispatch(setImpersonateTokens(token))
-        const jwt = jwtDecode(token)
-        dispatch(setUserInfo(jwt));
-        dispatch(setUserAccountInfoInitiate())
-    }
 
     useInterval(() => {
         dispatch(setUserAccountInfoInitiate());
@@ -73,7 +57,7 @@ const Browser = () => {
 
     useInterval(() => {
         dispatch(setLastPriceInitiate());
-    },  3000)
+    }, 3000)
 
     const Toast = () => <Toaster position="bottom-right" toastOptions={
         {
@@ -103,6 +87,12 @@ const Browser = () => {
             },
         }} containerStyle={{}}/>
 
+    if (isLoading) {
+        return <FullWidthLoading/>
+    }
+    if (hasError) {
+        return <FullWidthError/>
+    }
     return (
         <Switch>
             <Route exact path="/login">
@@ -118,21 +108,19 @@ const Browser = () => {
                 path={Routes.Technical}
             />
             <Route>
-                {isLoading ? (<FullWidthLoading/>) : (
-                    <div className="row">
-                        <MainMenu isLogin={isLogin}/>
-                        <SubMenu isLogin={isLogin}/>
-                        <div className="column content">
-                            <Header/>
-                            <Info/>
-                            <div style={{display: "flex", flex: 1}}>
-                                <Content/>
-                            </div>
+                <div className="row">
+                    <MainMenu isLogin={isLogin}/>
+                    <SubMenu isLogin={isLogin}/>
+                    <div className="column content">
+                        <Header/>
+                        <Info/>
+                        <div style={{display: "flex", flex: 1}}>
+                            <Content/>
                         </div>
-                        <ReactTooltip data-html={true} data-effect="float"/>
-                        <Toast/>
                     </div>
-                )}
+                    <ReactTooltip data-html={true} data-effect="float"/>
+                    <Toast/>
+                </div>
             </Route>
         </Switch>
     );

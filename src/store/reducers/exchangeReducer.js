@@ -43,7 +43,6 @@ const exchangeReducer = (state = initialState, action) => {
                     bestSellPrice: 0,
                     lastTradePrice: 0,
                 },
-                activeMarketTab: action.activeTab,
             };
         case actionTypes.SET_BEST_BUY_PRICE:
             return {
