@@ -33,7 +33,7 @@ const WalletListItem = ({name , showZero}) => {
                 </div>
                 <div className="column ai-end">
               <span>
-                {free.toLocaleString() + " "}
+                {free + " "}
                   <span className="font-size-sm">{t("currency." + name)}</span>
               </span>
                     {/*<span className="font-size-sm text-color-gray">
