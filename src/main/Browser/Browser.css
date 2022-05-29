@@ -25,19 +25,10 @@
     .font-size-lg {
         font-size: 2.2vw;
     }
-
-
-
     .button{
         height: 4.5vh;
-        border: none;
-        border-radius: 7px;
-        font-family: "IRANYekan", serif;
         font-size: 0.8vw;
-        color: #f2f2f2;
     }
-
-
     tr {
         position: relative;
         line-height: 3.4vh;

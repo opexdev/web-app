@@ -113,7 +113,7 @@ const SettingsSubMenu = () => {
               {t("SendPhotosStep.title")}
             </span>
             <span className={`flex ai-center my-05 pr-2 ${classes.list}`}>
-              {t("SendToExpertStep.title")}
+              {t("SendToAdminStep.title")}
             </span>
           </div>
         </NavLink>

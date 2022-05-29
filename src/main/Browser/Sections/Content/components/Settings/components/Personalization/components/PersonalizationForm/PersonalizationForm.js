@@ -26,13 +26,12 @@ const PersonalizationForm = () => {
     {value: "dark", label: t("Theme.Dark")},
   ];
   const calendarSystemOptions = [
-    {value: "1", label: t("Calendar.1")},
-    {value: "2", label: t("Calendar.2")},
+    {value: "IRCalender", label: t("Calendar.IRCalender")},
+    {value: "GCCalender", label: t("Calendar.GCCalender")},
   ];
   const timeZoneOptions = [
-    {value: "1", label: t("TimeZone.1")},
-    {value: "2", label: "..."},
-    {value: "3", label: "..."},
+    {value: "THR", label: t("TimeZone.THR")},
+    {value: "UTC", label: t("TimeZone.UTC")},
   ];
   const referenceCurrencyOptions = [
     {value: "IRT", label: t("currency.IRT")},
@@ -113,7 +112,7 @@ const PersonalizationForm = () => {
               <TextInput
                 select={true}
                 placeholder={t("PersonalizationForm.placeholder")}
-                lead={t("PersonalizationForm.defaultTimeZon")}
+                lead={t("PersonalizationForm.defaultTimeZone")}
                 type="text"
                 options={timeZoneOptions}
                 onchange={(e) =>

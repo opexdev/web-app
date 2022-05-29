@@ -66,7 +66,7 @@ const OrdersHistory = (props) => {
                             <td>{tr.origQty}</td>
                             <td>{tr.price.toLocaleString()}</td>
                             <td>{(tr.origQty * tr.price).toLocaleString()}</td>
-                            <td>{t("ordersStatus." + tr.status)}</td>
+                            <td>{t("orderStatus." + tr.status)}</td>
                             {openOrder === index ? (
                                 <td onClick={() => setOpenOrder(null)}>
                                     <Icon
@@ -96,7 +96,7 @@ const OrdersHistory = (props) => {
                                     <p className="col-46 row jc-between">
                                         {t("orderType")} :{" "}
                                         <span>
-                                            {t(tr.side) + " " + t("orderTypes." + tr.type)}
+                                            {t(tr.side.toLowerCase()) + " " + t("orderTypes." + tr.type)}
                                         </span>
                                     </p>
                                 </div>

@@ -54,10 +54,9 @@ const Footer = (props) => {
 
                 <div className={`column ai-center jc-center`}>
                     <div className={`row ai-center py-2`}>
-                        <span className={`pl-1`}>{t("footer.changeColor")}:</span>
+                        <span className={`pl-1`}>{t("footer.darkMode")}:</span>
                         <ToggleSwitch onchange={(e) => props.onThemeChange(e.target.checked)} checked={props.isDark}/>
                     </div>
-
                     <div className={`row ai-center jc-between`}>
                         <div className={`row ai-center ${classes.languages}`}>
                             <span className="cursor-pointer pl-1"

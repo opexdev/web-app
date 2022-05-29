@@ -1,4 +1,4 @@
-import React, {Fragment, useEffect, useRef, useState} from "react";
+import React, {Fragment, useEffect, useState} from "react";
 import classes from "./DepositWithdrawTx.module.css";
 import moment from "moment-jalaali";
 import {connect} from "react-redux";
@@ -16,7 +16,7 @@ import {BN} from "../../../../../../../../utils/utils";
 import IRTTx from "./components/IRTTx/IRTTx";
 import {toast} from "react-hot-toast";
 
-const DepositWithdrawTx = (props) => {
+const DepositWithdrawTx = () => {
   const {t} = useTranslation();
   const [filterOpen, setFilterOpen] = useState(null);
   const [openItem, setOpenItem] = useState(false);
@@ -106,26 +106,16 @@ const DepositWithdrawTx = (props) => {
     await getTx();
   }, id ? 3000 : null);
 
-
-  const addressRef = useRef(null);
-
-  /*const copyToClipboard = () => {
-    addressRef.current.select();
-    document.execCommand("copy");
-  };*/
-
-
-
   const txStatus = (status) => {
     switch (status) {
       case 0:
-        return t("ordersStatus.NEW");
+        return t("orderStatus.NEW");
       case 1:
-        return t("ordersStatus.FILLED");
+        return t("orderStatus.FILLED");
       case 2:
-        return t("ordersStatus.REJECTED");
+        return t("orderStatus.REJECTED");
       default:
-        return t("ordersStatus.NEW");
+        return t("orderStatus.NEW");
     }
   };
 

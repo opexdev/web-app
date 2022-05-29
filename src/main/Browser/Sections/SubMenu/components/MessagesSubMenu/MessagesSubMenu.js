@@ -6,10 +6,9 @@ import ScrollBar from "../../../../../../components/ScrollBar";
 import Icon from "../../../../../../components/Icon/Icon";
 import AccordionBox from "../../../../../../components/AccordionBox/AccordionBox";
 import {MyMessagesData, newsData} from "../../../../../../FakeData/FakeData";
-import {Link, useHistory} from "react-router-dom";
-import {Login} from "../../../../../../routes/routes";
+import {useHistory} from "react-router-dom";
 
-const MessagesSubMenu = (props) => {
+const MessagesSubMenu = () => {
   const {t} = useTranslation();
   const [openItem, setOpenItem] = useState({
     myMessages: null,
@@ -40,7 +39,7 @@ const MessagesSubMenu = (props) => {
             <Fragment key={index}>
               <tr>
                 <td className="text-right font-weight-bold pr-1">
-                  {t("ordersStatus." + tr.title)}
+                  {t("orderStatus." + tr.title)}
                 </td>
                 <td className="text-left pl-1">
                   {moment(tr.timestamp).format("HH:mm:ss  -  jYY/jMM/jDD")}
@@ -104,7 +103,7 @@ const MessagesSubMenu = (props) => {
         className="text-center triplet-striped font-size-sm-plus mt-05"
         cellSpacing="0"
         cellPadding="0">
-        <thead></thead>
+        <thead/>
         <tbody>
           {customData.news.map((tr, index) => (
             <Fragment key={index}>

@@ -1120,8 +1120,21 @@ h6 {
 }
 .ltr {
   direction: ltr;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Roboto', sans-serif !important;
+  font-weight: 300;
 }
+
+.button {
+  font-family: "IRANYekan", sans-serif;
+  border: none;
+  border-radius: 7px;
+  color: #f2f2f2;
+}
+
+.ltr .button {
+  font-family: "Roboto", sans-serif !important;
+}
+
 
 input {
   direction: rtl;
@@ -1129,20 +1142,6 @@ input {
 .ltr input {
   direction: ltr;
 }
-
-
-
-/*
-.ltr html,body{
-    font-family: 'Segoe UI', serif !important;
-}
-*/
-
-/*
-.ltr .row{
-    flex-direction: row-reverse;
-
-}*/
 
 /*
     Table Style
