@@ -4,8 +4,6 @@ import {createOrder} from "../../api/order";
 import classes from "../../Order.module.css";
 import React, {useEffect, useState} from "react";
 import {Trans, useTranslation} from "react-i18next";
-import {Login as LoginRoute} from "../../../../../../../../../../routes/routes";
-import {useHistory} from "react-router-dom";
 import {BN, parsePriceString} from "../../../../../../../../../../utils/utils";
 import NumberInput from "../../../../../../../../../../components/NumberInput/NumberInput";
 import Button from "../../../../../../../../../../components/Button/Button";
@@ -14,7 +12,6 @@ import {images} from "../../../../../../../../../../assets/images";
 
 const BuyOrder = () => {
 
-    const history = useHistory();
     const {t} = useTranslation();
     const dispatch = useDispatch();
 
@@ -217,7 +214,6 @@ const BuyOrder = () => {
 
     const submit = async () => {
         if (!isLogin) {
-            history.push(LoginRoute);
             return false
         }
         if (isLoading) {

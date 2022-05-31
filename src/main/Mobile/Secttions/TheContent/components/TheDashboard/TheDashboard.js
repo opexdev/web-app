@@ -1,10 +1,10 @@
-import React, {useEffect, useState} from "react";
+import React, {useState} from "react";
 import TheNavMenu from "./components/TheNavMenu/TheNavMenu";
 import TheOverview from "./components/TheOverview/TheOverview";
-import {Route, Switch, useHistory, useParams} from "react-router-dom";
-import * as Routes from "../../../../../../routes/routes";
+import {Route, Routes, useNavigate} from "react-router-dom";
+import * as RoutesName from "../../../../../../routes/routes";
+import {MyOrder, Order, OrderBook} from "../../../../../../routes/routes";
 import {useTranslation} from "react-i18next";
-import {LastTrades, MyOrder, Order, OrderBook, Overview} from "../../../../../../routes/routes";
 import Button from "../../../../../../components/Button/Button";
 import classes from "./TheDashboard.module.css";
 import TheOrderBook from "./components/TheOrderBook/TheOrderBook";
@@ -18,10 +18,9 @@ const TheDashboard = () => {
     const {t} = useTranslation();
     const [activeOrder , setActiveOrder] = useState(false)
     const [showChart , setShowChart] = useState(false)
-    const history = useHistory();
+    const navigate = useNavigate();
 
-
-    history.listen((location) =>{
+    navigate.listen((location) =>{
         if (location.pathname === Order) {
             setActiveOrder(true)
         }
@@ -29,33 +28,29 @@ const TheDashboard = () => {
 
     const GoToOrderHandler = () => {
         setActiveOrder(true)
-        history.push(Order)
+        navigate(Order, { replace: true });
     }
     const BackClickHandler = () => {
         setActiveOrder(false)
-        history.push(OrderBook)
+        navigate(OrderBook, { replace: true });
     }
     const NextClickHandler = () => {
         setActiveOrder(false)
-        history.push(MyOrder)
+        navigate(MyOrder, { replace: true });
     }
-
 
     return (
         <div className={`container column jc-between ai-center px-2 py-1 ${classes.container} ${activeOrder ? classes.activeOrder : ""}`}>
-
-            <Switch>
-                <Route path={Routes.Overview}>
-
+            <Routes>
+                <Route path={RoutesName.Overview}>
                     <div className={`container col-28`}>
                         <TheOverview/>
                     </div>
                     <div className={`container col-70`}>
                         <TheTradingView/>
                     </div>
-
                 </Route>
-                <Route path={Routes.OrderBook}>
+                <Route path={RoutesName.OrderBook}>
                     <div className={`container col-92`}>
                         <TheOrderBook/>
                     </div>
@@ -74,7 +69,7 @@ const TheDashboard = () => {
                             />
                     </div>
                 </Route>
-                <Route path={Routes.Order}>
+                <Route path={RoutesName.Order}>
                     <div className={`container col-06 row jc-around ai-center`}>
                         <div className={`container col-10 flex jc-center ai-center ${classes.headerItem}`}>
                             <Icon iconName="icon-right-open font-size-md flex" onClick={BackClickHandler}/>
@@ -84,7 +79,6 @@ const TheDashboard = () => {
                             <Button
                                 buttonClass={`${classes.headerButton} ${showChart ? "" : classes.selected} mr-1`}
                                 type="submit"
-                                /*onClick={()=>setShowChart(false)}*/
                                 buttonTitle={t("orderBook.title")}
                             />
                         </div>
@@ -93,7 +87,6 @@ const TheDashboard = () => {
                             <Button
                                 buttonClass={`${classes.headerButton} ${showChart ? classes.selected : ""} mr-1`}
                                 type="submit"
-                                /*onClick={()=>setShowChart(true)}*/
                                 buttonTitle={t("charts.title")}
                             />
                         </div>
@@ -109,27 +102,14 @@ const TheDashboard = () => {
                         <TheOrder/>
                     </div>
                 </Route>
-                <Route path={Routes.MyOrder}>
-
-                    <div className={`container col-49`}>
-
-                    </div>
-                    <div className={`container col-49`}>
-
-                    </div>
-
+                <Route path={RoutesName.MyOrder}>
+                    <div className={`container col-49`}/>
+                    <div className={`container col-49`}/>
                 </Route>
-                <Route path={Routes.LastTrades}>
-
-                    <div className={`container col-49`}>
-
-                    </div>
-                    <div className={`container col-49`}>
-
-                    </div>
-
+                <Route path={RoutesName.LastTrades}>
+                    <div className={`container col-49`}/>
+                    <div className={`container col-49`}/>
                 </Route>
-
                 <Route path="*">
                     <div
                         className="container flex ai-center jc-center"
@@ -137,9 +117,7 @@ const TheDashboard = () => {
                         <span>{t("comingSoon")}</span>
                     </div>
                 </Route>
-            </Switch>
-
-
+            </Routes>
             {activeOrder ? "" : <TheNavMenu/>}
         </div>
     );

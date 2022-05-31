@@ -7,12 +7,11 @@ import {useTranslation} from "react-i18next";
 import MessagesSubMenu from "../SubMenu/components/MessagesSubMenu/MessagesSubMenu";
 import {images} from "../../../../assets/images";
 import Icon from "../../../../components/Icon/Icon";
-import {useSelector} from "react-redux";
+
 
 const MainMenu = () => {
     const {t} = useTranslation();
     const [showMessages, setShowMessages] = useState(false);
-    const defaultWallet = useSelector((state) => state.exchange.assets[0])
 
     useEffect(() => {
         ReactTooltip.rebuild();
@@ -33,7 +32,9 @@ const MainMenu = () => {
                         <NavLink
                             exact={true}
                             to={Routes.Dashboard}
-                            activeClassName={classes.selected}
+                            className={({ isActive }) =>
+                                isActive ? classes.selected : undefined
+                            }
                             onClick={() => setShowMessages(false)}
                             data-html={true}
                             data-place="left"
@@ -44,11 +45,10 @@ const MainMenu = () => {
                             <Icon iconName="icon-market font-size-lg"/>
                         </NavLink>
                         <NavLink
-                            to={Routes.Wallet +"/"+ defaultWallet}
-                            isActive={(match, location) => {
-                                return location.pathname.includes("/wallet/") ? true : false;
-                            }}
-                            activeClassName={classes.selected}
+                            to={Routes.Wallet}
+                            className={({ isActive }) =>
+                                isActive ? classes.selected : undefined
+                            }
                             onClick={() => setShowMessages(false)}
                             data-html={true}
                             data-place="left"
@@ -61,7 +61,9 @@ const MainMenu = () => {
                         <NavLink
                             exact={true}
                             to={Routes.Technical}
-                            activeClassName={classes.selected}
+                            className={({ isActive }) =>
+                                isActive ? classes.selected : undefined
+                            }
                             onClick={() => setShowMessages(false)}
                             data-html={true}
                             data-place="left"
@@ -82,7 +84,9 @@ const MainMenu = () => {
                      </span>
                         <NavLink
                             to={Routes.Security}
-                            activeClassName={classes.selected}
+                            className={({ isActive }) =>
+                                isActive ? classes.selected : undefined
+                            }
                             onClick={() => setShowMessages(false)}
                             data-html={true}
                             data-place="left"
@@ -96,7 +100,6 @@ const MainMenu = () => {
                     </div>
                 </div>
             </div>
-
             <Fragment>
                 <div
                     className={`${classes.subMenu} ${showMessages ? classes.show : ""}`}>

@@ -5,7 +5,7 @@ import VerticalNumberInput from "../../../../../../../../../../components/Vertic
 import {setLastTransaction} from "../../../../../../../../../../store/actions/auth";
 import {connect} from "react-redux";
 import {BN, parsePriceString} from "../../../../../../../../../../utils/utils";
-import {useHistory} from "react-router-dom";
+import {useNavigate} from "react-router-dom";
 import Icon from "../../../../../../../../../../components/Icon/Icon";
 import Button from "../../../../../../../../../../components/Button/Button";
 import {Login as LoginRoute} from "../../../../../../../../../../routes/routes";
@@ -17,7 +17,7 @@ import {images} from "../../../../../../../../../../assets/images";
 
 const TheBuyOrder = (props) => {
 
-    const history = useHistory();
+    const navigate = useNavigate();
     const {t} = useTranslation();
     const [isLoading, setIsLoading] = useState(false)
     const {wallets, activePair, tradeFee, bestBuyPrice, accessToken, isLogin, selectedBuyOrder} = props
@@ -191,7 +191,7 @@ const TheBuyOrder = (props) => {
 
     const submit = async () => {
         if (!isLogin) {
-            history.push(LoginRoute);
+            navigate(LoginRoute, { replace: true });
             return false
         }
         if (isLoading) {

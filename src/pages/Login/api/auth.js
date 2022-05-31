@@ -40,15 +40,8 @@ export const login = async (credential , agent) => {
         })
 };
 
-export const logOut = async () => {
-    return await axios.post(`/auth/realms/opex/user-management/user/logout`).then((res) => {
-        return res;
-    }).catch((e) => {
-        if (!e.response) {
-            return false;
-        }
-        return e.response;
-    })
+export const logOut = () => {
+    return axios.post(`/auth/realms/opex/user-management/user/logout`)
 }
 
 export const register = async (user , panelToken) => {

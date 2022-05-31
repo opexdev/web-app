@@ -16,7 +16,6 @@ export function* setActivePair(action) {
 }
 
 export function* setIPGLock(action) {
-    yield call([localStorage, 'setItem'], "activeMarketTab", action.activeTab)
     yield call([localStorage, 'setItem'], "lockTime", action.lockTime)
     yield put(actions.setIPG(action.lockTime));
 }

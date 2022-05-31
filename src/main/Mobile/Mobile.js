@@ -1,8 +1,8 @@
-import React, {Fragment, useEffect} from "react";
-import {connect, useDispatch, useSelector} from "react-redux";
+import React, {useEffect,Fragment} from "react";
+import {useDispatch, useSelector} from "react-redux";
 import {loadConfig} from "../../store/actions";
 import "./Mobille.css";
-import {Redirect, Route, Switch} from "react-router-dom";
+import {Route, Navigate, Routes} from "react-router-dom";
 import FullWidthLoading from "../../components/FullWidthLoading/FullWidthLoading";
 import ReactTooltip from "react-tooltip";
 import TheHeader from "./Secttions/TheHeader/TheHeader";
@@ -13,9 +13,9 @@ import Login from "../../pages/Login/Login";
 import i18n from "i18next";
 
 
-const Mobile = (props) => {
+const Mobile = () => {
 
-
+    const isLoading = useSelector((state) => state.global.isLoading)
     const isDark = useSelector((state) => state.global.isDark)
     const dispatch = useDispatch();
 
@@ -29,43 +29,25 @@ const Mobile = (props) => {
         });
     }, []);
 
-
+    if (isLoading) {
+        return <FullWidthLoading/>
+    }
 
     return (
-        <Switch>
-            <Route exact path="/login">
-                <Login/>
-            </Route>
-            <Route exact path="/">
-                <Redirect to={Overview} />
-            </Route>
-            <div>
-                {props.isLoading ? (<FullWidthLoading/>) : (
-                    <Fragment>
-                        <ReactTooltip data-html={true} data-effect="float"/>
-                        <div className={`mobile-container column`}>
-                            <TheHeader/>
-                            <TheSubHeader/>
-                            <TheContent/>
-                            {/*<TheMenu/>*/}
-                        </div>
-                    </Fragment>
-                )}
-            </div>
-        </Switch>
+        <Routes>
+            <Route exact path="/login" element={<Login/>}/>
+            <Route exact path="/" element={<Navigate to={Overview} replace/>}/>
+            <Fragment>
+                <ReactTooltip data-html={true} data-effect="float"/>
+                <div className={`mobile-container column`}>
+                    <TheHeader/>
+                    <TheSubHeader/>
+                    <TheContent/>
+                    {/*<TheMenu/>*/}
+                </div>
+            </Fragment>
+        </Routes>
     );
 };
 
-const mapStateToProps = (state) => {
-    return {
-        isLoading: state.global.isLoading,
-        isLogin: state.auth.isLogin,
-    };
-};
-const mapDispatchToProps = (dispatch) => {
-    return {
-        onLoad: () => dispatch(loadConfig()),
-    };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(Mobile);
+export default Mobile;

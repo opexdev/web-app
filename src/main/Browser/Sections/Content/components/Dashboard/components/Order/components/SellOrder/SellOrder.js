@@ -4,8 +4,6 @@ import classes from "../../Order.module.css";
 import {useDispatch, useSelector} from "react-redux";
 import {createOrder} from "../../api/order";
 import {toast} from "react-hot-toast";
-import {useHistory} from "react-router-dom";
-import {Login as LoginRoute} from "../../../../../../../../../../routes/routes";
 import {BN, parsePriceString} from "../../../../../../../../../../utils/utils";
 import NumberInput from "../../../../../../../../../../components/NumberInput/NumberInput";
 import Button from "../../../../../../../../../../components/Button/Button";
@@ -14,7 +12,6 @@ import {images} from "../../../../../../../../../../assets/images";
 
 const SellOrder = () => {
 
-    const history = useHistory();
     const {t} = useTranslation();
     const dispatch = useDispatch();
 
@@ -214,7 +211,6 @@ const SellOrder = () => {
 
     const submit = async () => {
         if (!isLogin) {
-            history.push(LoginRoute);
             return false
         }
         if (isLoading) {

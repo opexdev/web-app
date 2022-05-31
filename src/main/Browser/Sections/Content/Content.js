@@ -1,53 +1,32 @@
 import React from "react";
-import {connect} from "react-redux";
-import {Switch, Route} from "react-router-dom";
-import * as Routes from "../../../../routes/routes";
-import {useTranslation} from "react-i18next";
+import {Navigate, Route, Routes} from "react-router-dom";
+import * as RoutesName from "../../../../routes/routes";
 import ScrollBar from "../../../../components/ScrollBar";
 import ProtectedRoute from "../../../../components/ProtectedRoute/ProtectedRoute";
 import Dashboard from "./components/Dashboard/Dashboard";
 import Wallet from "./components/Wallet/Wallet";
 import Footer from "../Footer/Footer";
 import Settings from "./components/Settings/Settings";
+import {useSelector} from "react-redux";
 
-
-const Content = ({isLogin}) => {
-    const {t} = useTranslation();
-
+const Content = () => {
+    const defaultWallet = useSelector((state) => state.exchange.assets[0])
     return (
         <ScrollBar>
-            <Switch>
-                <Route exact path={Routes.Dashboard}>
-                    <Dashboard/>
+            <Routes>
+                <Route exact path={RoutesName.Dashboard} element={<Dashboard/>}/>
+                <Route element={<ProtectedRoute/>}>
+                    <Route path={RoutesName.Wallet+"/:id"} element={<Wallet/>}/>
+                    <Route path={RoutesName.Settings+"/*"} element={<Settings/>}/>
                 </Route>
-                <ProtectedRoute
-                    component={Wallet}
-                    isLogin={isLogin}
-                    path={Routes.Wallet}
+                <Route
+                    path="*"
+                    element={<Navigate to={RoutesName.Wallet + "/" + defaultWallet} replace />}
                 />
-                <ProtectedRoute
-                    component={Settings}
-                    isLogin={isLogin}
-                    path={Routes.Settings}
-                />
-                <Route path="*">
-                    <div
-                        className="container flex ai-center jc-center"
-                        style={{height: "70%"}}>
-                        <h1>{t("comingSoon")}</h1>
-                    </div>
-                </Route>
-            </Switch>
+            </Routes>
             <Footer/>
         </ScrollBar>
     );
 };
 
-const mapStateToProps = (state) => {
-    return {
-        isLogin: state.auth.isLogin,
-    };
-};
-
-
-export default connect(mapStateToProps, null)(Content);
+export default Content;

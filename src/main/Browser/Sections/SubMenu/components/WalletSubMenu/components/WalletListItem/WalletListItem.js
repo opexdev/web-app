@@ -15,8 +15,9 @@ const WalletListItem = ({name , showZero}) => {
     return (
         <NavLink
             exact={true}
-            activeClassName={classes.selected}
-            className="container row ai-center cursor-pointer position-relative px-1 py-05"
+            className={({ isActive }) =>
+                isActive ? "container row ai-center cursor-pointer position-relative px-1 py-05 " +classes.selected : "container row ai-center cursor-pointer position-relative px-1 py-05"
+            }
             to={Routes.Wallet + "/" + name}>
             <div className={` row jc-center ai-center ${classes.PairImage}`}>
                 <img

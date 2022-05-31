@@ -6,11 +6,18 @@ export const Technical = "/technical";
 //export const Messages = '/messages';
 
 //Settings Section Routes
-export const Settings = "/settings";
+export const Settings = "settings";
 export const Profile = "/settings/profile";
+export const ProfileRelative = "profile";
+
 export const Security = "/settings/security";
-export const Personalization = "/settings/personalization";
+export const SecurityRelative = "security";
+
+export const PersonalizationRelative = "/settings/personalization";
+export const Personalization = "personalization";
+
 export const Authentication = "/settings/authentication";
+export const AuthenticationRelative = "/authentication";
 
 
 export const Guide = "/guide";

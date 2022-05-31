@@ -23,8 +23,9 @@ const SettingsSubMenu = () => {
           KYCStatus === "ACCEPTED" &&
             <NavLink
                 exact={true}
-                activeClassName={classes.selected}
-                className="row jc-around ai-center cursor-pointer px-1 py-1"
+                className={({ isActive }) =>
+                    isActive ? "row jc-around ai-center cursor-pointer px-1 py-1 "+classes.selected : "row jc-around ai-center cursor-pointer px-1 py-1"
+                }
                 to={Routes.Profile}>
               <div className="row ai-center" style={{width: "40%"}}>
             <span className={`font-weight-bold pr-05 ${classes.topic}`}>
@@ -47,8 +48,9 @@ const SettingsSubMenu = () => {
 
         <NavLink
           exact={true}
-          activeClassName={classes.selected}
-          className="row jc-around ai-center cursor-pointer px-1 py-1"
+          className={({ isActive }) =>
+              isActive ? "row jc-around ai-center cursor-pointer px-1 py-1 "+classes.selected : "row jc-around ai-center cursor-pointer px-1 py-1"
+          }
           to={Routes.Security}>
           <div className="row ai-center" style={{width: "40%"}}>
             <span className={`font-weight-bold pr-05 ${classes.topic}`}>
@@ -92,8 +94,9 @@ const SettingsSubMenu = () => {
         </NavLink>*/}
         <NavLink
           exact={true}
-          activeClassName={classes.selected}
-          className="row jc-around ai-center cursor-pointer px-1 py-1"
+          className={({ isActive }) =>
+              isActive ? "row jc-around ai-center cursor-pointer px-1 py-1 "+classes.selected : "row jc-around ai-center cursor-pointer px-1 py-1"
+          }
           to={Routes.Authentication}>
           <div className="row ai-center" style={{width: "40%"}}>
             <span className={`font-weight-bold pr-05 ${classes.topic}`}>

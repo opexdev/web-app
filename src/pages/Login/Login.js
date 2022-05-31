@@ -7,15 +7,15 @@ import LoginForm from "./components/LoginForm/LoginForm";
 import RegisterForm from "./components/RegisterForm/RegisterForm";
 import ForgetPassword from "./components/ForgetPassword/ForgetPassword";
 import {useTranslation} from "react-i18next";
-import {useHistory} from "react-router-dom";
+import {useNavigate} from "react-router-dom";
 
 const Login = () => {
     const {t} = useTranslation();
-    const history = useHistory();
+    const navigate = useNavigate();
     const [forgetPassword, setForgetPassword] = useState(false);
     const isLogin = useSelector((state) => state.auth.isLogin)
 
-    if (isLogin) history.push("/")
+    if (isLogin) navigate("/", { replace: true });
 
     const data = [
         {

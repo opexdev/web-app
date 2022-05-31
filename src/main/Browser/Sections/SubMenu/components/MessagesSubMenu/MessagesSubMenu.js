@@ -6,7 +6,8 @@ import ScrollBar from "../../../../../../components/ScrollBar";
 import Icon from "../../../../../../components/Icon/Icon";
 import AccordionBox from "../../../../../../components/AccordionBox/AccordionBox";
 import {MyMessagesData, newsData} from "../../../../../../FakeData/FakeData";
-import {useHistory} from "react-router-dom";
+import {useNavigate} from "react-router-dom";
+import {Login as LoginRoute} from "../../../../../../routes/routes";
 
 const MessagesSubMenu = () => {
   const {t} = useTranslation();
@@ -25,7 +26,7 @@ const MessagesSubMenu = () => {
     });
   }, []);
 
-  const history = useHistory();
+  const navigate = useNavigate();
 
   const MyMessagesTable = (
     <ScrollBar>
@@ -150,7 +151,7 @@ const MessagesSubMenu = () => {
                 <td colSpan="3" className={`pt-05 pb-2 px-1`}>
                   <div className="col-100 text-start font-size-sm">
                     <p>
-                      نسخه نمایشی اوپکس، با پشتیبانی از دارایی‌های تستی بیتکوین، اتر و تتر راه‌اندازی شد. می‌توانید در آدرس <span className={`hover-text`} onClick={() => history.push("/login")}>opex.dev</span> حساب کاربری بسازید.{" "}
+                      نسخه نمایشی اوپکس، با پشتیبانی از دارایی‌های تستی بیتکوین، اتر و تتر راه‌اندازی شد. می‌توانید در آدرس <span className={`hover-text`} onClick={() => navigate(LoginRoute, { replace: true })}>opex.dev</span> حساب کاربری بسازید.{" "}
                     </p>
                   </div>
                 </td>
