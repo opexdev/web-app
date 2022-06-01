@@ -1,11 +1,11 @@
 import React, {useEffect, useState} from "react";
-import classes from "./Market.module.css";
+import classes from "./MarketSubMenu.module.css";
 import MarketCard from "./components/MarketCard/MarketCard";
 import {useTranslation} from "react-i18next";
 import Icon from "../../../../../../components/Icon/Icon";
 import AccordionBox from "../../../../../../components/AccordionBox/AccordionBox";
 
-const Market = () => {
+const MarketSubMenu = () => {
 
     const {t} = useTranslation();
     const [activeTab] = useState(JSON.parse(localStorage.getItem("activeMarketTab")) || 1);
@@ -90,4 +90,4 @@ const Market = () => {
     );
 };
 
-export default Market;
+export default MarketSubMenu;

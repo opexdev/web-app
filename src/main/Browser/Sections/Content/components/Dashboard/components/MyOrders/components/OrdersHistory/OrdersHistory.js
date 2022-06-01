@@ -22,10 +22,6 @@ const OrdersHistory = (props) => {
             .then((ordersHistory) => {
                 if (ordersHistory.status === 200) {
                     setOrders(ordersHistory.data.sort((a,b) => moment(b.time).unix() - moment(a.time).unix()).slice(0 , 50))
-
-
-
-                    
                 }
                 setIsLoading(false)
             })

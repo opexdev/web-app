@@ -487,6 +487,11 @@
     "forgetPassServerError": "Error recovering password, try again!",
     "forgetPassEmailForgetError": "Email format is incorrect!"
   },
+  "userPage": {
+    "title": "",
+    "success": "Email verified successfully.",
+    "failed": "Verification failed, please try again!"
+  },
   "footer": {
     "darkMode": "Dark Mode",
     "aboutUs" : "About Us",

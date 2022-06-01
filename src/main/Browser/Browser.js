@@ -1,9 +1,9 @@
 import React, {useEffect} from "react";
 import {useDispatch, useSelector} from "react-redux";
-import {Route,Routes} from "react-router-dom";
+import {Route, Routes} from "react-router-dom";
 import i18n from "i18next";
 import ReactTooltip from "react-tooltip";
-import {Technical} from "../../routes/routes";
+import * as RoutesName from "../../routes/routes";
 import {Toaster} from "react-hot-toast";
 import Login from "../../pages/Login/Login";
 import Guide from "../../pages/Guide/Guide";
@@ -21,6 +21,7 @@ import useInterval from "../../Hooks/useInterval";
 import {setLastPriceInitiate} from "../../store/actions/exchange";
 import Info from "../../components/Info/Info";
 import FullWidthError from "../../components/FullWidthError/FullWidthError";
+import User from "../../pages/User/User";
 
 
 const Browser = () => {
@@ -95,10 +96,11 @@ const Browser = () => {
     }
     return (
         <Routes>
-            <Route exact path="/login" element={<Login/>}/>
-            <Route path="/guide" element={<Guide/>}/>
+            <Route path={RoutesName.Login} element={<Login/>}/>
+            <Route path={RoutesName.User + "/*"} element={<User/>}/>
+            <Route path={RoutesName.Guide} element={<Guide/>}/>
             <Route element={<ProtectedRoute/>}>
-                <Route exact path={Technical} element={<TechnicalChart/>}/>
+                <Route path={RoutesName.Technical} element={<TechnicalChart/>}/>
             </Route>
             <Route path="*" element={<div className="row">
                 <MainMenu isLogin={isLogin}/>

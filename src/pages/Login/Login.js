@@ -28,16 +28,16 @@ const Login = () => {
     ];
 
     return (
-        <div className={`container row col-100 ai-center jc-center px-1 ${classes.container} ${classes.moveImage}`}
+        <div className={`container row col-100 ai-center jc-center px-1 ${classes.container} move-image`}
              style={{backgroundImage: `url("${images.spaceStar}")`}}>
             <div className={`col-60  flex jc-center ai-center `} style={{height: "100%"}}>
                 <div className={`${classes.content}`}>
                     <AccordionBox title={t('login.title')} content={data}/>
                 </div>
             </div>
-            <div className={`col-40 column ai-center jc-center ${classes.intro} ${classes.moveImage}`}>
+            <div className={`col-40 column ai-center jc-center ${classes.intro} move-image`}>
                 <div className={`column jc-center ai-center ${classes.bgicon}`}>
-                    <img src={images.astronaut} alt="logo"/>
+                    <img src={images.astronaut} alt="logo" className={`floating`}/>
                     <h1 className="pt-1">
                         {t('login.description')}
                     </h1>
