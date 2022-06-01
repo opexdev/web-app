@@ -1061,6 +1061,18 @@ table {
   margin-top: 2vh;
   margin-bottom: 2vh;
 }
+.my-3 {
+  margin-top: 3vh;
+  margin-bottom: 3vh;
+}
+.my-4 {
+  margin-top: 4vh;
+  margin-bottom: 4vh;
+}
+.my-5 {
+  margin-top: 5vh;
+  margin-bottom: 5vh;
+}
 .my-1 {
   margin-top: 1vh;
   margin-bottom: 1vh;
@@ -1231,154 +1243,6 @@ table th {
   }
 }
 
-/*LoadingPage*/
-.loading-container {
-  direction: ltr;
-  width: 100vw;
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  vertical-align: middle;
-  background-color: var(--cardBody);
-}
-
-.dash {
-  width: 35px;
-  height: 15px;
-  border-radius: 8px;
-  margin: 0 15px;
-  background: var(--textColor);
-  box-shadow: 0 0 2px 0 var(--textColor);
-}
-
-.one {
-  margin-right: -18px;
-  transform-origin: center left;
-  animation: spin 3s linear infinite;
-}
-
-.two {
-  transform-origin: center right;
-  animation: spin2 3s linear infinite;
-  animation-delay: 0.2s;
-}
-
-.three {
-  transform-origin: center right;
-  animation: spin3 3s linear infinite;
-  animation-delay: 0.3s;
-}
-
-.four {
-  transform-origin: center right;
-  animation: spin4 3s linear infinite;
-  animation-delay: 0.4s;
-}
-
-@keyframes spin {
-  0% {
-    transform: rotate(0deg);
-  }
-  25% {
-    transform: rotate(360deg);
-  }
-  30% {
-    transform: rotate(370deg);
-  }
-  35% {
-    transform: rotate(360deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
-}
-
-@keyframes spin2 {
-  0% {
-    transform: rotate(0deg);
-  }
-  20% {
-    transform: rotate(0deg);
-  }
-  30% {
-    transform: rotate(-180deg);
-  }
-  35% {
-    transform: rotate(-190deg);
-  }
-  40% {
-    transform: rotate(-180deg);
-  }
-  78% {
-    transform: rotate(-180deg);
-  }
-  95% {
-    transform: rotate(-360deg);
-  }
-  98% {
-    transform: rotate(-370deg);
-  }
-  100% {
-    transform: rotate(-360deg);
-  }
-}
-
-@keyframes spin3 {
-  0% {
-    transform: rotate(0deg);
-  }
-  27% {
-    transform: rotate(0deg);
-  }
-  40% {
-    transform: rotate(180deg);
-  }
-  45% {
-    transform: rotate(190deg);
-  }
-  50% {
-    transform: rotate(180deg);
-  }
-  62% {
-    transform: rotate(180deg);
-  }
-  75% {
-    transform: rotate(360deg);
-  }
-  80% {
-    transform: rotate(370deg);
-  }
-  85% {
-    transform: rotate(360deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
-}
-
-@keyframes spin4 {
-  0% {
-    transform: rotate(0deg);
-  }
-  38% {
-    transform: rotate(0deg);
-  }
-  60% {
-    transform: rotate(-360deg);
-  }
-  65% {
-    transform: rotate(-370deg);
-  }
-  75% {
-    transform: rotate(-360deg);
-  }
-  100% {
-    transform: rotate(-360deg);
-  }
-}
-/*End LoadingPage*/
-
-
 
 .onScreen{
   position: absolute;
@@ -1460,8 +1324,17 @@ table th {
   }
 }
 
-.reload-btn {
-  background: var(--bgGreen);
-  padding: 10px 20px;
-  text-align: center;
+.move-image {
+  animation-name: MOVE-BG;
+  animation-duration: 15s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+@keyframes MOVE-BG {
+  from {
+    background-position: center top;
+  }
+  to {
+    background-position: center 1200px;
+  }
 }

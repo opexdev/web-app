@@ -30,7 +30,8 @@ import squareLoading from "./images/src/squareLoading.gif";
 import squareLoadingLight from "./images/src/squareLoadingLight.gif";
 import linearLoading from "./images/src/linearLoading.gif";
 import linearLoadingBgOrange from "./images/src/linearLoadingBgOrange.gif";
-
+import approveAnimation from "./images/src/approveAnimation.gif";
+import rejectAnimation from "./images/src/rejectAnimation.gif";
 
 export const images = {
   opexLogo_light: opexLogo_light,
@@ -65,5 +66,6 @@ export const images = {
   squareLoadingLight: squareLoadingLight,
   linearLoading: linearLoading,
   linearLoadingBgOrange: linearLoadingBgOrange,
-
+  approveAnimation: approveAnimation,
+  rejectAnimation: rejectAnimation
 };

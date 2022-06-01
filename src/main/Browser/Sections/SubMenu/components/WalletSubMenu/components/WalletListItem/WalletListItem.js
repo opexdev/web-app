@@ -5,6 +5,7 @@ import {useTranslation} from "react-i18next";
 import {images} from "../../../../../../../../assets/images";
 import {useSelector} from "react-redux";
 import * as Routes from "../../../../../../../../routes/routes";
+import {BN} from "../../../../../../../../utils/utils";
 
 
 const WalletListItem = ({name , showZero}) => {
@@ -34,7 +35,7 @@ const WalletListItem = ({name , showZero}) => {
                 </div>
                 <div className="column ai-end">
               <span>
-                {free + " "}
+                {new BN(free).toFormat() + " "}
                   <span className="font-size-sm">{t("currency." + name)}</span>
               </span>
                     {/*<span className="font-size-sm text-color-gray">

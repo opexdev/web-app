@@ -30,7 +30,6 @@ const MainMenu = () => {
                 <div className={`column jc-between ai-center ${classes.content} pt-2 pb-1`}>
                     <div className={`column jc-start ai-center ${classes.topSection}`}>
                         <NavLink
-                            exact={true}
                             to={Routes.Dashboard}
                             className={({ isActive }) =>
                                 isActive ? classes.selected : undefined
@@ -59,7 +58,6 @@ const MainMenu = () => {
                             <Icon iconName="icon-safe font-size-lg"/>
                         </NavLink>
                         <NavLink
-                            exact={true}
                             to={Routes.Technical}
                             className={({ isActive }) =>
                                 isActive ? classes.selected : undefined

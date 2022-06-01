@@ -6,6 +6,12 @@ export const Wallet = "/wallet";
 export const Technical = "/technical";
 //export const Messages = '/messages';
 
+export const User = "/user";
+export const UserVerifyRelative = "verify";
+export const UserForgetPasswordRelative = "forgetpassword";
+
+
+
 //Settings Section Routes
 export const Settings = "settings";
 export const Profile = "/settings/profile";
@@ -14,8 +20,8 @@ export const ProfileRelative = "profile";
 export const Security = "/settings/security";
 export const SecurityRelative = "security";
 
-export const PersonalizationRelative = "/settings/personalization";
-export const Personalization = "personalization";
+export const Personalization = "/settings/personalization";
+export const PersonalizationRelative = "personalization";
 
 export const Authentication = "/settings/authentication";
 export const AuthenticationRelative = "/authentication";

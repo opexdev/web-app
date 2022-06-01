@@ -1,8 +1,9 @@
 import React from "react";
 
-const Button = ({buttonTitle,buttonClass,innerRef, ...rest}) => {
+const Button = ({buttonTitle,buttonClass,buttonStyle,innerRef, ...rest}) => {
     return (
         <button
+            style={buttonStyle}
             className={`${buttonClass} button cursor-pointer`}
             {...rest}
             ref={innerRef}

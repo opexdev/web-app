@@ -487,6 +487,11 @@
     "forgetPassServerError": "خطا در بازیابی رمز، دوباره تلاش کنید",
     "forgetPassEmailForgetError": "فرمت ایمیل صحیح نیست."
   },
+  "userPage": {
+    "title": "",
+    "success": "ایمیل با موفقیت تائید شد.",
+    "failed": "ایمیل تائید نشد، دوباره تلاش کنید!"
+  },
   "footer": {
     "darkMode": "تم تاریک",
     "aboutUs": "درباره ما",
