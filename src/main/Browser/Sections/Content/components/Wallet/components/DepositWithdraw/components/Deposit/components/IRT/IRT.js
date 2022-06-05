@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from "react";
 import classes from "../../../../DepositWithdraw.module.css";
 import {useLocation, useParams} from "react-router-dom";
-import {connect, useSelector} from "react-redux";
+import {connect} from "react-redux";
 import {Trans, useTranslation} from "react-i18next";
 import NumberInput from "../../../../../../../../../../../../components/NumberInput/NumberInput";
 import {BN, parsePriceString} from "../../../../../../../../../../../../utils/utils";
@@ -120,24 +120,18 @@ const IRT = (props) => {
         const value = parsePriceString(e.target.value)
 
         const amountValidator = () => {
-            if (typeof min === undefined) {
-                return false;
-            }
-            if (typeof max === undefined) {
+            if (typeof min === undefined || typeof max === undefined) {
                 return false;
             }
             if (value < min) {
                 return false;
             }
-            if (value > max) {
-                return false;
-            }
-            return true;
+            return value <= max;
         }
 
         if (!amountValidator()) {
             errorMessage.push(<Trans
-                i18nKey="DepositWithdraw.allowable"
+                i18nKey="DepositWithdraw.IRTAllowable"
                 values={{
                     name: t(e.target.dataset.name),
                     min: min.toLocaleString(),
@@ -220,7 +214,7 @@ const IRT = (props) => {
 
                     <div className={`column col-70 jc-around ai-start`}>
                         <Trans
-                            i18nKey="DepositWithdraw.irtText"
+                            i18nKey="DepositWithdraw.IRTText"
                             values={{
                                 amount: openPaymentAmount,
                                 date: `${moment(new Date(openPayment[0].createDate).getTime()- new Date(openPayment[0].createDate).getTimezoneOffset()*60*1000).format("jYY/jMM/jDD")}`,

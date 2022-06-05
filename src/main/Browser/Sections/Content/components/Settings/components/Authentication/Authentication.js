@@ -4,7 +4,7 @@ import classes from "./Authentication.module.css";
 import HelpStep from "./components/HelpStep/HelpStep";
 import PersonalProfileStep from "./components/PersonalProfileStep/PersonalProfileStep";
 import SendPhotosStep from "./components/SendPhotosStep/SendPhotosStep";
-import SendToExpertStep from "./components/SendToExpertStep/SendToExpertStep";
+import SendToAdminStep from "./components/SendToAdminStep/SendToAdminStep";
 import {useTranslation} from "react-i18next";
 
 const Authentication = () => {
@@ -39,7 +39,7 @@ const Authentication = () => {
                     />
                 );
             case 4:
-                return <SendToExpertStep prevStep={() => setStep(3)}/>;
+                return <SendToAdminStep prevStep={() => setStep(3)}/>;
             default:
                 return <HelpStep/>;
         }
@@ -53,7 +53,7 @@ const Authentication = () => {
                         <li className={`col-25 text-center  ${step === 1 && classes.activeStep}`}>{t("Authentication.HelpStep")}</li>
                         <li className={`col-25 text-center ${step === 2 && classes.activeStep}`}>{t("Authentication.PersonalProfileStep")}</li>
                         <li className={`col-25 text-center ${step === 3 && classes.activeStep}`}>{t("Authentication.SendPhotosStep")}</li>
-                        <li className={`col-25 text-center ${step === 4 && classes.activeStep}`}>{t("Authentication.SendToExpertStep")}</li>
+                        <li className={`col-25 text-center ${step === 4 && classes.activeStep}`}>{t("Authentication.SendToAdminStep")}</li>
                         <div className={`container position-absolute  row jc-center`} style={{padding: "0 10%"}}>
                             <span className={`col-15`}
                                   style={{height: "0.2vh", backgroundColor: "var(--orange)"}}/>

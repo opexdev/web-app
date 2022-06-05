@@ -95,7 +95,7 @@ const ActiveSessions = () => {
                     <div className={`col-40 column jc-center ai-center`}>
                         <span>{moment(currentSession?.started * 1000).format("HH:mm:ss , jYY/jMM/jDD")}</span>
                         {sessions.length > 0 ? <span className={`cursor-pointer text-red font-size-sm`}
-                                                     onClick={clickHandler}>{t("ActiveSessions.closeAllInusableSessions")}</span> : ""}
+                                                     onClick={clickHandler}>{t("ActiveSessions.closeOtherSessions")}</span> : ""}
                     </div>
                     <div className={`col-60 text-end`}>
 

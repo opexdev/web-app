@@ -1,17 +1,13 @@
-import React, {useState, useEffect, useRef} from "react";
+import React, {useState} from "react";
 import classes from "./ChangePassword.module.css";
 import {Trans, useTranslation} from "react-i18next";
 import TextInput from "../../../../../../../../../../components/TextInput/TextInput";
 import Icon from "../../../../../../../../../../components/Icon/Icon";
 import Button from "../../../../../../../../../../components/Button/Button";
-import {useSelector} from "react-redux";
-import {sendActivateOTP, sendChangePassword} from "../../../../api/settings";
+import {sendChangePassword} from "../../../../api/settings";
 import {toast} from "react-hot-toast";
 import Error from "../../../../../../../../../../components/Error/Error";
 import Loading from "../../../../../../../../../../components/Loading/Loading";
-import DisableOTP from "../SetTwoStepVerification/components/DisableOTP";
-import ActivateOTP from "../SetTwoStepVerification/components/ActivateOTP";
-import {validateEmail} from "../../../../../../../../../../utils/utils";
 
 
 const ChangePassword = () => {
@@ -19,7 +15,6 @@ const ChangePassword = () => {
 
     const [error, setError] = useState(false);
     const [loading, setLoading] = useState(false);
-    const [req, setReq] = useState(undefined);
 
 
     const [changePassword, setChangePassword] = useState({
@@ -33,7 +28,6 @@ const ChangePassword = () => {
         confirmation: false,
         currentPassword: false,
     });
-
 
     const inputHandler = (e) => {
         let errorMessage = []
@@ -81,8 +75,6 @@ const ChangePassword = () => {
         return !isEmpty;
     }
 
-
-
     const buttonClickHandler = async (e) => {
         e.preventDefault();
 
@@ -129,9 +121,6 @@ const ChangePassword = () => {
             setError(true)
             setLoading(false)
         }
-
-
-
     }
 
     const content = () => {
@@ -152,7 +141,7 @@ const ChangePassword = () => {
                             onClick={() => setIsInputVisible({ ...isInputVisible, currentPassword: !isInputVisible.currentPassword })}
                         />
                     }
-                    autocomplete="off"
+                    autoComplete="off"
                     type={isInputVisible.currentPassword ? "text" : "password"}
                     value={changePassword.currentPassword.value}
                     data-name="currentPassword"
@@ -171,7 +160,7 @@ const ChangePassword = () => {
                                 onClick={() => setIsInputVisible({ ...isInputVisible, newPassword: !isInputVisible.newPassword })}
                             />
                         }
-                        autocomplete="off"
+                        autoComplete="off"
                         type={isInputVisible.newPassword ? "text" : "password"}
                         value={changePassword.newPassword.value}
                         data-name="newPassword"
@@ -190,7 +179,7 @@ const ChangePassword = () => {
                             onClick={() => setIsInputVisible({ ...isInputVisible, confirmation: !isInputVisible.confirmation })}
                         />
                     }
-                    autocomplete="off"
+                    autoComplete="off"
                     type={isInputVisible.confirmation ? "text" : "password"}
                     value={changePassword.confirmation.value}
                     data-name="confirmation"
@@ -207,7 +196,6 @@ const ChangePassword = () => {
                     buttonTitle={t("submit")}
                 />
             </div>
-
         </form>
     }
 

@@ -34,6 +34,7 @@ const reducer = (state = initialState, action) => {
             });
             return {
                 ...initialState,
+                tradeFee : {...state.tradeFee},
                 wallets: resetWallet
             };
         case actionTypes.SET_USER_INFO:

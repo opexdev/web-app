@@ -3,6 +3,7 @@ import classes from "./WalletHeader.module.css";
 import {useTranslation} from "react-i18next";
 import {useSelector} from "react-redux";
 import {useParams} from "react-router-dom";
+import {BN} from "../../../../../../utils/utils";
 
 
 const WalletHeader = () => {
@@ -21,15 +22,15 @@ const WalletHeader = () => {
             </div>
             <div className={`col-35 column ai-center`}>
                 <span>{t("header.free")}</span>
-                <span>{free.toLocaleString()}{/* <span className={`font-size-sm text-color-gray`}>( --- {t("currency.IRT")} )</span>*/}</span>
+                <span>{new BN(free).toFormat()}{/* <span className={`font-size-sm text-color-gray`}>( --- {t("currency.IRT")} )</span>*/}</span>
             </div>
             <div className={`col-35 column ai-center ${classes.border}`}>
                 <span>{t("header.locked")}</span>
-                <span>{locked.toLocaleString()} {/*<span className={`font-size-sm text-color-gray`}>( --- {t("currency.IRT")} )</span>*/}</span>
+                <span>{new BN(locked).toFormat()} {/*<span className={`font-size-sm text-color-gray`}>( --- {t("currency.IRT")} )</span>*/}</span>
             </div>
             <div className={`col-35 column ai-center`}>
                 <span>{t("header.inWithdrawalProcess")}</span>
-                <span>{withdraw.toLocaleString()} {/*<span className={`font-size-sm text-color-gray`}>( --- {t("currency.IRT")} )</span>*/}</span>
+                <span>{new BN(withdraw).toFormat()} {/*<span className={`font-size-sm text-color-gray`}>( --- {t("currency.IRT")} )</span>*/}</span>
             </div>
         </Fragment>
     );

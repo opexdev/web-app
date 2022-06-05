@@ -1,9 +1,9 @@
 import React, {useEffect} from "react";
 import {useDispatch, useSelector} from "react-redux";
-import {Route, Switch} from "react-router-dom";
+import {Route, Routes} from "react-router-dom";
 import i18n from "i18next";
 import ReactTooltip from "react-tooltip";
-import * as Routes from "../../routes/routes";
+import * as RoutesName from "../../routes/routes";
 import {Toaster} from "react-hot-toast";
 import Login from "../../pages/Login/Login";
 import Guide from "../../pages/Guide/Guide";
@@ -21,6 +21,7 @@ import useInterval from "../../Hooks/useInterval";
 import {setLastPriceInitiate} from "../../store/actions/exchange";
 import Info from "../../components/Info/Info";
 import FullWidthError from "../../components/FullWidthError/FullWidthError";
+import User from "../../pages/User/User";
 
 
 const Browser = () => {
@@ -94,35 +95,27 @@ const Browser = () => {
         return <FullWidthError/>
     }
     return (
-        <Switch>
-            <Route exact path="/login">
-                <Login/>
+        <Routes>
+            <Route path={RoutesName.Login} element={<Login/>}/>
+            <Route path={RoutesName.User + "/*"} element={<User/>}/>
+            <Route path={RoutesName.Guide} element={<Guide/>}/>
+            <Route element={<ProtectedRoute/>}>
+                <Route path={RoutesName.Technical} element={<TechnicalChart/>}/>
             </Route>
-            <Route path="/guide">
-                <Guide/>
-            </Route>
-            <ProtectedRoute
-                component={TechnicalChart}
-                isLogin={isLogin}
-                exact
-                path={Routes.Technical}
-            />
-            <Route>
-                <div className="row">
-                    <MainMenu isLogin={isLogin}/>
-                    <SubMenu isLogin={isLogin}/>
-                    <div className="column content">
-                        <Header/>
-                        <Info/>
-                        <div style={{display: "flex", flex: 1}}>
-                            <Content/>
-                        </div>
+            <Route path="*" element={<div className="row">
+                <MainMenu isLogin={isLogin}/>
+                <SubMenu isLogin={isLogin}/>
+                <div className="column content">
+                    <Header/>
+                    <Info/>
+                    <div style={{display: "flex", flex: 1}}>
+                        <Content/>
                     </div>
-                    <ReactTooltip data-html={true} data-effect="float"/>
-                    <Toast/>
                 </div>
-            </Route>
-        </Switch>
+                <ReactTooltip data-html={true} data-effect="float"/>
+                <Toast/>
+            </div>}/>
+        </Routes>
     );
 };
 

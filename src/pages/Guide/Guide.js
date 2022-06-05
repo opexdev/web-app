@@ -1,8 +1,8 @@
-import React, {useEffect, useRef, useState} from "react";
+import React, {useEffect, useState} from "react";
 import {connect} from "react-redux";
 import classes from "./Guide.module.css";
 import i18n from "i18next";
-import {NavLink, Redirect, Route, Switch, useHistory} from "react-router-dom";
+import {useNavigate} from "react-router-dom";
 
 import {useTranslation} from "react-i18next";
 import Button from "../../components/Button/Button";
@@ -15,9 +15,7 @@ import HashContent from "./components/HashContent/HashContent";
 const Guide = (props) => {
     const {t} = useTranslation();
     const [ltr, setLtr] = useState(false);
-    const history = useHistory();
-    const [section, setSection] = useState(null)
-
+    const navigate = useNavigate();
 
     useEffect(() => {
         i18n.language !== "fa" ? setLtr(true) : setLtr(false);
@@ -25,15 +23,6 @@ const Guide = (props) => {
             lng !== "fa" ? setLtr(true) : setLtr(false);
         });
     }, []);
-
-    const data = [
-        {
-            id: 1,
-            title: t('signIn'),
-            body: ""
-        },
-        {id: 2, title: t('signUp'), body: ""},
-    ];
 
     return (
         <div className={`container row ${classes.container} ${props.isDark ? "dark" : ""} ${ltr ? "ltr" : "rtl"}`}>
@@ -44,7 +33,7 @@ const Guide = (props) => {
                     <Button
                         buttonClass={classes.thisButton}
                         type="button"
-                        onClick={() => history.push("/")}
+                        onClick={() => navigate("/", { replace: true })}
                         buttonTitle="بازگشت"
                     />
                 </div>
@@ -53,71 +42,81 @@ const Guide = (props) => {
                     <NavHashLink
                         exact={true}
                         to={Routes.Guide + "#about-us"}
-                        className={`${classes.navMenu}`}
-                        activeClassName={classes.selected}>
+                        className={({ isActive }) =>
+                            isActive ? `${classes.navMenu} ${classes.selected}` : classes.navMenu
+                        }>
                         <span>{t("footer.aboutUs")}</span>
                     </NavHashLink>
                     <NavHashLink
                         exact={true}
                         to={Routes.Guide + "#contact-us"}
-                        className={`${classes.navMenu}`}
-                        activeClassName={classes.selected}>
+                        className={({ isActive }) =>
+                            isActive ? `${classes.navMenu} ${classes.selected}` : classes.navMenu
+                        }>
                         <span>{t("footer.contactUS")}</span>
                     </NavHashLink>
                     <NavHashLink
                         exact={true}
                         to={Routes.Guide + "#blog"}
-                        className={`${classes.navMenu}`}
-                        activeClassName={classes.selected}>
+                        className={({ isActive }) =>
+                            isActive ? `${classes.navMenu} ${classes.selected}` : classes.navMenu
+                        }>
                         <span>{t("footer.blog")}</span>
                     </NavHashLink>
                     <NavHashLink
                         exact={true}
                         to={Routes.Guide + "#guides"}
-                        className={`${classes.navMenu}`}
-                        activeClassName={classes.selected}>
+                        className={({ isActive }) =>
+                            isActive ? `${classes.navMenu} ${classes.selected}` : classes.navMenu
+                        }>
                         <span>{t("footer.guide")}</span>
                     </NavHashLink>
                     <NavHashLink
                         exact={true}
                         to={Routes.Guide + "#rules"}
-                        className={`${classes.navMenu}`}
-                        activeClassName={classes.selected}>
+                        className={({ isActive }) =>
+                            isActive ? `${classes.navMenu} ${classes.selected}` : classes.navMenu
+                        }>
                         <span>{t("footer.rules")}</span>
                     </NavHashLink>
                     <NavHashLink
                         exact={true}
                         to={Routes.Guide + "#commission"}
-                        className={`${classes.navMenu}`}
-                        activeClassName={classes.selected}>
+                        className={({ isActive }) =>
+                            isActive ? `${classes.navMenu} ${classes.selected}` : classes.navMenu
+                        }>
                         <span>{t("commission")}</span>
                     </NavHashLink>
                     <NavHashLink
                         exact={true}
                         to={Routes.Guide + "#api"}
-                        className={`${classes.navMenu}`}
-                        activeClassName={classes.selected}>
+                        className={({ isActive }) =>
+                            isActive ? `${classes.navMenu} ${classes.selected}` : classes.navMenu
+                        }>
                         <span>{t("footer.api")}</span>
                     </NavHashLink>
                     <NavHashLink
                         exact={true}
                         to={Routes.Guide + "#addCoin"}
-                        className={`${classes.navMenu}`}
-                        activeClassName={classes.selected}>
+                        className={({ isActive }) =>
+                            isActive ? `${classes.navMenu} ${classes.selected}` : classes.navMenu
+                        }>
                         <span>{t("footer.addCoin")}</span>
                     </NavHashLink>
                     <NavHashLink
                         exact={true}
                         to={Routes.Guide + "#demo"}
-                        className={`${classes.navMenu}`}
-                        activeClassName={classes.selected}>
+                        className={({ isActive }) =>
+                            isActive ? `${classes.navMenu} ${classes.selected}` : classes.navMenu
+                        }>
                         <span>{t("footer.demo")}</span>
                     </NavHashLink>
                     <NavHashLink
                         exact={true}
                         to={Routes.Guide + "#errorReport"}
-                        className={`${classes.navMenu}`}
-                        activeClassName={classes.selected}>
+                        className={({ isActive }) =>
+                            isActive ? `${classes.navMenu} ${classes.selected}` : classes.navMenu
+                        }>
                         <span>{t("footer.errorReport")}</span>
                     </NavHashLink>
                 </div>

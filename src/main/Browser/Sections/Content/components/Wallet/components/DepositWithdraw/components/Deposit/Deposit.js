@@ -9,14 +9,14 @@ import QRCode from "react-qr-code";
 import {toast} from "react-hot-toast";
 import IRT from "./components/IRT/IRT";
 
+
 const Deposit = () => {
 
     const {t} = useTranslation();
 
-    const [address , setAddress] = useState("")
-
-    const addressRef = useRef(null);
     const {id} = useParams();
+    const addressRef = useRef(null);
+    const [address, setAddress] = useState("")
 
     const copyToClipboard = () => {
         addressRef.current.select();
@@ -28,24 +28,25 @@ const Deposit = () => {
 
     useEffect(() => {
         setAddress("")
-        getDepositAddress(id).then((res)=>{
-            if (res && res.status === 200 ){
+        getDepositAddress(id).then((res) => {
+            if (res && res.status === 200) {
                 setAddress(res.data.address)
-            }else {
+            } else {
                 setAddress("0x00000000000000000000000")
             }
         })
     }, [id]);
 
     const helpText = () => {
-        if (id === "TETH"){
+        if (id === "TETH") {
             return <div>
                 <span className={`text-red font-weight-bold`}>{t("DepositWithdraw.important")}: </span>
-               <div>
-                   <span>{t("DepositWithdraw.DepositTETHContentBefore")}</span>
-                   <span className={`hover-text cursor-pointer`} onClick={()=>window.open('https://faucet.dimensions.network/')}>https://faucet.ropsten.be</span>
-                   <span>{t("DepositWithdraw.DepositTETHContentAfter")}</span>
-               </div>
+                <div>
+                    <span>{t("DepositWithdraw.DepositTETHContentBefore")}</span>
+                    <span className={`hover-text cursor-pointer`}
+                          onClick={() => window.open('https://faucet.dimensions.network/')}>https://faucet.ropsten.be</span>
+                    <span>{t("DepositWithdraw.DepositTETHContentAfter")}</span>
+                </div>
                 <div>
                     <Trans
                         i18nKey="DepositWithdraw.minDeposit"
@@ -65,12 +66,13 @@ const Deposit = () => {
                 </div>
             </div>
         }
-        if (id === "TBTC"){
+        if (id === "TBTC") {
             return <div>
                 <span className={`text-red font-weight-bold`}>{t("DepositWithdraw.important")}: </span>
                 <div>
                     <span>{t("DepositWithdraw.DepositTBTCContentBefore")}</span>
-                    <span className={`hover-text cursor-pointer`} onClick={()=>window.open('https://testnet-faucet.com/btc-testnet')}>https://testnet-faucet.com/btc-testnet</span>
+                    <span className={`hover-text cursor-pointer`}
+                          onClick={() => window.open('https://testnet-faucet.com/btc-testnet')}>https://testnet-faucet.com/btc-testnet</span>
                     <span>{t("DepositWithdraw.DepositTBTCContentAfter")}</span>
                 </div>
                 <div>
@@ -92,12 +94,13 @@ const Deposit = () => {
                 </div>
             </div>
         }
-        if (id === "TUSDT"){
+        if (id === "TUSDT") {
             return <div>
                 <span className={`text-red font-weight-bold`}>{t("DepositWithdraw.important")}: </span>
                 <div>
                     <span>{t("DepositWithdraw.DepositTUSDTContentBefore")}</span>
-                    <span className={`hover-text cursor-pointer`} onClick={()=>window.open('https://bit.ly/ROPTokens')}>https://bit.ly/ROPTokens</span>
+                    <span className={`hover-text cursor-pointer`}
+                          onClick={() => window.open('https://bit.ly/ROPTokens')}>https://bit.ly/ROPTokens</span>
                     <span>{t("DepositWithdraw.DepositTUSDTContentAfter")}</span>
                 </div>
                 <div>
@@ -135,14 +138,14 @@ const Deposit = () => {
         }
     };
 
-    if(id === "IRT") {
+    if (id === "IRT") {
         return <IRT/>
     }
 
     return (
         <div className={`px-1 py-2 row jc-between ${classes.content}`}>
 
-                <div className="col-80 column jc-between">
+            <div className="col-80 column jc-between">
                     <span>
                         <Trans
                             i18nKey="DepositWithdraw.minDepositText"
@@ -153,34 +156,34 @@ const Deposit = () => {
                         />
 
                     </span>
-                    <TextInput
-                        after={
-                            <Icon
-                                iconName="icon-copy font-size-md-01"
-                                onClick={() => copyToClipboard()}
-                                customClass={`hover-text cursor-pointer`}
-                            />
-                        }
-                        customClass={classes.depositInput}
-                        readOnly={true}
-                        type="text"
-                        customRef={addressRef}
-                        value={address}
-                    />
-                    <span>
+                <TextInput
+                    after={
+                        <Icon
+                            iconName="icon-copy font-size-md-01"
+                            onClick={() => copyToClipboard()}
+                            customClass={`hover-text cursor-pointer`}
+                        />
+                    }
+                    customClass={classes.depositInput}
+                    readOnly={true}
+                    type="text"
+                    customRef={addressRef}
+                    value={address}
+                />
+                <span>
                         {helpText()}
                     </span>
-                </div>
-                <div className={`col-20 py-1 flex ai-center jc-center`}>
-                    <QRCode
-                        value={address}
-                        bgColor="var(--cardBody)"
-                        fgColor="var(--textColor)"
-                        level='L'
-                        //className={classes.QRStyle}
-                        size={140}
-                    />
-                </div>
+            </div>
+            <div className={`col-20 py-1 flex ai-center jc-center`}>
+                <QRCode
+                    value={address}
+                    bgColor="var(--cardBody)"
+                    fgColor="var(--textColor)"
+                    level='L'
+                    //className={classes.QRStyle}
+                    size={140}
+                />
+            </div>
         </div>
     )
 

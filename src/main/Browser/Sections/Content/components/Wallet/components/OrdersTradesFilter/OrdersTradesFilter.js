@@ -311,7 +311,7 @@ const OrdersTradesFilter = (props) => {
                     : "USDT"}
                 </td>
                 <td>{tr.paid.toLocaleString()}</td>
-                <td>{t("ordersStatus." + tr.status)}</td>
+                <td>{t("orderStatus." + tr.status)}</td>
                 {openItem.ordersHistory === index ? (
                   <td
                     onClick={() =>

@@ -5,7 +5,7 @@ import classes from "../../Login.module.css";
 import TextInput from "../../../../components/TextInput/TextInput";
 import LoginFormLoading from "../LoginLoading/LoginFormLoading";
 import {setUserAccountInfoInitiate, setUserInfo, setUserTokensInitiate} from "../../../../store/actions";
-import {useHistory} from "react-router-dom";
+import {useNavigate} from "react-router-dom";
 import {useTranslation} from "react-i18next";
 import {setKYCStatusInitiate} from "../../../../store/actions/auth";
 import Button from "../../../../components/Button/Button";
@@ -17,7 +17,7 @@ import {validateEmail} from "../../../../utils/utils";
 
 const LoginForm = (props) => {
     const {t} = useTranslation();
-    const history = useHistory();
+    const navigate = useNavigate();
     const dispatch = useDispatch();
     const [isLoading, setLoading] = useState(false);
     const [loginError, setLoginError] = useState(false);
@@ -82,7 +82,7 @@ const LoginForm = (props) => {
             dispatch(setUserInfo(jwt));
             dispatch(setKYCStatusInitiate())
             dispatch(setUserAccountInfoInitiate())
-            return history.push("/");
+            return navigate("/", { replace: true });
         }
         setLoading(false);
     };

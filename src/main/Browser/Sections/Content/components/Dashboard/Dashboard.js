@@ -1,6 +1,5 @@
-import React, {Fragment} from "react";
+import React from "react";
 import Overview from "./components/Overview/Overview";
-import {connect} from "react-redux";
 import Order from "./components/Order/Order";
 import OrderBook from "./components/OrderBook/OrderBook";
 import MyOrders from "./components/MyOrders/MyOrders";
@@ -9,7 +8,7 @@ import TradingView from "./components/TradingView/TradingView";
 
 const Dashboard = () => {
     return (
-        <Fragment>
+        <>
             <div className="row px-1 py-1">
                 <div className="column col-35 pl-05">
                     <Overview/>
@@ -28,13 +27,8 @@ const Dashboard = () => {
                     <LastTrades/>
                 </div>
             </div>
-        </Fragment>
+        </>
     );
 };
-const mapStateToProps = (state) => {
-    return {
-        activePair: state.exchange.activePair,
-    };
-};
 
-export default connect(mapStateToProps, null)(Dashboard);
+export default Dashboard;

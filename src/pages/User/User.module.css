@@ -1,0 +1,26 @@
+.container{
+    height: 100vh;
+    background-color: var(--mainContent);
+    background-repeat: repeat;
+    background-position: center center;
+    background-size: 600px 1200px;
+}
+
+.content{
+    position: fixed;
+    top: 27.5%;
+    left: 37.5%;
+    width: 25%;
+    height: 45%;
+    background-color: var(--cardBodyAlpha);
+    z-index: 7;
+}
+.content img{
+    width: 7vw;
+}
+.thisButton {
+    width: 100%;
+    background-color: var(--textGreen);
+    color: #000 !important;
+
+}

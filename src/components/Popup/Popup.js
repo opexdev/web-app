@@ -1,8 +1,8 @@
 import React, {Fragment, useEffect, useRef, useState} from "react";
 import classes from "./Popup.module.css";
 import {Trans, useTranslation} from "react-i18next";
-import {connect, useSelector} from "react-redux";
-import {setUserAccountInfo} from "../../store/actions/auth";
+import {connect} from "react-redux";
+import {setUserAccountInfo} from "../../store/actions";
 import Button from "../Button/Button";
 import {Link} from "react-router-dom";
 import * as Routes from "../../routes/routes";
@@ -12,8 +12,6 @@ import Icon from "../Icon/Icon";
 import TextInput from "../TextInput/TextInput";
 import {toast} from "react-hot-toast";
 import {Login} from "../../routes/routes";
-
-
 
 
 const Popup = (props) => {

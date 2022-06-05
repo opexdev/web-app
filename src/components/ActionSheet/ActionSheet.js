@@ -1,10 +1,10 @@
-import React, {Fragment, useEffect, useState} from "react";
+import React, {useEffect, useState} from "react";
 import classes from "./ActionSheet.module.css";
-import {useHistory} from "react-router-dom";
+import {useNavigate} from "react-router-dom";
 
-const ActionSheet = (props) => {
+const ActionSheet = ({children , show , onChangeShow}) => {
 
-    const {children , show , onChangeShow} = props;
+    const navigate = useNavigate();
 
     const [showAction, setShowAction] = useState(show);
     const [isFirst, setIsFirst] = useState(false);
@@ -17,13 +17,12 @@ const ActionSheet = (props) => {
         onChangeShow(showAction)
     }, [showAction]);
 
-    const history = useHistory()
 
     useEffect(() => {
-        return history.listen(() => {
+        return navigate.listen(() => {
             setShowAction(false)
         })
-    },[history])
+    },[navigate])
 
     const onClickHandler = ()=> {
         setShowAction(false)
@@ -39,17 +38,15 @@ const ActionSheet = (props) => {
        }
     }
 
-
     return (
-        <Fragment>
+        <>
             <div className={`container ${classes.wrapper} ${ showAction ? classes.show : ""}`} onClick={onClickHandler}/>
             <div className={`container ${classes.container} column jc-end py-2  ${classHandler()}`}>
                 <div className={`${classes.header} flex jc-center ai-center pb-1`} onClick={onClickHandler}><span/></div>
                 {children}
             </div>
-        </Fragment>
+        </>
     );
 };
-
 
 export default ActionSheet;

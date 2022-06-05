@@ -1,8 +1,7 @@
 import React, {useEffect} from "react";
 import {useDispatch} from "react-redux";
-import {Redirect, Route, Switch} from "react-router-dom";
-import * as Routes from "../../../../../../routes/routes";
-
+import {Navigate, Route, Routes} from "react-router-dom";
+import * as RoutesName from "../../../../../../routes/routes";
 import Profile from "./components/Profile/Profile";
 import Security from "./components/Security/Security";
 import Personalization from "./components/Personalization/Personalization";
@@ -15,31 +14,15 @@ const Settings = () => {
     useEffect(() => {
         dispatch(setKYCStatusInitiate())
     }, [])
-
     return (
         <div className="px-1 py-1">
-            <Switch>
-                <Route exact path={Routes.Profile}>
-                    <Profile/>
-                </Route>
-                    <Route exact path={Routes.Security}>
-                    <Security/>
-                </Route>
-                <Route exact path={Routes.Personalization}>
-                    <Personalization/>
-                </Route>
-                <Route exact path={Routes.Authentication}>
-                    <Authentication/>
-                </Route>
-                {/*<ProtectedRoute component={WalletSubMenu} isLogin={props.isLogin} exact path={Routes.WalletSubMenu}/>*/}
-                <Route path="*">
-                    <Redirect
-                        to={{
-                            pathname: `${Routes.Profile}`,
-                        }}
-                    />
-                </Route>
-            </Switch>
+            <Routes>
+                <Route path={RoutesName.Settings} element={<Navigate to={{pathname: `${RoutesName.Profile}`}} replace />}/>
+                <Route path={RoutesName.ProfileRelative} element={<Profile/>}/>
+                <Route path={RoutesName.SecurityRelative} element={<Security/>}/>
+                <Route path={RoutesName.PersonalizationRelative} element={<Personalization/>}/>
+                <Route path={RoutesName.AuthenticationRelative} element={<Authentication/>}/>
+            </Routes>
         </div>
     );
 }

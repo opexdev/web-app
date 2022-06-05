@@ -5,6 +5,7 @@ import {useTranslation} from "react-i18next";
 import {images} from "../../../../../../../../assets/images";
 import {useSelector} from "react-redux";
 import * as Routes from "../../../../../../../../routes/routes";
+import {BN} from "../../../../../../../../utils/utils";
 
 
 const WalletListItem = ({name , showZero}) => {
@@ -15,8 +16,9 @@ const WalletListItem = ({name , showZero}) => {
     return (
         <NavLink
             exact={true}
-            activeClassName={classes.selected}
-            className="container row ai-center cursor-pointer position-relative px-1 py-05"
+            className={({ isActive }) =>
+                isActive ? "container row ai-center cursor-pointer position-relative px-1 py-05 " +classes.selected : "container row ai-center cursor-pointer position-relative px-1 py-05"
+            }
             to={Routes.Wallet + "/" + name}>
             <div className={` row jc-center ai-center ${classes.PairImage}`}>
                 <img
@@ -33,7 +35,7 @@ const WalletListItem = ({name , showZero}) => {
                 </div>
                 <div className="column ai-end">
               <span>
-                {free.toLocaleString() + " "}
+                {new BN(free).toFormat() + " "}
                   <span className="font-size-sm">{t("currency." + name)}</span>
               </span>
                     {/*<span className="font-size-sm text-color-gray">

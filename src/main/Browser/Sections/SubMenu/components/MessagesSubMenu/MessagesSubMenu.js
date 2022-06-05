@@ -6,10 +6,10 @@ import ScrollBar from "../../../../../../components/ScrollBar";
 import Icon from "../../../../../../components/Icon/Icon";
 import AccordionBox from "../../../../../../components/AccordionBox/AccordionBox";
 import {MyMessagesData, newsData} from "../../../../../../FakeData/FakeData";
-import {Link, useHistory} from "react-router-dom";
-import {Login} from "../../../../../../routes/routes";
+import {useNavigate} from "react-router-dom";
+import {Login as LoginRoute} from "../../../../../../routes/routes";
 
-const MessagesSubMenu = (props) => {
+const MessagesSubMenu = () => {
   const {t} = useTranslation();
   const [openItem, setOpenItem] = useState({
     myMessages: null,
@@ -26,7 +26,7 @@ const MessagesSubMenu = (props) => {
     });
   }, []);
 
-  const history = useHistory();
+  const navigate = useNavigate();
 
   const MyMessagesTable = (
     <ScrollBar>
@@ -40,7 +40,7 @@ const MessagesSubMenu = (props) => {
             <Fragment key={index}>
               <tr>
                 <td className="text-right font-weight-bold pr-1">
-                  {t("ordersStatus." + tr.title)}
+                  {t("orderStatus." + tr.title)}
                 </td>
                 <td className="text-left pl-1">
                   {moment(tr.timestamp).format("HH:mm:ss  -  jYY/jMM/jDD")}
@@ -104,7 +104,7 @@ const MessagesSubMenu = (props) => {
         className="text-center triplet-striped font-size-sm-plus mt-05"
         cellSpacing="0"
         cellPadding="0">
-        <thead></thead>
+        <thead/>
         <tbody>
           {customData.news.map((tr, index) => (
             <Fragment key={index}>
@@ -151,7 +151,7 @@ const MessagesSubMenu = (props) => {
                 <td colSpan="3" className={`pt-05 pb-2 px-1`}>
                   <div className="col-100 text-start font-size-sm">
                     <p>
-                      نسخه نمایشی اوپکس، با پشتیبانی از دارایی‌های تستی بیتکوین، اتر و تتر راه‌اندازی شد. می‌توانید در آدرس <span className={`hover-text`} onClick={() => history.push("/login")}>opex.dev</span> حساب کاربری بسازید.{" "}
+                      نسخه نمایشی اوپکس، با پشتیبانی از دارایی‌های تستی بیتکوین، اتر و تتر راه‌اندازی شد. می‌توانید در آدرس <span className={`hover-text`} onClick={() => navigate(LoginRoute, { replace: true })}>opex.dev</span> حساب کاربری بسازید.{" "}
                     </p>
                   </div>
                 </td>
