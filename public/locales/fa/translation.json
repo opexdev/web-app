@@ -492,6 +492,14 @@
     "success": "ایمیل با موفقیت تائید شد.",
     "failed": "ایمیل تائید نشد، دوباره تلاش کنید!"
   },
+  "MarketInfo": {
+    "title": "نمای بازار",
+    "cryptocurrency": "رمزارز",
+    "lastPrice": "آخرین قیمت",
+    "priceChangePercent": "تغییر 24 ساعت",
+    "chart": "روند هفتگی",
+    "volume": "حجم معاملات"
+  },
   "footer": {
     "darkMode": "تم تاریک",
     "aboutUs": "درباره ما",

@@ -14,6 +14,7 @@ import Main from "./main/main";
 import setupAxios from "./setup/axios/setupAxios";
 import axios from "axios";
 import exchangeReducer from "./store/reducers/exchangeReducer";
+import {StyleRoot} from "radium";
 
 const sagaMiddleware = createSagaMiddleware();
 const rootReducer = combineReducers({
@@ -30,9 +31,9 @@ const rootReducer = combineReducers({
 const {PUBLIC_URL} = process.env
 
 const composeEnhancers = (process.env.NODE_ENV === "development" &&
-    typeof window !== 'undefined' &&
-    window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__) ||
-compose;
+        typeof window !== 'undefined' &&
+        window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__) ||
+    compose;
 
 const enhancer = composeEnhancers(applyMiddleware(sagaMiddleware));
 
@@ -40,13 +41,15 @@ const store = createStore(rootReducer, enhancer);
 
 sagaMiddleware.run(watchGlobal);
 
-setupAxios(axios,store);
+setupAxios(axios, store);
 
 ReactDOM.render(
     <React.StrictMode>
         <Suspense fallback={"loading"}>
             <Provider store={store}>
-                <Main baseURL={PUBLIC_URL}/>
+                <StyleRoot>
+                    <Main baseURL={PUBLIC_URL}/>
+                </StyleRoot>
             </Provider>
         </Suspense>
     </React.StrictMode>,

@@ -1,0 +1,61 @@
+.container{
+    height: 100%;
+    position: relative;
+}
+
+.circle1{
+    border-radius: 100%;
+    width: 29vw;
+    height: 29vw;
+    border: 3px solid var(--cardBody);
+    position: relative;
+}
+.BTC{
+    width: 15%;
+    position: absolute;
+    top: -5%;
+    left: 50%;
+    z-index: 10;
+}
+.circle2{
+    border-radius: 100%;
+    width: 22vw;
+    height: 22vw;
+    border: 3px solid var(--cardBody);
+    position: absolute;
+}
+.ETH{
+    width: 15%;
+    position: absolute;
+    bottom: -5%;
+    left: 50%;
+}
+.circle3{
+    border-radius: 100%;
+    width: 15vw;
+    height: 15vw;
+    border: 3px solid var(--cardBody);
+    position: absolute;
+}
+.USDT{
+    width: 15%;
+    position: absolute;
+    right: -5%;
+    top: 40%;
+}
+.astronaut{
+    width: 43%;
+    position: absolute;
+}
+
+.spin {
+animation-name: spinning;
+animation-duration: 10s;
+animation-iteration-count: infinite;
+/* linear | ease | ease-in | ease-out | ease-in-out */
+animation-timing-function: ease-in-out;
+}
+@keyframes spinning {
+    from { transform: rotate(0deg) }
+    to { transform: rotate(360deg) }
+}

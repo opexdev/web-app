@@ -1,15 +1,10 @@
 import React from 'react';
-import classes from "./Landing.module.css";
-import {images} from "../../assets/images";
-import Header from "./Sections/Header/Header";
-import Content from "./Sections/Content/Content";
+import classes from './Spinner.module.css'
+import {images} from "../../../../../../assets/images";
 
-const Landing = (props) => {
-
+const Spinner = () => {
     return (
-        /*<div className={`container ${classes.container} move-image flex jc-center ai-center text-color`} style={{backgroundImage: `url("${images.spaceStar}")`}}>
-            {/!*<span className={`font-size-lg-plus`}>landing page</span>*!/}
-
+        <div className={`${classes.container} flex jc-center ai-center`}>
 
             <div className={`${classes.circle1} ${classes.spin}`}>
                 <img src={images.BTC} alt="" className={`${classes.BTC} ${classes.spin}`}/>
@@ -22,20 +17,8 @@ const Landing = (props) => {
             </div>
 
             <img src={images.astronautAlone} alt="" className={`${classes.astronaut} floating`}/>
-
-
-        </div>*/
-        <div className={`container ${classes.container} move-image column text-color`} style={{backgroundImage: `url("${images.spaceStar}")`}}>
-
-
-
-            <Header/>
-            <Content/>
-
-
         </div>
-
     );
-}
+};
 
-export default Landing;
+export default Spinner;

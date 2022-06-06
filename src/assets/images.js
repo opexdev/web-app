@@ -20,11 +20,13 @@ import ethereumLight from "./images/src/ethereumLight.svg";
 import toman from "./images/src/toman.svg";
 import spaceStar from "./images/src/spaceStar.png";
 import astronaut from "./images/src/astronaut.svg";
+import astronautAlone from "./images/src/astronautAlone.svg";
 import approve from "./images/src/approve.svg";
 import pending from "./images/src/pending.svg";
 import block from "./images/src/block.svg";
 import reject from "./images/src/reject.svg";
 import security from "./images/src/security.svg";
+import chart from "./images/src/chart.svg";
 import authentication from "./images/src/authentication.svg";
 import squareLoading from "./images/src/squareLoading.gif";
 import squareLoadingLight from "./images/src/squareLoadingLight.gif";
@@ -56,11 +58,13 @@ export const images = {
   IRT: toman,
   spaceStar: spaceStar,
   astronaut: astronaut,
+  astronautAlone: astronautAlone,
   approve: approve,
   reject: reject,
   pending: pending,
   block: block,
   security: security,
+  chart: chart,
   authentication: authentication,
   squareLoading: squareLoading,
   squareLoadingLight: squareLoadingLight,
