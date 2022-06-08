@@ -27,7 +27,7 @@ const Content = () => {
 
                 <div className={`width-90 m-auto overflowX-hidden`} style={{height:"25vh"}}>
 
-                    <MarketSliders/>
+                    {/*<MarketSliders/>*/}
 
                 </div>
 
