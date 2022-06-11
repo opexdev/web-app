@@ -1,28 +1,25 @@
-import React, {useState} from "react";
+import React from "react";
 import {useSelector} from "react-redux";
 import classes from "./Login.module.css";
 import {images} from "../../assets/images";
 import AccordionBox from "../../components/AccordionBox/AccordionBox";
 import LoginForm from "./components/LoginForm/LoginForm";
 import RegisterForm from "./components/RegisterForm/RegisterForm";
-import ForgetPassword from "./components/ForgetPassword/ForgetPassword";
 import {useTranslation} from "react-i18next";
 import {useNavigate} from "react-router-dom";
 
 const Login = () => {
     const {t} = useTranslation();
     const navigate = useNavigate();
-    const [forgetPassword, setForgetPassword] = useState(false);
     const isLogin = useSelector((state) => state.auth.isLogin)
 
-    if (isLogin) navigate("/", { replace: true });
+    if (isLogin) navigate("/", {replace: true});
 
     const data = [
         {
             id: 1,
             title: t('signIn'),
-            body: forgetPassword ? <ForgetPassword forgetPass={() => setForgetPassword(false)}/> :
-                <LoginForm forgetPass={() => setForgetPassword(true)}/>
+            body: <LoginForm/>
         },
         {id: 2, title: t('signUp'), body: <RegisterForm/>},
     ];

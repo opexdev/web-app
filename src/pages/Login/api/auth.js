@@ -44,18 +44,11 @@ export const logOut = () => {
     return axios.post(`/auth/realms/opex/user-management/user/logout`)
 }
 
-export const register = async (user , panelToken) => {
-    return await axios.post('/auth/realms/opex/user-management/user', user ,{
+export const register =  (user , panelToken) => {
+    return axios.post('/auth/realms/opex/user-management/user', user ,{
         headers : {
             "Authorization" : "Bearer "+ panelToken
         }
-    }).then((res) => {
-        return res;
-    }).catch((e) => {
-        if (!e.response) {
-            return false;
-        }
-        return e.response;
     })
 }
 

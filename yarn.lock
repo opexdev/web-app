@@ -7970,7 +7970,7 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"history@npm:^5.1.0":
+"history@npm:^5.2.0":
   version: 5.3.0
   resolution: "history@npm:5.3.0"
   dependencies:
@@ -11195,8 +11195,7 @@ fsevents@^1.2.7:
     react-number-format: ^4.9.3
     react-qr-code: ^2.0.7
     react-redux: ^7.2.2
-    react-router-dom: 6.0.2
-    react-router-hash-link: ^2.4.3
+    react-router-dom: ^6.3.0
     react-scripts: 4.0.1
     react-select: ^5.3.2
     react-tooltip: ^4.2.21
@@ -13091,39 +13090,27 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"react-router-dom@npm:6.0.2":
-  version: 6.0.2
-  resolution: "react-router-dom@npm:6.0.2"
+"react-router-dom@npm:^6.3.0":
+  version: 6.3.0
+  resolution: "react-router-dom@npm:6.3.0"
   dependencies:
-    history: ^5.1.0
-    react-router: 6.0.2
+    history: ^5.2.0
+    react-router: 6.3.0
   peerDependencies:
     react: ">=16.8"
     react-dom: ">=16.8"
-  checksum: d3680939a4fac286f8df028c1fabe5626567ba065b2029b1cc4ad64fe9444aeba186d0e5e765563fc36ea868e7d17e02fb098f2ebc0b1c70212a8470a4b58ad6
+  checksum: 77603a654f8a8dc7f65535a2e5917a65f8d9ffcb06546d28dd297e52adcc4b8a84377e0115f48dca330b080af2da3e78f29d590c89307094d36927d2b1751ec3
   languageName: node
   linkType: hard
 
-"react-router-hash-link@npm:^2.4.3":
-  version: 2.4.3
-  resolution: "react-router-hash-link@npm:2.4.3"
+"react-router@npm:6.3.0":
+  version: 6.3.0
+  resolution: "react-router@npm:6.3.0"
   dependencies:
-    prop-types: ^15.7.2
-  peerDependencies:
-    react: ">=15"
-    react-router-dom: ">=4"
-  checksum: 7dad53ebbd726e8a1ab379f4e68bce3a6b406e55af3de8a9c128510a81ad4a681ce9a5e25c0efc3d3c283b276145729b6228d0173d1d0c6e04b9cc6fb10738d4
-  languageName: node
-  linkType: hard
-
-"react-router@npm:6.0.2":
-  version: 6.0.2
-  resolution: "react-router@npm:6.0.2"
-  dependencies:
-    history: ^5.1.0
+    history: ^5.2.0
   peerDependencies:
     react: ">=16.8"
-  checksum: 9d4f3a8002a90f38be022c6740e11e9bb481e60ad04c5a0ce2d6dbe685059c09b3037c45414d6e7e40eb97308842380413cfb93c5cdcb992e7ee0c50b4f7fcaa
+  checksum: 7be673f5e72104be01e6ab274516bdb932efd93305243170690f6560e3bd1035dd1df3d3c9ce1e0f452638a2529f43a1e77dcf0934fc8031c4783da657be13ca
   languageName: node
   linkType: hard
 

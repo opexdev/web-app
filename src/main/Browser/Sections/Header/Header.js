@@ -1,6 +1,6 @@
 import React, {useEffect} from "react";
 import classes from "./Header.module.css";
-import {Trans, useTranslation} from "react-i18next";
+import {useTranslation} from "react-i18next";
 import {useDispatch, useSelector} from "react-redux";
 import {Link, Route, Routes} from "react-router-dom";
 import * as RoutesName from "../../../../routes/routes";
@@ -30,11 +30,11 @@ const Header = () => {
 
     const logOutHandler = async () => {
         logOut().then(()=>{
-            toast.success(<Trans
-                i18nKey="header.logOutSuccess"
-            />)
+            toast.success(t("header.logOutSuccess"))
+            dispatch(setLogoutInitiate())
+        }).catch(()=>{
+            toast.error(t("header.logOutError"));
         })
-        dispatch(setLogoutInitiate())
     }
 
     return (

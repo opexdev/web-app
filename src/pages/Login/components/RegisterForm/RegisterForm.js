@@ -6,13 +6,9 @@ import {Trans, useTranslation} from "react-i18next";
 import {getCaptcha, getToken, register} from "../../api/auth";
 import {validateEmail} from "../../../../utils/utils";
 import Button from "../../../../components/Button/Button";
-import {LogoutAllSessionsExceptCurrent} from "../../../../main/Browser/Sections/Content/components/Settings/api/settings";
-import {toast} from "react-hot-toast";
-import Loading from "../../../../components/Loading/Loading";
 import Icon from "../../../../components/Icon/Icon";
 import {images} from "../../../../assets/images";
 import ReactTooltip from "react-tooltip";
-import useInterval from "../../../../Hooks/useInterval";
 
 const RegisterForm = () => {
     const {t} = useTranslation();
@@ -28,6 +24,8 @@ const RegisterForm = () => {
         lastName: {value: "", error: []},
         email: {value: "", error: []},
         captchaAnswer: {value: "", error: []},
+        password: {value: "", error: []},
+        confirmPassword: {value: "", error: []},
     });
 
     const captchaReq = async () => {
@@ -36,21 +34,22 @@ const RegisterForm = () => {
         if (captchaData && captchaData.status === 200) {
             setIsLoading(false)
             setCaptcha({
-                image: { value: `data:${captchaData.headers['content-type']};base64,${Buffer.from(captchaData.data).toString('base64')}`, error: []},
+                image: {
+                    value: `data:${captchaData.headers['content-type']};base64,${Buffer.from(captchaData.data).toString('base64')}`,
+                    error: []
+                },
                 SessionKey: {value: captchaData.headers['captcha-session-key'], error: []},
                 expireTime: {value: captchaData.headers['captcha-expire-timestamp'], error: []},
             })
         } else {
-            setUserData({...userData , captchaAnswer: {value: "" , error: [t("login.captchaServerError")] }})
-            setCaptcha({...captcha , image: {value: undefined, error: []}})
+            setUserData({...userData, captchaAnswer: {value: "", error: [t("login.captchaServerError")]}})
+            setCaptcha({...captcha, image: {value: undefined, error: []}})
             setIsLoading(false)
-
         }
     }
-    useEffect(()=>{
-        captchaReq().then(r => setIsLoading(false) )
+    useEffect(() => {
+        captchaReq().then(() => setIsLoading(false))
     }, [])
-
 
     /*
     useInterval(async () => {
@@ -62,9 +61,6 @@ const RegisterForm = () => {
         ReactTooltip.rebuild();
     });
 
-
-
-
     if (registerStatus === "loading") {
         return <LoginFormLoading/>
     }
@@ -72,7 +68,8 @@ const RegisterForm = () => {
         return <div className={`column jc-center ai-center text-center px-4`} style={{height: "35vh"}}>
             <span>{t('login.registerFinished')}</span>
             <span>{t('login.registerFinishedGoToMail')}</span>
-            <span className={`font-size-sm-plus border-top-dotted pt-1 mt-1`}>{t('login.registerFinishedSpamMail')}</span>
+            <span
+                className={`font-size-sm-plus border-top-dotted pt-1 mt-1`}>{t('login.registerFinishedSpamMail')}</span>
         </div>
     }
     if (registerStatus === "finishedWithError") {
@@ -83,7 +80,7 @@ const RegisterForm = () => {
     const submit = async (e) => {
         e.preventDefault();
 
-        if ( !isFormValid() ){
+        if (!isFormValid()) {
             return false
         }
         setRegisterStatus("loading");
@@ -92,65 +89,71 @@ const RegisterForm = () => {
         const user = {
             firstName: userData.firstName.value,
             lastName: userData.lastName.value,
+            password: userData.password.value,
+            passwordConfirmation: userData.confirmPassword.value,
             email: userData.email.value.toLowerCase(),
-            //email: userData.email.value.toLowerCase(),
             captchaAnswer: `${captcha.SessionKey.value}-${userData.captchaAnswer.value}`,
         }
 
-        let userInfo = await register(user,panelToken)
-
-        if (userInfo.status === 200) {
-            setRegisterStatus("finish");
-        }
-        else{
-            if (userInfo.status === 400 && userInfo.data.error === "InvalidCaptcha" ) {
-                setUserData({...userData , captchaAnswer: {value: "", error: [t("login.InvalidCaptcha")]}})
-                setRegisterStatus("")
-            }
-            else {
-                setRegisterStatus("finishedWithError");
-            }
-        }
+        register(user, panelToken)
+            .then(() => {
+                setRegisterStatus("finish");
+            }).catch((e) => {
+                if (e?.response?.data?.error === "InvalidCaptcha") {
+                    setUserData({...userData, captchaAnswer: {value: "", error: [t("login.InvalidCaptcha")]}})
+                    setRegisterStatus("")
+                }else if (e?.response?.data?.error === "UserAlreadyExists") {
+                    setUserData({...userData, email: {...userData.email, error: [t("login.UserAlreadyExists")]}})
+                    setRegisterStatus("")
+                } else {
+                    setRegisterStatus("finishedWithError");
+                }
+            })
 
     };
 
     const inputHandler = (e) => {
         let errorMessage = []
-        if( typeof e.target.dataset.min !== undefined  && e.target.value.length < e.target.dataset.min ) {
-            errorMessage.push( <Trans
+        if (typeof e.target.dataset.min !== undefined && e.target.value.length < e.target.dataset.min) {
+            errorMessage.push(<Trans
                 i18nKey="login.minInput"
                 values={{
                     name: t(e.target.dataset.name),
-                    min : e.target.dataset.min
+                    min: e.target.dataset.min
                 }}
             />)
         }
-
-        if( typeof e.target.dataset.type !== undefined  && e.target.dataset.type === "email" && !validateEmail(e.target.value) ) {
+        if (e.target.dataset?.type === "email" && !validateEmail(e.target.value)) {
             errorMessage.push(t('login.wrongEmail'))
         }
-
-        setUserData({
+        if (e.target.dataset?.name === "confirmPassword" && e.target.value !== userData.password.value) {
+            errorMessage.push([t('login.wrongPasswordConfirmation')])
+        }
+        let prevState = {
             ...userData,
-            [e.target.dataset.name] :{ value :e.target.value , error : errorMessage }
-        })
+            [e.target.dataset.name]: {value: e.target.value, error: errorMessage}
+        }
+        if (e.target.dataset?.name === "password") {
+            prevState.confirmPassword.error = (e.target.value === userData.confirmPassword.value || userData.confirmPassword.value.length === 0) ? [] : [t('login.wrongPasswordConfirmation')]
+        }
+        setUserData(prevState)
     }
 
     const isFormValid = () => {
         let inputs = {...userData}
 
-        const hasError = Object.values(userData).find( input => input.error.length > 0 )
-        if( hasError ) return false
+        const hasError = Object.values(userData).find(input => input.error.length > 0)
+        if (hasError) return false
         let isEmpty = false
 
         for (const key in inputs) {
-            if (inputs[key].value.length === 0 ){
+            if (inputs[key].value.length === 0) {
                 isEmpty = true
                 inputs = {
                     ...inputs,
-                    [key] : {
+                    [key]: {
                         ...inputs[key],
-                        error : [<Trans
+                        error: [<Trans
                             i18nKey="login.emptyInput"
                             values={{
                                 name: t(key),
@@ -160,6 +163,7 @@ const RegisterForm = () => {
                 }
             }
         }
+
         setUserData(inputs);
         return !isEmpty;
     }
@@ -169,17 +173,11 @@ const RegisterForm = () => {
         if (isLoading) {
             return <img className={`${classes.thisLoading}`} src={images.linearLoadingBgOrange} alt="linearLoading"/>
         }
-        if (captcha.image.value === undefined ) {
+        if (captcha.image.value === undefined) {
             return <span>{t('captchaAnswer')}</span>
         }
         return <span style={{backgroundImage: `url("${captcha.image.value}")`}}/>
     }
-
-
-
-
-
-
 
     return (
         <form onSubmit={(e) => submit(e)} className={`column jc-between ${classes.form}`}>
@@ -218,8 +216,28 @@ const RegisterForm = () => {
                     alerts={userData.email.error}
                 />
                 <TextInput
-                    lead= {LeadCaptchaHandler()}
-                    after={<span data-html={true} data-place="left" data-effect="float" data-tip={`<span class="column jc-between col-100">${t("login.refreshCaptcha")}</span>`}><Icon
+                    lead={t('password')}
+                    type="password"
+                    data-name="password"
+                    customClass={`${classes.loginInput} ${classes.ltrInput}`}
+                    value={userData.password.value}
+                    onchange={(e) => inputHandler(e)}
+                    alerts={userData.password.error}
+                    data-min={8}
+                />
+                <TextInput
+                    lead={t('confirmPassword')}
+                    type="password"
+                    data-name="confirmPassword"
+                    customClass={`${classes.loginInput} ${classes.ltrInput}`}
+                    value={userData.confirmPassword.value}
+                    onchange={(e) => inputHandler(e)}
+                    alerts={userData.confirmPassword.error}
+                />
+                <TextInput
+                    lead={LeadCaptchaHandler()}
+                    after={<span data-html={true} data-place="left" data-effect="float"
+                                 data-tip={`<span class="column jc-between col-100">${t("login.refreshCaptcha")}</span>`}><Icon
                         iconName="icon-arrows-cw flex font-size-md"
                         onClick={captchaReq}
                         customClass={`hover-text cursor-pointer`}
@@ -236,14 +254,11 @@ const RegisterForm = () => {
                 />
             </div>
             <div className={`container flex jc-center ai-center ${classes.formFooter}`}>
-
                 <Button
                     type="submit"
                     buttonClass={`${classes.thisButton} cursor-pointer`}
                     buttonTitle={t('login.register')}
                 />
-
-
             </div>
         </form>
     )

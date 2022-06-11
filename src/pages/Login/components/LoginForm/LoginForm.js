@@ -13,15 +13,17 @@ import jwtDecode from "jwt-decode";
 import OTPForm from "../OTPForm/OTPForm";
 import {browserName, deviceType, fullBrowserVersion} from "react-device-detect";
 import {validateEmail} from "../../../../utils/utils";
+import ForgetPassword from "../ForgetPassword/ForgetPassword";
 
 
-const LoginForm = (props) => {
+const LoginForm = () => {
     const {t} = useTranslation();
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const [isLoading, setLoading] = useState(false);
     const [loginError, setLoginError] = useState(false);
     const [needOTP, setNeedOTP] = useState(undefined);
+    const [forgetPassword, setForgetPassword] = useState(false);
     const [credential, setCredential] = useState({username: "", password: "", otp: ""});
 
 
@@ -35,6 +37,10 @@ const LoginForm = (props) => {
     useEffect(() => {
         setLoginError(false)
     }, [needOTP])
+
+    if (forgetPassword){
+        return <ForgetPassword returnFunc={()=>setForgetPassword(false)}/>
+    }
 
     const submit = async (e) => {
         e.preventDefault();
@@ -59,7 +65,6 @@ const LoginForm = (props) => {
         setLoading(true);
         setLoginError(false);
 
-
         const submitResult = await login(credential , agent);
         if (!submitResult) {
             setLoginError(t("login.loginError"));
@@ -70,8 +75,8 @@ const LoginForm = (props) => {
         if (submitResult.status === 403) {
             setLoginError(t("login.wrongOTP"));
             setNeedOTP(true)
-
         }
+
         if (submitResult.status === 400 && submitResult.data.error_description === "Account is not fully set up") {
             setLoginError(t("login.accountNotActive"));
         }
@@ -88,7 +93,7 @@ const LoginForm = (props) => {
     };
 
     if (isLoading) {
-        return <LoginFormLoading/>
+        return <LoginFormLoading />
     }
 
     const setOTPInputHandler = (val) => {
@@ -100,8 +105,6 @@ const LoginForm = (props) => {
         setLoginError(false)
         setCredential({... credential, otp: ""})
     }
-
-
 
     return <form onSubmit={(e) => submit(e)} className={`column ai-center jc-between ${classes.form}`}>
         <div className={`container column jc-center ai-center ${classes.formBody} py-2`}>
@@ -141,7 +144,7 @@ const LoginForm = (props) => {
                           onClick={returnToLogin}>{t('login.back')}</span>
                     :
                     <span className="cursor-pointer flex ai-center font-size-sm-plus"
-                          onClick={props.forgetPass}>{t('login.forgetPassword')}</span>
+                          onClick={()=>setForgetPassword(true)}>{t('login.forgetPassword')}</span>
                 }
             </div>
         </div>

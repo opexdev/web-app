@@ -10,7 +10,7 @@ import Icon from "../../../../components/Icon/Icon";
 import {images} from "../../../../assets/images";
 import {validateEmail} from "../../../../utils/utils";
 
-const ForgetPassword = (props) => {
+const ForgetPassword = ({returnFunc}) => {
     const [loading, setLoading] = useState(false);
     const [isLoading, setIsLoading] = useState(true);
     const [success, setSuccess] = useState(false);
@@ -41,7 +41,7 @@ const ForgetPassword = (props) => {
         }
     }
     useEffect(()=>{
-        captchaReq().then(r => setIsLoading(false) )
+        captchaReq().then(() => setIsLoading(false) )
     }, [])
     useEffect(() => {
         ReactTooltip.rebuild();
@@ -103,7 +103,6 @@ const ForgetPassword = (props) => {
             <span className={`mb-4`}>{t('login.forgetPassword')}</span>
             <TextInput
                 lead={t('email')}
-                // type="text"
                 type="text"
                 data-name="email"
                 data-type="email"
@@ -112,7 +111,6 @@ const ForgetPassword = (props) => {
                 onchange={(e) =>
                     setForgetPass({...forgetPass, email: { value: e.target.value , error: []}})
                 }
-
                 alerts={forgetPass.email.error}
             />
 
@@ -135,7 +133,6 @@ const ForgetPassword = (props) => {
                 }
                 alerts={forgetPass.captchaAnswer.error}
                 maxLength="5"
-                //minLength="5"
             />
         </Fragment>
     }
@@ -146,7 +143,7 @@ const ForgetPassword = (props) => {
                 type="button"
                 buttonClass={`${classes.thisButton} ${classes.backButton} cursor-pointer ml-1`}
                 buttonTitle={t('login.back')}
-                onClick={props.forgetPass}
+                onClick={returnFunc}
             />
         }
         return <Fragment>
@@ -154,7 +151,7 @@ const ForgetPassword = (props) => {
                 type="button"
                 buttonClass={`${classes.thisButton} ${classes.backButton} cursor-pointer ml-1`}
                 buttonTitle={t('login.back')}
-                onClick={props.forgetPass}
+                onClick={returnFunc}
             />
             <Button
                 type="submit"

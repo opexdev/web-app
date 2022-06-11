@@ -1,11 +1,9 @@
-import React, {useEffect, useRef, useState} from "react";
-/*import classes from "./Guide.module.css";*/
+import React from "react";
 import Icon from "../../../../components/Icon/Icon";
 
 
 const HashContent = (props) => {
     const {id , title , text} = props
-
 
     return (
         <div className={`container column px-3 py-4`} id={id}>
@@ -21,8 +19,4 @@ const HashContent = (props) => {
     );
 };
 
-
 export default HashContent;
-
-
-
