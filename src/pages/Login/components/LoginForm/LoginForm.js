@@ -109,9 +109,9 @@ const LoginForm = (props) => {
                 <span>برای ورود آزمایشی می توانید از <span className={`hover-text cursor-pointer`}
                                                            onClick={() => setCredential({
                                                                username: "demo1@opex.dev",
-                                                               password: "demo1",
+                                                               password: "12345678",
                                                                otp: ""
-                                                           })}>ایمیل demo1@opex.dev و رمز عبور demo1</span> استفاده کنید.</span>
+                                                           })}>ایمیل demo1@opex.dev و رمز عبور 21...8</span> استفاده کنید.</span>
             </div> : ""}
             {needOTP ?
                 <OTPForm setOTP={setOTPInputHandler} initialVal={credential.otp}/>

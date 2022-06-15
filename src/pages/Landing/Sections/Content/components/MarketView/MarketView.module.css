@@ -1,0 +1,15 @@
+.container{
+    height: 47vh;
+    width:80%
+}
+
+.header {
+    height: 12%;
+}
+/*.header span {
+    width: 50%;
+    text-align: center;
+}*/
+.content {
+    height: 88%;
+}

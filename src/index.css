@@ -451,6 +451,9 @@ body {
 .mb-05 {
   margin-bottom: 0.5vh;
 }
+.mb-1 {
+  margin-bottom: 1vh;
+}
 .mb-2 {
   margin-bottom: 2vh;
 }
@@ -725,8 +728,17 @@ body {
   -ms-flex: 1;
   flex: 1;
 }
+.width-10{
+  width: 10%;
+}
+.width-15{
+  width: 15%;
+}
 .width-19{
   width: 19%;
+}
+.width-20{
+  width: 20%;
 }
 .width-23{
   width: 23%;
@@ -746,6 +758,9 @@ body {
 .width-70{
   width: 70%;
 }
+.width-80{
+  width: 80%;
+}
 .width-90{
   width: 90%;
 }
@@ -755,6 +770,9 @@ body {
 
 .height-100{
   height: 100%;
+}
+.rounded {
+  border-radius: 5px;
 }
 
 .card-border {
@@ -862,6 +880,9 @@ body {
   visibility: hidden;
 }
 
+.hover-scale-01:hover {
+  font-size: 1.1rem;
+}
 .hover-text:hover {
   color: var(--activeTab);
 }
@@ -947,6 +968,18 @@ table {
 .py-4 {
   padding-top: 4vh;
   padding-bottom: 4vh;
+}
+.py-5 {
+  padding-top: 5vh;
+  padding-bottom: 5vh;
+}
+.py-6 {
+  padding-top: 6vh;
+  padding-bottom: 6vh;
+}
+.py-7 {
+  padding-top: 7vh;
+  padding-bottom: 7vh;
 }
 .px-05 {
   padding-right: 0.5vw;

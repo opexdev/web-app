@@ -94,4 +94,12 @@
 .icon-loop { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#x0193;&nbsp;'); }
 .icon-arrows-cw { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#x0194;&nbsp;'); }
 .icon-arrows-cw-1 { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#x0195;&nbsp;'); }
+.icon-eye-3 { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#x0196;&nbsp;'); }
+.icon-op-06 { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#x0197;&nbsp;'); }
+.icon-op-05 { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#x0198;&nbsp;'); }
+.icon-op-04 { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#x0199;&nbsp;'); }
+.icon-op-02 { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#x0200;&nbsp;'); }
+.icon-op-03 { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#x0201;&nbsp;'); }
+.icon-left-open-1 { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#x0202;&nbsp;'); }
+.icon-right-open-1 { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#x0203;&nbsp;'); }
 .icon-cancel-circled2 { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xe801;&nbsp;'); }

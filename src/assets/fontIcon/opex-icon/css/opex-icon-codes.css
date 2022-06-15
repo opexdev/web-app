@@ -94,4 +94,12 @@
 .icon-loop:before { content: '\0193'; } /* 'Ɠ' */
 .icon-arrows-cw:before { content: '\0194'; } /* 'Ɣ' */
 .icon-arrows-cw-1:before { content: '\0195'; } /* 'ƕ' */
+.icon-eye-3:before { content: '\0196'; } /* 'Ɩ' */
+.icon-op-06:before { content: '\0197'; } /* 'Ɨ' */
+.icon-op-05:before { content: '\0198'; } /* 'Ƙ' */
+.icon-op-04:before { content: '\0199'; } /* 'ƙ' */
+.icon-op-02:before { content: '\0200'; } /* 'Ȁ' */
+.icon-op-03:before { content: '\0201'; } /* 'ȁ' */
+.icon-left-open-1:before { content: '\0202'; } /* 'Ȃ' */
+.icon-right-open-1:before { content: '\0203'; } /* 'ȃ' */
 .icon-cancel-circled2:before { content: '\e801'; } /* '' */

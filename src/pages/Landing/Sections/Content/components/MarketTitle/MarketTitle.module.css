@@ -1,0 +1,41 @@
+.container{
+    height: 68%;
+    width:80%
+}
+.arrow{
+    width: 8px;
+     height: 40px;
+    border-radius: 8px;
+    background-color: var(--activeTab);
+}
+
+.bg{
+    width: 2vw;
+    height: 2vw;
+    border-radius: 100%;
+    /*background-color: var(--menu);*/
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.bg i:before{
+    vertical-align: middle;
+}
+.bg i{
+    /*font-size: 2vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;*/
+    color: var(--textColor);
+}
+.bg:hover{
+    background-color: rgba(51, 51, 56, 0.63) !important;
+    color: var(--orange) !important;
+}
+
+.thisButton {
+    width: 15%;
+    background: var(--cardHeaderAlpha);
+    color: var(--textColor);
+    bottom: 0;
+}
