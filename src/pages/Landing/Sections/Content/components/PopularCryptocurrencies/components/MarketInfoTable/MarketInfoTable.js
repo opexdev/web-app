@@ -3,50 +3,55 @@ import classes from './MarketInfoTable.module.css'
 import {useTranslation} from "react-i18next";
 import {images} from "../../../../../../../../assets/images";
 
-const MarketInfoTable = () => {
+const MarketInfoTable = (props) => {
 
     const {t} = useTranslation();
 
+    const {data, baseAsset, price, marketCap, lowPrice, highPrice, volume, priceChangePercent} = props
+
     let head = (
-        <div className="row">
-            <span className="width-20">{t("MarketInfo.name")}</span>
-            <span className="width-20">{t("MarketInfo.lastPrice")}</span>
-            <span className="width-10">{t("MarketInfo.priceChangePercent")}</span>
-            <span className="width-15">{t("MarketInfo.volume")}</span>
-            <span className="width-15">{t("MarketInfo.chart")}</span>
-            <span className="width-10">{t("MarketInfo.details")}</span>
-            <span className="width-10">{t("MarketInfo.trade")}</span>
+        <div className="row text-color-gray px-2 py-2" style={{backgroundColor:"var(--tableHeader)"}}>
+            <span className="width-25 flex jc-start ai-center">{t("MarketInfo.name")}</span>
+            <span className="width-30 flex jc-start ai-center">{t("MarketInfo.lastPrice")}</span>
+            <span className="width-25 flex jc-start ai-center">{t("MarketInfo.priceChangePercent")}</span>
+            <span className="width-20 flex jc-start ai-center">{t("MarketInfo.marketCap")}</span>
+            <span className="width-25 flex jc-end ai-center">{t("MarketInfo.chart")}</span>
         </div>
     );
 
     let body = (
-        <div className="row">
-            <span className="width-20 row jc-start ai-center">
-                <img src={images.BTC} alt="" className={`img-md-plus ml-05`}/>
-                <span className={`mr-05`}>{t("currency." + "BTC")}</span>
+        <>
+         {data.map((tr, index) => {
+            return (
+        <div className={`${classes.row} row rounded border-bottom cursor-pointer px-2 py-2`}>
+            <span className="width-25 row jc-start ai-center">
+                <img src={images[tr.baseAsset]} alt={tr.baseAsset}
+                     title={tr.baseAsset} className={`img-md-plus ml-05`}/>
+                <span className={`mr-05`}>{t("currency." + tr.baseAsset)}</span>
             </span>
-            <span className="width-20">155254455554</span>
-            <span className="width-10">20% +</span>
-            <span className="width-15">1454545455</span>
-            <span className="width-15">
+            <span className={`width-30 flex jc-start ai-center ${tr.priceChangePercent > 0 ? "text-green" : "text-red"}`}>{tr.price}</span>
+            <span className={`width-25 flex jc-start ai-center ${tr.priceChangePercent > 0 ? "text-green" : "text-red"}`}>{tr.priceChangePercent} %</span>
+            <span className="width-20 flex jc-start ai-center">{tr.marketCap}</span>
+            <span className="width-25 flex jc-end ai-center">
                 <img
-                    className="img-lg-1"
+                    className="img-lg-2"
                     src={images.chart}
                     alt={""}
                     title={""}
                 />
             </span>
-            <span className="width-10">{t("MarketInfo.details")}</span>
-            <span className="width-10 rounded" style={{backgroundColor:"var(--cardHeaderAlpha)"}}>{t("MarketInfo.trade")}</span>
         </div>
+            )
+        })}
+        </>
     );
 
 
     return (
-        <div className={`${classes.container} my-2`}>
-            <div className={` ${classes.thead} text-color-gray mb-1`}>{head}</div>
-            <div className={` ${classes.tbody} mt-1`}>{body}</div>
-        </div>
+        <>
+            {head}
+            {body}
+        </>
     );
 };
 

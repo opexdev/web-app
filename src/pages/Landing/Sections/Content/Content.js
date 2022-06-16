@@ -3,20 +3,23 @@ import classes from './Content.module.css'
 import ScrollBar from "../../../../components/ScrollBar";
 import Footer from "../../../../main/Browser/Sections/Footer/Footer";
 import Spinner from "./components/Spinner/Spinner";
-import MarketSliders from "./components/MarketSliders/MarketSliders";
-import MarketInfo from "./components/MarketInfo/MarketInfo";
 import MarketView from "./components/MarketView/MarketView";
 import MarketTitle from "./components/MarketTitle/MarketTitle";
 import GeneralInfo from "./components/GeneralInfo/GeneralInfo";
 import PopularCryptocurrencies from "./components/PopularCryptocurrencies/PopularCryptocurrencies";
+import {images} from "../../../../assets/images";
+import {useSelector} from "react-redux";
 
 const Content = () => {
+
+    const isDark = useSelector((state) => state.global.isDark)
+
     return (
         <div className={`${classes.container} container column`}>
             <ScrollBar>
 
-                <div className={`row jc-between ai-center px-2`} style={{height:"65vh"}}>
-                    <div className={`width-30 column jc-between ai-end`} style={{height:"47vh"}}>
+                <div className={`row jc-between ai-center px-2`} style={{height:"70vh"}}>
+                    <div className={`width-30 column jc-between ai-end`} style={{height:"55vh"}}>
                         <MarketTitle/>
                         <GeneralInfo/>
                     </div>
@@ -30,8 +33,13 @@ const Content = () => {
                 </div>
 
 
-                <div className={`card-background flex jc-center`} style={{height:"50vh"}}>
+                <div className={`flex jc-center`} style={{height:"" , backgroundColor: "var(--mainContent)"}}>
                     <PopularCryptocurrencies/>
+                </div>
+                <div className={`flex jc-center`} style={{height:"70vh" , backgroundColor: ""}}>
+
+                    <img src={isDark ? images.OpexPanelMockupDark : images.OpexPanelMockupLight} alt="OpexMockup" loading="lazy"/>
+
                 </div>
 
 

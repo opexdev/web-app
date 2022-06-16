@@ -1,15 +1,15 @@
 .container{
-    height: 47vh;
+    height: 55vh;
     width:80%
 }
 
 .header {
-    height: 12%;
+    height: 15%;
 }
 /*.header span {
     width: 50%;
     text-align: center;
 }*/
 .content {
-    height: 88%;
+    height: 85%;
 }

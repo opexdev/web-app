@@ -16,7 +16,7 @@ const MarketView = () => {
                     <h3>{t("MarketView.title")}</h3>
                 </div>
             </div>
-            <div className={`column container jc-between ${classes.content} px-1 py-1`}>
+            <div className={`column container jc-center ${classes.content} px-1 py-1`}>
 
                 <div className={`column border-bottom`}>
                     <span className={`${classes.title} text-orange`}>{t("MarketView.mostIncrease")}</span>
@@ -32,7 +32,7 @@ const MarketView = () => {
                     </div>
                 </div>
 
-                <div className={`column border-bottom`}>
+                <div className={`column border-bottom  my-3`}>
                     <span className={`${classes.title} text-orange`}>{t("MarketView.greatestReduction")}</span>
                     <div className={`row jc-between ai-center`}>
                         <div className={`row jc-center ai-center`}>

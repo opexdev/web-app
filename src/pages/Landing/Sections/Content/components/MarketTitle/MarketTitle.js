@@ -11,7 +11,7 @@ const MarketTitle = () => {
     const {t} = useTranslation();
     const navigate = useNavigate();
 
-    const buttonTitle = <Icon iconName="icon-op-02 flex font-size-md-plus" customClass={`flex jc-center ai-center`}/>
+    const buttonTitle = <Icon iconName="icon-op-02 flex font-size-md-plus" customClass={`flex jc-center ai-center py-1`}/>
 
 
 
@@ -21,11 +21,11 @@ const MarketTitle = () => {
                 className={`text-orange font-size-md-01`}>{t("title")}</span> {t("MarketTitle.content")}</p>
 
             <div className={`column`}>
-                <div className={`row mb-1`}>
+                <div className={`row jc-start ai-center mb-1`}>
                     <span className={`${classes.arrow} ml-05`}></span>
                     <Link to={"#"} className={`mr-05 cursor-pointer hover-text hover-scale-01`}>خرید فروش آسان</Link>
                 </div>
-                <div className={`row mt-1`}>
+                <div className={`row jc-start ai-center mt-1`}>
                     <span className={`${classes.arrow} ml-05`}></span>
                     <Link to={Dashboard} className={`mr-05 cursor-pointer hover-text hover-scale-01`}>خرید فروش حرفه
                         ای</Link>

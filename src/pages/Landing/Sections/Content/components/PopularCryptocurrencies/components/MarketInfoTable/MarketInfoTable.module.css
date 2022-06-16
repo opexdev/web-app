@@ -1,0 +1,9 @@
+.row:last-child{
+    border-bottom: none;
+}
+.row:nth-child(odd) {
+    background-color: var(--tableRow);
+}
+.row:hover {
+    background-color: var(--LoginContainer);
+}

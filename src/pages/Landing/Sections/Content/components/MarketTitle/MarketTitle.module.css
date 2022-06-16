@@ -34,7 +34,7 @@
 }
 
 .thisButton {
-    width: 15%;
+    width: 12%;
     background: var(--cardHeaderAlpha);
     color: var(--textColor);
     bottom: 0;

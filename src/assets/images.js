@@ -28,6 +28,9 @@ import reject from "./images/src/reject.svg";
 import security from "./images/src/security.svg";
 import chart from "./images/src/chart.svg";
 import authentication from "./images/src/authentication.svg";
+import OpexMockupMac from "./images/src/OpexMockupMac.png";
+import OpexPanelMockupDark from "./images/src/OpexPanelMockupDark.png";
+import OpexPanelMockupLight from "./images/src/OpexPanelMockupLight.png";
 import squareLoading from "./images/src/squareLoading.gif";
 import squareLoadingLight from "./images/src/squareLoadingLight.gif";
 import linearLoading from "./images/src/linearLoading.gif";
@@ -66,6 +69,9 @@ export const images = {
   security: security,
   chart: chart,
   authentication: authentication,
+  OpexMockupMac: OpexMockupMac,
+  OpexPanelMockupDark: OpexPanelMockupDark,
+  OpexPanelMockupLight: OpexPanelMockupLight,
   squareLoading: squareLoading,
   squareLoadingLight: squareLoadingLight,
   linearLoading: linearLoading,
