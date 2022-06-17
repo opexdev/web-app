@@ -1,5 +1,5 @@
 import React from 'react';
-import classes from './Content.module.css'
+import classes from './LandingContent.module.css'
 import ScrollBar from "../../../../components/ScrollBar";
 import Footer from "../../../../main/Browser/Sections/Footer/Footer";
 import Spinner from "./components/Spinner/Spinner";
@@ -10,7 +10,7 @@ import PopularCryptocurrencies from "./components/PopularCryptocurrencies/Popula
 import {images} from "../../../../assets/images";
 import {useSelector} from "react-redux";
 
-const Content = () => {
+const LandingContent = () => {
 
     const isDark = useSelector((state) => state.global.isDark)
 
@@ -41,4 +41,4 @@ const Content = () => {
     );
 };
 
-export default Content;
+export default LandingContent;

@@ -7,6 +7,7 @@ import {useTranslation} from "react-i18next";
 import MessagesSubMenu from "../SubMenu/components/MessagesSubMenu/MessagesSubMenu";
 import {images} from "../../../../assets/images";
 import Icon from "../../../../components/Icon/Icon";
+import {Landing} from "../../../../routes/routes";
 
 
 const MainMenu = () => {
@@ -21,7 +22,7 @@ const MainMenu = () => {
         <Fragment>
             <div className={`column ai-center mainMenu-background ${classes.container}`}>
                 <div className={`${classes.header} py-1`}>
-                    <Link to={Routes.Dashboard} onClick={() => setShowMessages(false)}>
+                    <Link to={Routes.Landing} onClick={() => setShowMessages(false)}>
                         <span className="flex">
                          <img className="img-md" src={images.opexLogoOnePlus} alt={t("title")} title={t("title")} style={{height: "7.5vh"}}/>
                         </span>

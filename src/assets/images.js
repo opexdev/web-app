@@ -21,6 +21,7 @@ import toman from "./images/src/toman.svg";
 import spaceStar from "./images/src/spaceStar.png";
 import astronaut from "./images/src/astronaut.svg";
 import astronautAlone from "./images/src/astronautAlone.svg";
+import astronautAloneSwing from "./images/src/astronautAloneSwing.svg";
 import approve from "./images/src/approve.svg";
 import pending from "./images/src/pending.svg";
 import block from "./images/src/block.svg";
@@ -62,6 +63,7 @@ export const images = {
   spaceStar: spaceStar,
   astronaut: astronaut,
   astronautAlone: astronautAlone,
+  astronautAloneSwing: astronautAloneSwing,
   approve: approve,
   reject: reject,
   pending: pending,

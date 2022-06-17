@@ -23,6 +23,7 @@ import Info from "../../components/Info/Info";
 import FullWidthError from "../../components/FullWidthError/FullWidthError";
 import User from "../../pages/User/User";
 import Landing from "../../pages/Landing/Landing";
+import AllMarket from "../../pages/AllMarket/AllMarket";
 
 
 const Browser = () => {
@@ -100,6 +101,7 @@ const Browser = () => {
             <Route path={RoutesName.Login} element={<Login/>}/>
             <Route path={RoutesName.User + "/*"} element={<User/>}/>
             <Route path={RoutesName.Landing} element={<Landing/>}/>
+            <Route path={RoutesName.AllMarket} element={<AllMarket/>}/>
             <Route path={RoutesName.Guide} element={<Guide/>}/>
             <Route element={<ProtectedRoute/>}>
                 <Route path={RoutesName.Technical} element={<TechnicalChart/>}/>

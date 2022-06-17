@@ -3,6 +3,9 @@ import classes from './PopularCryptocurrencies.module.css'
 import Icon from "../../../../../../components/Icon/Icon";
 import MarketInfoTable from "./components/MarketInfoTable/MarketInfoTable";
 import MarketInfoCard from "./components/MarketInfoCard/MarketInfoCard";
+import * as Routes from "../../../../../../routes/routes";
+import {Link} from "react-router-dom";
+import {AllMarket} from "../../../../../../routes/routes";
 
 const PopularCryptocurrencies = () => {
 
@@ -42,7 +45,7 @@ const PopularCryptocurrencies = () => {
                 </div>
 
                 <div className={`row jc-center ai-center cursor-pointer hover-text`}>
-                    <span  className={`ml-05`}>نمایش تمام بازار</span>
+                    <Link to={Routes.AllMarket} className={`ml-05 hover-text`}>نمایش تمام بازار</Link>
                     <Icon iconName="icon-left-open-1 font-size-md flex" className={`mr-05`}/>
                 </div>
             </div>

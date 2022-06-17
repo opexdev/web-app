@@ -1,17 +1,17 @@
 import React, {useEffect} from 'react';
-import classes from './Header.module.css'
-import {images} from "../../../../assets/images";
-import Clock from "../../../../main/Browser/Sections/Header/components/Clock/Clock";
+import classes from './HeaderBuilder.module.css'
 import {Link} from "react-router-dom";
-import {Login , Dashboard} from "../../../../routes/routes";
+import {Login , Dashboard} from "../../routes/routes";
 import {useDispatch, useSelector} from "react-redux";
 import {Trans, useTranslation} from "react-i18next";
 import ReactTooltip from "react-tooltip";
-import {logOut} from "../../../Login/api/auth";
 import {toast} from "react-hot-toast";
-import {setLogoutInitiate} from "../../../../store/actions";
+import {logOut} from "../../pages/Login/api/auth";
+import {images} from "../../assets/images";
+import {setLogoutInitiate} from "../../store/actions";
+import Clock from "../../main/Browser/Sections/Header/components/Clock/Clock";
 
-const Header = () => {
+const HeaderBuilder = ({children}) => {
 
     const {t} = useTranslation();
     const dispatch = useDispatch();
@@ -42,7 +42,11 @@ const Header = () => {
                     <img src={images.opexLogoPlus} alt="" className={`img-lg-plus`}/>
                 </div>
 
-                <h2 className={`width-40 text-center`}>پلتفرم تبادل ارزهای دیجیتال</h2>
+                <div className={`width-40 text-center`}>
+                    {children}
+                </div>
+
+
 
                 <div className={`column ai-end width-25`}>
                     {firstName === null ? (
@@ -96,4 +100,4 @@ const Header = () => {
     );
 };
 
-export default Header;
+export default HeaderBuilder;
