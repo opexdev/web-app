@@ -17,7 +17,6 @@ const Content = () => {
     return (
         <div className={`${classes.container} container column`}>
             <ScrollBar>
-
                 <div className={`row jc-between ai-center px-2`} style={{height:"70vh"}}>
                     <div className={`width-30 column jc-between ai-end`} style={{height:"55vh"}}>
                         <MarketTitle/>
@@ -29,44 +28,15 @@ const Content = () => {
                     <div className={`width-30 flex jc-start`}>
                         <MarketView/>
                     </div>
-
                 </div>
-
-
                 <div className={`flex jc-center`} style={{height:"" , backgroundColor: "var(--mainContent)"}}>
                     <PopularCryptocurrencies/>
                 </div>
                 <div className={`flex jc-center`} style={{height:"70vh" , backgroundColor: ""}}>
-
                     <img src={isDark ? images.OpexPanelMockupDark : images.OpexPanelMockupLight} alt="OpexMockup" loading="lazy"/>
-
                 </div>
-
-
-               {/* <div className={`width-90 m-auto overflowX-hidden`} style={{height:"25vh"}}>
-
-                    <MarketSliders/>
-
-                </div>
-
-                <div className={`my-4 width-90 m-auto`}>
-
-                    <MarketInfo/>
-
-                </div>*/}
-
-
-
-
-
-
-
-
                 <Footer/>
-
-
             </ScrollBar>
-
         </div>
     );
 };

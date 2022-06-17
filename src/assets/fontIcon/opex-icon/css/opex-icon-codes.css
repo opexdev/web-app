@@ -102,4 +102,6 @@
 .icon-op-03:before { content: '\0201'; } /* 'ȁ' */
 .icon-left-open-1:before { content: '\0202'; } /* 'Ȃ' */
 .icon-right-open-1:before { content: '\0203'; } /* 'ȃ' */
+.icon-row:before { content: '\0204'; } /* 'Ȅ' */
+.icon-grid:before { content: '\0205'; } /* 'ȅ' */
 .icon-cancel-circled2:before { content: '\e801'; } /* '' */

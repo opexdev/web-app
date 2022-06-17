@@ -23,11 +23,11 @@ const MarketInfoTable = (props) => {
         <>
          {data.map((tr, index) => {
             return (
-        <div className={`${classes.row} row rounded border-bottom cursor-pointer px-2 py-2`}>
+        <div className={`${classes.row} row font-size-md rounded border-bottom cursor-pointer px-2 py-2`}>
             <span className="width-25 row jc-start ai-center">
                 <img src={images[tr.baseAsset]} alt={tr.baseAsset}
-                     title={tr.baseAsset} className={`img-md-plus ml-05`}/>
-                <span className={`mr-05`}>{t("currency." + tr.baseAsset)}</span>
+                     title={tr.baseAsset} className={`img-lg ml-05`}/>
+                <span className={`font-size-md mr-05`}>{t("currency." + tr.baseAsset)}</span>
             </span>
             <span className={`width-30 flex jc-start ai-center ${tr.priceChangePercent > 0 ? "text-green" : "text-red"}`}>{tr.price}</span>
             <span className={`width-25 flex jc-start ai-center ${tr.priceChangePercent > 0 ? "text-green" : "text-red"}`}>{tr.priceChangePercent} %</span>

@@ -113,4 +113,6 @@
 .icon-op-03 { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#x0201;&nbsp;'); }
 .icon-left-open-1 { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#x0202;&nbsp;'); }
 .icon-right-open-1 { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#x0203;&nbsp;'); }
+.icon-row { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#x0204;&nbsp;'); }
+.icon-grid { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#x0205;&nbsp;'); }
 .icon-cancel-circled2 { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xe801;&nbsp;'); }

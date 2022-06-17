@@ -3,11 +3,11 @@
 }
 
 .header {
-    height: 15%;
+    height: 10vh;
 }
 
 .content {
-    height: 85%;
+   /* height: 85%;*/
 }
 
 .title {

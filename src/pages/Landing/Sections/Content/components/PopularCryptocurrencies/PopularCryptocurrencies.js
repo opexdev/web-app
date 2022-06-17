@@ -1,9 +1,14 @@
-import React from 'react';
+import React, {useState} from 'react';
 import classes from './PopularCryptocurrencies.module.css'
 import Icon from "../../../../../../components/Icon/Icon";
 import MarketInfoTable from "./components/MarketInfoTable/MarketInfoTable";
+import MarketInfoCard from "./components/MarketInfoCard/MarketInfoCard";
 
 const PopularCryptocurrencies = () => {
+
+
+
+    const [card, setCard] = useState(false)
 
 
     const marketData = [
@@ -23,23 +28,30 @@ const PopularCryptocurrencies = () => {
 
 
     return (
-        <div className={`${classes.container} card-background card-border width-85 my-5`}>
+        <div className={`${classes.container} card-background card-border width-85 my-4`}>
             <div className={`${classes.header} card-header-bg row jc-between ai-center px-2 py-2`}>
                 <div className={`row jc-center ai-center`}>
-                    <h1 className={`ml-1`}>بازار</h1>
+
+                    <Icon iconName={`${card ? 'icon-row' : 'icon-grid'} font-size-md-01 flex cursor-pointer hover-text`} onClick={()=>setCard(prevState => !prevState)}/>
+                    <h1 className={`mr-1 ml-1`}>بازار</h1>
                     <div className={`row jc-center ai-center mr-1`}>
                         <span className={`px-2 py-1 rounded cursor-pointer hover-text icon-active ${classes.title}`}>تومان</span>
                         {/*<span className={`text-orange px-05`} style={{userSelect:"none"}}>|</span>*/}
                         <span className={`px-2 py-1 rounded cursor-pointer hover-text`}>تتر</span>
                     </div>
                 </div>
+
                 <div className={`row jc-center ai-center cursor-pointer hover-text`}>
                     <span  className={`ml-05`}>نمایش تمام بازار</span>
                     <Icon iconName="icon-left-open-1 font-size-md flex" className={`mr-05`}/>
                 </div>
             </div>
             <div className={`${classes.content}`}>
-                <MarketInfoTable data={marketData.sort((a , b) => b.marketCap - a.marketCap).slice(0 , 5)}/>
+                {card ?
+                        <MarketInfoCard data={marketData.sort((a , b) => b.marketCap - a.marketCap).slice(0 , 5)}/>
+                        :
+                        <MarketInfoTable data={marketData.sort((a , b) => b.marketCap - a.marketCap).slice(0 , 5)}/>
+                }
             </div>
         </div>
     );
