@@ -1,4 +1,4 @@
-import React, {Fragment, useState, useEffect} from "react";
+import React, {Fragment, useEffect, useState} from "react";
 import classes from "./MainMenu.module.css";
 import {Link, NavLink} from "react-router-dom";
 import ReactTooltip from "react-tooltip";
@@ -21,7 +21,7 @@ const MainMenu = () => {
         <Fragment>
             <div className={`column ai-center mainMenu-background ${classes.container}`}>
                 <div className={`${classes.header} py-1`}>
-                    <Link to={Routes.Dashboard} onClick={() => setShowMessages(false)}>
+                    <Link to={Routes.Landing} onClick={() => setShowMessages(false)}>
                         <span className="flex">
                          <img className="img-md" src={images.opexLogoOnePlus} alt={t("title")} title={t("title")} style={{height: "7.5vh"}}/>
                         </span>

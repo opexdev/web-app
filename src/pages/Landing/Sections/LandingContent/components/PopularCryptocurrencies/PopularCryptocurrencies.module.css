@@ -1,0 +1,15 @@
+.container {
+
+}
+
+.header {
+    height: 10vh;
+}
+
+.content {
+   /* height: 85%;*/
+}
+
+.title {
+    background-color: var(--cardHeaderAlpha);
+}

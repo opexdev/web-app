@@ -4360,6 +4360,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"bowser@npm:^1.7.3":
+  version: 1.9.4
+  resolution: "bowser@npm:1.9.4"
+  checksum: 127584ee1b8f0c27f410f652d409ea8bcb23d185a4269bcbe0229069720be9d83dc80a939e0fa33d8a9055141a0cf2fee5a02b2b5515c38841ddc899d67dec8d
+  languageName: node
+  linkType: hard
+
 "brace-expansion@npm:^1.1.7":
   version: 1.1.11
   resolution: "brace-expansion@npm:1.1.11"
@@ -5472,6 +5479,16 @@ __metadata:
   bin:
     css-has-pseudo: cli.js
   checksum: 88d891ba18f821e8a94d821ecdd723c606019462664c7d86e7d8731622bd26f9d55582e494bcc2a62f9399cc7b89049ddc8a9d1e8f1bf1a133c2427739d2d334
+  languageName: node
+  linkType: hard
+
+"css-in-js-utils@npm:^2.0.0":
+  version: 2.0.1
+  resolution: "css-in-js-utils@npm:2.0.1"
+  dependencies:
+    hyphenate-style-name: ^1.0.2
+    isobject: ^3.0.1
+  checksum: c9964c4708216954c468b69bbee2d971fd759ada4f40637b8ca4d3f79caba4818d0532a4f190ac560227c08742ad063ffec7a30afddc4d96b66a18c3a008f0d8
   languageName: node
   linkType: hard
 
@@ -6956,6 +6973,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"exenv@npm:^1.2.1":
+  version: 1.2.2
+  resolution: "exenv@npm:1.2.2"
+  checksum: a894f3b60ab8419e0b6eec99c690a009c8276b4c90655ccaf7d28faba2de3a6b93b3d92210f9dc5efd36058d44f04098f6bbccef99859151104bfd49939904dc
+  languageName: node
+  linkType: hard
+
 "exit@npm:^0.1.2":
   version: 0.1.2
   resolution: "exit@npm:0.1.2"
@@ -7990,6 +8014,15 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
+"hoist-non-react-statics@npm:3.3.0":
+  version: 3.3.0
+  resolution: "hoist-non-react-statics@npm:3.3.0"
+  dependencies:
+    react-is: ^16.7.0
+  checksum: 78f77efc6dd4bfa194a96e8c97248ce59f9bf0e63686ee76cb9ab0183d8bd317fcb6bd25f442c0ef9c19d6db144de0df05b79895fd64cae331dbd6e2e573a565
+  languageName: node
+  linkType: hard
+
 "hoist-non-react-statics@npm:^3.3.0, hoist-non-react-statics@npm:^3.3.1, hoist-non-react-statics@npm:^3.3.2":
   version: 3.3.2
   resolution: "hoist-non-react-statics@npm:3.3.2"
@@ -8258,6 +8291,13 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
+"hyphenate-style-name@npm:^1.0.2":
+  version: 1.0.4
+  resolution: "hyphenate-style-name@npm:1.0.4"
+  checksum: 4f5bf4b055089754924babebaa23c17845937bcca6aee95d5d015f8fa1e6814279002bd6a9e541e3fac2cd02519fc76305396727066c57c8e21a7e73e7a12137
+  languageName: node
+  linkType: hard
+
 "i18next-browser-languagedetector@npm:^6.1.4":
   version: 6.1.4
   resolution: "i18next-browser-languagedetector@npm:6.1.4"
@@ -8481,6 +8521,16 @@ fsevents@^1.2.7:
   version: 1.3.8
   resolution: "ini@npm:1.3.8"
   checksum: dfd98b0ca3a4fc1e323e38a6c8eb8936e31a97a918d3b377649ea15bdb15d481207a0dda1021efbd86b464cae29a0d33c1d7dcaf6c5672bee17fa849bc50a1b3
+  languageName: node
+  linkType: hard
+
+"inline-style-prefixer@npm:^4.0.0":
+  version: 4.0.2
+  resolution: "inline-style-prefixer@npm:4.0.2"
+  dependencies:
+    bowser: ^1.7.3
+    css-in-js-utils: ^2.0.0
+  checksum: 337bc92d7b741100d8c64ddec239302682dda03a166e47012044b78237af693d413cbad73016551b789bc1494322670f09baa4da85a21b8ea78b980958cb2928
   languageName: node
   linkType: hard
 
@@ -11184,6 +11234,7 @@ fsevents@^1.2.7:
     lightweight-charts: ^3.8.0
     moment-jalaali: ^0.9.2
     normalize.css: ^8.0.1
+    radium: ^0.26.2
     rc-scrollbars: ^1.1.3
     react: ^17.0.1
     react-countdown: ^2.3.2
@@ -12651,6 +12702,17 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
+"prop-types@npm:^15.5.8":
+  version: 15.8.1
+  resolution: "prop-types@npm:15.8.1"
+  dependencies:
+    loose-envify: ^1.4.0
+    object-assign: ^4.1.1
+    react-is: ^16.13.1
+  checksum: c056d3f1c057cb7ff8344c645450e14f088a915d078dcda795041765047fa080d38e5d626560ccaac94a4e16e3aa15f3557c1a9a8d1174530955e992c675e459
+  languageName: node
+  linkType: hard
+
 "prop-types@npm:^15.6.0, prop-types@npm:^15.6.2, prop-types@npm:^15.7.2":
   version: 15.7.2
   resolution: "prop-types@npm:15.7.2"
@@ -12822,6 +12884,20 @@ fsevents@^1.2.7:
   version: 1.2.3
   resolution: "queue-microtask@npm:1.2.3"
   checksum: b676f8c040cdc5b12723ad2f91414d267605b26419d5c821ff03befa817ddd10e238d22b25d604920340fd73efd8ba795465a0377c4adf45a4a41e4234e42dc4
+  languageName: node
+  linkType: hard
+
+"radium@npm:^0.26.2":
+  version: 0.26.2
+  resolution: "radium@npm:0.26.2"
+  dependencies:
+    exenv: ^1.2.1
+    hoist-non-react-statics: 3.3.0
+    inline-style-prefixer: ^4.0.0
+    prop-types: ^15.5.8
+  peerDependencies:
+    react: ^16.8.0 || ^17.0.0
+  checksum: 3b3cd1d78199c2b4a15150f8c2f1cea6022b93193c1b343bfec07445043695fc52a5142a361f40f13bc9530e3d9d65b3c88b275a76e6c03d97eded75898fe293
   languageName: node
   linkType: hard
 

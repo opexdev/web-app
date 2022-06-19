@@ -494,6 +494,32 @@
     "success": "ایمیل با موفقیت تائید شد.",
     "failed": "ایمیل تائید نشد، دوباره تلاش کنید!"
   },
+  "MarketInfo": {
+    "title": "نمای بازار",
+    "name": "نام",
+    "cryptocurrency": "رمزارز",
+    "lastPrice": "آخرین قیمت",
+    "pcp24h": "24 ساعت %",
+    "pcp7d": "7 روز %",
+    "chart": "روند 7 روزه",
+    "volume": "حجم معاملات",
+    "details": "جزئیات",
+    "lowPrice": "حداقل",
+    "highPrice": "حداکثر",
+    "trade": "معامله",
+    "marketCap": "ارزش بازار"
+  },
+  "MarketView": {
+    "title": "روند 24 ساعته",
+    "mostIncrease": "بیشترین افزایش",
+    "mostTrade": "بیشترین تعداد معامله",
+    "greatestReduction": "بیشترین کاهش",
+    "MaxTransactionVolume": "بیشترین حجم معامله",
+    "MinTransactionVolume": "کمترین حجم معامله"
+  },
+  "MarketTitle": {
+    "content": "به طور خاص برای رفع نیازهای شما طراحی شده است."
+  },
   "footer": {
     "darkMode": "تم تاریک",
     "aboutUs": "درباره ما",

@@ -24,7 +24,7 @@ export const addAttributes = async (profile) => {
 }
 
 export const sendUserFile = async (user, file) => {
-    //axios.defaults.headers.common['Content-Type'] = 'application/json';
+    //axios.defaults.headers.common['AllMarketContent-Type'] = 'application/json';
     const data = new FormData();
     data.append('file', file);
 
