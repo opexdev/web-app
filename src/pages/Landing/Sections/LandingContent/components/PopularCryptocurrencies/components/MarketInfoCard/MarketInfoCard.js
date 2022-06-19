@@ -7,7 +7,7 @@ const MarketInfoCard = (props) => {
 
     const {t} = useTranslation();
 
-    const {data, baseAsset, price, marketCap, lowPrice, highPrice, volume, priceChangePercent} = props
+    const {data, baseAsset, price, marketCap, lowPrice, highPrice, volume, pcp24h} = props
 
 
     const backgroundBar = (percent) => {
@@ -26,16 +26,16 @@ const MarketInfoCard = (props) => {
 
             {data.map((tr, index) => {
                 return (
-                    <div className={`${classes.item} card-border card-background column jc-between ai-center py-3 cursor-pointer`} style={backgroundBar(tr.priceChangePercent.toString())}>
+                    <div className={`${classes.item} card-border card-background column jc-between ai-center py-3 cursor-pointer`} style={backgroundBar(tr.pcp24h.toString())}>
                         <div className={`row jc-center ai-center width-100`}>
                             <img src={images[tr.baseAsset]} alt={tr.baseAsset} title={tr.baseAsset} className={`img-lg ml-05`}/>
                             <div className={`column mr-05`}>
                                 <span className={`font-size-md`}>{t("currency." + tr.baseAsset)}</span>
-                                <span className={`${tr.priceChangePercent > 0 ? "text-green" : "text-red"}`}>{tr.priceChangePercent} %</span>
+                                <span className={`${tr.pcp24h > 0 ? "text-green" : "text-red"}`}>{tr.pcp24h} %</span>
                             </div>
                         </div>
 
-                        <span className={`${tr.priceChangePercent > 0 ? "text-green" : "text-red"} font-size-md-01`}>{tr.price}</span>
+                        <span className={`${tr.pcp24h > 0 ? "text-green" : "text-red"} font-size-md-01`}>{tr.price}</span>
 
                         <div className={`column jc-center ai-center`}>
                             <img

@@ -1,6 +1,6 @@
 .container{
     height: 12vh;
-    background-color: var(--cardHeader);
+    background-color: var(--menu);
 }
 .content {
     width: 95%;

@@ -18,7 +18,7 @@ const Swing = () => {
                 <img src={images.USDT} alt="" className={``}/>
             </div>
 
-            <img src={images.astronautAloneSwing} alt="" className={`${classes.astronaut} img-lg-plus`}/>
+            {/*<img src={images.astronautAloneSwing} alt="" className={`${classes.astronaut} img-lg-plus`}/>*/}
         </div>
     );
 };

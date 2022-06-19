@@ -7,6 +7,9 @@
 
     }
 
+    .font-size-sm-mini {
+        font-size: 0.65vw;
+    }
     .font-size-sm {
         font-size: 0.75vw;
     }
