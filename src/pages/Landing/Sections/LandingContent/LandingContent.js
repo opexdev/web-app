@@ -17,22 +17,22 @@ const LandingContent = () => {
     return (
         <div className={`${classes.container} container column`}>
             <ScrollBar>
-                <div className={`row jc-between ai-center px-2`} style={{height:"70vh"}}>
-                    <div className={`width-30 column jc-between ai-end`} style={{height:"55vh"}}>
+                <div className={`row jc-between ai-center width-90 m-auto`} style={{height:"70vh"}}>
+                    <div className={`width-30 column jc-between ai-start`} style={{height:"55vh"}}>
                         <MarketTitle/>
                         <GeneralInfo/>
                     </div>
-                    <div className={`width-30`}>
+                    <div className={`width-40 height-100`}>
                         <Spinner/>
                     </div>
-                    <div className={`width-30 flex jc-start`}>
+                    <div className={`width-30 flex jc-end`}>
                         <MarketView/>
                     </div>
                 </div>
                 <div className={`flex jc-center`} style={{height:"" , backgroundColor: "var(--mainContent)"}}>
                     <PopularCryptocurrencies/>
                 </div>
-                <div className={`flex jc-center`} style={{height:"70vh" , backgroundColor: ""}}>
+                <div className={`flex jc-center ai-center width-90 m-auto`} style={{height:"70vh" , backgroundColor: ""}}>
                     <img src={isDark ? images.OpexPanelMockupDark : images.OpexPanelMockupLight} alt="OpexMockup" loading="lazy"/>
                 </div>
                 <Footer/>

@@ -1045,6 +1045,13 @@ table {
   margin-right: 0.5vw;
   margin-left: initial;
 }
+.ml-025 {
+  margin-left: 0.25vw;
+}
+.ltr .ml-025 {
+  margin-right: 0.25vw;
+  margin-left: initial;
+}
 .ml-1 {
   margin-left: 1vw;
 }
@@ -1218,6 +1225,9 @@ h6 {
 }
 .cursor-not-allowed {
   cursor: not-allowed;
+}
+.cursor-grabbing {
+  cursor: grabbing;
 }
 .ltr {
   direction: ltr;

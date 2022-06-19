@@ -16,7 +16,7 @@ const MarketTitle = () => {
 
 
     return (
-        <div className={`${classes.container} column jc-between card-background card-border px-1 py-2`}>
+        <div className={`${classes.container} column jc-between card-background card-border px-2 py-3`}>
             <p className={`font-size-md`}><span
                 className={`text-orange font-size-md-01`}>{t("title")}</span> {t("MarketTitle.content")}</p>
 

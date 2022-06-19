@@ -16,8 +16,10 @@ const PriceInfo = () => {
                 <div className={`${classes.content} column jc-around ai-center py-2`}>
                     <img src={images.BTC} alt="" className={`img-md-plus`}/>
                     <span className={``}>{t("currency." + "BTC")}</span>
-                    <span className={`text-green`}>25،1254،248</span>
-                    <span className={`text-green`}>10% +</span>
+                    <div className={`row jc-center ai-center width-100 text-green`}>
+                        <span className={`ml-025`}>(10% +)</span>
+                        <span className={`mr-025`}>25،1254،248</span>
+                    </div>
                 </div>
             </div>
             <div className={`card-background card-border height-100 col-48`}>
@@ -27,8 +29,11 @@ const PriceInfo = () => {
                 <div className={`${classes.content} column jc-around ai-center py-2`}>
                     <img src={images.ETH} alt="" className={`img-md-plus`}/>
                     <span className={``}>{t("currency." + "ETH")}</span>
-                    <span className={`text-red`}>25،1254،248</span>
-                    <span className={`text-red`}>10% -</span>
+
+                    <div className={`row jc-center ai-center width-100 text-red`}>
+                        <span className={`ml-025`}>(10% -)</span>
+                        <span className={`mr-025`}>25،1254،248</span>
+                    </div>
                 </div>
             </div>
         </div>

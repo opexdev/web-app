@@ -1,4 +1,4 @@
-import React, {Fragment, useState, useEffect} from "react";
+import React, {Fragment, useEffect, useState} from "react";
 import classes from "./MainMenu.module.css";
 import {Link, NavLink} from "react-router-dom";
 import ReactTooltip from "react-tooltip";
@@ -7,7 +7,6 @@ import {useTranslation} from "react-i18next";
 import MessagesSubMenu from "../SubMenu/components/MessagesSubMenu/MessagesSubMenu";
 import {images} from "../../../../assets/images";
 import Icon from "../../../../components/Icon/Icon";
-import {Landing} from "../../../../routes/routes";
 
 
 const MainMenu = () => {

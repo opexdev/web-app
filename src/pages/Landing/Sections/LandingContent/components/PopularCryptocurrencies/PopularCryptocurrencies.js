@@ -29,7 +29,7 @@ const PopularCryptocurrencies = () => {
 
 
     return (
-        <div className={`${classes.container} card-background card-border width-85 my-4`}>
+        <div className={`${classes.container} card-background card-border width-90 my-4`}>
             <div className={`${classes.header} card-header-bg row jc-between ai-center px-2 py-2`}>
                 <div className={`row jc-center ai-center`}>
 

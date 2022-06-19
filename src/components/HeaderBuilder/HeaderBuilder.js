@@ -5,6 +5,7 @@ import {Login , Dashboard} from "../../routes/routes";
 import {useDispatch, useSelector} from "react-redux";
 import {Trans, useTranslation} from "react-i18next";
 import ReactTooltip from "react-tooltip";
+import * as Routes from "../../routes/routes";
 import {toast} from "react-hot-toast";
 import {logOut} from "../../pages/Login/api/auth";
 import {images} from "../../assets/images";
@@ -38,8 +39,9 @@ const HeaderBuilder = ({children}) => {
         <div className={`${classes.container} container row jc-between ai-center px-2`}>
             <div className={`row jc-between ai-center ${classes.content}`}>
                 <div className={`flex jc-start ai-center  width-30`}>
-
-                    <img src={images.opexLogoPlus} alt="" className={`img-lg-plus`}/>
+                    <Link to={Routes.Landing}>
+                        <img src={images.opexLogoPlus} alt="" className={`img-lg-plus`}/>
+                    </Link>
                 </div>
 
                 <div className={`width-40 text-center`}>

@@ -510,6 +510,7 @@
   "MarketView": {
     "title": "روند 24 ساعته",
     "mostIncrease": "بیشترین افزایش",
+    "mostTrade": "بیشترین تعداد معامله",
     "greatestReduction": "بیشترین کاهش",
     "MaxTransactionVolume": "بیشترین حجم معامله",
     "MinTransactionVolume": "کمترین حجم معامله"
