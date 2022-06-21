@@ -5,7 +5,7 @@ import classes from "../../Login.module.css";
 import TextInput from "../../../../components/TextInput/TextInput";
 import LoginFormLoading from "../LoginLoading/LoginFormLoading";
 import {setUserAccountInfoInitiate, setUserInfo, setUserTokensInitiate} from "../../../../store/actions";
-import {useNavigate} from "react-router-dom";
+import {useLocation, useNavigate} from "react-router-dom";
 import {useTranslation} from "react-i18next";
 import {setKYCStatusInitiate} from "../../../../store/actions/auth";
 import Button from "../../../../components/Button/Button";
@@ -20,11 +20,13 @@ const LoginForm = () => {
     const {t} = useTranslation();
     const navigate = useNavigate();
     const dispatch = useDispatch();
+    const location = useLocation();
     const [isLoading, setLoading] = useState(false);
     const [loginError, setLoginError] = useState(false);
     const [needOTP, setNeedOTP] = useState(undefined);
     const [forgetPassword, setForgetPassword] = useState(false);
     const [credential, setCredential] = useState({username: "", password: "", otp: ""});
+    const from = location.state?.from?.pathname || "/";
 
 
     const agent = [deviceType , browserName , fullBrowserVersion]
@@ -87,7 +89,7 @@ const LoginForm = () => {
             dispatch(setUserInfo(jwt));
             dispatch(setKYCStatusInitiate())
             dispatch(setUserAccountInfoInitiate())
-            return navigate("/", { replace: true });
+            return navigate(from, { replace: true });
         }
         setLoading(false);
     };

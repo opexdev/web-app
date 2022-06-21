@@ -65,6 +65,8 @@
     "BUSD": "BUSD",
     "DOGE": "DOGE",
     "LTC": "LTC",
+    "TBNB": "TBUSD",
+    "TBUSD": "TBUSD",
     "BCH": "BCH"
   },
   "routes": {
@@ -180,6 +182,7 @@
   },
   "charts": {
     "title": "Charts",
+    "noChartData": "No information found!",
     "globalChart": "Global",
     "opexChart": "Opex"
   },

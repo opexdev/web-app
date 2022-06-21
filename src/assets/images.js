@@ -10,6 +10,8 @@ import bitcoin from "./images/src/bitcoin.svg";
 import testBitcoin from "./images/src/testBitcoin.svg";
 import testEthereumLight from "./images/src/testEthereumLight.svg";
 import testTether from "./images/src/testTether.svg";
+import testBinanceUSD from "./images/src/testbinanceUSD.svg";
+import testBinance from "./images/src/testBinance.svg";
 import dogecoin from "./images/src/dogecoin.svg";
 import bitcoinCash from "./images/src/bitcoinCash.svg";
 import litecoin from "./images/src/litecoin.svg";
@@ -51,7 +53,9 @@ export const images = {
   BTC: bitcoin,
   TBTC: testBitcoin,
   TETH: testEthereumLight,
+  TBNB: testBinance,
   TUSDT: testTether,
+  TBUSD: testBinanceUSD,
   DOGE: dogecoin,
   BCH: bitcoinCash,
   LTC: litecoin,

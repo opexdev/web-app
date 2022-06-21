@@ -1,7 +1,7 @@
-export const Dashboard = "/dashboard";
+export const Dashboard = "/";
 export const MobileDashboard = "/dashboard";
 export const Login = "/login";
-export const Landing = "/";
+export const Landing = "/landing";
 export const AllMarket = "/all-market";
 export const Wallet = "/wallet";
 export const Technical = "/technical";

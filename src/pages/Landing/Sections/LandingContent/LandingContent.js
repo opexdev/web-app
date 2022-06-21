@@ -33,7 +33,7 @@ const LandingContent = () => {
                     <PopularCryptocurrencies/>
                 </div>
                 <div className={`flex jc-center ai-center width-90 m-auto`} style={{height:"70vh" , backgroundColor: ""}}>
-                    <img src={isDark ? images.OpexPanelMockupDark : images.OpexPanelMockupLight} alt="OpexMockup" loading="lazy"/>
+                    <img src={isDark ? images.OpexPanelMockupDark : images.OpexPanelMockupLight} alt="OpexMockup" loading="lazy" style={{width:"40%"}}/>
                 </div>
                 <Footer/>
             </ScrollBar>
