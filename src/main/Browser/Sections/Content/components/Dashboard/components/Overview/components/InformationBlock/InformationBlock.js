@@ -22,9 +22,10 @@ const InformationBlock = ({period}) => {
         const infoBlockController = new AbortController();
         getOverview(activePair, period, infoBlockController)
             .then((res) => {
+                setError(false)
                 isMounted && setInformation(res.data[0])
-            }).catch(() => {
-                setError(true)
+            }).catch((e) => {
+                if (e.code !== "ERR_CANCELED")  setError(true)
             }).finally(() => {
                 setIsLoading(false)
             });
