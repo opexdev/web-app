@@ -17,8 +17,6 @@ const Verify = () => {
 
     const result = new URLSearchParams(useLocation().search).get("result");
 
-    console.log("result :", result)
-
     const [status, setStatus] = useState()
 
     useEffect(() => {

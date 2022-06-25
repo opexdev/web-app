@@ -24,3 +24,31 @@
     color: #000 !important;
 
 }
+.forgetPassWordHeader{
+    height: 18%
+}
+
+.forgetPassWordContent{
+    height: 64%
+}
+
+.forgetPassWordFooter{
+    height: 18%
+}
+
+
+.passwordInput {
+    margin: 1vh 0;
+    width: 100%;
+}
+.passwordInput :global(.lead) {
+    width: 45%;
+    cursor: pointer;
+}
+.passwordInput :global(.after) {
+    width: 12.5%;
+    cursor: pointer;
+}
+.passwordInput :global(input) {
+    width: 42.5% !important;
+}

@@ -9,7 +9,7 @@ export const Technical = "/technical";
 
 export const User = "/user";
 export const UserVerifyRelative = "verify";
-export const UserForgetPasswordRelative = "forgetpassword";
+export const UserForgetPasswordRelative = "forget-password";
 
 
 
