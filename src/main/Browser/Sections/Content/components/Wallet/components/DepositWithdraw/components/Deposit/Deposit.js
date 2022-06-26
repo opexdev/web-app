@@ -8,15 +8,18 @@ import {getDepositAddress} from "../../../../api/wallet";
 import QRCode from "react-qr-code";
 import {toast} from "react-hot-toast";
 import IRT from "./components/IRT/IRT";
+import Error from "../../../../../../../../../../components/Error/Error";
+import Loading from "../../../../../../../../../../components/Loading/Loading";
 
 
 const Deposit = () => {
 
     const {t} = useTranslation();
-
     const {id} = useParams();
     const addressRef = useRef(null);
     const [address, setAddress] = useState("")
+    const [isLoading, setIsLoading] = useState(true)
+    const [error, setError] = useState(false)
 
     const copyToClipboard = () => {
         addressRef.current.select();
@@ -26,15 +29,20 @@ const Deposit = () => {
         />);
     };
 
-    useEffect(() => {
+    const getAddress = () => {
         setAddress("")
-        getDepositAddress(id).then((res) => {
-            if (res && res.status === 200) {
+        setError(false)
+        setIsLoading(true)
+        getDepositAddress(id)
+            .then((res) => {
                 setAddress(res.data.address)
-            } else {
-                setAddress("0x00000000000000000000000")
-            }
-        })
+            })
+            .catch(() => setError(true))
+            .finally(() => setIsLoading(false))
+    }
+
+    useEffect(() => {
+        if (id !== "IRT") getAddress()
     }, [id]);
 
     const helpText = () => {
@@ -122,7 +130,6 @@ const Deposit = () => {
                 </div>
             </div>
         }
-
     }
 
     const lowestPrice = (id) => {
@@ -141,10 +148,15 @@ const Deposit = () => {
     if (id === "IRT") {
         return <IRT/>
     }
+    if (isLoading) {
+        return <Loading/>
+    }
+    if (error) {
+        return <Error retryFunc={getAddress}/>
+    }
 
     return (
         <div className={`px-1 py-2 row jc-between ${classes.content}`}>
-
             <div className="col-80 column jc-between">
                     <span>
                         <Trans
@@ -154,7 +166,6 @@ const Deposit = () => {
                                 currency: t("currency." + id)
                             }}
                         />
-
                     </span>
                 <TextInput
                     after={
@@ -170,9 +181,7 @@ const Deposit = () => {
                     customRef={addressRef}
                     value={address}
                 />
-                <span>
-                        {helpText()}
-                    </span>
+                <span>{helpText()}</span>
             </div>
             <div className={`col-20 py-1 flex ai-center jc-center`}>
                 <QRCode
@@ -180,12 +189,10 @@ const Deposit = () => {
                     bgColor="var(--cardBody)"
                     fgColor="var(--textColor)"
                     level='L'
-                    //className={classes.QRStyle}
                     size={140}
                 />
             </div>
         </div>
     )
-
 }
 export default Deposit;

@@ -23,18 +23,11 @@ export const sendWithdrawReq = async (amount, currency, address, fee, network) =
     })
 }
 
-export const getDepositAddress = async (currency) => {
-    return await axios.get(`sapi/v1/capital/deposit/address?coin=${currency.toUpperCase()}&timestamp=${Date.now()}`, {
+export const getDepositAddress = (currency) => {
+    return axios.get(`sapi/v1/capital/deposit/address?coin=${currency.toUpperCase()}&timestamp=${Date.now()}`, {
         headers: {
             "Content-Type": 'application/x-www-form-urlencoded'
         }
-    }).then((res) => {
-        return res;
-    }).catch((e) => {
-        if (!e.response) {
-            return false;
-        }
-        return e.response;
     })
 }
 
