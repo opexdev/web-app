@@ -15,7 +15,7 @@ const MarketChart = ({type}) => {
     const chart = useRef();
     const [error, setError] = useState(false)
 
-    const activePair = useSelector((state) => state.exchange.activePair)
+    const activePairSymbol = useSelector((state) => state.exchange.activePair.symbol)
     const isDark = useSelector((state) => state.global.isDark)
 
     const chartContainerRef = useRef();
@@ -75,7 +75,7 @@ const MarketChart = ({type}) => {
         const candleSeries = chart.current.addCandlestickSeries(isDark ? darkTheme : candleColors);
         const volumeSeries = chart.current.addHistogramSeries(histogramColors);
 
-        getChartData(activePair, type)
+        getChartData(activePairSymbol, type)
             .then((res) => {
                 const candles = parseCandleData(res.data)
                 candleSeries.setData(candles);
@@ -91,7 +91,7 @@ const MarketChart = ({type}) => {
                 chart.current = null;
             }
         };
-    }, [activePair,type]);
+    }, [activePairSymbol,type]);
 
     useEffect(() => {
         i18n.on("languageChanged", (lng) => {

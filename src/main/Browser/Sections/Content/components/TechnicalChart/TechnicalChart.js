@@ -23,8 +23,7 @@ const TechnicalChart = (props) => {
             }`}>
             <ReactTooltip data-html={true} data-effect="float"/>
             <MainMenu/>
-            <div
-                className={`column ${classes.content}`}>
+            <div className={`column ${classes.content}`}>
                 <AdvanceTradingView/>
             </div>
         </div>

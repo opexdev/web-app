@@ -14,10 +14,10 @@ export const parseCandleData = (candles) => {
     });
 }
 
-export const getChartData = (activePair,type = "Global", interval = "1d", limit = "200") => {
+export const getChartData = (activePairSymbol,type = "Global", interval = "1d", limit = "200") => {
 
     const url = type === "Global" ? "/binance/api/v3/klines" : "/api/v3/klines";
-    const symbol = type === "Global" ? removeTestCoin(activePair.symbol) : activePair.symbol;
+    const symbol = type === "Global" ? removeTestCoin(activePairSymbol) : activePairSymbol;
 
     const params = new URLSearchParams();
     params.append('symbol', symbol);
