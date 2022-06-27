@@ -3,13 +3,14 @@ import classes from "../../TradingView.module.css";
 import * as LightweightCharts from "lightweight-charts";
 import {useSelector} from "react-redux";
 import moment from "moment-jalaali";
-import {getGlobalChartData} from "../../api/tradingView";
+import {getChartData, parseCandleData} from "../../api/tradingView";
 import {candleColors, darkTheme, histogramColors, lightTheme} from "../../../../../../../../../../constants/chart";
 import i18n from "i18next";
-import Error from "../../../../../../../../../../components/Error/Error";
+import {useTranslation} from "react-i18next";
 
 
-const MarketChart = () => {
+const MarketChart = ({type}) => {
+    const {t} = useTranslation();
     let chartProperties;
     const chart = useRef();
     const [error, setError] = useState(false)
@@ -28,6 +29,7 @@ const MarketChart = () => {
     }
 
     useEffect(() => {
+        setError(false)
         const fontFamily = (i18n.language === undefined || i18n.language === "fa") ? "iranyekan" : "Segoe UI"
         chartProperties = {
             layout: {
@@ -73,10 +75,15 @@ const MarketChart = () => {
         const candleSeries = chart.current.addCandlestickSeries(isDark ? darkTheme : candleColors);
         const volumeSeries = chart.current.addHistogramSeries(histogramColors);
 
-        getGlobalChartData(activePair).then((candles) => {
-            candleSeries.setData(candles);
-            volumeSeries.setData(candles);
-        }).catch(() => setError(true))
+        getChartData(activePair, type)
+            .then((res) => {
+                const candles = parseCandleData(res.data)
+                candleSeries.setData(candles);
+                volumeSeries.setData(candles);
+            }).catch((e) => {
+            console.log(e)
+            setError(t('charts.noChartData'))
+        })
 
         return () => {
             if (chart.current !== null) {
@@ -84,7 +91,7 @@ const MarketChart = () => {
                 chart.current = null;
             }
         };
-    }, [activePair]);
+    }, [activePair,type]);
 
     useEffect(() => {
         i18n.on("languageChanged", (lng) => {
@@ -138,12 +145,10 @@ const MarketChart = () => {
         }
     }, [isDark]);
 
-    if (error) return <Error/>
     return (
-        <div
-            ref={chartContainerRef}
-            className={`container  ${classes.chartContainer}`}
-        />
+        <div ref={chartContainerRef} className={`container  ${classes.chartContainer}`}>
+            <p className={classes.error}>{error}</p>
+        </div>
     );
 };
 

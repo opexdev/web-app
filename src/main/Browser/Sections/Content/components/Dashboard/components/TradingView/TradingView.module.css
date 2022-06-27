@@ -6,6 +6,7 @@
   padding: 0 1vw;
   flex-direction: row;
   direction: ltr;
+  position: relative;
 }
 :global(div[data-highcharts-chart]) {
   width: 100%;
@@ -27,4 +28,14 @@
 :global(.highcharts-color-1) {
   fill: var(--activeTab);
   stroke: var(--activeTab);
+}
+.error {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  text-align: center;
+  z-index: 2;
+  vertical-align: text-bottom;
 }

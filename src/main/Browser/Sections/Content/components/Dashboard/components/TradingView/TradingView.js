@@ -1,19 +1,14 @@
 import React from "react";
 import {useTranslation} from "react-i18next";
-
-import OpexChart from "./components/OpexChart/OpexChart";
-import GlobalChart from "./components/GlobalChart/GlobalChart";
 import AccordionBox from "../../../../../../../../components/AccordionBox/AccordionBox";
 import MarketChart from "./components/MarketChart/MarketChart";
 
 const TradingView = () => {
     const {t} = useTranslation();
-
     const charts = [
         {title: t("charts.globalChart"), body: <MarketChart/>},
-        {title: t("charts.opexChart"), body: <OpexChart/>},
+        {title: t("charts.opexChart"), body: <MarketChart type="Opex"/>},
     ];
-
     return (
         <div
             className={`container card-background card-border`} style={{height:"50vh"}}>
@@ -24,6 +19,5 @@ const TradingView = () => {
         </div>
     );
 };
-
 
 export default TradingView;

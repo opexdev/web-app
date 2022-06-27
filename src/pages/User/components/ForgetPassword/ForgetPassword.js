@@ -4,21 +4,15 @@ import {Trans, useTranslation} from "react-i18next";
 import Button from "../../../../components/Button/Button";
 import Icon from "../../../../components/Icon/Icon";
 import TextInput from "../../../../components/TextInput/TextInput";
-import Error from "../../../../components/Error/Error";
-import Loading from "../../../../components/Loading/Loading";
 import LoginFormLoading from "../../../Login/components/LoginLoading/LoginFormLoading";
-import {sendChangePassword} from "../../../../main/Browser/Sections/Content/components/Settings/api/settings";
-import {toast} from "react-hot-toast";
 import {useNavigate} from "react-router-dom";
 import {useSelector} from "react-redux";
 
 const ForgetPassword = () => {
-    const {t} = useTranslation();
 
+    const {t} = useTranslation();
     let navigate = useNavigate();
     const isLogin = useSelector((state) => state.auth.isLogin)
-
-    const [error, setError] = useState(false);
     const [loading, setLoading] = useState(false);
 
     const [changePassword, setChangePassword] = useState({
@@ -154,47 +148,41 @@ const ForgetPassword = () => {
         }*/
 
         setLoading(true)
+        /*
+                const data = {
+                    newPassword: changePassword.newPassword.value,
+                    confirmation: changePassword.confirmation.value,
+                }
 
-        const data = {
-            newPassword: changePassword.newPassword.value,
-            confirmation: changePassword.confirmation.value,
-        }
+                const ActivateOTPReq = await sendChangePassword(data);
 
-        /*const ActivateOTPReq = await sendChangePassword(data);
+                if (ActivateOTPReq && ActivateOTPReq.status === 204) {
+                    setLoading(false)
+                    setChangePassword({
+                        newPassword: {value: "", error: []},
+                        confirmation: {value: "", error: []},
+                        currentPassword: {value: "", error: []},
+                    })
+                    toast.success(<Trans
+                        i18nKey="ChangePassword.success"
+                    />);
 
-        if (ActivateOTPReq && ActivateOTPReq.status === 204) {
-            setLoading(false)
-            setChangePassword({
-                newPassword: {value: "", error: []},
-                confirmation: {value: "", error: []},
-                currentPassword: {value: "", error: []},
-            })
-            toast.success(<Trans
-                i18nKey="ChangePassword.success"
-            />);
+                } else if (ActivateOTPReq && ActivateOTPReq.status === 403) {
+                    setLoading(false)
+                    setChangePassword({
+                        newPassword: {...changePassword.newPassword, error: []},
+                        confirmation: {...changePassword.confirmation, error: []},
+                        currentPassword: {...changePassword.currentPassword, error: [t("ChangePassword.currentPasswordError")]},
+                    })
+                    toast.error(<Trans
+                        i18nKey="ChangePassword.error"
+                    />);
 
-        } else if (ActivateOTPReq && ActivateOTPReq.status === 403) {
-            setLoading(false)
-            setChangePassword({
-                newPassword: {...changePassword.newPassword, error: []},
-                confirmation: {...changePassword.confirmation, error: []},
-                currentPassword: {...changePassword.currentPassword, error: [t("ChangePassword.currentPasswordError")]},
-            })
-            toast.error(<Trans
-                i18nKey="ChangePassword.error"
-            />);
-
-        } else {
-            setError(true)
-            setLoading(false)
-        }*/
-
-
-
+                } else {
+                    setError(true)
+                    setLoading(false)
+                }*/
     }
-
-
-
 
     return (
         <form onSubmit={buttonClickHandler} className={`${classes.content} card-border column`}>
@@ -202,10 +190,7 @@ const ForgetPassword = () => {
                 <h3>{t("ChangePassword.title")}</h3>
             </div>
             <div className={`${classes.forgetPassWordContent} column jc-center ai-center  m-auto`}>
-
-
                 {content()}
-
             </div>
             <div className={`${classes.forgetPassWordFooter} width-35 m-auto`}>
                 <Button
@@ -214,7 +199,6 @@ const ForgetPassword = () => {
                     type="submit"
                 />
             </div>
-
         </form>
     );
 };
