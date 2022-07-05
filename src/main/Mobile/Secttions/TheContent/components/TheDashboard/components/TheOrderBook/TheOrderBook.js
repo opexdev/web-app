@@ -2,16 +2,16 @@ import React, {Fragment, useEffect, useState} from "react";
 import classes from "./TheOrderBook.module.css";
 import {connect} from "react-redux";
 import {useTranslation} from "react-i18next";
-import {getOrderBook} from "../../../../../../../Browser/Sections/Content/components/Dashboard/components/OrderBook/api/orderBook";
+import {getOrderBook} from "../../../../../../../Browser/Pages/UserPanel/Sections/Content/components/Dashboard/components/OrderBook/api/orderBook";
 import useInterval from "../../../../../../../../Hooks/useInterval";
 import Error from "../../../../../../../../components/Error/Error";
 import {isIOS} from "react-device-detect";
 import TheOrderBookTable from "./components/TheOrderBookTable/TheOrderBookTable";
 import Loading from "../../../../../../../../components/Loading/Loading";
 import OrderBookTableSafari
-    from "../../../../../../../Browser/Sections/Content/components/Dashboard/components/OrderBook/components/OrderBookTableSafari/OrderBookTableSafari";
+    from "../../../../../../../Browser/Pages/UserPanel/Sections/Content/components/Dashboard/components/OrderBook/components/OrderBookTableSafari/OrderBookTableSafari";
 import OrderBookTable
-    from "../../../../../../../Browser/Sections/Content/components/Dashboard/components/OrderBook/components/OrderBookTable/OrderBookTable";
+    from "../../../../../../../Browser/Pages/UserPanel/Sections/Content/components/Dashboard/components/OrderBook/components/OrderBookTable/OrderBookTable";
 import TheOrderBookTableSafari from "./components/TheOrderBookTableSafari/TheOrderBookTableSafari";
 
 

@@ -5,13 +5,13 @@ import {connect} from "react-redux";
 import {setUserAccountInfo} from "../../store/actions";
 import Button from "../Button/Button";
 import {Link} from "react-router-dom";
-import * as Routes from "../../routes/routes";
-import {getDepositAddress} from "../../main/Browser/Sections/Content/components/Wallet/api/wallet";
+import * as Routes from "../../main/Browser/Routes/routes";
+import {getDepositAddress} from "../../main/Browser/Pages/UserPanel/Sections/Content/components/Wallet/api/wallet";
 import QRCode from "react-qr-code";
 import Icon from "../Icon/Icon";
 import TextInput from "../TextInput/TextInput";
 import {toast} from "react-hot-toast";
-import {Login} from "../../routes/routes";
+import {Login} from "../../main/Browser/Routes/routes";
 
 
 const Popup = (props) => {

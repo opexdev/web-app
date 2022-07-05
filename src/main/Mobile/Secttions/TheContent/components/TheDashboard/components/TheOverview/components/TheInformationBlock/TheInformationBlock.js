@@ -2,7 +2,7 @@ import React, {useEffect, useState} from "react";
 import classes from "../../TheOverview.module.css";
 import {useTranslation} from "react-i18next";
 import {connect} from "react-redux";
-import {getOverview} from "../../../../../../../../../Browser/Sections/Content/components/Dashboard/components/Overview/api/overview";
+import {getOverview} from "../../../../../../../../../Browser/Pages/UserPanel/Sections/Content/components/Dashboard/components/Overview/api/overview";
 import Loading from "../../../../../../../../../../components/Loading/Loading";
 import Error from "../../../../../../../../../../components/Error/Error";
 

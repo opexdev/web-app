@@ -70,10 +70,10 @@
     "BCH": "بیتکوین کش"
   },
   "routes": {
-    "/settings/profile": "مشخصات کاربری",
-    "/settings/security": "امنیت",
-    "/settings/personalization": "سفارشی‌سازی",
-    "/settings/authentication": "احراز هویت کاربری"
+    "/panel/settings/profile": "مشخصات کاربری",
+    "/panel/settings/security": "امنیت",
+    "/panel/settings/personalization": "سفارشی‌سازی",
+    "/panel/settings/authentication": "احراز هویت کاربری"
   },
   "orderStatus": {
     "NEW": "جاری شده",

@@ -1,7 +1,7 @@
 import React from "react";
 import classes from "./TheNavMenu.module.css";
 import {NavLink} from "react-router-dom";
-import * as Routes from "../../../../../../../../routes/routes";
+import * as Routes from "../../../../../../../Browser/Routes/routes";
 import Icon from "../../../../../../../../components/Icon/Icon";
 
 

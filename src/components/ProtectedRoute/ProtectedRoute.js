@@ -1,5 +1,5 @@
 import React from "react";
-import {Login} from "../../routes/routes";
+import {Login} from "../../main/Browser/Routes/routes";
 import {Navigate, Outlet, useLocation} from "react-router-dom";
 import {useSelector} from "react-redux";
 

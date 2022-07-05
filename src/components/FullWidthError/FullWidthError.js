@@ -3,7 +3,7 @@ import useQuery from "../../Hooks/useQuery";
 import {loadConfig} from "../../store/actions";
 import {useTranslation} from "react-i18next";
 import Button from "../Button/Button";
-import classes from "../../pages/User/User.module.css";
+import classes from "../../main/Browser/Pages/User/User.module.css";
 import React from "react";
 import {images} from "../../assets/images";
 

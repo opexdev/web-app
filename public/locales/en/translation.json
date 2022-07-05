@@ -70,10 +70,10 @@
     "BCH": "BCH"
   },
   "routes": {
-    "/settings/profile": "User Profile",
-    "/settings/security": "Security",
-    "/settings/personalization": "Customize",
-    "/settings/authentication": "Identity Verification"
+    "/panel/settings/profile": "User Profile",
+    "/panel/settings/security": "Security",
+    "/panel/settings/personalization": "Customize",
+    "/panel/settings/authentication": "Identity Verification"
   },
   "orderStatus": {
     "NEW": "New Order",

@@ -1,9 +1,9 @@
 import React from "react";
 import classes from "./TheMenu.module.css";
-import * as Routes from "../../../../routes/routes";
+import * as Routes from "../../../Browser/Routes/routes";
 import Icon from "../../../../components/Icon/Icon";
 import {NavLink} from "react-router-dom";
-import {MobileDashboard, Overview} from "../../../../routes/routes";
+import {MobileDashboard, Overview} from "../../../Browser/Routes/routes";
 
 
 const TheMenu = () => {

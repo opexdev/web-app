@@ -1,29 +1,31 @@
-import React, {useEffect} from "react";
+import React, {useEffect , Fragment} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {Route, Routes} from "react-router-dom";
 import i18n from "i18next";
 import ReactTooltip from "react-tooltip";
-import * as RoutesName from "../../routes/routes";
+import * as RoutesName from "./Routes/routes";
 import {Toaster} from "react-hot-toast";
-import Login from "../../pages/Login/Login";
-import Guide from "../../pages/Guide/Guide";
+import Login from "./Pages/Login/Login";
+import Guide from "./Pages/Guide/Guide";
 import ProtectedRoute from "../../components/ProtectedRoute/ProtectedRoute";
-import MainMenu from "./Sections/MainMenu/MainMenu";
-import SubMenu from "./Sections/SubMenu/SubMenu";
-import Header from "./Sections/Header/Header";
-import Content from "./Sections/Content/Content";
+import MainMenu from "./Pages/UserPanel/Sections/MainMenu/MainMenu";
+import SubMenu from "./Pages/UserPanel/Sections/SubMenu/SubMenu";
+import Header from "./Pages/UserPanel/Sections/Header/Header";
+import Content from "./Pages/UserPanel/Sections/Content/Content";
 import FullWidthLoading from "../../components/FullWidthLoading/FullWidthLoading";
 import {loadConfig, setInfoMessage, setUserAccountInfoInitiate} from "../../store/actions";
-import TechnicalChart from "./Sections/Content/components/TechnicalChart/TechnicalChart";
-import "./Browser.css"
+import TechnicalChart from "./Pages/UserPanel/Sections/Content/components/TechnicalChart/TechnicalChart";
+import "./Styles/Browser.css"
 import useQuery from "../../Hooks/useQuery";
 import useInterval from "../../Hooks/useInterval";
 import {setLastPriceInitiate} from "../../store/actions/exchange";
 import Info from "../../components/Info/Info";
 import FullWidthError from "../../components/FullWidthError/FullWidthError";
-import User from "../../pages/User/User";
-import Landing from "../../pages/Landing/Landing";
-import AllMarket from "../../pages/AllMarket/AllMarket";
+import User from "./Pages/User/User";
+import Landing from "./Pages/Landing/Landing";
+import AllMarket from "./Pages/AllMarket/AllMarket";
+import {Panel} from "./Routes/routes";
+import UserPanel from "./Pages/UserPanel/UserPanel";
 
 
 const Browser = () => {
@@ -97,29 +99,19 @@ const Browser = () => {
         return <FullWidthError/>
     }
     return (
-        <Routes>
-            <Route path={RoutesName.Login} element={<Login/>}/>
-            <Route path={RoutesName.User + "/*"} element={<User/>}/>
-            <Route path={RoutesName.Landing} element={<Landing/>}/>
-            <Route path={RoutesName.AllMarket} element={<AllMarket/>}/>
-            <Route path={RoutesName.Guide} element={<Guide/>}/>
-            <Route element={<ProtectedRoute/>}>
-                <Route path={RoutesName.Technical} element={<TechnicalChart/>}/>
-            </Route>
-            <Route path="*" element={<div className="row">
-                <MainMenu isLogin={isLogin}/>
-                <SubMenu isLogin={isLogin}/>
-                <div className="column content">
-                    <Header/>
-                    <Info/>
-                    <div style={{display: "flex", flex: 1}}>
-                        <Content/>
-                    </div>
-                </div>
-                <ReactTooltip data-html={true} data-effect="float"/>
-                <Toast/>
-            </div>}/>
-        </Routes>
+        <>
+            <Routes>
+                <Route path={RoutesName.Login} element={<Login/>}/>
+                <Route path={RoutesName.User + "/*"} element={<User/>}/>
+                <Route path={RoutesName.Landing} element={<Landing/>}/>
+                <Route path={RoutesName.AllMarket} element={<AllMarket/>}/>
+                <Route path={RoutesName.Guide} element={<Guide/>}/>
+                <Route path={RoutesName.Panel + "/*"} element={<UserPanel/>}/>
+            </Routes>
+            <ReactTooltip data-html={true} data-effect="float"/>
+            <Toast/>
+        </>
+
     );
 };
 

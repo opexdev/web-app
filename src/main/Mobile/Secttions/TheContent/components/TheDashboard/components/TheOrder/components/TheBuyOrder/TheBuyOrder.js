@@ -8,8 +8,8 @@ import {BN, parsePriceString} from "../../../../../../../../../../utils/utils";
 import {useNavigate} from "react-router-dom";
 import Icon from "../../../../../../../../../../components/Icon/Icon";
 import Button from "../../../../../../../../../../components/Button/Button";
-import {Login as LoginRoute} from "../../../../../../../../../../routes/routes";
-import {createOrder} from "../../../../../../../../../Browser/Sections/Content/components/Dashboard/components/Order/api/order";
+import {Login as LoginRoute} from "../../../../../../../../../Browser/Routes/routes";
+import {createOrder} from "../../../../../../../../../Browser/Pages/UserPanel/Sections/Content/components/Dashboard/components/Order/api/order";
 import {toast} from "react-hot-toast";
 import {images} from "../../../../../../../../../../assets/images";
 

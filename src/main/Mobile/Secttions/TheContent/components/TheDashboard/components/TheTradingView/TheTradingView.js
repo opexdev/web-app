@@ -3,7 +3,7 @@ import classes from "./TheTradingView.module.css";
 import AccordionBox from "../../../../../../../../components/AccordionBox/AccordionBox";
 import {useTranslation} from "react-i18next";
 import MarketChart
-    from "../../../../../../../Browser/Sections/Content/components/Dashboard/components/TradingView/components/MarketChart/MarketChart";
+    from "../../../../../../../Browser/Pages/UserPanel/Sections/Content/components/Dashboard/components/TradingView/components/MarketChart/MarketChart";
 
 const TheTradingView = () => {
     const {t} = useTranslation();

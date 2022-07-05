@@ -2,7 +2,7 @@ import React from "react";
 import classes from "./TheContent.module.css";
 import ScrollBar from "../../../../components/ScrollBar";
 import {Route, Routes} from "react-router-dom";
-import * as RoutesName from "../../../../routes/routes";
+import * as RoutesName from "../../../Browser/Routes/routes";
 import {useTranslation} from "react-i18next";
 import TheDashboard from "./components/TheDashboard/TheDashboard";
 import TheWallet from "./components/TheWallet/TheWallet";

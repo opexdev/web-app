@@ -7,9 +7,9 @@ import FullWidthLoading from "../../components/FullWidthLoading/FullWidthLoading
 import ReactTooltip from "react-tooltip";
 import TheHeader from "./Secttions/TheHeader/TheHeader";
 import TheContent from "./Secttions/TheContent/TheContent";
-import {Overview} from "../../routes/routes";
+import {Overview} from "../Browser/Routes/routes";
 import TheSubHeader from "./Secttions/TheSubHeader/TheSubHeader";
-import Login from "../../pages/Login/Login";
+import Login from "../Browser/Pages/Login/Login";
 import i18n from "i18next";
 
 
