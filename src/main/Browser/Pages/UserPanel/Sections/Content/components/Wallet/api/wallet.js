@@ -118,6 +118,7 @@ export const getAllPayments = async () => {
         return e.response;
     })
 }
+
 export const getOpenPayments = async () => {
     const params = new URLSearchParams();
     return await axios.get(`/ipg/v1/invoice/open`, {data: params}).then((res) => {

@@ -520,7 +520,8 @@
     "errorMsgDefault": "Uploaded photo is not valid!"
   },
   "errorPage" : {
+    "needKYC" : "Access denied for KYC status",
     "reload" : "Try Again",
-    "errorText" : "خطا در ارتباط با سرور"
+    "errorText" : "Server connection error"
   }
 }

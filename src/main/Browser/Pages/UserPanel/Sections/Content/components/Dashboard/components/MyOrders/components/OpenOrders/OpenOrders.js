@@ -2,48 +2,43 @@ import React, {Fragment, useEffect, useState} from "react";
 import moment from "moment-jalaali";
 import classes from "../../MyOrders.module.css";
 import {useTranslation} from "react-i18next";
-import {cancelOpenOrders, getOpenOrder} from "../api/myOrders";
-import {connect} from "react-redux";
+import {useSelector} from "react-redux";
 import Loading from "../../../../../../../../../../../../components/Loading/Loading";
 import ScrollBar from "../../../../../../../../../../../../components/ScrollBar";
 import {BN} from "../../../../../../../../../../../../utils/utils";
 import Icon from "../../../../../../../../../../../../components/Icon/Icon";
 import {toast} from "react-hot-toast";
+import Error from "../../../../../../../../../../../../components/Error/Error";
+import {cancelOrderByOrderID, useMyOpenOrders} from "../../../../../../../../../../../../queries";
 
 
-const OpenOrders = (props) => {
-
-    const {activePair, lastTransaction} = props
+const OpenOrders = () => {
 
     const {t} = useTranslation();
-    const [orders, setOrders] = useState([])
     const [openOrder, setOpenOrder] = useState(null)
-    const [isLoading, setIsLoading] = useState(true)
 
-    const getOpenOrderData = async () => {
-        const openOrder = await getOpenOrder(activePair)
-        if (openOrder.status === 200) {
-             setOrders(openOrder.data.sort((a,b) => moment(b.time).unix() - moment(a.time).unix()))
-        }
-    }
+    const activePair = useSelector((state) => state.exchange.activePair)
+    const lastTransaction = useSelector((state) => state.auth.lastTransaction);
 
-    useEffect(async () => {
-        getOpenOrderData().then(() => setIsLoading(false))
-    }, [activePair, lastTransaction])
+    const {data, isLoading, error, refetch} = useMyOpenOrders(activePair.symbol)
+
+    useEffect(() => {
+        refetch()
+    }, [lastTransaction])
 
     const cancelOrder = async (orderId) => {
-        await cancelOpenOrders(activePair, orderId)
+        await cancelOrderByOrderID(activePair.symbol, orderId)
             .then(() => toast.success(t('myOrders.cancelSuccess')))
             .catch(() => toast.error(t('myOrders.cancelError')))
-        await getOpenOrderData()
-    }
-    if (isLoading) {
-        return <Loading/>
+        refetch()
     }
 
-    if (orders.length === 0) {
-        return <div className={`height-100 flex jc-center ai-center`}>{t("noData")}</div>
-    }
+    if (error) return <Error/>
+
+    if (isLoading) return <Loading/>
+
+    if (data.length === 0) return <div className={`height-100 flex jc-center ai-center`}>{t("noData")}</div>
+
 
     return (
         <ScrollBar>
@@ -65,7 +60,7 @@ const OpenOrders = (props) => {
                 </tr>
                 </thead>
                 <tbody>
-                {orders.sort((a, b) => a.time - b.time).map((tr, index) => {
+                {data.map((tr, index) => {
                         const origQty = new BN(tr.origQty)
                         const executedQty = new BN(tr.executedQty)
                         const pricePerUnit = new BN(tr.price)
@@ -142,12 +137,4 @@ const OpenOrders = (props) => {
     )
 }
 
-
-const mapStateToProps = (state) => {
-    return {
-        activePair: state.exchange.activePair,
-        lastTransaction: state.auth.lastTransaction,
-    };
-};
-
-export default connect(mapStateToProps, null)(OpenOrders);
+export default OpenOrders;
