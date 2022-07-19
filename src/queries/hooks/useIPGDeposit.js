@@ -7,10 +7,8 @@ export const useIPGDeposit = () => {
         {
             refetchOnMount: true,
             staleTime: 5000,
-            enabled: false
         });
 }
-
 const getIPGDeposit = async () => {
     const {data} = await axios.get(`/ipg/v1/invoice`)
     return data;

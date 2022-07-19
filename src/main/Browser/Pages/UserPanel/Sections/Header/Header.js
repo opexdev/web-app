@@ -4,7 +4,7 @@ import {useTranslation} from "react-i18next";
 import {useDispatch, useSelector} from "react-redux";
 import {Link, Route, Routes, useLocation} from "react-router-dom";
 import * as RoutesName from "../../../../Routes/routes";
-import {Login, Panel, SettingsRelative, WalletRelative} from "../../../../Routes/routes";
+import {Login} from "../../../../Routes/routes";
 import MarketHeader from "./components/MarketHeader/MarketHeader";
 import WalletHeader from "./components/WalletHeader/WalletHeader";
 import ReactTooltip from "react-tooltip";
@@ -13,8 +13,8 @@ import ProtectedRoute from "../../../../../../components/ProtectedRoute/Protecte
 import {images} from "../../../../../../assets/images";
 import {setLogoutInitiate} from "../../../../../../store/actions";
 import {toast} from "react-hot-toast";
-import {logOut} from "../../../Login/api/auth";
 import Clock from "./components/Clock/Clock";
+import {logout} from "../../../../../../queries";
 
 const Header = () => {
     const {t} = useTranslation();
@@ -25,13 +25,12 @@ const Header = () => {
     const lastName = useSelector((state) => state.auth.lastName)
     let location = useLocation();
 
-
     useEffect(() => {
         ReactTooltip.rebuild();
     });
 
-    const logOutHandler = async () => {
-        logOut().then(()=>{
+    const logOutHandler = () => {
+        logout().then(()=>{
             toast.success(t("header.logOutSuccess"))
             dispatch(setLogoutInitiate())
         }).catch(()=>{

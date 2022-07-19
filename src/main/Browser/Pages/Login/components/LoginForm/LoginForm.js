@@ -7,7 +7,7 @@ import LoginFormLoading from "../LoginLoading/LoginFormLoading";
 import {setUserAccountInfoInitiate, setUserInfo, setUserTokensInitiate} from "../../../../../../store/actions";
 import {useLocation, useNavigate} from "react-router-dom";
 import {useTranslation} from "react-i18next";
-import {setKYCStatusInitiate} from "../../../../../../store/actions/auth";
+import {setKYCStatusInitiate} from "../../../../../../store/actions";
 import Button from "../../../../../../components/Button/Button";
 import jwtDecode from "jwt-decode";
 import OTPForm from "../OTPForm/OTPForm";

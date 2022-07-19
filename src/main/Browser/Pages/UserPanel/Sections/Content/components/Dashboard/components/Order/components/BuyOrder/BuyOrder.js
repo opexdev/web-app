@@ -1,6 +1,5 @@
 import {useDispatch, useSelector} from "react-redux";
 import {toast} from "react-hot-toast";
-import {createOrder} from "../../api/order";
 import classes from "../../Order.module.css";
 import React, {useEffect, useState} from "react";
 import {Trans, useTranslation} from "react-i18next";
@@ -9,6 +8,7 @@ import NumberInput from "../../../../../../../../../../../../components/NumberIn
 import Button from "../../../../../../../../../../../../components/Button/Button";
 import {setLastTransaction} from "../../../../../../../../../../../../store/actions/auth";
 import {images} from "../../../../../../../../../../../../assets/images";
+import {createOrder} from "../../../../../../../../../../../../queries";
 
 const BuyOrder = () => {
 
@@ -100,7 +100,7 @@ const BuyOrder = () => {
                 ...alert,
                 [key]: (<Trans
                     i18nKey="orders.divisibility"
-                    values={{mod:rule.step.toString()}}
+                    values={{mod: rule.step.toString()}}
                 />)
             })
         }
@@ -145,7 +145,7 @@ const BuyOrder = () => {
     };
 
     useEffect(() => {
-        if(order.totalPrice.isGreaterThan(quote)){
+        if (order.totalPrice.isGreaterThan(quote)) {
             return setAlert({
                 ...alert,
                 totalPrice: t('orders.notEnoughBalance')
@@ -212,7 +212,7 @@ const BuyOrder = () => {
     };
 
 
-    const submit = async () => {
+    const submit = () => {
         if (!isLogin) {
             return false
         }
@@ -220,38 +220,36 @@ const BuyOrder = () => {
             return false
         }
         setIsLoading(true)
-        const submitOrder = await createOrder(activePair, "BUY", order)
-        if (!submitOrder) {
-            setIsLoading(false)
-        }
-        if (submitOrder.status === 200) {
-            setOrder({
-                tradeFee: new BN(0),
-                stopLimit: false,
-                stopMarket: false,
-                stopPrice: new BN(0),
-                reqAmount: new BN(0),
-                pricePerUnit: new BN(0),
-                totalPrice: new BN(0),
-            })
-            toast.success(<Trans
-                i18nKey="orders.success"
-                values={{
-                    base: t("currency." + activePair.baseAsset),
-                    quote: t("currency." + activePair.quoteAsset),
-                    type: t("buy"),
-                    reqAmount: order.reqAmount,
-                    pricePerUnit: order.pricePerUnit,
-                }}
-            />);
-            setTimeout(() => dispatch(setLastTransaction(submitOrder.data.transactTime)), 2000);
-        } else {
+        createOrder(activePair.symbol, "BUY", order)
+            .then((res) => {
+                setOrder({
+                    tradeFee: new BN(0),
+                    stopLimit: false,
+                    stopMarket: false,
+                    stopPrice: new BN(0),
+                    reqAmount: new BN(0),
+                    pricePerUnit: new BN(0),
+                    totalPrice: new BN(0),
+                })
+                toast.success(<Trans
+                    i18nKey="orders.success"
+                    values={{
+                        base: t("currency." + activePair.baseAsset),
+                        quote: t("currency." + activePair.quoteAsset),
+                        type: t("buy"),
+                        reqAmount: order.reqAmount,
+                        pricePerUnit: order.pricePerUnit,
+                    }}
+                />);
+                setTimeout(() => dispatch(setLastTransaction(res.data.transactTime)), 2000);
+            }).catch(() => {
             toast.error(t("orders.error"));
             setAlert({
                 ...alert, submit: true
             })
-        }
-        setIsLoading(false)
+        }).finally(() => {
+            setIsLoading(false)
+        })
     }
     const submitButtonTextHandler = () => {
         if (isLoading) {

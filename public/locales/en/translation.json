@@ -362,6 +362,7 @@
     "details": "Details",
     "closeSession": "Close Session",
     "success": "{{location}} session closed successfully.",
+    "failed": "Server error, please try again.",
     "logOutAllSuccess": "Other sessions closed successfully.",
     "logOutAllError": "Server error, please try again.",
     "noData": "Item not found!",

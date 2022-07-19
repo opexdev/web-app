@@ -18,7 +18,7 @@ const IRTTx = () => {
     const {data: txs, isLoading, error, refetch} = useIPGDeposit()
 
     useEffect(() => {
-        if (KYCStatus)  refetch()
+        if (KYCStatus) refetch()
     },[KYCStatus])
 
     const IRTtxStatusClassHandler = (status) => {
@@ -63,12 +63,12 @@ const IRTTx = () => {
                     <th>{t("status")}</th>
                 </tr>
                 </thead>
-                <tbody>{txs.map((tr, index) => (
+                <tbody>{txs.sort((a, b) => moment.utc(b.createDate) - moment.utc(a.createDate)).map((tr, index) => (
                         <tr key={index}>
-                            <td>{moment(tr.time).format("jYY/jMM/jDD")}</td>
-                            <td>{moment(tr.time).format("HH:mm:ss")}</td>
-                            <td className={tr.isDeposit === true ? "text-green" : "text-red"}>{tr.isDeposit === true ? t("deposit") : t("withdrawal")}</td>
-                            <td className={tr.isDeposit === true ? "text-green" : "text-red"}>{new BN(tr.amount).multipliedBy(0.1).toFormat()}{" "}{tr.isDeposit === true ? "+" : "-"}</td>
+                            <td>{moment.utc(tr.createDate).local().format("jYY/jMM/jDD")}</td>
+                            <td>{moment.utc(tr.createDate).local().format("HH:mm:ss")}</td>
+                            <td className="text-green">{t("deposit")}</td>
+                            <td className="text-green">{new BN(tr.amount).multipliedBy(0.1).toFormat()}{" "}{"+"}</td>
                             <td>{t("currency." + id)}</td>
                             <td className={`${IRTtxStatusClassHandler(tr.status)}`}>{t("paymentStatus." + tr.status)}</td>
                         </tr>

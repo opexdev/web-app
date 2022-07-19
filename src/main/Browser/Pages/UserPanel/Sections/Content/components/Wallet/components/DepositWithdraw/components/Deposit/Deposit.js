@@ -1,25 +1,21 @@
-import React, {useEffect, useRef, useState} from "react";
+import React, {useEffect, useRef} from "react";
 import classes from "../../DepositWithdraw.module.css";
 import TextInput from "../../../../../../../../../../../../components/TextInput/TextInput";
 import Icon from "../../../../../../../../../../../../components/Icon/Icon";
 import {useParams} from "react-router-dom";
 import {Trans, useTranslation} from "react-i18next";
-import {getDepositAddress} from "../../../../api/wallet";
 import QRCode from "react-qr-code";
 import {toast} from "react-hot-toast";
-import IRT from "./components/IRT/IRT";
 import Error from "../../../../../../../../../../../../components/Error/Error";
 import Loading from "../../../../../../../../../../../../components/Loading/Loading";
-
+import {useGetDepositAddress} from "../../../../../../../../../../../../queries";
+import IRTDeposit from "./components/IRT/IRTDeposit";
 
 const Deposit = () => {
 
-    const {t} = useTranslation();
     const {id} = useParams();
+    const {t} = useTranslation();
     const addressRef = useRef(null);
-    const [address, setAddress] = useState("")
-    const [isLoading, setIsLoading] = useState(true)
-    const [error, setError] = useState(false)
 
     const copyToClipboard = () => {
         addressRef.current.select();
@@ -29,20 +25,10 @@ const Deposit = () => {
         />);
     };
 
-    const getAddress = () => {
-        setAddress("")
-        setError(false)
-        setIsLoading(true)
-        getDepositAddress(id)
-            .then((res) => {
-                setAddress(res.data.address)
-            })
-            .catch(() => setError(true))
-            .finally(() => setIsLoading(false))
-    }
+    const {data: address, isLoading, error, refetch} = useGetDepositAddress(id)
 
     useEffect(() => {
-        if (id !== "IRT") getAddress()
+        if (id !== "IRT") refetch()
     }, [id]);
 
     const helpText = () => {
@@ -145,15 +131,9 @@ const Deposit = () => {
         }
     };
 
-    if (id === "IRT") {
-        return <IRT/>
-    }
-    if (isLoading) {
-        return <Loading/>
-    }
-    if (error) {
-        return <Error retryFunc={getAddress}/>
-    }
+    if (id === "IRT") return <IRTDeposit/>
+    if (isLoading) return <Loading/>
+    if (error) return <Error retryFunc={refetch}/>
 
     return (
         <div className={`px-1 py-2 row jc-between ${classes.content}`}>
@@ -179,13 +159,13 @@ const Deposit = () => {
                     readOnly={true}
                     type="text"
                     customRef={addressRef}
-                    value={address}
+                    value={address.address}
                 />
                 <span>{helpText()}</span>
             </div>
             <div className={`col-20 py-1 flex ai-center jc-center`}>
                 <QRCode
-                    value={address}
+                    value={address.address}
                     bgColor="var(--cardBody)"
                     fgColor="var(--textColor)"
                     level='L'

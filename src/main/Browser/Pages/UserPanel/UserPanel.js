@@ -8,7 +8,6 @@ import SubMenu from "./Sections/SubMenu/SubMenu";
 import Header from "./Sections/Header/Header";
 import Info from "../../../../components/Info/Info";
 import Content from "./Sections/Content/Content";
-import ReactTooltip from "react-tooltip";
 import {useSelector} from "react-redux";
 
 const UserPanel = () => {

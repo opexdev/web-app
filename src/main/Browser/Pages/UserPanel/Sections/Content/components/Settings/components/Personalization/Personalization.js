@@ -1,20 +1,12 @@
-import React, {Fragment} from "react";
-import {connect} from "react-redux";
+import React from "react";
 import PersonalizationForm from "./components/PersonalizationForm/PersonalizationForm";
 
-const Personalization = (props) => {
-  return (
-    <Fragment>
-      <div className="row">
-        <PersonalizationForm />
-      </div>
-    </Fragment>
-  );
-};
-const mapStateToProps = (state) => {
-  return {
-    activePair: state.exchange.activePair,
-  };
+const Personalization = () => {
+    return (
+        <div className="row">
+            <PersonalizationForm/>
+        </div>
+    );
 };
 
-export default connect(mapStateToProps, null)(Personalization);
+export default Personalization;

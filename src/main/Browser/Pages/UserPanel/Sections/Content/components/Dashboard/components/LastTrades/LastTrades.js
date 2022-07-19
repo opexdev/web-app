@@ -18,8 +18,6 @@ const LastTrades = () => {
     }
     const {data: lastTrades, isLoading, error} = useLastTrades(activePair.symbol, onSuccess)
 
-    console.log("lastTrades :" , lastTrades)
-
     const content = () => {
         if (error) return <Error/>
         if (isLoading) return <Loading/>

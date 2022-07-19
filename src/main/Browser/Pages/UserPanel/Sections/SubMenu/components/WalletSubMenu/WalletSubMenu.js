@@ -4,14 +4,11 @@ import {useTranslation} from "react-i18next";
 import classes from "./WalletSubMenu.module.css";
 import ToggleSwitch from "../../../../../../../../components/ToggleSwitch/ToggleSwitch";
 import WalletListItem from "./components/WalletListItem/WalletListItem";
-import WalletLoading from "./components/WalletLoading/WalletLoading";
-
 
 const WalletSubMenu = () => {
     const {t} = useTranslation();
     const [showZero, setShowZero] = useState(false);
     const assets = useSelector((state) => state.exchange.assets)
-    const isServerData = useSelector((state) => state.auth.isServerData)
 
     return (
         <div className={`container card-background column ${classes.container}`}>
@@ -25,7 +22,7 @@ const WalletSubMenu = () => {
                     <span className={`font-size-sm`}>{t("WalletSubMenu.showZeroBalance")}</span>
                     <ToggleSwitch onchange={()=>setShowZero(prevState => !prevState)} checked={showZero}/>
                 </div>
-                { isServerData ? assets.map((name) => <WalletListItem key={name} name={name} showZero={showZero}/> ) : <WalletLoading/>}
+                { assets.map((name) => <WalletListItem key={name} name={name} showZero={showZero}/> )}
             </div>
         </div>
     );

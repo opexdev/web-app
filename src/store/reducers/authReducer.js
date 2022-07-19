@@ -20,7 +20,6 @@ const initialState = {
     kycReason: null,
     permissions: [],
     lastTransaction: null,
-    wallets: {},
     tradeFee: {},
     isLogin: false,
 };

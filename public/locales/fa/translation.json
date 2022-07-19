@@ -362,6 +362,7 @@
     "details": "جزئیات",
     "closeSession": "بستن نشست",
     "success": "نشست {{location}} با موفقیت بسته شد.",
+    "failed": "خطا در بستن نشست {{location}}، دوباره تلاش کنید.",
     "logOutAllSuccess": "سایر نشست‌ها با موفقیت بسته شد.",
     "logOutAllError": "خطا در سرور، دوباره تلاش کنید.",
     "noData": "موردی یافت نشد!",
