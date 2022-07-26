@@ -9,6 +9,7 @@ import Button from "../../../../../../../../../../../../components/Button/Button
 import {setLastTransaction} from "../../../../../../../../../../../../store/actions/auth";
 import {images} from "../../../../../../../../../../../../assets/images";
 import {createOrder} from "../../../../../../../../../../../../queries";
+import {useGetUserAccount} from "../../../../../../../../../../../../queries/hooks/useGetUserAccount";
 
 const SellOrder = () => {
 
@@ -23,8 +24,9 @@ const SellOrder = () => {
     const bestSellPrice = useSelector((state) => state.exchange.activePairOrders.bestSellPrice)
     const selectedSellOrder = useSelector((state) => state.exchange.activePairOrders.selectedSellOrder)
 
-    const base = useSelector((state) => state.auth.wallets[activePair.baseAsset].free)
-    const quote = useSelector((state) => state.auth.wallets[activePair.quoteAsset].free)
+    const {data: userAccount} = useGetUserAccount()
+    const base = userAccount?.wallets[activePair.baseAsset]?.free || 0;
+    const quote = userAccount?.wallets[activePair.quoteAsset]?.free || 0;
 
     const [alert, setAlert] = useState({
         reqAmount: null,

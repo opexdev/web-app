@@ -1,20 +1,18 @@
-import {login, parseToken} from "../../api/auth";
 import {useDispatch} from "react-redux";
 import React, {useEffect, useState} from "react";
 import classes from "../../Login.module.css";
 import TextInput from "../../../../../../components/TextInput/TextInput";
 import LoginFormLoading from "../LoginLoading/LoginFormLoading";
-import {setUserAccountInfoInitiate, setUserInfo, setUserTokensInitiate} from "../../../../../../store/actions";
 import {useLocation, useNavigate} from "react-router-dom";
 import {useTranslation} from "react-i18next";
-import {setKYCStatusInitiate} from "../../../../../../store/actions";
 import Button from "../../../../../../components/Button/Button";
 import jwtDecode from "jwt-decode";
 import OTPForm from "../OTPForm/OTPForm";
 import {browserName, deviceType, fullBrowserVersion} from "react-device-detect";
 import {validateEmail} from "../../../../../../utils/utils";
 import ForgetPassword from "../ForgetPassword/ForgetPassword";
-
+import {login, parseToken, useGetKycStatus} from "../../../../../../queries";
+import {setUserAccountInfoInitiate, setUserInfo, setUserTokensInitiate} from "../../../../../../store/actions";
 
 const LoginForm = () => {
     const {t} = useTranslation();
@@ -26,77 +24,68 @@ const LoginForm = () => {
     const [needOTP, setNeedOTP] = useState(undefined);
     const [forgetPassword, setForgetPassword] = useState(false);
     const [credential, setCredential] = useState({username: "", password: "", otp: ""});
+    const {refetch: getKycStatus} = useGetKycStatus();
     const from = location.state?.from?.pathname || "/";
 
-
-    const agent = [deviceType , browserName , fullBrowserVersion]
+    const agent = [deviceType, browserName, fullBrowserVersion]
 
     useEffect(() => {
         setNeedOTP(undefined)
-
     }, [credential.username])
 
     useEffect(() => {
         setLoginError(false)
     }, [needOTP])
 
-    if (forgetPassword){
-        return <ForgetPassword returnFunc={()=>setForgetPassword(false)}/>
-    }
+    if (forgetPassword) return <ForgetPassword returnFunc={() => setForgetPassword(false)}/>
 
     const submit = async (e) => {
         e.preventDefault();
-
         if (credential.username.length === 0 || credential.password.length === 0) {
-            setLoginError(t("login.emptyCredentialError"));
-            return false;
+            return setLoginError(t("login.emptyCredentialError"));
         }
 
-        if ( !validateEmail(credential.username) || credential.password.length < 4) {
-            setLoginError(t("login.inputError"));
-
-            return false;
+        if (!validateEmail(credential.username) || credential.password.length < 4) {
+            return setLoginError(t("login.inputError"));
         }
 
         if (needOTP && credential.otp.length < 6) {
             setLoginError(t("login.otpLength"));
             setLoading(false);
-            return false;
+            return;
         }
-
         setLoading(true);
         setLoginError(false);
 
-        const submitResult = await login(credential , agent);
-        if (!submitResult) {
-            setLoginError(t("login.loginError"));
-        }
-        if (submitResult.status === 401) {
-            setLoginError(t("login.wrongPassword"));
-        }
-        if (submitResult.status === 403) {
-            setLoginError(t("login.wrongOTP"));
-            setNeedOTP(true)
-        }
-
-        if (submitResult.status === 400 && submitResult.data.error_description === "Account is not fully set up") {
-            setLoginError(t("login.accountNotActive"));
-        }
-        if (submitResult && submitResult.status === 200) {
-            const userToken = parseToken(submitResult.data);
-            dispatch(setUserTokensInitiate(userToken));
-            const jwt = jwtDecode(userToken.accessToken)
-            dispatch(setUserInfo(jwt));
-            dispatch(setKYCStatusInitiate())
-            dispatch(setUserAccountInfoInitiate())
-            return navigate(from, { replace: true });
-        }
-        setLoading(false);
+        login(credential, agent)
+            .then(async (res) => {
+                const userToken = parseToken(res.data);
+                dispatch(setUserTokensInitiate(userToken));
+                const jwt = jwtDecode(userToken.accessToken)
+                await dispatch(setUserInfo(jwt));
+                dispatch(setUserAccountInfoInitiate())
+                getKycStatus()
+                return navigate(from, {replace: true});
+            })
+            .catch((err) => {
+                if (err?.response?.status === 401) {
+                    return setLoginError(t("login.wrongPassword"));
+                }
+                if (err?.response?.status === 403) {
+                    setLoginError(t("login.wrongOTP"));
+                    return setNeedOTP(true)
+                }
+                if (err?.response?.status === 400 && err?.data?.error_description === "Account is not fully set up") {
+                    return setLoginError(t("login.accountNotActive"));
+                }
+                setLoginError(t("login.loginError"));
+            })
+            .finally(() => {
+                setLoading(false);
+            });
     };
 
-    if (isLoading) {
-        return <LoginFormLoading />
-    }
+    if (isLoading) return <LoginFormLoading/>
 
     const setOTPInputHandler = (val) => {
         setCredential({...credential, otp: val})
@@ -105,7 +94,7 @@ const LoginForm = () => {
     const returnToLogin = () => {
         setNeedOTP(undefined)
         setLoginError(false)
-        setCredential({... credential, otp: ""})
+        setCredential({...credential, otp: ""})
     }
 
     return <form onSubmit={(e) => submit(e)} className={`column ai-center jc-between ${classes.form}`}>
@@ -146,7 +135,7 @@ const LoginForm = () => {
                           onClick={returnToLogin}>{t('login.back')}</span>
                     :
                     <span className="cursor-pointer flex ai-center font-size-sm-plus"
-                          onClick={()=>setForgetPassword(true)}>{t('login.forgetPassword')}</span>
+                          onClick={() => setForgetPassword(true)}>{t('login.forgetPassword')}</span>
                 }
             </div>
         </div>

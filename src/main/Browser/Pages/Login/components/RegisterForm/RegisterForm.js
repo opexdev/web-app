@@ -3,12 +3,13 @@ import React, {useEffect, useState} from "react";
 import TextInput from "../../../../../../components/TextInput/TextInput";
 import LoginFormLoading from "../LoginLoading/LoginFormLoading";
 import {Trans, useTranslation} from "react-i18next";
-import {getCaptcha, getToken, register} from "../../api/auth";
 import {validateEmail} from "../../../../../../utils/utils";
 import Button from "../../../../../../components/Button/Button";
 import Icon from "../../../../../../components/Icon/Icon";
 import {images} from "../../../../../../assets/images";
 import ReactTooltip from "react-tooltip";
+import {getCaptchaImage, getPanelToken, userRegister} from "../../../../../../queries";
+
 
 const RegisterForm = () => {
     const {t} = useTranslation();
@@ -28,42 +29,37 @@ const RegisterForm = () => {
         confirmPassword: {value: "", error: []},
     });
 
-    const captchaReq = async () => {
+    const captchaReq = () => {
         setIsLoading(true)
-        const captchaData = await getCaptcha()
-        if (captchaData && captchaData.status === 200) {
-            setIsLoading(false)
-            setCaptcha({
-                image: {
-                    value: `data:${captchaData.headers['content-type']};base64,${Buffer.from(captchaData.data).toString('base64')}`,
-                    error: []
-                },
-                SessionKey: {value: captchaData.headers['captcha-session-key'], error: []},
-                expireTime: {value: captchaData.headers['captcha-expire-timestamp'], error: []},
+        getCaptchaImage()
+            .then((res) => {
+                setCaptcha({
+                    image: {
+                        value: `data:${res.headers['content-type']};base64,${Buffer.from(res.data).toString('base64')}`,
+                        error: []
+                    },
+                    SessionKey: {value: res.headers['captcha-session-key'], error: []},
+                    expireTime: {value: res.headers['captcha-expire-timestamp'], error: []},
+                })
             })
-        } else {
-            setUserData({...userData, captchaAnswer: {value: "", error: [t("login.captchaServerError")]}})
-            setCaptcha({...captcha, image: {value: undefined, error: []}})
-            setIsLoading(false)
-        }
+            .catch(() => {
+                setUserData({...userData, captchaAnswer: {value: "", error: [t("login.captchaServerError")]}})
+                setCaptcha({...captcha, image: {value: undefined, error: []}})
+            })
+            .finally(() => {
+                setIsLoading(false)
+            });
     }
     useEffect(() => {
-        captchaReq().then(() => setIsLoading(false))
+        captchaReq()
     }, [])
-
-    /*
-    useInterval(async () => {
-        await captchaReq();
-    },  (captcha.expireTime.value)*1000);
-    */
 
     useEffect(() => {
         ReactTooltip.rebuild();
     });
 
-    if (registerStatus === "loading") {
-        return <LoginFormLoading/>
-    }
+    if (registerStatus === "loading") return <LoginFormLoading/>
+
     if (registerStatus === "finish") {
         return <div className={`column jc-center ai-center text-center px-4`} style={{height: "35vh"}}>
             <span>{t('login.registerFinished')}</span>
@@ -72,19 +68,20 @@ const RegisterForm = () => {
                 className={`font-size-sm-plus border-top-dotted pt-1 mt-1`}>{t('login.registerFinishedSpamMail')}</span>
         </div>
     }
+
     if (registerStatus === "finishedWithError") {
         return <div className={`column jc-center ai-center`} style={{height: "30vh"}}>
             <span>{t('login.finishedWithError')}</span>
         </div>
     }
+
     const submit = async (e) => {
         e.preventDefault();
 
-        if (!isFormValid()) {
-            return false
-        }
+        if (!isFormValid()) return
+
         setRegisterStatus("loading");
-        let panelToken = await getToken();
+        const {data: {access_token: panelToken}} = await getPanelToken();
 
         const user = {
             firstName: userData.firstName.value,
@@ -95,21 +92,20 @@ const RegisterForm = () => {
             captchaAnswer: `${captcha.SessionKey.value}-${userData.captchaAnswer.value}`,
         }
 
-        register(user, panelToken)
+        userRegister(user, panelToken)
             .then(() => {
                 setRegisterStatus("finish");
             }).catch((e) => {
-                if (e?.response?.data?.error === "InvalidCaptcha") {
-                    setUserData({...userData, captchaAnswer: {value: "", error: [t("login.InvalidCaptcha")]}})
-                    setRegisterStatus("")
-                }else if (e?.response?.data?.error === "UserAlreadyExists") {
-                    setUserData({...userData, email: {...userData.email, error: [t("login.UserAlreadyExists")]}})
-                    setRegisterStatus("")
-                } else {
-                    setRegisterStatus("finishedWithError");
-                }
-            })
-
+            if (e?.response?.data?.error === "InvalidCaptcha") {
+                setUserData({...userData, captchaAnswer: {value: "", error: [t("login.InvalidCaptcha")]}})
+                setRegisterStatus("")
+            } else if (e?.response?.data?.error === "UserAlreadyExists") {
+                setUserData({...userData, email: {...userData.email, error: [t("login.UserAlreadyExists")]}})
+                setRegisterStatus("")
+            } else {
+                setRegisterStatus("finishedWithError");
+            }
+        })
     };
 
     const inputHandler = (e) => {
@@ -167,7 +163,6 @@ const RegisterForm = () => {
         setUserData(inputs);
         return !isEmpty;
     }
-
 
     const LeadCaptchaHandler = () => {
         if (isLoading) {

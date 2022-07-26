@@ -11,7 +11,6 @@ import Content from "./Sections/Content/Content";
 import {useSelector} from "react-redux";
 
 const UserPanel = () => {
-
     const isLogin = useSelector((state) => state.auth.isLogin)
 
     return (
@@ -29,11 +28,6 @@ const UserPanel = () => {
                         <Content/>
                     </div>
                 </div>
-
-
-                {/*<ReactTooltip data-html={true} data-effect="float"/>*/}
-                {/*<Toast/>*/}
-
             </div>}/>
         </Routes>
     );

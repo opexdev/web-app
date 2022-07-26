@@ -2,16 +2,17 @@ import axios from "axios";
 import {useQuery} from "react-query";
 
 export const useGetChartCandlesticks = (activePairSymbol, type = "Global", interval = "1d", limit = "200") => {
+
     return useQuery(
         ['candlesticks', activePairSymbol, type],
         () => getChartData(activePairSymbol, type, interval, limit),
         {
             initialData: [],
             refetchOnMount: false,
-            refetchInterval: 30000,
             select: (data) => {
                 if (type !== "Global") {
-                    data = data.sort((a, b) => a[0] - b[0])
+                    //data = data.sort((a, b) => a[0] - b[0])
+                    data = data.reverse()
                 }
                 return parseCandleData(data)
             }

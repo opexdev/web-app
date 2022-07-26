@@ -14,9 +14,13 @@ export {useGetChartCandlesticks} from "./hooks/useGetChartCandlesticks";
 export {useGetUserAttributes} from "./hooks/useGetUserAttributes";
 export {useGetUserActiveSessions} from "./hooks/useGetUserActiveSessions";
 export {useGetUserOtpStatus} from "./hooks/useGetUserOtpStatus";
+export {useGetKycStatus} from "./hooks/useGetKycStatus";
 
 
 //apis
+export {login} from "./api/auth";
+export {logout} from "./api/auth";
+export {parseToken} from "./api/auth";
 export {cancelOrderByOrderID} from "./api/orders";
 export {createOrder} from "./api/orders";
 export {sendIPGDepositReq} from "./api/ipg";
@@ -34,5 +38,7 @@ export {requestForChangePassword} from "./api/auth";
 export {setUserProfileAttributes} from "./api/auth";
 export {sendFileToUserStorage} from "./api/auth";
 export {setKycFileToUserAttributes} from "./api/auth";
-export {logout} from "./api/auth";
+export {getCaptchaImage} from "./api/auth";
+export {requestForForgetPasswordEmail} from "./api/auth";
+export {userRegister} from "./api/auth";
 export {getUserAttributes} from "./hooks/useGetUserAttributes";

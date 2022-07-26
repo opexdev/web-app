@@ -29,8 +29,6 @@ const MarketHeader = () => {
         setShowPopUpAsset(currency)
     }
 
-    console.log(lastPrices[activePair.quoteAsset] ,activePair.quoteAsset)
-
     useEffect(() => {
         setShowPopUp(false)
         setShowPopUpAsset(null)

@@ -18,8 +18,8 @@ import AllMarket from "./Pages/AllMarket/AllMarket";
 import UserPanel from "./Pages/UserPanel/UserPanel";
 
 const Browser = () => {
-    const dispatch = useDispatch();
     const query = useQuery();
+    const dispatch = useDispatch();
 
     const isDark = useSelector((state) => state.global.isDark)
     const isLoading = useSelector((state) => state.global.isLoading)

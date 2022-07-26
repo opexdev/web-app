@@ -9,20 +9,24 @@ import Button from "../../../../../../../../../../../../components/Button/Button
 import {setLastTransaction} from "../../../../../../../../../../../../store/actions/auth";
 import {images} from "../../../../../../../../../../../../assets/images";
 import {createOrder} from "../../../../../../../../../../../../queries";
+import {useGetUserAccount} from "../../../../../../../../../../../../queries/hooks/useGetUserAccount";
 
 const BuyOrder = () => {
 
     const {t} = useTranslation();
     const dispatch = useDispatch();
 
+    const {data: userAccount} = useGetUserAccount()
     const [isLoading, setIsLoading] = useState(false)
-    const activePair = useSelector((state) => state.exchange.activePair)
-    const quote = useSelector((state) => state.auth.wallets[activePair.quoteAsset].free)
-    const bestBuyPrice = useSelector((state) => state.exchange.activePairOrders.bestBuyPrice)
 
+    const activePair = useSelector((state) => state.exchange.activePair)
+    const bestBuyPrice = useSelector((state) => state.exchange.activePairOrders.bestBuyPrice)
     const selectedBuyOrder = useSelector((state) => state.exchange.activePairOrders.selectedBuyOrder)
+
     const tradeFee = useSelector((state) => state.auth.tradeFee)
     const isLogin = useSelector((state) => state.auth.isLogin)
+
+    const quote = userAccount?.wallets[activePair.quoteAsset]?.free || 0;
 
     const [alert, setAlert] = useState({
         submit: false,
