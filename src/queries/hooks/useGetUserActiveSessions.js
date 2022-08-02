@@ -1,14 +1,18 @@
-import axios from "axios";
-import {useQuery} from "react-query";
+import {useQuery} from "@tanstack/react-query";
+import {getActiveSessions} from "js-api-client";
 
 export const useGetUserActiveSessions = () => {
     return useQuery(
-        ['userActiveSessions'], () => getActiveSessions(),{
+        ['userActiveSessions'], () => getActiveSessionsFunc(),{
+            retry: 1,
+            staleTime: 5000,
+            refetchInterval: 10000,
+            notifyOnChangeProps: ['data', 'isLoading', 'error'],
             select: (data) => data.sort((a, b) => b.lastAccess - a.lastAccess)
         });
 }
 
-export const getActiveSessions = async () => {
-    const {data} = await axios.get(`/auth/realms/opex/user-management/user/sessions`);
+export const getActiveSessionsFunc = async () => {
+    const {data} = await getActiveSessions();
     return data;
 }

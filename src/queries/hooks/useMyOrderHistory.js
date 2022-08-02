@@ -1,28 +1,21 @@
-import {useQuery} from "react-query";
-import axios from "axios";
-import moment from "moment-jalaali";
+import moment from "moment";
+import {useQuery} from "@tanstack/react-query";
+import {getOrdersHistory} from "js-api-client";
 
 export const useMyOrderHistory = (symbol) => {
     return useQuery(
         ['orderHistory', symbol],
-        () => getOrdersHistory(symbol),
+        () => getOrdersHistoryFunc(symbol),
         {
-            refetchOnMount: false,
+            retry: 1,
             staleTime: 5000,
             refetchInterval: 10000,
-            select: (data) => data.sort((a, b) => moment(b.time).unix() - moment(a.time).unix()).slice(0,25)
+            notifyOnChangeProps: ['data', 'isLoading', 'error'],
+            select: (data) => data.sort((a, b) => moment(b.time).unix() - moment(a.time).unix()).slice(0, 25)
         });
 }
 
-const getOrdersHistory = async (symbol) => {
-    const params = new URLSearchParams();
-    params.append('symbol', symbol);
-    params.append('recvWindow', "1");
-    params.append('timestamp', Date.now().toString());
-    params.append('limit', "25");
-
-    const {data} = await axios.get(`/api/v3/allOrders?${params.toString()}`, {
-        data: params,
-    })
+const getOrdersHistoryFunc = async (symbol) => {
+    const {data} = await getOrdersHistory(symbol)
     return data;
 }

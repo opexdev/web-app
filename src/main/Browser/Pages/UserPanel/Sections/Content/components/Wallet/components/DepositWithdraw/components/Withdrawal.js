@@ -10,7 +10,7 @@ import {toast} from "react-hot-toast";
 import {images} from "../../../../../../../../../../../assets/images";
 import NumberInput from "../../../../../../../../../../../components/NumberInput/NumberInput";
 import ReactTooltip from "react-tooltip";
-import {sendWithdrawReq} from "../../../../../../../../../../../queries";
+import {sendWithdrawReq} from "js-api-client";
 
 const Withdrawal = () => {
     const {t} = useTranslation();

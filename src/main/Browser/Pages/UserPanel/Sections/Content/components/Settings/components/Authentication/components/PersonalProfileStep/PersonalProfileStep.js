@@ -8,8 +8,7 @@ import Loading from "../../../../../../../../../../../../components/Loading/Load
 import {changeUserInfo} from "../../../../../../../../../../../../store/actions";
 import moment from "moment-jalaali";
 import {isValidNationalCode} from "../../../../../../../../../../../../utils/utils";
-import {setUserProfileAttributes} from "../../../../../../../../../../../../queries";
-import {getUserAttributes} from "../../../../../../../../../../../../queries";
+import {getUserAttributes, setUserProfileAttributes} from "js-api-client";
 
 const PersonalProfileStep = (props) => {
     const {t} = useTranslation();

@@ -1,23 +1,20 @@
-import {useQuery} from "react-query";
-import axios from "axios";
+import {useQuery} from "@tanstack/react-query";
+import {getOverview} from "js-api-client";
 
 export const useOverview = (symbol, period) => {
     return useQuery(
         ['overview', symbol, period],
-        () => getOverview(symbol, period),
+        () => getOverviewFunc(symbol, period),
         {
-            refetchOnMount: false,
             staleTime: 5000,
             refetchInterval: 10000,
+            notifyOnChangeProps: ['data', 'isLoading', 'error'],
             select: (data) => data[0],
         });
 }
 
-const getOverview = async (symbol, period) => {
-    const params = new URLSearchParams();
-    params.append('symbol', symbol);
-    const {data} = await axios.get(`/api/v3/ticker/${period}?${params.toString()}`, {
-        data: params,
-    })
+const getOverviewFunc = async (symbol, period) => {
+    const {data} = await getOverview(symbol, period)
     return data;
 }
+

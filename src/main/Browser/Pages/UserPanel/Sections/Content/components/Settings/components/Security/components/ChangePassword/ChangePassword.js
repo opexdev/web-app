@@ -7,7 +7,7 @@ import Button from "../../../../../../../../../../../../components/Button/Button
 import {toast} from "react-hot-toast";
 import Error from "../../../../../../../../../../../../components/Error/Error";
 import Loading from "../../../../../../../../../../../../components/Loading/Loading";
-import {requestForChangePassword} from "../../../../../../../../../../../../queries";
+import {requestForChangePassword} from "js-api-client";
 
 const ChangePassword = () => {
     const {t} = useTranslation();

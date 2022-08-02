@@ -1,15 +1,16 @@
-import axios from "axios";
-import {useQuery} from "react-query";
+import {useQuery} from "@tanstack/react-query";
+import {getKycStatus} from "js-api-client";
 
-export const useGetKycStatus = () => {
+export const useGetKycStatus = (enabled = false) => {
     return useQuery(
-        ['KycStatus'], getKycStatus, {
-            enabled: false,
-            cacheTime: 10 * 60 * 1000,
+        ['KycStatus'], getKycStatusFunc, {
+            enabled,
+            retry: 1,
+            notifyOnChangeProps: ['data', 'isLoading', 'error']
         });
 }
 
-export const getKycStatus = async () => {
-    const {data} = await axios.get('/auth/realms/opex/user-profile/kyc/status')
+export const getKycStatusFunc = async () => {
+    const {data} = await getKycStatus()
     return data;
 }

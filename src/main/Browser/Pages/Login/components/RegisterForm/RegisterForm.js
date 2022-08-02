@@ -8,7 +8,7 @@ import Button from "../../../../../../components/Button/Button";
 import Icon from "../../../../../../components/Icon/Icon";
 import {images} from "../../../../../../assets/images";
 import ReactTooltip from "react-tooltip";
-import {getCaptchaImage, getPanelToken, userRegister} from "../../../../../../queries";
+import {getCaptchaImage, getPanelToken, userRegister} from "js-api-client";
 
 
 const RegisterForm = () => {
@@ -28,6 +28,9 @@ const RegisterForm = () => {
         password: {value: "", error: []},
         confirmPassword: {value: "", error: []},
     });
+
+    const clientSecret = window.env.REACT_APP_CLIENT_SECRET
+    const clientId = window.env.REACT_APP_CLIENT_ID
 
     const captchaReq = () => {
         setIsLoading(true)
@@ -81,7 +84,7 @@ const RegisterForm = () => {
         if (!isFormValid()) return
 
         setRegisterStatus("loading");
-        const {data: {access_token: panelToken}} = await getPanelToken();
+        const {data: {access_token: panelToken}} = await getPanelToken(clientId, clientSecret);
 
         const user = {
             firstName: userData.firstName.value,

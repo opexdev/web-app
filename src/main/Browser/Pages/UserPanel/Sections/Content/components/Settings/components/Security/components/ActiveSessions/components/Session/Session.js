@@ -5,7 +5,7 @@ import moment from "moment-jalaali";
 import {Trans, useTranslation} from "react-i18next";
 import {images} from "../../../../../../../../../../../../../../assets/images";
 import {toast} from "react-hot-toast";
-import {expireSessionById} from "../../../../../../../../../../../../../../queries";
+import {expireSessionById} from "js-api-client";
 
 const Session = ({list, reloadSessionsList}) => {
     const {t} = useTranslation();

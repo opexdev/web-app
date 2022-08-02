@@ -1,24 +1,20 @@
-import {useQuery} from "react-query";
-import axios from "axios";
+import {useQuery} from "@tanstack/react-query";
+import {getLastTrades} from "js-api-client";
 
 export const useLastTrades = (symbol, onSuccess) => {
     return useQuery(
         ['lastTrades', symbol],
-        () => getLastTrades(symbol),
+        () => getLastTradesFunc(symbol),
         {
-            refetchOnMount: false,
+            retry: 1,
             staleTime: 5000,
             refetchInterval: 10000,
+            notifyOnChangeProps: ['data', 'isLoading', 'error'],
             onSuccess
         });
 }
 
-const getLastTrades = async (symbol) => {
-    const params = new URLSearchParams();
-    params.append('symbol', symbol);
-    params.append('limit', "25");
-    const {data} = await axios.get(`/api/v3/trades?${params.toString()}`, {
-        data: params,
-    })
+const getLastTradesFunc = async (symbol) => {
+    const {data} = await getLastTrades(symbol)
     return data;
 }

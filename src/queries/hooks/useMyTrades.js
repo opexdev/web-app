@@ -1,29 +1,22 @@
-import {useQuery} from "react-query";
-import axios from "axios";
-import moment from "moment-jalaali";
+import moment from "moment";
+import {useQuery} from "@tanstack/react-query";
+import {getMyTrades} from "js-api-client";
 
 export const useMyTrades = (symbol) => {
     return useQuery(
         ['myTrades', symbol],
-        () => getMyTrades(symbol),
+        () => getMyTradesFunc(symbol),
         {
-            refetchOnMount: false,
+            retry: 1,
             staleTime: 5000,
             refetchInterval: 10000,
-            select: (data) => data.sort((a, b) => moment(b.time).unix() - moment(a.time).unix()).slice(0,25)
+            notifyOnChangeProps: ['data', 'isLoading', 'error'],
+            select: (data) => data.sort((a, b) => moment(b.time).unix() - moment(a.time).unix()).slice(0, 25)
         });
 }
 
-const getMyTrades = async (symbol) => {
-    const params = new URLSearchParams();
-    params.append('symbol', symbol);
-    params.append('startTime', "");
-    params.append('endTime', "");
-    params.append('timestamp', Date.now().toString());
-    params.append('limit', "25");
 
-    const {data} = await axios.get(`/api/v3/myTrades?${params.toString()}`, {
-        data: params,
-    })
+const getMyTradesFunc = async (symbol) => {
+    const {data} = getMyTrades(symbol)
     return data;
 }

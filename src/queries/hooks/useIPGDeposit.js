@@ -1,15 +1,16 @@
-import axios from "axios";
-import {useQuery} from "react-query";
+import {useQuery} from "@tanstack/react-query";
+import {getIPGDeposit} from "js-api-client";
 
 export const useIPGDeposit = () => {
     return useQuery(
-        ['IPGDepositTxs'], getIPGDeposit,
+        ['IPGDepositTxs'], getIPGDepositFunc,
         {
-            refetchOnMount: true,
-            staleTime: 5000,
+            retry: 1,
+            notifyOnChangeProps: ['data', 'isLoading', 'error']
         });
 }
-const getIPGDeposit = async () => {
-    const {data} = await axios.get(`/ipg/v1/invoice`)
+
+const getIPGDepositFunc = async () => {
+    const {data} = await getIPGDeposit()
     return data;
 }

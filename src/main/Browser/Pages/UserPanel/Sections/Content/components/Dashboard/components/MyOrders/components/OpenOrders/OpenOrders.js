@@ -9,7 +9,8 @@ import {BN} from "../../../../../../../../../../../../utils/utils";
 import Icon from "../../../../../../../../../../../../components/Icon/Icon";
 import {toast} from "react-hot-toast";
 import Error from "../../../../../../../../../../../../components/Error/Error";
-import {cancelOrderByOrderID, useMyOpenOrders} from "../../../../../../../../../../../../queries";
+import {useMyOpenOrders} from "../../../../../../../../../../../../queries";
+import {cancelOrderByOrderID} from "js-api-client";
 
 
 const OpenOrders = () => {

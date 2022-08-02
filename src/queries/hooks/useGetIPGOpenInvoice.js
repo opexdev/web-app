@@ -1,16 +1,17 @@
-import axios from "axios";
-import {useQuery} from "react-query";
+import {useQuery} from "@tanstack/react-query";
+import {getIpgOpenInvoice} from "js-api-client";
 
 export const useGetIpgOpenInvoice = () => {
     return useQuery(
         ['ipgOpen'],
-        () => getIpgOpenInvoice(),
+        () => getIpgOpenInvoiceFunc(),
         {
-            refetchOnMount: true,
+            retry: 1,
+            notifyOnChangeProps: ['data', 'isLoading', 'error']
         });
 }
 
-const getIpgOpenInvoice = async () => {
-    const {data} = await axios.get(`/ipg/v1/invoice/open`)
-    return data;
+const getIpgOpenInvoiceFunc = async () => {
+    const {data} = await getIpgOpenInvoice()
+    return data
 }

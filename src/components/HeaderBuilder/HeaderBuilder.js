@@ -10,7 +10,7 @@ import {toast} from "react-hot-toast";
 import {images} from "../../assets/images";
 import {setLogoutInitiate} from "../../store/actions";
 import Clock from "../../main/Browser/Pages/UserPanel/Sections/Header/components/Clock/Clock";
-import {logout} from "../../queries";
+import {logout} from "js-api-client";
 
 const HeaderBuilder = ({children}) => {
 

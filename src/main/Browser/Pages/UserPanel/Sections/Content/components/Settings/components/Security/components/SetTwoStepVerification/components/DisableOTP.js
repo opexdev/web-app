@@ -4,7 +4,7 @@ import {images} from "../../../../../../../../../../../../../assets/images";
 import Button from "../../../../../../../../../../../../../components/Button/Button";
 import {toast} from "react-hot-toast";
 import {useTranslation} from "react-i18next";
-import {requestForDeActiveOTP} from "../../../../../../../../../../../../../queries";
+import {requestForDeActiveOTP} from "js-api-client";
 
 const DeActiveOTP = ({refetchOtp}) => {
 

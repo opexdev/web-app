@@ -8,8 +8,8 @@ import NumberInput from "../../../../../../../../../../../../components/NumberIn
 import Button from "../../../../../../../../../../../../components/Button/Button";
 import {setLastTransaction} from "../../../../../../../../../../../../store/actions/auth";
 import {images} from "../../../../../../../../../../../../assets/images";
-import {createOrder} from "../../../../../../../../../../../../queries";
 import {useGetUserAccount} from "../../../../../../../../../../../../queries/hooks/useGetUserAccount";
+import {createOrder} from "js-api-client";
 
 const BuyOrder = () => {
 

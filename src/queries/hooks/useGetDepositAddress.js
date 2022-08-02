@@ -1,24 +1,19 @@
-import axios from "axios";
-import {useQuery} from "react-query";
+import {useQuery} from "@tanstack/react-query";
+import {getDepositAddress} from "js-api-client";
 
 export const useGetDepositAddress = (currency) => {
     return useQuery(
         ['depositAddress', currency],
-        () => getDepositAddress(currency),
+        () => getDepositAddressFunc(currency),
         {
+            retry: 1,
             refetchOnMount: false,
+            staleTime: 30*60*1000,
+            notifyOnChangeProps: ['data', 'isLoading', 'error']
         });
 }
 
-const getDepositAddress = async (currency) => {
-    const params = new URLSearchParams();
-    params.append('coin', currency.toUpperCase());
-    params.append('timestamp', Date.now().toString());
-    const {data} = await axios.get(`/sapi/v1/capital/deposit/address?${params.toString()}`, {
-        data: params,
-        headers: {
-            'content-type': 'application/x-www-form-urlencoded'
-        }
-    })
+const getDepositAddressFunc = async (currency) => {
+    const {data} = await getDepositAddress(currency)
     return data;
 }

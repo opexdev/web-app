@@ -1,28 +1,19 @@
-import axios from "axios";
-import {useQuery} from "react-query";
+import {getDepositTxs} from "js-api-client";
+import {useQuery} from "@tanstack/react-query";
 
 export const useDepositTxs = (currency) => {
     return useQuery(
         ['depositTxs', currency],
-        () => getDepositTxs(currency),
+        () => getDepositTxsFunc(currency),
         {
-            refetchOnMount: false,
+            retry: 1,
             staleTime: 5000,
-            refetchInterval: 15000,
-            notifyOnChangeProps :['error']
+            refetchInterval: 10000,
+            notifyOnChangeProps: ['data', 'isLoading', 'error']
         });
 }
 
-const getDepositTxs = async (currency) => {
-    const params = new URLSearchParams();
-    params.append('coin', currency.toUpperCase());
-    params.append('timestamp', Date.now().toString());
-    const {data} = await axios.get(`/sapi/v1/capital/deposit/hisrec?${params.toString()}`, {
-        data: params,
-        headers: {
-            'content-type': 'application/x-www-form-urlencoded'
-        }
-    })
+const getDepositTxsFunc = async (currency) => {
+    const {data} = await getDepositTxs(currency)
     return data;
 }
-

@@ -13,8 +13,9 @@ import Loading from "../../../../../../../../../../../../../../components/Loadin
 import Countdown from "react-countdown";
 import CallbackPage from "./components/CallbackPage/CallbackPage";
 import {setIPGInitiate} from "../../../../../../../../../../../../../../store/actions";
-import {cancelIPGDepositReq, sendIPGDepositReq, useIPGDeposit} from "../../../../../../../../../../../../../../queries";
-import {useGetIpgOpenInvoice} from "../../../../../../../../../../../../../../queries";
+import {useGetIpgOpenInvoice, useIPGDeposit} from "../../../../../../../../../../../../../../queries";
+import {cancelIPGDepositReq, sendIPGDepositReq} from "js-api-client";
+
 
 const IRTDeposit = () => {
 

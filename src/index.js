@@ -15,8 +15,8 @@ import setupAxios from "./setup/axios/setupAxios";
 import axios from "axios";
 import exchangeReducer from "./store/reducers/exchangeReducer";
 import {StyleRoot} from "radium";
-import {QueryClient, QueryClientProvider} from 'react-query';
-import { ReactQueryDevtools } from 'react-query/devtools'
+import {QueryClient, QueryClientProvider} from '@tanstack/react-query';
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
 
 const sagaMiddleware = createSagaMiddleware();
 const rootReducer = combineReducers({

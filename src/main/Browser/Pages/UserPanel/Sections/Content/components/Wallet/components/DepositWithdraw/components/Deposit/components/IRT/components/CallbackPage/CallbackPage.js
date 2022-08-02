@@ -6,7 +6,7 @@ import {useTranslation} from "react-i18next";
 import * as Routes from "../../../../../../../../../../../../../../Routes/routes";
 import {Link, useLocation, useNavigate} from "react-router-dom";
 import Loading from "../../../../../../../../../../../../../../../../components/Loading/Loading";
-import {verifyIPGDepositReq} from "../../../../../../../../../../../../../../../../queries";
+import {verifyIPGDepositReq} from "js-api-client";
 
 
 const CallbackPage = () => {

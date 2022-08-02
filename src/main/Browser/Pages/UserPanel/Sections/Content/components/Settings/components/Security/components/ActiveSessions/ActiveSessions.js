@@ -8,7 +8,8 @@ import Error from "../../../../../../../../../../../../components/Error/Error";
 import Session from "./components/Session/Session";
 import Icon from "../../../../../../../../../../../../components/Icon/Icon";
 import {toast} from "react-hot-toast";
-import {expireAllSessionsExceptCurrent, useGetUserActiveSessions} from "../../../../../../../../../../../../queries";
+import {useGetUserActiveSessions} from "../../../../../../../../../../../../queries";
+import {expireAllSessionsExceptCurrent} from "js-api-client";
 
 const ActiveSessions = () => {
     const {t} = useTranslation();

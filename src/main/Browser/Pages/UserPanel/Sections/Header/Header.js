@@ -14,7 +14,7 @@ import {images} from "../../../../../../assets/images";
 import {setLogoutInitiate} from "../../../../../../store/actions";
 import {toast} from "react-hot-toast";
 import Clock from "./components/Clock/Clock";
-import {logout} from "../../../../../../queries";
+import {logout} from "js-api-client";
 
 const Header = () => {
     const {t} = useTranslation();

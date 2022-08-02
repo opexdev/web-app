@@ -8,9 +8,13 @@ import ReactTooltip from "react-tooltip";
 import Icon from "../../../../../../components/Icon/Icon";
 import {images} from "../../../../../../assets/images";
 import {validateEmail} from "../../../../../../utils/utils";
-import {getCaptchaImage, getPanelToken, requestForForgetPasswordEmail} from "../../../../../../queries";
+import {getCaptchaImage, getPanelToken, requestForForgetPasswordEmail} from "js-api-client";
 
 const ForgetPassword = ({returnFunc}) => {
+
+    const clientSecret = window.env.REACT_APP_CLIENT_SECRET
+    const clientId = window.env.REACT_APP_CLIENT_ID
+
     const {t} = useTranslation();
     const [loading, setLoading] = useState(false);
     const [isLoading, setIsLoading] = useState(true);
@@ -75,7 +79,7 @@ const ForgetPassword = ({returnFunc}) => {
         }
         setLoading(true);
 
-        const {data: {access_token: panelToken}} = await getPanelToken();
+        const {data: {access_token: panelToken}} = await getPanelToken(clientId, clientSecret);
         const captchaValue = `${captcha.SessionKey.value}-${forgetPass.captchaAnswer.value}`
         requestForForgetPasswordEmail(panelToken, forgetPass.email.value, captchaValue)
             .then(() => {

@@ -5,7 +5,7 @@ import Button from "../../../../../../../../../../../../components/Button/Button
 import ImageInput from "../../../../../../../../../../../../components/ImageInput/ImageInput";
 import {useSelector} from "react-redux";
 import {toast} from "react-hot-toast";
-import {sendFileToUserStorage, setKycFileToUserAttributes} from "../../../../../../../../../../../../queries";
+import {sendFileToUserStorage, setKycFileToUserAttributes} from "js-api-client";
 
 const SendPhotosStep = (props) => {
     const {t} = useTranslation();

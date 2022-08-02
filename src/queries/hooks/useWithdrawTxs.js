@@ -1,27 +1,19 @@
-import axios from "axios";
-import {useQuery} from "react-query";
+import {useQuery} from "@tanstack/react-query";
+import {getWithdrawTxs} from "js-api-client";
 
 export const useWithdrawTxs = (currency) => {
     return useQuery(
         ['withdrawTxs', currency],
-        () => getWithdrawTxs(currency),
+        () => getWithdrawTxsFunc(currency),
         {
-            refetchOnMount: false,
+            retry: 1,
             staleTime: 5000,
             refetchInterval: 10000,
+            notifyOnChangeProps: ['data', 'isLoading', 'error']
         });
 }
 
-const getWithdrawTxs = async (currency) => {
-    const params = new URLSearchParams();
-    params.append('coin', currency.toUpperCase());
-    params.append('timestamp', Date.now().toString());
-    const {data} = await axios.get(`/sapi/v1/capital/withdraw/history?${params.toString()}`, {
-        data: params,
-        headers: {
-            'content-type': 'application/x-www-form-urlencoded'
-        }
-    })
+const getWithdrawTxsFunc = async (currency) => {
+    const {data} = await getWithdrawTxs(currency)
     return data;
 }
-

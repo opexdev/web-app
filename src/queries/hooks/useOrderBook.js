@@ -1,24 +1,21 @@
-import axios from "axios";
-import {useQuery} from "react-query";
+import {useQuery} from "@tanstack/react-query";
+import {getOrderBook} from "js-api-client";
 
 export const useOrderBook = (symbol, onSuccess) => {
     return useQuery(
         ['orderBook', symbol],
-        () => getOrderBook(symbol),
+        () => getOrderBookFunc(symbol),
         {
-            refetchOnMount: false,
+            retry: 1,
             staleTime: 5000,
-            refetchInterval: 5000,
+            refetchInterval: 10000,
+            notifyOnChangeProps: ['data', 'isLoading', 'error'],
             onSuccess
         });
 }
 
-const getOrderBook = async (symbol, period) => {
-    const params = new URLSearchParams();
-    params.append('symbol', symbol);
-    params.append('limit', "20");
-    const {data} = await axios.get(`/api/v3/depth?${params.toString()}`, {
-        data: params,
-    })
+
+const getOrderBookFunc = async (symbol) => {
+    const {data} = await getOrderBook(symbol)
     return data;
 }

@@ -7,7 +7,7 @@ import {images} from "../../../../../../../../../../../../../assets/images";
 import Button from "../../../../../../../../../../../../../components/Button/Button";
 import Loading from "../../../../../../../../../../../../../components/Loading/Loading";
 import TextInput from "../../../../../../../../../../../../../components/TextInput/TextInput";
-import {requestForActivateOTP, sendInitialCodeToActivateOTP} from "../../../../../../../../../../../../../queries";
+import {requestForActivateOTP, sendInitialCodeToActivateOTP} from "js-api-client";
 
 const ActivateOTP = ({refetchOtp}) => {
     const {t} = useTranslation();

@@ -1,31 +1,22 @@
-import {useQuery} from "react-query";
-import axios from "axios";
-import moment from "moment-jalaali";
+import {getOpenOrder} from "js-api-client";
+import {useQuery} from "@tanstack/react-query";
+import moment from "moment";
 
 export const useMyOpenOrders = (symbol) => {
     return useQuery(
         ['openOrders', symbol],
-        () => getOpenOrder(symbol),
+        () => getOpenOrderFunc(symbol),
         {
-            refetchOnMount: false,
+            retry: 1,
             staleTime: 5000,
             refetchInterval: 10000,
+            notifyOnChangeProps: ['data', 'isLoading', 'error'],
             select: (data) => data.sort((a, b) => moment(b.time).unix() - moment(a.time).unix())
         });
 }
 
-const getOpenOrder = async (symbol) => {
 
-    const params = new URLSearchParams();
-    params.append('symbol', symbol);
-    params.append('recvWindow', "1");
-    params.append('timestamp', Date.now().toString());
-
-    const {data} = await axios.get(`/api/v3/openOrders?${params.toString()}`, {
-        data: params,
-        headers: {
-            'content-type': 'application/x-www-form-urlencoded'
-        }
-    })
+const getOpenOrderFunc = async (symbol) => {
+    const {data} = await getOpenOrder(symbol)
     return data;
 }

@@ -1,18 +1,20 @@
-import axios from "axios";
-import {useQuery} from "react-query";
+import {useQuery} from "@tanstack/react-query";
+import {getLastPrices} from "js-api-client";
 
 export const useGetLastPrices = () => {
     return useQuery(
-        ['lastPrices'], getLastPrices,
+        ['lastPrices'], getLastPricesFunc,
         {
-            initialData : [],
-            refetchInterval : 5000
+            retry: 1,
+            initialData: [],
+            notifyOnChangeProps: ['data', 'isLoading', 'error'],
+            refetchInterval: 5000
         });
 }
 
-export const getLastPrices = async () => {
+export const getLastPricesFunc = async () => {
     const newPrices = {}
-    const {data} = await axios.get(`/api/v3/ticker/price`)
+    const {data} = await getLastPrices()
     for (const price of data) {
         newPrices[price.symbol] = price.price
     }
