@@ -1,62 +1,34 @@
-import React, {useState, useEffect, Fragment} from "react";
+import React from "react";
 import classes from "./OrderBook.module.css";
 import OrderBookTable from "./components/OrderBookTable/OrderBookTable";
 import {useTranslation} from "react-i18next";
-import {connect} from "react-redux";
+import {useSelector} from "react-redux";
 import OrderBookTableSafari from "./components/OrderBookTableSafari/OrderBookTableSafari";
 import {isSafari} from "react-device-detect";
-import {getOrderBook} from "./api/orderBook";
-import useInterval from "../../../../../../../../../../Hooks/useInterval";
 import Error from "../../../../../../../../../../components/Error/Error";
 import Loading from "../../../../../../../../../../components/Loading/Loading";
+import {useOrderBook} from "../../../../../../../../../../queries";
 
 
-const OrderBook = (props) => {
-
+const OrderBook = () => {
     const {t} = useTranslation();
-    const {activePair} = props
-    const [error, setError] = useState(false);
-    const [isLoading, setIsLoading] = useState(true);
-    const [orderBookData, setOrderBookData] = useState({
-        lastUpdateId: null,
-        bids: [],
-        asks: [],
-    });
-
-    const getOrderBookData = async () => {
-        const orderBookReq = await getOrderBook(activePair);
-        if (orderBookReq.status === 200) {
-            setOrderBookData(orderBookReq.data)
-            setIsLoading(false)
-            setError(false)
-        } else {
-            //setError(true)
-            setIsLoading(false)
-        }
-    };
-
-    useEffect(async () => {
-        await getOrderBookData();
-    }, [props.activePair]);
-
-    useInterval(async () => {
-        await getOrderBookData();
-    }, props.activePair ? 1500 : null);
+    const activePair = useSelector((state) => state.exchange.activePair)
+    const {data, isLoading, error} = useOrderBook(activePair.symbol)
 
     const tableRender = () => {
-        if (error)  return <Error/>
-        if (isLoading)  return <Loading/>
+        if (error) return <Error/>
+        if (isLoading) return <Loading/>
 
         if (isSafari) {
-            return <Fragment>
-                <OrderBookTableSafari data={orderBookData.asks}/>
-                <OrderBookTableSafari data={orderBookData.bids} type="buy"/>
-            </Fragment>
+            return <>
+                <OrderBookTableSafari data={data.asks}/>
+                <OrderBookTableSafari data={data.bids} type="buy"/>
+            </>
         } else {
-            return  <Fragment>
-                <OrderBookTable data={orderBookData.asks}/>
-                <OrderBookTable data={orderBookData.bids} type="buy"/>
-            </Fragment>
+            return <>
+                <OrderBookTable data={data.asks}/>
+                <OrderBookTable data={data.bids} type="buy"/>
+            </>
         }
     }
 
@@ -81,10 +53,4 @@ const OrderBook = (props) => {
     );
 };
 
-const mapStateToProps = (state) => {
-    return {
-        activePair: state.exchange.activePair,
-    };
-};
-
-export default connect(mapStateToProps, null)(OrderBook);
+export default OrderBook;

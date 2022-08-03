@@ -2,38 +2,33 @@ import React, {Fragment, useEffect, useState} from "react";
 import moment from "moment-jalaali";
 import classes from "../../MyOrders.module.css";
 import {useTranslation} from "react-i18next";
-import {getTrades} from "../api/myOrders";
-import {connect} from "react-redux";
+import {useSelector} from "react-redux";
 import Loading from "../../../../../../../../../../../../components/Loading/Loading";
 import ScrollBar from "../../../../../../../../../../../../components/ScrollBar";
 import Icon from "../../../../../../../../../../../../components/Icon/Icon";
+import Error from "../../../../../../../../../../../../components/Error/Error";
+import {useMyTrades} from "../../../../../../../../../../../../queries";
 
-const Trades = (props) => {
+const Trades = () => {
 
-    const {activePair , lastTransaction} = props
 
     const {t} = useTranslation();
-    const [trades, setTrades] = useState([])
     const [openOrder, setOpenOrder] = useState(null)
-    const [isLoading, setIsLoading] = useState(true)
+
+    const activePair = useSelector((state) => state.exchange.activePair)
+    const lastTransaction = useSelector((state) => state.auth.lastTransaction);
+
+    const {data, isLoading, error, refetch} = useMyTrades(activePair.symbol)
 
     useEffect(() => {
-        getTrades(activePair)
-            .then((trades) => {
-                if (trades.status === 200) {
-                    setTrades(trades.data.sort((a,b) => moment(b.time).unix() - moment(a.time).unix()).slice(0 , 50))
-                }
-                setIsLoading(false)
-            })
-    }, [activePair, lastTransaction])
+        refetch()
+    }, [lastTransaction])
 
-    if (isLoading) {
-        return <Loading/>
-    }
+    if (error) return <Error/>
 
-    if (trades.length === 0) {
-        return <div className={`height-100 flex jc-center ai-center`}>{t("noData")}</div>
-    }
+    if (isLoading) return <Loading/>
+
+    if (data.length === 0) return <div className={`height-100 flex jc-center ai-center`}>{t("noData")}</div>
 
     return (
         <ScrollBar>
@@ -56,7 +51,7 @@ const Trades = (props) => {
                 </tr>
                 </thead>
                 <tbody>
-                {trades.map((tr, index) => (
+                {data.map((tr, index) => (
                     <Fragment key={index}>
                         <tr className={tr.isBuyer === false ? "text-green" : "text-red"}>
                             <td>{moment(tr.time).format("jYY/jMM/jDD")}</td>
@@ -103,12 +98,4 @@ const Trades = (props) => {
     )
 }
 
-
-const mapStateToProps = (state) => {
-    return {
-        activePair: state.exchange.activePair,
-        lastTransaction: state.auth.lastTransaction,
-    };
-};
-
-export default connect(mapStateToProps, null)(Trades);
+export default Trades;

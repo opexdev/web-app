@@ -362,6 +362,7 @@
     "details": "Details",
     "closeSession": "Close Session",
     "success": "{{location}} session closed successfully.",
+    "failed": "Server error, please try again.",
     "logOutAllSuccess": "Other sessions closed successfully.",
     "logOutAllError": "Server error, please try again.",
     "noData": "Item not found!",
@@ -520,7 +521,8 @@
     "errorMsgDefault": "Uploaded photo is not valid!"
   },
   "errorPage" : {
+    "needKYC" : "Access denied for KYC status",
     "reload" : "Try Again",
-    "errorText" : "خطا در ارتباط با سرور"
+    "errorText" : "Server connection error"
   }
 }

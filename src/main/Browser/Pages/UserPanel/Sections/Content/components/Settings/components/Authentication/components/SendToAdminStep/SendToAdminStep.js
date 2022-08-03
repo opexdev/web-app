@@ -4,18 +4,13 @@ import {useTranslation} from "react-i18next";
 import Button from "../../../../../../../../../../../../components/Button/Button";
 import {useDispatch, useSelector} from "react-redux";
 import {images} from "../../../../../../../../../../../../assets/images";
-import {setKYCStatusInitiate} from "../../../../../../../../../../../../store/actions/auth";
+import {setKYCStatusInitiate} from "../../../../../../../../../../../../store/actions";
 
-
-const SendToAdminStep = (props) => {
+const SendToAdminStep = ({prevStep}) => {
     const {t} = useTranslation();
     const dispatch = useDispatch();
     const KYCStatus = useSelector(state => state.auth.kyc);
     const KYCReason = useSelector(state => state.auth.kycReason);
-
-    /*useInterval(() => {
-        dispatch(setKYCStatusInitiate());
-    }, 3000); */
 
     useEffect(() => {
         dispatch(setKYCStatusInitiate());
@@ -49,21 +44,16 @@ const SendToAdminStep = (props) => {
                 <span className={`font-size-sm-plus mt-1`}>{t("SendToAdminStep.errorMessage")}: {KYCReason}</span>
             </div>
         }
-
     }
 
-
     return (
-        <div
-            className={`container card-background card-border column ${classes.container}`}>
-            <div
-                className={`column border-bottom jc-center card-header-bg px-1 py-1 ${classes.header}`}>
+        <div className={`container card-background card-border column ${classes.container}`}>
+            <div className={`column border-bottom jc-center card-header-bg px-1 py-1 ${classes.header}`}>
                 <div className="row jc-start ">
                     <h3>{t("SendToAdminStep.title")}</h3>
                 </div>
             </div>
-            <div
-                className={`container column jc-between px-1 py-2 ${classes.content}`}>
+            <div className={`container column jc-between px-1 py-2 ${classes.content}`}>
                 <span>{t("SendToAdminStep.content")}</span>
                 <div className={`column`}>
                     {content()}
@@ -71,7 +61,7 @@ const SendToAdminStep = (props) => {
                 <div className="row pt-1 jc-end">
                     {KYCStatus === "REJECTED" && <Button
                         buttonClass={`${classes.thisButton} ${classes.prev}`}
-                        onClick={props.prevStep}
+                        onClick={prevStep}
                         buttonTitle={t("prevStep")}
                     />}
                 </div>

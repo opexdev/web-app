@@ -18,11 +18,9 @@ const SettingsSubMenu = () => {
         </div>
       </div>
       <div className={`column container  ${classes.content}`}>
-
         {
           KYCStatus === "ACCEPTED" &&
             <NavLink
-                exact={true}
                 className={({ isActive }) =>
                     isActive ? "row jc-around ai-center cursor-pointer px-1 py-1 "+classes.selected : "row jc-around ai-center cursor-pointer px-1 py-1"
                 }
@@ -32,22 +30,14 @@ const SettingsSubMenu = () => {
               {t("SettingsSubMenu.userProfile")}
             </span>
               </div>
-              <div
-                  className={`column position-relative font-size-sm mr-1 ${classes.listBox}`}
-                  style={{width: "60%"}}>
-            {/*<span className={`flex ai-center my-05 pr-2 ${classes.list}`}>
-              {t("UserAccountStatus.title")}
-            </span>*/}
+              <div className={`column position-relative font-size-sm mr-1 ${classes.listBox}`} style={{width: "60%"}}>
                 <span className={`flex ai-center my-05 pr-2 ${classes.list}`}>
               {t("PersonalProfile.title")}
             </span>
               </div>
             </NavLink>
-
         }
-
         <NavLink
-          exact={true}
           className={({ isActive }) =>
               isActive ? "row jc-around ai-center cursor-pointer px-1 py-1 "+classes.selected : "row jc-around ai-center cursor-pointer px-1 py-1"
           }
@@ -57,12 +47,7 @@ const SettingsSubMenu = () => {
               {t("SettingsSubMenu.security")}
             </span>
           </div>
-          <div
-            className={` column position-relative font-size-sm mr-1 ${classes.listBox}`}
-            style={{width: "60%"}}>
-            {/*<span className={`flex ai-center my-05 pr-2 ${classes.list}`}>
-              {t("LoginReports.title")}
-            </span>*/}
+          <div className={` column position-relative font-size-sm mr-1 ${classes.listBox}`} style={{width: "60%"}}>
             <span className={`flex ai-center my-05 pr-2 ${classes.list}`}>
               {t("ActiveSessions.title")}
             </span>
@@ -74,26 +59,7 @@ const SettingsSubMenu = () => {
             </span>
           </div>
         </NavLink>
-       {/* <NavLink
-          exact={true}
-          activeClassName={classes.selected}
-          className="row jc-around ai-center cursor-pointer px-1 py-1"
-          to={Routes.Personalization}>
-          <div className="row ai-center" style={{width: "40%"}}>
-            <span className={`font-weight-bold pr-05 ${classes.topic}`}>
-              {t("SettingsSubMenu.personalization")}
-            </span>
-          </div>
-          <div
-            className={` column position-relative font-size-sm mr-1 ${classes.listBox}`}
-            style={{width: "60%"}}>
-            <span className={`flex ai-center my-05 pr-2 ${classes.list}`}>
-              {t("SettingsSubMenu.personalization")}
-            </span>
-          </div>
-        </NavLink>*/}
         <NavLink
-          exact={true}
           className={({ isActive }) =>
               isActive ? "row jc-around ai-center cursor-pointer px-1 py-1 "+classes.selected : "row jc-around ai-center cursor-pointer px-1 py-1"
           }
@@ -103,9 +69,7 @@ const SettingsSubMenu = () => {
               {t("SettingsSubMenu.authentication")}
             </span>
           </div>
-          <div
-            className={`column position-relative font-size-sm mr-1 ${classes.listBox}`}
-            style={{width: "60%"}}>
+          <div className={`column position-relative font-size-sm mr-1 ${classes.listBox}`} style={{width: "60%"}}>
             <span className={`flex ai-center my-05 pr-2 ${classes.list}`}>
               {t("HelpStep.title")}
             </span>

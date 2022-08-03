@@ -1,5 +1,5 @@
-import React, {Fragment, useEffect, useState} from "react";
-import {connect, useSelector} from "react-redux";
+import React, {useEffect, useState} from "react";
+import {useSelector} from "react-redux";
 import classes from "./Authentication.module.css";
 import HelpStep from "./components/HelpStep/HelpStep";
 import PersonalProfileStep from "./components/PersonalProfileStep/PersonalProfileStep";
@@ -46,7 +46,7 @@ const Authentication = () => {
     };
 
     return (
-        <Fragment>
+        <>
             <div className={`row jc-center ai-center mb-3 `}>
                 <div className={`column jc-between ${classes.wizardBox}`}>
                     <ul className="row position-relative ai-center">
@@ -55,18 +55,14 @@ const Authentication = () => {
                         <li className={`col-25 text-center ${step === 3 && classes.activeStep}`}>{t("Authentication.SendPhotosStep")}</li>
                         <li className={`col-25 text-center ${step === 4 && classes.activeStep}`}>{t("Authentication.SendToAdminStep")}</li>
                         <div className={`container position-absolute  row jc-center`} style={{padding: "0 10%"}}>
-                            <span className={`col-15`}
-                                  style={{height: "0.2vh", backgroundColor: "var(--orange)"}}/>
-                            <span className={`col-15`}
-                                  style={{height: "0.2vh", backgroundColor: "var(--orange)", margin: "0 22% 0 22%",}}/>
-                            <span className={`col-15`}
-                                  style={{height: "0.2vh", backgroundColor: "var(--orange)"}}/>
+                            <span className={`col-15`} style={{height: "0.2vh", backgroundColor: "var(--orange)"}}/>
+                            <span className={`col-15`} style={{height: "0.2vh", backgroundColor: "var(--orange)", margin: "0 22% 0 22%",}}/>
+                            <span className={`col-15`} style={{height: "0.2vh", backgroundColor: "var(--orange)"}}/>
                         </div>
                     </ul>
                     <div className="row card-background card-border">
                         {step === 1 ? (
-                            <span
-                                className="col-25"
+                            <span className="col-25"
                                 style={{
                                     backgroundColor: "var(--activeTab)",
                                     height: "0.5vh",
@@ -78,8 +74,7 @@ const Authentication = () => {
                             ""
                         )}
                         {step === 2 ? (
-                            <span
-                                className="col-50"
+                            <span className="col-50"
                                 style={{
                                     backgroundColor: "var(--activeTab)",
                                     height: "0.5vh",
@@ -92,8 +87,7 @@ const Authentication = () => {
                             ""
                         )}
                         {step === 3 ? (
-                            <span
-                                className="col-75"
+                            <span className="col-75"
                                 style={{
                                     backgroundColor: "var(--activeTab)",
                                     height: "0.5vh",
@@ -105,8 +99,7 @@ const Authentication = () => {
                             ""
                         )}
                         {step === 4 ? (
-                            <span
-                                className="col-100"
+                            <span className="col-100"
                                 style={{
                                     backgroundColor: "var(--activeTab)",
                                     height: "0.5vh",
@@ -119,15 +112,9 @@ const Authentication = () => {
                     </div>
                 </div>
             </div>
-
             {stepSwitch(step)}
-        </Fragment>
+        </>
     );
 };
-const mapStateToProps = (state) => {
-    return {
-        activePair: state.exchange.activePair,
-    };
-};
 
-export default connect(mapStateToProps, null)(Authentication);
+export default Authentication;

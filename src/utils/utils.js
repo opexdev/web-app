@@ -63,3 +63,11 @@ export const toEnglishNum = str => {
     }
     return str;
 }
+
+export const dateValidator = str => {
+    return /^[1-4]\d{3}\/((0[1-6]\/((3[0-1])|([1-2][0-9])|(0[1-9])))|((1[0-2]|(0[7-9]))\/(30|31|([1-2][0-9])|(0[1-9]))))$/.test(str);
+}
+
+export const timeValidator = str => {
+    return /^(2[0-3]|[01]?[0-9]):([0-5]?[0-9])$/.test(str);
+}

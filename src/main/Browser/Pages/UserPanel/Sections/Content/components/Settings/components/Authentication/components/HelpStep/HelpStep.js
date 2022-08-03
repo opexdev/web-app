@@ -3,7 +3,7 @@ import classes from "./HelpStep.module.css";
 import {useTranslation} from "react-i18next";
 import Button from "../../../../../../../../../../../../components/Button/Button";
 
-const HelpStep = (props) => {
+const HelpStep = ({nextStep}) => {
   const {t} = useTranslation();
 
   return (
@@ -18,7 +18,7 @@ const HelpStep = (props) => {
         <div className="row jc-end">
           <Button
               buttonClass={classes.thisButton}
-              onClick={props.nextStep}
+              onClick={nextStep}
               buttonTitle={t("nextStep")}
           />
         </div>
