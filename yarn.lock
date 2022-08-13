@@ -2623,9 +2623,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@tanstack/react-query@npm:^4.0.10":
-  version: 4.0.10
-  resolution: "@tanstack/react-query@npm:4.0.10"
+"@tanstack/react-query@npm:^4.1.3":
+  version: 4.1.3
+  resolution: "@tanstack/react-query@npm:4.1.3"
   dependencies:
     "@tanstack/query-core": ^4.0.0-beta.1
     "@types/use-sync-external-store": ^0.0.3
@@ -2639,7 +2639,7 @@ __metadata:
       optional: true
     react-native:
       optional: true
-  checksum: b5f7501f977f4262fe80e510f5d58f3b49163ff7232603a839b7184431db7309c38ab55c5856a9d31a3c5219dd5031f9174e9dfcc78408300d0424b3000b9034
+  checksum: 18baf3c0d1d0c93a2a81e2652409479eadb8d11fe00a6c872ee551d69771f86f01ec18388c6e7a167a2ba771153dfc23a09c712a0539ff8fab9fb243a631f950
   languageName: node
   linkType: hard
 
@@ -11284,7 +11284,7 @@ fsevents@^1.2.7:
   version: 0.0.0-use.local
   resolution: "opex@workspace:."
   dependencies:
-    "@tanstack/react-query": ^4.0.10
+    "@tanstack/react-query": ^4.1.3
     "@tanstack/react-query-devtools": ^4.0.10
     "@testing-library/jest-dom": ^5.11.9
     "@testing-library/react": ^11.2.5
