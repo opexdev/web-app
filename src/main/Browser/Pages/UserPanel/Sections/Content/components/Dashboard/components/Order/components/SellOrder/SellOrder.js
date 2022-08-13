@@ -172,6 +172,7 @@ const SellOrder = () => {
     }, [selectedSellOrder]);
 
     const fillSellByWallet = () => {
+        if(order.pricePerUnit.isEqualTo(0) && bestSellPrice === 0 ) return toast.error(t("orders.hasNoOffer"));
         if (order.pricePerUnit.isEqualTo(0)) {
             const totalPrice = new BN(quote);
             setOrder({
