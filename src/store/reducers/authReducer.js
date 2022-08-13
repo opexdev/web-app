@@ -1,17 +1,12 @@
 import * as actionTypes from "../actions/actionTypes";
 
 const initialState = {
-    username: null,
     id: null,
     email: null,
+    username: null,
     firstName: null,
     lastName: null,
     accessToken: null,
-    refreshToken: null,
-    makerCommission: 0,
-    takerCommission: 0,
-    buyerCommission: 0,
-    sellerCommission: 0,
     canTrade: false,
     canWithdraw: false,
     canDeposit: false,
@@ -20,7 +15,6 @@ const initialState = {
     kycReason: null,
     permissions: [],
     lastTransaction: null,
-    wallets: {},
     tradeFee: {},
     isLogin: false,
 };
@@ -63,7 +57,6 @@ const reducer = (state = initialState, action) => {
             return {
                 ...state,
                 accessToken: action.accessToken,
-                refreshToken: action.refreshToken,
                 isLogin: true,
             }
         case actionTypes.SET_USER_ACCOUNT_INFO:

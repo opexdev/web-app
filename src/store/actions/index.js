@@ -31,7 +31,8 @@ export {
     changeUserInfo,
     setUserAccountInfo,
     setUserAccountInfoInitiate,
-    setKYCStatus
+    setKYCStatus,
+    setKYCStatusInitiate
 } from "./auth";
 
 

@@ -5,10 +5,10 @@ import TextInput from "../../../../../../../../../../../../components/TextInput/
 import Button from "../../../../../../../../../../../../components/Button/Button";
 import {useDispatch} from "react-redux";
 import Loading from "../../../../../../../../../../../../components/Loading/Loading"
-import {addAttributes, getAttributes} from "../../api/kyc";
-import {changeUserInfo} from "../../../../../../../../../../../../store/actions/auth";
+import {changeUserInfo} from "../../../../../../../../../../../../store/actions";
 import moment from "moment-jalaali";
-import {isValidNationalCode, isValidPassportCode} from "../../../../../../../../../../../../utils/utils";
+import {isValidNationalCode} from "../../../../../../../../../../../../utils/utils";
+import {getUserAttributes, setUserProfileAttributes} from "js-api-client";
 
 const PersonalProfileStep = (props) => {
     const {t} = useTranslation();
@@ -16,12 +16,9 @@ const PersonalProfileStep = (props) => {
     const [error, setError] = useState([])
     const dispatch = useDispatch();
 
-
     const [profile, setProfile] = useState({
         firstName: {value: "", error: []},
         lastName: {value: "", error: []},
-        //firstNameMain: {value: "", error: []},
-        //lastNameMain: {value: "", error: []},
         nationality: {value: "", error: []},
         residence: {value: "", error: []},
         birthdayJ: {value: "", error: []},
@@ -32,7 +29,6 @@ const PersonalProfileStep = (props) => {
         telephone: {value: "", error: []},
         postalCode: {value: "", error: []},
         address: {value: "", error: []},
-        /*  email: {value: "" , error: []},*/
     });
     const countries = [
         {value: "iran", label: t('country.iran')},
@@ -41,26 +37,10 @@ const PersonalProfileStep = (props) => {
         {value: "turkey", label: t('country.turkey')},
     ]
 
-    const userInfoReq = async () => {
-        setLoading(true)
-        setError([])
-        const userInfo = await getAttributes()
-        if (userInfo && userInfo.status === 200) {
-            /*if (isEn(userInfo.data.firstName)) {
-                console.log("en")
-            }*/
-            convertUserInfoToState(userInfo.data)
-            setLoading(false)
-            setError([])
-        } else {
-            setError([t("PersonalProfileStep.serverError")])
-        }
-    }
-
     const convertUserInfoToState = (info) => {
         const newState = {...profile}
         for (const [key, value] of Object.entries(info)) {
-            newState[key] = {value : value ,error: []}
+            newState[key] = {value: value, error: []}
         }
         setProfile(newState)
     }
@@ -73,68 +53,74 @@ const PersonalProfileStep = (props) => {
         return newState
     }
 
-    useEffect(async () => {
-        userInfoReq()
+    const getUser = () => {
+        setLoading(true)
+        setError([])
+        getUserAttributes().then((data) => {
+            convertUserInfoToState(data)
+        }).catch(() => {
+            setError([t("PersonalProfileStep.serverError")])
+        }).finally(() => {
+            setLoading(false)
+        })
+    }
+    useEffect(() => {
+        getUser()
     }, [])
 
     const sendProfile = async () => {
-
-        if ( !isFormValid() ){
-            return false
-        }
-
+        if (!isFormValid()) return
         setLoading(true)
 
         const data = convertStateToUserInfo()
-
         delete data.email;
         delete data.username;
         delete data.selfiePath;
         delete data.idCardPath;
         delete data.acceptFormPath;
 
-        const addAttributesReq = await addAttributes(data)
-
-        if (addAttributesReq && addAttributesReq.status === 204) {
-            setLoading(false)
-            setError([])
-            dispatch(changeUserInfo(profile.firstName.value, profile.lastName.value))
-            props.nextStep()
-        } else {
-            setLoading(false)
-            setError([t("PersonalProfileStep.serverError")])
-        }
+        setUserProfileAttributes(data)
+            .then(() => {
+                setError([])
+                dispatch(changeUserInfo(profile.firstName.value, profile.lastName.value))
+                props.nextStep()
+            })
+            .catch(() => {
+                setError([t("PersonalProfileStep.serverError")])
+            })
+            .finally(() => {
+                setLoading(false)
+            })
     }
-
 
     const inputHandler = (e) => {
         let errorMessage = []
         let inputVal = e.target.value
-        if( typeof e.target.dataset?.min  && inputVal.length < e.target.dataset.min ) {
+        if (typeof e.target.dataset?.min && inputVal.length < e.target.dataset.min) {
             errorMessage.push(<Trans
                 i18nKey="PersonalProfileStep.minInput"
                 values={{
-                    name: t("PersonalProfile."+e.target.dataset.name),
+                    name: t("PersonalProfile." + e.target.dataset.name),
                     min: e.target.dataset.min
                 }}
             />)
         }
-        if( typeof e.target.dataset?.max  && inputVal.length >= e.target.dataset.max ) {
+        if (typeof e.target.dataset?.max && inputVal.length >= e.target.dataset.max) {
             errorMessage.push(<Trans
                 i18nKey="PersonalProfileStep.maxInput"
                 values={{
-                    name: t("PersonalProfile."+e.target.dataset.name),
+                    name: t("PersonalProfile." + e.target.dataset.name),
                     max: e.target.dataset.max
                 }}
             />)
         }
-        if (e.target.dataset?.type === "dateJ" && (!moment( inputVal , "jYYYY/jMM/jDD").isValid() || moment( inputVal , "jYYYY/jMM/jDD").isAfter())) {
+        if (e.target.dataset?.type === "dateJ" && (!moment(inputVal, "jYYYY/jMM/jDD").isValid() || moment(inputVal, "jYYYY/jMM/jDD").isAfter())) {
             errorMessage.push(t("PersonalProfileStep.wrongDateJ"))
         }
-        if (e.target.dataset?.type === "dateG" && (!moment( inputVal , ["YYYY/MM/DD","YYYY/M/D"], true) || moment( inputVal , ["YYYY/MM/DD","YYYY/M/D"], true).isAfter() )) {
+        if (e.target.dataset?.type === "dateG" && (!moment(inputVal, ["YYYY/MM/DD", "YYYY/M/D"], true) || moment(inputVal, ["YYYY/MM/DD", "YYYY/M/D"], true).isAfter())) {
             errorMessage.push(t("PersonalProfileStep.wrongDateG"))
         }
-        if (e.target.dataset?.type === "nationalId" &&  !isValidNationalCode(inputVal)  ) {
+        if (e.target.dataset?.type === "nationalId" && !isValidNationalCode(inputVal)) {
             inputVal = inputVal.replace(/[^0-9]+/g, "")
             errorMessage.push(t("PersonalProfileStep.wrongNationalId"))
         }
@@ -143,26 +129,26 @@ const PersonalProfileStep = (props) => {
         }
         setProfile({
             ...profile,
-            [e.target.dataset.name] :{ value :inputVal , error : errorMessage }
+            [e.target.dataset.name]: {value: inputVal, error: errorMessage}
         })
     }
 
     const isFormValid = () => {
         let inputs = {...profile}
-        const hasError = Object.values(profile).find( input => input.error.length > 0 )
-        if( hasError ) return false
+        const hasError = Object.values(profile).find(input => input.error.length > 0)
+        if (hasError) return false
         let isEmpty = false
         for (const key in inputs) {
-            if (inputs[key].value.length === 0 ){
+            if (inputs[key].value.length === 0) {
                 isEmpty = true
                 inputs = {
                     ...inputs,
-                    [key] : {
+                    [key]: {
                         ...inputs[key],
-                        error : [<Trans
+                        error: [<Trans
                             i18nKey="PersonalProfileStep.emptyInput"
                             values={{
-                                name: t("PersonalProfile."+key),
+                                name: t("PersonalProfile." + key),
                             }}
                         />]
                     }
@@ -172,7 +158,6 @@ const PersonalProfileStep = (props) => {
         setProfile(inputs);
         return !isEmpty;
     }
-
 
     return (
         <div
@@ -212,30 +197,6 @@ const PersonalProfileStep = (props) => {
                             />
                         </div>
                     </div>
-                    {/*
-                    <div className="row jc-between">
-                        <div className="col-49">
-                            <TextInput
-                                lead={t('PersonalProfile.firstNameMain')}
-                                type="text"
-                                value={profile.firstNameMain.value}
-                                onchange={(e) =>
-                                    setProfile({...profile, firstNameMain: e.target.value})
-                                }
-                            />
-                        </div>
-                        <div className="col-49">
-                            <TextInput
-                                lead={t('PersonalProfile.lastNameMain')}
-                                type="text"
-                                value={profile.lastNameMain.value}
-                                onchange={(e) =>
-                                    setProfile({...profile, lastNameMain: e.target.value})
-                                }
-                            />
-                        </div>
-                    </div>
-                    */}
                     <div className="row jc-between">
                         <div className="col-49">
                             <TextInput
@@ -245,7 +206,7 @@ const PersonalProfileStep = (props) => {
                                 defaultValue={countries.filter((v) => v.value === profile.nationality.value)}
                                 lead={t('PersonalProfile.nationality')}
                                 type="select"
-                                onchange={(e) => setProfile({...profile, nationality: {value: e.value , error: []}})}
+                                onchange={(e) => setProfile({...profile, nationality: {value: e.value, error: []}})}
                                 alerts={profile.nationality.error}
                             />
                         </div>
@@ -257,7 +218,7 @@ const PersonalProfileStep = (props) => {
                                 defaultValue={countries.filter((v) => v.value === profile.residence.value)}
                                 type="select"
                                 options={countries}
-                                onchange={(e) => setProfile({...profile, residence: {value: e.value , error: []}})}
+                                onchange={(e) => setProfile({...profile, residence: {value: e.value, error: []}})}
                                 alerts={profile.residence.error}
                             />
                         </div>
@@ -381,7 +342,7 @@ const PersonalProfileStep = (props) => {
                     <div className="row pt-1 jc-between">
                         <div className={`col-50 flex jc-start ai-end`}>
                             <span className={` text-red font-size-sm-plus cursor-pointer`}
-                                  onClick={() => userInfoReq()}>{error.length !== 0 && error}</span>
+                                  onClick={getUser}>{error.length !== 0 && error}</span>
                         </div>
                         <div className={`col-50 row jc-end ai-center`}>
                             <Button

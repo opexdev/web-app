@@ -5,16 +5,19 @@ import {useSelector} from "react-redux";
 import {BN} from "../../../../../../../../utils/utils";
 import Icon from "../../../../../../../../components/Icon/Icon";
 import Popup from "../../../../../../../../components/Popup/Popup";
+import {useGetUserAccount} from "../../../../../../../../queries/hooks/useGetUserAccount";
+import {useGetLastPrices} from "../../../../../../../../queries/hooks/useGetLastPrices";
 
 
 const MarketHeader = () => {
     const {t} = useTranslation();
 
     const activePair = useSelector((state) => state.exchange.activePair)
-    const lastTradePrice = useSelector((state) => state.exchange.activePairOrders.lastTradePrice)
+    const {data: lastPrices} = useGetLastPrices()
+    const {data: userAccount} = useGetUserAccount()
 
-    const base = useSelector((state) => state.auth.wallets[activePair.baseAsset].free)
-    const quote = useSelector((state) => state.auth.wallets[activePair.quoteAsset].free)
+    const base = userAccount?.wallets[activePair.baseAsset]?.free || 0
+    const quote = userAccount?.wallets[activePair.quoteAsset]?.free || 0
 
     const [showPopUp, setShowPopUp] = useState(false);
     const [showPopUpAsset, setShowPopUpAsset] = useState(null);
@@ -40,7 +43,7 @@ const MarketHeader = () => {
         <>
             <div className={`col-25 column ai-start`}>
                 <h2 className="mb-05">{t("currency." + activePair.baseAsset)}/{t("currency." + activePair.quoteAsset)}</h2>
-                <p>{t("header.lastPrice")}:{" "}<span/>{" "}{!lastTradePrice ? "---" :  lastTradePrice.toLocaleString()+" "+t("currency." + activePair.quoteAsset)}</p>
+                <p>{t("header.lastPrice")}:{" "}<span/>{" "}{new BN(lastPrices[activePair.symbol] || 0).toFormat()+" "+t("currency." + activePair.quoteAsset)}</p>
             </div>
             <div className={`col-50 column ai-center`}>
                 <p className="mb-05">{t("header.availableBalance")}</p>

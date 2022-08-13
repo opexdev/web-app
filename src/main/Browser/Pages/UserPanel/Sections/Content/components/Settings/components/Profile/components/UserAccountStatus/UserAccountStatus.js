@@ -1,4 +1,4 @@
-import React, {useState, useEffect, Fragment} from "react";
+import React, {Fragment, useEffect, useState} from "react";
 import classes from "./UserAccountStatus.module.css";
 import {Trans, useTranslation} from "react-i18next";
 import ReactTooltip from "react-tooltip";
@@ -6,7 +6,7 @@ import {AccountStatusData} from "../../../../../../../../../../../../FakeData/Fa
 import Icon from "../../../../../../../../../../../../components/Icon/Icon";
 import ScrollBar from "../../../../../../../../../../../../components/ScrollBar";
 
-const UserAccountStatus = (props) => {
+const UserAccountStatus = () => {
     const {t} = useTranslation();
 
     const [customData, setCustomData] = useState({

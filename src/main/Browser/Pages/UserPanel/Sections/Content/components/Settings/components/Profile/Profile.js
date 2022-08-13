@@ -1,24 +1,14 @@
-import React, {Fragment} from "react";
-import {connect} from "react-redux";
-import UserAccountStatus from "./components/UserAccountStatus/UserAccountStatus";
+import React from "react";
 import PersonalProfile from "./components/PersonalProfile/PersonalProfile";
 
 const Profile = () => {
-  return (
-    <Fragment>
-      {/*<div className="row">
-        <UserAccountStatus />
-      </div>*/}
-      <div className="row">
-        <PersonalProfile />
-      </div>
-    </Fragment>
-  );
-};
-const mapStateToProps = (state) => {
-  return {
-    activePair: state.exchange.activePair,
-  };
+    return (
+        <>
+            <div className="row">
+                <PersonalProfile/>
+            </div>
+        </>
+    );
 };
 
-export default connect(mapStateToProps, null)(Profile);
+export default Profile;

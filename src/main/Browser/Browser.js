@@ -1,4 +1,4 @@
-import React, {useEffect , Fragment} from "react";
+import React, {useEffect} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {Route, Routes} from "react-router-dom";
 import i18n from "i18next";
@@ -7,35 +7,23 @@ import * as RoutesName from "./Routes/routes";
 import {Toaster} from "react-hot-toast";
 import Login from "./Pages/Login/Login";
 import Guide from "./Pages/Guide/Guide";
-import ProtectedRoute from "../../components/ProtectedRoute/ProtectedRoute";
-import MainMenu from "./Pages/UserPanel/Sections/MainMenu/MainMenu";
-import SubMenu from "./Pages/UserPanel/Sections/SubMenu/SubMenu";
-import Header from "./Pages/UserPanel/Sections/Header/Header";
-import Content from "./Pages/UserPanel/Sections/Content/Content";
 import FullWidthLoading from "../../components/FullWidthLoading/FullWidthLoading";
-import {loadConfig, setInfoMessage, setUserAccountInfoInitiate} from "../../store/actions";
-import TechnicalChart from "./Pages/UserPanel/Sections/Content/components/TechnicalChart/TechnicalChart";
+import {loadConfig, setInfoMessage} from "../../store/actions";
 import "./Styles/Browser.css"
 import useQuery from "../../Hooks/useQuery";
-import useInterval from "../../Hooks/useInterval";
-import {setLastPriceInitiate} from "../../store/actions/exchange";
-import Info from "../../components/Info/Info";
 import FullWidthError from "../../components/FullWidthError/FullWidthError";
 import User from "./Pages/User/User";
 import Landing from "./Pages/Landing/Landing";
 import AllMarket from "./Pages/AllMarket/AllMarket";
-import {Panel} from "./Routes/routes";
 import UserPanel from "./Pages/UserPanel/UserPanel";
 
-
 const Browser = () => {
-    const dispatch = useDispatch();
     const query = useQuery();
+    const dispatch = useDispatch();
 
     const isDark = useSelector((state) => state.global.isDark)
     const isLoading = useSelector((state) => state.global.isLoading)
     const hasError = useSelector((state) => state.global.hasError)
-    const isLogin = useSelector((state) => state.auth.isLogin)
 
     isDark ? document.body.classList.add('dark') : document.body.classList.remove('dark');
 
@@ -54,15 +42,6 @@ const Browser = () => {
             window.removeEventListener('online', () => dispatch(setInfoMessage(null, null)));
         }
     }, []);
-
-
-    useInterval(() => {
-        dispatch(setUserAccountInfoInitiate());
-    }, isLogin ? 3000 : null)
-
-    useInterval(() => {
-        dispatch(setLastPriceInitiate());
-    }, 3000)
 
     const Toast = () => <Toaster position="bottom-right" toastOptions={
         {
@@ -92,12 +71,11 @@ const Browser = () => {
             },
         }} containerStyle={{}}/>
 
-    if (isLoading) {
-        return <FullWidthLoading/>
-    }
-    if (hasError) {
-        return <FullWidthError/>
-    }
+
+    if (isLoading) return <FullWidthLoading/>
+
+    if (hasError) return <FullWidthError/>
+
     return (
         <>
             <Routes>

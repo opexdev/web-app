@@ -5,13 +5,12 @@ import React, {useEffect, useRef, useState} from "react";
 import {useSelector} from "react-redux";
 import {useParams} from "react-router-dom";
 import {Trans, useTranslation} from "react-i18next";
-import {sendWithdrawReq} from "../../../api/wallet";
 import {BN, parsePriceString} from "../../../../../../../../../../../utils/utils";
 import {toast} from "react-hot-toast";
 import {images} from "../../../../../../../../../../../assets/images";
 import NumberInput from "../../../../../../../../../../../components/NumberInput/NumberInput";
-import IRT from "./Deposit/components/IRT/IRT";
 import ReactTooltip from "react-tooltip";
+import {sendWithdrawReq} from "js-api-client";
 
 const Withdrawal = () => {
     const {t} = useTranslation();
@@ -24,27 +23,18 @@ const Withdrawal = () => {
         ReactTooltip.rebuild();
     }, []);
 
-    const [amount, setAmount] = useState({
-        value: "0",
-        error: [],
-    });
-    const [address, setAddress] = useState({
-        value: "",
-        error: [],
-    });
+    const [amount, setAmount] = useState({value: "0", error: []});
+    const [address, setAddress] = useState({value: "", error: []});
 
     const [isLoading, setIsLoading] = useState(false)
-    const [error, setError] = useState("")
 
     useEffect(() => {
         setAmount({value: "0", error: []})
         setAddress({value: "", error: []})
-
         validation()
-
     }, [id]);
 
-    const network = (id) => {
+    const network = () => {
         switch (id) {
             case  "BTC":
                 return 'BTC Network';
@@ -67,10 +57,6 @@ const Withdrawal = () => {
         }
     };
 
-    const isDisable = useRef()
-
-
-
     const validation = () => {
         if (new BN(amount.value).isGreaterThan(wallets[id].free)) {
             return  t('DepositWithdraw.noInventory')
@@ -83,11 +69,10 @@ const Withdrawal = () => {
         }
     }
 
-
     const sendWithdrawHandler = async () => {
         if (isLoading) return false
         setIsLoading(true)
-        sendWithdrawReq(amount.value, id, address.value, calculateFee(id), network(id)).then((r) =>{
+        sendWithdrawReq(amount.value, id, address.value, calculateFee(id), network(id)).then(() =>{
             setIsLoading(false)
             setAmount({value: "0", error: []})
             setAddress({value: "", error: []})
@@ -102,9 +87,7 @@ const Withdrawal = () => {
     }
 
     const submitButtonTextHandler = () => {
-        if (isLoading) {
-            return <img className={`${classes.thisLoading}`} src={images.linearLoadingBgOrange} alt="linearLoading"/>
-        }
+        if (isLoading) return <img className={`${classes.thisLoading}`} src={images.linearLoadingBgOrange} alt="linearLoading"/>
         return t('DepositWithdrawTx.withdrawReqSubmit')
     }
 
@@ -114,7 +97,6 @@ const Withdrawal = () => {
             error: []
         })
     };
-
 
     const fillByMinWithdraw = () => {
         setAmount({
@@ -174,9 +156,7 @@ const Withdrawal = () => {
                             type="text"
                             value={address.value}
                             alerts={address.error}
-                            onchange={(e) =>
-                                setAddress({...address, value: e.target.value})
-                            }
+                            onchange={(e) => setAddress({...address, value: e.target.value})}
                         />
                         <span className="pt-05 text-end">{t('DepositWithdrawTx.withdrawWarn')}</span>
                     </div>
@@ -196,12 +176,12 @@ const Withdrawal = () => {
                             data-place="top"
                             data-effect="float"
                             data-tip={enableButton ? `<span class="column jc-between col-100 text-red">${validation()}</span>` : ""}
-                        ><Button
+                        >
+                            <Button
                             buttonClass={`${classes.thisButton} ${classes.withdrawal} ${isLoading ? "cursor-not-allowed" : "cursor-pointer"}`}
                             buttonTitle={submitButtonTextHandler()}
                             disabled={!(new BN(amount.value).minus(new BN(calculateFee(id))).isGreaterThan(0)) || new BN(amount.value).isGreaterThan(wallets[id].free)  || address.value.length <= 0}
-                            onClick={sendWithdrawHandler}
-                        />
+                            onClick={sendWithdrawHandler}/>
                             </span>
                     </div>
                 </div>
