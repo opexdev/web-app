@@ -1,4 +1,4 @@
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import React, {useEffect, useState} from "react";
 import classes from "../../Login.module.css";
 import TextInput from "../../../../../../components/TextInput/TextInput";
@@ -26,12 +26,16 @@ const LoginForm = () => {
     const [forgetPassword, setForgetPassword] = useState(false);
     const [credential, setCredential] = useState({username: "", password: "", otp: ""});
     const {refetch: getKycStatus} = useGetKycStatus();
+
     const from = location.state?.from?.pathname || "/";
+    const isLogin = useSelector((state) => state.auth.isLogin)
 
     const agent = [deviceType, browserName, fullBrowserVersion]
-
     const clientSecret = window.env.REACT_APP_CLIENT_SECRET
+
     const clientId = window.env.REACT_APP_CLIENT_ID
+
+    if (isLogin) navigate(from, {replace: true});
 
     useEffect(() => {
         setNeedOTP(undefined)
@@ -64,10 +68,10 @@ const LoginForm = () => {
         login(credential, agent, clientId, clientSecret)
             .then(async (res) => {
                 const userToken = parseToken(res.data);
-                dispatch(setUserTokensInitiate(userToken));
                 const jwt = jwtDecode(userToken.accessToken)
                 await dispatch(setUserInfo(jwt));
-                dispatch(setUserAccountInfoInitiate())
+                await dispatch(setUserTokensInitiate(userToken));
+                await dispatch(setUserAccountInfoInitiate())
                 await getKycStatus()
                 return navigate(from, {replace: true});
             })
@@ -79,7 +83,7 @@ const LoginForm = () => {
                     setLoginError(t("login.wrongOTP"));
                     return setNeedOTP(true)
                 }
-                if (err?.response?.status === 400 && err?.data?.error_description === "Account is not fully set up") {
+                if (err?.response?.status === 400 && err?.response?.data?.error_description === "Account is not fully set up") {
                     return setLoginError(t("login.accountNotActive"));
                 }
                 setLoginError(t("login.loginError"));

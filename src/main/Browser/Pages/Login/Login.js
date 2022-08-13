@@ -1,19 +1,13 @@
 import React from "react";
-import {useSelector} from "react-redux";
 import classes from "./Login.module.css";
 import {images} from "../../../../assets/images";
 import AccordionBox from "../../../../components/AccordionBox/AccordionBox";
 import LoginForm from "./components/LoginForm/LoginForm";
 import RegisterForm from "./components/RegisterForm/RegisterForm";
 import {useTranslation} from "react-i18next";
-import {useNavigate} from "react-router-dom";
 
 const Login = () => {
     const {t} = useTranslation();
-    const navigate = useNavigate();
-    const isLogin = useSelector((state) => state.auth.isLogin)
-
-    if (isLogin) navigate("/", {replace: true});
 
     const data = [
         {

@@ -3,7 +3,7 @@ import classes from "./PersonalProfileStep.module.css";
 import {Trans, useTranslation} from "react-i18next";
 import TextInput from "../../../../../../../../../../../../components/TextInput/TextInput";
 import Button from "../../../../../../../../../../../../components/Button/Button";
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import Loading from "../../../../../../../../../../../../components/Loading/Loading"
 import {changeUserInfo} from "../../../../../../../../../../../../store/actions";
 import moment from "moment-jalaali";
@@ -15,6 +15,7 @@ const PersonalProfileStep = (props) => {
     const [loading, setLoading] = useState(true)
     const [error, setError] = useState([])
     const dispatch = useDispatch();
+    const email = useSelector((state) => state.auth.email)
 
     const [profile, setProfile] = useState({
         firstName: {value: "", error: []},
@@ -56,8 +57,8 @@ const PersonalProfileStep = (props) => {
     const getUser = () => {
         setLoading(true)
         setError([])
-        getUserAttributes().then((data) => {
-            convertUserInfoToState(data)
+        getUserAttributes().then((res) => {
+            convertUserInfoToState(res.data)
         }).catch(() => {
             setError([t("PersonalProfileStep.serverError")])
         }).finally(() => {
@@ -308,7 +309,7 @@ const PersonalProfileStep = (props) => {
                                 lead={t('PersonalProfile.email')}
                                 type="email"
                                 disabled={true}
-                                value={profile.email.value}
+                                value={email}
                                 customClass={`${classes.email}`}
                             />
                         </div>

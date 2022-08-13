@@ -4,7 +4,7 @@
   "homepage": "",
   "private": true,
   "dependencies": {
-    "@tanstack/react-query": "^4.0.10",
+    "@tanstack/react-query": "^4.1.3",
     "@tanstack/react-query-devtools": "^4.0.10",
     "@testing-library/jest-dom": "^5.11.9",
     "@testing-library/react": "^11.2.5",
