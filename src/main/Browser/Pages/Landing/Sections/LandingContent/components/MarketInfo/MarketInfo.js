@@ -12,7 +12,8 @@ import Error from "../../../../../../../../components/Error/Error";
 
 const MarketInfo = () => {
 
-    const {data:overview, isLoading, error} = useOverview(null , "24h")
+    const interval = "24h"
+    const {data:overview, isLoading, error} = useOverview(null , interval)
     const [card, setCard] = useState(false)
     const [IRT, setIRT] = useState(true)
     const allSymbols = useSelector((state) => state.exchange.symbols)
@@ -55,8 +56,7 @@ const MarketInfo = () => {
                     </div>
                 </div>
                 <div className={`row jc-center ai-center cursor-pointer hover-text`}>
-                    <Link to={"/"} className={`ml-05 hover-text`}>نمایش تمام بازار</Link>
-                    {/*<Link to={Routes.AllMarket} className={`ml-05 hover-text`}>نمایش تمام بازار</Link>*/}
+                    <Link to={Routes.AllMarket} className={`ml-05 hover-text`}>نمایش تمام بازار</Link>
                     <Icon iconName="icon-left-open-1 font-size-md flex" className={`mr-05`}/>
                 </div>
             </div>

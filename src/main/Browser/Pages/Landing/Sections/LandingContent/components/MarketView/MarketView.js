@@ -51,7 +51,7 @@ const MarketView = () => {
                     <div className={`column ai-end text-green`}>
                         <div className={`row`}>
                             <span className={`font-size-sm-mini ml-05`}>{mostIncreasedPrice.pairInfo.quoteAsset}</span>
-                            <span> {new BN(mostIncreasedPrice?.lastPrice).toFormat()} </span>
+                            <span>{new BN(mostIncreasedPrice?.lastPrice).toFormat()}</span>
                         </div>
                         <span>% {new BN(mostIncreasedPrice?.priceChangePercent).toFormat(2)}+</span>
                     </div>
