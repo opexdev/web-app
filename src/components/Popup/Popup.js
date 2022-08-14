@@ -12,12 +12,13 @@ import TextInput from "../TextInput/TextInput";
 import {toast} from "react-hot-toast";
 import {useGetDepositAddress} from "../../queries";
 import Loading from "../Loading/Loading";
+import Error from "../Error/Error";
 
 const Popup = ({currency, closePopup}) => {
 
     const {t} = useTranslation();
     const addressRef = useRef(null);
-    const {data: address , isLoading} = useGetDepositAddress(currency)
+    const {data: address , isLoading , error} = useGetDepositAddress(currency)
     const isLogin = useSelector((state) => state.auth.isLogin)
 
     const copyToClipboard = () => {
@@ -32,8 +33,9 @@ const Popup = ({currency, closePopup}) => {
                 {t("pleaseLogin")}
             </Link>
         </div>
-        if(isLoading) return <Loading/>
 
+        if(isLoading) return <Loading/>
+        if (error) return <Error/>
         if (currency === "IRT") return <Navigate to={Routes.Wallet + "/IRT"} replace />
 
         return <>

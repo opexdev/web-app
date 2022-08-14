@@ -246,7 +246,7 @@ const BuyOrder = () => {
                         pricePerUnit: order.pricePerUnit,
                     }}
                 />);
-                setTimeout(() => dispatch(setLastTransaction(res.data.transactTime)), 2000);
+                dispatch(setLastTransaction(res.data.transactTime))
             }).catch(() => {
             toast.error(t("orders.error"));
             setAlert({

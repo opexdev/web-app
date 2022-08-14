@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import classes from "./OrderBook.module.css";
 import OrderBookTable from "./components/OrderBookTable/OrderBookTable";
 import {useTranslation} from "react-i18next";
@@ -13,7 +13,12 @@ import {useOrderBook} from "../../../../../../../../../../queries";
 const OrderBook = () => {
     const {t} = useTranslation();
     const activePair = useSelector((state) => state.exchange.activePair)
-    const {data, isLoading, error} = useOrderBook(activePair.symbol)
+    const {data, isLoading, error, refetch} = useOrderBook(activePair.symbol)
+    const lastTransaction = useSelector((state) => state.auth.lastTransaction)
+
+    useEffect(() => {
+        refetch()
+    }, lastTransaction)
 
     const tableRender = () => {
         if (error) return <Error/>
