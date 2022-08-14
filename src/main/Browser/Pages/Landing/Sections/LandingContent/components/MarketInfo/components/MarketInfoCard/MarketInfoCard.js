@@ -2,13 +2,11 @@ import React from 'react';
 import classes from './MarketInfoCard.module.css'
 import {images} from "../../../../../../../../../../assets/images";
 import {useTranslation} from "react-i18next";
+import {BN} from "../../../../../../../../../../utils/utils";
 
-const MarketInfoCard = (props) => {
+const MarketInfoCard = ({data}) => {
 
     const {t} = useTranslation();
-
-    const {data, baseAsset, price, marketCap, lowPrice, highPrice, volume, pcp24h} = props
-
 
     const backgroundBar = (percent) => {
         if (percent > 0) {
@@ -26,16 +24,17 @@ const MarketInfoCard = (props) => {
 
             {data.map((tr, index) => {
                 return (
-                    <div className={`${classes.item} card-border card-background column jc-between ai-center py-3 cursor-pointer`} style={backgroundBar(tr.pcp24h.toString())}>
+                    <div className={`${classes.item} card-border card-background column jc-between ai-center py-3 cursor-pointer`} style={backgroundBar(tr.priceChange.toString())} key={index}>
                         <div className={`row jc-center ai-center width-100`}>
-                            <img src={images[tr.baseAsset]} alt={tr.baseAsset} title={tr.baseAsset} className={`img-lg ml-05`}/>
+                            <img src={images[tr?.pairInfo?.baseAsset]} alt={tr?.pairInfo?.baseAsset}
+                                 title={tr?.pairInfo?.baseAsset} className={`img-lg ml-05`}/>
                             <div className={`column mr-05`}>
-                                <span className={`font-size-md`}>{t("currency." + tr.baseAsset)}</span>
-                                <span className={`${tr.pcp24h > 0 ? "text-green" : "text-red"}`}>{tr.pcp24h} %</span>
+                                <span className={`font-size-md`}>{t("currency." + tr?.pairInfo?.baseAsset)}</span>
+                                <span className={`${tr.priceChange > 0 ? "text-green" : "text-red"} direction-ltr`}>{new BN(tr.priceChange).toFormat()} %</span>
                             </div>
                         </div>
 
-                        <span className={`${tr.pcp24h > 0 ? "text-green" : "text-red"} font-size-md-01`}>{tr.price}</span>
+                        <span className={`${tr.priceChange > 0 ? "text-green" : "text-red"} font-size-md-01`}>{new BN(tr.lastPrice).toFormat()}</span>
 
                         <div className={`column jc-center ai-center`}>
                             <img
@@ -44,7 +43,7 @@ const MarketInfoCard = (props) => {
                                 alt={""}
                                 title={""}
                             />
-                            <span className={`mt-05 text-color-gray font-size-sm-plus`}>روند 7 روزه</span>
+                            <span className={`mt-05 text-color-gray font-size-sm-plus`}>روند 24 ساعت</span>
                         </div>
 
 

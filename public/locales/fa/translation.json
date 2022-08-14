@@ -506,7 +506,8 @@
     "lastPrice": "آخرین قیمت",
     "pcp24h": "24 ساعت %",
     "pcp7d": "7 روز %",
-    "chart": "روند 7 روزه",
+    "7chart": "روند 7 روزه",
+    "chart": "نمودار",
     "volume": "حجم معاملات",
     "details": "جزئیات",
     "lowPrice": "حداقل",
@@ -516,10 +517,10 @@
   },
   "MarketView": {
     "title": "روند 24 ساعته",
-    "mostIncrease": "بیشترین افزایش",
-    "mostTrade": "بیشترین تعداد معامله",
-    "greatestReduction": "بیشترین کاهش",
-    "MaxTransactionVolume": "بیشترین حجم معامله",
+    "mostIncreased": "بیشترین افزایش",
+    "mostDecreased": "بیشترین کاهش",
+    "mostTrades": "بیشترین تعداد معامله",
+    "mostVolume": "بیشترین حجم معامله",
     "MinTransactionVolume": "کمترین حجم معامله"
   },
   "MarketTitle": {

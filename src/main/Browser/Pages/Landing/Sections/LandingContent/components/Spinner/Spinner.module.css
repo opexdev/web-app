@@ -14,7 +14,7 @@
 .BTC{
     width: 15%;
     position: absolute;
-    top: -5%;
+    top: -6.5%;
     left: 50%;
     z-index: 10;
     animation-duration: 10s;
@@ -30,7 +30,7 @@
 .ETH{
     width: 15%;
     position: absolute;
-    bottom: -5%;
+    bottom: -6.5%;
     left: 50%;
     animation-duration: 7s;
 }
@@ -45,7 +45,7 @@
 .USDT{
     width: 15%;
     position: absolute;
-    right: -5%;
+    right: -6.5%;
     top: 40%;
     animation-duration: 4s;
 }

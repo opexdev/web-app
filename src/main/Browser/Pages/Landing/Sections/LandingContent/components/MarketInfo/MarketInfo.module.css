@@ -1,26 +1,16 @@
 .container {
-    height: 80vh;
-    border-radius: 9px;
+
 }
-.iconBG {
-    vertical-align: middle;
-    border-radius: 50vw;
+
+.header {
+    height: 10vh;
 }
-.close {
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.3s;
-    opacity: 0;
-    line-height: 0;
-    visibility: collapse;
+
+.content {
+   /* height: 85%;*/
 }
-.open {
-    max-height: 2vh;
-    transition: max-height 0.6s;
-}
-.safariFlexSize :global(.accordion-header) {
-    flex: 22;
-}
-.safariFlexSize :global(.accordion-body) {
-    flex: 77;
+
+.active {
+    background-color: var(--cardHeaderAlpha);
+    color: var(--activeTab);
 }
