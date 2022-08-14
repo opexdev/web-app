@@ -6,9 +6,9 @@ import Spinner from "./components/Spinner/Spinner";
 import MarketView from "./components/MarketView/MarketView";
 import MarketTitle from "./components/MarketTitle/MarketTitle";
 import GeneralInfo from "./components/GeneralInfo/GeneralInfo";
-import PopularCryptocurrencies from "./components/PopularCryptocurrencies/PopularCryptocurrencies";
 import {images} from "../../../../../../assets/images";
 import {useSelector} from "react-redux";
+import MarketInfo from "./components/MarketInfo/MarketInfo";
 
 const LandingContent = () => {
 
@@ -30,7 +30,7 @@ const LandingContent = () => {
                     </div>
                 </div>
                 <div className={`flex jc-center`} style={{height:"" , backgroundColor: "var(--mainContent)"}}>
-                    <PopularCryptocurrencies/>
+                    <MarketInfo/>
                 </div>
                 <div className={`flex jc-center ai-center width-90 m-auto`} style={{height:"70vh" , backgroundColor: ""}}>
                     <img src={isDark ? images.OpexPanelMockupDark : images.OpexPanelMockupLight} alt="OpexMockup" loading="lazy" style={{width:"40%"}}/>

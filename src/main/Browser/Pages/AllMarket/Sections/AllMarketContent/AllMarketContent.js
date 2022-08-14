@@ -3,9 +3,6 @@ import classes from './AllMarketContent.module.css'
 import ScrollBar from "../../../../../../components/ScrollBar";
 import Footer from "../../../UserPanel/Sections/Footer/Footer";
 import Swing from "./components/Swing/Swing";
-import {images} from "../../../../../../assets/images";
-import PopularCryptocurrencies
-    from "../../../Landing/Sections/LandingContent/components/PopularCryptocurrencies/PopularCryptocurrencies";
 import AllMarketInfo from "./components/AllMarketInfo/AllMarketInfo";
 import PriceInfo from "./components/PriceInfo/PriceInfo";
 import VolumeInfo from "./components/VolumeInfo/VolumeInfo";

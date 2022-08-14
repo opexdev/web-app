@@ -2,10 +2,9 @@ import React from 'react';
 import classes from './MarketView.module.css'
 import {useTranslation} from "react-i18next";
 import {images} from "../../../../../../../../assets/images";
-import {useGetExchangeInfo, useGetMarketStats} from "../../../../../../../../queries";
+import {useGetMarketStats} from "../../../../../../../../queries";
 import {BN} from "../../../../../../../../utils/utils";
 import {useSelector} from "react-redux";
-import content from "../../../../../UserPanel/Sections/Content/Content";
 import Loading from "../../../../../../../../components/Loading/Loading";
 import Error from "../../../../../../../../components/Error/Error";
 
@@ -32,16 +31,7 @@ const MarketView = () => {
     }
 
 
-
-
-
-    console.log("allSymbols , " , allSymbols)
-
-
-    console.log("data: ", stats?.mostDecreasedPrice[0]?.priceChangePercent)
-
     const content = () => {
-
         if (isLoading) return <Loading/>
         if (error) return <Error/>
         else return <>
@@ -65,10 +55,8 @@ const MarketView = () => {
                         </div>
                         <span>% {new BN(mostIncreasedPrice?.priceChangePercent).toFormat(2)}+</span>
                     </div>
-
                 </div>
             </div>
-
             <div className={`column border-bottom  my-3`}>
                 <span className={`${classes.title} text-orange`}>{t("MarketView.mostDecreased")}</span>
                 <div className={`row jc-between ai-center`}>
@@ -81,9 +69,6 @@ const MarketView = () => {
                         />
                         <span className={`mr-05`}>{t("currency." + mostDecreasedPrice.pairInfo.baseAsset)}</span>
                     </div>
-
-
-
                     <div className={`column ai-end text-red`}>
                         <div className={`row`}>
                             <span className={`font-size-sm-mini ml-05`}>{mostDecreasedPrice.pairInfo.quoteAsset}</span>
@@ -91,18 +76,11 @@ const MarketView = () => {
                         </div>
                         <span className={`direction-ltr`}>{new BN(mostDecreasedPrice?.priceChangePercent).toFormat(2)} %</span>
                     </div>
-
-
                 </div>
             </div>
-
-
             <div className={`column`}>
                 <span className={`${classes.title} text-orange`}>{t("MarketView.mostVolume")}</span>
                 <div className={`row jc-between ai-center`}>
-
-
-
                     <div className={`row jc-center ai-center`}>
                         <img
                             className="img-md-plus ml-05"
@@ -119,34 +97,22 @@ const MarketView = () => {
                         </div>
                         <span>% {new BN(mostVolume?.change).toFormat(2)}+</span>
                     </div>
-
-
-
                 </div>
             </div>
-
         </>
-
     }
 
 
     return (
         <div className={`${classes.container} card-background card-border`}>
-
-
             <div className={`column border-bottom jc-center card-header-bg ${classes.header}`}>
                 <div className="row jc-center ai-center ">
                     <h3>{t("MarketView.title")}</h3>
                 </div>
             </div>
             <div className={`column container jc-center ${classes.content} px-2 py-1`}>
-
                 {content()}
-
-
             </div>
-
-
         </div>
     );
 };

@@ -9,7 +9,7 @@ export const useOverview = (symbol, period) => {
             staleTime: 5000,
             refetchInterval: 10000,
             notifyOnChangeProps: ['data', 'isLoading', 'error'],
-            select: (data) => data[0],
+            select: (data) => {return symbol ? data[0] : data},
         });
 }
 

@@ -1,4 +1,9 @@
-.container tr:nth-child(even) td {
+.row:last-child{
+    border-bottom: none;
+}
+.row:nth-child(odd) {
     background-color: var(--tableRow);
-    transition: background-color 0.4s;
+}
+.row:hover {
+    background-color: var(--LoginContainer);
 }

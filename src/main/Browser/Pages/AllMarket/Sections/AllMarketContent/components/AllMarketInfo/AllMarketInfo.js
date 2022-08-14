@@ -1,12 +1,6 @@
 import React, {useState} from 'react';
 import classes from './AllMarketInfo.module.css'
 import Icon from "../../../../../../../../components/Icon/Icon";
-import {Link} from "react-router-dom";
-import * as Routes from "../../../../../../Routes/routes";
-import MarketInfoCard
-    from "../../../../../Landing/Sections/LandingContent/components/PopularCryptocurrencies/components/MarketInfoCard/MarketInfoCard";
-import MarketInfoTable
-    from "../../../../../Landing/Sections/LandingContent/components/PopularCryptocurrencies/components/MarketInfoTable/MarketInfoTable";
 import AllMarketInfoCard from "./components/AllMarketInfoCard/AllMarketInfoCard";
 import AllMarketInfoTable from "./components/AllMarketInfoTable/AllMarketInfoTable";
 
