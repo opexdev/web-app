@@ -518,7 +518,7 @@
     "totalTrades": "Total Trades"
   },
   "MarketInfo": {
-    "showAllMarket": "Show All Market",
+    "viewAllMarket": "View All Market",
     "name": "Name",
     "cryptocurrency": "Cryptocurrency",
     "lastPrice": "Last Price",

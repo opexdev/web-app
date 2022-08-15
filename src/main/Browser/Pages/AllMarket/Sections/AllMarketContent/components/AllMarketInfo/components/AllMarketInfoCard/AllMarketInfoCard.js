@@ -40,7 +40,7 @@ const AllMarketInfoCard = ({data}) => {
                     <div className={`${classes.item} card-border card-background column cursor-pointer`} style={backgroundBar(tr.priceChange.toString())}
                          onMouseEnter={()=>MouseEnterEventHandler(index)} onMouseLeave={MouseLeaveEventHandler}>
 
-                        <div className={`column jc-between ai-center pt-2 pb-3`} style={{height:"70%"}}>
+                        <div className={`column jc-between ai-center pt-2 pb-3`} style={{height:"80%"}}>
 
                             <div className={`row jc-between ai-center width-100 px-1`}>
                                 <div className={`row jc-center ai-center`}>
@@ -77,7 +77,7 @@ const AllMarketInfoCard = ({data}) => {
 
 
                         </div>
-                        <div className={`flex jc-center ai-center`} style={{height:"30%"}}>
+                        <div className={`flex jc-center ai-center`} style={{height:"20%"}}>
                             { showButton === index ?
                                 <div className={`row jc-between width-90`}>
                                     <Button

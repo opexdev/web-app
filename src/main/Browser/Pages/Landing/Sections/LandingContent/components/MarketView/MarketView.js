@@ -7,6 +7,7 @@ import {BN} from "../../../../../../../../utils/utils";
 import {useSelector} from "react-redux";
 import Loading from "../../../../../../../../components/Loading/Loading";
 import Error from "../../../../../../../../components/Error/Error";
+import i18n from "i18next";
 
 const MarketView = () => {
 
@@ -45,8 +46,8 @@ const MarketView = () => {
                         <span className={`mr-05`}>{t("currency." + mostIncreasedPrice.pairInfo.baseAsset)}</span>
                     </div>
                     <div className={`column ai-end text-green`}>
-                        <div className={`row`}>
-                            <span className={`font-size-sm-mini ml-05`}>{mostIncreasedPrice.pairInfo.quoteAsset}</span>
+                        <div className={`${i18n.language !== "fa" ? 'row-reverse' : 'row'}`}>
+                            <span className={`font-size-sm-mini ${i18n.language !== "fa" ? 'mr-05' : 'ml-05'}`}>{mostIncreasedPrice.pairInfo.quoteAsset}</span>
                             <span>{new BN(mostIncreasedPrice?.lastPrice).toFormat()}</span>
                         </div>
                         <span>% {new BN(mostIncreasedPrice?.priceChangePercent).toFormat(2)}+</span>
@@ -66,12 +67,11 @@ const MarketView = () => {
                         <span className={`mr-05`}>{t("currency." + mostDecreasedPrice.pairInfo.baseAsset)}</span>
                     </div>
                     <div className={`column ai-end text-red`}>
-                        <div className={`row`}>
-                            <span className={`font-size-sm-mini ml-05`}>{mostDecreasedPrice.pairInfo.quoteAsset}</span>
+                        <div className={`${i18n.language !== "fa" ? 'row-reverse' : 'row'}`}>
+                            <span className={`font-size-sm-mini ${i18n.language !== "fa" ? 'mr-05' : 'ml-05'}`}>{mostDecreasedPrice.pairInfo.quoteAsset}</span>
                             <span> {new BN(mostDecreasedPrice?.lastPrice).toFormat()} </span>
                         </div>
-                        <span
-                            className={`direction-ltr`}>{new BN(mostDecreasedPrice?.priceChangePercent).toFormat(2)} %</span>
+                        <span className={`direction-ltr`}>{new BN(mostDecreasedPrice?.priceChangePercent).toFormat(2)} %</span>
                     </div>
                 </div>
             </div>
@@ -88,8 +88,8 @@ const MarketView = () => {
                         <span className={`mr-05`}>{t("currency." + mostVolume.pairInfo.baseAsset)}</span>
                     </div>
                     <div className={`column ai-end`}>
-                        <div className={`row`}>
-                            <span className={`font-size-sm-mini ml-05`}>{mostVolume.pairInfo.quoteAsset}</span>
+                        <div className={`${i18n.language !== "fa" ? 'row-reverse' : 'row'}`}>
+                            <span className={`font-size-sm-mini ${i18n.language !== "fa" ? 'mr-05' : 'ml-05'}`}>{mostVolume.pairInfo.quoteAsset}</span>
                             <span> {new BN(mostVolume?.volume).toFormat()} </span>
                         </div>
                         <span>% {new BN(mostVolume?.change).toFormat(2)}+</span>

@@ -7,6 +7,7 @@ import {useSelector} from "react-redux";
 import Loading from "../../../../../../../../components/Loading/Loading";
 import {BN} from "../../../../../../../../utils/utils";
 import Error from "../../../../../../../../components/Error/Error";
+import i18n from "i18next";
 
 const PriceInfo = () => {
 
@@ -36,9 +37,9 @@ const PriceInfo = () => {
                                   title={mostIncreasedPrice.pairInfo.baseAsset}
                                   className={`img-md-plus`}/>
                             <span>{t("currency." + mostIncreasedPrice.pairInfo.baseAsset)}</span>
-                            <div className={`row jc-center ai-center width-100 text-green`}>
-                                <span className={`ml-025 font-size-sm-mini`}>{mostIncreasedPrice.pairInfo.quoteAsset}</span>
-                                <span className={`mr-025 font-size-md`}>{new BN(mostIncreasedPrice?.lastPrice).toFormat()}</span>
+                            <div className={`${i18n.language !== "fa" ? 'row-reverse' : 'row'} jc-center ai-center width-100 text-green`}>
+                                <span className={`${i18n.language !== "fa" ? 'mr-025' : 'ml-025'} font-size-sm-mini`}>{mostIncreasedPrice.pairInfo.quoteAsset}</span>
+                                <span className={`${i18n.language !== "fa" ? 'mL-025' : 'mr-025'} font-size-md`}>{new BN(mostIncreasedPrice?.lastPrice).toFormat()}</span>
                             </div>
                             <div className={`row jc-center ai-center width-100 text-green`}>
                                 <span>% {new BN(mostIncreasedPrice?.priceChangePercent).toFormat(2)}+</span>
@@ -61,9 +62,9 @@ const PriceInfo = () => {
                                          title={mostDecreasedPrice.pairInfo.baseAsset}
                                          className={`img-md-plus`}/>
                                     <span>{t("currency." + mostDecreasedPrice.pairInfo.baseAsset)}</span>
-                                    <div className={`row jc-center ai-center width-100 text-red`}>
-                                        <span className={`ml-025 font-size-sm-mini`}>{mostDecreasedPrice.pairInfo.quoteAsset}</span>
-                                        <span className={`mr-025 font-size-md`}>{new BN(mostDecreasedPrice?.lastPrice).toFormat()}</span>
+                                    <div className={`${i18n.language !== "fa" ? 'row-reverse' : 'row'} jc-center ai-center width-100 text-red`}>
+                                        <span className={`${i18n.language !== "fa" ? 'mr-025' : 'ml-025'} font-size-sm-mini`}>{mostDecreasedPrice.pairInfo.quoteAsset}</span>
+                                        <span className={`${i18n.language !== "fa" ? 'mL-025' : 'mr-025'} font-size-md`}>{new BN(mostDecreasedPrice?.lastPrice).toFormat()}</span>
                                     </div>
                                     <div className={`row jc-center ai-center width-100 text-red`}>
                                         <span className={`direction-ltr`}>{new BN(mostDecreasedPrice?.priceChangePercent).toFormat(2)} %</span>

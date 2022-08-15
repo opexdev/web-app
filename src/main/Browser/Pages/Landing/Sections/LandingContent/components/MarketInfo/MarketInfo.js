@@ -61,7 +61,7 @@ const MarketInfo = () => {
                     </div>
                 </div>
                 <div className={`row jc-center ai-center cursor-pointer hover-text`}>
-                    <Link to={Routes.AllMarket} className={`ml-05 hover-text`}>{t("MarketInfo.showAllMarket")}</Link>
+                    <Link to={Routes.AllMarket} className={`ml-05 hover-text`}>{t("MarketInfo.viewAllMarket")}</Link>
                     <Icon iconName={`${i18n.language !== "fa" ? 'icon-right-open-1' : 'icon-left-open-1'} font-size-md flex`} className={`mr-05`}/>
                 </div>
             </div>

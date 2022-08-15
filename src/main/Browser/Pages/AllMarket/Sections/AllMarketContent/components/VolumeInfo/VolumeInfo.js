@@ -7,6 +7,7 @@ import {useSelector} from "react-redux";
 import {BN} from "../../../../../../../../utils/utils";
 import Loading from "../../../../../../../../components/Loading/Loading";
 import Error from "../../../../../../../../components/Error/Error";
+import i18n from "i18next";
 
 
 const VolumeInfo = () => {
@@ -39,9 +40,9 @@ const VolumeInfo = () => {
                                  title={mostVolume.pairInfo.baseAsset}
                                  className={`img-md-plus`}/>
                             <span>{t("currency." + mostVolume.pairInfo.baseAsset)}</span>
-                            <div className={`row jc-center ai-center width-100 text-green`}>
-                                <span className={`ml-025 font-size-sm-mini`}>{mostVolume.pairInfo.quoteAsset}</span>
-                                <span className={`mr-025 font-size-md`}>{new BN(mostVolume?.volume).toFormat()} </span>
+                            <div className={`${i18n.language !== "fa" ? 'row-reverse' : 'row'} jc-center ai-center width-100 text-green`}>
+                                <span className={`${i18n.language !== "fa" ? 'mr-025' : 'ml-025'} font-size-sm-mini`}>{mostVolume.pairInfo.quoteAsset}</span>
+                                <span className={`${i18n.language !== "fa" ? 'mL-025' : 'mr-025'} font-size-md`}>{new BN(mostVolume?.volume).toFormat()} </span>
                             </div>
                             <div className={`row jc-center ai-center width-100 text-green`}>
                                 <span>% {new BN(mostVolume?.change).toFormat(2)}+</span>
@@ -62,13 +63,9 @@ const VolumeInfo = () => {
                                  title={mostTrades.pairInfo.baseAsset}
                                  className={`img-md-plus`}/>
                             <span>{t("currency." + mostTrades.pairInfo.baseAsset)}</span>
-                            <div className={`row jc-center ai-center width-100 text-green`}>
-                                <span className={`ml-025 font-size-sm-mini`}>{mostTrades.pairInfo.quoteAsset}</span>
-                                <span className={`mr-025 font-size-md`}>{new BN(mostTrades?.tradeCount).toFormat()} </span>
+                            <div className={`${i18n.language !== "fa" ? 'row-reverse' : 'row'} jc-center ai-center width-100 text-green`}>
+                                <span className={`${i18n.language !== "fa" ? 'mL-025' : 'mr-025'} font-size-md`}>{new BN(mostTrades?.tradeCount).toFormat()} </span>
                             </div>
-                            {/*<div className={`row jc-center ai-center width-100 text-green`}>
-                                <span>% {new BN(mostTrades?.change).toFormat(2)}+</span>
-                            </div>*/}
                         </>}
                     </>}
                 </div>

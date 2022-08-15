@@ -518,7 +518,7 @@
     "totalTrades": "معامله انجام شده"
   },
   "MarketInfo": {
-    "showAllMarket": "نمایش تمام بازار",
+    "viewAllMarket": "نمایش تمام بازار",
     "name": "نام",
     "cryptocurrency": "رمزارز",
     "lastPrice": "آخرین قیمت",
