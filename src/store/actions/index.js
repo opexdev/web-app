@@ -5,6 +5,7 @@ export {
     setTheme,
     setError,
     setInfoMessage,
+    setMarketInterval,
 } from "./global";
 
 export {

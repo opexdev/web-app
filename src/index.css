@@ -422,6 +422,11 @@ body {
   -ms-flex-align: end;
   align-items: flex-end !important;
 }
+.ai-baseline {
+  -webkit-box-align: baseline;
+  -ms-flex-align: baseline;
+  align-items: baseline;
+}
 
 .img-vsm {
   width: 1vw;
@@ -1152,6 +1157,10 @@ table {
 .mx-1 {
   margin-right: 1vw;
   margin-left: 1vw;
+}
+.mx-2 {
+  margin-right: 2vw;
+  margin-left: 2vw;
 }
 .my-2 {
   margin-top: 2vh;

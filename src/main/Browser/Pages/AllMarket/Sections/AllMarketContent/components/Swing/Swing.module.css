@@ -1,4 +1,4 @@
-.line{
+.line {
     display: inline-block;
     width: 1px;
     background: var(--cardBody);
@@ -6,42 +6,42 @@
     position: relative;
     transform-origin: 50% 0;
 }
-.line img {
 
+.line img {
     position: absolute;
     bottom: -0.5vh;
-
     z-index: 100;
 }
-.BTC{
+
+.BTC {
     animation: move18deg 4s ease-in-out infinite;
     height: 85%;
 }
-.BTC img{
+
+.BTC img {
     width: 4vw;
     left: -2vw;
 }
 
-
-.ETH{
+.ETH {
     animation: move16deg 5s ease-in-out infinite;
     height: 60%;
 }
-.ETH img{
+
+.ETH img {
     width: 3.5vw;
     left: -1.75vw;
 }
 
-
-.USDT{
+.USDT {
     animation: move14deg 6s ease-in-out infinite;
     height: 35%;
 }
-.USDT img{
+
+.USDT img {
     width: 3vw;
     left: -1.5vw;
 }
-
 
 .line:after {
     content: "";
@@ -54,16 +54,17 @@
     top: -4.5px;
     left: -3.5px;
 }
-.lineG{
+
+.lineG {
     width: 10px;
     height: 10px;
     position: absolute;
     top: -18px;
     left: -4.5px;
-    /*border: 2px solid rgba(255, 255, 255, .5);*/
     border-radius: 50%;
     border-bottom: 2px solid transparent;
 }
+
 .astronaut {
     animation: moveastronaut 6s ease-in-out infinite;
 }
@@ -76,6 +77,7 @@
         transform: rotate(-2deg);
     }
 }
+
 @keyframes move14deg {
     0%, 100% {
         transform: rotate(14deg);
@@ -84,6 +86,7 @@
         transform: rotate(-14deg);
     }
 }
+
 @keyframes move16deg {
     0%, 100% {
         transform: rotate(16deg);

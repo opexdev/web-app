@@ -9,33 +9,23 @@ import VolumeInfo from "./components/VolumeInfo/VolumeInfo";
 
 const AllMarketContent = () => {
 
-
     return (
         <div className={`${classes.container} container column`}>
             <ScrollBar>
-                <div className={`row jc-between ai-center width-90 m-auto`} style={{height:"40vh"}}>
+                <div className={`row jc-between ai-center width-90 m-auto`} style={{height: "40vh"}}>
                     <div className={`width-35 flex `}>
                         <PriceInfo/>
                     </div>
-
-                    {/*style={{position: "fixed", right: "37.5%"}}*/}
-
-                    <div className={`width-25 flex jc-center ai-start`} >
+                    <div className={`width-25 flex jc-center ai-start`}>
                         <Swing/>
                     </div>
                     <div className={`width-35 flex`}>
                         <VolumeInfo/>
-
                     </div>
                 </div>
-
-                <div className={`flex jc-center`} style={{height:"" , backgroundColor: "var(--mainContent)"}}>
+                <div className={`flex jc-center`} style={{height: "", backgroundColor: "var(--mainContent)"}}>
                     <AllMarketInfo/>
-
                 </div>
-
-
-
                 <Footer/>
             </ScrollBar>
         </div>

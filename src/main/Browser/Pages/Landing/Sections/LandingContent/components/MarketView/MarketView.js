@@ -12,22 +12,19 @@ const MarketView = () => {
 
     const {t} = useTranslation();
 
-
     const interval = "24H"
-    const {data:stats, isLoading, error} = useGetMarketStats(interval)
-
+    const {data: stats, isLoading, error} = useGetMarketStats(interval)
     const allSymbols = useSelector((state) => state.exchange.symbols)
-
     const mostIncreasedPrice = stats?.mostIncreasedPrice[0]
     const mostDecreasedPrice = stats?.mostDecreasedPrice[0]
     const mostVolume = stats?.mostVolume
     const mostTrades = stats?.mostTrades
 
-    if(!isLoading) {
-        mostIncreasedPrice.pairInfo = allSymbols.find(s => s.symbol === (mostIncreasedPrice?.symbol).replace("_",""))
-        mostDecreasedPrice.pairInfo = allSymbols.find(s => s.symbol === (mostDecreasedPrice?.symbol).replace("_",""))
-        mostVolume.pairInfo = allSymbols.find(s => s.symbol === (mostDecreasedPrice?.symbol).replace("_",""))
-        mostTrades.pairInfo = allSymbols.find(s => s.symbol === (mostDecreasedPrice?.symbol).replace("_",""))
+    if (!isLoading) {
+        mostIncreasedPrice.pairInfo = allSymbols.find(s => s.symbol === (mostIncreasedPrice?.symbol).replace("_", ""))
+        mostDecreasedPrice.pairInfo = allSymbols.find(s => s.symbol === (mostDecreasedPrice?.symbol).replace("_", ""))
+        mostVolume.pairInfo = allSymbols.find(s => s.symbol === (mostDecreasedPrice?.symbol).replace("_", ""))
+        mostTrades.pairInfo = allSymbols.find(s => s.symbol === (mostDecreasedPrice?.symbol).replace("_", ""))
     }
 
 
@@ -38,7 +35,6 @@ const MarketView = () => {
             <div className={`column border-bottom`}>
                 <span className={`${classes.title} text-orange`}>{t("MarketView.mostIncreased")}</span>
                 <div className={`row jc-between ai-center`}>
-
                     <div className={`row jc-center ai-center`}>
                         <img
                             className="img-md-plus ml-05"
@@ -51,7 +47,7 @@ const MarketView = () => {
                     <div className={`column ai-end text-green`}>
                         <div className={`row`}>
                             <span className={`font-size-sm-mini ml-05`}>{mostIncreasedPrice.pairInfo.quoteAsset}</span>
-                            <span> {new BN(mostIncreasedPrice?.lastPrice).toFormat()} </span>
+                            <span>{new BN(mostIncreasedPrice?.lastPrice).toFormat()}</span>
                         </div>
                         <span>% {new BN(mostIncreasedPrice?.priceChangePercent).toFormat(2)}+</span>
                     </div>
@@ -74,7 +70,8 @@ const MarketView = () => {
                             <span className={`font-size-sm-mini ml-05`}>{mostDecreasedPrice.pairInfo.quoteAsset}</span>
                             <span> {new BN(mostDecreasedPrice?.lastPrice).toFormat()} </span>
                         </div>
-                        <span className={`direction-ltr`}>{new BN(mostDecreasedPrice?.priceChangePercent).toFormat(2)} %</span>
+                        <span
+                            className={`direction-ltr`}>{new BN(mostDecreasedPrice?.priceChangePercent).toFormat(2)} %</span>
                     </div>
                 </div>
             </div>

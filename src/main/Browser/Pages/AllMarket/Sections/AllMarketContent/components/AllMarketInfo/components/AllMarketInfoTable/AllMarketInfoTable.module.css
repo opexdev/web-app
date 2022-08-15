@@ -1,9 +1,11 @@
-.row:last-child{
+.row:last-child {
     border-bottom: none;
 }
+
 .row:nth-child(odd) {
     background-color: var(--tableRow);
 }
+
 .thisButton:hover {
     background-color: var(--LoginContainer);
 }
@@ -13,4 +15,8 @@
     background: var(--cardHeaderAlpha);
     color: var(--textColor);
     bottom: 0;
+}
+
+.filter {
+    filter: blur(4px);
 }

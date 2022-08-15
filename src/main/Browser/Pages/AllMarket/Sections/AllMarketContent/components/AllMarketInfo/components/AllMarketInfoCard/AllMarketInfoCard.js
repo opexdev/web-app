@@ -3,16 +3,14 @@ import classes from './AllMarketInfoCard.module.css'
 import {useTranslation} from "react-i18next";
 import {images} from "../../../../../../../../../../assets/images";
 import Button from "../../../../../../../../../../components/Button/Button";
+import {BN} from "../../../../../../../../../../utils/utils";
 
-const AllMarketInfoCard = (props) => {
+const AllMarketInfoCard = ({data}) => {
 
 
     const {t} = useTranslation();
 
-    const {data, baseAsset, price, marketCap, lowPrice, highPrice, volume, pcp24h} = props
-
     const [showButton, setShowButton] = useState(null)
-
 
     const backgroundBar = (percent) => {
         if (percent > 0) {
@@ -39,27 +37,21 @@ const AllMarketInfoCard = (props) => {
 
             {data.map((tr, index) => {
                 return (
-                    <div className={`${classes.item} card-border card-background column cursor-pointer`} style={backgroundBar(tr.pcp24h.toString())}
+                    <div className={`${classes.item} card-border card-background column cursor-pointer`} style={backgroundBar(tr.priceChange.toString())}
                          onMouseEnter={()=>MouseEnterEventHandler(index)} onMouseLeave={MouseLeaveEventHandler}>
 
                         <div className={`column jc-between ai-center pt-2 pb-3`} style={{height:"70%"}}>
 
                             <div className={`row jc-between ai-center width-100 px-1`}>
                                 <div className={`row jc-center ai-center`}>
-                                    <img src={images[tr.baseAsset]} alt={tr.baseAsset} title={tr.baseAsset} className={`img-md-plus ml-05`}/>
+                                    <img  src={images[tr?.pairInfo?.baseAsset]} alt={tr?.pairInfo?.baseAsset}
+                                          title={tr?.pairInfo?.baseAsset} className={`img-md-plus ml-05`}/>
 
-                                    <span className={`font-size-md`}>{t("currency." + tr.baseAsset)}</span>
+                                    <span className={`font-size-md`}>{t("currency." + tr?.pairInfo?.baseAsset)}</span>
                                 </div>
 
-                                <div className={`column font-size-sm-mini`}>
-                                    <div className={`row jc-end ai-center`}>
-                                        <span className={`${tr.pcp24h > 0 ? "text-green" : "text-red"} ml-05`}>{tr.pcp24h} %</span>
-                                        <span> :24س </span>
-                                    </div>
-                                    <div className={`row jc-end ai-center`}>
-                                        <span className={`${tr.pcp7d > 0 ? "text-green" : "text-red"} ml-05`}>{tr.pcp7d} %</span>
-                                        <span> :7ر </span>
-                                    </div>
+                                <div className={`flex jc-end ai-center font-size-sm-mini`}>
+                                        <span className={`${tr.priceChange > 0 ? "text-green" : "text-red"} direction-ltr mr-05`}>{new BN(tr.priceChange).toFormat()} %</span>
 
                                 </div>
                             </div>
@@ -67,15 +59,19 @@ const AllMarketInfoCard = (props) => {
                             <div className={`column px-1 width-100 font-size-sm`}>
                                 <div className={`row jc-between ai-center`}>
                                     <span className={``}>{t("MarketInfo.lastPrice")}:</span>
-                                    <span className={`${tr.pcp24h > 0 ? "text-green" : "text-red"} font-size-md`}>{tr.price}</span>
+                                    <span className={`${tr.priceChange > 0 ? "text-green" : "text-red"} font-size-md`}>{new BN(tr.lastPrice).toFormat()}</span>
                                 </div>
                                 <div className={`row jc-between ai-center`}>
-                                    <span className={`text-color-gray`}>{t("MarketInfo.marketCap")}:</span>
-                                    <span className={`${tr.pcp24h > 0 ? "text-green" : "text-red"}`}>{tr.marketCap}</span>
+                                    <span className={`text-color-gray`}>{t("MarketInfo.lowPrice")}:</span>
+                                    <span>{new BN(tr.lowPrice).toFormat()}</span>
+                                </div>
+                                <div className={`row jc-between ai-center`}>
+                                    <span className={`text-color-gray`}>{t("MarketInfo.highPrice")}:</span>
+                                    <span>{new BN(tr.highPrice).toFormat()}</span>
                                 </div>
                                 <div className={`row jc-between ai-center`}>
                                     <span className={`text-color-gray`}>{t("MarketInfo.volume")}:</span>
-                                    <span className={`${tr.pcp24h > 0 ? "text-green" : "text-red"}`}>{tr.volume}</span>
+                                    <span>{new BN(tr.volume).toFormat()}</span>
                                 </div>
                             </div>
 
@@ -98,14 +94,14 @@ const AllMarketInfoCard = (props) => {
                                     />
                                 </div>
                                 :
-                                <div className={`column jc-center ai-center`}>
+                                <div className={`column jc-center ai-center position-relative`}>
                                     <img
-                                        className="img-lg-2 mb-05"
+                                        className={`img-lg-2 mb-05 ${classes.filter}`}
                                         src={images.chart}
                                         alt={""}
                                         title={""}
                                     />
-                                    <span className={`mt-05 text-color-gray font-size-sm-plus`}>روند 7 روزه</span>
+                                    <span className={`font-size-sm-mini position-absolute`} style={{left:"35%"}}>{t("comingSoon")}</span>
                                 </div>
                             }
                         </div>

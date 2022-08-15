@@ -1,15 +1,12 @@
-.container {
-
-}
-
 .header {
     height: 10vh;
 }
 
-.content {
-    /* height: 85%;*/
-}
-
 .title {
     background-color: var(--cardHeaderAlpha);
+}
+
+.active {
+    background-color: var(--cardHeaderAlpha);
+    color: var(--activeTab);
 }

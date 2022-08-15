@@ -1,31 +1,26 @@
 .container {
     width: 100%;
-
     display: grid;
     grid-template-columns: 20% 20% 20% 20% 20%;
-
 }
 
 .item {
-    /*background-color: var(--subMenu);*/
     margin: 1vh 0.5vw;
     border-radius: 8px;
     height: 35vh;
-
-
 }
-/*.container div:first-child {
-    margin-right: 1vw;
-}
-.container div:last-child {
-    margin-left: 1vw;
-}*/
+
 .thisButton:hover {
     background-color: var(--LoginContainer) !important;
 }
+
 .thisButton {
     width: 80%;
     background: var(--cardHeaderAlpha);
     color: var(--textColor);
     bottom: 0;
+}
+
+.filter {
+    filter: blur(4px);
 }

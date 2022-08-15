@@ -6,10 +6,9 @@ const LandingHeader = () => {
 
     const {t} = useTranslation();
 
-
     return (
        <HeaderBuilder>
-           <h2 className={``}>پلتفرم تبادل ارزهای دیجیتال</h2>
+           <h2>{t("Landing.title")}</h2>
        </HeaderBuilder>
     );
 };
