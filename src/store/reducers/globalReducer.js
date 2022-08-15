@@ -4,6 +4,7 @@ const initialState = {
     isDark: true,
     isLoading: true,
     hasError: false,
+    marketInterval: "24h",
     info: {
         type: null,
         message: null,
@@ -34,6 +35,11 @@ const globalReducer = (state = initialState, action) => {
             return {
                 ...state,
                 hasError: action.error,
+            };
+        case actionTypes.Set_MARKET_INTERVAL:
+            return {
+                ...state,
+                marketInterval: action.interval
             };
         default:
             return state;

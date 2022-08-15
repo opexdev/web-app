@@ -12,18 +12,15 @@ const PriceInfo = () => {
 
     const {t} = useTranslation();
 
-    const interval = "24H"
+    const interval = useSelector((state) => state.global.marketInterval)
     const {data:stats, isLoading, error} = useGetMarketStats(interval)
-
     const allSymbols = useSelector((state) => state.exchange.symbols)
-
     const mostIncreasedPrice = stats?.mostIncreasedPrice[0]
     const mostDecreasedPrice = stats?.mostDecreasedPrice[0]
     if(!isLoading) {
         mostIncreasedPrice.pairInfo = allSymbols.find(s => s.symbol === (mostIncreasedPrice?.symbol).replace("_",""))
         mostDecreasedPrice.pairInfo = allSymbols.find(s => s.symbol === (mostDecreasedPrice?.symbol).replace("_",""))
     }
-
 
     return (
         <div className={`${classes.container} row jc-between ai-center col-100`}>

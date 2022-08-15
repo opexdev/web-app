@@ -10,9 +10,7 @@ const AllMarket = () => {
         <div className={`container ${classes.container} move-image column text-color`} style={{backgroundImage: `url("${images.spaceStar}")`}}>
             <AllMarketHeader/>
             <AllMarketContent/>
-
         </div>
-
     );
 }
 

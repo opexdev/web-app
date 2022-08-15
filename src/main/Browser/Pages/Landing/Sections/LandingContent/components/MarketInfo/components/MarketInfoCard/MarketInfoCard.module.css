@@ -1,26 +1,19 @@
 .container {
     width: 100%;
     height: 33vh;
-
     display: grid;
     grid-template-columns: 20% 20% 20% 20% 20%;
-    /*grid-template-rows: 30vh;*/
-
 }
 
 .item {
-    /*background-color: var(--subMenu);*/
     margin: 0 0.5vw;
     border-radius: 8px;
-
-
 }
-/*.container div:first-child {
-    margin-right: 1vw;
-}
-.container div:last-child {
-    margin-left: 1vw;
-}*/
+
 .item:hover {
     background-color: var(--LoginContainer) !important;
+}
+
+.filter {
+    filter: blur(4px);
 }

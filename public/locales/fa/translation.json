@@ -69,6 +69,11 @@
     "TBUSD": "دلار بایننس(ت)",
     "BCH": "بیتکوین کش"
   },
+  "marketInterval": {
+    "24h": "24 ساعت",
+    "7d": "7 روز",
+    "1M": "30 روز"
+  },
   "routes": {
     "/panel/settings/profile": "مشخصات کاربری",
     "/panel/settings/security": "امنیت",
@@ -499,19 +504,30 @@
     "success": "ایمیل با موفقیت تائید شد.",
     "failed": "ایمیل تائید نشد، دوباره تلاش کنید!"
   },
+  "Landing": {
+    "title": "پلتفرم تبادل ارزهای دیجیتال"
+  },
+  "MarketTitle": {
+    "content": "به طور خاص برای رفع نیازهای شما طراحی شده است.",
+    "advancedTrading": "معامله حرفه‌ای",
+    "easyTrading": "معامله آسان"
+  },
+  "GeneralInfo": {
+    "activeUsers": "کاربر فعال",
+    "totalOrders": "سفارش ثبت شده",
+    "totalTrades": "معامله انجام شده"
+  },
   "MarketInfo": {
-    "title": "نمای بازار",
+    "showAllMarket": "نمایش تمام بازار",
     "name": "نام",
     "cryptocurrency": "رمزارز",
     "lastPrice": "آخرین قیمت",
-    "pcp24h": "24 ساعت %",
-    "pcp7d": "7 روز %",
-    "7chart": "روند 7 روزه",
+    "lowPrice": "کمترین قیمت",
+    "highPrice": "بیشترین قیمت",
+    "priceChange": "تعییر قیمت",
     "chart": "نمودار",
     "volume": "حجم معاملات",
     "details": "جزئیات",
-    "lowPrice": "حداقل",
-    "highPrice": "حداکثر",
     "trade": "معامله",
     "marketCap": "ارزش بازار"
   },
@@ -520,11 +536,7 @@
     "mostIncreased": "بیشترین افزایش",
     "mostDecreased": "بیشترین کاهش",
     "mostTrades": "بیشترین تعداد معامله",
-    "mostVolume": "بیشترین حجم معامله",
-    "MinTransactionVolume": "کمترین حجم معامله"
-  },
-  "MarketTitle": {
-    "content": "به طور خاص برای رفع نیازهای شما طراحی شده است."
+    "mostVolume": "بیشترین حجم معامله"
   },
   "footer": {
     "darkMode": "تم تاریک",

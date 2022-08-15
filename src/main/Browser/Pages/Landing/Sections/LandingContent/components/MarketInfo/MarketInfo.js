@@ -9,9 +9,12 @@ import {useOverview} from "../../../../../../../../queries";
 import Loading from "../../../../../../../../components/Loading/Loading";
 import {useSelector} from "react-redux";
 import Error from "../../../../../../../../components/Error/Error";
+import {useTranslation} from "react-i18next";
+import i18n from "i18next";
 
 const MarketInfo = () => {
 
+    const {t} = useTranslation();
     const interval = "24h"
     const {data:overview, isLoading, error} = useOverview(null , interval)
     const [card, setCard] = useState(false)
@@ -48,16 +51,18 @@ const MarketInfo = () => {
             <div className={`${classes.header} card-header-bg row jc-between ai-center px-2 py-2`}>
                 <div className={`row jc-center ai-center`}>
                     <Icon iconName={`${card ? 'icon-row' : 'icon-grid'} font-size-md-01 flex cursor-pointer hover-text`} onClick={()=>setCard(prevState => !prevState)}/>
-                    <h1 className={`mr-1 ml-1`}>بازار</h1>
+                    <div className={`row jc-center ai-baseline mr-1 ml-1`}>
+                        <h2 className={`ml-025`}>{t("market.title")}</h2>
+                        <span className={`font-size-sm-plus mr-025`}>( {t("marketInterval." + interval)} )</span>
+                    </div>
                     <div className={`row jc-center ai-center mr-1`}>
-                        <span className={`px-2 py-1 rounded cursor-pointer hover-text ${IRT && classes.active}`} onClick={()=>setIRT(true)}>تومان</span>
-                        {/*<span className={`text-orange px-05`} style={{userSelect:"none"}}>|</span>*/}
-                        <span className={`px-2 py-1 rounded cursor-pointer hover-text ${!IRT && classes.active}`} onClick={()=>setIRT(false)}>تتر</span>
+                        <span className={`px-2 py-1 rounded cursor-pointer hover-text ${IRT && classes.active}`} onClick={()=>setIRT(true)}>{t("currency.IRT")}</span>
+                        <span className={`px-2 py-1 rounded cursor-pointer hover-text ${!IRT && classes.active}`} onClick={()=>setIRT(false)}>{t("currency.USDT")}</span>
                     </div>
                 </div>
                 <div className={`row jc-center ai-center cursor-pointer hover-text`}>
-                    <Link to={Routes.AllMarket} className={`ml-05 hover-text`}>نمایش تمام بازار</Link>
-                    <Icon iconName="icon-left-open-1 font-size-md flex" className={`mr-05`}/>
+                    <Link to={Routes.AllMarket} className={`ml-05 hover-text`}>{t("MarketInfo.showAllMarket")}</Link>
+                    <Icon iconName={`${i18n.language !== "fa" ? 'icon-right-open-1' : 'icon-left-open-1'} font-size-md flex`} className={`mr-05`}/>
                 </div>
             </div>
             <div className={`${classes.content}`}>

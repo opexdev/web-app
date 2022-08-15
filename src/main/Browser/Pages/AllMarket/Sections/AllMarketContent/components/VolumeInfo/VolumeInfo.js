@@ -13,13 +13,9 @@ const VolumeInfo = () => {
 
     const {t} = useTranslation();
 
-    const interval = "24H"
+    const interval = useSelector((state) => state.global.marketInterval)
     const {data:stats, isLoading, error} = useGetMarketStats(interval)
-
     const allSymbols = useSelector((state) => state.exchange.symbols)
-
-
-    const mostIncreasedPrice = stats?.mostIncreasedPrice[0]
     const mostDecreasedPrice = stats?.mostDecreasedPrice[0]
     const mostVolume = stats?.mostVolume
     const mostTrades = stats?.mostTrades
@@ -28,7 +24,6 @@ const VolumeInfo = () => {
         mostVolume.pairInfo = allSymbols.find(s => s.symbol === (mostDecreasedPrice?.symbol).replace("_",""))
         mostTrades.pairInfo = allSymbols.find(s => s.symbol === (mostDecreasedPrice?.symbol).replace("_",""))
     }
-
 
     return (
         <div className={`${classes.container} row jc-between ai-center col-100`}>

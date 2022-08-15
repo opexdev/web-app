@@ -1,34 +1,33 @@
-.container{
+.container {
     height: 68%;
     width: 90%
 }
-.arrow{
+
+.arrow {
     width: 8px;
-     height: 40px;
+    height: 40px;
     border-radius: 8px;
     background-color: var(--activeTab);
 }
 
-.bg{
+.bg {
     width: 2vw;
     height: 2vw;
     border-radius: 100%;
-    /*background-color: var(--menu);*/
     display: flex;
     align-items: center;
     justify-content: center;
 }
-.bg i:before{
+
+.bg i:before {
     vertical-align: middle;
 }
-.bg i{
-    /*font-size: 2vw;
-    display: flex;
-    align-items: center;
-    justify-content: center;*/
+
+.bg i {
     color: var(--textColor);
 }
-.bg:hover{
+
+.bg:hover {
     background-color: rgba(51, 51, 56, 0.63) !important;
     color: var(--orange) !important;
 }

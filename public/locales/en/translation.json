@@ -69,6 +69,11 @@
     "TBUSD": "TBUSD",
     "BCH": "BCH"
   },
+  "marketInterval": {
+    "24h": "24 H",
+    "7d": "7 D",
+    "1M": "30 D"
+  },
   "routes": {
     "/panel/settings/profile": "User Profile",
     "/panel/settings/security": "Security",
@@ -498,6 +503,40 @@
     "title": "",
     "success": "Email verified successfully.",
     "failed": "Verification failed, please try again!"
+  },
+  "Landing": {
+    "title": "Cryptocurrency Exchange Platform"
+  },
+  "MarketTitle": {
+    "content": "Designed specifically to meet your needs.",
+    "advancedTrading": "Advanced Trading",
+    "easyTrading": "Easy Trading"
+  },
+  "GeneralInfo": {
+    "activeUsers": "Active Users",
+    "totalOrders": "Total Orders",
+    "totalTrades": "Total Trades"
+  },
+  "MarketInfo": {
+    "showAllMarket": "Show All Market",
+    "name": "Name",
+    "cryptocurrency": "Cryptocurrency",
+    "lastPrice": "Last Price",
+    "lowPrice": "Low Price",
+    "highPrice": "High Price",
+    "priceChange": "Price Change",
+    "chart": "Chart",
+    "volume": "Volume",
+    "details": "Details",
+    "trade": "Trade",
+    "marketCap": "Market Cap"
+  },
+  "MarketView": {
+    "title": "Market Stats ( 24H )",
+    "mostIncreased": "Most Increased",
+    "mostDecreased": "Most Decreased",
+    "mostTrades": "Most Trades",
+    "mostVolume": "Most Volume"
   },
   "footer": {
     "darkMode": "Dark Mode",
