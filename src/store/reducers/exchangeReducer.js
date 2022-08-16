@@ -5,11 +5,9 @@ const initialState = {
     pairs: [],
     symbols: [],
     activePair: {},
-    lastPrice:{},
     activePairOrders: {
         bestBuyPrice: 0,
         bestSellPrice: 0,
-        lastTradePrice: 0,
         selectedBuyOrder: {
             pricePerUnit: 0,
             amount: 0,
@@ -43,7 +41,6 @@ const exchangeReducer = (state = initialState, action) => {
                     bestSellPrice: 0,
                     lastTradePrice: 0,
                 },
-                activeMarketTab: action.activeTab,
             };
         case actionTypes.SET_BEST_BUY_PRICE:
             return {
@@ -72,14 +69,6 @@ const exchangeReducer = (state = initialState, action) => {
                     },
                 },
             };
-        case actionTypes.SET_LAST_TRADE_PRICE:
-            return {
-                ...state,
-                activePairOrders: {
-                    ...state.activePairOrders,
-                    lastTradePrice: action.lastTradePrice
-                },
-            };
         case actionTypes.SET_SELL_ORDERS:
             return {
                 ...state,
@@ -95,14 +84,6 @@ const exchangeReducer = (state = initialState, action) => {
             return {
                 ...state,
                ...action.exchangeInfo
-            };
-        case actionTypes.SET_LAST_PRICE:
-            return {
-                ...state,
-                lastPrice: {
-                    ...state.lastPrice,
-                    ...action.lastPrice
-                }
             };
         default:
             return state;

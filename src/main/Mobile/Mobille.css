@@ -1,18 +1,24 @@
 @media (max-width: 480px) {
 
     html,body{
-        font-size: 3.5vw;
+        font-size: 3.3vw;
         line-height: 3.5vh;
+        overflow: hidden;
         top: 0;
         bottom: 0;
+        left: 0;
+        right: 0;
         position: absolute;
-        overflow: hidden;
 
     }
-    .mobile-container {
+    .mobile-container{
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        position: absolute;
         color: var(--textColor);
         background-color: var(--mainContent);
-        height: 100%;
     }
 
     .font-size-sm-mini {
@@ -60,6 +66,10 @@
     }
 
 
+    .mobile-button{
+        width: 70%;
+        background-color: var(--bgGreen)
+    }
 
 
 }

@@ -16,7 +16,7 @@ const AccordionBox = ({title, customClass, content, activeTab, setActiveTab ,...
 
     useEffect(() => {
         if (typeof setActiveTab === "function") setActiveTab(active)
-    }, [active]);
+    }, [active,setActiveTab]);
 
     return (
         <div className={`${customClass} ${classes.container} ${isSafari ? props.safari : ""}`}>

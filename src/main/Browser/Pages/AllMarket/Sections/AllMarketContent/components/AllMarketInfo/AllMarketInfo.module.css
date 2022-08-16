@@ -1,0 +1,12 @@
+.header {
+    height: 10vh;
+}
+
+.title {
+    background-color: var(--cardHeaderAlpha);
+}
+
+.active {
+    background-color: var(--cardHeaderAlpha);
+    color: var(--activeTab);
+}

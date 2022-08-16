@@ -1,0 +1,12 @@
+.container {
+    height: 30vh;
+    width: 80%
+}
+
+.header {
+    height: 22%;
+}
+
+.content {
+    height: 78%;
+}

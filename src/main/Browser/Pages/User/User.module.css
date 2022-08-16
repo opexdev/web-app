@@ -1,0 +1,54 @@
+.container{
+    height: 100vh;
+    background-color: var(--mainContent);
+    background-repeat: repeat;
+    background-position: center center;
+    background-size: 600px 1200px;
+}
+
+.content{
+    position: fixed;
+    top: 27.5%;
+    left: 37.5%;
+    width: 25%;
+    height: 45%;
+    background-color: var(--cardBodyAlpha);
+    z-index: 7;
+}
+.content img{
+    width: 7vw;
+}
+.thisButton {
+    width: 100%;
+    background-color: var(--textGreen);
+    color: #000 !important;
+
+}
+.forgetPassWordHeader{
+    height: 18%
+}
+
+.forgetPassWordContent{
+    height: 64%
+}
+
+.forgetPassWordFooter{
+    height: 18%
+}
+
+
+.passwordInput {
+    margin: 1vh 0;
+    width: 100%;
+}
+.passwordInput :global(.lead) {
+    width: 45%;
+    cursor: pointer;
+}
+.passwordInput :global(.after) {
+    width: 12.5%;
+    cursor: pointer;
+}
+.passwordInput :global(input) {
+    width: 42.5% !important;
+}

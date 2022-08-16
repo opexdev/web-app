@@ -15,13 +15,11 @@
   "max": "حداکثر",
   "buy": "خرید",
   "sell": "فروش",
-  "BUY": "خرید",
-  "SELL": "فروش",
   "all": "همه",
   "orderType": "نوع سفارش",
   "status": "وضعیت",
-  "pleaseLogin": "لطفا وارد شوید!",
-  "comingSoon": "به زودی :)",
+  "pleaseLogin": "لطفاً وارد شوید!",
+  "comingSoon": "به زودی!",
   "deposit": "واریز",
   "withdrawal": "برداشت",
   "transfer": "انتقال",
@@ -33,26 +31,26 @@
   "submit": "ثبت",
   "username": "نام کاربری",
   "password": "رمز ورود",
-  "otp": "رمز دو عاملی",
+  "confirmPassword": "تکرار رمز ورود",
+  "otp": "رمز دو مرحله‌ای",
   "firstName": "نام",
   "lastName": "نام خانوادگی",
   "email": "ایمیل",
   "captchaAnswer": "Captcha",
-  "desktopSupport": "اوپکس فعلاً برای نمایش در موبایل بهینه نشده است. لطفاً لینک را در کامپیوتر باز کنید! :)",
-  "error": "خطا در دریافت اطلاعات ... !",
-  "loading": "در حال دریافت اطلاعات ...",
+  "desktopSupport": "اوپکس فعلاً برای نمایش در موبایل بهینه نشده است. لطفاً لینک را در کامپیوتر باز کنید!",
+  "error": "خطا در دریافت اطلاعات!",
+  "loading": "در حال دریافت اطلاعات...",
   "noData": "موردی برای نمایش وجود ندارد!",
-  "noTx": "تراکنشی وجود ندارد",
+  "noTx": "تراکنشی وجود ندارد.",
   "close": "بستن",
   "unit": "واحد",
-  "offline": "اتصال اینترنت را برسی کنید!",
+  "offline": "اتصال اینترنت را بررسی کنید!",
   "country": {
     "iran" : "جمهوری اسلامی ایران",
     "germany" : "آلمان",
     "uk": "انگلستان",
     "turkey" : "ترکیه"
   },
-
   "currency": {
     "IRT": "تومان",
     "Euro": "یورو",
@@ -67,18 +65,22 @@
     "BUSD": "دلار بایننس",
     "DOGE": "دوج کوین",
     "LTC": "لایت کوین",
-    "BCH": "بیتکوین کش",
-    "NLN": "اپکس"
+    "TBNB": "بایننس (ت)",
+    "TBUSD": "دلار بایننس(ت)",
+    "BCH": "بیتکوین کش"
   },
-
+  "marketInterval": {
+    "24h": "24 ساعت",
+    "7d": "7 روز",
+    "1M": "30 روز"
+  },
   "routes": {
-    "/settings/profile": "مشخصات کاربری",
-    "/settings/security": "امنیت",
-    "/settings/personalization": "شخصی سازی",
-    "/settings/authentication": "احراز هویت کاربری"
+    "/panel/settings/profile": "مشخصات کاربری",
+    "/panel/settings/security": "امنیت",
+    "/panel/settings/personalization": "سفارشی‌سازی",
+    "/panel/settings/authentication": "احراز هویت کاربری"
   },
-
-  "ordersStatus": {
+  "orderStatus": {
     "NEW": "جاری شده",
     "REJECTED": "رد شده",
     "FILLED": "انجام شده",
@@ -87,7 +89,6 @@
     "EXPIRED": "منقضی شده",
     "PARTIALLY_FILLED": "کامل نشده"
   },
-
   "paymentStatus": {
     "Open": "جاری شده",
     "Canceled": "لغو شده",
@@ -96,15 +97,13 @@
     "Failed": "رد شده",
     "Undefined": "تعریف نشده"
   },
-
   "messagesTitle": {
-    "successful": "عدم تائید معامله",
+    "successful": "تائید معامله",
     "login": "ورود موفق",
     "cancel": "لغو سفارش",
     "done": "سفارش موفق",
-    "incompleted": "سفارش نیمه تمام"
+    "inCompleted": "سفارش نیمه تمام"
   },
-
   "orderTypes": {
     "LIMIT": "محدود",
     "MARKET": "بازار",
@@ -114,35 +113,6 @@
     "TAKE_PROFIT_LIMIT": "*متوقف محدود",
     "LIMIT_MAKER": "*متوقف محدود"
   },
-
-  "pair": {
-    "BTC/IRT": "بیتکوین/تومان",
-    "ETH/IRT": "اتر/تومان",
-    "ETH/BTC": "اتر/بیتکوین",
-    "BTC/USDT": "بیتکوین/تتر",
-    "TBTC/TUSDT": "بیتکوین (ت)/تتر (ت)",
-    "TBTC/IRT": "بیتکوین (ت)/تومان",
-    "TETH/TUSDT": "اتر (ت)/تتر (ت)",
-    "LTC/BTC": "لایت کوین/بیتکوین",
-    "DOGE/BTC": "دوج کوین/بیتکوین",
-    "BCH/BTC": "بیتکوین کش/بیتکوین",
-    "LTC/IRT": "لایت کوین/تومان",
-    "LTC/USDT": "لایت کوین/تتر",
-    "DOGE/IRT": "دوج کوین/تومان",
-    "BCH/IRT": "بیتکوین کش/تومان",
-    "ETH/USDT": "اتر/تتر",
-    "BNB/IRT": "بایننس/تومان",
-    "BNB/USDT": "بایننس/تتر",
-    "BUSD/IRT": "دلار بایننس/تومان",
-    "DOGE/USDT": "دوج کوین/تتر",
-    "BCH/USDT": "بیتکوین کش/تتر",
-    "NLN/BTC": "اپکس/بیتکوین",
-    "BTC/BUSD": "بیتکوین/دلار بایننس",
-    "ETH/BUSD": "اتر/دلار بایننس",
-    "BNB/BUSD": "بایننس/دلار بایننس",
-    "NLN/USDT": "اپکس/تتر"
-  },
-
   "header": {
     "lastPrice": "آخرین قیمت",
     "availableBalance": "موجودی قابل معامله",
@@ -150,63 +120,53 @@
     "locked": "درگیر معامله",
     "inWithdrawalProcess": "منتظر تسویه",
     "logOutSuccess": "خروج با موفقیت انجام شد.",
-    "logOutError": "خطایی رخ داده است، لطفا دوباره تلاش کنید!"
+    "logOutError": "خطایی رخ داده است. لطفاً دوباره تلاش کنید!"
   },
-
-  "market": {
-    "title": "بازار"
-  },
-
-  "wallet": {
-    "title": "دارایی ها"
-  },
-
-  "technical": {
-    "title": "تکنیکال"
-  },
-
-  "messages": {
-    "title": "پیام ها"
-  },
-
-  "settings": {
-    "title": "تنظیمات"
-  },
-
-  "Languages": {
-    "Persian": "فارسی",
-    "English": "English",
-    "Arabic": "عربی"
-  },
-
-  "Theme": {
-    "Light": "روشن",
-    "Dark": "تاریک"
-  },
-
-  "Calendar": {
-    "1": "هجری شمسی",
-    "2": "میلادی"
-  },
-
-  "TimeZone": {
-    "1": "آسیا/تهران/03:30+"
-  },
-
   "overview": {
     "title": "نمای کلی",
     "change": "تغییر",
     "volume": "حجم معاملات",
-    "lastDay": "24ساعت",
-    "lastWeek": "7روز",
-    "lastMonth": "30روز"
+    "lastDay": "24 ساعته",
+    "lastWeek": "7 روزه",
+    "lastMonth": "30 روزه"
   },
-
+  "market": {
+    "title": "بازار"
+  },
+  "wallet": {
+    "title": "دارایی ها"
+  },
+  "technical": {
+    "title": "تکنیکال"
+  },
+  "messages": {
+    "title": "پیام ها"
+  },
+  "settings": {
+    "title": "تنظیمات"
+  },
+  "Languages": {
+    "Persian": "فارسی",
+    "English": "English",
+    "Arabic": "عربي"
+  },
+  "Theme": {
+    "Light": "روشن",
+    "Dark": "تاریک"
+  },
+  "Calendar": {
+    "IRCalender": "هجری خورشیدی",
+    "GCCalender": "میلادی"
+  },
+  "TimeZone": {
+    "THR": "آسیا / تهران / UTC+3:30",
+    "UTC" : 0
+  },
   "orders": {
     "title": "سفارش",
-    "minOrder": "حداقل مقدار سفارش {{min}} {{currency}} میباشد",
-    "maxOrder": "حداکثر مقدار سفارش {{max}} {{currency}} میباشد",
-    "divisibility": "مقدار وارد شده باید بر {{mod}} بخشپذیر باشند‍!",
+    "minOrder": "حداقل مقدار سفارش {{min}} {{currency}} می‌باشد.",
+    "maxOrder": "حداکثر مقدار سفارش {{max}} {{currency}} می‌باشد.",
+    "divisibility": "مقدار وارد شده باید بر {{mod}} بخش‌پذیر باشد‍!",
     "notEnoughBalance": "موجودی کافی نیست!",
     "availableAmount": "موجودی قابل معامله",
     "bestOffer": "بهترین پیشنهاد",
@@ -219,26 +179,24 @@
     "totalPrice": "قیمت کل",
     "tradeFee": "کارمزد",
     "getAmount": "دریافتی شما",
-    "error": "خطایی در ثبت سفارش رخ داده‌ است",
-    "success": "ثبت سفارش {{type}} {{reqAmount}} {{base}} با قیمت {{pricePerUnit}} {{quote}} با موفقیت انجام شد"
+    "hasNoOffer": "پیشنهادی وجود ندارد!",
+    "error": "خطایی در ثبت سفارش رخ داده‌است.",
+    "success": "ثبت سفارش {{type}} {{reqAmount}} {{base}} با قیمت {{pricePerUnit}} {{quote}} با موفقیت انجام شد."
   },
-
   "LastTrades": {
     "title": "معامله های اخیر"
   },
-
   "charts": {
     "title": "نمودار قیمت",
+    "noChartData": "اطلاعاتی برای این جفت‌ارز موجود نیست",
     "globalChart": "جهانی",
     "opexChart": "داخلی"
   },
-
   "orderBook": {
     "title": "دفتر پیشنهادها"
   },
-
   "myOrders": {
-    "title": "سفارش ها و معامله های من",
+    "title": "سفارش‌ها و معامله‌های من",
     "donePercentage": "درصد انجام",
     "stoppedPrice": "قیمت توقف",
     "orderId": "شناسه سفارش",
@@ -246,32 +204,30 @@
     "tradedAmount": "مقدار معامله شده",
     "avgTradedAmount": "میانگین قیمت معامله",
     "tradedPrice": "مبلغ معامله شده",
-    "aliveOrder": "سفارش های جاری",
+    "aliveOrder": "سفارش‌های جاری",
     "stoppedOrder": "متوقف",
-    "orderHistory": "تاریخچه سفارش ها",
+    "orderHistory": "تاریخچه سفارش‌ها",
     "stopOrderTime": "زمان آخرین معامله",
     "startOrderTime": "زمان ثبت سفارش",
     "cancelOrder": "لغو سفارش",
+    "orders": "معامله‌ها",
     "cancelSuccess": "سفارش با موفقیت لغو شد!",
-    "cancelError": "خطا در لغو سفارش",
-    "orders": "معامله ها"
+    "cancelError": "خطا در لغو سفارش"
   },
-
   "WalletSubMenu": {
-    "title": "دارایی ها ",
+    "title": "دارایی‌ها",
     "totalValue": "ارزش کل",
     "approximate": "تقریبی",
     "equivalent": "معادل",
     "showZeroBalance": "عدم نمایش موجودی صفر"
   },
-
   "DepositWithdraw": {
     "title": "واریز/برداشت",
     "success": "آدرس کپی شد",
     "copy": "کپی شد",
-    "allowable": "مقدار حداقل باید {{min}} تومان و حداکثر {{max}} تومان باشد.",
+    "IRTAllowable": "مقدار حداقل باید {{min}} تومان و حداکثر {{max}} تومان باشد.",
     "emptyInput": "وارد کردن مقدار الزامی است.",
-    "irtText": "صورتحساب با مبلغ {{amount}} تومان در تاریخ {{date}}، ساعت {{time}} ایجاد شده است، از طریق دکمه سبز رنگ زیر به درگاه پرداخت هدایت میشوید. برای ایجاد صورتحساب جدید، صورتحساب قبلی را پرداخت و یا لغو کنید.",
+    "IRTText": "صورتحساب با مبلغ {{amount}} تومان در تاریخ {{date}} ، ساعت {{time}} ایجاد شده است. از طریق دکمه سبز رنگ زیر به درگاه پرداخت هدایت می شوید. برای ایجاد صورتحساب جدید، صورتحساب قبلی را پرداخت و یا لغو کنید.",
     "IRTFormText": "برای واریز وجه ابتدا صورتحساب را ایجاد کنید، مبلغ مجاز واریز حداقل {{min}} تومان و حداکثر {{max}} تومان است.",
     "pay": "پرداخت",
     "cancel": "لغو",
@@ -292,31 +248,28 @@
     "depositTime": "* موجودی شما {{time}} دقیقه بعد از واریز به آدرس بالا، افزایش پیدا می کند.",
     "securityConsiderations": "باتوجه به ملاحضات امنیتی ممکن است انتقال به حساب با کمی تاخیر صورت بگیرد. می توانید وضعیت برداشت را در همین صفحه از بخش ترکنش های واریز/برداشت ببینید."
   },
-
   "CallbackPage": {
     "ok": "واریز وجه با موفقیت انجام شد.",
     "failed": "واریز وجه با خطا مواجه شد.",
     "noData": "موردی برای نمایش وجود ندارد.",
     "errorMessage": "متن خطا"
   },
-
   "IPGErrorCode": {
     "13003": "اجازه پرداخت ندارید.",
     "13004": "یک درخواست پرداخت نشده دارید.",
     "13005": "درخواست قفل شده.",
     "13007": "خطای ناشناخته"
   },
-
   "DepositWithdrawTx": {
-    "title": "تراکنش های واریز/برداشت",
-    "depositWithdrawal": "واریز/دریافت",
-    "withdrawalSend": "برداشت/ارسال",
+    "title": "تراکنش‌های واریز / برداشت",
+    "depositWithdrawal": "واریز / دریافت",
+    "withdrawalSend": "برداشت / ارسال",
     "transactionType": "نوع تراکنش",
     "transactionId": "شناسه تراکنش",
     "blockchainTransactionId": "شناسه بلاکچینی تراکنش",
     "price": "مبلغ",
     "destination": "مبدا/مقصد",
-    "inventory": "موجودی بعد تراکنش",
+    "inventory": "موجودی بعد  از تراکنش",
     "freeWallet": "موجودی قابل برداشت",
     "minWithdraw": "حداقل مقدار برداشت",
     "minDeposit": "حداقل مقدار واریز",
@@ -331,40 +284,35 @@
     "IRTsuccess": "درخواست واریز {{amount}} تومان با موفقیت ثبت شد",
     "cancel": "لغو",
     "cancelPayment": "عملیات واریز لغو شد!"
-
   },
-
   "transactionType": {
     "deposit": "واریز",
     "withdrawal": "برداشت",
     "Received": "دریافت",
     "send": "ارسال"
   },
-
   "OrdersTrades": {
-    "title": "سفارش ها و معامله ها",
+    "title": "سفارش‌ها و معامله‌ها",
     "aliveOrder": "سفارش های جاری",
     "stop": "متوقف",
     "cancelClose": "لغو و بسته شده",
-    "trades": "معامله ها",
+    "trades": "معامله‌ها",
     "side": "سمت",
     "order": "سفارش",
     "done": "اجراشده",
     "donePercentage": "% انجام",
     "stoppedPrice": "قیمت توقف",
-    "ordersHistory": "تاریخچه سفارش ها",
+    "ordersHistory": "تاریخچه سفارش‌ها",
     "type": "نوع",
     "market": "بازار",
     "limit": "محدود",
     "paid": "پرداخت شده"
   },
-
   "MessagesSubMenu": {
     "title": "اطلاع رسانی",
     "myMessages": "پیام های من",
     "news": "اطلاعیه ها"
   },
-
   "SettingsSubMenu": {
     "title": "تنظیمات",
     "userProfile": "مشخصات کاربری",
@@ -372,7 +320,6 @@
     "personalization": "شخصی سازی",
     "authentication": "احراز هویت کاربری"
   },
-
   "UserAccountStatus": {
     "title": "وضعیت حساب کاربری",
     "userAccountLevel1": "سطح کاربری 1",
@@ -381,14 +328,12 @@
     "dailyDeposit": "واریز روزانه ارزی: معادل {{amount}} تومان از 20،000،000 تومان",
     "dailyWithdrawalCryptoCurrency": "برداشت روزانه رمزارزی: معادل {{amount}} تومان از 20،000،000 تومان",
     "dailyDepositCryptoCurrency": "واریز روزانه رمزارزی: معادل {{amount}} تومان از 20،000،000 تومان",
-
     "monthlyWithdrawal": "برداشت ماهانه ارزی: معادل {{amount}} تومان از 20،000،000 تومان",
     "monthlyDeposit": "واریز ماهانه ارزی: معادل {{amount}} تومان از 20،000،000 تومان",
     "monthlyWithdrawalCryptoCurrency": "برداشت ماهانه رمزارزی: معادل {{amount}} تومان از 20،000،000 تومان",
     "monthlyDepositCryptoCurrency": "واریز ماهانه رمزارزی: معادل {{amount}} تومان از 20،000،000 تومان",
     "tradesCommission": "کارمزد معاملات: {{amount}} تیکر، {{num}}"
   },
-
   "PersonalProfile": {
     "title": "مشخصات فردی",
     "cantEdit": "احراز هویت شما انجام شده است، مشخصات فردی قابل ویرایش نیست.",
@@ -411,28 +356,26 @@
     "selectNationality": "ملیت خود را انتخاب کنید",
     "selectResidence": "کشور محل اقامت خود را انتخاب کنید"
   },
-
   "LoginReports": {
     "title": "گزارش ورودها"
   },
-
   "ActiveSessions": {
-    "title": "نشست های فعال",
-    "ip": "ip",
+    "title": "نشست‌های فعال",
+    "ip": "IP",
     "LOGGED_IN": "ورود",
     "LOGGING_OUT": "خروج",
     "LOGGED_OUT": "خروج",
     "details": "جزئیات",
     "closeSession": "بستن نشست",
     "success": "نشست {{location}} با موفقیت بسته شد.",
-    "logOutAllSuccess": "سایر نشست ها با موفقیت بسته شدند.",
+    "failed": "خطا در بستن نشست {{location}}، دوباره تلاش کنید.",
+    "logOutAllSuccess": "سایر نشست‌ها با موفقیت بسته شد.",
     "logOutAllError": "خطا در سرور، دوباره تلاش کنید.",
-    "noData": "موردی یافت نشد !",
+    "noData": "موردی یافت نشد!",
     "thisSession": "نشست فعلی",
-    "otherSession": "سایر نشست ها",
-    "closeAllInusableSessions": "بستن سایر نشست ها"
+    "otherSession": "سایر نشست‌ها",
+    "closeOtherSessions": "بستن سایر نشست‌ها"
   },
-
   "ChangePassword": {
     "title": "تغییر رمز ورود",
     "newPassword": "رمز ورود جدید",
@@ -442,122 +385,111 @@
     "error": "تغییر رمز انجام نشد.",
     "minInput": "{{name}} حداقل باید {{min}} کاراکتر باشد.",
     "emptyInput": "وارد کردن فیلد {{name}} الزامی است.",
-    "confirmationError": "رمز ورود جدید و تکرار آن باهم مطابقت نداردن.",
+    "confirmationError": "رمز ورود جدید و تکرار آن باهم مطابقت ندارند.",
     "currentPasswordError": "رمز ورود فعلی اشتباه وارد شده است."
   },
-
   "SetTwoStepVerification": {
-    "title": "فعال سازی ورود دو مرحله ای",
-    "!title": "غیرفعال سازی ورود دو مرحله ای",
+    "title": "فعال سازی ورود دو مرحله‌ای",
+    "!title": "غیرفعال سازی ورود دو مرحله‌ای",
     "code": "کد",
-    "active": "فعال سازی",
-    "isActive": "ورود دو مرحله ای فعال است.",
-    "deActive": "غیر فعال سازی",
-    "success": "ورود دو مرحله ای با موفقیت فعال شد.",
-    "error": "ورود دو مرحله ای غیرفعال شد.",
+    "active": "فعال‌سازی",
+    "isActive": "ورود دو مرحله‌ای فعال است.",
+    "deActive": "غیر فعال‌سازی",
+    "success": "ورود دو مرحله‌ای با موفقیت فعال شد.",
+    "error": "ورود دو مرحله‌ای غیرفعال شد.",
     "initialCodeMin": "کد باید 6 رقم باشد.",
     "initialCodeError": "کد وارد شده صحیح نیست.",
-    "serverError": "خطا در سرور، لطفا دوباره تلاش کنید.",
-    "description": "در صورت فعال سازی ورود دو مرحله ای، برای هر بار ورود به پنل کاربری، رمز دو مرحله ای درخواست می شود.",
+    "serverError": "خطا در سرور، لطفاً دوباره تلاش کنید.",
+    "description": "در صورت فعال‌سازی ورود دو مرحله‌ای، برای هر بار ورود به پنل کاربری، رمز دو مرحله‌ای درخواست می‌شود.",
     "QRdescription": "پس از اسکن کد QR رو به رو با نرم افزار Google Authenticator (یا نرم افزار مشابه) عدد 6 رقمی درج شده را وارد و ثبت کنید ."
   },
-
   "HelpStep": {
     "title": "گام 1 از 4: راهنمای کاربر",
-    "content": "به منظور استفاده از تمامی خدمات این صرافی و فعال شدن امکان برداشت دارایی ها، باید احراز هویت شوید. فرایند احراز هویت ساده و آنلاین است. در مراحل بعد از شما درخواست خواهد شد تا اطلاعات فردی خود را در فرم مربوطه وارد کرده و تصاویر پرتره، کارت ملی و رضایت نامه استفاده از خدمات را ارسال بفرمایید."
+    "content": "به منظور استفاده از خدمات این صرافی و فعال شدن امکان برداشت دارایی ها، باید احراز هویت شوید. فرایند احراز هویت ساده و آنلاین است. در مراحل بعد از شما درخواست خواهد شد تا اطلاعات فردی خود را در فرم مربوطه وارد کرده و عکس شخصی، تصویر کارت ملی و توافقنامه استفاده از خدمات را ارسال فرمایید."
   },
-
   "PersonalProfileStep": {
     "title": "گام 2 از 4: ورود اطلاعات فردی",
     "serverError": "خطا در دریافت اطلاعات، دوباره تلاش کنید.",
     "minInput": "{{name}} حداقل باید {{min}} کاراکتر باشد.",
-    "wrongDateG": "فرمت تاریخ صحیح نیست",
-    "wrongDateJ": "فرمت تاریخ صحیح نیست",
-    "wrongNationalId": "کد ملی صحیح نیست",
-    "wrongPassportNumber": "شماره پاس‍پورت صحیح نیست",
-    "emptyInput": "وارد کردن فیلد {{name}} الزامی است.",
+    "wrongDateG": "فرمت تاریخ صحیح نیست!",
+    "wrongDateJ": "فرمت تاریخ صحیح نیست!",
+    "wrongNationalId": "کد ملی صحیح نیست!",
+    "wrongPassportNumber": "شماره پاس‍پورت صحیح نیست!",
+    "emptyInput": "وارد کردن {{name}} الزامی است.",
     "yy/mm//dd": "روز/ماه/سال"
   },
-
   "SendPhotosStep": {
     "title": "گام 3 از 4: ارسال تصاویر",
-    "content": "برای تکمیل احراز هویت لطفا مراحل زیر را انجام دهید!",
-    "acceptForm": "1) متن اعلام رضایت به استفاده از خدمات را بر روی یک کاغذ A4 نوشته، امضا کنید و از آن عکس بگیرید.",
-    "selfie": "2) یک سلفی از خودتان در حالتی که برگه اعلام رضایت را در مقابل خود نگه داشته اید بگیرید.",
-    "idCard": "3) یک سلفی از خودتان در حالتی که شناسنامه یا کارت ملی را در مقابل خود نگه داشته اید بگیرید.",
-    "acceptFormLink": "(متن اعلام رضایت...)",
-    "selfieLink": "(مطابق تصویر نمونه...)",
-    "idCardLink": "(مطابق تصویر نمونه...)",
+    "content": "برای تکمیل احراز هویت لطفاً مراحل زیر را انجام دهید:",
+    "acceptForm": "1) متن توافقنامه برای استفاده از خدمات را بر روی یک کاغذ A4 نوشته، امضا کنید و از آن عکس بگیرید.",
+    "selfie": "2) یک سلفی از خودتان در حالتی که برگه اعلام رضایت را در مقابل خود نگه داشته‌اید بگیرید.",
+    "idCard": "3) یک سلفی از خودتان در حالتی که شناسنامه یا کارت ملی را در مقابل خود نگه داشته‌اید بگیرید.",
+    "acceptFormLink": "(دانلود نمونه متن اعلام رضایت)",
+    "selfieLink": "(مطابق تصویر نمونه)",
+    "idCardLink": "(مطابق تصویر نمونه)",
     "acceptFormDropzone": "متن اعلام رضایت",
     "selfieDropzone": "سلفی همراه با متن اعلام رضایت",
     "idCardDropzone": "سلفی همراه با کارت ملی یا شناسنامه",
     "sendingData": "در حال ارسال اطلاعات...",
-    "imageAcceptedFormat": "- لطفا عکس ها را فقط با فرمت JPEG و PNG آپلود کنید!",
+    "imageAcceptedFormat": "- لطفاً عکس‌ها را فقط با فرمت JPEG و PNG آپلود کنید!",
     "imageAcceptedSize": "- حداکثر حجم قابل قبول برای آپلود عکس ها، 1 مگابایت است!",
-
-    "acceptFormEmpty": "عکس متن اعلام رضایت را آپلود کنید!",
-    "selfieEmpty": "عکس سلفی همراه با متن رضایت را آپلود کنید!",
+    "acceptFormEmpty": "عکس متن توافقنامه را آپلود کنید!",
+    "selfieEmpty": "عکس سلفی همراه با متن توافقنامه را آپلود کنید!",
     "idCardEmpty": "عکس سلفی همراه کارت ملی یا شناسنامه را آپلود کنید!",
     "serverError": "خطا در ارسال تصاویر، دوباره تلاش کنید!"
   },
-
-  "SendToExpertStep": {
+  "SendToAdminStep": {
     "title": "گام 4 از 4: ارسال به کارشناس",
-    "content": "اطلاعات با موفقیت ثبت شد. وضعیت احراز هویت شما به صورت زیر می باشد.",
-    "pending": "در حال برسی...",
+    "content": "اطلاعات با موفقیت ثبت شد. وضعیت احراز هویت شما به صورت زیر می باشد:",
+    "pending": "در حال بررسی...",
     "accepted": "احراز هویت شما با موفقیت انجام شده است.",
     "rejected": "احراز هویت انجام نشد، دوباره تلاش کنید.",
     "blocked": "احراز هویت انجام نشد!",
     "noData": "ثبت نشده!",
     "errorMessage": "متن خطا"
   },
-
   "Authentication": {
-    "title": "",
     "HelpStep": "راهنمای کاربر",
     "PersonalProfileStep": "اطلاعات فردی",
     "SendPhotosStep": "ارسال تصاویر",
-    "SendToExpertStep": "ارسال به کارشناس"
+    "SendToAdminStep": "ارجاع به کارشناس"
   },
-
   "PersonalizationForm": {
-    "title": "شخصی سازی",
+    "title": "شخصی‌سازی",
     "placeholder": "انتخاب",
-    "defaultLang": "زبان پیش فرض",
-    "defaultTheme": "تم پیش فرض",
+    "defaultLang": "زبان پیش‌فرض",
+    "defaultTheme": "تم پیش‌فرض",
     "defaultCalendarSystem": "سیستم روزشماری",
-    "defaultTimeZon": "منطقه زمانی",
+    "defaultTimeZone": "منطقه زمانی",
     "defaultReferenceCurrency": "ارز مرجع",
     "defaultReferenceCryptoCurrency": "رمز ارز مرجع",
     "save": "ذخیره"
   },
-
   "login": {
     "title": "ورود/ثبت نام",
     "wrongPassword": "ایمیل یا رمز عبور صحیح نمی باشد!",
     "wrongOTP": "رمز دو مرحله ای صحیح نمی باشد!",
+    "wrongPasswordConfirmation": "رمز ورود و تکرار آن باهم مطابقت ندارند.!",
     "forgetPassword": "فراموشی رمز عبور",
     "accountNotActive": "اکانت شما هنوز فعال نشده است",
     "enter": "ورود",
     "resetPassword": "بازیابی رمز",
     "inputError": "فرمت ایمیل یا تعداد کاراکتر رمز ورود درست نیست.",
     "loginError": "خطا در ارتباط با سرور",
-    "registerFinished": "ثبت نام با موفقیت انجام شد :)",
-    "forgetPasswordFinished": "درخواست بازیابی رمز عبور با موفقیت ارسال شد :)",
-    "registerFinishedGoToMail": "برای تکمیل ثبت نام به ایمیل ثبت شده مراجعه فرمایید.",
+    "registerFinished": "ثبت نام با موفقیت انجام شد.",
+    "forgetPasswordFinished": "درخواست بازیابی رمز عبور با موفقیت ارسال شد.",
+    "registerFinishedGoToMail": "برای تکمیل ثبت نام به {{email}} مراجعه فرمایید.",
     "registerFinishedSpamMail": "ایمیل دریافتی از آدرس for.demo.purpose.only@opex.dev ممکن است در بخش spam باشد.",
     "register": "ثبت نام",
     "wrongEmail": "ایمیل وارد شده معتبر نیست.",
-    "notFoundEmail": "ایمیل وارد شده یافت نشد.",
     "emptyEmail": "ایمیل را وارد کنید.",
     "emptyInput": "وارد کردن فیلد {{name}} الزامی است.",
-    "emptyCredentialError": "وارد کردن فیلد ایمیل و رمز ورود الزامی است.",
+    "emptyCredentialError": "وارد کردن ایمیل و رمز ورود الزامی است.",
     "minInput": "{{name}} حداقل باید {{min}} کاراکتر باشد.",
     "finishedWithError": "خطا در ایجاد کاربر جدید.",
     "back": "بازگشت",
     "description": "OPen source EXchange",
-    "OTPRequired": "وارد کردن رمز دوعاملی (OTP) الزامی است.",
-    "networkError": "خطا در ارتباط با سرور",
+    "OTPRequired": "وارد کردن رمز در مرحله‌ای (OTP) الزامی است.",
     "otpLength": "رمز دوعاملی 6 کاراکتر است.",
     "refreshCaptcha": "نمایش دوباره captcha",
     "captchaServerError": "خطا در سرور برای گرفتن Captcha",
@@ -567,34 +499,70 @@
     "forgetPassServerError": "خطا در بازیابی رمز، دوباره تلاش کنید",
     "forgetPassEmailForgetError": "فرمت ایمیل صحیح نیست."
   },
-
+  "userPage": {
+    "title": "",
+    "success": "ایمیل با موفقیت تائید شد.",
+    "failed": "ایمیل تائید نشد، دوباره تلاش کنید!"
+  },
+  "Landing": {
+    "title": "پلتفرم تبادل ارزهای دیجیتال"
+  },
+  "MarketTitle": {
+    "content": "به طور خاص برای رفع نیازهای شما طراحی شده است.",
+    "advancedTrading": "معامله حرفه‌ای",
+    "easyTrading": "معامله آسان"
+  },
+  "GeneralInfo": {
+    "activeUsers": "کاربر فعال",
+    "totalOrders": "سفارش ثبت شده",
+    "totalTrades": "معامله انجام شده"
+  },
+  "MarketInfo": {
+    "viewAllMarket": "نمایش تمام بازار",
+    "name": "نام",
+    "cryptocurrency": "رمزارز",
+    "lastPrice": "آخرین قیمت",
+    "lowPrice": "کمترین قیمت",
+    "highPrice": "بیشترین قیمت",
+    "priceChange": "تعییر قیمت",
+    "chart": "نمودار",
+    "volume": "حجم معاملات",
+    "details": "جزئیات",
+    "trade": "معامله",
+    "marketCap": "ارزش بازار"
+  },
+  "MarketView": {
+    "title": "روند 24 ساعته",
+    "mostIncreased": "بیشترین افزایش",
+    "mostDecreased": "بیشترین کاهش",
+    "mostTrades": "بیشترین تعداد معامله",
+    "mostVolume": "بیشترین حجم معامله"
+  },
   "footer": {
-    "changeColor": "تغییر رنگ",
+    "darkMode": "تم تاریک",
     "aboutUs": "درباره ما",
-    "contactUS": "تماس باما",
+    "contactUS": "تماس با ما",
     "blog": "بلاگ",
     "guide": "راهنمای استفاده",
-    "rules": "قوانین استفاده",
-    "api": "وب سرویس ها",
+    "rules": "قوانین سایت",
+    "api": "وب سرویس‌ها",
     "addCoin": "درخواست افزودن سکه یا توکن",
     "demo": "بازار نمایشی (ویژه تمرین رایگان)",
     "errorReport": "گزارش خطا و مشکل",
     "copyright": "1400 - کلیه حقوق برای شرکت تجربه کاربری متن باز (در شرف تاُسیس) محفوظ است."
   },
-
   "ImageInput": {
     "title": "",
     "dropText": "را با کشیدن روی کادر یا کلیک کردن و انتخاب فایل آپلود کنید!",
-    "iconErrorText": "عکس آپلود شده معتبر نمی باشد ، لطفا دوباره تلاش کنید!",
+    "iconErrorText": "عکس آپلود شده معتبر نیست، لطفاً دوباره تلاش کنید!",
     "fileTooLarge": "حجم فایل آپلود شده بیشتر از حد مجاز است!",
     "fileInvalidType": "فرمت فایل آپلود شده قابل قبول نیست!",
     "tooManyFiles": "آپلود بیشتر از یک عکس مجاز نیست!",
     "errorMsgDefault": "عکس آپلود شده معتبر نیست!"
   },
-
-  "junk": {
-    "t": "ت",
-    "billionT": "میلیارد ت",
-    "vol": "ح"
+  "errorPage" : {
+    "needKYC" : "دسترسی این بخش فقط برای کاربران احراز هویت شده مجاز است!",
+    "reload" : "تلاش مجدد",
+    "errorText" : "خطا در ارتباط با سرور"
   }
 }

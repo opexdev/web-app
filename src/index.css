@@ -422,6 +422,11 @@ body {
   -ms-flex-align: end;
   align-items: flex-end !important;
 }
+.ai-baseline {
+  -webkit-box-align: baseline;
+  -ms-flex-align: baseline;
+  align-items: baseline;
+}
 
 .img-vsm {
   width: 1vw;
@@ -451,6 +456,9 @@ body {
 .mb-05 {
   margin-bottom: 0.5vh;
 }
+.mb-1 {
+  margin-bottom: 1vh;
+}
 .mb-2 {
   margin-bottom: 2vh;
 }
@@ -459,6 +467,15 @@ body {
 }
 .mb-4 {
   margin-bottom: 4vh;
+}
+.m-auto{
+  margin: 0 auto;
+}
+.overflowX-hidden{
+  overflow-x: hidden;
+}
+.overflowY-hidden{
+  overflow-y: hidden;
 }
 
 .content {
@@ -716,14 +733,50 @@ body {
   -ms-flex: 1;
   flex: 1;
 }
+.width-5{
+  width: 5%;
+}
+.width-8{
+  width: 8%;
+}
+.width-9{
+  width: 9%;
+}
+.width-10{
+  width: 10%;
+}
+.width-11{
+  width: 11%;
+}
+.width-12{
+  width: 12%;
+}
+.width-13{
+  width: 13%;
+}
+.width-15{
+  width: 15%;
+}
 .width-19{
   width: 19%;
+}
+.width-20{
+  width: 20%;
 }
 .width-23{
   width: 23%;
 }
+.width-25{
+  width: 25%;
+}
 .width-30{
   width: 30%;
+}
+.width-32{
+  width: 32%;
+}
+.width-35{
+  width: 35%;
 }
 .width-40{
   width: 40%;
@@ -734,6 +787,12 @@ body {
 .width-70{
   width: 70%;
 }
+.width-80{
+  width: 80%;
+}
+.width-85{
+  width: 85%;
+}
 .width-90{
   width: 90%;
 }
@@ -743,6 +802,9 @@ body {
 
 .height-100{
   height: 100%;
+}
+.rounded {
+  border-radius: 5px;
 }
 
 .card-border {
@@ -850,6 +912,9 @@ body {
   visibility: hidden;
 }
 
+.hover-scale-01:hover {
+  font-size: 1.1rem;
+}
 .hover-text:hover {
   color: var(--activeTab);
 }
@@ -936,6 +1001,18 @@ table {
   padding-top: 4vh;
   padding-bottom: 4vh;
 }
+.py-5 {
+  padding-top: 5vh;
+  padding-bottom: 5vh;
+}
+.py-6 {
+  padding-top: 6vh;
+  padding-bottom: 6vh;
+}
+.py-7 {
+  padding-top: 7vh;
+  padding-bottom: 7vh;
+}
 .px-05 {
   padding-right: 0.5vw;
   padding-left: 0.5vw;
@@ -971,6 +1048,27 @@ table {
 }
 .ltr .ml-05 {
   margin-right: 0.5vw;
+  margin-left: initial;
+}
+.ml-025 {
+  margin-left: 0.25vw;
+}
+.ltr .ml-025 {
+  margin-right: 0.25vw;
+  margin-left: initial;
+}
+.ml-1 {
+  margin-left: 1vw;
+}
+.ltr .ml-1 {
+  margin-right: 1vw;
+  margin-left: initial;
+}
+.ml-2 {
+  margin-left: 2vw;
+}
+.ltr .ml-2 {
+  margin-right: 2vw;
   margin-left: initial;
 }
 .mr-05 {
@@ -1033,6 +1131,9 @@ table {
 .pb-2 {
   padding-bottom: 2vh;
 }
+.pb-3 {
+  padding-bottom: 3vh;
+}
 .pb-5 {
   padding-bottom: 5vh;
 }
@@ -1057,9 +1158,25 @@ table {
   margin-right: 1vw;
   margin-left: 1vw;
 }
+.mx-2 {
+  margin-right: 2vw;
+  margin-left: 2vw;
+}
 .my-2 {
   margin-top: 2vh;
   margin-bottom: 2vh;
+}
+.my-3 {
+  margin-top: 3vh;
+  margin-bottom: 3vh;
+}
+.my-4 {
+  margin-top: 4vh;
+  margin-bottom: 4vh;
+}
+.my-5 {
+  margin-top: 5vh;
+  margin-bottom: 5vh;
 }
 .my-1 {
   margin-top: 1vh;
@@ -1118,10 +1235,26 @@ h6 {
 .cursor-not-allowed {
   cursor: not-allowed;
 }
+.cursor-grabbing {
+  cursor: grabbing;
+}
 .ltr {
   direction: ltr;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Roboto', sans-serif !important;
+  font-weight: 300;
 }
+
+.button {
+  font-family: "IRANYekan", sans-serif;
+  border: none;
+  border-radius: 7px;
+  color: #f2f2f2;
+}
+
+.ltr .button {
+  font-family: "Roboto", sans-serif !important;
+}
+
 
 input {
   direction: rtl;
@@ -1129,20 +1262,6 @@ input {
 .ltr input {
   direction: ltr;
 }
-
-
-
-/*
-.ltr html,body{
-    font-family: 'Segoe UI', serif !important;
-}
-*/
-
-/*
-.ltr .row{
-    flex-direction: row-reverse;
-
-}*/
 
 /*
     Table Style
@@ -1232,154 +1351,6 @@ table th {
   }
 }
 
-/*LoadingPage*/
-.loading-container {
-  direction: ltr;
-  width: 100vw;
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  vertical-align: middle;
-  background-color: var(--cardBody);
-}
-
-.dash {
-  width: 35px;
-  height: 15px;
-  border-radius: 8px;
-  margin: 0 15px;
-  background: var(--textColor);
-  box-shadow: 0 0 2px 0 var(--textColor);
-}
-
-.one {
-  margin-right: -18px;
-  transform-origin: center left;
-  animation: spin 3s linear infinite;
-}
-
-.two {
-  transform-origin: center right;
-  animation: spin2 3s linear infinite;
-  animation-delay: 0.2s;
-}
-
-.three {
-  transform-origin: center right;
-  animation: spin3 3s linear infinite;
-  animation-delay: 0.3s;
-}
-
-.four {
-  transform-origin: center right;
-  animation: spin4 3s linear infinite;
-  animation-delay: 0.4s;
-}
-
-@keyframes spin {
-  0% {
-    transform: rotate(0deg);
-  }
-  25% {
-    transform: rotate(360deg);
-  }
-  30% {
-    transform: rotate(370deg);
-  }
-  35% {
-    transform: rotate(360deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
-}
-
-@keyframes spin2 {
-  0% {
-    transform: rotate(0deg);
-  }
-  20% {
-    transform: rotate(0deg);
-  }
-  30% {
-    transform: rotate(-180deg);
-  }
-  35% {
-    transform: rotate(-190deg);
-  }
-  40% {
-    transform: rotate(-180deg);
-  }
-  78% {
-    transform: rotate(-180deg);
-  }
-  95% {
-    transform: rotate(-360deg);
-  }
-  98% {
-    transform: rotate(-370deg);
-  }
-  100% {
-    transform: rotate(-360deg);
-  }
-}
-
-@keyframes spin3 {
-  0% {
-    transform: rotate(0deg);
-  }
-  27% {
-    transform: rotate(0deg);
-  }
-  40% {
-    transform: rotate(180deg);
-  }
-  45% {
-    transform: rotate(190deg);
-  }
-  50% {
-    transform: rotate(180deg);
-  }
-  62% {
-    transform: rotate(180deg);
-  }
-  75% {
-    transform: rotate(360deg);
-  }
-  80% {
-    transform: rotate(370deg);
-  }
-  85% {
-    transform: rotate(360deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
-}
-
-@keyframes spin4 {
-  0% {
-    transform: rotate(0deg);
-  }
-  38% {
-    transform: rotate(0deg);
-  }
-  60% {
-    transform: rotate(-360deg);
-  }
-  65% {
-    transform: rotate(-370deg);
-  }
-  75% {
-    transform: rotate(-360deg);
-  }
-  100% {
-    transform: rotate(-360deg);
-  }
-}
-/*End LoadingPage*/
-
-
 
 .onScreen{
   position: absolute;
@@ -1458,5 +1429,20 @@ table th {
     -o-transform: translateY(0);
     transform: translateY(0);
     -moz-transform: translateY(0) rotate(.2deg);
+  }
+}
+
+.move-image {
+  animation-name: MOVE-BG;
+  animation-duration: 15s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+@keyframes MOVE-BG {
+  from {
+    background-position: center top;
+  }
+  to {
+    background-position: center 1200px;
   }
 }

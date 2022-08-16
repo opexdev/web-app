@@ -1,0 +1,13 @@
+.container {
+  height: 75vh;
+}
+.header {
+  height: 10%;
+}
+.content {
+  height: 90%;
+}
+.thisButton {
+  width: 10%;
+  background-color: var(--bgGreen);
+}

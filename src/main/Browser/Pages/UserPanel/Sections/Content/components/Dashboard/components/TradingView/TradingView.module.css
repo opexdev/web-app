@@ -1,0 +1,41 @@
+.chartContainer {
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  padding: 0 1vw;
+  flex-direction: row;
+  direction: ltr;
+  position: relative;
+}
+:global(div[data-highcharts-chart]) {
+  width: 100%;
+  height: 100%;
+}
+:global(.highcharts-container) {
+  width: 100% !important;
+  height: 100% !important;
+  border-radius: 9px;
+}
+:global(.highcharts-point-up) {
+  fill: var(--textGreen);
+  stroke: var(--textGreen);
+}
+:global(.highcharts-point-down) {
+  fill: var(--textRed);
+  stroke: var(--textRed);
+}
+:global(.highcharts-color-1) {
+  fill: var(--activeTab);
+  stroke: var(--activeTab);
+}
+.error {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  text-align: center;
+  z-index: 2;
+  vertical-align: text-bottom;
+}

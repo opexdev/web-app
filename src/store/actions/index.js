@@ -3,7 +3,9 @@ export {
     setLoading,
     setThemeInitiate,
     setTheme,
+    setError,
     setInfoMessage,
+    setMarketInterval,
 } from "./global";
 
 export {
@@ -30,8 +32,8 @@ export {
     changeUserInfo,
     setUserAccountInfo,
     setUserAccountInfoInitiate,
-    loadImpersonate,
-    setKYCStatus
+    setKYCStatus,
+    setKYCStatusInitiate
 } from "./auth";
 
 

@@ -1,51 +1,35 @@
 import React, {useEffect} from "react";
 import {useDispatch, useSelector} from "react-redux";
-import {Route, Switch, useHistory} from "react-router-dom";
+import {Route, Routes} from "react-router-dom";
 import i18n from "i18next";
 import ReactTooltip from "react-tooltip";
-import * as Routes from "../../routes/routes";
+import * as RoutesName from "./Routes/routes";
 import {Toaster} from "react-hot-toast";
-import Login from "../../pages/Login/Login";
-import Guide from "../../pages/Guide/Guide";
-import ProtectedRoute from "../../components/ProtectedRoute/ProtectedRoute";
-import MainMenu from "./Sections/MainMenu/MainMenu";
-import SubMenu from "./Sections/SubMenu/SubMenu";
-import Header from "./Sections/Header/Header";
-import Content from "./Sections/Content/Content";
+import Login from "./Pages/Login/Login";
+import Guide from "./Pages/Guide/Guide";
 import FullWidthLoading from "../../components/FullWidthLoading/FullWidthLoading";
-import {
-    loadConfig,
-    loadImpersonate,
-    setInfoMessage,
-    setLoading,
-    setUserAccountInfoInitiate,
-    setUserInfo
-} from "../../store/actions";
-import TechnicalChart from "./Sections/Content/components/TechnicalChart/TechnicalChart";
-import "./Browser.css"
+import {loadConfig, setInfoMessage} from "../../store/actions";
+import "./Styles/Browser.css"
 import useQuery from "../../Hooks/useQuery";
-import useInterval from "../../Hooks/useInterval";
-import {setImpersonateTokens} from "../../store/actions/auth";
-import jwtDecode from "jwt-decode";
-import {setLastPriceInitiate} from "../../store/actions/exchange";
-import Info from "../../components/Info/Info";
-
+import FullWidthError from "../../components/FullWidthError/FullWidthError";
+import User from "./Pages/User/User";
+import Landing from "./Pages/Landing/Landing";
+import AllMarket from "./Pages/AllMarket/AllMarket";
+import UserPanel from "./Pages/UserPanel/UserPanel";
 
 const Browser = () => {
-    const dispatch = useDispatch();
-    const history = useHistory();
     const query = useQuery();
+    const dispatch = useDispatch();
 
     const isDark = useSelector((state) => state.global.isDark)
     const isLoading = useSelector((state) => state.global.isLoading)
-    const isLogin = useSelector((state) => state.auth.isLogin)
+    const hasError = useSelector((state) => state.global.hasError)
 
     isDark ? document.body.classList.add('dark') : document.body.classList.remove('dark');
 
     useEffect(() => {
         const impersonate = query.get("impersonate");
-        if (impersonate) getLoginByAdminToken(impersonate).catch((err) => console.log(err))
-        impersonate ? dispatch(loadImpersonate()) : dispatch(loadConfig())
+        dispatch(loadConfig(impersonate))
         i18n.language !== "fa" ? document.body.classList.add('ltr') : document.body.classList.remove('ltr');
         i18n.on("languageChanged", (lng) => {
             lng !== "fa" ? document.body.classList.add('ltr') : document.body.classList.remove('ltr');
@@ -57,23 +41,7 @@ const Browser = () => {
             window.removeEventListener('offline', () => dispatch(setInfoMessage(null, "offline")));
             window.removeEventListener('online', () => dispatch(setInfoMessage(null, null)));
         }
-
     }, []);
-
-    const getLoginByAdminToken = async (token) => {
-        await dispatch(setImpersonateTokens(token))
-        const jwt = jwtDecode(token)
-        dispatch(setUserInfo(jwt));
-        dispatch(setUserAccountInfoInitiate())
-    }
-
-    useInterval(() => {
-        dispatch(setUserAccountInfoInitiate());
-    }, isLogin ? 3000 : null)
-
-    useInterval(() => {
-        dispatch(setLastPriceInitiate());
-    },  3000)
 
     const Toast = () => <Toaster position="bottom-right" toastOptions={
         {
@@ -103,38 +71,25 @@ const Browser = () => {
             },
         }} containerStyle={{}}/>
 
+
+    if (isLoading) return <FullWidthLoading/>
+
+    if (hasError) return <FullWidthError/>
+
     return (
-        <Switch>
-            <Route exact path="/login">
-                <Login/>
-            </Route>
-            <Route path="/guide">
-                <Guide/>
-            </Route>
-            <ProtectedRoute
-                component={TechnicalChart}
-                isLogin={isLogin}
-                exact
-                path={Routes.Technical}
-            />
-            <Route>
-                {isLoading ? (<FullWidthLoading/>) : (
-                    <div className="row">
-                        <MainMenu isLogin={isLogin}/>
-                        <SubMenu isLogin={isLogin}/>
-                        <div className="column content">
-                            <Header/>
-                            <Info/>
-                            <div style={{display: "flex", flex: 1}}>
-                                <Content/>
-                            </div>
-                        </div>
-                        <ReactTooltip data-html={true} data-effect="float"/>
-                        <Toast/>
-                    </div>
-                )}
-            </Route>
-        </Switch>
+        <>
+            <Routes>
+                <Route path={RoutesName.Login} element={<Login/>}/>
+                <Route path={RoutesName.User + "/*"} element={<User/>}/>
+                <Route path={RoutesName.Landing} element={<Landing/>}/>
+                <Route path={RoutesName.AllMarket} element={<AllMarket/>}/>
+                <Route path={RoutesName.Guide} element={<Guide/>}/>
+                <Route path={RoutesName.Panel + "/*"} element={<UserPanel/>}/>
+            </Routes>
+            <ReactTooltip data-html={true} data-effect="float"/>
+            <Toast/>
+        </>
+
     );
 };
 

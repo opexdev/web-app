@@ -7,7 +7,7 @@ import {setInfoMessage} from "../../store/actions";
 const Info = () => {
     const {t} = useTranslation();
     const dispatch = useDispatch();
-    const type = useSelector((state) => state.global.info.type)
+    //const type = useSelector((state) => state.global.info.type)
     const message = useSelector((state) => state.global.info.message)
 
     if (!message) return <></>

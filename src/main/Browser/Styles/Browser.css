@@ -1,0 +1,39 @@
+@media (min-width: 992px) {
+
+    html,body{
+        font-size: 0.9vw;
+        line-height: 3.5vh;
+        height: 100%;
+
+    }
+
+    .font-size-sm-mini {
+        font-size: 0.65vw;
+    }
+    .font-size-sm {
+        font-size: 0.75vw;
+    }
+    .font-size-sm-plus {
+        font-size: 0.8vw;
+    }
+    .font-size-md {
+        font-size: 1vw;
+    }
+    .font-size-md-01 {
+        font-size: 1.25vw;
+    }
+    .font-size-md-plus {
+        font-size: 1.5vw;
+    }
+    .font-size-lg {
+        font-size: 2.2vw;
+    }
+    .button{
+        height: 4.5vh;
+        font-size: 0.8vw;
+    }
+    tr {
+        position: relative;
+        line-height: 3.4vh;
+    }
+}
