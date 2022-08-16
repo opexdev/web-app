@@ -3,6 +3,7 @@ services:
   web-app:
     image: ghcr.io/opexdev/web-app
     environment:
+      - ENV=$WEB_APP_ENV
       - API_BASE_URL=$API_BASE_URL
       - CLIENT_ID=$CLIENT_ID
       - CLIENT_SECRET=$CLIENT_SECRET
