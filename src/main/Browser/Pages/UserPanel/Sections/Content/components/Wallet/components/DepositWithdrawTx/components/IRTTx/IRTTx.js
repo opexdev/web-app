@@ -46,8 +46,9 @@ const IRTTx = () => {
         }
     };
 
-    if (!KYCStatus || error) return <Error errorMsg={KYCStatus ? null : t('errorPage.needKYC')}/>
     if (isLoading) return <Loading/>
+    if (KYCStatus !== "ACCEPTED") return <Error errorMsg={t('errorPage.needKYC')}/>
+    if (error) return <Error/>
     if (txs.length === 0) return <div className="container height-100 flex ai-center jc-center">{t("noTx")}</div>
 
     return (

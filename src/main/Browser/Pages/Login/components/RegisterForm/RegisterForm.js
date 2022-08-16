@@ -65,15 +65,21 @@ const RegisterForm = () => {
 
     if (registerStatus === "finish") {
         return <div className={`column jc-center ai-center text-center px-4`} style={{height: "35vh"}}>
-            <span>{t('login.registerFinished')}</span>
-            <span>{t('login.registerFinishedGoToMail')}</span>
-            <span
-                className={`font-size-sm-plus border-top-dotted pt-1 mt-1`}>{t('login.registerFinishedSpamMail')}</span>
+            <span className={`text-green mb-2`}>{t('login.registerFinished')}</span>
+            <span className={`mt-2`}>
+                <Trans
+                    i18nKey="login.registerFinishedGoToMail"
+                    values={{
+                        email: userData?.email?.value,
+                    }}
+                />
+            </span>
+            <span className={`font-size-sm-plus border-top-dotted pt-1 mt-1`}>{t('login.registerFinishedSpamMail')}</span>
         </div>
     }
 
     if (registerStatus === "finishedWithError") {
-        return <div className={`column jc-center ai-center`} style={{height: "30vh"}}>
+        return <div className={`column jc-center ai-center text-red`} style={{height: "30vh"}}>
             <span>{t('login.finishedWithError')}</span>
         </div>
     }

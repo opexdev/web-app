@@ -15,12 +15,16 @@ import CallbackPage from "./components/CallbackPage/CallbackPage";
 import {setIPGInitiate} from "../../../../../../../../../../../../../../store/actions";
 import {useGetIpgOpenInvoice, useIPGDeposit} from "../../../../../../../../../../../../../../queries";
 import {cancelIPGDepositReq, sendIPGDepositReq} from "js-api-client";
+import Error from "../../../../../../../../../../../../../../components/Error/Error";
 
 
 const IRTDeposit = () => {
 
     const {t} = useTranslation();
     const dispatch = useDispatch();
+    const KYCStatus = useSelector((state) => state.auth.kyc)
+
+
 
     const [sendIPGLoading, setIPGIsLoading] = useState(false)
 
@@ -113,7 +117,7 @@ const IRTDeposit = () => {
 
     useEffect(() => {
         if (ipgLock && new Date().getTime() < ipgLock) setDisable(true)
-    }, []);
+    }, [ipgLock]);
 
     const payButtonTitle = (amount) => {
         if (disable) {
@@ -125,6 +129,8 @@ const IRTDeposit = () => {
         }
         return <span>{t('DepositWithdraw.pay')} ({amount} {t("currency." + id)})</span>
     }
+
+    if (KYCStatus !== "ACCEPTED") return <Error errorMsg={t('errorPage.needKYC')}/>
 
     const content = () => {
         if (isLoading || sendIPGLoading) {

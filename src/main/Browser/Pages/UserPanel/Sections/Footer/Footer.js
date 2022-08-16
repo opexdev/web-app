@@ -69,7 +69,10 @@ const Footer = () => {
                         </div>
                     </div>
                 </div>
-                <img className={`img-lg-plus`} src={images.opexLogoPlus} alt={t("title")}/>
+                <div className={`column jc-center ai-center`}>
+                    <img className={`img-lg-plus mb-1`} src={images.opexLogoPlus} alt={t("title")}/>
+                    <span className={`mt-1`}>v2.0.0-beta.2</span>
+                </div>
             </div>
             <div className={`container flex jc-center ai-center`}>
                 <p>{t("footer.copyright")}</p>

@@ -478,7 +478,7 @@
     "loginError": "Server connection error!",
     "registerFinished": "Registration completed successfully!",
     "forgetPasswordFinished": "Password recovery request sent successfully!",
-    "registerFinishedGoToMail": "Please go to your registered email to complete the registration.",
+    "registerFinishedGoToMail": "Please go to {{email}} inbox to complete the registration.",
     "registerFinishedSpamMail": "Email sent from for.demo.purpose.only@opex.dev may be in your spam folder!",
     "register": "Register",
     "wrongEmail": "The entered email is invalid!",

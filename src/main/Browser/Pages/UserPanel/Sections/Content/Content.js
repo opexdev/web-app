@@ -8,7 +8,6 @@ import Wallet from "./components/Wallet/Wallet";
 import Footer from "../Footer/Footer";
 import Settings from "./components/Settings/Settings";
 import {useSelector} from "react-redux";
-import {Profile, Security} from "../../../../Routes/routes";
 
 const Content = () => {
     const defaultWallet = useSelector((state) => state.exchange.assets[0])

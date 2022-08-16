@@ -60,10 +60,10 @@ const MarketInfo = () => {
                         <span className={`px-2 py-1 rounded cursor-pointer hover-text ${!IRT && classes.active}`} onClick={()=>setIRT(false)}>{t("currency.USDT")}</span>
                     </div>
                 </div>
-                <div className={`row jc-center ai-center cursor-pointer hover-text`}>
-                    <Link to={Routes.AllMarket} className={`ml-05 hover-text`}>{t("MarketInfo.viewAllMarket")}</Link>
+                <Link to={Routes.AllMarket} className={`row jc-center ai-center cursor-pointer hover-text`}>
+                    <span className={`ml-05`}>{t("MarketInfo.viewAllMarket")}</span>
                     <Icon iconName={`${i18n.language !== "fa" ? 'icon-right-open-1' : 'icon-left-open-1'} font-size-md flex`} className={`mr-05`}/>
-                </div>
+                </Link>
             </div>
             <div className={`${classes.content}`}>
                 {content()}

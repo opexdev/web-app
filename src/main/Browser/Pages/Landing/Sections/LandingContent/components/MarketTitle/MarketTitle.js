@@ -22,10 +22,22 @@ const MarketTitle = () => {
                     <span className={`${classes.arrow} ml-05`}></span>
                     <Link to={"#"} className={`mr-05 cursor-pointer hover-text hover-scale-01`}>{t("MarketTitle.easyTrading")}</Link>
                 </div>
-                <div className={`row jc-start ai-center mt-1`}>
+                <div className={`row jc-start ai-center mt-1 ${classes.flashit}`}>
                     <span className={`${classes.arrow} ml-05`}></span>
                     <Link to={Panel} className={`mr-05 cursor-pointer hover-text hover-scale-01`}>{t("MarketTitle.advancedTrading")}</Link>
                 </div>
+                {/*<Button
+                    buttonClass={`${classes.marketButton} ${classes.easyTradingButton} my-1`}
+                    type="button"
+                    onClick={() => navigate("", { replace: true })}
+                    buttonTitle={t("MarketTitle.easyTrading")}
+                />
+                <Button
+                    buttonClass={`${classes.marketButton} ${classes.advancedTradingButton} my-1`}
+                    type="button"
+                    onClick={() => navigate(Panel, { replace: true })}
+                    buttonTitle={t("MarketTitle.advancedTrading")}
+                />*/}
             </div>
             <div className={`row jc-start ai-center`}>
                 <Button

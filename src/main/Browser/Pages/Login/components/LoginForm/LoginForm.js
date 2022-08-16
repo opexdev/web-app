@@ -35,7 +35,13 @@ const LoginForm = () => {
 
     const clientId = window.env.REACT_APP_CLIENT_ID
 
-    if (isLogin) navigate(from, {replace: true});
+
+    console.log("isLogin", isLogin)
+    console.log("from", from)
+
+    useEffect(() => {
+        if (isLogin) navigate(from, {replace: true});
+    }, [])
 
     useEffect(() => {
         setNeedOTP(undefined)

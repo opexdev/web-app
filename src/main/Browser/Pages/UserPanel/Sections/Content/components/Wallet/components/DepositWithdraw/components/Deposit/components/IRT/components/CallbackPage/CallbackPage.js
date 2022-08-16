@@ -30,7 +30,7 @@ const CallbackPage = () => {
                 if (paymentStatus !== "OK" && paymentStatus !== "FAILED") setNoData(true)
                 setLoading(false)
             })
-    }, []);
+    }, [paymentToken, paymentStatus]);
 
     return (
         <>
