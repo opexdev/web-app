@@ -21,13 +21,15 @@ const AllMarketInfo = () => {
     const dispatch = useDispatch();
 
     let USDTMarket,IRTMarket
+    const baseCurrency = window.env.REACT_APP_ENV === "development" ? "USDT" : "BUSD";
+
     if (!isLoading) {
         const overviewWithPair = overview.map((o)=>{
             o.pairInfo = allSymbols.find((s => s.symbol === o.symbol))
             return o
         })
-        const USDTPrice = overview.find(s => s.symbol.includes("USDTIRT")).lastPrice
-        USDTMarket = overviewWithPair.filter(s => s.symbol.includes("USDT")).sort((a , b) => b.lastPrice * b.volume * USDTPrice - a.lastPrice * a.volume * USDTPrice)
+        const USDTPrice = overview.find(s => s.symbol.includes(baseCurrency+"IRT")).lastPrice
+        USDTMarket = overviewWithPair.filter(s => s.symbol.includes(baseCurrency)).sort((a , b) => b.lastPrice * b.volume * USDTPrice - a.lastPrice * a.volume * USDTPrice)
         IRTMarket = overviewWithPair.filter(s => s.symbol.includes("IRT")).sort((a , b) => b.lastPrice * b.volume - a.lastPrice * a.volume)
     }
 
@@ -57,7 +59,7 @@ const AllMarketInfo = () => {
                 </div>
                 <div className={`row jc-center ai-center mr-1`}>
                     <span className={`px-2 py-1 rounded cursor-pointer hover-text ${IRT && classes.active}`} onClick={()=>setIRT(true)}>{t("currency.IRT")}</span>
-                    <span className={`px-2 py-1 rounded cursor-pointer hover-text ${!IRT && classes.active}`} onClick={()=>setIRT(false)}>{t("currency.USDT")}</span>
+                    <span className={`px-2 py-1 rounded cursor-pointer hover-text ${!IRT && classes.active}`} onClick={()=>setIRT(false)}>{t("currency."+baseCurrency)}</span>
                 </div>
             </div>
             <div className={`${classes.content}`}>
