@@ -7,7 +7,6 @@ import * as Routes from "../../../../../../../../Routes/routes";
 import {BN} from "../../../../../../../../../../utils/utils";
 import {useGetUserAccount} from "../../../../../../../../../../queries/hooks/useGetUserAccount";
 
-
 const WalletListItem = ({name, showZero}) => {
     const {t} = useTranslation();
     const {data: userAccount} = useGetUserAccount()
