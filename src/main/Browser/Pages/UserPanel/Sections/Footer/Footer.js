@@ -8,6 +8,7 @@ import i18n from "i18next";
 import {images} from "../../../../../../assets/images";
 import {setThemeInitiate} from "../../../../../../store/actions";
 import {Link} from "react-router-dom";
+import packageJson from "../../../../../../../package.json"
 
 const Footer = () => {
     const {t} = useTranslation();
@@ -71,7 +72,7 @@ const Footer = () => {
                 </div>
                 <div className={`column jc-center ai-center`}>
                     <img className={`img-lg-plus mb-1`} src={images.opexLogoPlus} alt={t("title")}/>
-                    <span className={`mt-1`}>v2.0.0-beta.2</span>
+                    <span className={`mt-1`}>{packageJson.version}</span>
                 </div>
             </div>
             <div className={`container flex jc-center ai-center`}>
