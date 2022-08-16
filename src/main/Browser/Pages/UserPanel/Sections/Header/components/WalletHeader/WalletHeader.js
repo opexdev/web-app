@@ -6,7 +6,7 @@ import {BN} from "../../../../../../../../utils/utils";
 import {useGetUserAccount} from "../../../../../../../../queries/hooks/useGetUserAccount";
 
 const WalletHeader = () => {
-    const { id } = useParams()
+    const {id} = useParams()
     const {t} = useTranslation()
 
     const {data: userAccount} = useGetUserAccount()
