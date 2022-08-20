@@ -32,12 +32,7 @@ const LoginForm = () => {
 
     const agent = [deviceType, browserName, fullBrowserVersion]
     const clientSecret = window.env.REACT_APP_CLIENT_SECRET
-
     const clientId = window.env.REACT_APP_CLIENT_ID
-
-
-    console.log("isLogin", isLogin)
-    console.log("from", from)
 
     useEffect(() => {
         if (isLogin) navigate(from, {replace: true});

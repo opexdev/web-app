@@ -4,10 +4,23 @@ import {useTranslation} from "react-i18next";
 import {images} from "../../../../../../../../../../assets/images";
 import {BN} from "../../../../../../../../../../utils/utils";
 import i18n from "i18next";
+import {setActivePairInitiate} from "../../../../../../../../../../store/actions";
+import {useDispatch, useSelector} from "react-redux";
+import {Panel} from "../../../../../../../../Routes/routes";
+import {useNavigate} from "react-router-dom";
 
 const MarketInfoTable = ({data}) => {
 
     const {t} = useTranslation();
+    const navigate = useNavigate();
+    const dispatch = useDispatch();
+    const allExchangeSymbols = useSelector((state) => state.exchange.symbols)
+
+    const navigateToPanel = (symbol) => {
+        const selectedPair = allExchangeSymbols.find( s => s.symbol === symbol)
+        dispatch(setActivePairInitiate(selectedPair, 0))
+        navigate(Panel)
+    }
 
     let head = (
         <div className="row text-color-gray px-2 py-2" style={{backgroundColor:"var(--tableHeader)"}}>
@@ -23,7 +36,7 @@ const MarketInfoTable = ({data}) => {
         <>
          {data.map((tr, index) => {
             return (
-                <div className={`${classes.row} row font-size-md rounded border-bottom cursor-pointer px-2 py-2`} key={index}>
+                <div className={`${classes.row} row font-size-md rounded border-bottom cursor-pointer px-2 py-2`}  key={index} onClick={() => navigateToPanel(tr.symbol)}>
                     <span className="width-25 row jc-start ai-center">
                         <img src={images[tr?.pairInfo?.baseAsset]} alt={tr?.pairInfo?.baseAsset}
                              title={tr?.pairInfo?.baseAsset} className={`img-lg ml-05`}/>
