@@ -4,11 +4,18 @@ import {useTranslation} from "react-i18next";
 import {images} from "../../../../../../../../../../assets/images";
 import Button from "../../../../../../../../../../components/Button/Button";
 import {BN} from "../../../../../../../../../../utils/utils";
+import {setActivePairInitiate} from "../../../../../../../../../../store/actions";
+import {Panel} from "../../../../../../../../Routes/routes";
+import {useNavigate} from "react-router-dom";
+import {useDispatch, useSelector} from "react-redux";
 
 const AllMarketInfoCard = ({data}) => {
 
 
     const {t} = useTranslation();
+    const navigate = useNavigate();
+    const dispatch = useDispatch();
+    const allExchangeSymbols = useSelector((state) => state.exchange.symbols)
 
     const [showButton, setShowButton] = useState(null)
 
@@ -28,6 +35,12 @@ const AllMarketInfoCard = ({data}) => {
     }
     const MouseLeaveEventHandler = () => {
         setShowButton(null)
+    }
+
+    const navigateToPanel = (symbol) => {
+        const selectedPair = allExchangeSymbols.find( s => s.symbol === symbol)
+        dispatch(setActivePairInitiate(selectedPair, 0))
+        navigate(Panel)
     }
 
 
@@ -89,7 +102,7 @@ const AllMarketInfoCard = ({data}) => {
                                     <Button
                                         buttonClass={`${classes.thisButton} mx-05`}
                                         type="button"
-                                        // onClick={() => navigate("/", { replace: true })}
+                                        onClick={() => navigateToPanel(tr.symbol)}
                                         buttonTitle={t("MarketInfo.trade")}
                                     />
                                 </div>

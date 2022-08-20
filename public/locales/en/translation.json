@@ -70,9 +70,9 @@
     "BCH": "BCH"
   },
   "marketInterval": {
-    "24h": "24 H",
-    "7d": "7 D",
-    "1M": "30 D"
+    "24h": "24 hours",
+    "7d": "7 days",
+    "1M": "30 days"
   },
   "routes": {
     "/panel/settings/profile": "User Profile",
@@ -536,7 +536,8 @@
     "mostIncreased": "Most Increased",
     "mostDecreased": "Most Decreased",
     "mostTrades": "Most Trades",
-    "mostVolume": "Most Volume"
+    "mostVolume": "Most Volume",
+    "nullResponse": "No transactions in the last {{interval}}"
   },
   "footer": {
     "darkMode": "Dark Mode",

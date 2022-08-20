@@ -136,8 +136,6 @@ const ForgetPassword = () => {
     const buttonClickHandler = async (e) => {
         e.preventDefault();
 
-        console.log("in")
-
         if ( !isFormValid() ){
             return false
         }
