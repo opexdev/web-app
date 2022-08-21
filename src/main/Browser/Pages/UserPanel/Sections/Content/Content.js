@@ -3,7 +3,7 @@ import {Navigate, Route, Routes} from "react-router-dom";
 import * as RoutesName from "../../../../Routes/routes";
 import ScrollBar from "../../../../../../components/ScrollBar";
 import ProtectedRoute from "../../../../../../components/ProtectedRoute/ProtectedRoute";
-import Dashboard from "./components/Dashboard/Dashboard";
+import Market from "./components/Market/Market";
 import Wallet from "./components/Wallet/Wallet";
 import Footer from "../Footer/Footer";
 import Settings from "./components/Settings/Settings";
@@ -14,7 +14,7 @@ const Content = () => {
     return (
         <ScrollBar>
             <Routes>
-                <Route path="/" element={<Dashboard/>}/>
+                <Route path="/" element={<Market/>}/>
                 <Route element={<ProtectedRoute/>}>
                     <Route path={RoutesName.WalletRelative+"/:id"} element={<Wallet/>}/>
                     <Route path={RoutesName.SettingsRelative+"/*"} element={<Settings/>}/>

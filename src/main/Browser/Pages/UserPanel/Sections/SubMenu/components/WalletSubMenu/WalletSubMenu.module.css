@@ -15,20 +15,26 @@
   text-align: center;
 }
 .content {
-  height: 90%;
+  height: 83%;
+}
+.footer{
+  height: 7%;
 }
 .content div {
   display: flex;
   align-items: center;
 }
+.PairRow{
+  /*height: 6vh;*/
+}
 .PairImage {
-  width: 20%;
+  width: 15%;
 }
 .pairDetails {
-  width: 80%;
+  width: 85%;
 }
 .container a {
-  height: 8.5vh;
+  /*height: 8.5vh;*/
 }
 .loadingImg {
   background: var(--mainContent);
