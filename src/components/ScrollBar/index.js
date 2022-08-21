@@ -1,7 +1,7 @@
 import React from "react";
 import {Scrollbars} from "rc-scrollbars";
 
-const ScrollBar = (props) => {
+const ScrollBar = ({customClass, ...props}) => {
   const style = props.style ? props.style : {width: "100%", height: "100%"};
   return (
     <Scrollbars
@@ -14,7 +14,7 @@ const ScrollBar = (props) => {
       renderThumbVertical={(props) => (
         <div {...props} className="thumb-vertical" />
       )}
-      renderView={(props) => <div {...props} className="scrollView" />}
+      renderView={(props) => <div {...props} className={`scrollView ${customClass && customClass}`} />}
       style={style}>
       {props.children}
     </Scrollbars>

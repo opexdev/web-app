@@ -17,3 +17,6 @@ export {useGetUserAttributes} from "./hooks/useGetUserAttributes";
 export {useGetUserActiveSessions} from "./hooks/useGetUserActiveSessions";
 export {useGetUserOtpStatus} from "./hooks/useGetUserOtpStatus";
 export {useGetKycStatus} from "./hooks/useGetKycStatus";
+export {useGetFeeForSymbol} from "./hooks/useGetFeeForSymbol";
+export {useGetUserAssets} from "./hooks/useGetUserAssets";
+export {useGetUserAssetsEstimatedValue} from "./hooks/useGetUserAssetsEstimatedValue";

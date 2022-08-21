@@ -219,7 +219,8 @@
     "totalValue": "ارزش کل",
     "approximate": "تقریبی",
     "equivalent": "معادل",
-    "showZeroBalance": "عدم نمایش موجودی صفر"
+    "showZeroBalance": "عدم نمایش موجودی صفر",
+    "estimateAlert": "مبلغ دارایی معادل براساس بالاترین پیشنهاد خرید محاسبه شده!"
   },
   "DepositWithdraw": {
     "title": "واریز/برداشت",

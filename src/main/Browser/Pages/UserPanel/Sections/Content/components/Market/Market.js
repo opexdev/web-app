@@ -6,7 +6,7 @@ import MyOrders from "./components/MyOrders/MyOrders";
 import LastTrades from "./components/LastTrades/LastTrades";
 import TradingView from "./components/TradingView/TradingView";
 
-const Dashboard = () => {
+const Market = () => {
     return (
         <>
             <div className="row px-1 py-1">
@@ -31,4 +31,4 @@ const Dashboard = () => {
     );
 };
 
-export default Dashboard;
+export default Market;

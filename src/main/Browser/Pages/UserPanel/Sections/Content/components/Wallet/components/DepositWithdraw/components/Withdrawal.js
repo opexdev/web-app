@@ -9,12 +9,29 @@ import {toast} from "react-hot-toast";
 import {images} from "../../../../../../../../../../../assets/images";
 import NumberInput from "../../../../../../../../../../../components/NumberInput/NumberInput";
 import ReactTooltip from "react-tooltip";
-import {sendWithdrawReq} from "js-api-client";
+import {
+    getUserAccount,
+    getUserAssets,
+    getUserAssetsEstimatedValue,
+    getWithdrawTxs,
+    sendWithdrawReq
+} from "js-api-client";
 import {useGetUserAccount} from "../../../../../../../../../../../queries/hooks/useGetUserAccount";
+import {
+    useGetKycStatus,
+    useGetUserAssets,
+    useGetUserAssetsEstimatedValue,
+    useWithdrawTxs
+} from "../../../../../../../../../../../queries";
 
 const Withdrawal = () => {
     const {t} = useTranslation();
     const {id} = useParams();
+
+    const {refetch: getUserAccount} = useGetUserAccount();
+    const {refetch: getWithdrawTxs} = useWithdrawTxs(id);
+    const {refetch: getUserAssets} = useGetUserAssets("IRT");
+    const {refetch: getUserAssetsEstimatedValue} = useGetUserAssetsEstimatedValue("IRT");
 
     const {data: userAccount} = useGetUserAccount()
     const freeAmount = userAccount?.wallets[id]?.free || 0
@@ -87,6 +104,10 @@ const Withdrawal = () => {
                         amount: amount.value,
                     }}
                 />);
+                getUserAccount()
+                getWithdrawTxs()
+                getUserAssets()
+                getUserAssetsEstimatedValue()
             })
             .catch(() => {
                 toast.error(t('error'));
