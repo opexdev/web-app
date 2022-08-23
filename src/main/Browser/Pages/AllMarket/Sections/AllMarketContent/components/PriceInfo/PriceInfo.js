@@ -27,14 +27,14 @@ const PriceInfo = () => {
     const mostIncreasedPriceContent = () => {
         if (isLoading) return <Loading/>
         if (error) return <Error/>
-        if (mostIncreasedPrice?.lastPrice === 0) return <NullMarketStats interval={interval}/>
+        // if (mostIncreasedPrice?.lastPrice === 0) return <NullMarketStats interval={interval}/>
         else return <MostIncreasedPrice mostIncreasedPrice={mostIncreasedPrice}/>
     }
 
     const mostDecreasedPriceContent = () => {
         if (isLoading) return <Loading/>
         if (error) return <Error/>
-        if (mostDecreasedPrice?.lastPrice === 0) return <NullMarketStats interval={interval}/>
+        // if (mostDecreasedPrice?.lastPrice === 0) return <NullMarketStats interval={interval}/>
         else return <MostDecreasedPrice mostDecreasedPrice={mostDecreasedPrice}/>
     }
 

@@ -11,13 +11,10 @@ import {useGetUserAssets} from "../../../../../../../../../../queries";
 const WalletListItem = ({assetName, showZero}) => {
     const {t} = useTranslation();
 
-    console.log("assetName",  assetName)
-
     const {data: userAccount} = useGetUserAccount()
     const free = userAccount?.wallets[assetName]?.free || 0
 
     const {data: estimateValue , isLoading, error} = useGetUserAssets("IRT")
-
     const freeEstimateValue = (isLoading || error) ?  0 : (estimateValue?.find( q => q.asset === assetName )?.free || 0)
 
     if (showZero && free === 0) return <></>

@@ -219,7 +219,8 @@
     "totalValue": "Total Value",
     "approximate": "Approximate",
     "equivalent": "Equivalent",
-    "showZeroBalance": "Do not show zero balance."
+    "showZeroBalance": "Do not show zero balance.",
+    "estimateAlert": "The equivalent amount is calculated based on the highest buy offer"
   },
   "DepositWithdraw": {
     "title": "Deposit / Withdraw",

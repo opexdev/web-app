@@ -34,7 +34,7 @@ const MarketView = () => {
     const content = () => {
         if (isLoading) return <Loading/>
         if (error) return <Error/>
-        if (mostIncreasedPrice?.lastPrice === 0 && mostDecreasedPrice?.lastPrice === 0 && mostVolume === null & mostTrades === null) return <span className={`column height-100 py-5 jc-around ai-center`}>
+        if ( mostVolume === null && mostTrades === null) return <span className={`column height-100 py-5 jc-around ai-center`}>
             <img className={`img-lg-2`} src={images.pending} alt="pending"/>
             <NullMarketStats interval={"24h"}/>
         </span>
