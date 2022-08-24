@@ -8,8 +8,6 @@ export const useGetFeeForSymbol = (symbol) => {
         {
             staleTime: 5000,
             refetchInterval: 10000,
-            notifyOnChangeProps: ['data', 'isLoading', 'error'],
-
         });
 }
 

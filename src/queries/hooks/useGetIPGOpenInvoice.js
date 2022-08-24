@@ -6,8 +6,7 @@ export const useGetIpgOpenInvoice = () => {
         ['ipgOpen'],
         () => getIpgOpenInvoiceFunc(),
         {
-            retry: 1,
-            notifyOnChangeProps: ['data', 'isLoading', 'error']
+            retry: 1
         });
 }
 

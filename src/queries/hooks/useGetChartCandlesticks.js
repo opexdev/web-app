@@ -9,7 +9,6 @@ export const useGetChartCandlesticks = (activePairSymbol, type = "Global", inter
             initialData: [],
             refetchInterval: 30000,
             retry: 1,
-            notifyOnChangeProps: ['data', 'isLoading', 'error'],
             select: (data) => {
                 if (type !== "Global") {
                     data = data.sort((a, b) => a[0] - b[0])

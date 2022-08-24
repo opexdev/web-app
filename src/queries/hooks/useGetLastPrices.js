@@ -7,7 +7,6 @@ export const useGetLastPrices = () => {
         {
             retry: 1,
             initialData: [],
-            notifyOnChangeProps: ['data', 'isLoading', 'error'],
             refetchInterval: 5000
         });
 }
