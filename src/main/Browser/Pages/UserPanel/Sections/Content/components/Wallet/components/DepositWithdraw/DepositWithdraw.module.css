@@ -1,5 +1,5 @@
 .container {
-  height: 45vh;
+  min-height: 40vh;
   border-radius: 9px;
 }
 .content {
@@ -19,10 +19,10 @@
   font-family: 'Roboto', sans-serif;
 }
 .withdrawalInput :global(.lead) {
-  width: 30%;
+  width: 24%;
 }
 .withdrawalInput :global(input) {
-  width: 70% !important;
+  width: 76% !important;
 }
 .withdrawNumberInput :global(.lead) {
   width: 50%;

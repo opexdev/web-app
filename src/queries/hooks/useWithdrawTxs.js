@@ -9,7 +9,6 @@ export const useWithdrawTxs = (currency) => {
             retry: 1,
             staleTime: 5000,
             refetchInterval: 10000,
-            notifyOnChangeProps: ['data', 'isLoading', 'error']
         });
 }
 

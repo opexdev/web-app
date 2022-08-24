@@ -7,7 +7,6 @@ export const useGetUserActiveSessions = () => {
             retry: 1,
             staleTime: 5000,
             refetchInterval: 10000,
-            notifyOnChangeProps: ['data', 'isLoading', 'error'],
             select: (data) => data.sort((a, b) => b.lastAccess - a.lastAccess)
         });
 }

@@ -5,8 +5,7 @@ export const useGetKycStatus = (enabled = false) => {
     return useQuery(
         ['KycStatus'], getKycStatusFunc, {
             enabled,
-            retry: 1,
-            notifyOnChangeProps: ['data', 'isLoading', 'error']
+            retry: 1
         });
 }
 

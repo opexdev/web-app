@@ -8,8 +8,7 @@ export const useGetDepositAddress = (currency) => {
         {
             retry: 1,
             refetchOnMount: false,
-            staleTime: 30*60*1000,
-            notifyOnChangeProps: ['data', 'isLoading', 'error']
+            staleTime: 30*60*1000
         });
 }
 
