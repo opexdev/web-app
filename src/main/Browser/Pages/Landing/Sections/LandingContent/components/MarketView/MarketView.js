@@ -1,19 +1,21 @@
 import React from 'react';
 import classes from './MarketView.module.css'
 import {useTranslation} from "react-i18next";
-import {images} from "../../../../../../../../assets/images";
 import {useGetMarketStats} from "../../../../../../../../queries";
-import {BN} from "../../../../../../../../utils/utils";
 import {useSelector} from "react-redux";
 import Loading from "../../../../../../../../components/Loading/Loading";
 import Error from "../../../../../../../../components/Error/Error";
-import i18n from "i18next";
+import NullMarketStats from "../../../../../../../../components/NullMarketStats/NullMarketStats";
+import MostIncreasedPrice from "./components/MostIncreasedPrice/MostIncreasedPrice";
+import MostDecreasedPrice from "./components/MostDecreasedPrice/MostDecreasedPrice";
+import MostVolume from "./components/MostVolume/MostVolume";
+import {images} from "../../../../../../../../assets/images";
 
 const MarketView = () => {
 
     const {t} = useTranslation();
 
-    const interval = "24H"
+    const interval = "24h"
     const {data: stats, isLoading, error} = useGetMarketStats(interval)
     const allSymbols = useSelector((state) => state.exchange.symbols)
     const mostIncreasedPrice = stats?.mostIncreasedPrice[0]
@@ -21,81 +23,25 @@ const MarketView = () => {
     const mostVolume = stats?.mostVolume
     const mostTrades = stats?.mostTrades
 
-    if (!isLoading) {
-        mostIncreasedPrice.pairInfo = allSymbols.find(s => s.symbol === (mostIncreasedPrice?.symbol).replace("_", ""))
-        mostDecreasedPrice.pairInfo = allSymbols.find(s => s.symbol === (mostDecreasedPrice?.symbol).replace("_", ""))
-        mostVolume.pairInfo = allSymbols.find(s => s.symbol === (mostDecreasedPrice?.symbol).replace("_", ""))
-        mostTrades.pairInfo = allSymbols.find(s => s.symbol === (mostDecreasedPrice?.symbol).replace("_", ""))
+    if (!isLoading && mostVolume !== null && mostTrades !== null) {
+        mostIncreasedPrice.pairInfo = allSymbols.find(s => s.symbol === (mostIncreasedPrice?.symbol))
+        mostDecreasedPrice.pairInfo = allSymbols.find(s => s.symbol === (mostDecreasedPrice?.symbol))
+        mostVolume.pairInfo = allSymbols.find(s => s.symbol === (mostDecreasedPrice?.symbol))
+        mostTrades.pairInfo = allSymbols.find(s => s.symbol === (mostDecreasedPrice?.symbol))
     }
 
 
     const content = () => {
         if (isLoading) return <Loading/>
         if (error) return <Error/>
+        if ( mostVolume === null && mostTrades === null) return <span className={`column height-100 py-5 jc-around ai-center`}>
+            <img className={`img-lg-2`} src={images.pending} alt="pending"/>
+            <NullMarketStats interval={"24h"}/>
+        </span>
         else return <>
-            <div className={`column border-bottom`}>
-                <span className={`${classes.title} text-orange`}>{t("MarketView.mostIncreased")}</span>
-                <div className={`row jc-between ai-center`}>
-                    <div className={`row jc-center ai-center`}>
-                        <img
-                            className="img-md-plus ml-05"
-                            src={images[mostIncreasedPrice.pairInfo.baseAsset]}
-                            alt={mostIncreasedPrice.pairInfo.baseAsset}
-                            title={mostIncreasedPrice.pairInfo.baseAsset}
-                        />
-                        <span className={`mr-05`}>{t("currency." + mostIncreasedPrice.pairInfo.baseAsset)}</span>
-                    </div>
-                    <div className={`column ai-end text-green`}>
-                        <div className={`${i18n.language !== "fa" ? 'row-reverse' : 'row'}`}>
-                            <span className={`font-size-sm-mini ${i18n.language !== "fa" ? 'mr-05' : 'ml-05'}`}>{mostIncreasedPrice.pairInfo.quoteAsset}</span>
-                            <span>{new BN(mostIncreasedPrice?.lastPrice).toFormat()}</span>
-                        </div>
-                        <span>% {new BN(mostIncreasedPrice?.priceChangePercent).toFormat(2)}+</span>
-                    </div>
-                </div>
-            </div>
-            <div className={`column border-bottom  my-3`}>
-                <span className={`${classes.title} text-orange`}>{t("MarketView.mostDecreased")}</span>
-                <div className={`row jc-between ai-center`}>
-                    <div className={`row jc-center ai-center`}>
-                        <img
-                            className="img-md-plus ml-05"
-                            src={images[mostDecreasedPrice.pairInfo.baseAsset]}
-                            alt={mostDecreasedPrice.pairInfo.baseAsset}
-                            title={mostDecreasedPrice.pairInfo.baseAsset}
-                        />
-                        <span className={`mr-05`}>{t("currency." + mostDecreasedPrice.pairInfo.baseAsset)}</span>
-                    </div>
-                    <div className={`column ai-end text-red`}>
-                        <div className={`${i18n.language !== "fa" ? 'row-reverse' : 'row'}`}>
-                            <span className={`font-size-sm-mini ${i18n.language !== "fa" ? 'mr-05' : 'ml-05'}`}>{mostDecreasedPrice.pairInfo.quoteAsset}</span>
-                            <span> {new BN(mostDecreasedPrice?.lastPrice).toFormat()} </span>
-                        </div>
-                        <span className={`direction-ltr`}>{new BN(mostDecreasedPrice?.priceChangePercent).toFormat(2)} %</span>
-                    </div>
-                </div>
-            </div>
-            <div className={`column`}>
-                <span className={`${classes.title} text-orange`}>{t("MarketView.mostVolume")}</span>
-                <div className={`row jc-between ai-center`}>
-                    <div className={`row jc-center ai-center`}>
-                        <img
-                            className="img-md-plus ml-05"
-                            src={images[mostVolume.pairInfo.baseAsset]}
-                            alt={mostVolume.pairInfo.baseAsset}
-                            title={mostVolume.pairInfo.baseAsset}
-                        />
-                        <span className={`mr-05`}>{t("currency." + mostVolume.pairInfo.baseAsset)}</span>
-                    </div>
-                    <div className={`column ai-end`}>
-                        <div className={`${i18n.language !== "fa" ? 'row-reverse' : 'row'}`}>
-                            <span className={`font-size-sm-mini ${i18n.language !== "fa" ? 'mr-05' : 'ml-05'}`}>{mostVolume.pairInfo.quoteAsset}</span>
-                            <span> {new BN(mostVolume?.volume).toFormat()} </span>
-                        </div>
-                        <span>% {new BN(mostVolume?.change).toFormat(2)}+</span>
-                    </div>
-                </div>
-            </div>
+            <MostIncreasedPrice mostIncreasedPrice={mostIncreasedPrice}/>
+            <MostDecreasedPrice mostDecreasedPrice={mostDecreasedPrice}/>
+            <MostVolume mostVolume={mostVolume}/>
         </>
     }
 

@@ -17,6 +17,6 @@ export const useMyTrades = (symbol) => {
 
 
 const getMyTradesFunc = async (symbol) => {
-    const {data} = getMyTrades(symbol)
+    const {data} = await getMyTrades(symbol)
     return data;
 }
