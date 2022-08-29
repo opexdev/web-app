@@ -505,7 +505,8 @@
   "userPage": {
     "title": "",
     "success": "Email verified successfully.",
-    "failed": "Verification failed, please try again!"
+    "failed": "Verification failed, please try again!",
+    "serverError": "Server error, please try again."
   },
   "Landing": {
     "title": "Cryptocurrency Exchange Platform"

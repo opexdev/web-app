@@ -9714,10 +9714,10 @@ fsevents@^1.2.7:
 
 "js-api-client@https://github.com/opexdev/js-api-client.git#develop":
   version: 1.0.0-beta2
-  resolution: "js-api-client@https://github.com/opexdev/js-api-client.git#commit=c76b816853276a75a76974a03622bcd17cab7e56"
+  resolution: "js-api-client@https://github.com/opexdev/js-api-client.git#commit=85486d334826e48a298b264a38f5b794a3b18d47"
   peerDependencies:
-    axios: ^0.22
-  checksum: e986dd9d5533032b8e1c8764e05967655a1f96ec3625424360fb3718c9db4cb583b51951d250579c7b70e3fe05f8799d4b8514d3d59ea12a66f194abfd974ce5
+    axios: ^0.22.0
+  checksum: 956d60dd6dcb39120d8606f57c9ea4b74aafe7ebf5d31b0ff82fa5b6df90f513a6dd922b87d474730ddf35ad1afea85774673fe383aee3f998e921133261d61a
   languageName: node
   linkType: hard
 
