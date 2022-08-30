@@ -5,8 +5,7 @@ export const useIPGDeposit = () => {
     return useQuery(
         ['IPGDepositTxs'], getIPGDepositFunc,
         {
-            retry: 1,
-            notifyOnChangeProps: ['data', 'isLoading', 'error']
+            retry: 1
         });
 }
 

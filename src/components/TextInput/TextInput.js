@@ -26,6 +26,7 @@ const TextInput = (props) => {
         inputSection = <Select
             onChange={onchange}
             options={options}
+            ref={customRef}
             classNamePrefix="select"
             className={classes.selectBox}
             {...other}

@@ -5,8 +5,11 @@ import Button from "../../../../../../components/Button/Button";
 import Icon from "../../../../../../components/Icon/Icon";
 import TextInput from "../../../../../../components/TextInput/TextInput";
 import LoginFormLoading from "../../../Login/components/LoginLoading/LoginFormLoading";
-import {useNavigate} from "react-router-dom";
+import {useLocation, useNavigate} from "react-router-dom";
 import {useSelector} from "react-redux";
+import {forgotPassword} from "js-api-client";
+import {images} from "../../../../../../assets/images";
+import {Login} from "../../../../Routes/routes";
 
 const ForgetPassword = () => {
 
@@ -14,6 +17,8 @@ const ForgetPassword = () => {
     let navigate = useNavigate();
     const isLogin = useSelector((state) => state.auth.isLogin)
     const [loading, setLoading] = useState(false);
+    const [error, setError] = useState(false);
+    const [response, setResponse] = useState("");
 
     const [changePassword, setChangePassword] = useState({
         newPassword: {value: "", error: []},
@@ -28,6 +33,8 @@ const ForgetPassword = () => {
     useEffect(() =>{
         if (isLogin) navigate("/", {replace: true});
     })
+
+    const key = new URLSearchParams(useLocation().search).get("key");
 
     const inputHandler = (e) => {
         let errorMessage = []
@@ -44,7 +51,6 @@ const ForgetPassword = () => {
         if (e.target.dataset?.name === "confirmation" && e.target.value !== changePassword.newPassword.value) {
             errorMessage.push([t('login.wrongPasswordConfirmation')])
         }
-
 
         let prevState = {
             ...changePassword,
@@ -86,9 +92,12 @@ const ForgetPassword = () => {
     }
 
     const content = () => {
-        if (loading) {
-            return <LoginFormLoading/>
-        }
+        if (loading) return <LoginFormLoading/>
+        if (response === "done") return <div className={`column jc-center ai-center`}>
+            <img className={`mb-2 floating`} src={images.approve} alt="kyc-accepted"/>
+            <span className={`text-green mt-2`}>{t("ChangePassword.success")}</span>
+        </div>
+
         return <>
             <TextInput
                 customClass={`${classes.passwordInput}`}
@@ -108,8 +117,6 @@ const ForgetPassword = () => {
                 onchange={(e) => inputHandler(e)}
                 alerts={changePassword.newPassword.error}
             />
-
-
             <TextInput
                 customClass={`${classes.passwordInput}`}
                 lead={t("ChangePassword.confirmation")}
@@ -128,60 +135,28 @@ const ForgetPassword = () => {
                 onchange={(e) => inputHandler(e)}
                 alerts={changePassword.confirmation.error}
             />
+            {error && <span className={`my-1 text-red font-size-sm`}>{t("userPage.serverError")}</span>}
 
         </>
     }
 
-
     const buttonClickHandler = async (e) => {
         e.preventDefault();
-
-        console.log("in")
-
+        if (response === "done") navigate(Login)
         if ( !isFormValid() ){
             return false
         }
-
-        /*if (changePassword.newPassword.value !== changePassword.confirmation.value) {
-            setChangePassword({...changePassword , confirmation: {...changePassword.confirmation, error: [t("ChangePassword.confirmationError")] } })
-            return false
-        }*/
-
         setLoading(true)
-        /*
-                const data = {
-                    newPassword: changePassword.newPassword.value,
-                    confirmation: changePassword.confirmation.value,
-                }
-
-                const ActivateOTPReq = await sendChangePassword(data);
-
-                if (ActivateOTPReq && ActivateOTPReq.status === 204) {
-                    setLoading(false)
-                    setChangePassword({
-                        newPassword: {value: "", error: []},
-                        confirmation: {value: "", error: []},
-                        currentPassword: {value: "", error: []},
-                    })
-                    toast.success(<Trans
-                        i18nKey="ChangePassword.success"
-                    />);
-
-                } else if (ActivateOTPReq && ActivateOTPReq.status === 403) {
-                    setLoading(false)
-                    setChangePassword({
-                        newPassword: {...changePassword.newPassword, error: []},
-                        confirmation: {...changePassword.confirmation, error: []},
-                        currentPassword: {...changePassword.currentPassword, error: [t("ChangePassword.currentPasswordError")]},
-                    })
-                    toast.error(<Trans
-                        i18nKey="ChangePassword.error"
-                    />);
-
-                } else {
-                    setError(true)
-                    setLoading(false)
-                }*/
+        forgotPassword(key, changePassword.newPassword.value, changePassword.confirmation.value)
+            .then(() => {
+                setResponse("done")
+            })
+            .catch(() => {
+                setError(true)
+            })
+            .finally(() => {
+                setLoading(false);
+            });
     }
 
     return (
@@ -195,7 +170,7 @@ const ForgetPassword = () => {
             <div className={`${classes.forgetPassWordFooter} width-35 m-auto`}>
                 <Button
                     buttonClass={`${classes.thisButton}`}
-                    buttonTitle={t("submit")}
+                    buttonTitle={response === "done" ? t("signIn") : t("submit")}
                     type="submit"
                 />
             </div>

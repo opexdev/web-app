@@ -5,11 +5,23 @@ import {images} from "../../../../../../../../../../assets/images";
 import Button from "../../../../../../../../../../components/Button/Button";
 import {BN} from "../../../../../../../../../../utils/utils";
 import i18n from "i18next";
+import {setActivePairInitiate} from "../../../../../../../../../../store/actions";
+import {Panel} from "../../../../../../../../Routes/routes";
+import {useNavigate} from "react-router-dom";
+import {useDispatch, useSelector} from "react-redux";
 
 const AllMarketInfTable = ({data}) => {
 
-
     const {t} = useTranslation();
+    const navigate = useNavigate();
+    const dispatch = useDispatch();
+    const allExchangeSymbols = useSelector((state) => state.exchange.symbols)
+
+    const navigateToPanel = (symbol) => {
+        const selectedPair = allExchangeSymbols.find( s => s.symbol === symbol)
+        dispatch(setActivePairInitiate(selectedPair, 0))
+        navigate(Panel)
+    }
 
     let head = (
         <div className="row text-color-gray px-2 py-2" style={{backgroundColor:"var(--tableHeader)"}}>
@@ -72,7 +84,7 @@ const AllMarketInfTable = ({data}) => {
                             <Button
                                 buttonClass={classes.thisButton}
                                 type="button"
-                                // onClick={() => navigate("/", { replace: true })}
+                                onClick={() => navigateToPanel(tr.symbol)}
                                 buttonTitle={t("MarketInfo.trade")}
                             />
                         </span>

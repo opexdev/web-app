@@ -33,6 +33,7 @@ const AllMarketInfo = () => {
         IRTMarket = overviewWithPair.filter(s => s.symbol.includes("IRT")).sort((a , b) => b.lastPrice * b.volume - a.lastPrice * a.volume)
     }
 
+
     const content = () => {
         if (isLoading) return <div style={{height: "40vh"}}><Loading/></div>
         if (error) return <div style={{height: "40vh"}}><Error/></div>

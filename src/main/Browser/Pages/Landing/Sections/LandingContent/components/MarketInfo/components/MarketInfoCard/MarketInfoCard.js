@@ -3,10 +3,17 @@ import classes from './MarketInfoCard.module.css'
 import {images} from "../../../../../../../../../../assets/images";
 import {useTranslation} from "react-i18next";
 import {BN} from "../../../../../../../../../../utils/utils";
+import {setActivePairInitiate} from "../../../../../../../../../../store/actions";
+import {Panel} from "../../../../../../../../Routes/routes";
+import {useNavigate} from "react-router-dom";
+import {useDispatch, useSelector} from "react-redux";
 
 const MarketInfoCard = ({data}) => {
 
     const {t} = useTranslation();
+    const navigate = useNavigate();
+    const dispatch = useDispatch();
+    const allExchangeSymbols = useSelector((state) => state.exchange.symbols)
 
     const backgroundBar = (percent) => {
         if (percent > 0) {
@@ -19,11 +26,17 @@ const MarketInfoCard = ({data}) => {
         };
     }
 
+    const navigateToPanel = (symbol) => {
+        const selectedPair = allExchangeSymbols.find( s => s.symbol === symbol)
+        dispatch(setActivePairInitiate(selectedPair, 0))
+        navigate(Panel)
+    }
+
     return (
         <div className={`${classes.container} my-3 px-1`}>
             {data.map((tr, index) => {
                 return (
-                    <div className={`${classes.item} card-border card-background column jc-between ai-center py-3 cursor-pointer`} style={backgroundBar(tr.priceChange.toString())} key={index}>
+                    <div className={`${classes.item} card-border card-background column jc-between ai-center py-3 cursor-pointer`} style={backgroundBar(tr.priceChange.toString())} key={index} onClick={() => navigateToPanel(tr.symbol)}>
                         <div className={`row jc-center ai-center width-100`}>
                             <img src={images[tr?.pairInfo?.baseAsset]} alt={tr?.pairInfo?.baseAsset}
                                  title={tr?.pairInfo?.baseAsset} className={`img-lg ml-05`}/>

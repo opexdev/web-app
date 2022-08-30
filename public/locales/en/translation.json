@@ -70,9 +70,9 @@
     "BCH": "BCH"
   },
   "marketInterval": {
-    "24h": "24 H",
-    "7d": "7 D",
-    "1M": "30 D"
+    "24h": "24 hours",
+    "7d": "7 days",
+    "1M": "30 days"
   },
   "routes": {
     "/panel/settings/profile": "User Profile",
@@ -219,7 +219,8 @@
     "totalValue": "Total Value",
     "approximate": "Approximate",
     "equivalent": "Equivalent",
-    "showZeroBalance": "Do not show zero balance."
+    "showZeroBalance": "Do not show zero balance.",
+    "estimateAlert": "The equivalent amount is calculated based on the highest buy offer"
   },
   "DepositWithdraw": {
     "title": "Deposit / Withdraw",
@@ -246,7 +247,9 @@
     "DepositTUSDTContentBefore": "Only USDT Ropsten Network Test is accepted! To learn how to get free,",
     "DepositTUSDTContentAfter": "Go. To send a USDT test to this address, you must change your wallet atrium network to Ropsten. This network is on the Metamask wallet network list by default. Any transaction with an amount equal to or greater than From 10 USDT to the above address will be added to your account.",
     "depositTime": "* Your balance will increase {{time}} minutes after depositing to the above address.",
-    "securityConsiderations": "Due to security considerations, the transfer to the account may be delayed slightly. You can see the withdrawal status on the same page in the Deposit / Withdrawal Transactions section."
+    "securityConsiderations": "Due to security considerations, the transfer to the account may be delayed slightly. You can see the withdrawal status on the same page in the Deposit / Withdrawal Transactions section.",
+    "network": "Network",
+    "selectNetwork": "Select Network"
   },
   "CallbackPage": {
     "ok": "The deposit was successful.",
@@ -502,7 +505,8 @@
   "userPage": {
     "title": "",
     "success": "Email verified successfully.",
-    "failed": "Verification failed, please try again!"
+    "failed": "Verification failed, please try again!",
+    "serverError": "Server error, please try again."
   },
   "Landing": {
     "title": "Cryptocurrency Exchange Platform"
@@ -536,7 +540,8 @@
     "mostIncreased": "Most Increased",
     "mostDecreased": "Most Decreased",
     "mostTrades": "Most Trades",
-    "mostVolume": "Most Volume"
+    "mostVolume": "Most Volume",
+    "nullResponse": "No transactions in the last {{interval}}"
   },
   "footer": {
     "darkMode": "Dark Mode",

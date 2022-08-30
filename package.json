@@ -1,6 +1,6 @@
 {
   "name": "opex",
-  "version": "v1.0.2-beta.2",
+  "version": "v1.0.2-beta.3",
   "homepage": "",
   "private": true,
   "dependencies": {
@@ -15,7 +15,7 @@
     "i18next": "^21.8.0",
     "i18next-browser-languagedetector": "^6.1.4",
     "i18next-http-backend": "^1.4.0",
-    "js-api-client": "https://github.com/opexdev/js-api-client.git#v1.0.1-beta.1",
+    "js-api-client": "https://github.com/opexdev/js-api-client.git#v1.0.1-beta.2",
     "jwt-decode": "^3.1.2",
     "lightweight-charts": "^3.8.0",
     "moment-jalaali": "^0.9.2",
@@ -64,5 +64,5 @@
       "last 1 safari version"
     ]
   },
-  "packageManager": "yarn@3.2.0"
+  "packageManager": "yarn@3.2.3"
 }
