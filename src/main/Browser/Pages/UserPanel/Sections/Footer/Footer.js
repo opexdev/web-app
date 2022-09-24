@@ -61,12 +61,17 @@ const Footer = () => {
                         <span className={`pl-1`}>{t("footer.darkMode")}:</span>
                         <ToggleSwitch onchange={(e) => dispatch(setThemeInitiate(e.target.checked))} checked={isDark}/>
                     </div>
+
                     <div className={`row ai-center jc-between`}>
                         <div className={`row ai-center ${classes.languages}`}>
-                            <span className="cursor-pointer pl-1"
-                                  onClick={() => i18n.changeLanguage("fa")}>{t("Languages.Persian")}</span>
-                            <span className="cursor-pointer pr-1"
-                                  onClick={() => i18n.changeLanguage("en")}>{t("Languages.English")}</span>
+                            {
+                                process.env.REACT_APP_MULTI_LANGS_SUPPORT === 'TRUE' && <>
+                                <span className="cursor-pointer pl-1"
+                                      onClick={() => i18n.changeLanguage("fa")}>{t("Languages.Persian")}</span>
+                                    <span className="cursor-pointer pr-1"
+                                          onClick={() => i18n.changeLanguage("en")}>{t("Languages.English")}</span>
+                                </>
+                            }
                         </div>
                     </div>
                 </div>
