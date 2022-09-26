@@ -1,4 +1,4 @@
-.container{
+.container {
     position: fixed;
     top: 11vh;
     width: 30%;
@@ -9,34 +9,48 @@
     right: 47.5%;
     border-radius: 9px;
 }
-.header{
+
+:global(.ltr) .container {
+    left: 47.5%;
+    right: initial;
+}
+
+.header {
     height: 12%;
 }
-.content{
+
+.content {
     height: 76%;
 }
-.footer{
+
+.footer {
     height: 12%;
 
 }
+
 .thisButton {
     width: 30%;
     height: 3.5vh !important;
 }
+
 .walletButton {
     background-color: var(--orange);
 }
+
 .closeButton {
     background-color: var(--darkRed);
     width: 20%;
 }
+
 .thisInput {
     width: 100%;
 }
+
 .thisInput :global(.after) {
     width: 10%;
     cursor: pointer;
 }
+
 .thisInput :global(input) {
     width: 90% !important;
     cursor: not-allowed;

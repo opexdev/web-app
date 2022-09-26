@@ -53,8 +53,9 @@ const MarketInfo = () => {
             <div className={`${classes.header} card-header-bg row jc-between ai-center px-2 py-2`}>
                 <div className={`row jc-center ai-center`}>
                     <Icon iconName={`${card ? 'icon-row' : 'icon-grid'} fs-02 flex cursor-pointer hover-text`}
+                          customClass={`ml-05`}
                           onClick={() => setCard(prevState => !prevState)}/>
-                    <div className={`row jc-center ai-baseline mr-1 ml-1`}>
+                    <div className={`row jc-center ai-baseline mr-05 ml-1`}>
                         <h2 className={`ml-025`}>{t("market.title")}</h2>
                         <span className={`fs-0-8 mr-025`}>( {t("marketInterval." + interval)} )</span>
                     </div>

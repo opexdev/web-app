@@ -101,21 +101,36 @@
     url("assets/fonts/IRANYekan/Farsi_numerals/ttf/iranyekanwebextrablackfanum.ttf") format("truetype");
 }
 
+html, body {
+    width: 100%;
+    font-family: iranyekan, serif !important;
+    font-weight: 400;
+    direction: rtl;
+    overflow-x: hidden;
+}
+
+.ltr {
+    direction: ltr;
+    font-weight: 400;
+    font-family: 'Poppins', 'Roboto', sans-serif !important;
+}
+
 :root {
-    --menu: #f0f0f0;
+    --menu: #d9d8d8;
     --subMenu: #f2f2f2;
-    --mainContent: #ebf5ff;
-    --footer: #e1e9f3;
-    --cardBody: #fcfeff;
-    --cardBodyAlpha: #dddada96;
-    --cardHeader: #f7f9fc;
-    --cardHeaderAlpha: #acaeaf75;
+    --mainContent: #f2f5f9;
+    --activeTitle: #f2f5f9;
+    --footer: #e5e9ef;
+    --cardBody: #fff;
+    --cardBodyAlpha: #ffffff8f;
+    --cardHeader: #e7e7e7;
+    --cardHeaderAlpha: #e7e7e78a;
     --container: #eafbff;
     --activeTab: #007bff;
     --activeLi: #3030300d;
     --deActive: #2e2e39;
     --tableRow: #e2e9f978;
-    --cardBorder: #d3cdcd;
+    --cardBorder: #e7e7e7;
     --borderBottom: #dcdcdc;
     --scrollBar: #0707073b;
     --tableHeader: #f9f9f9;
@@ -144,6 +159,7 @@
     --menu: #24242e;
     --subMenu: #24242e;
     --mainContent: #383a59;
+    --activeTitle: #11121552;
     --footer: #252531;
     --cardBody: #282a36;
     --cardBodyAlpha: #282a36e6;
@@ -291,20 +307,6 @@
 a {
     color: var(--textColor);
     text-decoration: none;
-}
-
-html, body {
-    width: 100%;
-    font-family: iranyekan, serif !important;
-    font-weight: 400;
-    direction: rtl;
-    overflow-x: hidden;
-}
-
-.ltr {
-    direction: ltr;
-    font-family: 'Roboto', sans-serif !important;
-    font-weight: 300;
 }
 
 .flex {
@@ -2547,7 +2549,7 @@ h6 {
 }
 
 .ltr .button {
-    font-family: "Roboto", sans-serif !important;
+    font-family: 'Poppins', 'Roboto', sans-serif !important;
 }
 
 input {

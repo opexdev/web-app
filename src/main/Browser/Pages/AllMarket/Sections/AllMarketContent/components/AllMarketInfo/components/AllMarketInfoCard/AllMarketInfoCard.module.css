@@ -12,6 +12,7 @@
 
 .thisButton:hover {
     background-color: var(--container) !important;
+    color: var(--activeTab);
 }
 
 .thisButton {
