@@ -107,8 +107,8 @@ const LoginForm = () => {
     }
 
     return <form onSubmit={(e) => submit(e)} className={`column ai-center jc-between ${classes.form}`}>
-        <div className={`container column jc-center ai-center ${classes.formBody} py-2`}>
-            {!needOTP ? <div className={`font-weight-300 font-size-sm mb-2`}>
+        <div className={`width-100 column jc-center ai-center ${classes.formBody} py-2`}>
+            {!needOTP ? <div className={`font-weight-300 fs-0-7 mb-2`}>
                 <span>برای ورود آزمایشی،  <span className={`hover-text cursor-pointer`} onClick={() => setCredential({
                     username: "demo1@opex.dev",
                     password: "12345678",
@@ -137,19 +137,19 @@ const LoginForm = () => {
                 </>
             }
             <div className={`column ${classes.forgetPassword}`}>
-                <span className={`${classes.errorText} font-size-sm-plus`}>{loginError}</span>
+                <span className={`${classes.errorText} fs-0-8`}>{loginError}</span>
 
                 {needOTP ?
-                    <span className="cursor-pointer flex ai-center font-size-sm-plus"
+                    <span className="cursor-pointer flex ai-center fs-0-8"
                           onClick={returnToLogin}>{t('login.back')}</span>
                     :
-                    <span className="cursor-pointer flex ai-center font-size-sm-plus"
+                    <span className="cursor-pointer flex ai-center fs-0-8"
                           onClick={() => setForgetPassword(true)}>{t('login.forgetPassword')}</span>
                 }
             </div>
         </div>
 
-        <div className={`container flex jc-center ai-center ${classes.formFooter}`}>
+        <div className={`width-100 flex jc-center ai-center ${classes.formFooter}`}>
             <Button
                 type="submit"
                 buttonClass={`${classes.thisButton} cursor-pointer`}

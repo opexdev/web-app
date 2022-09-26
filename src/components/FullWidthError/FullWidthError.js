@@ -31,7 +31,7 @@ const FullWidthError = () => {
                 <span>{t("errorPage.errorText")}</span>
                 <Button
                     buttonStyle={{
-                        background: 'var(--bgGreen)',
+                        background: 'var(--darkGreen)',
                         color: '#000'
                     }}
                     buttonClass={`px-2`}

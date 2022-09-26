@@ -21,7 +21,7 @@ const DepositWithdraw = () => {
 
   return (
     <div
-      className={`container card-background card-border column ${classes.container}`}>
+      className={`width-100 card-bg card-border column ${classes.container}`}>
       <AccordionBox
         title={t("DepositWithdraw.title")}
         content={data}

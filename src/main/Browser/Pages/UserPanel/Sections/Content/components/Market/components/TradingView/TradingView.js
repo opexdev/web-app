@@ -11,7 +11,7 @@ const TradingView = () => {
     ];
     return (
         <div
-            className={`container card-background card-border`} style={{height:"50vh"}}>
+            className={`container card-bg card-border`} style={{height:"50vh"}}>
             <AccordionBox
                 title={t("charts.title")}
                 content={charts}

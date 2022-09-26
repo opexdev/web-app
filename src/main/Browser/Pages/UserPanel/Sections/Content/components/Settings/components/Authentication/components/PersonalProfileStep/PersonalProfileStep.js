@@ -162,7 +162,7 @@ const PersonalProfileStep = (props) => {
 
     return (
         <div
-            className={`container card-background card-border column ${classes.container}`}>
+            className={`container card-bg card-border column ${classes.container}`}>
             <div
                 className={`column border-bottom jc-center card-header-bg px-1 py-1 ${classes.header}`}>
                 <div className="row jc-start ">
@@ -342,7 +342,7 @@ const PersonalProfileStep = (props) => {
                     </div>
                     <div className="row pt-1 jc-between">
                         <div className={`col-50 flex jc-start ai-end`}>
-                            <span className={` text-red font-size-sm-plus cursor-pointer`}
+                            <span className={` text-red fs-0-8 cursor-pointer`}
                                   onClick={getUser}>{error.length !== 0 && error}</span>
                         </div>
                         <div className={`col-50 row jc-end ai-center`}>

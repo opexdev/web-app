@@ -132,7 +132,7 @@ const ForgetPassword = ({returnFunc}) => {
                 lead={LeadCaptchaHandler()}
                 after={<span data-html={true} data-place="left" data-effect="float"
                              data-tip={`<span class="column jc-between col-100">${t("login.refreshCaptcha")}</span>`}><Icon
-                    iconName="icon-arrows-cw flex font-size-md"
+                    iconName="icon-arrows-cw flex fs-01"
                     onClick={captchaReq}
                     customClass={`hover-text cursor-pointer`}
                 /></span>}
@@ -176,10 +176,10 @@ const ForgetPassword = ({returnFunc}) => {
 
     return (
         <form onSubmit={(e) => submit(e)} className={`column ai-center jc-between ${classes.form}`}>
-            <div className={`container column jc-center ai-center ${classes.formBody} py-4`}>
+            <div className={`width-100 column jc-center ai-center ${classes.formBody} py-4`}>
                 {FormBody()}
             </div>
-            <div className={`container flex jc-center ai-center ${classes.formFooter}`}>
+            <div className={`width-100 flex jc-center ai-center ${classes.formFooter}`}>
                 {FormFooter()}
             </div>
         </form>

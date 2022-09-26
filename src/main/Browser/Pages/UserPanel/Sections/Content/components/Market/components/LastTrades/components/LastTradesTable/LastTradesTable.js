@@ -11,7 +11,7 @@ const LastTradesTable = (props) => {
   const {activePair ,data} = props
 
   return (
-    <div className={`column container ${classes.container}`}>
+    <div className={`column width-100 ${classes.container}`}>
       <ScrollBar>
         <table className="text-center" cellSpacing="0" cellPadding="0">
           <thead>
@@ -34,7 +34,7 @@ const LastTradesTable = (props) => {
               const totalPrice = pricePerUnit.multipliedBy(amount)
 
               return (
-                <tr key={index} style={{color: tr.isBuyerMaker === true ? "var(--textGreen)" : "var(--textRed)",}}>
+                <tr key={index} style={{color: tr.isBuyerMaker === true ? "var(--green)" : "var(--red)",}}>
                   <td style={{direction: "ltr"}}>
                     {moment(tr.time).format("jYY/jMM/jDD")}
                   </td>

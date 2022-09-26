@@ -165,7 +165,7 @@ const Withdrawal = () => {
                     />
                 </div>
             </div>
-            <div className="container column jc-between height-100">
+            <div className="width-100 column jc-between height-100">
                 <div className="column">
                     <TextInput
                         lead={t("DepositWithdrawTx.destAddress") + " " + t("currency." + id)}
@@ -175,7 +175,7 @@ const Withdrawal = () => {
                         alerts={address.error}
                         onchange={(e) => setAddress({...address, value: e.target.value})}
                     />
-                    <span className="pt-05 text-end font-size-sm">{t('DepositWithdrawTx.withdrawWarn')}</span>
+                    <span className="pt-05 text-end fs-0-7">{t('DepositWithdrawTx.withdrawWarn')}</span>
                 </div>
                 <div className={`row width-100`}>
                     <div className="col-50 column jc-between">

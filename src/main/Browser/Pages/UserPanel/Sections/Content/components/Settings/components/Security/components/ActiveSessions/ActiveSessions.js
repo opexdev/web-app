@@ -35,33 +35,33 @@ const ActiveSessions = () => {
 
         return <>
             <div className={`column ai-end ${classes.thisSession}`}>
-                <span className={`text-orange mb-05 font-size-sm-plus width-100 text-center py-05`}
+                <span className={`text-orange mb-05 fs-0-8 width-100 text-center py-05`}
                       style={{backgroundColor: 'var(--tableHeader)'}}>{t("ActiveSessions.thisSession")}</span>
                 <div className={`row jc-between width-100 py-05 px-1`}>
                     <div className={`col-40 column jc-center ai-center`}>
                         <span>{moment(current?.lastAccess * 1000).format("HH:mm:ss , jYY/jMM/jDD")}</span>
                         {other.length > 0 ?
-                            <span className={`cursor-pointer text-red font-size-sm`} onClick={expireAllSessions}>
+                            <span className={`cursor-pointer text-red fs-0-7`} onClick={expireAllSessions}>
                             {t("ActiveSessions.closeOtherSessions")}</span> : ""}
                     </div>
                     <div className={`col-60 text-end`}>
-                        <div className={`row jc-end ai-center text-color-gray`}>
+                        <div className={`row jc-end ai-center text-gray`}>
                             <span className={`ml-05`}>{current?.ipAddress}</span>
-                            <Icon iconName="icon-globe font-size-md"/>
+                            <Icon iconName="icon-globe fs-01"/>
                         </div>
-                        <div className={`row jc-end ai-center text-color-gray`}>
+                        <div className={`row jc-end ai-center text-gray`}>
                             <span className={`ml-05`}>{current?.agent}</span>
-                            <Icon iconName="icon-info font-size-md"/>
+                            <Icon iconName="icon-info fs-01"/>
                         </div>
                     </div>
                 </div>
                 <div className={` width-100 text-center py-05`} style={{backgroundColor: 'var(--tableHeader)'}}>
-                    <span className={`text-orange font-size-sm-plus`}>{t("ActiveSessions.otherSession")}</span>
+                    <span className={`text-orange fs-0-8`}>{t("ActiveSessions.otherSession")}</span>
                 </div>
             </div>
             <ScrollBar>
                 {other.length > 0 ? other.map((list) => <Session list={list} key={list.id} reloadSessionsList={refetch}/>)
-                    : <div className={`flex jc-center ai-center height-100 font-size-sm-plus`}>
+                    : <div className={`flex jc-center ai-center height-100 fs-0-8`}>
                         <span>{t("ActiveSessions.noData")}</span>
                     </div>
                 }
@@ -71,7 +71,7 @@ const ActiveSessions = () => {
 
     return (
         <div className="container">
-            <div className={` card-background card-border column ${classes.container}`}>
+            <div className={` card-bg card-border column ${classes.container}`}>
                 <div className={`column border-bottom jc-center card-header-bg  ${classes.header}`}>
                     <div className="row jc-start ">
                         <h3>{t("ActiveSessions.title")}</h3>

@@ -3,10 +3,10 @@
 }
 
 .title {
-    background-color: var(--cardHeaderAlpha);
+    background-color: var(--activeTitle);
 }
 
 .active {
-    background-color: var(--cardHeaderAlpha);
+    background-color: var(--activeTitle);
     color: var(--activeTab);
 }

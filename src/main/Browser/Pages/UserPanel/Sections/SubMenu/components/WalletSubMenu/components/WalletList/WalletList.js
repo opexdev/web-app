@@ -23,7 +23,7 @@ const WalletList = (props) => {
 
     if (wallets.length === 0) {
         return (
-            <div className="container row ai-center px-1 py-05" style={{height: "8.5vh"}}>
+            <div className="width-100 row ai-center px-1 py-05" style={{height: "8.5vh"}}>
                 <div className={` row jc-center ai-center ${classes.PairImage}`}>
                     <img
                         className={`img-md flex`}
@@ -35,13 +35,13 @@ const WalletList = (props) => {
                 <div className={`row jc-between px-1 ${classes.pairDetails}`}>
                     <div className="column ai-start">
                         <span>{t("WalletSubMenu.totalValue")}</span>
-                        <span className="font-size-sm">{t("WalletSubMenu.approximate")}</span>
+                        <span className="fs-0-7">{t("WalletSubMenu.approximate")}</span>
                     </div>
                     <div className="column ai-end">
                           <span>0{" "}
-                              <span className="font-size-sm">{t("currency.IRT")}</span>
+                              <span className="fs-0-7">{t("currency.IRT")}</span>
                           </span>
-                        <span className="font-size-sm text-color-gray">
+                        <span className="fs-0-7 text-gray">
                         <span>{t("WalletSubMenu.equivalent")} </span>0{" "}
                             <span>{t("currency.BTC")}</span>
                         </span>
@@ -52,8 +52,8 @@ const WalletList = (props) => {
     }
     return (
         <Fragment>
-            <div className={`container row jc-around ai-center py-2 border-bottom`}>
-                <span className={`font-size-sm`}>{t("WalletSubMenu.showZeroBalance")}</span>
+            <div className={`width-100 row jc-around ai-center py-2 border-bottom`}>
+                <span className={`fs-0-7`}>{t("WalletSubMenu.showZeroBalance")}</span>
                 <ToggleSwitch onchange={()=>setShowZero(prevState => !prevState)} checked={showZero}/>
             </div>
             {Object.keys(wallets).map((name) => {

@@ -64,11 +64,11 @@ const OrderBookTable = (props) => {
   const backgroundBar = (percent) => {
     if (type === "buy") {
       return {
-        background: `linear-gradient(to ${end}, var(--textGreenAlpha) ${percent}%, transparent ${percent}%) no-repeat`,
+        background: `linear-gradient(to ${end}, var(--greenAlpha) ${percent}%, transparent ${percent}%) no-repeat`,
       };
     }
     return {
-      background: `linear-gradient(to ${start}, var(--textRedAlpha) ${percent}%, transparent ${percent}%) no-repeat`,
+      background: `linear-gradient(to ${start}, var(--redAlpha) ${percent}%, transparent ${percent}%) no-repeat`,
     };
   }
 
@@ -91,7 +91,7 @@ const OrderBookTable = (props) => {
 
 
   return (
-    <div className={`column container ${classes.container}`}>
+    <div className={`column width-100 ${classes.container}`}>
       <ScrollBar>
         <table className="text-center" cellSpacing="0" cellPadding="0">
           <thead>{header}</thead>

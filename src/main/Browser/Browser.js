@@ -47,7 +47,7 @@ const Browser = () => {
         {
             className: "rtl",
             style: {
-                padding: "0.3vh 0.8vw 0.3vh 0",
+                padding: "0.3vh 0.8vw 0.3vh 0.8vw",
                 color: "white",
                 lineHeight: "3vh",
                 fontSize: "0.8vw",
@@ -56,12 +56,12 @@ const Browser = () => {
             },
             success: {
                 style: {
-                    background: "var(--bgGreen)",
+                    background: "var(--darkGreen)",
                 },
             },
             error: {
                 style: {
-                    background: "var(--bgRed)",
+                    background: "var(--darkRed)",
                 },
             },
             custom: {

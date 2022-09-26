@@ -28,7 +28,7 @@ const DeActiveOTP = ({refetchOtp}) => {
     }
 
     return (
-        <div className="row container jc-center ai-center height-100">
+        <div className="row width-100 jc-center ai-center height-100">
             <div className={`col-30 flex jc-center ai-center`}>
                 <img src={images.security} alt="security" className={`img-lg-2`}/>
             </div>
@@ -43,7 +43,7 @@ const DeActiveOTP = ({refetchOtp}) => {
                         t("SetTwoStepVerification.deActive")}
                     onClick={disableOTPHandler}
                 />
-                {error ? <span className={`font-size-sm text-red mt-1`}>
+                {error ? <span className={`fs-0-7 text-red mt-1`}>
                     {t("SetTwoStepVerification.serverError")}
                 </span> : ""}
             </div>

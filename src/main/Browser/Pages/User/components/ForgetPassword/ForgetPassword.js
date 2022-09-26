@@ -104,7 +104,7 @@ const ForgetPassword = () => {
                 lead={t("ChangePassword.newPassword")}
                 after={
                     <Icon
-                        iconName={`${isInputVisible.newPassword ? ' icon-eye-2'  : 'icon-eye-off' } font-size-md-01 flex`}
+                        iconName={`${isInputVisible.newPassword ? ' icon-eye-2'  : 'icon-eye-off' } fs-02 flex`}
                         onClick={() => setIsInputVisible({ ...isInputVisible, newPassword: !isInputVisible.newPassword })}
                     />
                 }
@@ -122,7 +122,7 @@ const ForgetPassword = () => {
                 lead={t("ChangePassword.confirmation")}
                 after={
                     <Icon
-                        iconName={`${isInputVisible.confirmation ? ' icon-eye-2'  : 'icon-eye-off' } font-size-md-01 flex`}
+                        iconName={`${isInputVisible.confirmation ? ' icon-eye-2'  : 'icon-eye-off' } fs-02 flex`}
                         onClick={() => setIsInputVisible({ ...isInputVisible, confirmation: !isInputVisible.confirmation })}
                     />
                 }
@@ -135,7 +135,7 @@ const ForgetPassword = () => {
                 onchange={(e) => inputHandler(e)}
                 alerts={changePassword.confirmation.error}
             />
-            {error && <span className={`my-1 text-red font-size-sm`}>{t("userPage.serverError")}</span>}
+            {error && <span className={`my-1 text-red fs-0-7`}>{t("userPage.serverError")}</span>}
 
         </>
     }

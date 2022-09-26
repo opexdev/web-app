@@ -10,7 +10,7 @@ const SettingsSubMenu = () => {
   const KYCStatus = useSelector(state => state.auth.kyc);
 
   return (
-    <div className={`container card-background column ${classes.container}`}>
+    <div className={`container card-bg column ${classes.container}`}>
       <div
         className={`column border-bottom jc-center card-header-bg  ${classes.header}`}>
         <div className="row jc-start ">
@@ -30,7 +30,7 @@ const SettingsSubMenu = () => {
               {t("SettingsSubMenu.userProfile")}
             </span>
               </div>
-              <div className={`column position-relative font-size-sm mr-1 ${classes.listBox}`} style={{width: "60%"}}>
+              <div className={`column position-relative fs-0-7 mr-1 ${classes.listBox}`} style={{width: "60%"}}>
                 <span className={`flex ai-center my-05 pr-2 ${classes.list}`}>
               {t("PersonalProfile.title")}
             </span>
@@ -47,7 +47,7 @@ const SettingsSubMenu = () => {
               {t("SettingsSubMenu.security")}
             </span>
           </div>
-          <div className={` column position-relative font-size-sm mr-1 ${classes.listBox}`} style={{width: "60%"}}>
+          <div className={` column position-relative fs-0-7 mr-1 ${classes.listBox}`} style={{width: "60%"}}>
             <span className={`flex ai-center my-05 pr-2 ${classes.list}`}>
               {t("ActiveSessions.title")}
             </span>
@@ -69,7 +69,7 @@ const SettingsSubMenu = () => {
               {t("SettingsSubMenu.authentication")}
             </span>
           </div>
-          <div className={`column position-relative font-size-sm mr-1 ${classes.listBox}`} style={{width: "60%"}}>
+          <div className={`column position-relative fs-0-7 mr-1 ${classes.listBox}`} style={{width: "60%"}}>
             <span className={`flex ai-center my-05 pr-2 ${classes.list}`}>
               {t("HelpStep.title")}
             </span>

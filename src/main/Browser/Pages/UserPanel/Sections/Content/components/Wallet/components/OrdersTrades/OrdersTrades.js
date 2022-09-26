@@ -85,7 +85,7 @@ const OrdersTrades = () => {
                 <td>{tr.donePercentage}</td>
                 <td>
                   <Icon
-                    iconName="icon-cancel text-red font-size-sm"
+                    iconName="icon-cancel text-red fs-0-7"
                     customClass={classes.iconBG}
                   />
                 </td>
@@ -96,7 +96,7 @@ const OrdersTrades = () => {
                       setOpenItem({...openItem, aliveOrder: null})
                     }>
                     <Icon
-                      iconName="icon-up-open icon-blue font-size-sm"
+                      iconName="icon-up-open text-blue fs-0-7"
                       customClass={classes.iconBG}
                     />
                   </td>
@@ -106,7 +106,7 @@ const OrdersTrades = () => {
                       setOpenItem({...openItem, aliveOrder: index})
                     }>
                     <Icon
-                      iconName="icon-down-open icon-blue font-size-sm"
+                      iconName="icon-down-open text-blue fs-0-7"
                       customClass={classes.iconBG}
                     />
                   </td>
@@ -178,7 +178,7 @@ const OrdersTrades = () => {
                 <td>{tr.totalPrice.toLocaleString()}</td>
                 <td>
                   <Icon
-                    iconName="icon-cancel text-red font-size-sm"
+                    iconName="icon-cancel text-red fs-0-7"
                     customClass={classes.iconBG}
                   />
                 </td>
@@ -248,7 +248,7 @@ const OrdersTrades = () => {
                       setOpenItem({...openItem, ordersHistory: null})
                     }>
                     <Icon
-                      iconName="icon-up-open icon-blue font-size-sm"
+                      iconName="icon-up-open text-blue fs-0-7"
                       customClass={classes.iconBG}
                     />
                   </td>
@@ -258,7 +258,7 @@ const OrdersTrades = () => {
                       setOpenItem({...openItem, ordersHistory: index})
                     }>
                     <Icon
-                      iconName="icon-down-open icon-blue font-size-sm"
+                      iconName="icon-down-open text-blue fs-0-7"
                       customClass={classes.iconBG}
                     />
                   </td>
@@ -331,14 +331,14 @@ const OrdersTrades = () => {
                 {openItem.trades === index ? (
                   <td onClick={() => setOpenItem({...openItem, trades: null})}>
                     <Icon
-                      iconName="icon-up-open icon-blue font-size-sm"
+                      iconName="icon-up-open text-blue fs-0-7"
                       customClass={classes.iconBG}
                     />
                   </td>
                 ) : (
                   <td onClick={() => setOpenItem({...openItem, trades: index})}>
                     <Icon
-                      iconName="icon-down-open icon-blue font-size-sm"
+                      iconName="icon-down-open text-blue fs-0-7"
                       customClass={classes.iconBG}
                     />
                   </td>
@@ -368,7 +368,7 @@ const OrdersTrades = () => {
 
   return (
     <div
-      className={`container card-background card-border column ${classes.container}`}>
+      className={`width-100 card-bg card-border column ${classes.container}`}>
       <AccordionBox
         title={t("OrdersTrades.title")}
         content={data}
