@@ -14,14 +14,14 @@ const NotifCard = (props) => {
       <ScrollBar>
         <div
           className={`container column jc-center px-05  ${classes.container} `}>
-          <div className={`container row font-size-sm-plus`}>
+          <div className={`container row fs-0-8`}>
             <div className="col-10 row jc-center ai-center">
               <span className={`mx-025 pl-05 ${classes.notifTime}`}>16:24</span>
             </div>
             <div className="col-90 container row jc-between ai-center">
               <span className={`mr-025`}>عدم تایید معامله</span>
               <Icon
-                iconName="icon-menu_vertical font-size-sm-plus flex"
+                iconName="icon-menu_vertical fs-0-8 flex"
                 customClass={`cursor-pointer ${classes.iconBG}`}
               />
             </div>

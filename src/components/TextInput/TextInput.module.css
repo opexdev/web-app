@@ -12,7 +12,7 @@
   -webkit-box-direction: normal;
   -ms-flex-direction: row;
   flex-direction: row;
-  border: 0.3vh solid var(--CardBorder);
+  border: 0.3vh solid var(--cardBorder);
   border-radius: 7px;
   /*margin: 0.5vh 0;*/
   height: 5vh;
@@ -82,7 +82,7 @@
   width: 1.1vw;
   height: 1.1vw;
   border-radius: 50vw;
-  background-color: var(--bgRed);
+  background-color: var(--darkRed);
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -95,7 +95,7 @@
 }
 .alert {
   font-size: 0.7vw;
-  color: var(--textRed);
+  color: var(--red);
   line-height:2.8vh;
 }
 .selectBox {

@@ -42,7 +42,7 @@ const Order = () => {
 
 
     return (
-        <div className={`container card-background card-border my-2 ${classes.container}`}>
+        <div className={`container card-bg card-border my-2 ${classes.container}`}>
             <AccordionBox
                 title={t("orders.title")}
                 safari={classes.safariFlexSize}

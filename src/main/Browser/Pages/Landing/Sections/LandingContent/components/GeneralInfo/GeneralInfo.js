@@ -17,22 +17,22 @@ const GeneralInfo = () => {
         if (error) return <Error/>
         else return <>
             <div className={`column jc-center ai-center`}>
-                <span className={`font-size-md-01`}>{data.activeUsers} </span>
-                <span className={`font-size-sm`}>{t("GeneralInfo.activeUsers")}</span>
+                <span className={`fs-02`}>{data.activeUsers} </span>
+                <span className={`fs-0-7`}>{t("GeneralInfo.activeUsers")}</span>
             </div>
             <div className={`column jc-center ai-center`}>
-                <span className={`font-size-md-01`}>{data.totalOrders} </span>
-                <span className={`font-size-sm`}>{t("GeneralInfo.totalOrders")}</span>
+                <span className={`fs-02`}>{data.totalOrders} </span>
+                <span className={`fs-0-7`}>{t("GeneralInfo.totalOrders")}</span>
             </div>
             <div className={`column jc-center ai-center`}>
-                <span className={`font-size-md-01`}>{data.totalTrades} </span>
-                <span className={`font-size-sm`}>{t("GeneralInfo.totalTrades")}</span>
+                <span className={`fs-02`}>{data.totalTrades} </span>
+                <span className={`fs-0-7`}>{t("GeneralInfo.totalTrades")}</span>
             </div>
         </>
     }
 
     return (
-        <div className={`${classes.container} row jc-between ai-center card-background card-border px-2 py-1`}>
+        <div className={`${classes.container} row jc-between ai-center card-bg card-border px-2 py-1`}>
             {content()}
         </div>
     );

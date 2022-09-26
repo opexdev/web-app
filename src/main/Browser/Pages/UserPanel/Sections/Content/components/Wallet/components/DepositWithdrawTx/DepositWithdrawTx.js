@@ -27,7 +27,7 @@ const DepositWithdrawTx = () => {
     if (depositIsLoading || withdrawIsLoading) return <Loading/>
     if (depositError || withdrawError) return <Error/>
 
-    if (txs.length === 0) return <div className="container height-100 flex ai-center jc-center">{t("noTx")}</div>
+    if (txs.length === 0) return <div className="width-100 height-100 flex ai-center jc-center">{t("noTx")}</div>
 
     return (
         <ScrollBar>

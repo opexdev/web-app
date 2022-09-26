@@ -14,7 +14,7 @@ const Info = () => {
 
     return (
         <div className={`alert-box row jc-between ai-center px-1 mx-1 my-1 py-05 width-40`}>
-            <span className={`font-size-sm-plus`}>{t(message)}</span>
+            <span className={`fs-0-8`}>{t(message)}</span>
             <Icon
                 iconName="icon-cancel text-red flex"
                 customClass={`cursor-pointer`}

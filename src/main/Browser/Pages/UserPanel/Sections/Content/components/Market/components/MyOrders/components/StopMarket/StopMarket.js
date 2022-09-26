@@ -37,7 +37,7 @@ const StopMarket = (props) => {
                         <td>{tr.stopPrice}</td>
                         <td>
                             <Icon
-                                iconName="icon-cancel text-red font-size-sm"
+                                iconName="icon-cancel text-red fs-0-7"
                                 iconBG={`bg-red ${classes.iconBG} cursor-pointer`}
                             />
                         </td>

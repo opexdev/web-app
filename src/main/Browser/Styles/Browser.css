@@ -1,39 +1,93 @@
 @media (min-width: 992px) {
 
-    html,body{
+    html, body {
         font-size: 0.9vw;
         line-height: 3.5vh;
         height: 100%;
 
     }
 
-    .font-size-sm-mini {
-        font-size: 0.65vw;
-    }
-    .font-size-sm {
-        font-size: 0.75vw;
-    }
-    .font-size-sm-plus {
-        font-size: 0.8vw;
-    }
-    .font-size-md {
-        font-size: 1vw;
-    }
-    .font-size-md-01 {
-        font-size: 1.25vw;
-    }
-    .font-size-md-plus {
-        font-size: 1.5vw;
-    }
-    .font-size-lg {
-        font-size: 2.2vw;
-    }
-    .button{
+    .button {
         height: 4.5vh;
         font-size: 0.8vw;
     }
+
     tr {
         position: relative;
         line-height: 3.4vh;
     }
+
+
+    .fs-0-5 {
+        font-size: 0.5rem;
+    }
+
+    .fs-0-6 {
+        font-size: 0.6rem;
+    }
+
+    .fs-0-7 {
+        font-size: 0.7rem;
+    }
+
+    .fs-0-8 {
+        font-size: 0.8rem;
+    }
+
+    .fs-0-9 {
+        font-size: 0.9rem;
+    }
+
+    .fs-01 {
+        font-size: 1.1rem;
+    }
+
+    .fs-02 {
+        font-size: 1.2rem;
+    }
+
+    .fs-03 {
+        font-size: 1.31rem;
+    }
+
+    .fs-04 {
+        font-size: 1.4rem;
+    }
+
+    .fs-05 {
+        font-size: 1.5rem;
+    }
+
+    .fs-06 {
+        font-size: 1.6rem;
+    }
+
+    .fs-07 {
+        font-size: 1.7rem;
+    }
+
+    .fs-08 {
+        font-size: 1.8rem;
+    }
+
+    .fs-09 {
+        font-size: 1.9rem;
+    }
+
+    .fs-20 {
+        font-size: 2rem;
+    }
+
+    .fs-21 {
+        font-size: 2.1rem;
+    }
+
+    .fs-22 {
+        font-size: 2.2rem;
+    }
+
+    .fs-50 {
+        font-size: 5rem;
+    }
+
 }

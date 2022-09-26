@@ -23,7 +23,7 @@
   background-color: var(--orange);
 }
 .thisButton.next{
-  background-color: var(--bgGreen);
+  background-color: var(--darkGreen);
 }
 .content :global(input){
   cursor: not-allowed;

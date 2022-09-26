@@ -22,20 +22,20 @@ const LastTrades = () => {
         if (error) return <Error/>
         if (isLoading) return <Loading/>
         if (lastTrades.length > 0) return <LastTradesTable data={lastTrades}/>
-        return <div className="container column ai-center jc-center" style={{height: "100%"}}>
+        return <div className="width-100 column ai-center jc-center" style={{height: "100%"}}>
             <p>{t('noData')}</p>
         </div>
     }
 
     return (
         <div
-            className={`container card-background card-border column ${classes.container}`}>
+            className={`width-100 card-bg card-border column ${classes.container}`}>
             <div className={`column border-bottom jc-center card-header-bg ${classes.header}`}>
                 <div className="row jc-start ">
                     <h3>{t("LastTrades.title")}</h3>
                 </div>
             </div>
-            <div className={`row container ${classes.content}`}>
+            <div className={`row width-100 ${classes.content}`}>
                 {content()}
             </div>
         </div>

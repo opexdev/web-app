@@ -1,14 +1,24 @@
+.container {
+    background-color: var(--footer);
+    -webkit-transition: background-color 0.4s;
+    -o-transition: background-color 0.4s;
+    transition: background-color 0.4s;
+}
+
 .languages span:first-child {
-  border-left: 0.01vh solid #f58634;
+    border-left: 0.01vh solid #f58634;
 }
+
 :global(.ltr) .languages span:first-child {
-  border-right: 0.01vh solid #f58634;
-  border-left: initial;
+    border-right: 0.01vh solid #f58634;
+    border-left: initial;
 }
+
 .languages span:last-child {
-  border-right: 0.01vh solid #f58634;
+    border-right: 0.01vh solid #f58634;
 }
+
 :global(.ltr) .languages span:last-child {
-  border-left: 0.01vh solid #f58634;
-  border-right: initial;
+    border-left: 0.01vh solid #f58634;
+    border-right: initial;
 }

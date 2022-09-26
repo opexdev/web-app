@@ -9,7 +9,7 @@ const Transfer = () => {
         destinationUserNumber: "",
     });
     return <div className={`px-1 py-2 column jc-between ${classes.content}`}>
-        <div className="container row jc-between">
+        <div className="width-100 row jc-between">
             <div className="col-30 column jc-between">
                 <TextInput
                     lead="مقدار بیتکوین"

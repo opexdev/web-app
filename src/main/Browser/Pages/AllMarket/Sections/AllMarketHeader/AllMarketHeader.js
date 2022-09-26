@@ -12,7 +12,7 @@ const AllMarketHeader = () => {
         <HeaderBuilder>
             <div className={`row jc-center ai-baseline`}>
                 <h2 className={`ml-025`}>{t("market.title")}</h2>
-                <span className={`font-size-sm-plus mr-025`}>( {t("marketInterval." + interval)} )</span>
+                <span className={`fs-0-8 mr-025`}>( {t("marketInterval." + interval)} )</span>
             </div>
         </HeaderBuilder>
     );

@@ -155,7 +155,7 @@ const OrdersTradesFilter = (props) => {
                 <td>{tr.donePercentage}</td>
                 <td>
                   <Icon
-                    iconName="icon-cancel text-red font-size-sm cursor-pointer"
+                    iconName="icon-cancel text-red fs-0-7 cursor-pointer"
                     customClass={classes.iconBG}
                   />
                 </td>
@@ -166,7 +166,7 @@ const OrdersTradesFilter = (props) => {
                       setOpenItem({...openItem, aliveOrder: null})
                     }>
                     <Icon
-                      iconName="icon-up-open icon-blue font-size-sm cursor-pointer"
+                      iconName="icon-up-open text-blue fs-0-7 cursor-pointer"
                       customClass={classes.iconBG}
                     />
                   </td>
@@ -176,7 +176,7 @@ const OrdersTradesFilter = (props) => {
                       setOpenItem({...openItem, aliveOrder: index})
                     }>
                     <Icon
-                      iconName="icon-down-open icon-blue font-size-sm cursor-pointer"
+                      iconName="icon-down-open text-blue fs-0-7 cursor-pointer"
                       customClass={classes.iconBG}
                     />
                   </td>
@@ -248,7 +248,7 @@ const OrdersTradesFilter = (props) => {
                 <td>{tr.totalPrice.toLocaleString()}</td>
                 <td>
                   <Icon
-                    iconName="icon-cancel text-red font-size-sm cursor-pointer"
+                    iconName="icon-cancel text-red fs-0-7 cursor-pointer"
                     customClass={classes.iconBG}
                   />
                 </td>
@@ -318,7 +318,7 @@ const OrdersTradesFilter = (props) => {
                       setOpenItem({...openItem, ordersHistory: null})
                     }>
                     <Icon
-                      iconName="icon-up-open icon-blue font-size-sm cursor-pointer"
+                      iconName="icon-up-open text-blue fs-0-7 cursor-pointer"
                       customClass={classes.iconBG}
                     />
                   </td>
@@ -328,7 +328,7 @@ const OrdersTradesFilter = (props) => {
                       setOpenItem({...openItem, ordersHistory: index})
                     }>
                     <Icon
-                      iconName="icon-down-open icon-blue font-size-sm cursor-pointer"
+                      iconName="icon-down-open text-blue fs-0-7 cursor-pointer"
                       customClass={classes.iconBG}
                     />
                   </td>
@@ -401,14 +401,14 @@ const OrdersTradesFilter = (props) => {
                 {openItem.trades === index ? (
                   <td onClick={() => setOpenItem({...openItem, trades: null})}>
                     <Icon
-                      iconName="icon-up-open icon-blue font-size-sm cursor-pointer"
+                      iconName="icon-up-open text-blue fs-0-7 cursor-pointer"
                       customClass={classes.iconBG}
                     />
                   </td>
                 ) : (
                   <td onClick={() => setOpenItem({...openItem, trades: index})}>
                     <Icon
-                      iconName="icon-down-open icon-blue font-size-sm cursor-pointer"
+                      iconName="icon-down-open text-blue fs-0-7 cursor-pointer"
                       customClass={classes.iconBG}
                     />
                   </td>
@@ -438,7 +438,7 @@ const OrdersTradesFilter = (props) => {
 
   return (
     <div
-      className={`container card-background card-border column ${classes.container}`}>
+      className={`container card-bg card-border column ${classes.container}`}>
       <div
         className={`${classes.content} ${
           isSafari ? classes.safariFlexSize : ""
@@ -448,13 +448,13 @@ const OrdersTradesFilter = (props) => {
             <h3>{t("OrdersTrades.title")}</h3>
             <div className="row jc-center ai-center">
               <span
-                style={{color: "var(--bgGreen)"}}
-                className="font-size-md-plus cursor-pointer">
+                style={{color: "var(--darkGreen)"}}
+                className="fs-04 cursor-pointer">
                 <i className="icon-microsoft_excel flex" />
               </span>
               <span
                 style={{color: "var(--orange)"}}
-                className="font-size-md-plus cursor-pointer"
+                className="fs-04 cursor-pointer"
                 onClick={() => setFilterOpen((prev) => !prev)}>
                 <i className="icon-filter flex" />
               </span>

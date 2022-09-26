@@ -19,7 +19,7 @@ const Login = () => {
     ];
 
     return (
-        <div className={`container row col-100 ai-center jc-center px-1 ${classes.container} move-image`}
+        <div className={`width-100 row col-100 ai-center jc-center px-1 ${classes.container} move-image`}
              style={{backgroundImage: `url("${images.spaceStar}")`}}>
             <div className={`col-60  flex jc-center ai-center `} style={{height: "100%"}}>
                 <div className={`${classes.content}`}>

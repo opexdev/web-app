@@ -47,20 +47,20 @@ const AllMarketInfo = () => {
     }
 
     return (
-        <div className={`${classes.container} card-background card-border width-90 my-4`}>
+        <div className={`${classes.container} card-bg card-border width-90 my-4`}>
             <div className={`${classes.header} card-header-bg row jc-between ai-center px-2 py-2`}>
                 <div className={`row jc-center ai-center`}>
-                    <Icon iconName={`${card ? 'icon-row' : 'icon-grid'} font-size-md-01 flex cursor-pointer hover-text`} onClick={()=>setCard(prevState => !prevState)}/>
+                    <Icon iconName={`${card ? 'icon-row' : 'icon-grid'} fs-02 flex cursor-pointer hover-text`} onClick={()=>setCard(prevState => !prevState)}/>
                     <h1 className={`mr-1 ml-1`}>{t("market.title")}</h1>
-                    <div className={`row jc-center ai-center font-size-sm-plus mr-1`}>
-                        <span className={`px-1 py-1 rounded cursor-pointer hover-text ${interval === "24h" && classes.active}`} onClick={()=>dispatch(setMarketInterval("24h"))}>{t("marketInterval.24h")}</span>
-                        <span className={`px-1 py-1 rounded cursor-pointer hover-text ${interval === "7d" && classes.active}`} onClick={()=>dispatch(setMarketInterval("7d"))}>{t("marketInterval.7d")}</span>
-                        <span className={`px-1 py-1 rounded cursor-pointer hover-text ${interval === "1M" && classes.active}`} onClick={()=>dispatch(setMarketInterval("1M"))}>{t("marketInterval.1M")}</span>
+                    <div className={`row jc-center ai-center fs-0-8 mr-1`}>
+                        <span className={`px-1 py-1 rounded-5 cursor-pointer hover-text ${interval === "24h" && classes.active}`} onClick={()=>dispatch(setMarketInterval("24h"))}>{t("marketInterval.24h")}</span>
+                        <span className={`px-1 py-1 rounded-5 cursor-pointer hover-text ${interval === "7d" && classes.active}`} onClick={()=>dispatch(setMarketInterval("7d"))}>{t("marketInterval.7d")}</span>
+                        <span className={`px-1 py-1 rounded-5 cursor-pointer hover-text ${interval === "1M" && classes.active}`} onClick={()=>dispatch(setMarketInterval("1M"))}>{t("marketInterval.1M")}</span>
                     </div>
                 </div>
                 <div className={`row jc-center ai-center mr-1`}>
-                    <span className={`px-2 py-1 rounded cursor-pointer hover-text ${IRT && classes.active}`} onClick={()=>setIRT(true)}>{t("currency.IRT")}</span>
-                    <span className={`px-2 py-1 rounded cursor-pointer hover-text ${!IRT && classes.active}`} onClick={()=>setIRT(false)}>{t("currency."+baseCurrency)}</span>
+                    <span className={`px-2 py-1 rounded-5 cursor-pointer hover-text ${IRT && classes.active}`} onClick={()=>setIRT(true)}>{t("currency.IRT")}</span>
+                    <span className={`px-2 py-1 rounded-5 cursor-pointer hover-text ${!IRT && classes.active}`} onClick={()=>setIRT(false)}>{t("currency."+baseCurrency)}</span>
                 </div>
             </div>
             <div className={`${classes.content}`}>

@@ -16,8 +16,8 @@ const Footer = () => {
     const dispatch = useDispatch()
 
     return (
-        <div className={`container column footerBackground font-size-sm-plus mt-1 py-2 px-4`}>
-            <div className={`container row jc-between ai-center`}>
+        <div className={`width-100 column ${classes.container} fs-0-8 mt-1 py-2 px-4`}>
+            <div className={`width-100 row jc-between ai-center`}>
                 <div className="row">
                     <div className="column px-1">
                         <Link to={Routes.Guide + "#about-us"}>
@@ -75,7 +75,7 @@ const Footer = () => {
                     <span className={`mt-1`}>{packageJson.version}</span>
                 </div>
             </div>
-            <div className={`container flex jc-center ai-center`}>
+            <div className={`width-100 flex jc-center ai-center`}>
                 <p>{t("footer.copyright")}</p>
             </div>
         </div>

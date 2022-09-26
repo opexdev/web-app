@@ -4,7 +4,7 @@
   background-position: center center;
   background-size: 600px 1200px;
   /*background-color: var(--mainContent);*/
-  background-color: var(--LoginContainer);
+  background-color: var(--container);
   color: var(--textColor);
 }
 .row {
@@ -99,7 +99,7 @@
 }
 
 .errorText{
-  color: var(--textRed);
+  color: var(--red);
 }
 .forgetPassword{
   width: 75%;
@@ -127,7 +127,7 @@
 
 .thisButton {
   width: 40%;
-  background: var(--textGreen);
+  background: var(--green);
   color: #eaeaea;
   bottom: 0;
 }
@@ -136,7 +136,7 @@
 }
 .backButton{
   width: 20%;
-  background-color: var(--textRed);
+  background-color: var(--red);
 }
 
 .ltrInput :global(input) {

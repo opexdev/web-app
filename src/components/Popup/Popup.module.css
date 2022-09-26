@@ -27,7 +27,7 @@
     background-color: var(--orange);
 }
 .closeButton {
-    background-color: var(--bgRed);
+    background-color: var(--darkRed);
     width: 20%;
 }
 .thisInput {

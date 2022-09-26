@@ -11,7 +11,7 @@
 }
 
 .thisButton:hover {
-    background-color: var(--LoginContainer) !important;
+    background-color: var(--container) !important;
 }
 
 .thisButton {
