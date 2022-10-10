@@ -10,7 +10,7 @@ const Error = ({errorMsg, retryFunc}) => {
             {
                 retryFunc ? <Button
                     buttonStyle={{
-                        background: 'var(--bgGreen)',
+                        background: 'var(--darkGreen)',
                         color: '#000'
                     }}
                     buttonClass="mt-2 px-2"

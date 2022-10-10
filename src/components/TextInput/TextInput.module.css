@@ -1,141 +1,159 @@
 .inputGroup {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: justify;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  border: 0.3vh solid var(--CardBorder);
-  border-radius: 7px;
-  /*margin: 0.5vh 0;*/
-  height: 5vh;
-  -webkit-box-flex: 1;
-  -ms-flex: 1;
-  flex: 1;
-  width: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    border: 0.3vh solid var(--cardBorder);
+    border-radius: 7px;
+    /*margin: 0.5vh 0;*/
+    height: 5vh;
+    -webkit-box-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+    width: 100%;
 }
 
 .inputGroup span {
-  background: var(--cardHeader);
-  color: var(--textColor);
-  width: 50%;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  height: 100%;
-  border: 0.3vh solid var(--cardHeader);
+    background: var(--cardHeader);
+    color: var(--textColor);
+    width: 50%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    height: 100%;
+    border: 0.3vh solid var(--cardHeader);
 }
 
 .inputGroup input {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  width: 50%;
-  height: 100%;
-  border: none;
-  /*direction: ltr;*/
-  text-align: center;
-  font-family: iranyekan, serif;
-  background: none;
-  color: var(--textColor) !important;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    width: 50%;
+    height: 100%;
+    border: none;
+    /*direction: ltr;*/
+    text-align: center;
+    font-family: iranyekan, serif;
+    background: none;
+    color: var(--textColor) !important;
 }
+
 :global(.ltr) .inputGroup input {
-  font-family: "Segoe UI", serif;
+    font-family: "Segoe UI", serif;
 }
+
 .inputGroup .lead {
-  border-radius: 0 4px 4px 0;
+    border-radius: 0 4px 4px 0;
 }
+
 .inputGroup .after {
-  border-radius: 4px 0 0 4px;
+    border-radius: 4px 0 0 4px;
 }
+
 :global(.ltr) .inputGroup .lead {
-  border-radius: 4px 0 0 4px;
+    border-radius: 4px 0 0 4px;
 }
+
 :global(.ltr) .inputGroup .after {
-  border-radius: 0 4px 4px 0;
+    border-radius: 0 4px 4px 0;
 }
+
 .inputGroup-hint {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: end;
-  -ms-flex-pack: end;
-  justify-content: flex-end;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: end;
+    -ms-flex-pack: end;
+    justify-content: flex-end;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
 }
+
 .hintIcon {
-  width: 1.1vw;
-  height: 1.1vw;
-  border-radius: 50vw;
-  background-color: var(--bgRed);
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: center;
-  -ms-flex-pack: center;
-  justify-content: center;
+    width: 1.1vw;
+    height: 1.1vw;
+    border-radius: 50vw;
+    background-color: var(--darkRed);
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
 }
+
 .alert {
-  font-size: 0.7vw;
-  color: var(--textRed);
-  line-height:2.8vh;
+    font-size: 0.7vw;
+    color: var(--red);
+    line-height: 2.8vh;
 }
+
 .selectBox {
-  width: 50%;
-  font-size: 0.75vw;
+    width: 50%;
+    font-size: 0.75vw;
 }
+
 :global .select__control {
-  border-color: transparent !important;
-  background-color: transparent !important;
-  box-shadow: none !important;
+    border-color: transparent !important;
+    background-color: transparent !important;
+    box-shadow: none !important;
 }
+
 :global .select__control:hover {
-  border-color: transparent !important;
-  background-color: transparent !important;
-  box-shadow: none !important;
+    border-color: transparent !important;
+    background-color: transparent !important;
+    box-shadow: none !important;
 }
+
 :global .select__menu {
-  margin-top: 0;
+    margin-top: 0;
 }
+
 :global .select__option--is-focused {
-  color: #444444 !important;
-  background-color: var(--activeTab);
+    color: #444444 !important;
+    background-color: var(--activeTab);
 }
+
 :global .select__option--is-selected {
-  background-color: var(--activeTab);
+    background-color: var(--activeTab);
 }
+
 :global .select__indicator-separator {
-  width: 1px !important;
-  webkit-align-self: stretch !important;
-  -ms-flex-item-align: stretch !important;
-  background: hsl(0, 0%, 80%);
-  border: none !important;
-  height: auto !important;
+    width: 1px !important;
+    webkit-align-self: stretch !important;
+    -ms-flex-item-align: stretch !important;
+    background: hsl(0, 0%, 80%);
+    border: none !important;
+    height: auto !important;
 }
+
 :global .select__menu {
-  background-color: var(--cardBody) !important;
+    background-color: var(--cardBody) !important;
 }
+
 :global .select__single-value {
-  color: var(--textColor) !important;
+    color: var(--textColor) !important;
 }
+
 :global .select__value-container {
-  justify-content: center;
+    justify-content: center;
 }

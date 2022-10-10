@@ -1,12 +1,14 @@
 .container {
   width: 5%;
   height: 100vh;
-  /*background-color: #f2f2f2;*/
   font-size: 2vw;
-  /*padding: 3vh 0;*/
   position: fixed;
   z-index: 6;
   overflow-x: hidden;
+  background-color: var(--menu);
+  -webkit-transition: background-color 0.4s;
+  -o-transition: background-color 0.4s;
+  transition: background-color 0.4s;
 }
 .header{
   height: 10vh;

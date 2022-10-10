@@ -17,26 +17,26 @@ const WalletHeader = () => {
 
     return (
         <>
-            <div className={`col-25`} style={{backgroundColor: "var(--blue)"}}>
-                <h2 style={{color: "var(--orange)"}}>{t("currency." + id)}</h2>
-                <span style={{color: "var(--orange)"}}>{id}</span>
+            <div className={`col-25`}>
+                <h2 className={`text-orange`}>{t("currency." + id)}</h2>
+                <span className={`text-orange`}>{id}</span>
             </div>
             <div className={`col-35 column ai-center`}>
                 <span>{t("header.free")}</span>
                 <span>{new BN(userAccount?.wallets[id]?.free || 0).toFormat()}
-                    <span className={`font-size-sm text-color-gray`}> ( {new BN(allEstimateValue?.free || 0).toFormat()} {t("currency.IRT")} )</span>
+                    <span className={`fs-0-7 text-gray`}> ( {new BN(allEstimateValue?.free || 0).toFormat()} {t("currency.IRT")} )</span>
                 </span>
             </div>
             <div className={`col-35 column ai-center ${classes.border}`}>
                 <span>{t("header.locked")}</span>
                 <span>{new BN(userAccount?.wallets[id]?.locked || 0).toFormat()}
-                    <span className={`font-size-sm text-color-gray`}> ( {new BN(allEstimateValue?.locked || 0).toFormat()} {t("currency.IRT")} )</span>
+                    <span className={`fs-0-7 text-gray`}> ( {new BN(allEstimateValue?.locked || 0).toFormat()} {t("currency.IRT")} )</span>
                 </span>
             </div>
             <div className={`col-35 column ai-center`}>
                 <span>{t("header.inWithdrawalProcess")}</span>
                 <span>{new BN(userAccount?.wallets[id]?.withdraw || 0).toFormat()}
-                    <span className={`font-size-sm text-color-gray`}> ( {new BN(allEstimateValue?.withdrawing || 0).toFormat()} {t("currency.IRT")} )</span>
+                    <span className={`fs-0-7 text-gray`}> ( {new BN(allEstimateValue?.withdrawing || 0).toFormat()} {t("currency.IRT")} )</span>
                 </span>
             </div>
         </>

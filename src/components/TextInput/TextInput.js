@@ -44,7 +44,7 @@ const TextInput = (props) => {
             data-effect="float"
             data-tip={props.hint}>
             <Icon
-                iconName={`${classes.iconInfo} icon-white font-size-sm flex`}
+                iconName={`${classes.iconInfo} text-white fs-0-7 flex`}
                 customClass="hint-icon"
             />
             <div className="column pt-05">

@@ -74,7 +74,7 @@ const RegisterForm = () => {
                     }}
                 />
             </span>
-            <span className={`font-size-sm-plus border-top-dotted pt-1 mt-1`}><Trans
+            <span className={`fs-0-8 border-top-dotted pt-1 mt-1`}><Trans
                 i18nKey="login.registerFinishedSpamMail"
                 values={{email: window.env.REACT_APP_SYSTEM_EMAIL_ADDRESS,}}
             /></span>
@@ -188,7 +188,7 @@ const RegisterForm = () => {
 
     return (
         <form onSubmit={(e) => submit(e)} className={`column jc-between ${classes.form}`}>
-            <div className={`container column jc-center ai-center ${classes.formBody} py-2`}>
+            <div className={`width-100 column jc-center ai-center ${classes.formBody} py-2`}>
                 <TextInput
                     lead={t('firstName')}
                     data-name="firstName"
@@ -245,7 +245,7 @@ const RegisterForm = () => {
                     lead={LeadCaptchaHandler()}
                     after={<span data-html={true} data-place="left" data-effect="float"
                                  data-tip={`<span class="column jc-between col-100">${t("login.refreshCaptcha")}</span>`}><Icon
-                        iconName="icon-arrows-cw flex font-size-md"
+                        iconName="icon-arrows-cw flex fs-01"
                         onClick={captchaReq}
                         customClass={`hover-text cursor-pointer`}
                     /></span>}
@@ -260,7 +260,7 @@ const RegisterForm = () => {
                     maxLength="5"
                 />
             </div>
-            <div className={`container flex jc-center ai-center ${classes.formFooter}`}>
+            <div className={`width-100 flex jc-center ai-center ${classes.formFooter}`}>
                 <Button
                     type="submit"
                     buttonClass={`${classes.thisButton} cursor-pointer`}

@@ -24,7 +24,7 @@ const AllMarketInfTable = ({data}) => {
     }
 
     let head = (
-        <div className="row text-color-gray px-2 py-2" style={{backgroundColor:"var(--tableHeader)"}}>
+        <div className="row text-gray px-2 py-2" style={{backgroundColor:"var(--tableHeader)"}}>
             <span className="width-15 flex jc-start ai-center">{t("MarketInfo.name")}</span>
             <span className="width-11 flex jc-start ai-center">{t("MarketInfo.lastPrice")}</span>
             <span className="width-9 flex jc-start ai-center">{t("MarketInfo.priceChange")}</span>
@@ -43,11 +43,11 @@ const AllMarketInfTable = ({data}) => {
         <>
             {data.map((tr, index) => {
                 return (
-                    <div className={`${classes.row} row rounded border-bottom px-2 py-2`} key={index}>
+                    <div className={`${classes.row} row rounded-5 border-bottom px-2 py-2`} key={index}>
                          <span className="width-15 row jc-start ai-center">
                              <img src={images[tr?.pairInfo?.baseAsset]} alt={tr?.pairInfo?.baseAsset}
                                   title={tr?.pairInfo?.baseAsset} className={`img-md-plus ml-05`}/>
-                                 <span className={`font-size-md mr-05`}>{t("currency." + tr?.pairInfo?.baseAsset)}</span>
+                                 <span className={`fs-01 mr-05`}>{t("currency." + tr?.pairInfo?.baseAsset)}</span>
                          </span>
                         <span className={`width-11 flex jc-start ai-center ${tr.priceChange > 0 ? "text-green" : "text-red"}`}>{new BN(tr.lastPrice).toFormat()}</span>
 
@@ -69,7 +69,7 @@ const AllMarketInfTable = ({data}) => {
                                 alt={""}
                                 title={""}
                             />
-                            <span className={`font-size-sm-mini position-absolute`} style={{left:"45%"}}>{t("comingSoon")}</span>
+                            <span className={`fs-0-6 position-absolute`} style={{left:"45%"}}>{t("comingSoon")}</span>
                         </span>
 
                         <span className="width-8 flex jc-end ai-center">

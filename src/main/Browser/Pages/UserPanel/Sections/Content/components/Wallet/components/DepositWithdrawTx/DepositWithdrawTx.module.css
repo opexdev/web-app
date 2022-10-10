@@ -46,10 +46,10 @@
   margin: 0 1vw;
 }
 .button.submit {
-  background-color: var(--bgGreen);
+  background-color: var(--darkGreen);
 }
 .button.reset {
-  background-color: var(--bgRed);
+  background-color: var(--darkRed);
 }
 .button.return {
   background-color: var(--orange);
@@ -60,10 +60,10 @@
 }
 
 .thisButton.pay {
-  background-color: var(--bgGreen);
+  background-color: var(--darkGreen);
 }
 .thisButton.cancel {
-  background-color: var(--bgRed);
+  background-color: var(--darkRed);
 }
 
 .filterBox {

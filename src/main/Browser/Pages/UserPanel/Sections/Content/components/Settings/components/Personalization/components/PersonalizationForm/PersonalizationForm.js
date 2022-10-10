@@ -51,7 +51,7 @@ const PersonalizationForm = () => {
     return (
         <div className="container py-2">
             <div
-                className={` card-background card-border column ${classes.container}`}>
+                className={` card-bg card-border column ${classes.container}`}>
                 <div
                     className={`column border-bottom jc-center card-header-bg  ${classes.header}`}>
                     <div className="row jc-start ">

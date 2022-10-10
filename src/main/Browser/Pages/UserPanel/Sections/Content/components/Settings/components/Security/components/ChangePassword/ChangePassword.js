@@ -117,7 +117,7 @@ const ChangePassword = () => {
     }
 
     return (
-        <div className={`container card-background card-border column ${classes.container}`}>
+        <div className={`width-100 card-bg card-border column ${classes.container}`}>
             <div className={`column border-bottom jc-center card-header-bg  ${classes.header}`}>
                 <div className="row jc-start ">
                     <h3>{t("ChangePassword.title")}</h3>
@@ -133,7 +133,7 @@ const ChangePassword = () => {
                                            lead={t("ChangePassword.currentPassword")}
                                            after={
                                                <Icon
-                                                   iconName={`${isInputVisible.currentPassword ? ' icon-eye-2' : 'icon-eye-off'} font-size-md-01 flex`}
+                                                   iconName={`${isInputVisible.currentPassword ? ' icon-eye-2' : 'icon-eye-off'} fs-02 flex`}
                                                    onClick={() => setIsInputVisible({
                                                        ...isInputVisible,
                                                        currentPassword: !isInputVisible.currentPassword
@@ -155,7 +155,7 @@ const ChangePassword = () => {
                                         lead={t("ChangePassword.newPassword")}
                                         after={
                                             <Icon
-                                                iconName={`${isInputVisible.newPassword ? ' icon-eye-2' : 'icon-eye-off'} font-size-md-01 flex`}
+                                                iconName={`${isInputVisible.newPassword ? ' icon-eye-2' : 'icon-eye-off'} fs-02 flex`}
                                                 onClick={() => setIsInputVisible({
                                                     ...isInputVisible,
                                                     newPassword: !isInputVisible.newPassword
@@ -177,7 +177,7 @@ const ChangePassword = () => {
                                     lead={t("ChangePassword.confirmation")}
                                     after={
                                         <Icon
-                                            iconName={`${isInputVisible.confirmation ? ' icon-eye-2' : 'icon-eye-off'} font-size-md-01 flex`}
+                                            iconName={`${isInputVisible.confirmation ? ' icon-eye-2' : 'icon-eye-off'} fs-02 flex`}
                                             onClick={() => setIsInputVisible({
                                                 ...isInputVisible,
                                                 confirmation: !isInputVisible.confirmation

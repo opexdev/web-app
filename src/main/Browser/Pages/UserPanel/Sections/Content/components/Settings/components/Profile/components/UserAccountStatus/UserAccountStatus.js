@@ -24,7 +24,7 @@ const UserAccountStatus = () => {
 
     return (
         <div
-            className={`container card-background card-border column ${classes.container}`}>
+            className={`width-100 card-bg card-border column ${classes.container}`}>
             <div
                 className={`column border-bottom jc-center card-header-bg  ${classes.header}`}>
                 <div className="row jc-between ai-center">
@@ -35,7 +35,7 @@ const UserAccountStatus = () => {
                         data-effect="float"
                         data-tip={`<span class="column jc-between col-100">...info</span>`}
                     >
-            <Icon iconName="icon-help-circled-2 font-size-md-plus flex" customClass={classes.iconCustomClasss}
+            <Icon iconName="icon-help-circled-2 fs-04 flex" customClass={classes.iconCustomClasss}
             />
           </span>
 
@@ -44,7 +44,7 @@ const UserAccountStatus = () => {
                     <span className="font-weight-bold">{t("UserAccountStatus.userAccountLevel1")}</span>
                 </div>
             </div>
-            <div className={`column container ${classes.content}`}>
+            <div className={`column width-100 ${classes.content}`}>
                 <ScrollBar>
                     <table className="text-center" cellSpacing="0" cellPadding="0">
                         <thead>

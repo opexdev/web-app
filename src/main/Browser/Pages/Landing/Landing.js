@@ -7,7 +7,7 @@ import LandingContent from "./Sections/LandingContent/LandingContent";
 const Landing = () => {
 
     return (
-        <div className={`container ${classes.container} move-image column text-color`} style={{backgroundImage: `url("${images.spaceStar}")`}}>
+        <div className={`${classes.container} width-100 move-image column text-color`} style={{backgroundImage: `url("${images.spaceStar}")`}}>
             <LandingHeader/>
             <LandingContent/>
         </div>

@@ -33,7 +33,7 @@ const SendToAdminStep = ({prevStep}) => {
             return <div className={`column jc-center ai-center`}>
                 <img className={`mb-2 floating`} src={images.reject} alt="kyc-rejected"/>
                 <span className={`text-red mt-2`}>{t("SendToAdminStep.rejected")}</span>
-                <span className={`font-size-sm-plus mt-1`}>{t("SendToAdminStep.errorMessage")}: {KYCReason === undefined ? t("SendToAdminStep.noData") : KYCReason}</span>
+                <span className={`fs-0-8 mt-1`}>{t("SendToAdminStep.errorMessage")}: {KYCReason === undefined ? t("SendToAdminStep.noData") : KYCReason}</span>
 
             </div>
         }
@@ -41,13 +41,13 @@ const SendToAdminStep = ({prevStep}) => {
             return <div className={`column jc-center ai-center`}>
                 <img className={`mb-2 floating`} src={images.block} alt="kyc-rejected"/>
                 <span className={`text-red mt-2`}>{t("SendToAdminStep.blocked")}</span>
-                <span className={`font-size-sm-plus mt-1`}>{t("SendToAdminStep.errorMessage")}: {KYCReason}</span>
+                <span className={`fs-0-8 mt-1`}>{t("SendToAdminStep.errorMessage")}: {KYCReason}</span>
             </div>
         }
     }
 
     return (
-        <div className={`container card-background card-border column ${classes.container}`}>
+        <div className={`container card-bg card-border column ${classes.container}`}>
             <div className={`column border-bottom jc-center card-header-bg px-1 py-1 ${classes.header}`}>
                 <div className="row jc-start ">
                     <h3>{t("SendToAdminStep.title")}</h3>

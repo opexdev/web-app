@@ -20,7 +20,7 @@
 }
 .thisButton {
     width: 100%;
-    background-color: var(--textGreen);
+    background-color: var(--green);
     color: #000 !important;
 
 }

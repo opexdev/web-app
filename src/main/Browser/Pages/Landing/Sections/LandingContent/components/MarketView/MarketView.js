@@ -47,13 +47,13 @@ const MarketView = () => {
 
 
     return (
-        <div className={`${classes.container} card-background card-border`}>
+        <div className={`${classes.container} card-bg card-border`}>
             <div className={`column border-bottom jc-center card-header-bg ${classes.header}`}>
                 <div className="row jc-center ai-center ">
                     <h3>{t("MarketView.title")}</h3>
                 </div>
             </div>
-            <div className={`column container jc-center ${classes.content} px-2 py-1`}>
+            <div className={`column width-100 jc-center ${classes.content} px-2 py-1`}>
                 {content()}
             </div>
         </div>

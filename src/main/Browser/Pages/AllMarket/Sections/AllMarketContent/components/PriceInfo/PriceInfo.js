@@ -40,7 +40,7 @@ const PriceInfo = () => {
 
     return (
         <div className={`${classes.container} row jc-between ai-center col-100`}>
-            <div className={`card-background card-border height-100 col-48`}>
+            <div className={`card-bg card-border height-100 col-48`}>
                 <div className={`${classes.header} card-header-bg flex jc-center ai-center`}>
                     <span className={`text-orange`}>{t("MarketView.mostIncreased")}</span>
                 </div>
@@ -48,7 +48,7 @@ const PriceInfo = () => {
                     {mostIncreasedPriceContent()}
                 </div>
             </div>
-            <div className={`card-background card-border height-100 col-48`}>
+            <div className={`card-bg card-border height-100 col-48`}>
 
                 <div className={`${classes.header} card-header-bg flex jc-center ai-center`}>
                     <span className={`text-orange`}>{t("MarketView.mostDecreased")}</span>

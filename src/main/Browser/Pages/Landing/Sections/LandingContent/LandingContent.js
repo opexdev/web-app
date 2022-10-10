@@ -15,7 +15,7 @@ const LandingContent = () => {
     const isDark = useSelector((state) => state.global.isDark)
 
     return (
-        <div className={`${classes.container} container column`}>
+        <div className={`${classes.container} width-100 column`}>
             <ScrollBar>
                 <div className={`row jc-between ai-center width-90 m-auto`} style={{height:"70vh"}}>
                     <div className={`width-30 column jc-between ai-start`} style={{height:"55vh"}}>

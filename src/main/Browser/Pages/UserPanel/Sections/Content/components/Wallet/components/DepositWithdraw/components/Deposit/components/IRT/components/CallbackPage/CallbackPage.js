@@ -47,7 +47,7 @@ const CallbackPage = () => {
                             <div className={`column jc-center ai-center`}>
                                 <span>{status ? t("CallbackPage.ok") : t("CallbackPage.failed")}</span>
                                 {errorCode !== null && <span
-                                    className={`text-color font-size-sm`}>{t("CallbackPage.errorMessage")} : <span>{t("IPGErrorCode." + errorCode)}</span></span>}
+                                    className={`text-color fs-0-7`}>{t("CallbackPage.errorMessage")} : <span>{t("IPGErrorCode." + errorCode)}</span></span>}
                             </div>
                         </>
                     }
