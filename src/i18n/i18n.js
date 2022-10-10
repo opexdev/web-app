@@ -9,8 +9,8 @@ i18n
     .use(Backend)
     .use(initReactI18next)
     .init({
-        preload: [process.env.REACT_APP_PRELOAD_LANG],
-        fallbackLng: process.env.REACT_APP_PRELOAD_LANG,
+        preload: [window.env.REACT_APP_PRELOAD_LANG],
+        fallbackLng: window.env.REACT_APP_PRELOAD_LANG,
         debug: process.env.NODE_ENV === "development",
         detection: {
             order: ["localStorage"],

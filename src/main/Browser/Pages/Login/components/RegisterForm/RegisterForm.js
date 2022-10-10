@@ -74,7 +74,10 @@ const RegisterForm = () => {
                     }}
                 />
             </span>
-            <span className={`font-size-sm-plus border-top-dotted pt-1 mt-1`}>{t('login.registerFinishedSpamMail')}</span>
+            <span className={`font-size-sm-plus border-top-dotted pt-1 mt-1`}><Trans
+                i18nKey="login.registerFinishedSpamMail"
+                values={{email: window.env.REACT_APP_SYSTEM_EMAIL_ADDRESS,}}
+            /></span>
         </div>
     }
 

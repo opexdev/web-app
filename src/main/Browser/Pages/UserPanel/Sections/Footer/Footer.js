@@ -65,7 +65,7 @@ const Footer = () => {
                     <div className={`row ai-center jc-between`}>
                         <div className={`row ai-center ${classes.languages}`}>
                             {
-                                process.env.REACT_APP_MULTI_LANGS_SUPPORT === 'TRUE' && <>
+                                window.env.REACT_APP_MULTI_LANGS_SUPPORT === 'TRUE' && <>
                                 <span className="cursor-pointer pl-1"
                                       onClick={() => i18n.changeLanguage("fa")}>{t("Languages.Persian")}</span>
                                     <span className="cursor-pointer pr-1"

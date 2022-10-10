@@ -25,6 +25,11 @@ const rootReducer = combineReducers({
     auth: authReducer,
 });
 
+//add custom title & meta
+const meta = document.getElementsByTagName('meta')
+document.title = window.env.REACT_APP_TITLE;
+meta.description.content = window.env.REACT_APP_DESCRIPTION_CONTENT
+
 /**
  * Base URL of the website.
  *

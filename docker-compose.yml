@@ -4,9 +4,17 @@ services:
     image: ghcr.io/opexdev/web-app
     environment:
       - ENV=$WEB_APP_ENV
+      - APP_TITLE=$WEB_APP_TITLE
+      - DESCRIPTION=$WEB_APP_DESCRIPTION
       - API_BASE_URL=$API_BASE_URL
       - CLIENT_ID=$CLIENT_ID
+      - LOGIN_CLIENT_ID=$CLIENT_LOGIN_ID
       - CLIENT_SECRET=$CLIENT_SECRET
+      - MULTI_LANGS_SUPPORT=$MULTI_LANGS_SUPPORT
+      - PRELOAD_LANG=$PRELOAD_LANG
+      - LANGS_SUPPORT=$LANGS_SUPPORT
+      - DEFAULT_THEME=$DEFAULT_THEME
+      - REGISTER_EMAIL_ADDRESS=$REGISTER_EMAIL_ADDRESS
     networks:
       - default
     deploy:

@@ -482,7 +482,7 @@
     "registerFinished": "Registration completed successfully!",
     "forgetPasswordFinished": "Password recovery request sent successfully!",
     "registerFinishedGoToMail": "Please go to {{email}} inbox to complete the registration.",
-    "registerFinishedSpamMail": "Email sent from for.demo.purpose.only@opex.dev may be in your spam folder!",
+    "registerFinishedSpamMail": "Email sent from {{email}} may be in your spam folder!",
     "register": "Register",
     "wrongEmail": "The entered email is invalid!",
     "emptyEmail": "Enter your email.",
@@ -500,6 +500,7 @@
     "minCaptcha": "Captcha must be 5 characters!",
     "emptyCaptcha": "Captcha required!",
     "forgetPassServerError": "Error recovering password, try again!",
+    "UserAlreadyExists": "User with this email is already registered",
     "forgetPassEmailForgetError": "Email format is incorrect!"
   },
   "userPage": {
