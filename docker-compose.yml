@@ -2,6 +2,8 @@ version: "3.8"
 services:
   web-app:
     image: ghcr.io/opexdev/web-app
+    volumes:
+      - "./public/assets:/var/www/opex/html/assets"
     environment:
       - ENV=$WEB_APP_ENV
       - APP_TITLE=$WEB_APP_TITLE
