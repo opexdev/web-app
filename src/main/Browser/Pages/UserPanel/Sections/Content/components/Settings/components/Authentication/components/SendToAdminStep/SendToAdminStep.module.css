@@ -14,7 +14,7 @@
   background-color: var(--orange);
 }
 .thisButton.submit{
-  background-color: var(--bgGreen);
+  background-color: var(--darkGreen);
 }
 .content img{
   width: 8vw;

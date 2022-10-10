@@ -1,7 +1,7 @@
 .container {
   width: 22%;
   height: 100vh;
-  background-color: #fcfeff;
+  /*background-color: #fcfeff;*/
   right: 5%;
   position: fixed;
 }

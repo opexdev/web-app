@@ -1,7 +1,7 @@
 .inputGroup {
     display: flex;
     flex-direction: column;
-    border: 0.3vh solid var(--CardBorder);
+    border: 0.3vh solid var(--cardBorder);
     border-radius: 7px;
     height: 10vh;
     width: 100%;
@@ -84,7 +84,7 @@
     width: 1.1vw;
     height: 1.1vw;
     border-radius: 50vw;
-    background-color: var(--bgRed);
+    background-color: var(--darkRed);
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -98,5 +98,5 @@
 
 .alert {
     font-size: 0.7vw;
-    color: var(--textRed);
+    color: var(--red);
 }

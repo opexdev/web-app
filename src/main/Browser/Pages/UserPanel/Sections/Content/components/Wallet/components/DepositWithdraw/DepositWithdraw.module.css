@@ -57,15 +57,15 @@
   color: #000;
 }
 .thisButton.transfer{
-  background-color: var(--bgRed);
+  background-color: var(--darkRed);
 }
 
 .pay{
-  background-color: var(--bgGreen);
+  background-color: var(--darkGreen);
 
 }
 .cancel{
-  background-color: var(--bgRed);
+  background-color: var(--darkRed);
 }
 .disable:disabled,.button[disabled] {
   border: 0.3vh solid var(--cardHeader);

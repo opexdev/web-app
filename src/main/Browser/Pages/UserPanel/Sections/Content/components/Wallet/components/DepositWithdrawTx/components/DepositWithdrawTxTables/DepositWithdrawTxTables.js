@@ -56,13 +56,13 @@ const DepositWithdrawTxTables = ({txs, id}) => {
                     <td className={`text-color`}>{txStatus(tr.status)}</td>
                     {openItem === index ? (
                         <td onClick={() => setOpenItem(null)}>
-                            <Icon iconName="icon-up-open icon-blue font-size-sm cursor-pointer"
+                            <Icon iconName="icon-up-open text-blue fs-0-7 cursor-pointer"
                                   customClass={classes.iconBG}
                             />
                         </td>
                     ) : (
                         <td onClick={() => setOpenItem(index)}>
-                            <Icon iconName="icon-down-open icon-blue font-size-sm cursor-pointer"
+                            <Icon iconName="icon-down-open text-blue fs-0-7 cursor-pointer"
                                   customClass={classes.iconBG}
                             />
                         </td>
@@ -76,7 +76,7 @@ const DepositWithdrawTxTables = ({txs, id}) => {
                                 <span>{tr.address}</span>
                             </p>
                             <p className="col-03 row jc-end">
-                                <Icon iconName="icon-copy font-size-md" customClass={`hover-text cursor-pointer`}
+                                <Icon iconName="icon-copy fs-01" customClass={`hover-text cursor-pointer`}
                                       onClick={() => copyAddressToClipboard(tr.address)}/>
                             </p>
                         </div>
@@ -87,7 +87,7 @@ const DepositWithdrawTxTables = ({txs, id}) => {
                             </p>
                             <p className="col-03 row jc-end">
                                 <Icon
-                                    iconName="icon-copy font-size-md"
+                                    iconName="icon-copy fs-01"
                                     customClass={`hover-text cursor-pointer`}
                                     onClick={() => copyAddressToClipboard(tr.txId)}
                                 />

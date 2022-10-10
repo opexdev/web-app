@@ -17,7 +17,7 @@ const Wallet = () => {
                     <DepositWithdraw/>
                 </div>
                 <div className="row">
-                    <div className={`container card-background card-border column ${classes.container} my-2`}>
+                    <div className={`width-100 card-bg card-border column ${classes.container} my-2`}>
                         <div className="flex jc-between card-header-bg py-2 px-1">
                             <h3>{t("DepositWithdrawTx.title")}</h3>
                         </div>

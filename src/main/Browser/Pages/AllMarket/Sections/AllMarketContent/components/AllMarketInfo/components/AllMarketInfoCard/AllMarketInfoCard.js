@@ -22,11 +22,11 @@ const AllMarketInfoCard = ({data}) => {
     const backgroundBar = (percent) => {
         if (percent > 0) {
             return {
-                background: `linear-gradient(#02002400 0%, #35293326 50%, #27b35a1c 70%, #31cc6a4d 100%)`,
+                background: `linear-gradient(#ffffff00 0%, #ffffff00 50%,  var(--greenAlphaGradient) 100%)`,
             };
         }
         return {
-            background: `linear-gradient(#02002400 0%,#35293326 50%,#dc150717 70%, #e8201236 100%)`,
+            background: `linear-gradient(#ffffff00 0%,#ffffff00 50%, var(--redAlphaGradient) 100%)`,
         };
     }
 
@@ -50,7 +50,7 @@ const AllMarketInfoCard = ({data}) => {
 
             {data.map((tr, index) => {
                 return (
-                    <div className={`${classes.item} card-border card-background column cursor-pointer`} style={backgroundBar(tr.priceChange.toString())}
+                    <div key={index} className={`${classes.item} card-border card-bg column cursor-pointer`} style={backgroundBar(tr.priceChange.toString())}
                          onMouseEnter={()=>MouseEnterEventHandler(index)} onMouseLeave={MouseLeaveEventHandler}>
 
                         <div className={`column jc-between ai-center pt-2 pb-3`} style={{height:"80%"}}>
@@ -60,30 +60,30 @@ const AllMarketInfoCard = ({data}) => {
                                     <img  src={images[tr?.pairInfo?.baseAsset]} alt={tr?.pairInfo?.baseAsset}
                                           title={tr?.pairInfo?.baseAsset} className={`img-md-plus ml-05`}/>
 
-                                    <span className={`font-size-md`}>{t("currency." + tr?.pairInfo?.baseAsset)}</span>
+                                    <span className={`fs-01`}>{t("currency." + tr?.pairInfo?.baseAsset)}</span>
                                 </div>
 
-                                <div className={`flex jc-end ai-center font-size-sm-mini`}>
+                                <div className={`flex jc-end ai-center fs-0-6`}>
                                         <span className={`${tr.priceChange > 0 ? "text-green" : "text-red"} direction-ltr mr-05`}>{new BN(tr.priceChange).toFormat()} %</span>
 
                                 </div>
                             </div>
 
-                            <div className={`column px-1 width-100 font-size-sm`}>
+                            <div className={`column px-1 width-100 fs-0-7`}>
                                 <div className={`row jc-between ai-center`}>
                                     <span className={``}>{t("MarketInfo.lastPrice")}:</span>
-                                    <span className={`${tr.priceChange > 0 ? "text-green" : "text-red"} font-size-md`}>{new BN(tr.lastPrice).toFormat()}</span>
+                                    <span className={`${tr.priceChange > 0 ? "text-green" : "text-red"} fs-01`}>{new BN(tr.lastPrice).toFormat()}</span>
                                 </div>
                                 <div className={`row jc-between ai-center`}>
-                                    <span className={`text-color-gray`}>{t("MarketInfo.lowPrice")}:</span>
+                                    <span className={`text-gray`}>{t("MarketInfo.lowPrice")}:</span>
                                     <span>{new BN(tr.lowPrice).toFormat()}</span>
                                 </div>
                                 <div className={`row jc-between ai-center`}>
-                                    <span className={`text-color-gray`}>{t("MarketInfo.highPrice")}:</span>
+                                    <span className={`text-gray`}>{t("MarketInfo.highPrice")}:</span>
                                     <span>{new BN(tr.highPrice).toFormat()}</span>
                                 </div>
                                 <div className={`row jc-between ai-center`}>
-                                    <span className={`text-color-gray`}>{t("MarketInfo.volume")}:</span>
+                                    <span className={`text-gray`}>{t("MarketInfo.volume")}:</span>
                                     <span>{new BN(tr.volume).toFormat()}</span>
                                 </div>
                             </div>
@@ -114,7 +114,7 @@ const AllMarketInfoCard = ({data}) => {
                                         alt={""}
                                         title={""}
                                     />
-                                    <span className={`font-size-sm-mini position-absolute`} style={{left:"35%"}}>{t("comingSoon")}</span>
+                                    <span className={`fs-0-6 position-absolute`} style={{left:"35%"}}>{t("comingSoon")}</span>
                                 </div>
                             }
                         </div>

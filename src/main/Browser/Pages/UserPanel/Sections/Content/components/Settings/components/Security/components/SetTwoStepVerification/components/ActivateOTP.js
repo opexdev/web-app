@@ -62,7 +62,7 @@ const ActivateOTP = ({refetchOtp}) => {
     if (loading) return <Loading/>
 
     if (reqOTP?.uri) {
-        return <div className={`row container jc-between ai-center height-100`}>
+        return <div className={`row width-100 jc-between ai-center height-100`}>
             <div className={`col-70 column jc-center`}>
                 <span className={`mb-2`}>{t("SetTwoStepVerification.QRdescription")}</span>
                 <form onSubmit={submitActivation} className={`row ai-start  mt-2`}>
@@ -91,16 +91,16 @@ const ActivateOTP = ({refetchOtp}) => {
         </div>
     }
 
-    return <div className={`column container jc-around ai-center height-100`}>
+    return <div className={`column width-100 jc-around ai-center height-100`}>
         <span>{t("SetTwoStepVerification.description")}</span>
-        <div className={` container column jc-center ai-center`}>
+        <div className={`width-100 column jc-center ai-center`}>
             <Button
                 buttonClass={`${classes.thisButton} ${classes.withdrawal} ${isLoading ? "cursor-not-allowed" : "cursor-pointer"}`}
                 buttonTitle={isLoading ? <img className={`${classes.thisLoading}`} src={images.linearLoadingBgOrange}
                                               alt="linearLoading"/> : t("SetTwoStepVerification.active")}
                 onClick={sendReqActivateOTP}
             />
-            <span className={`font-size-sm text-red mt-1`}>
+            <span className={`fs-0-7 text-red mt-1`}>
                 {error ? t("SetTwoStepVerification.serverError") : ""}
             </span>
         </div>

@@ -10,12 +10,12 @@ const MarketTitle = () => {
 
     const {t} = useTranslation();
 
-    const buttonTitle = <Icon iconName="icon-op-02 flex font-size-md-plus" customClass={`flex jc-center ai-center py-1`}/>
+    const buttonTitle = <Icon iconName="icon-op-02 flex fs-04" customClass={`flex jc-center ai-center py-1`}/>
 
     return (
-        <div className={`${classes.container} column jc-between card-background card-border px-2 py-3`}>
-            <p className={`font-size-md`}>
-                <span className={`text-orange font-size-md-01`}>{t("title")}</span> {t("MarketTitle.content")}
+        <div className={`${classes.container} column jc-between card-bg card-border px-2 py-3`}>
+            <p className={`fs-01`}>
+                <span className={`text-orange fs-02`}>{t("title")}</span> {t("MarketTitle.content")}
             </p>
             <div className={`column`}>
                 <div className={`row jc-start ai-center mb-1`}>

@@ -62,14 +62,14 @@ const Trades = () => {
                             {openOrder === index ? (
                                 <td onClick={() => setOpenOrder(null)}>
                                     <Icon
-                                        iconName="icon-up-open icon-blue font-size-sm"
+                                        iconName="icon-up-open text-blue fs-0-7"
                                         customClass={`${classes.iconBG} cursor-pointer`}
                                     />
                                 </td>
                             ) : (
                                 <td onClick={() => setOpenOrder(index)}>
                                     <Icon
-                                        iconName="icon-down-open icon-blue font-size-sm"
+                                        iconName="icon-down-open text-blue fs-0-7"
                                         customClass={`${classes.iconBG} cursor-pointer`}
                                     />
                                 </td>

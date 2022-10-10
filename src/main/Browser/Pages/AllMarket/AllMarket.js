@@ -7,7 +7,7 @@ import {images} from "../../../../assets/images";
 const AllMarket = () => {
 
     return (
-        <div className={`container ${classes.container} move-image column text-color`} style={{backgroundImage: `url("${images.spaceStar}")`}}>
+        <div className={`width-100 ${classes.container} move-image column text-color`} style={{backgroundImage: `url("${images.spaceStar}")`}}>
             <AllMarketHeader/>
             <AllMarketContent/>
         </div>

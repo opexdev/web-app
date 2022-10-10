@@ -19,7 +19,7 @@ const MainMenu = () => {
 
     return (
         <Fragment>
-            <div className={`column ai-center mainMenu-background ${classes.container}`}>
+            <div className={`column ai-center ${classes.container}`}>
                 <div className={`${classes.header} py-1`}>
                     <Link to={Routes.Landing} onClick={() => setShowMessages(false)}>
                         <span className="flex">
@@ -42,7 +42,7 @@ const MainMenu = () => {
                             data-tip={`<span class="column jc-between col-100">${t(
                                 "market.title",
                             )}</span>`}>
-                            <Icon iconName="icon-market font-size-lg"/>
+                            <Icon iconName="icon-market fs-21"/>
                         </NavLink>
                         <NavLink
                             to={Routes.Wallet}
@@ -56,7 +56,7 @@ const MainMenu = () => {
                             data-tip={`<span class="column jc-between col-100">${t(
                                 "wallet.title",
                             )}</span>`}>
-                            <Icon iconName="icon-safe font-size-lg"/>
+                            <Icon iconName="icon-safe fs-21"/>
                         </NavLink>
                         <NavLink
                             to={Routes.Technical}
@@ -71,7 +71,7 @@ const MainMenu = () => {
                          <span class="column jc-between col-100">${t(
                                 "technical.title",
                             )}</span>`}>
-                            <Icon iconName="icon-account font-size-lg"/>
+                            <Icon iconName="icon-account fs-21"/>
                         </NavLink>
                     </div>
                     <div className={`column jc-end ai-center ${classes.bottomSection}`}>
@@ -79,7 +79,7 @@ const MainMenu = () => {
                          className={`text-color ${classes.messages} 
                          ${showMessages ? classes.selected : ""}`}
                          onClick={() => setShowMessages((prevState) => !prevState)}
-                         data-html={true} data-place="left" data-effect="float" data-tip={`<span class="column jc-between col-100">${t("messages.title")}</span>`}><Icon iconName="icon-messages-dotted font-size-lg"/>
+                         data-html={true} data-place="left" data-effect="float" data-tip={`<span class="column jc-between col-100">${t("messages.title")}</span>`}><Icon iconName="icon-messages-dotted fs-21"/>
                      </span>
                         <NavLink
                             to={Routes.Security}
@@ -94,7 +94,7 @@ const MainMenu = () => {
                          <span class="column jc-between col-100">${t(
                                 "settings.title",
                             )}</span>`}>
-                            <Icon iconName="icon-settings font-size-lg"/>
+                            <Icon iconName="icon-settings fs-21"/>
                         </NavLink>
                     </div>
                 </div>

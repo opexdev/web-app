@@ -13,7 +13,7 @@ const SubMenu = () => {
     const {t} = useTranslation();
 
     return (
-        <div className={`card-background  ${classes.container}`}>
+        <div className={`card-bg text-color ${classes.container}`}>
             <Routes>
                 <Route path="/" element={<MarketSubMenu/>}/>
                 <Route element={<ProtectedRoute/>}>

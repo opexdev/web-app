@@ -16,8 +16,8 @@ const MostIncreasedPrice = ({mostIncreasedPrice}) => {
                   className={`img-md-plus`}/>
             <span>{t("currency." + mostIncreasedPrice?.pairInfo?.baseAsset)}</span>
             <div className={`${i18n.language !== "fa" ? 'row-reverse' : 'row'} jc-center ai-center width-100 text-green`}>
-                <span className={`${i18n.language !== "fa" ? 'mr-025' : 'ml-025'} font-size-sm-mini`}>{mostIncreasedPrice?.pairInfo?.quoteAsset}</span>
-                <span className={`${i18n.language !== "fa" ? 'mL-025' : 'mr-025'} font-size-md`}>{new BN(mostIncreasedPrice?.lastPrice).toFormat()}</span>
+                <span className={`${i18n.language !== "fa" ? 'mr-025' : 'ml-025'} fs-0-6`}>{mostIncreasedPrice?.pairInfo?.quoteAsset}</span>
+                <span className={`${i18n.language !== "fa" ? 'mL-025' : 'mr-025'} fs-01`}>{new BN(mostIncreasedPrice?.lastPrice).toFormat()}</span>
             </div>
             <div className={`row jc-center ai-center width-100 text-green`}>
                 <span>% {new BN(mostIncreasedPrice?.priceChangePercent).toFormat(2)}+</span>

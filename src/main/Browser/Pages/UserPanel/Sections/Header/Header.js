@@ -39,7 +39,7 @@ const Header = () => {
     }
 
     return (
-        <div className={`container row jc-between ai-center px-1 py-1 ${classes.container}`}>
+        <div className={`width-100 row jc-between ai-center px-1 py-1 ${classes.container}`}>
             <div className={`row jc-between ai-center ${classes.content}`}>
                 <Routes>
                     <Route path="/" element={<MarketHeader/>}/>

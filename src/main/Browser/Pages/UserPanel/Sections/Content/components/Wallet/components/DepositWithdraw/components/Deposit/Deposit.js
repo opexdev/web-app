@@ -150,7 +150,7 @@ const Deposit = () => {
                 <TextInput
                     after={
                         <Icon
-                            iconName="icon-copy font-size-md-01"
+                            iconName="icon-copy fs-02"
                             onClick={() => copyToClipboard()}
                             customClass={`hover-text cursor-pointer`}
                         />

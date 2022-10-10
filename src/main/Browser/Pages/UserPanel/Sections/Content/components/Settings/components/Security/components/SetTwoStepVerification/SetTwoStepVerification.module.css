@@ -19,13 +19,13 @@
 
 .thisButton {
   width: 10%;
-  background-color: var(--bgGreen);
+  background-color: var(--darkGreen);
 }
 .submit{
   width: 15%;
 }
 .disableOtp{
-  background-color: var(--bgRed);
+  background-color: var(--darkRed);
   width: 15%;
 }
 

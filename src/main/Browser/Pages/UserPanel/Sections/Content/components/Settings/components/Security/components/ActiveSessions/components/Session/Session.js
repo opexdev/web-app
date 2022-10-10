@@ -32,12 +32,12 @@ const Session = ({list, reloadSessionsList}) => {
     }
 
     return (
-        <div className={`container ${classes.striped}  py-1 px-1`}>
+        <div className={`width-100 ${classes.striped}  py-1 px-1`}>
             <div className={`column ai-end`}>
                 <div className={`row jc-between width-100`}>
                     <div className={`col-40 column jc-center ai-center`}>
                         <span>{moment(list?.lastAccess * 1000).format("HH:mm:ss , jYY/jMM/jDD")}</span>
-                        <span className={`cursor-pointer text-red font-size-sm`} onClick={expireSession}>
+                        <span className={`cursor-pointer text-red fs-0-7`} onClick={expireSession}>
                             {isLoading ?
                                 <img className={`${classes.thisLoading}`}
                                      src={images.linearLoadingBgOrange}
@@ -47,13 +47,13 @@ const Session = ({list, reloadSessionsList}) => {
                         </span>
                     </div>
                     <div className={`col-60 text-end`}>
-                        <div className={`row jc-end ai-center text-color-gray`}>
+                        <div className={`row jc-end ai-center text-gray`}>
                             <span className={`ml-05`}>{list?.ipAddress}</span>
-                            <Icon iconName="icon-globe font-size-md"/>
+                            <Icon iconName="icon-globe fs-01"/>
                         </div>
-                        <div className={`row jc-end ai-center text-color-gray`}>
+                        <div className={`row jc-end ai-center text-gray`}>
                             <span className={`ml-05`}>{list?.agent}</span>
-                            <Icon iconName="icon-info font-size-md"/>
+                            <Icon iconName="icon-info fs-01"/>
                         </div>
                     </div>
                 </div>

@@ -14,14 +14,14 @@
   background-color: var(--orange);
 }
 .thisButton.next{
-  background-color: var(--bgGreen);
+  background-color: var(--darkGreen);
 }
 
 .zoneBox {
   width: 22vw;
   padding: 2vh 1vw;
   border-radius: 10px;
-  border: 0.3vh dotted var(--CardBorder);
+  border: 0.3vh dotted var(--cardBorder);
 }
 .cancel {
   top: 0.8vh;

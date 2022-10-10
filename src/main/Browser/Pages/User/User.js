@@ -8,7 +8,7 @@ import {images} from "../../../../assets/images";
 
 const User = () => {
     return (
-        <div className={`container ${classes.container} move-image flex jc-center ai-center text-color`} style={{backgroundImage: `url("${images.spaceStar}")`}}>
+        <div className={`width-100 ${classes.container} move-image flex jc-center ai-center text-color`} style={{backgroundImage: `url("${images.spaceStar}")`}}>
             <Routes>
                 <Route path={RoutesName.UserVerifyRelative} element={<Verify/>}/>
                 <Route path={RoutesName.UserForgetPasswordRelative} element={<ForgetPassword/>}/>
