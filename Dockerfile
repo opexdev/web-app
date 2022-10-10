@@ -2,6 +2,7 @@ FROM node:lts-fermium AS build
 COPY . /web-app
 WORKDIR /web-app
 ENV NODE_ENV production
+RUN yarn cache clean
 RUN yarn install --immutable
 ARG GENERATE_SOURCEMAP='false'
 ENV GENERATE_SOURCEMAP $GENERATE_SOURCEMAP

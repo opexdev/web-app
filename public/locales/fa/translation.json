@@ -482,7 +482,7 @@
     "registerFinished": "ثبت نام با موفقیت انجام شد.",
     "forgetPasswordFinished": "درخواست بازیابی رمز عبور با موفقیت ارسال شد.",
     "registerFinishedGoToMail": "برای تکمیل ثبت نام به {{email}} مراجعه فرمایید.",
-    "registerFinishedSpamMail": "ایمیل دریافتی از آدرس for.demo.purpose.only@opex.dev ممکن است در بخش spam باشد.",
+    "registerFinishedSpamMail": "ایمیل دریافتی از آدرس {{email}} ممکن است در بخش spam باشد.",
     "register": "ثبت نام",
     "wrongEmail": "ایمیل وارد شده معتبر نیست.",
     "emptyEmail": "ایمیل را وارد کنید.",
@@ -500,6 +500,7 @@
     "minCaptcha": "Captcha باید ۵ کاراکتر باشد!",
     "emptyCaptcha": "وارد کردن Captcha الزامی است",
     "forgetPassServerError": "خطا در بازیابی رمز، دوباره تلاش کنید",
+    "UserAlreadyExists": "ایمل واردشده تکراری است",
     "forgetPassEmailForgetError": "فرمت ایمیل صحیح نیست."
   },
   "userPage": {
