@@ -18,7 +18,7 @@ i18n
             caches: ["localStorage"],
         },
         backend: {
-            loadPath: process.env.PUBLIC_URL+'/locales/{{lng}}/{{ns}}.json',
+            loadPath: process.env.PUBLIC_URL+'/assets/locales/{{lng}}/{{ns}}.json',
         },
         interpolation: {
             escapeValue: false,

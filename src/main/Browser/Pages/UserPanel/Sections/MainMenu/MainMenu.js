@@ -5,8 +5,8 @@ import ReactTooltip from "react-tooltip";
 import * as Routes from "../../../../Routes/routes";
 import {useTranslation} from "react-i18next";
 import MessagesSubMenu from "../SubMenu/components/MessagesSubMenu/MessagesSubMenu";
-import {images} from "../../../../../../assets/images";
 import Icon from "../../../../../../components/Icon/Icon";
+import {toAbsoluteUrl} from "../../../../../../utils/utils";
 
 
 const MainMenu = () => {
@@ -23,7 +23,7 @@ const MainMenu = () => {
                 <div className={`${classes.header} py-1`}>
                     <Link to={Routes.Landing} onClick={() => setShowMessages(false)}>
                         <span className="flex">
-                         <img className="img-md" src={images.opexLogoOnePlus} alt={t("title")} title={t("title")} style={{height: "7.5vh"}}/>
+                            <img src={toAbsoluteUrl('assets/logo/logo-mini.svg')} alt={t("title")} title={t("title")} className="img-md" style={{height: "7.5vh"}}/>
                         </span>
                     </Link>
                 </div>
