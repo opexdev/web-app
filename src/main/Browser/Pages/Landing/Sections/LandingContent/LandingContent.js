@@ -29,12 +29,12 @@ const LandingContent = () => {
                         <MarketView/>
                     </div>
                 </div>
-                <div className={`flex jc-center`} style={{height:"" , backgroundColor: "var(--mainContent)"}}>
+                <div className={`flex jc-center mb-5`} style={{height:"" , backgroundColor: "var(--mainContent)"}}>
                     <MarketInfo/>
                 </div>
-                <div className={`flex jc-center ai-center width-90 m-auto`} style={{height:"70vh" , backgroundColor: ""}}>
+                {/*<div className={`flex jc-center ai-center width-90 m-auto`} style={{height:"70vh" , backgroundColor: ""}}>
                     <img src={isDark ? images.OpexPanelMockupDark : images.OpexPanelMockupLight} alt="OpexMockup" loading="lazy" style={{width:"40%"}}/>
-                </div>
+                </div>*/}
                 <Footer/>
             </ScrollBar>
         </div>

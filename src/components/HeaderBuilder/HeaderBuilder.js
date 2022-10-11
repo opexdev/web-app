@@ -42,7 +42,7 @@ const HeaderBuilder = ({children}) => {
             <div className={`row jc-between ai-center ${classes.content}`}>
                 <div className={`flex jc-start ai-center  width-30`}>
                     <Link to={Routes.Landing} className={`flex jc-start ai-center`}>
-                        <img src={toAbsoluteUrl('assets/logo/logo.svg')} alt={t("title")} title={t("title")} className={`img-lg-plus`}/>
+                        <img src={toAbsoluteUrl('/assets/logo/logo.svg')} alt={t("title")} title={t("title")} className={`img-lg-plus`}/>
                     </Link>
                 </div>
                 <div className={`width-40 text-center`}>

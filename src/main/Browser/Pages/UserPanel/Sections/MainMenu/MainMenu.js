@@ -23,7 +23,7 @@ const MainMenu = () => {
                 <div className={`${classes.header} py-1`}>
                     <Link to={Routes.Landing} onClick={() => setShowMessages(false)}>
                         <span className="flex">
-                            <img src={toAbsoluteUrl('assets/logo/logo-mini.svg')} alt={t("title")} title={t("title")} className="img-md" style={{height: "7.5vh"}}/>
+                            <img src={toAbsoluteUrl('/assets/logo/logo-mini.svg')} alt={t("title")} title={t("title")} className="img-md" style={{height: "7.5vh"}}/>
                         </span>
                     </Link>
                 </div>

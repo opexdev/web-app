@@ -501,7 +501,8 @@
     "emptyCaptcha": "Captcha required!",
     "forgetPassServerError": "Error recovering password, try again!",
     "UserAlreadyExists": "User with this email is already registered",
-    "forgetPassEmailForgetError": "Email format is incorrect!"
+    "forgetPassEmailForgetError": "Email format is incorrect!",
+    "forDemoLogin": "Click here for a testing login!"
   },
   "userPage": {
     "title": "",

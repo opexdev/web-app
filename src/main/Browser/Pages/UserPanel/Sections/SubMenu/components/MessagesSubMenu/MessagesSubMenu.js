@@ -8,6 +8,7 @@ import AccordionBox from "../../../../../../../../components/AccordionBox/Accord
 import {MyMessagesData, newsData} from "../../../../../../../../FakeData/FakeData";
 import {useNavigate} from "react-router-dom";
 import {Login as LoginRoute} from "../../../../../../Routes/routes";
+import i18n from "i18next";
 
 const MessagesSubMenu = () => {
   const {t} = useTranslation();
@@ -168,7 +169,7 @@ const MessagesSubMenu = () => {
   const data = [
     //MyMessagesTable
     {id: 1, title: t("MessagesSubMenu.myMessages"), body: NoData},
-    {id: 2, title: t("MessagesSubMenu.news"), body: newsTable},
+    {id: 2, title: t("MessagesSubMenu.news"), body: i18n.language !== "fa" ? NoData : newsTable },
   ];
 
   return (

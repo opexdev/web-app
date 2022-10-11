@@ -29,7 +29,7 @@ const Guide = () => {
         <div className={`width-100 row ${classes.container} ${isDark ? "dark" : ""} ${ltr ? "ltr" : "rtl"}`}>
             <div className={`${classes.menu}`}>
                 <div className={`${classes.top} column jc-around ai-center py-2`}>
-                    <img src={toAbsoluteUrl('assets/logo/logo.svg')} alt={t("title")} title={t("title")}/>
+                    <img src={toAbsoluteUrl('/assets/logo/logo.svg')} alt={t("title")} title={t("title")}/>
                     <Button
                         buttonClass={classes.thisButton}
                         type="button"

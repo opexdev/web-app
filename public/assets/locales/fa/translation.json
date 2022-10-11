@@ -501,7 +501,8 @@
     "emptyCaptcha": "وارد کردن Captcha الزامی است",
     "forgetPassServerError": "خطا در بازیابی رمز، دوباره تلاش کنید",
     "UserAlreadyExists": "ایمل واردشده تکراری است",
-    "forgetPassEmailForgetError": "فرمت ایمیل صحیح نیست."
+    "forgetPassEmailForgetError": "فرمت ایمیل صحیح نیست.",
+    "forDemoLogin": "برای ورود آزمایشی، اینجا کلیک کنید!"
   },
   "userPage": {
     "title": "",

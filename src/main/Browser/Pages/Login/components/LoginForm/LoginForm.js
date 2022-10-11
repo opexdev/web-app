@@ -108,14 +108,12 @@ const LoginForm = () => {
 
     return <form onSubmit={(e) => submit(e)} className={`column ai-center jc-between ${classes.form}`}>
         <div className={`width-100 column jc-center ai-center ${classes.formBody} py-2`}>
-            {!needOTP ? <div className={`font-weight-300 fs-0-7 mb-2`}>
-                <span>برای ورود آزمایشی،  <span className={`hover-text cursor-pointer`} onClick={() => setCredential({
-                    username: "demo1@opex.dev",
-                    password: "12345678",
-                    otp: ""
-                })}
-                >اینجا  </span>کلیک کنید!</span>
-            </div> : ""}
+            {!needOTP && <span className={`font-weight-300 fs-0-8 mb-2 hover-text cursor-pointer`}
+                               onClick={() => setCredential({
+                                   username: "demo1@opex.dev",
+                                   password: "12345678",
+                                   otp: ""
+                               })}>{t('login.forDemoLogin')}</span>}
             {needOTP ?
                 <OTPForm setOTP={setOTPInputHandler} initialVal={credential.otp}/>
                 :
