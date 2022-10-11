@@ -16,7 +16,7 @@
     -o-animation: TopToBottom ease 0.5s forwards;
     -ms-animation: TopToBottom ease 0.5s forwards;
 
-    border: 0.3vh solid var(--CardBorder);
+    border: 0.3vh solid var(--cardBorder);
     border-radius: 9px;
 }
 

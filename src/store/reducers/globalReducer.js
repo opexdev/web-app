@@ -1,7 +1,7 @@
 import * as actionTypes from "../actions/actionTypes";
 
 const initialState = {
-    isDark: true,
+    isDark: window.env.REACT_APP_DEFAULT_THEME === 'DARK',
     isLoading: true,
     hasError: false,
     marketInterval: "24h",

@@ -22,7 +22,7 @@ const WalletListItem = ({assetName, showZero}) => {
     return (
         <NavLink
             className={({isActive}) =>
-                isActive ? "container row ai-center cursor-pointer position-relative px-1 py-105 " + classes.selected : "container row ai-center cursor-pointer position-relative px-1 py-105"
+                isActive ? "width-100 row ai-center cursor-pointer position-relative px-1 py-105 " + classes.selected : "width-100 row ai-center cursor-pointer position-relative px-1 py-105"
             }
             to={Routes.Wallet + "/" + assetName}>
             <div className={` row jc-start ai-center ${classes.PairImage}`}>
@@ -36,11 +36,11 @@ const WalletListItem = ({assetName, showZero}) => {
             <div className={`row jc-between px-05 ${classes.pairDetails}`}>
                 <div className="column ai-start">
                     <span>{assetName}</span>
-                    <span className="font-size-sm">{t("currency." + assetName)}</span>
+                    <span className="fs-0-7">{t("currency." + assetName)}</span>
                 </div>
                 <div className="column ai-end">
-                    <span>{new BN(free).toFormat() + " "} <span className="font-size-sm">{t("currency." + assetName)}</span></span>
-                    <span className="font-size-sm text-color-gray">
+                    <span>{new BN(free).toFormat() + " "} <span className="fs-0-7">{t("currency." + assetName)}</span></span>
+                    <span className="fs-0-7 text-gray">
                         <span>{t("WalletSubMenu.equivalent")} </span> {new BN(freeEstimateValue).toFormat()} <span>{t("currency.IRT")}</span>
                     </span>
                 </div>

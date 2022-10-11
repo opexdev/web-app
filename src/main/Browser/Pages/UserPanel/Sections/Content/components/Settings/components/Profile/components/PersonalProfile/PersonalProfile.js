@@ -25,12 +25,12 @@ const PersonalProfile = () => {
 
     return (
         <div
-            className={`container card-background card-border column ${classes.container}`}>
+            className={`width-100 card-bg card-border column ${classes.container}`}>
             <div
                 className={`column border-bottom jc-center card-header-bg px-1 py-1 ${classes.header}`}>
                 <div className="row jc-between ">
                     <h3>{t("PersonalProfile.title")}</h3>
-                    <span className={`text-green font-size-sm`}>{t("PersonalProfile.cantEdit")}</span>
+                    <span className={`text-green fs-0-7`}>{t("PersonalProfile.cantEdit")}</span>
                 </div>
             </div>
             {isLoading ? <Loading/> :

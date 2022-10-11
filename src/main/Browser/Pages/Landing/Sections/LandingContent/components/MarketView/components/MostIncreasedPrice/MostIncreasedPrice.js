@@ -24,7 +24,7 @@ const MostIncreasedPrice = ({mostIncreasedPrice}) => {
                 </div>
                 <div className={`column ai-end text-green`}>
                     <div className={`${i18n.language !== "fa" ? 'row-reverse' : 'row'}`}>
-                        <span className={`font-size-sm-mini ${i18n.language !== "fa" ? 'mr-05' : 'ml-05'}`}>{mostIncreasedPrice.pairInfo.quoteAsset}</span>
+                        <span className={`fs-0-6 ${i18n.language !== "fa" ? 'mr-05' : 'ml-05'}`}>{mostIncreasedPrice.pairInfo.quoteAsset}</span>
                         <span>{new BN(mostIncreasedPrice?.lastPrice).toFormat()}</span>
                     </div>
                     <span>% {new BN(mostIncreasedPrice?.priceChangePercent).toFormat(2)}+</span>

@@ -9,8 +9,8 @@ i18n
     .use(Backend)
     .use(initReactI18next)
     .init({
-        preload: ["fa"],
-        fallbackLng: "fa",
+        preload: [window.env.REACT_APP_PRELOAD_LANG],
+        fallbackLng: window.env.REACT_APP_PRELOAD_LANG,
         debug: process.env.NODE_ENV === "development",
         detection: {
             order: ["localStorage"],
@@ -18,7 +18,7 @@ i18n
             caches: ["localStorage"],
         },
         backend: {
-            loadPath: process.env.PUBLIC_URL+'/locales/{{lng}}/{{ns}}.json',
+            loadPath: process.env.PUBLIC_URL+'/assets/locales/{{lng}}/{{ns}}.json',
         },
         interpolation: {
             escapeValue: false,

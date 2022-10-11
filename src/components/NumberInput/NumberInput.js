@@ -37,13 +37,13 @@ const NumberInput = (props) => {
 
     if (alert){
         alertSection =<div
-            className={`${classes.inputGroupHint} inputGroupHint font-size-sm`}
+            className={`${classes.inputGroupHint} inputGroupHint fs-0-7`}
             data-html={true}
             data-place="left"
             data-effect="float"
             data-tip={hint}>
             <Icon
-                iconName="icon-info icon-white font-size-sm flex"
+                iconName="icon-info text-white fs-0-7 flex"
                 customClass={classes.hintIcon}
             />
             <span className="alert pr-05">{alert}</span>
@@ -58,7 +58,7 @@ const NumberInput = (props) => {
             data-effect="float"
             data-tip={props.hint}>
             <Icon
-                iconName={`${classes.iconInfo} icon-white font-size-sm flex`}
+                iconName={`${classes.iconInfo} text-white fs-0-7 flex`}
                 customClass="hint-icon"
             />
             <div className="column pt-05">

@@ -24,7 +24,7 @@ const MostVolume = ({mostVolume}) => {
                 </div>
                 <div className={`column ai-end`}>
                     <div className={`${i18n.language !== "fa" ? 'row-reverse' : 'row'}`}>
-                        <span className={`font-size-sm-mini ${i18n.language !== "fa" ? 'mr-05' : 'ml-05'}`}>{mostVolume.pairInfo.quoteAsset}</span>
+                        <span className={`fs-0-6 ${i18n.language !== "fa" ? 'mr-05' : 'ml-05'}`}>{mostVolume.pairInfo.quoteAsset}</span>
                         <span> {new BN(mostVolume?.volume).toFormat()} </span>
                     </div>
                     <span>% {new BN(mostVolume?.change).toFormat(2)}+</span>

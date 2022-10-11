@@ -38,7 +38,7 @@ const OrderBook = () => {
     }
 
     return (
-        <div className={`container card-background card-border my-2 column ${classes.container}`}>
+        <div className={`width-100 card-bg card-border my-2 column ${classes.container}`}>
             <div className={`column border-bottom jc-between header-radius card-header-bg ${classes.header}`}>
                 <div className="row jc-start">
                     <h3>
@@ -51,7 +51,7 @@ const OrderBook = () => {
                     <span className="text-green">{t("buy")}</span>
                 </div>
             </div>
-            <div className={`row container ${classes.content}`}>
+            <div className={`row width-100 ${classes.content}`}>
                 {tableRender()}
             </div>
         </div>

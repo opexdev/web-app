@@ -17,7 +17,7 @@
     right: 0;
     bottom: 0;
     border-radius: 34px;
-    background-color: var(--CardBorder);
+    background-color: var(--menu);
     -webkit-transition: .4s;
     transition: .4s;
 }
@@ -29,7 +29,7 @@
     top: 0.2rem;
     left: 0.18rem;
     right: initial;
-    background-color: var(--iconWhite);
+    background-color: var(--white);
 }
 :global(.ltr) .slider:before {
     right: 0.18rem;

@@ -56,7 +56,7 @@ const SendPhotosStep = (props) => {
     }
 
     return (
-        <div className={`container card-background card-border column ${classes.container}`}>
+        <div className={`container card-bg card-border column ${classes.container}`}>
             <div className={`column border-bottom jc-center card-header-bg px-1 py-1 ${classes.header}`}>
                 <div className="row jc-start ">
                     <h3>{t("SendPhotosStep.title")}</h3>

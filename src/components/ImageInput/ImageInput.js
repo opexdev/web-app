@@ -55,7 +55,7 @@ const ImageInput = (props) => {
 
   const fileRejectionItems = fileRejections.slice(0, 1).map(({errors}) =>
     errors.map((e) => (
-      <div className={`row font-size-sm mt-1`} key={e.code}>
+      <div className={`row fs-0-7 mt-1`} key={e.code}>
         <span
           onClick={(e) => {
             e.stopPropagation();
@@ -67,7 +67,7 @@ const ImageInput = (props) => {
             "ImageInput.iconErrorText",
           )}</span>`}>
           <Icon
-            iconName=" icon-help-circled-1 text-red font-size-md"
+            iconName=" icon-help-circled-1 text-red fs-01"
             customClass={`cursor-pointer`}
           />
         </span>
@@ -88,7 +88,7 @@ const ImageInput = (props) => {
         style={{backgroundImage: `url("${files[0]?.preview}")`}}>
         {files[0]?.preview ? (
           <Icon
-            iconName="icon-cancel-circle-2 text-red font-size-md-01"
+            iconName="icon-cancel-circle-2 text-red fs-02"
             customClass={`position-absolute ${classes.cancel} cursor-pointer`}
             onClick={(e) => {
               e.stopPropagation();

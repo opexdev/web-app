@@ -5,10 +5,10 @@ import {useDispatch, useSelector} from "react-redux";
 import *  as Routes from "../../../../Routes/routes";
 import ToggleSwitch from "../../../../../../components/ToggleSwitch/ToggleSwitch";
 import i18n from "i18next";
-import {images} from "../../../../../../assets/images";
 import {setThemeInitiate} from "../../../../../../store/actions";
 import {Link} from "react-router-dom";
 import packageJson from "../../../../../../../package.json"
+import {toAbsoluteUrl} from "../../../../../../utils/utils";
 
 const Footer = () => {
     const {t} = useTranslation();
@@ -16,8 +16,8 @@ const Footer = () => {
     const dispatch = useDispatch()
 
     return (
-        <div className={`container column footerBackground font-size-sm-plus mt-1 py-2 px-4`}>
-            <div className={`container row jc-between ai-center`}>
+        <div className={`width-100 column ${classes.container} fs-0-8 mt-1 py-2 px-4`}>
+            <div className={`width-100 row jc-between ai-center`}>
                 <div className="row">
                     <div className="column px-1">
                         <Link to={Routes.Guide + "#about-us"}>
@@ -61,21 +61,26 @@ const Footer = () => {
                         <span className={`pl-1`}>{t("footer.darkMode")}:</span>
                         <ToggleSwitch onchange={(e) => dispatch(setThemeInitiate(e.target.checked))} checked={isDark}/>
                     </div>
+
                     <div className={`row ai-center jc-between`}>
                         <div className={`row ai-center ${classes.languages}`}>
-                            <span className="cursor-pointer pl-1"
-                                  onClick={() => i18n.changeLanguage("fa")}>{t("Languages.Persian")}</span>
-                            <span className="cursor-pointer pr-1"
-                                  onClick={() => i18n.changeLanguage("en")}>{t("Languages.English")}</span>
+                            {
+                                window.env.REACT_APP_MULTI_LANGS_SUPPORT === 'TRUE' && <>
+                                <span className="cursor-pointer pl-1"
+                                      onClick={() => i18n.changeLanguage("fa")}>{t("Languages.Persian")}</span>
+                                    <span className="cursor-pointer pr-1"
+                                          onClick={() => i18n.changeLanguage("en")}>{t("Languages.English")}</span>
+                                </>
+                            }
                         </div>
                     </div>
                 </div>
                 <div className={`column jc-center ai-center`}>
-                    <img className={`img-lg-plus mb-1`} src={images.opexLogoPlus} alt={t("title")}/>
+                    <img src={toAbsoluteUrl('/assets/logo/logo.svg')} alt={t("title")} title={t("title")} className={`img-lg-plus mb-1`}/>
                     <span className={`mt-1`}>{packageJson.version}</span>
                 </div>
             </div>
-            <div className={`container flex jc-center ai-center`}>
+            <div className={`width-100 flex jc-center ai-center`}>
                 <p>{t("footer.copyright")}</p>
             </div>
         </div>

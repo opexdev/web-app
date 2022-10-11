@@ -19,7 +19,7 @@ const Market = () => {
                     <OrderBook/>
                 </div>
             </div>
-            <div className="row px-1 ">
+            <div className="row px-1 mb-3">
                 <div className="column col-55 pl-05">
                     <MyOrders/>
                 </div>

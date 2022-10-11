@@ -10,7 +10,7 @@ import VolumeInfo from "./components/VolumeInfo/VolumeInfo";
 const AllMarketContent = () => {
 
     return (
-        <div className={`${classes.container} container column`}>
+        <div className={`${classes.container} width-100 column`}>
             <ScrollBar>
                 <div className={`row jc-between ai-center width-90 m-auto`} style={{height: "40vh"}}>
                     <div className={`width-35 flex `}>

@@ -12,10 +12,10 @@
   background-color: var(--orange);
 }
 .thisButton.buyOrder {
-  background-color: var(--bgGreen);
+  background-color: var(--darkGreen);
 }
 .thisButton.sellOrder {
-  background-color: var(--bgRed);
+  background-color: var(--darkRed);
 }
 .thisButton:disabled,.button[disabled] {
   border: 0.3vh solid var(--cardHeader);

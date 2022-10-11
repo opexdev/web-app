@@ -71,3 +71,5 @@ export const dateValidator = str => {
 export const timeValidator = str => {
     return /^(2[0-3]|[01]?[0-9]):([0-5]?[0-9])$/.test(str);
 }
+
+export const toAbsoluteUrl = (path) => process.env.PUBLIC_URL + path

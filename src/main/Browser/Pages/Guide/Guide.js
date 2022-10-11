@@ -6,10 +6,10 @@ import {NavLink, useLocation, useNavigate} from "react-router-dom";
 
 import {useTranslation} from "react-i18next";
 import Button from "../../../../components/Button/Button";
-import {images} from "../../../../assets/images";
 import ScrollBar from "../../../../components/ScrollBar";
 import * as Routes from "../../Routes/routes";
 import HashContent from "./components/HashContent/HashContent";
+import {toAbsoluteUrl} from "../../../../utils/utils";
 
 const Guide = () => {
     const {t} = useTranslation();
@@ -26,10 +26,10 @@ const Guide = () => {
     }, []);
 
     return (
-        <div className={`container row ${classes.container} ${isDark ? "dark" : ""} ${ltr ? "ltr" : "rtl"}`}>
+        <div className={`width-100 row ${classes.container} ${isDark ? "dark" : ""} ${ltr ? "ltr" : "rtl"}`}>
             <div className={`${classes.menu}`}>
                 <div className={`${classes.top} column jc-around ai-center py-2`}>
-                    <img src={images.opexLogoPlus} alt=""/>
+                    <img src={toAbsoluteUrl('/assets/logo/logo.svg')} alt={t("title")} title={t("title")}/>
                     <Button
                         buttonClass={classes.thisButton}
                         type="button"

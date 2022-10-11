@@ -140,10 +140,10 @@
   margin: 0 1vw;
 }
 .button.submit {
-  background-color: var(--bgGreen);
+  background-color: var(--darkGreen);
 }
 .button.reset {
-  background-color: var(--bgRed);
+  background-color: var(--darkRed);
 }
 
 .button.return {

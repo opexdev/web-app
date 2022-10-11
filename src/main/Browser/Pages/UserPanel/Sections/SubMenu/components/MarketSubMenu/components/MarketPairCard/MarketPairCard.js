@@ -14,7 +14,7 @@ const MarketPairCard = ({id, pair, favPair, addFav}) => {
 
     return (
         <div onClick={() => dispatch(setActivePairInitiate(pair, id))}
-             className={`container row jc-between ai-center px-1 py-05 cursor-pointer double-striped ${classes.container} ${activePair === pair.symbol ? classes.selected : ""} `}>
+             className={`width-100 row jc-between ai-center px-1 py-05 cursor-pointer double-striped ${classes.container} ${activePair === pair.symbol ? classes.selected : ""} `}>
             <div className={` row jc-between ai-center ${classes.marketCardImage}`}>
                 <img
                     className="img-md flex"
@@ -31,7 +31,7 @@ const MarketPairCard = ({id, pair, favPair, addFav}) => {
                             addFav(pair.symbol);
                         }}
                         data-name={pair.symbol}>
-                        <Icon iconName={`${favPair.includes(pair.symbol) ? "icon-star-filled" : "icon-star"} text-color font-size-md`}/>
+                        <Icon iconName={`${favPair.includes(pair.symbol) ? "icon-star-filled" : "icon-star"} text-color fs-01`}/>
                     </div>
                     {pair.baseAsset + "/" + pair.quoteAsset}
                 </div>

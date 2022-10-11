@@ -54,13 +54,13 @@ const Authentication = () => {
                         <li className={`col-25 text-center ${step === 2 && classes.activeStep}`}>{t("Authentication.PersonalProfileStep")}</li>
                         <li className={`col-25 text-center ${step === 3 && classes.activeStep}`}>{t("Authentication.SendPhotosStep")}</li>
                         <li className={`col-25 text-center ${step === 4 && classes.activeStep}`}>{t("Authentication.SendToAdminStep")}</li>
-                        <div className={`container position-absolute  row jc-center`} style={{padding: "0 10%"}}>
+                        <div className={`width-100 position-absolute  row jc-center`} style={{padding: "0 10%"}}>
                             <span className={`col-15`} style={{height: "0.2vh", backgroundColor: "var(--orange)"}}/>
                             <span className={`col-15`} style={{height: "0.2vh", backgroundColor: "var(--orange)", margin: "0 22% 0 22%",}}/>
                             <span className={`col-15`} style={{height: "0.2vh", backgroundColor: "var(--orange)"}}/>
                         </div>
                     </ul>
-                    <div className="row card-background card-border">
+                    <div className="row body card-border">
                         {step === 1 ? (
                             <span className="col-25"
                                 style={{

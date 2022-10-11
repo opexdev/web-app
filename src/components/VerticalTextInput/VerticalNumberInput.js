@@ -43,7 +43,7 @@ const VerticalNumberInput = (props) => {
             data-effect="float"
             data-tip={hint}>
             <Icon
-                iconName="icon-info icon-white font-size-sm flex"
+                iconName="icon-info text-white fs-0-7 flex"
                 customClass={classes.hintIcon}
             />
             <span className="alert pr-05">{

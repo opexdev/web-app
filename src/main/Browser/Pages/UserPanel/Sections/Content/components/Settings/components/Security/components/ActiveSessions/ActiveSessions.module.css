@@ -15,6 +15,6 @@
 
 
 .thisSession {
-  background: var(--cardHeader);
+  background: var(--cardHeaderAlpha);
 }
 

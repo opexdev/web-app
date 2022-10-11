@@ -2,7 +2,7 @@ import React from "react";
 import classes from "../../WalletSubMenu.module.css";
 
 const WalletLoading = () => {
-    const Loading = () => <div className="container row ai-center py-05">
+    const Loading = () => <div className="width-100 row ai-center py-05">
             <div className={` row jc-center ai-center ${classes.PairImage}`}>
                 <span className={`img-md flex ${classes.loadingImg}`}/>
             </div>
@@ -19,7 +19,7 @@ const WalletLoading = () => {
         </div>
 
     return (
-        <div className={`container card-background column ${classes.container}`}>
+        <div className={`width-100 card-bg column ${classes.container}`}>
             <Loading/>
             <Loading/>
             <Loading/>

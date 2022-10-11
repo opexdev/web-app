@@ -7,7 +7,7 @@
 }
 
 .row:hover {
-    background-color: var(--LoginContainer);
+    background-color: var(--container);
 }
 
 .filter {
