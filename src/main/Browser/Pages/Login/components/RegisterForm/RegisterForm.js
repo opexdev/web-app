@@ -28,6 +28,10 @@ const RegisterForm = () => {
         password: {value: "", error: []},
         confirmPassword: {value: "", error: []},
     });
+    const [isInputVisible, setIsInputVisible] = useState({
+        password: false,
+        confirmPassword: false,
+    });
 
     const clientSecret = window.env.REACT_APP_CLIENT_SECRET
     const clientId = window.env.REACT_APP_CLIENT_ID
@@ -224,22 +228,42 @@ const RegisterForm = () => {
                 />
                 <TextInput
                     lead={t('password')}
-                    type="password"
                     data-name="password"
-                    customClass={`${classes.loginInput} ${classes.ltrInput}`}
+                    customClass={`${classes.loginInput} ${classes.passwordInput}`}
+                    ltr={true}
                     value={userData.password.value}
                     onchange={(e) => inputHandler(e)}
                     alerts={userData.password.error}
                     data-min={8}
+                    type={isInputVisible.password ? "text" : "password"}
+                    after={
+                        <Icon
+                            iconName={`${isInputVisible.password ? ' icon-eye-2' : 'icon-eye-off'} fs-02 flex`}
+                            onClick={() => setIsInputVisible({
+                                ...isInputVisible,
+                                password: !isInputVisible.password
+                            })}
+                        />
+                    }
                 />
                 <TextInput
                     lead={t('confirmPassword')}
-                    type="password"
                     data-name="confirmPassword"
-                    customClass={`${classes.loginInput} ${classes.ltrInput}`}
+                    customClass={`${classes.loginInput} ${classes.passwordInput}`}
+                    ltr={true}
                     value={userData.confirmPassword.value}
                     onchange={(e) => inputHandler(e)}
                     alerts={userData.confirmPassword.error}
+                    type={isInputVisible.confirmPassword ? "text" : "password"}
+                    after={
+                        <Icon
+                            iconName={`${isInputVisible.confirmPassword ? ' icon-eye-2' : 'icon-eye-off'} fs-02 flex`}
+                            onClick={() => setIsInputVisible({
+                                ...isInputVisible,
+                                confirmPassword: !isInputVisible.confirmPassword
+                            })}
+                        />
+                    }
                 />
                 <TextInput
                     lead={LeadCaptchaHandler()}

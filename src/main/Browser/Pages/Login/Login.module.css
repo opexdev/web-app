@@ -39,6 +39,7 @@
 .content :global(.accordion-header){
   /*background-color: #242633fa;*/
   background-color: var(--cardHeaderAlpha);
+  padding-top: 3vh;
   /*color: #ecececc7;*/
 }
 /*.content :global(.accordion-body){
@@ -64,10 +65,22 @@
   border-color: var(--cardHeader);
   color: var(--textColor);
 }
+
+
+.loginInput.passwordInput :global(.before){
+  width: 50%;
+}
+.loginInput.passwordInput :global(input){
+  width: 40%;
+}
+.loginInput.passwordInput :global(.after){
+  width: 10%;
+}
+
 .loginInput.captcha :global(.lead){
   width: 50%;
-
 }
+
 .loginInput.captcha :global(.lead) span{
   width: 100%;
   height: 100%;
