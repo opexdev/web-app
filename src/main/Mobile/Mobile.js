@@ -5,11 +5,13 @@ import "./Mobille.css";
 import FullWidthLoading from "../../components/FullWidthLoading/FullWidthLoading";
 import i18n from "i18next";
 import Radium from "radium";
-import Button from "../../components/Button/Button";
+import {useTranslation} from "react-i18next";
+import {toAbsoluteUrl} from "../../utils/utils";
 
 
 const Mobile = () => {
 
+    const {t} = useTranslation();
     const isLoading = useSelector((state) => state.global.isLoading)
     const isDark = useSelector((state) => state.global.isDark)
     const dispatch = useDispatch();
@@ -29,18 +31,25 @@ const Mobile = () => {
     }
 
     const Style = {
-        "@media (max-width: 480px)": {
-
-        }
+        "@media (max-width: 480px)": {}
     }
 
     return (
         <div className={`mobile-container flex jc-center ai-center`} style={Style}>
 
-            <Button
+            <div className={`width-70 height-40 card-bg rounded-8 card-border column jc-center ai-center px-2`}>
+                <img src={toAbsoluteUrl('/assets/logo/logo.svg')} alt={t("title")} title={t("title")} className={`mb-2`}
+                     style={{width: "50vw"}}/>
+                <p className={`fs-01 mt-2 text-center`}>
+                    <span className={`text-orange fs-02`}>{t("title")} </span>
+                    {t("improperMobileView ")}
+                </p>
+            </div>
+
+            {/*<Button
                 buttonClass={`mobile-button`}
                 buttonTitle="Click To Open Mobile APP"
-            />
+            />*/}
 
         </div>
     );

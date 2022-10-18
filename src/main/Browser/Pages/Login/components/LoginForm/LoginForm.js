@@ -1,5 +1,5 @@
-import {useDispatch, useSelector} from "react-redux";
 import React, {useEffect, useState} from "react";
+import {useDispatch, useSelector} from "react-redux";
 import classes from "../../Login.module.css";
 import TextInput from "../../../../../../components/TextInput/TextInput";
 import LoginFormLoading from "../LoginLoading/LoginFormLoading";
@@ -14,12 +14,15 @@ import ForgetPassword from "../ForgetPassword/ForgetPassword";
 import {setUserAccountInfoInitiate, setUserInfo, setUserTokensInitiate} from "../../../../../../store/actions";
 import {useGetKycStatus} from "../../../../../../queries";
 import {login, parseToken} from "js-api-client";
+import Icon from "../../../../../../components/Icon/Icon";
 
 const LoginForm = () => {
     const {t} = useTranslation();
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const location = useLocation();
+
+    const [isInputVisible, setIsInputVisible] = useState(false);
     const [isLoading, setLoading] = useState(false);
     const [loginError, setLoginError] = useState(false);
     const [needOTP, setNeedOTP] = useState(undefined);
@@ -106,6 +109,8 @@ const LoginForm = () => {
         setCredential({...credential, otp: ""})
     }
 
+
+
     return <form onSubmit={(e) => submit(e)} className={`column ai-center jc-between ${classes.form}`}>
         <div className={`width-100 column jc-center ai-center ${classes.formBody} py-2`}>
             {!needOTP && <span className={`font-weight-300 fs-0-8 mb-2 hover-text cursor-pointer`}
@@ -121,16 +126,23 @@ const LoginForm = () => {
                     <TextInput
                         lead={t('email')}
                         type="text"
-                        customClass={classes.loginInput}
+                        customClass={`${classes.loginInput} mb-1`}
                         value={credential.username}
                         onchange={(e) => setCredential({...credential, username: e.target.value})}
                     />
                     <TextInput
                         lead={t('password')}
-                        type="password"
-                        customClass={classes.loginInput}
+                        customClass={` ${classes.loginInput} ${classes.passwordInput} mt-1`}
                         value={credential.password}
                         onchange={(e) => setCredential({...credential, password: e.target.value})}
+                        type={isInputVisible ? "text" : "password"}
+                        after={
+                            <Icon
+                                iconName={`${isInputVisible ? ' icon-eye-2' : 'icon-eye-off'} fs-02 flex cursor-pointer hover-text`}
+                                onClick={() => setIsInputVisible(!isInputVisible)}
+                            />
+                        }
+
                     />
                 </>
             }
@@ -141,8 +153,7 @@ const LoginForm = () => {
                     <span className="cursor-pointer flex ai-center fs-0-8"
                           onClick={returnToLogin}>{t('login.back')}</span>
                     :
-                    <span className="cursor-pointer flex ai-center fs-0-8"
-                          onClick={() => setForgetPassword(true)}>{t('login.forgetPassword')}</span>
+                    <div className="flex ai-center mt-2"><span className={`cursor-pointer fs-0-8 hover-text`} onClick={() => setForgetPassword(true)}>{t('login.forgetPassword')}</span></div>
                 }
             </div>
         </div>

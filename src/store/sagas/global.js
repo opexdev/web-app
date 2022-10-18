@@ -19,6 +19,11 @@ export function* setIPGLock(action) {
     yield put(actions.setIPG(action.lockTime));
 }
 
+export function* setVerifyEmailLock(action) {
+    yield call([localStorage, 'setItem'], "verifyEmailLockTime", action.verifyEmailLockTime)
+    yield put(actions.setVerifyEmailLock(action.verifyEmailLockTime));
+}
+
 export function* getExchangeLastPrice() {
     const newPrices = {}
     try {
@@ -78,7 +83,6 @@ export function* loadConfig(action) {
     const isDark = yield call([localStorage, 'getItem'], 'isDark')
     if (isDark) yield put(actions.setTheme(JSON.parse(isDark)));
 
-
     if (action.token) {
         yield put(actions.setUserTokens({refreshToken : null, accessToken: action.token}));
         yield call([localStorage, 'removeItem'], "refreshToken")
@@ -90,6 +94,9 @@ export function* loadConfig(action) {
 
     const lockTime = yield call([localStorage, 'getItem'], 'lockTime')
     if (lockTime) yield put(actions.setIPG(lockTime));
+
+    const verifyEmailLockTime = yield call([localStorage, 'getItem'], 'verifyEmailLockTime')
+    if (verifyEmailLockTime) yield put(actions.setVerifyEmailLock(verifyEmailLockTime));
 
     const refreshToken = localStorage.getItem("refreshToken")
 

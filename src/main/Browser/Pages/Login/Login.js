@@ -23,7 +23,7 @@ const Login = () => {
              style={{backgroundImage: `url("${images.spaceStar}")`}}>
             <div className={`col-60  flex jc-center ai-center `} style={{height: "100%"}}>
                 <div className={`${classes.content}`}>
-                    <AccordionBox  content={data}/>
+                    <AccordionBox content={data}/>
                 </div>
             </div>
             <div className={`col-40 column ai-center jc-center ${classes.intro} move-image`}>

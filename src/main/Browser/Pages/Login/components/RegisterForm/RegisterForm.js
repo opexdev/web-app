@@ -9,11 +9,19 @@ import Icon from "../../../../../../components/Icon/Icon";
 import {images} from "../../../../../../assets/images";
 import ReactTooltip from "react-tooltip";
 import {getCaptchaImage, getPanelToken, userRegister} from "js-api-client";
+import EmailVerification from "../EmailVerification/EmailVerification";
+import {setVerifyEmailLockInitiate} from "../../../../../../store/actions";
+import {useDispatch, useSelector} from "react-redux";
 
 
 const RegisterForm = () => {
     const {t} = useTranslation();
+    const dispatch = useDispatch();
+    const verifyEmailLock = useSelector((state) => state.exchange.verifyEmailLock)
+
     const [registerStatus, setRegisterStatus] = useState("")
+    const [verifyEmail, setVerifyEmail] = useState(false);
+    const [disable, setDisable] = useState(false);
     const [isLoading, setIsLoading] = useState(true);
     const [captcha, setCaptcha] = useState({
         image: {value: "", error: []},
@@ -27,6 +35,10 @@ const RegisterForm = () => {
         captchaAnswer: {value: "", error: []},
         password: {value: "", error: []},
         confirmPassword: {value: "", error: []},
+    });
+    const [isInputVisible, setIsInputVisible] = useState({
+        password: false,
+        confirmPassword: false,
     });
 
     const clientSecret = window.env.REACT_APP_CLIENT_SECRET
@@ -61,7 +73,13 @@ const RegisterForm = () => {
         ReactTooltip.rebuild();
     });
 
+    useEffect(() => {
+        if (verifyEmailLock && new Date().getTime() < verifyEmailLock) setDisable(true)
+    }, [verifyEmailLock]);
+
     if (registerStatus === "loading") return <LoginFormLoading/>
+
+    if (verifyEmail) return <EmailVerification returnFunc={() => setVerifyEmail(false)} email={userData?.email?.value} disable={disable} returnFuncDisableFalse={() => setDisable(false)} returnFuncDisableTrue={() => setDisable(true)}/>
 
     if (registerStatus === "finish") {
         return <div className={`column jc-center ai-center text-center px-4`} style={{height: "35vh"}}>
@@ -78,8 +96,13 @@ const RegisterForm = () => {
                 i18nKey="login.registerFinishedSpamMail"
                 values={{email: window.env.REACT_APP_SYSTEM_EMAIL_ADDRESS,}}
             /></span>
+
+            <div className={`column mt-3 hover-text text-orange`}>
+                <span className="cursor-pointer flex ai-center fs-0-8" onClick={() => setVerifyEmail(true)}>{t('login.verificationEmail')}</span>
+            </div>
         </div>
     }
+
 
     if (registerStatus === "finishedWithError") {
         return <div className={`column jc-center ai-center text-red`} style={{height: "30vh"}}>
@@ -107,6 +130,8 @@ const RegisterForm = () => {
         userRegister(user, panelToken)
             .then(() => {
                 setRegisterStatus("finish");
+                setDisable(true)
+                dispatch(setVerifyEmailLockInitiate(new Date().getTime() + 2 * 60 * 1000))
             }).catch((e) => {
             if (e?.response?.data?.error === "InvalidCaptcha") {
                 setUserData({...userData, captchaAnswer: {value: "", error: [t("login.InvalidCaptcha")]}})
@@ -224,22 +249,42 @@ const RegisterForm = () => {
                 />
                 <TextInput
                     lead={t('password')}
-                    type="password"
                     data-name="password"
-                    customClass={`${classes.loginInput} ${classes.ltrInput}`}
+                    customClass={`${classes.loginInput} ${classes.passwordInput}`}
+                    ltr={true}
                     value={userData.password.value}
                     onchange={(e) => inputHandler(e)}
                     alerts={userData.password.error}
                     data-min={8}
+                    type={isInputVisible.password ? "text" : "password"}
+                    after={
+                        <Icon
+                            iconName={`${isInputVisible.password ? ' icon-eye-2' : 'icon-eye-off'} fs-02 flex cursor-pointer hover-text`}
+                            onClick={() => setIsInputVisible({
+                                ...isInputVisible,
+                                password: !isInputVisible.password
+                            })}
+                        />
+                    }
                 />
                 <TextInput
                     lead={t('confirmPassword')}
-                    type="password"
                     data-name="confirmPassword"
-                    customClass={`${classes.loginInput} ${classes.ltrInput}`}
+                    customClass={`${classes.loginInput} ${classes.passwordInput}`}
+                    ltr={true}
                     value={userData.confirmPassword.value}
                     onchange={(e) => inputHandler(e)}
                     alerts={userData.confirmPassword.error}
+                    type={isInputVisible.confirmPassword ? "text" : "password"}
+                    after={
+                        <Icon
+                            iconName={`${isInputVisible.confirmPassword ? ' icon-eye-2' : 'icon-eye-off'} fs-02 flex cursor-pointer hover-text`}
+                            onClick={() => setIsInputVisible({
+                                ...isInputVisible,
+                                confirmPassword: !isInputVisible.confirmPassword
+                            })}
+                        />
+                    }
                 />
                 <TextInput
                     lead={LeadCaptchaHandler()}
@@ -259,6 +304,11 @@ const RegisterForm = () => {
                     alerts={userData.captchaAnswer.error}
                     maxLength="5"
                 />
+
+                <div className={`column ${classes.forgetPassword} mt-1`}>
+                    <div className="flex ai-center fs-0-8"><span className={`cursor-pointer hover-text`} onClick={() => setVerifyEmail(true)}>{t('login.verificationEmail')}</span></div>
+                </div>
+
             </div>
             <div className={`width-100 flex jc-center ai-center ${classes.formFooter}`}>
                 <Button

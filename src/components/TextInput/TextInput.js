@@ -4,7 +4,21 @@ import Select from "react-select";
 import * as classes from "./TextInput.module.css";
 
 const TextInput = (props) => {
-    const {customRef,readOnly,onchange,customClass,options, lead , after ,select ,alerts ,max , ...other} = props
+    const {
+        customRef,
+        readOnly,
+        onchange,
+        customClass,
+        options,
+        lead,
+        after,
+        select,
+        alerts,
+        max,
+        ltr,
+        info,
+        ...other
+    } = props
 
     let leadSection = null
     let afterSection = null
@@ -15,6 +29,7 @@ const TextInput = (props) => {
         readOnly={readOnly}
         onChange={onchange}
         max={max}
+        style={{direction: ltr && 'ltr'}}
         {...other}
     />
 

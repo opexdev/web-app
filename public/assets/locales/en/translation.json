@@ -45,6 +45,7 @@
   "close": "Close",
   "unit": "Unit",
   "offline": "Check your connection!",
+  "improperMobileView ": "Not optimized for mobile view.",
   "country": {
     "iran" : "I. R. IRAN",
     "germany" : "Germany",
@@ -469,11 +470,17 @@
     "save": "Save"
   },
   "login": {
-    "title": "Login/Register",
+    "title": "Login/RegistimproperMobileView er",
     "wrongPassword": "Username or password is incorrect!",
     "wrongOTP": "Entered OTP is incorrect!",
     "wrongPasswordConfirmation": "Password and confirm password don't match.",
     "forgetPassword": "Forget Password",
+    "verificationEmail": "Didn't receive the email?",
+    "resendVerifyEmail": "Resend Email",
+    "sendEmail": "Send Email",
+    "verifyEmailServerError": "Server error, try again!",
+    "verifyEmailFinished": "Verification email has been sent successfully!",
+    "emailAlreadyVerified": "Email already verified.",
     "accountNotActive": "Your account has not been activated yet.",
     "enter": "Enter",
     "resetPassword": "Reset Password",
