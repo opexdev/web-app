@@ -61,6 +61,19 @@ export const setIPGInitiate = (lockTime) => {
         lockTime,
     };
 };
+export const setVerifyEmailLock = (verifyEmailLockTime) => {
+    return {
+        type: actionTypes.SET_VERIFY_EMAIL_LOCK,
+        verifyEmailLockTime,
+    };
+};
+
+export const setVerifyEmailLockInitiate = (verifyEmailLockTime) => {
+    return {
+        type: actionTypes.SET_VERIFY_EMAIL_LOCK_INITIATE,
+        verifyEmailLockTime,
+    };
+};
 
 export const setExchange = exchangeInfo => {
     return {

@@ -156,6 +156,21 @@
   direction: ltr !important;
 }
 
+
+.disable:disabled,.button[disabled] {
+  border: 0.3vh solid var(--cardHeader);
+  background: var(--cardHeader);
+  color: var(--textColor);
+  cursor: not-allowed;
+}
+
+.thisButton:disabled,.button[disabled] {
+  border: 0.3vh solid var(--cardHeader);
+  background: var(--cardHeader);
+  color: var(--textColor);
+  cursor: not-allowed;
+}
+
 .twinkle{
   -webkit-animation: twinkle 4s linear infinite;
   -moz-animation: twinkle 4s linear infinite;
