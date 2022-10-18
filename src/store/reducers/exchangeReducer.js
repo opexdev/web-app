@@ -18,6 +18,7 @@ const initialState = {
         },
     },
     ipgLock: null,
+    verifyEmailLock: null,
 };
 
 const exchangeReducer = (state = initialState, action) => {
@@ -26,6 +27,11 @@ const exchangeReducer = (state = initialState, action) => {
             return {
                 ...state,
                 ipgLock: action.lockTime,
+            };
+        case actionTypes.SET_VERIFY_EMAIL_LOCK:
+            return {
+                ...state,
+                verifyEmailLock: action.verifyEmailLockTime,
             };
         case actionTypes.SET_ACTIVE_PAIR:
             return {

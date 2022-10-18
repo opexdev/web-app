@@ -19,7 +19,9 @@ export {
     setLastPrice,
     setLastTradePrice,
     setIPG,
-    setIPGInitiate
+    setIPGInitiate,
+    setVerifyEmailLock,
+    setVerifyEmailLockInitiate
 
 } from "./exchange";
 

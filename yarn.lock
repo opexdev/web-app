@@ -9712,12 +9712,12 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"js-api-client@https://github.com/opexdev/js-api-client.git#v1.0.1-beta.2":
+"js-api-client@https://github.com/opexdev/js-api-client.git#develop":
   version: 1.0.0-beta2
-  resolution: "js-api-client@https://github.com/opexdev/js-api-client.git#commit=fb2e24c906a0a3e72fcd6439156e58792a77edc2"
+  resolution: "js-api-client@https://github.com/opexdev/js-api-client.git#commit=c1d7b1525b8382857476aea90ea5646680260471"
   peerDependencies:
     axios: ^0.22.0
-  checksum: 956d60dd6dcb39120d8606f57c9ea4b74aafe7ebf5d31b0ff82fa5b6df90f513a6dd922b87d474730ddf35ad1afea85774673fe383aee3f998e921133261d61a
+  checksum: efc4752afd84c7e2cf70b8b42582f599b70d0cdd89fcd80b84660b98411e4af4ee1041bc49e9eeeac93b4ac3c705704626a368df34e448ceef5976cd24dfe8b5
   languageName: node
   linkType: hard
 
@@ -11295,7 +11295,7 @@ fsevents@^1.2.7:
     i18next: ^21.8.0
     i18next-browser-languagedetector: ^6.1.4
     i18next-http-backend: ^1.4.0
-    js-api-client: "https://github.com/opexdev/js-api-client.git#v1.0.1-beta.2"
+    js-api-client: "https://github.com/opexdev/js-api-client.git#develop"
     jwt-decode: ^3.1.2
     lightweight-charts: ^3.8.0
     moment-jalaali: ^0.9.2

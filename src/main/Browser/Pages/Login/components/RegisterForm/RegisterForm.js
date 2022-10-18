@@ -9,11 +9,19 @@ import Icon from "../../../../../../components/Icon/Icon";
 import {images} from "../../../../../../assets/images";
 import ReactTooltip from "react-tooltip";
 import {getCaptchaImage, getPanelToken, userRegister} from "js-api-client";
+import EmailVerification from "../EmailVerification/EmailVerification";
+import {setVerifyEmailLockInitiate} from "../../../../../../store/actions";
+import {useDispatch, useSelector} from "react-redux";
 
 
 const RegisterForm = () => {
     const {t} = useTranslation();
+    const dispatch = useDispatch();
+    const verifyEmailLock = useSelector((state) => state.exchange.verifyEmailLock)
+
     const [registerStatus, setRegisterStatus] = useState("")
+    const [verifyEmail, setVerifyEmail] = useState(false);
+    const [disable, setDisable] = useState(false);
     const [isLoading, setIsLoading] = useState(true);
     const [captcha, setCaptcha] = useState({
         image: {value: "", error: []},
@@ -65,7 +73,13 @@ const RegisterForm = () => {
         ReactTooltip.rebuild();
     });
 
+    useEffect(() => {
+        if (verifyEmailLock && new Date().getTime() < verifyEmailLock) setDisable(true)
+    }, [verifyEmailLock]);
+
     if (registerStatus === "loading") return <LoginFormLoading/>
+
+    if (verifyEmail) return <EmailVerification returnFunc={() => setVerifyEmail(false)} email={userData?.email?.value} disable={disable} returnFuncDisable={() => setDisable(false)}/>
 
     if (registerStatus === "finish") {
         return <div className={`column jc-center ai-center text-center px-4`} style={{height: "35vh"}}>
@@ -82,8 +96,13 @@ const RegisterForm = () => {
                 i18nKey="login.registerFinishedSpamMail"
                 values={{email: window.env.REACT_APP_SYSTEM_EMAIL_ADDRESS,}}
             /></span>
+
+            <div className={`column mt-3 hover-text text-orange`}>
+                <span className="cursor-pointer flex ai-center fs-0-8" onClick={() => setVerifyEmail(true)}>{t('login.verifyEmail')}</span>
+            </div>
         </div>
     }
+
 
     if (registerStatus === "finishedWithError") {
         return <div className={`column jc-center ai-center text-red`} style={{height: "30vh"}}>
@@ -111,6 +130,8 @@ const RegisterForm = () => {
         userRegister(user, panelToken)
             .then(() => {
                 setRegisterStatus("finish");
+                setDisable(true)
+                dispatch(setVerifyEmailLockInitiate(new Date().getTime() + 2 * 60 * 1000))
             }).catch((e) => {
             if (e?.response?.data?.error === "InvalidCaptcha") {
                 setUserData({...userData, captchaAnswer: {value: "", error: [t("login.InvalidCaptcha")]}})
@@ -238,7 +259,7 @@ const RegisterForm = () => {
                     type={isInputVisible.password ? "text" : "password"}
                     after={
                         <Icon
-                            iconName={`${isInputVisible.password ? ' icon-eye-2' : 'icon-eye-off'} fs-02 flex`}
+                            iconName={`${isInputVisible.password ? ' icon-eye-2' : 'icon-eye-off'} fs-02 flex cursor-pointer hover-text`}
                             onClick={() => setIsInputVisible({
                                 ...isInputVisible,
                                 password: !isInputVisible.password
@@ -257,7 +278,7 @@ const RegisterForm = () => {
                     type={isInputVisible.confirmPassword ? "text" : "password"}
                     after={
                         <Icon
-                            iconName={`${isInputVisible.confirmPassword ? ' icon-eye-2' : 'icon-eye-off'} fs-02 flex`}
+                            iconName={`${isInputVisible.confirmPassword ? ' icon-eye-2' : 'icon-eye-off'} fs-02 flex cursor-pointer hover-text`}
                             onClick={() => setIsInputVisible({
                                 ...isInputVisible,
                                 confirmPassword: !isInputVisible.confirmPassword
@@ -283,6 +304,11 @@ const RegisterForm = () => {
                     alerts={userData.captchaAnswer.error}
                     maxLength="5"
                 />
+
+                <div className={`column ${classes.forgetPassword} mt-1`}>
+                    <div className="flex ai-center fs-0-8"><span className={`cursor-pointer hover-text`} onClick={() => setVerifyEmail(true)}>{t('login.verifyEmail')}</span></div>
+                </div>
+
             </div>
             <div className={`width-100 flex jc-center ai-center ${classes.formFooter}`}>
                 <Button

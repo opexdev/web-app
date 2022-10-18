@@ -138,7 +138,7 @@ const LoginForm = () => {
                         type={isInputVisible ? "text" : "password"}
                         after={
                             <Icon
-                                iconName={`${isInputVisible ? ' icon-eye-2' : 'icon-eye-off'} fs-02 flex`}
+                                iconName={`${isInputVisible ? ' icon-eye-2' : 'icon-eye-off'} fs-02 flex cursor-pointer hover-text`}
                                 onClick={() => setIsInputVisible(!isInputVisible)}
                             />
                         }
@@ -153,8 +153,7 @@ const LoginForm = () => {
                     <span className="cursor-pointer flex ai-center fs-0-8"
                           onClick={returnToLogin}>{t('login.back')}</span>
                     :
-                    <span className="cursor-pointer flex ai-center fs-0-8"
-                          onClick={() => setForgetPassword(true)}>{t('login.forgetPassword')}</span>
+                    <div className="flex ai-center mt-2"><span className={`cursor-pointer fs-0-8 hover-text`} onClick={() => setForgetPassword(true)}>{t('login.forgetPassword')}</span></div>
                 }
             </div>
         </div>
