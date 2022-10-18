@@ -10,14 +10,16 @@ import {images} from "../../../../../../assets/images";
 import TextInput from "../../../../../../components/TextInput/TextInput";
 import Icon from "../../../../../../components/Icon/Icon";
 import Countdown from "react-countdown";
-import {useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
+import {setVerifyEmailLockInitiate} from "../../../../../../store/actions";
 
-const EmailVerification = ({returnFunc, email, disable, returnFuncDisable}) => {
+const EmailVerification = ({returnFunc, email, disable, returnFuncDisableFalse, returnFuncDisableTrue}) => {
 
     const clientSecret = window.env.REACT_APP_CLIENT_SECRET
     const clientId = window.env.REACT_APP_CLIENT_ID
 
     const {t} = useTranslation();
+    const dispatch = useDispatch();
 
     const [loading, setLoading] = useState(false);
     const [isLoading, setIsLoading] = useState(true);
@@ -92,6 +94,8 @@ const EmailVerification = ({returnFunc, email, disable, returnFuncDisable}) => {
         requestForVerifyEmail(activeEmail.email.value, captchaValue)
             .then(() => {
                 setSuccess(true)
+                returnFuncDisableTrue()
+                dispatch(setVerifyEmailLockInitiate(new Date().getTime() + 2 * 60 * 1000))
             })
             .catch((err) => {
                 if (err?.response?.data?.code === 10001 && err?.response?.data?.message === "Captcha is not valid") {
@@ -99,7 +103,7 @@ const EmailVerification = ({returnFunc, email, disable, returnFuncDisable}) => {
                     return setActiveEmail({...activeEmail, captchaAnswer: {value: "", error: [t("login.InvalidCaptcha")]}})
                 }
                 if (err?.response?.data?.code === 1002 && err?.response?.data?.message === "User already verified") {
-                    return setActiveEmail({...activeEmail, captchaAnswer: {value: "", error: [t("login.userAlreadyVerified")]}})
+                    return setActiveEmail({...activeEmail, captchaAnswer: {value: "", error: [t("login.emailAlreadyVerified")]}})
                 } else {
                     return setActiveEmail({
                         ...activeEmail,
@@ -127,7 +131,7 @@ const EmailVerification = ({returnFunc, email, disable, returnFuncDisable}) => {
             return <span className={`flex row jc-center`}>{t('login.sendEmail')}  ( <Countdown
                 date={verifyEmailLock && new Date().getTime() < verifyEmailLock ? new Date(parseInt(verifyEmailLock)) : Date.now() + 120000}
                 renderer={props => <div> {props.minutes}:{props.seconds} </div>}
-                onComplete={returnFuncDisable}
+                onComplete={returnFuncDisableFalse}
             />)</span>
         }
         return <span>{t('login.sendEmail')}</span>

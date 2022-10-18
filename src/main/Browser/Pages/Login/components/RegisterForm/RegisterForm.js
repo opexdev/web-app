@@ -79,7 +79,7 @@ const RegisterForm = () => {
 
     if (registerStatus === "loading") return <LoginFormLoading/>
 
-    if (verifyEmail) return <EmailVerification returnFunc={() => setVerifyEmail(false)} email={userData?.email?.value} disable={disable} returnFuncDisable={() => setDisable(false)}/>
+    if (verifyEmail) return <EmailVerification returnFunc={() => setVerifyEmail(false)} email={userData?.email?.value} disable={disable} returnFuncDisableFalse={() => setDisable(false)} returnFuncDisableTrue={() => setDisable(true)}/>
 
     if (registerStatus === "finish") {
         return <div className={`column jc-center ai-center text-center px-4`} style={{height: "35vh"}}>
@@ -98,7 +98,7 @@ const RegisterForm = () => {
             /></span>
 
             <div className={`column mt-3 hover-text text-orange`}>
-                <span className="cursor-pointer flex ai-center fs-0-8" onClick={() => setVerifyEmail(true)}>{t('login.verifyEmail')}</span>
+                <span className="cursor-pointer flex ai-center fs-0-8" onClick={() => setVerifyEmail(true)}>{t('login.verificationEmail')}</span>
             </div>
         </div>
     }
@@ -306,7 +306,7 @@ const RegisterForm = () => {
                 />
 
                 <div className={`column ${classes.forgetPassword} mt-1`}>
-                    <div className="flex ai-center fs-0-8"><span className={`cursor-pointer hover-text`} onClick={() => setVerifyEmail(true)}>{t('login.verifyEmail')}</span></div>
+                    <div className="flex ai-center fs-0-8"><span className={`cursor-pointer hover-text`} onClick={() => setVerifyEmail(true)}>{t('login.verificationEmail')}</span></div>
                 </div>
 
             </div>
