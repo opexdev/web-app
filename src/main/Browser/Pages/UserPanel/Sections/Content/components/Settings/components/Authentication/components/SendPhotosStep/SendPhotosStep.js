@@ -56,13 +56,13 @@ const SendPhotosStep = (props) => {
     }
 
     return (
-        <div className={`container card-bg card-border column ${classes.container}`}>
+        <div className={`width-100 card-bg card-border column ${classes.container}`}>
             <div className={`column border-bottom jc-center card-header-bg px-1 py-1 ${classes.header}`}>
                 <div className="row jc-start ">
                     <h3>{t("SendPhotosStep.title")}</h3>
                 </div>
             </div>
-            <div className={`container column jc-between px-1 py-2 ${classes.content}`}>
+            <div className={`width-100 column jc-between px-1 py-2 ${classes.content}`}>
                 <div className="column">
                     <span>{t("SendPhotosStep.content")}</span>
                     <span>{t("SendPhotosStep.acceptForm")}{" "}<span
@@ -74,7 +74,7 @@ const SendPhotosStep = (props) => {
                     </span>
                     <div className={`row jc-between ai-start mt-2`}>
                         {sending ?
-                            <div className={`container flex jc-center ai-center`} style={{height: "30vh"}}>
+                            <div className={`flex jc-center ai-center width-100`} style={{height: "30vh"}}>
                                 <span className={`flashit`}>{t("SendPhotosStep.sendingData")}</span>
                             </div>
                             :
