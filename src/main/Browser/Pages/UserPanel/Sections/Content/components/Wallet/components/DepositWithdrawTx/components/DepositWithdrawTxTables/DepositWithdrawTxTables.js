@@ -51,7 +51,7 @@ const DepositWithdrawTxTables = ({txs, id}) => {
                     <td>{moment(tr.time).format("jYY/jMM/jDD")}</td>
                     <td>{moment(tr.time).format("HH:mm:ss")}</td>
                     <td>{tr.hasOwnProperty('withdrawOrderId')  ? t("withdrawal") :  t("deposit")}</td>
-                    <td style={{width: "15%"}}>{tr.network}</td>
+                    <td className={`width-20`}>{tr.network}</td>
                     <td>{new BN(tr.amount).toFormat()}</td>
                     <td className={`text-color`}>{txStatus(tr.status)}</td>
                     {openItem === index ? (

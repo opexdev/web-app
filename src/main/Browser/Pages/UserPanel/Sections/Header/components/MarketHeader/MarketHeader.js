@@ -43,11 +43,11 @@ const MarketHeader = () => {
         <>
             <div className={`col-25 column ai-start`}>
                 <h2 className="mb-05">{t("currency." + activePair.baseAsset)}/{t("currency." + activePair.quoteAsset)}</h2>
-                <p>{t("header.lastPrice")}:{" "}<span/>{" "}{new BN(lastPrices[activePair.symbol] || 0).toFormat()+" "+t("currency." + activePair.quoteAsset)}</p>
+                <p className={`mt-05`}>{t("header.lastPrice")}:{" "}<span/>{" "}{new BN(lastPrices[activePair.symbol] || 0).toFormat()+" "+t("currency." + activePair.quoteAsset)}</p>
             </div>
             <div className={`col-50 column ai-center`}>
                 <p className="mb-05">{t("header.availableBalance")}</p>
-                <div className={`width-100 row ai-center ${classes.inventory}`}>
+                <div className={`width-100 row ai-center ${classes.inventory} mt-05`}>
                     <div className="col-50 flex ai-center jc-end">
                         <Icon iconName="icon-plus text-white fs-0-7 flex" customClass={`mx-05 cursor-pointer ${classes.iconBG}`} onClick={()=>ClickHandler(activePair.baseAsset)}/>
                         <span>{ new BN (base).decimalPlaces(activePair.baseAssetPrecision).toFormat()}</span>
@@ -58,7 +58,6 @@ const MarketHeader = () => {
                         <span>{t("currency." + activePair.quoteAsset)}</span>
                         <Icon iconName="icon-plus text-white fs-0-7 flex" customClass={`mx-05 cursor-pointer ${classes.iconBG}`} onClick={()=>ClickHandler(activePair.quoteAsset)}/>
                     </div>
-
                 </div>
             </div>
             {showPopUp ? <Popup currency={showPopUpAsset} closePopup={closePopup}/> : ""}
