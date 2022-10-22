@@ -10,11 +10,11 @@ const Market = () => {
     return (
         <>
             <div className="row px-1 py-1">
-                <div className="column col-35 pl-05">
+                <div className="column col-38 pl-05">
                     <Overview/>
                     <Order/>
                 </div>
-                <div className="column col-65 pr-05">
+                <div className="column col-62 pr-05">
                     <TradingView/>
                     <OrderBook/>
                 </div>

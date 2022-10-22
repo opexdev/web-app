@@ -129,7 +129,7 @@ const Withdrawal = () => {
 
 
     if (id === "IRT") {
-        return <div className={`flex jc-center ai-center px-1 py-2`} style={{height: "100%"}}>
+        return <div className={`flex jc-center ai-center px-1 py-z`} style={{height: "100%"}}>
             <h3>{t("comingSoon")}</h3>
         </div>
     }
@@ -137,7 +137,7 @@ const Withdrawal = () => {
     const content = () => {
         if (CILoading) return <Loading/>
         if (CIError) return <Error/>
-        else return <form onSubmit={(e)=>sendWithdrawHandler(e)} className={`px-1 py-2 column jc-between ${classes.content}`}>
+        else return <form onSubmit={(e)=>sendWithdrawHandler(e)} className={`px-1 py-3 column jc-between ${classes.content}`}>
             <div className={`row jc-between ai-center width-100 mb-1`}>
                 <div className={`col-49`}>
                     <NumberInput
@@ -179,11 +179,10 @@ const Withdrawal = () => {
                 </div>
                 <div className={`row width-100`}>
                     <div className="col-50 column jc-between">
-
-                        <span>{t("DepositWithdrawTx.freeWallet")}: <span className={`hover-text cursor-pointer`} onClick={() => {fillByWallet()}}>{freeAmount} {t("currency." + id)}</span></span>
-                        <span>{t('DepositWithdrawTx.minWithdraw')}: <span className={`hover-text cursor-pointer`} onClick={() => {fillByMinWithdraw()}}> {new BN(currencyInfo?.chains[networkName.value]?.minWithdraw).plus(withdrawFee).toString()} {t("currency." + id)} </span></span>
-                        <span>{t('DepositWithdrawTx.maxWithdraw')}: <span>2 {t("currency." + id)}</span></span>
-                        <span>{t('DepositWithdrawTx.maxMonthWithdraw')}: <span>2 {t("currency." + id)}</span></span>
+                        <span className={`my-05`}>{t("DepositWithdrawTx.freeWallet")}: <span className={`hover-text cursor-pointer`} onClick={() => {fillByWallet()}}>{freeAmount} {t("currency." + id)}</span></span>
+                        <span className={`my-05`}>{t('DepositWithdrawTx.minWithdraw')}: <span className={`hover-text cursor-pointer`} onClick={() => {fillByMinWithdraw()}}> {new BN(currencyInfo?.chains[networkName.value]?.minWithdraw).plus(withdrawFee).toString()} {t("currency." + id)} </span></span>
+                        <span className={`my-05`}>{t('DepositWithdrawTx.maxWithdraw')}: <span>2 {t("currency." + id)}</span></span>
+                        <span className={`my-05`}>{t('DepositWithdrawTx.maxMonthWithdraw')}: <span>2 {t("currency." + id)}</span></span>
                     </div>
                     <div className="col-50 pr-1 column jc-end">
                         {/*<div>

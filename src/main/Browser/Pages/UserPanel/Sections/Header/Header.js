@@ -51,7 +51,7 @@ const Header = () => {
                 </Routes>
                 <div className={`col-25 column ai-end`}>
                     {firstName === null ? (
-                        <Link to={Login} state={{from: location}} className="hover-text">
+                        <Link to={Login} state={{from: location}} className="hover-text mb-05">
                             <p>{t("pleaseLogin")}</p>
                         </Link>
                     ) : (
@@ -59,7 +59,7 @@ const Header = () => {
                             {firstName + " " + lastName}
                         </p>
                     )}
-                    <p style={{direction: "ltr"}}>
+                    <p className={`mt-05`} style={{direction: "ltr"}}>
                         <Clock/>
                     </p>
                 </div>

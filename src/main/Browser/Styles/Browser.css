@@ -2,19 +2,19 @@
 
     html, body {
         font-size: 0.9vw;
-        line-height: 3.5vh;
+        line-height: 4vh;
         height: 100%;
 
     }
 
     .button {
-        height: 4.5vh;
+        height: 5vh;
         font-size: 0.8vw;
     }
 
     tr {
         position: relative;
-        line-height: 4.2vh;
+        line-height: 5vh;
     }
 
 

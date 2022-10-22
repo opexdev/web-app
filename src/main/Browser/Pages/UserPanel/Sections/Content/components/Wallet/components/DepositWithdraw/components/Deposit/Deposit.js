@@ -35,7 +35,7 @@ const Deposit = () => {
         if (id === "TETH") {
             return <div>
                 <span className={`text-red font-weight-bold`}>{t("DepositWithdraw.important")}: </span>
-                <div>
+                <div className={`mt-1`}>
                     <span>{t("DepositWithdraw.DepositTETHContentBefore")}</span>
                     <span className={`hover-text cursor-pointer`}
                           onClick={() => window.open('https://faucet.dimensions.network/')}>https://faucet.ropsten.be</span>
@@ -63,7 +63,7 @@ const Deposit = () => {
         if (id === "TBTC") {
             return <div>
                 <span className={`text-red font-weight-bold`}>{t("DepositWithdraw.important")}: </span>
-                <div>
+                <div className={`mt-1`}>
                     <span>{t("DepositWithdraw.DepositTBTCContentBefore")}</span>
                     <span className={`hover-text cursor-pointer`}
                           onClick={() => window.open('https://testnet-faucet.com/btc-testnet')}>https://testnet-faucet.com/btc-testnet</span>
@@ -91,7 +91,7 @@ const Deposit = () => {
         if (id === "TUSDT") {
             return <div>
                 <span className={`text-red font-weight-bold`}>{t("DepositWithdraw.important")}: </span>
-                <div>
+                <div className={`mt-1`}>
                     <span>{t("DepositWithdraw.DepositTUSDTContentBefore")}</span>
                     <span className={`hover-text cursor-pointer`}
                           onClick={() => window.open('https://bit.ly/ROPTokens')}>https://bit.ly/ROPTokens</span>
@@ -136,9 +136,9 @@ const Deposit = () => {
     if (error) return <Error retryFunc={refetch}/>
 
     return (
-        <div className={`px-1 py-2 row jc-between ${classes.content}`}>
+        <div className={`px-1 py-3 row jc-between ${classes.content}`}>
             <div className="col-80 column jc-between">
-                    <span>
+                    <span className={`mb-2`}>
                         <Trans
                             i18nKey="DepositWithdraw.minDepositText"
                             values={{
@@ -161,7 +161,7 @@ const Deposit = () => {
                     customRef={addressRef}
                     value={address.address}
                 />
-                <span>{helpText()}</span>
+                <span className={`mt-2`}>{helpText()}</span>
             </div>
             <div className={`col-20 py-1 flex ai-center jc-center`}>
                 <QRCode
