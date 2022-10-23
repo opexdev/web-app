@@ -10,11 +10,11 @@ import {useGetUserAssets} from "../../../../../../../../../../queries";
 
 const WalletListItem = ({assetName, showZero}) => {
     const {t} = useTranslation();
-
+    const refCurrency = window.env.REACT_APP_REFERENCE_FIAT_CURRENCY
     const {data: userAccount} = useGetUserAccount()
     const free = userAccount?.wallets[assetName]?.free || 0
 
-    const {data: estimateValue , isLoading, error} = useGetUserAssets("IRT")
+    const {data: estimateValue , isLoading, error} = useGetUserAssets(refCurrency)
     const freeEstimateValue = (isLoading || error) ?  0 : (estimateValue?.find( q => q.asset === assetName )?.free || 0)
 
     if (showZero && free === 0) return <></>
@@ -40,8 +40,8 @@ const WalletListItem = ({assetName, showZero}) => {
                 </div>
                 <div className="column ai-end">
                     <span>{new BN(free).toFormat() + " "} <span className="fs-0-7">{t("currency." + assetName)}</span></span>
-                    <span className="fs-0-7 text-gray">
-                        <span>{t("WalletSubMenu.equivalent")} </span> {new BN(freeEstimateValue).toFormat()} <span>{t("currency.IRT")}</span>
+                    <span className="fs-0-7 text-gray" >
+                        <span>{t("WalletSubMenu.equivalent")} </span> {refCurrency === assetName ? new BN(free).toFormat() : new BN(freeEstimateValue).toFormat()}<span> {t("currency."+refCurrency)}</span>
                     </span>
                 </div>
             </div>
