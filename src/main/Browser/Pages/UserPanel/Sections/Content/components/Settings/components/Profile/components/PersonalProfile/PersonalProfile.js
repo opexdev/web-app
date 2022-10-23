@@ -37,129 +37,92 @@ const PersonalProfile = () => {
                 <div
                     className={`column jc-between ai-center px-1 py-2 ${classes.content}`}>
                     <div className="row jc-between">
-                        <div className="col-49">
-                            <TextInput
-                                lead={t('PersonalProfile.firstName')}
-                                type="text"
-                                disabled={true}
-                                value={profile.firstName}
-                            />
-                        </div>
-                        <div className="col-49">
-                            <TextInput
-                                lead={t('PersonalProfile.lastName')}
-                                type="text"
-                                disabled={true}
-                                value={profile.lastName}
-                            />
-                        </div>
+                        <TextInput
+                            lead={t('PersonalProfile.firstName')}
+                            type="text"
+                            disabled={true}
+                            value={profile.firstName}
+                            customClass={`col-49`}
+                        />
+                        <TextInput
+                            lead={t('PersonalProfile.lastName')}
+                            type="text"
+                            disabled={true}
+                            value={profile.lastName}
+                            customClass={`col-49`}
+                        />
                     </div>
                     <div className="row jc-between">
-                        <div className="col-49">
-                            <TextInput
-                                select={true}
-                                placeholder={t('PersonalProfile.selectNationality')}
-                                options={countries}
-                                defaultValue={countries.filter((v) => v.value === profile.nationality)}
-                                lead={t('PersonalProfile.nationality')}
-                                type="select"
-                                isDisabled={true}
-                            />
-                        </div>
-                        <div className="col-49">
-                            <TextInput
-                                select={true}
-                                placeholder={t('PersonalProfile.selectResidence')}
-                                lead={t('PersonalProfile.residence')}
-                                defaultValue={countries.filter((v) => v.value === profile.residence)}
-                                type="select"
-                                isDisabled={true}
-                                options={countries}
-                            />
-                        </div>
+                        <TextInput
+                            select={true}
+                            placeholder={t('PersonalProfile.selectNationality')}
+                            options={countries}
+                            defaultValue={countries.filter((v) => v.value === profile.nationality)}
+                            customClass={`col-49`}
+                            lead={t('PersonalProfile.nationality')}
+                            type="select"
+                            isDisabled={true}
+                        />
+                        <TextInput
+                            select={true}
+                            placeholder={t('PersonalProfile.selectResidence')}
+                            lead={t('PersonalProfile.residence')}
+                            defaultValue={countries.filter((v) => v.value === profile.residence)}
+                            customClass={`col-49`}
+                            type="select"
+                            isDisabled={true}
+                            options={countries}
+                        />
                     </div>
                     <div className="row jc-between">
-                        <div className="col-49">
-                            <TextInput
-                                lead={t('PersonalProfile.birthdayJ')}
-                                type="text"
-                                disabled={true}
-                                value={profile.birthdayJ}
-                            />
-                        </div>
-                        <div className="col-49">
-                            <TextInput
-                                lead={t('PersonalProfile.birthdayG')}
-                                type="text"
-                                disabled={true}
-                                value={profile.birthdayG}
-                            />
-                        </div>
+                        <TextInput
+                            lead={t('PersonalProfile.birthday')}
+                            type="text"
+                            disabled={true}
+                            value={profile.birthday}
+                            customClass={`col-49`}
+                        />
+                        <TextInput
+                            lead={t('PersonalProfile.idNumber')}
+                            type="text"
+                            disabled={true}
+                            value={profile.idNumber}
+                            customClass={`col-49`}
+                        />
                     </div>
                     <div className="row jc-between">
-                        <div className="col-49">
-                            <TextInput
-                                lead={t('PersonalProfile.nationalId')}
-                                type="text"
-                                disabled={true}
-                                value={profile.nationalId}
-                            />
-                        </div>
-                        <div className="col-49">
-                            <TextInput
-                                lead={t('PersonalProfile.passportNumber')}
-                                type="text"
-                                disabled={true}
-                                value={profile.passportNumber}
-                            />
-                        </div>
+                        <TextInput
+                            lead={t('PersonalProfile.mobile')}
+                            type="text"
+                            disabled={true}
+                            value={profile.mobile}
+                            customClass={`col-49`}
+                        />
+                        <TextInput
+                            lead={t('PersonalProfile.postalCode')}
+                            type="text"
+                            disabled={true}
+                            value={profile.postalCode}
+                            customClass={`col-49`}
+                        />
                     </div>
                     <div className="row jc-between">
-                        <div className="col-49">
-                            <TextInput
-                                lead={t('PersonalProfile.mobile')}
-                                type="text"
-                                disabled={true}
-                                value={profile.mobile}
-                            />
-                        </div>
-                        <div className="col-49">
-                            <TextInput
-                                lead={t('PersonalProfile.telephone')}
-                                type="text"
-                                disabled={true}
-                                value={profile.telephone}
-                            />
-                        </div>
-                    </div>
-                    <div className="row jc-between">
-                        <div className="col-49">
-                            <TextInput
-                                lead={t('PersonalProfile.email')}
-                                type="email"
-                                disabled={true}
-                                value={profile.email}
-                            />
-                        </div>
-                        <div className="col-49">
-                            <TextInput
-                                lead={t('PersonalProfile.postalCode')}
-                                type="text"
-                                disabled={true}
-                                value={profile.postalCode}
-                            />
-                        </div>
+                        <TextInput
+                            lead={t('PersonalProfile.email')}
+                            type="email"
+                            disabled={true}
+                            value={profile.email}
+                            customClass={`col-49`}
+                        />
                     </div>
                     <div className="row jc-between ">
-                        <div className="col-100">
-                            <TextInput
-                                lead={t('PersonalProfile.address')}
-                                customClass={classes.addressInput}
-                                type="text"
-                                disabled={true}
-                                value={profile.address}
-                            />
-                        </div>
+                        <TextInput
+                            lead={t('PersonalProfile.address')}
+                            customClass={`${classes.addressInput} col-100`}
+                            type="text"
+                            disabled={true}
+                            value={profile.address}
+                        />
                     </div>
                 </div>
             }
