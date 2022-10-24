@@ -2,9 +2,9 @@
     height: 10vh;
 }
 
-.title {
-    background-color: var(--activeTitle);
-}
+/*.title {
+    background-color: var(--cardBodyAlpha);
+}*/
 
 .active {
     background-color: var(--activeTitle);

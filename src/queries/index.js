@@ -2,6 +2,7 @@
 export {useOverview} from "./hooks/useOverview";
 export {useGetExchangeInfo} from "./hooks/useGetExchangeInfo";
 export {useGetCurrencyInfo} from "./hooks/useGetCurrencyInfo";
+export {useGetQuoteCurrencies} from "./hooks/useGetQuoteCurrencies";
 export {useGetMarketStats} from "./hooks/useGetMarketStats";
 export {useLastTrades} from "./hooks/useLastTrades";
 export {useOrderBook} from "./hooks/useOrderBook";
