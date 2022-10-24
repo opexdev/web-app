@@ -8,6 +8,7 @@ import Loading from "../../../../../../../../../../../../components/Loading/Load
 import Error from "../../../../../../../../../../../../components/Error/Error";
 import {useIPGDeposit} from "../../../../../../../../../../../../queries";
 import {useSelector} from "react-redux";
+import Date from "../../../../../../../../../../../../components/Date/Date";
 
 
 const IRTTx = () => {
@@ -66,7 +67,7 @@ const IRTTx = () => {
                 </thead>
                 <tbody>{txs.sort((a, b) => moment.utc(b.createDate) - moment.utc(a.createDate)).map((tr, index) => (
                         <tr key={index}>
-                            <td>{moment.utc(tr.createDate).local().format("jYY/jMM/jDD")}</td>
+                            <td><Date date={tr.createDate}/></td>
                             <td>{moment.utc(tr.createDate).local().format("HH:mm:ss")}</td>
                             <td className="text-green">{t("deposit")}</td>
                             <td className="text-green">{new BN(tr.amount).multipliedBy(0.1).toFormat()}{" "}{"+"}</td>
