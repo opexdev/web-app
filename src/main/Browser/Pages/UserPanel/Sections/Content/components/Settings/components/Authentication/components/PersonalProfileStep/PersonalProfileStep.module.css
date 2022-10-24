@@ -1,5 +1,5 @@
 .container {
-  height: 88vh;
+  height: 75vh;
 }
 .header {
   height: 12%;
@@ -15,9 +15,6 @@
 }
 .addressInput :global(input) {
   width: 75.5%;
-}
-.ltrInput :global(input) {
-  direction: ltr !important;
 }
 .thisButton {
   width: 20%;
