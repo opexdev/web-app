@@ -73,9 +73,15 @@ const PersonalProfileStep = (props) => {
         const data = convertStateToUserInfo()
         delete data.email;
         delete data.username;
+        delete data.passportNumber;
+        delete data.birthdayG;
+        delete data.birthdayJ;
+        delete data.nationalId;
+        delete data.telephone;
         delete data.selfiePath;
         delete data.idCardPath;
         delete data.acceptFormPath;
+
 
         setUserProfileAttributes(data)
             .then(() => {

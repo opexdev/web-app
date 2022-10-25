@@ -8,6 +8,7 @@ import ScrollBar from "../../../../../../../../../../../../components/ScrollBar"
 import Icon from "../../../../../../../../../../../../components/Icon/Icon";
 import Error from "../../../../../../../../../../../../components/Error/Error";
 import {useMyTrades} from "../../../../../../../../../../../../queries";
+import Date from "../../../../../../../../../../../../components/Date/Date";
 
 const Trades = () => {
 
@@ -54,7 +55,7 @@ const Trades = () => {
                 {data.map((tr, index) => (
                     <Fragment key={index}>
                         <tr className={tr.isBuyer === false ? "text-green" : "text-red"}>
-                            <td>{moment(tr.time).format("jYY/jMM/jDD")}</td>
+                            <td><Date date={tr.time}/></td>
                             <td>{moment(tr.time).format("HH:mm:ss")}</td>
                             <td>{tr.qty}</td>
                             <td>{tr.price}</td>

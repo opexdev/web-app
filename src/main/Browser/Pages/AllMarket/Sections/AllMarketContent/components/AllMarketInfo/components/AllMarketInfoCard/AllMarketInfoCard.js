@@ -9,7 +9,7 @@ import {Panel} from "../../../../../../../../Routes/routes";
 import {useNavigate} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 
-const AllMarketInfoCard = ({data}) => {
+const AllMarketInfoCard = ({data, activeCurrency}) => {
 
 
     const {t} = useTranslation();
@@ -57,10 +57,10 @@ const AllMarketInfoCard = ({data}) => {
 
                             <div className={`row jc-between ai-center width-100 px-1`}>
                                 <div className={`row jc-center ai-center`}>
-                                    <img  src={images[tr?.pairInfo?.baseAsset]} alt={tr?.pairInfo?.baseAsset}
-                                          title={tr?.pairInfo?.baseAsset} className={`img-md-plus ml-05`}/>
+                                    <img  src={images[tr?.base]} alt={tr?.base}
+                                          title={tr?.base} className={`img-md-plus ml-05`}/>
 
-                                    <span className={`fs-01`}>{t("currency." + tr?.pairInfo?.baseAsset)}</span>
+                                    <span className={`fs-01`}>{activeCurrency ? t("currency." + tr?.base) : tr?.base + " / " + tr?.quote}</span>
                                 </div>
 
                                 <div className={`flex jc-end ai-center fs-0-6`}>
@@ -72,7 +72,7 @@ const AllMarketInfoCard = ({data}) => {
                             <div className={`column px-1 width-100 fs-0-7`}>
                                 <div className={`row jc-between ai-center`}>
                                     <span className={``}>{t("MarketInfo.lastPrice")}:</span>
-                                    <span className={`${tr.priceChange > 0 ? "text-green" : "text-red"} fs-01`}>{new BN(tr.lastPrice).toFormat()}</span>
+                                    <span className={`${tr.priceChange > 0 ? "text-green" : "text-red"} fs-01`}>{new BN(tr.lastPrice).toFormat()} <span className={`fs-0-7 mr-025`}>{t("currency." + tr?.quote)}</span></span>
                                 </div>
                                 <div className={`row jc-between ai-center`}>
                                     <span className={`text-gray`}>{t("MarketInfo.lowPrice")}:</span>
