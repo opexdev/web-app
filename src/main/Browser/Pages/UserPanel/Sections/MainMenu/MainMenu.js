@@ -75,12 +75,12 @@ const MainMenu = () => {
                         </NavLink>
                     </div>
                     <div className={`column jc-end ai-center ${classes.bottomSection}`}>
-                     <span
+                     {/*<span
                          className={`text-color ${classes.messages} 
                          ${showMessages ? classes.selected : ""}`}
                          onClick={() => setShowMessages((prevState) => !prevState)}
                          data-html={true} data-place="left" data-effect="float" data-tip={`<span class="column jc-between col-100">${t("messages.title")}</span>`}><Icon iconName="icon-messages-dotted fs-21"/>
-                     </span>
+                     </span>*/}
                         <NavLink
                             to={Routes.Security}
                             className={({ isActive }) =>

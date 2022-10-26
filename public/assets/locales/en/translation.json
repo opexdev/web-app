@@ -473,7 +473,7 @@
     "save": "Save"
   },
   "login": {
-    "title": "Login/RegistimproperMobileView er",
+    "title": "Login/Register",
     "wrongPassword": "Username or password is incorrect!",
     "wrongOTP": "Entered OTP is incorrect!",
     "wrongPasswordConfirmation": "Password and confirm password don't match.",
