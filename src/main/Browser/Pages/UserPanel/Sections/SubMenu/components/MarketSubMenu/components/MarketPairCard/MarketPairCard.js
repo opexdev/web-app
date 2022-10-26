@@ -33,7 +33,7 @@ const MarketPairCard = ({id, pair, favPair, addFav}) => {
                         data-name={pair.symbol}>
                         <Icon iconName={`${favPair.includes(pair.symbol) ? "icon-star-filled" : "icon-star"} text-color fs-01`}/>
                     </div>
-                    {pair.baseAsset + "/" + pair.quoteAsset}
+                    {pair.baseAsset + " / " + pair.quoteAsset}
                 </div>
                 <div>
                     {new BN(prices[pair.symbol] || 0).toFormat()}

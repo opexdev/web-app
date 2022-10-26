@@ -22,6 +22,7 @@ const LoginForm = () => {
     const dispatch = useDispatch();
     const location = useLocation();
 
+    const isDevelopment = window.env.REACT_APP_ENV === "development";
     const [isInputVisible, setIsInputVisible] = useState(false);
     const [isLoading, setLoading] = useState(false);
     const [loginError, setLoginError] = useState(false);
@@ -113,12 +114,7 @@ const LoginForm = () => {
 
     return <form onSubmit={(e) => submit(e)} className={`column ai-center jc-between ${classes.form}`}>
         <div className={`width-100 column jc-center ai-center ${classes.formBody} py-2`}>
-            {!needOTP && <span className={`font-weight-300 fs-0-8 mb-2 hover-text cursor-pointer`}
-                               onClick={() => setCredential({
-                                   username: "demo1@opex.dev",
-                                   password: "12345678",
-                                   otp: ""
-                               })}>{t('login.forDemoLogin')}</span>}
+            {(!needOTP && isDevelopment) && <span className={`font-weight-300 fs-0-8 mb-2 hover-text cursor-pointer`} onClick={() => setCredential({username: "demo1@opex.dev", password: "12345678", otp: ""})}>{t('login.forDemoLogin')}</span>}
             {needOTP ?
                 <OTPForm setOTP={setOTPInputHandler} initialVal={credential.otp}/>
                 :
@@ -126,7 +122,7 @@ const LoginForm = () => {
                     <TextInput
                         lead={t('email')}
                         type="text"
-                        customClass={`${classes.loginInput} mb-1`}
+                        customClass={`${classes.loginInput} mb-1 mt-2`}
                         value={credential.username}
                         onchange={(e) => setCredential({...credential, username: e.target.value})}
                     />

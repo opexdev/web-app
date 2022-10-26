@@ -11,6 +11,7 @@ import {toast} from "react-hot-toast";
 import Error from "../../../../../../../../../../../../components/Error/Error";
 import {useMyOpenOrders} from "../../../../../../../../../../../../queries";
 import {cancelOrderByOrderID} from "js-api-client";
+import Date from "../../../../../../../../../../../../components/Date/Date";
 
 
 const OpenOrders = () => {
@@ -68,7 +69,7 @@ const OpenOrders = () => {
                         const totalPrice = pricePerUnit.multipliedBy(origQty)
                         return (<Fragment key={index}>
                             <tr className={tr.side === "BUY" ? "text-green" : "text-red"}>
-                                <td>{moment(tr.time).format("jYY/jMM/jDD")}</td>
+                                <td><Date date={tr.time}/></td>
                                 <td>{moment(tr.time).format("HH:mm:ss")}</td>
                                 <td>{origQty.decimalPlaces(activePair.baseAssetPrecision).toFormat()}</td>
                                 <td>{pricePerUnit.decimalPlaces(activePair.quoteAssetPrecision).toFormat()}</td>

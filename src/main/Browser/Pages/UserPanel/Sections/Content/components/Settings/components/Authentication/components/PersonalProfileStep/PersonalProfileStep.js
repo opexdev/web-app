@@ -22,12 +22,9 @@ const PersonalProfileStep = (props) => {
         lastName: {value: "", error: []},
         nationality: {value: "", error: []},
         residence: {value: "", error: []},
-        birthdayJ: {value: "", error: []},
-        birthdayG: {value: "", error: []},
-        nationalId: {value: "", error: []},
-        passportNumber: {value: "", error: []},
+        birthday: {value: "", error: []},
+        idNumber: {value: "", error: []},
         mobile: {value: "", error: []},
-        telephone: {value: "", error: []},
         postalCode: {value: "", error: []},
         address: {value: "", error: []},
     });
@@ -76,9 +73,15 @@ const PersonalProfileStep = (props) => {
         const data = convertStateToUserInfo()
         delete data.email;
         delete data.username;
+        delete data.passportNumber;
+        delete data.birthdayG;
+        delete data.birthdayJ;
+        delete data.nationalId;
+        delete data.telephone;
         delete data.selfiePath;
         delete data.idCardPath;
         delete data.acceptFormPath;
+
 
         setUserProfileAttributes(data)
             .then(() => {
@@ -173,172 +176,124 @@ const PersonalProfileStep = (props) => {
                 <div
                     className={`column jc-between ai-center px-1 py-2 ${classes.content}`}>
                     <div className="row jc-between">
-                        <div className="col-49">
-                            <TextInput
-                                lead={t('PersonalProfile.firstName')}
-                                type="text"
-                                value={profile.firstName.value}
-                                data-name="firstName"
-                                data-type="input"
-                                data-min={2}
-                                onchange={(e) => inputHandler(e)}
-                                alerts={profile.firstName.error}
-                            />
-                        </div>
-                        <div className="col-49">
-                            <TextInput
-                                lead={t('PersonalProfile.lastName')}
-                                type="text"
-                                value={profile.lastName.value}
-                                data-name="lastName"
-                                data-type="input"
-                                data-min={2}
-                                onchange={(e) => inputHandler(e)}
-                                alerts={profile.lastName.error}
-                            />
-                        </div>
+                        <TextInput
+                            lead={t('PersonalProfile.firstName')}
+                            type="text"
+                            value={profile.firstName.value}
+                            customClass={`col-49`}
+                            data-name="firstName"
+                            data-type="input"
+                            data-min={2}
+                            onchange={(e) => inputHandler(e)}
+                            alerts={profile.firstName.error}
+                        />
+                        <TextInput
+                            lead={t('PersonalProfile.lastName')}
+                            type="text"
+                            value={profile.lastName.value}
+                            customClass={`col-49`}
+                            data-name="lastName"
+                            data-type="input"
+                            data-min={2}
+                            onchange={(e) => inputHandler(e)}
+                            alerts={profile.lastName.error}
+                        />
                     </div>
                     <div className="row jc-between">
-                        <div className="col-49">
-                            <TextInput
-                                select={true}
-                                placeholder={t('PersonalProfile.selectNationality')}
-                                options={countries}
-                                defaultValue={countries.filter((v) => v.value === profile.nationality.value)}
-                                lead={t('PersonalProfile.nationality')}
-                                type="select"
-                                onchange={(e) => setProfile({...profile, nationality: {value: e.value, error: []}})}
-                                alerts={profile.nationality.error}
-                            />
-                        </div>
-                        <div className="col-49">
-                            <TextInput
-                                select={true}
-                                placeholder={t('PersonalProfile.selectResidence')}
-                                lead={t('PersonalProfile.residence')}
-                                defaultValue={countries.filter((v) => v.value === profile.residence.value)}
-                                type="select"
-                                options={countries}
-                                onchange={(e) => setProfile({...profile, residence: {value: e.value, error: []}})}
-                                alerts={profile.residence.error}
-                            />
-                        </div>
+                        <TextInput
+                            select={true}
+                            placeholder={t('PersonalProfile.selectNationality')}
+                            customClass={`col-49`}
+                            options={countries}
+                            defaultValue={countries.filter((v) => v.value === profile.nationality.value)}
+                            lead={t('PersonalProfile.nationality')}
+                            type="select"
+                            onchange={(e) => setProfile({...profile, nationality: {value: e.value, error: []}})}
+                            alerts={profile.nationality.error}
+                        />
+                        <TextInput
+                            select={true}
+                            placeholder={t('PersonalProfile.selectResidence')}
+                            customClass={`col-49`}
+                            lead={t('PersonalProfile.residence')}
+                            defaultValue={countries.filter((v) => v.value === profile.residence.value)}
+                            type="select"
+                            options={countries}
+                            onchange={(e) => setProfile({...profile, residence: {value: e.value, error: []}})}
+                            alerts={profile.residence.error}
+                        />
                     </div>
                     <div className="row jc-between">
-                        <div className="col-49">
-                            <TextInput
-                                lead={t('PersonalProfile.birthdayJ')}
-                                type="text"
-                                placeholder={t('PersonalProfileStep.yy/mm//dd')}
-                                customClass={`${classes.ltrInput}`}
-                                value={profile.birthdayJ.value}
-                                data-name="birthdayJ"
-                                data-type="dateJ"
-                                onchange={(e) => inputHandler(e)}
-                                alerts={profile.birthdayJ.error}
-                            />
-                        </div>
-                        <div className="col-49">
-                            <TextInput
-                                lead={t('PersonalProfile.birthdayG')}
-                                type="text"
-                                placeholder={t('PersonalProfileStep.yy/mm//dd')}
-                                customClass={`${classes.ltrInput}`}
-                                value={profile.birthdayG.value}
-                                data-name="birthdayG"
-                                data-type="dateG"
-                                onchange={(e) => inputHandler(e)}
-                                alerts={profile.birthdayG.error}
-                            />
-                        </div>
+                        <TextInput
+                            lead={t('PersonalProfile.birthday')}
+                            type="text"
+                            placeholder={t('PersonalProfileStep.yy/mm//dd')}
+                            customClass={`col-49`}
+                            ltr={true}
+                            value={profile.birthday.value}
+                            data-name="birthday"
+                            data-type="birthday"
+                            onchange={(e) => inputHandler(e)}
+                            alerts={profile.birthday.error}
+                        />
+                        <TextInput
+                            lead={t('PersonalProfile.idNumber')}
+                            placeholder={t('PersonalProfile.idNumberPlaceHolder')}
+                            type="text"
+                            value={profile.idNumber.value}
+                            customClass={`col-49 fs-0-9`}
+                            data-name="idNumber"
+                            data-type="idNumber"
+                            onchange={(e) => inputHandler(e)}
+                            alerts={profile.idNumber.error}
+                            //maxLength="10"
+                        />
                     </div>
                     <div className="row jc-between">
-                        <div className="col-49">
-                            <TextInput
-                                lead={t('PersonalProfile.nationalId')}
-                                type="text"
-                                value={profile.nationalId.value}
-                                data-name="nationalId"
-                                data-type="nationalId"
-                                onchange={(e) => inputHandler(e)}
-                                alerts={profile.nationalId.error}
-                                maxLength="10"
-                            />
-                        </div>
-                        <div className="col-49">
-                            <TextInput
-                                lead={t('PersonalProfile.passportNumber')}
-                                type="text"
-                                value={profile.passportNumber.value}
-                                data-name="passportNumber"
-                                data-type="passportNumber"
-                                onchange={(e) => inputHandler(e)}
-                                alerts={profile.passportNumber.error}
-                            />
-                        </div>
+                        <TextInput
+                            lead={t('PersonalProfile.mobile')}
+                            type="text"
+                            customClass={`col-49`}
+                            ltr={true}
+                            value={profile.mobile.value}
+                            data-name="mobile"
+                            data-type="mobile"
+                            onchange={(e) => inputHandler(e)}
+                            alerts={profile.mobile.error}
+                        />
+                        <TextInput
+                            lead={t('PersonalProfile.postalCode')}
+                            type="text"
+                            customClass={`col-49`}
+                            ltr={true}
+                            value={profile.postalCode.value}
+                            data-name="postalCode"
+                            data-type="postalCode"
+                            onchange={(e) => inputHandler(e)}
+                            alerts={profile.postalCode.error}
+                        />
                     </div>
                     <div className="row jc-between">
-                        <div className="col-49">
-                            <TextInput
-                                lead={t('PersonalProfile.mobile')}
-                                type="text"
-                                customClass={`${classes.ltrInput}`}
-                                value={profile.mobile.value}
-                                data-name="mobile"
-                                data-type="mobile"
-                                onchange={(e) => inputHandler(e)}
-                                alerts={profile.mobile.error}
-                            />
-                        </div>
-                        <div className="col-49">
-                            <TextInput
-                                lead={t('PersonalProfile.telephone')}
-                                type="text"
-                                customClass={`${classes.ltrInput}`}
-                                value={profile.telephone.value}
-                                data-name="telephone"
-                                data-type="telephone"
-                                onchange={(e) => inputHandler(e)}
-                                alerts={profile.telephone.error}
-                            />
-                        </div>
-                    </div>
-                    <div className="row jc-between">
-                        <div className="col-49">
-                            <TextInput
-                                lead={t('PersonalProfile.email')}
-                                type="email"
-                                disabled={true}
-                                value={email}
-                                customClass={`${classes.email}`}
-                            />
-                        </div>
-                        <div className="col-49">
-                            <TextInput
-                                lead={t('PersonalProfile.postalCode')}
-                                type="text"
-                                customClass={`${classes.ltrInput}`}
-                                value={profile.postalCode.value}
-                                data-name="postalCode"
-                                data-type="postalCode"
-                                onchange={(e) => inputHandler(e)}
-                                alerts={profile.postalCode.error}
-                            />
-                        </div>
+                        <TextInput
+                            lead={t('PersonalProfile.email')}
+                            type="email"
+                            disabled={true}
+                            value={email}
+                            customClass={`${classes.email} col-49`}
+                        />
                     </div>
                     <div className="row jc-between ">
-                        <div className="col-100">
-                            <TextInput
-                                lead={t('PersonalProfile.address')}
-                                type="text"
-                                customClass={`${classes.ltrInput} ${classes.addressInput}`}
-                                value={profile.address.value}
-                                data-name="address"
-                                data-type="address"
-                                onchange={(e) => inputHandler(e)}
-                                alerts={profile.address.error}
-                            />
-                        </div>
+                        <TextInput
+                            lead={t('PersonalProfile.address')}
+                            type="text"
+                            customClass={`${classes.addressInput} col-100`}
+                            ltr={true}
+                            value={profile.address.value}
+                            data-name="address"
+                            data-type="address"
+                            onchange={(e) => inputHandler(e)}
+                            alerts={profile.address.error}
+                        />
                     </div>
                     <div className="row pt-1 jc-between">
                         <div className={`col-50 flex jc-start ai-end`}>

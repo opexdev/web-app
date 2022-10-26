@@ -1,10 +1,10 @@
 import {useQuery} from "@tanstack/react-query";
 import {getOverview} from "js-api-client";
 
-export const useOverview = (symbol, period) => {
+export const useOverview = (symbol, period, quote) => {
     return useQuery(
-        ['overview', symbol, period],
-        () => getOverviewFunc(symbol, period),
+        ['overview', symbol, period, quote],
+        () => getOverviewFunc(symbol, period, quote),
         {
             staleTime: 5000,
             refetchInterval: 10000,
@@ -12,8 +12,8 @@ export const useOverview = (symbol, period) => {
         });
 }
 
-const getOverviewFunc = async (symbol, period) => {
-    const {data} = await getOverview(symbol, period)
+const getOverviewFunc = async (symbol, period, quote) => {
+    const {data} = await getOverview(symbol, period, quote)
     return data;
 }
 

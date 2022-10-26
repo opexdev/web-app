@@ -8,11 +8,9 @@ import {useGetUserAssetsEstimatedValue} from "../../../../../../../../../../quer
 const WalletBalance = () => {
 
     const {t} = useTranslation();
-
-    const {data , isLoading, error} = useGetUserAssetsEstimatedValue("IRT")
-
+    const refCurrency = window.env.REACT_APP_REFERENCE_FIAT_CURRENCY
+    const {data , isLoading, error} = useGetUserAssetsEstimatedValue(refCurrency)
     const totalValue = (isLoading || error) ?  0 : data.value
-
 
     return ( <div className={"container row ai-center cursor-pointer position-relative px-1 py-105"} style={{cursor:"initial"}}>
             <div className={` row jc-start ai-center ${classes.PairImage}`}>
@@ -29,7 +27,7 @@ const WalletBalance = () => {
                     <span className="fs-0-7">{t("WalletSubMenu.approximate")}</span>
                 </div>
                 <div className="column ai-end">
-                    <span>{new BN(totalValue).toFormat()}{" "}<span className="fs-0-7">{t("currency.IRT")}</span></span>
+                    <span>{new BN(totalValue).toFormat()}{" "}<span className="fs-0-7">{t("currency."+refCurrency)}</span></span>
                 </div>
             </div>
         </div>

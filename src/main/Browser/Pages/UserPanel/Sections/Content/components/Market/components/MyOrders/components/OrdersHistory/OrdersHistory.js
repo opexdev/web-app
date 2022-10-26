@@ -8,6 +8,7 @@ import ScrollBar from "../../../../../../../../../../../../components/ScrollBar"
 import Icon from "../../../../../../../../../../../../components/Icon/Icon";
 import {useMyOrderHistory} from "../../../../../../../../../../../../queries";
 import Error from "../../../../../../../../../../../../components/Error/Error";
+import Date from "../../../../../../../../../../../../components/Date/Date";
 
 const OrdersHistory = () => {
     const {t} = useTranslation();
@@ -50,7 +51,7 @@ const OrdersHistory = () => {
                 {data.map((tr, index) => (
                     <Fragment key={index}>
                         <tr className={tr.side === "BUY" ? "text-green" : "text-red"}>
-                            <td>{moment(tr.time).format("jYY/jMM/jDD")}</td>
+                            <td><Date date={tr.time}/></td>
                             <td>{moment(tr.time).format("HH:mm:ss")}</td>
                             <td>{tr.origQty}</td>
                             <td>{tr.price.toLocaleString()}</td>

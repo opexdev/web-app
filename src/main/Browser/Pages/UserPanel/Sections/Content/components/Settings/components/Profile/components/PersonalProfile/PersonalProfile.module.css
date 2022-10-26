@@ -1,11 +1,11 @@
 .container {
-  height: 70vh;
+  height: 65vh;
 }
 .header {
-  height: 10%;
+  height: 12%;
 }
 .content {
-  height: 90%;
+  height: 88%;
 }
 .content :global(.row) {
   width: 100%;

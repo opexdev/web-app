@@ -80,7 +80,7 @@ const Footer = () => {
                     <span className={`mt-1`}>{packageJson.version}</span>
                 </div>
             </div>
-            <div className={`width-100 flex jc-center ai-center`}>
+            <div className={`width-100 flex jc-center ai-center mt-1`}>
                 <p>{t("footer.copyright")}</p>
             </div>
         </div>

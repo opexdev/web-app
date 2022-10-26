@@ -5,6 +5,7 @@ import Icon from "../../../../../../../../../../../../components/Icon/Icon";
 import classes from "../../DepositWithdrawTx.module.css";
 import {Trans, useTranslation} from "react-i18next";
 import {toast} from "react-hot-toast";
+import Date from "../../../../../../../../../../../../components/Date/Date";
 
 const DepositWithdrawTxTables = ({txs, id}) => {
     const [openItem, setOpenItem] = useState(false);
@@ -48,10 +49,10 @@ const DepositWithdrawTxTables = ({txs, id}) => {
         <tbody>{txs.map((tr, index) => (
             <Fragment key={index}>
                 <tr className={tr.hasOwnProperty('withdrawOrderId') ? "text-red" :  "text-green"}>
-                    <td>{moment(tr.time).format("jYY/jMM/jDD")}</td>
+                    <td><Date date={tr.time}/></td>
                     <td>{moment(tr.time).format("HH:mm:ss")}</td>
                     <td>{tr.hasOwnProperty('withdrawOrderId')  ? t("withdrawal") :  t("deposit")}</td>
-                    <td style={{width: "15%"}}>{tr.network}</td>
+                    <td className={`width-20`}>{tr.network}</td>
                     <td>{new BN(tr.amount).toFormat()}</td>
                     <td className={`text-color`}>{txStatus(tr.status)}</td>
                     {openItem === index ? (

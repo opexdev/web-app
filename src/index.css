@@ -598,6 +598,16 @@ a {
     -ms-flex: 0.21;
     flex: 0.21;
 }
+.col-38 {
+    -webkit-box-flex: 0.38;
+    -ms-flex: 0.38;
+    flex: 0.38;
+}
+.col-62 {
+    -webkit-box-flex: 0.62;
+    -ms-flex: 0.62;
+    flex: 0.62;
+}
 
 .col-75 {
     -webkit-box-flex: 0.75;
@@ -609,6 +619,12 @@ a {
     -webkit-box-flex: 0.65;
     -ms-flex: 0.65;
     flex: 0.65;
+}
+
+.col-68 {
+    -webkit-box-flex: 0.68;
+    -ms-flex: 0.68;
+    flex: 0.68;
 }
 
 .col-69 {
@@ -651,6 +667,11 @@ a {
     -webkit-box-flex: 0.4;
     -ms-flex: 0.4;
     flex: 0.4;
+}
+.col-40 {
+    -webkit-box-flex: 0.42;
+    -ms-flex: 0.42;
+    flex: 0.42;
 }
 
 .col-60 {

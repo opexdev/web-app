@@ -29,7 +29,7 @@ const WalletSubMenu = () => {
                     { assets.map((name) => <WalletListItem key={name} assetName={name} showZero={showZero}/> )}
                 </ScrollBar>
             </div>
-            <div className={`${classes.footer} flex jc-center ai-centerpx-1 text-gray fs-0-7 px-1 py-05`} style={{lineHeight:"3vh"}}>
+            <div className={`${classes.footer} flex jc-center ai-center px-1 text-gray fs-0-7 px-1 py-05`} style={{lineHeight:"3vh"}}>
                 <span>{t("WalletSubMenu.estimateAlert")}</span>
             </div>
         </div>

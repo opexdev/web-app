@@ -3,6 +3,7 @@ import moment from "moment-jalaali";
 import classes from "../../MyOrders.module.css";
 import ScrollBar from "../../../../../../../../../../../../components/ScrollBar";
 import Icon from "../../../../../../../../../../../../components/Icon/Icon";
+import Date from "../../../../../../../../../../../../components/Date/Date";
 
 const StopMarket = (props) => {
 
@@ -30,7 +31,7 @@ const StopMarket = (props) => {
                         key={index}
                         className={tr.type === "buy" ? "text-green" : "text-red"}>
                         <td>{moment(tr.timestamp).format("HH:mm:ss")}</td>
-                        <td>{moment(tr.timestamp).format("jYY/jMM/jDD")}</td>
+                        <td><Date date={tr.time}/></td>
                         <td>{tr.volume}</td>
                         <td>{tr.price}</td>
                         <td>{tr.totalPrice}</td>
