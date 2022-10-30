@@ -1,0 +1,36 @@
+.container{
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    /*background-color: #0304038f;*/
+    background-color: rgba(0, 0, 0, 0.66);
+    z-index: 6;
+    right: 0;
+}
+.content{
+    position: fixed;
+    top: 17.5%;
+    left: 31%;
+    width: 38%;
+    height: 65%;
+    background-color: var(--cardBody);
+    z-index: 7;
+}
+.content img{
+    width: 7vw;
+}
+.thisButton {
+    background-color: var(--orange);
+    color: #000 !important;
+}
+
+.thisInput :global(.lead) {
+    width: 20%;
+}
+.thisInput :global(input) {
+    width: 70%;
+}
+.thisInput :global(.after) {
+    width: 10%;
+}

@@ -1,0 +1,29 @@
+.container {
+
+}
+
+.thisButton {
+    border-radius: 8px;
+    direction: ltr;
+    text-align: center;
+    font-size: 0.8rem;
+    padding: 1.3vh 0vw;
+    color: var(--textColor);
+    width: 7vw;
+}
+
+.thisButton:hover {
+    background-color: var(--blue);
+}
+
+.enable {
+    background-color: var(--darkGreen);
+}
+
+.disable {
+    background-color: var(--darkRed);
+}
+
+.thisLoading{
+    width: 5vw;
+}

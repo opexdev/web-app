@@ -1,0 +1,31 @@
+.container {
+    height: 40vh;
+}
+.header {
+    height: 23%;
+    padding: 1vh 1vw;
+}
+.header span {
+    width: 50%;
+    text-align: center;
+}
+.content {
+    height: 77%;
+}
+
+.allowedIPsInput :global(.lead) {
+    width: 24%;
+}
+.allowedIPsInput :global(input) {
+    width: 76%;
+}
+
+.thisLoading{
+    width: 5vw;
+}
+
+.thisButton {
+    width: 10%;
+    background-color: var(--darkGreen);
+}
+

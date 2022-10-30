@@ -472,6 +472,13 @@
     "defaultReferenceCryptoCurrency": "Reference Cryptocurrency",
     "save": "Save"
   },
+  "APIKey": {
+    "title": "API Key",
+    "create": "Create API Key",
+    "enable": "Enable API Key",
+    "disable": "Disable API Key",
+    "delete": "Delete API Key"
+  },
   "login": {
     "title": "Login/Register",
     "wrongPassword": "Username or password is incorrect!",
