@@ -905,6 +905,24 @@
       "search": [
         "grid"
       ]
+    },
+    {
+      "uid": "csuoy0rqoun3unhsgjoy2uumpldzbfmt",
+      "css": "trash",
+      "code": 518,
+      "src": "typicons"
+    },
+    {
+      "uid": "2cc73cc335f054682c04fe63439c4dcb",
+      "css": "trash-1",
+      "code": 519,
+      "src": "linecons"
+    },
+    {
+      "uid": "3ab2abf6f936d3e53ee8c184cedaed82",
+      "css": "trash-2",
+      "code": 520,
+      "src": "elusive"
     }
   ]
 }

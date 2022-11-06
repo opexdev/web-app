@@ -477,7 +477,8 @@
     "create": "Create API Key",
     "enable": "Enable API Key",
     "disable": "Disable API Key",
-    "delete": "Delete API Key"
+    "delete": "Delete API Key",
+    "reachedLimit": "Reached API key limit. Maximum number of API key is 10"
   },
   "login": {
     "title": "Login/Register",

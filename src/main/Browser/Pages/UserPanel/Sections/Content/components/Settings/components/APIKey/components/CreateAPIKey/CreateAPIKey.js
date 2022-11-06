@@ -19,9 +19,9 @@ const CreateAPIKey = () => {
     const {refetch} = useGetAPIKeyList()
 
     const [apiKey, setApiKey] = useState({
-        label: {value: null, error: []},
-        allowedIPs: {value: null, error: []},
-        expiration: {value: null, error: []},
+        label: {value: "", error: []},
+        allowedIPs: {value: "", error: []},
+        expiration: {value: "", error: []},
     });
 
     console.log("setApikeyResult", apiKeyResult)
@@ -33,14 +33,19 @@ const CreateAPIKey = () => {
         {value: "ONE_YEAR", label: t('APIKey.ONE_YEAR')},
     ]
 
-    const sendWithdrawHandler = async (e) => {
+    const createAPIKeyHandler = async (e) => {
         e.preventDefault()
         if (isLoading) return
+
+        if (apiKey.label.value === "") {
+            return setApiKey({...apiKey, label : { ...apiKey.label, error: [t('APIKey.emptyLabel')]}})
+        }
+
         setIsLoading(true)
         const apiKeyData = {
-            label: apiKey.label.value,
-            expiration: apiKey.expiration.value,
-            allowedIPs: apiKey.allowedIPs.value
+            label: apiKey.label.value.length <= 0 ? null : apiKey.label.value,
+            expiration: apiKey.expiration.value.length <= 0 ? null : apiKey.expiration.value ,
+            allowedIPs: apiKey.allowedIPs.value.length <= 0 ? null : apiKey.allowedIPs.value
         }
         createAPIKey(apiKeyData).then((res) => {
             setApikeyResult(res.data)
@@ -50,7 +55,14 @@ const CreateAPIKey = () => {
                 allowedIPs: {value: "", error: []},
                 expiration: {value: "", error: []},
             })
-        }).catch(() => {
+        }).catch((error) => {
+
+            console.log("e" , error.response.data.code)
+
+            if (error.response.data.code === 7007) {
+                return toast.error(t('APIKey.reachedLimit'));
+            }
+
                 toast.error(t('error'));
         }).finally(() => setIsLoading(false))
     }
@@ -71,46 +83,48 @@ const CreateAPIKey = () => {
                             <h3>{t("APIKey.title")}</h3>
                         </div>
                     </div>
-                    <form onSubmit={(e) => sendWithdrawHandler(e)}
+                    <form onSubmit={(e) => createAPIKeyHandler(e)}
                           className={`width-100 ${classes.content} px-1 py-2 column jc-between`}>
                         <div>{t("APIKey.content")}</div>
-                        <div className={`row jc-between`}>
-                            <TextInput
-                                lead={t('APIKey.label')}
-                                value={apiKey.label.value}
-                                type="text"
-                                onchange={(e) => setApiKey({...apiKey, label: {value: e.target.value, error: []}})}
-                                placeholder={t('APIKey.label')}
-                                customClass={`width-48`}
-                                alerts={apiKey.label.error}
+                        <div className={`column width-100`}>
+                            <div className={`row jc-between`}>
+                                <TextInput
+                                    lead={t('APIKey.label')}
+                                    value={apiKey.label.value}
+                                    type="text"
+                                    onchange={(e) => setApiKey({...apiKey, label: {value: e.target.value, error: []}})}
+                                    placeholder={t('APIKey.label')}
+                                    customClass={`width-48`}
+                                    alerts={apiKey.label.error}
 
-                            />
-                            <TextInput
-                                select={true}
-                                placeholder={t('APIKey.selectExpiration')}
-                                customClass={`width-48`}
-                                lead={t('APIKey.expiration')}
-                                type="select"
-                                options={dates}
-                                onchange={(e) => setApiKey({...apiKey, expiration: {value: e.value, error: []}})}
-                                alerts={apiKey.expiration.error}
-                                //value={apiKey.expiration.value}
-                            />
-                        </div>
-                        <div className={`row jc-between`}>
-                            <TextInput
-                                placeholder={t('APIKey.allowedIPsExample')}
-                                customClass={`width-100 ${classes.allowedIPsInput}`}
-                                value={apiKey.allowedIPs.value}
-                                ltr={true}
-                                lead={t('APIKey.allowedIPs')}
-                                type="text"
-                                onchange={(e) => setApiKey({...apiKey, allowedIPs: {value: e.target.value, error: []}})}
-                                alerts={apiKey.allowedIPs.error}
+                                />
+                                <TextInput
+                                    select={true}
+                                    placeholder={t('APIKey.selectExpiration')}
+                                    customClass={`width-48`}
+                                    lead={t('APIKey.expiration')}
+                                    type="select"
+                                    options={dates}
+                                    onchange={(e) => setApiKey({...apiKey, expiration: {value: e.value, error: []}})}
+                                    alerts={apiKey.expiration.error}
+                                    value={apiKey.expiration.value && {value: apiKey.expiration.value , label: t('APIKey.'+apiKey.expiration.value)}}
+                                />
+                            </div>
+                            <div className={`row jc-between my-1`}>
+                                <TextInput
+                                    placeholder={t('APIKey.allowedIPsExample')}
+                                    customClass={`width-100 ${classes.allowedIPsInput}`}
+                                    value={apiKey.allowedIPs.value}
+                                    ltr={true}
+                                    lead={t('APIKey.allowedIPs')}
+                                    type="text"
+                                    onchange={(e) => setApiKey({...apiKey, allowedIPs: {value: e.target.value, error: []}})}
+                                    alerts={apiKey.allowedIPs.error}
 
-                            />
+                                />
+                            </div>
                         </div>
-                        <div className={`row jc-end`}>
+                        <div className={`row jc-end mt-1`}>
                             <Button
                                 buttonClass={`${classes.thisButton} ${isLoading ? "cursor-not-allowed" : "cursor-pointer"}`}
                                 buttonTitle={submitButtonTextHandler()}

@@ -24,6 +24,14 @@
     background-color: var(--darkRed);
 }
 
-.thisLoading{
+.thisLoading {
     width: 5vw;
+}
+
+.title {
+    display: none
+}
+
+.titleNav:hover .title {
+    display: block;
 }

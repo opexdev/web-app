@@ -10,15 +10,15 @@
 }
 .content{
     position: fixed;
-    top: 17.5%;
-    left: 31%;
-    width: 38%;
-    height: 65%;
+    top: 9%;
+    left: 31.5%;
+    width: 37%;
+    height: 82%;
     background-color: var(--cardBody);
     z-index: 7;
 }
 .content img{
-    width: 7vw;
+    width: 4vw;
 }
 .thisButton {
     background-color: var(--orange);
