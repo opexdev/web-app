@@ -115,4 +115,7 @@
 .icon-right-open-1 { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#x0203;&nbsp;'); }
 .icon-row { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#x0204;&nbsp;'); }
 .icon-grid { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#x0205;&nbsp;'); }
+.icon-trash { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#x0206;&nbsp;'); }
+.icon-trash-1 { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#x0207;&nbsp;'); }
+.icon-trash-2 { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#x0208;&nbsp;'); }
 .icon-cancel-circled2 { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xe801;&nbsp;'); }
