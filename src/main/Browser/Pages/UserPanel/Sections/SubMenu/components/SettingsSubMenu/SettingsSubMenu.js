@@ -99,7 +99,7 @@ const SettingsSubMenu = () => {
             <span className={`flex ai-center my-05 pr-2 ${classes.list}`}>
               {t("APIKey.create")}
             </span>
-            <span className={`flex ai-center my-05 pr-2 ${classes.list}`}>
+            {/*<span className={`flex ai-center my-05 pr-2 ${classes.list}`}>
               {t("APIKey.enable")}
             </span>
             <span className={`flex ai-center my-05 pr-2 ${classes.list}`}>
@@ -107,7 +107,7 @@ const SettingsSubMenu = () => {
             </span>
             <span className={`flex ai-center my-05 pr-2 ${classes.list}`}>
               {t("APIKey.delete")}
-            </span>
+            </span>*/}
           </div>
         </NavLink>
       </div>
