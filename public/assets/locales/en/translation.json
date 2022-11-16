@@ -79,7 +79,8 @@
     "/panel/settings/profile": "User Profile",
     "/panel/settings/security": "Security",
     "/panel/settings/personalization": "Customize",
-    "/panel/settings/authentication": "Identity Verification"
+    "/panel/settings/authentication": "Identity Verification",
+    "/panel/settings/api-key": "API KEY"
   },
   "orderStatus": {
     "NEW": "New Order",
