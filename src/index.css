@@ -315,6 +315,11 @@ a {
     display: flex;
 }
 
+.wrap {
+    display: flex;
+    flex-wrap: wrap;
+}
+
 .row {
     display: -webkit-box;
     display: -ms-flexbox;

@@ -84,6 +84,32 @@ const SettingsSubMenu = () => {
             </span>
           </div>
         </NavLink>
+
+        <NavLink
+          className={({ isActive }) =>
+              isActive ? "row jc-around ai-center cursor-pointer px-1 py-1 "+classes.selected : "row jc-around ai-center cursor-pointer px-1 py-1"
+          }
+          to={Routes.APIKey}>
+          <div className="row ai-center" style={{width: "40%"}}>
+            <span className={`font-weight-bold pr-05 ${classes.topic}`}>
+              {t("APIKey.title")}
+            </span>
+          </div>
+          <div className={`column position-relative fs-0-7 mr-1 ${classes.listBox}`} style={{width: "60%"}}>
+            <span className={`flex ai-center my-05 pr-2 ${classes.list}`}>
+              {t("APIKey.create")}
+            </span>
+            {/*<span className={`flex ai-center my-05 pr-2 ${classes.list}`}>
+              {t("APIKey.enable")}
+            </span>
+            <span className={`flex ai-center my-05 pr-2 ${classes.list}`}>
+              {t("APIKey.disable")}
+            </span>
+            <span className={`flex ai-center my-05 pr-2 ${classes.list}`}>
+              {t("APIKey.delete")}
+            </span>*/}
+          </div>
+        </NavLink>
       </div>
     </div>
   );

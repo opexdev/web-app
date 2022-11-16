@@ -6,6 +6,7 @@ import Profile from "./components/Profile/Profile";
 import Security from "./components/Security/Security";
 import Personalization from "./components/Personalization/Personalization";
 import Authentication from "./components/Authentication/Authentication";
+import APIKey from "./components/APIKey/APIKey";
 import {setKYCStatusInitiate} from "../../../../../../../../store/actions";
 
 const Settings = () => {
@@ -23,6 +24,7 @@ const Settings = () => {
                 <Route path={RoutesName.SecurityRelative} element={<Security/>}/>
                 <Route path={RoutesName.PersonalizationRelative} element={<Personalization/>}/>
                 <Route path={RoutesName.AuthenticationRelative} element={<Authentication/>}/>
+                <Route path={RoutesName.APIKeyRelative} element={<APIKey/>}/>
             </Routes>
         </div>
     );
