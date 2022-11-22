@@ -54,7 +54,7 @@
 }
 
 :global(.ltr) .inputGroup input {
-    font-family: "Segoe UI", serif;
+    font-family: 'Poppins', 'Roboto', sans-serif !important;
 }
 
 .inputGroup .lead {

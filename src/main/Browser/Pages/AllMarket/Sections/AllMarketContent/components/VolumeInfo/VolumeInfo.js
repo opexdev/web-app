@@ -21,7 +21,7 @@ const VolumeInfo = () => {
     const mostVolume = stats?.mostVolume
     const mostTrades = stats?.mostTrades
 
-    if(!isLoading && mostVolume !== null && mostTrades !== null) {
+    if(!isLoading && !error && mostVolume) {
         mostVolume.pairInfo = allSymbols.find(s => s.symbol === (mostDecreasedPrice?.symbol))
         mostTrades.pairInfo = allSymbols.find(s => s.symbol === (mostDecreasedPrice?.symbol))
     }

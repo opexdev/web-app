@@ -1,8 +1,6 @@
 import React, {useState} from 'react'
 import classes from '../../APIKeyList.module.css'
-import Button from "../../../../../../../../../../../../../../components/Button/Button";
 import {useTranslation} from "react-i18next";
-import Loading from "../../../../../../../../../../../../../../components/Loading/Loading";
 import {toast} from "react-hot-toast";
 import {deleteAPIKey, disableAPIKey, enableAPIKey} from "js-api-client";
 import {images} from "../../../../../../../../../../../../../../assets/images";
@@ -10,7 +8,6 @@ import {useGetAPIKeyList} from "../../../../../../../../../../../../../../querie
 import Icon from "../../../../../../../../../../../../../../components/Icon/Icon";
 import moment from "moment-jalaali";
 import i18n from "i18next";
-import fa from "moment/locale/fa";
 import QRCode from "react-qr-code";
 
 const APIKeyCard = ({data}) => {
@@ -20,6 +17,27 @@ const APIKeyCard = ({data}) => {
 
     const [isLoading, setIsLoading] = useState(false)
     const {refetch} = useGetAPIKeyList()
+
+    moment.updateLocale('fa', {
+        relativeTime : {
+            future: 'در %s',
+            past: '%s پیش',
+            s: 'چند ثانیه',
+            ss: '%d ثانیه',
+            m: 'یک دقیقه',
+            mm: '%d دقیقه',
+            h: 'یک ساعت',
+            hh: '%d ساعت',
+            d: 'یک روز',
+            dd: '%d روز',
+            w:  "یک هفته",
+            ww: "%d هفته",
+            M: 'یک ماه',
+            MM: '%d ماه',
+            y: 'یک سال',
+            yy: '%d سال',
+        }
+    });
 
 
     const enableFunc = (key) => {
@@ -89,18 +107,9 @@ const APIKeyCard = ({data}) => {
                     <span className={`text-gray ml-025`}>{t('APIKey.label')}:</span>
                     <span className={`mr-025`}>{data?.label}</span>
                 </div>
-               {/* <div className={`row jc-center ai-center`}>
-                    <span className={`text-gray ml-025`}>{t('APIKey.apiKey')}:</span>
-                    <span className={`mr-025 ml-025`}>{data?.key}</span>
-                    <Icon
-                        iconName="icon-copy flex fs-03 font-weight-bold"
-                        onClick={(e) => copyToClipboard(data?.key, e)}
-                        customClass={`hover-text cursor-pointer mr-025`}
-                    />
-                </div>*/}
                 <div className={`row jc-center ai-center width-30`}>
                     <span className={`text-gray ml-025`}>{t('APIKey.expiration')}:</span>
-                    <span className={` mr-025`}>{data?.expirationTime ? moment(data.expirationTime).locale(i18n.language === "fa" ? "fa" : "en", i18n.language === "fa" ? fa : "").fromNow(true) : "---"}  </span>
+                    <span className={` mr-025`}>{data?.expirationTime ? moment(data.expirationTime).locale(i18n.language === "fa" ? "fa" : "en", i18n.language === "fa" ? "fa" : "").fromNow(true) : "---"}  </span>
                 </div>
 
                 <div className={`row jc-end ai-center width-40`}>
@@ -147,22 +156,13 @@ const APIKeyCard = ({data}) => {
                         size={130}
                     />
                 </div>
-
-
             </div>
             <div className={`row jc-start ai-start mt-1 width-100 wrap`}>
                 <span className={`text-gray ml-1`}>{t('APIKey.allowedIPs')}:</span>
-
-
                     {data?.allowedIPs ? data?.allowedIPs?.split(",").map((name , index) =>
                         <span className="ml-05 rounded-8 px-1 py-1 mb-2" key={index}
                               style={{backgroundColor: "var(--cardHeader)"}}
                               title={name}> {name} </span>) : "---"}
-
-
-
-
-
             </div>
 
 
