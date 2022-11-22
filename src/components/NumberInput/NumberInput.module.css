@@ -48,19 +48,19 @@
   background: none;
   color: var(--textColor);
 }
-.ltr .inputGroup input {
-  font-family: "Segoe UI", serif;
+:global(.ltr) .inputGroup input {
+  font-family: 'Poppins', 'Roboto', sans-serif !important;
 }
 .inputGroup span.lead {
   border-radius: 0 4px 4px 0;
 }
-.ltr .inputGroup span.lead {
+:global(.ltr) .inputGroup span.lead {
   border-radius: 4px 0 0 4px;
 }
 .inputGroup span.after {
   border-radius: 4px 0 0 4px;
 }
-.ltr .inputGroup span.after {
+:global(.ltr) .inputGroup span.after {
   border-radius: 0 4px 4px 0;
 }
 

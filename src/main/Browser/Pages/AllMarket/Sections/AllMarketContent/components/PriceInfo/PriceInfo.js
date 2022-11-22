@@ -19,7 +19,7 @@ const PriceInfo = () => {
     const mostIncreasedPrice = stats?.mostIncreasedPrice[0]
     const mostDecreasedPrice = stats?.mostDecreasedPrice[0]
 
-    if(!isLoading) {
+    if(!isLoading && !error && mostIncreasedPrice) {
         mostIncreasedPrice.pairInfo = allSymbols.find(s => s.symbol === (mostIncreasedPrice?.symbol))
         mostDecreasedPrice.pairInfo = allSymbols.find(s => s.symbol === (mostDecreasedPrice?.symbol))
     }

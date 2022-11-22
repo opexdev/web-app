@@ -1,14 +1,27 @@
 import React, {useState} from "react";
 import moment from "moment-jalaali";
 import useInterval from "../../../../../../../../Hooks/useInterval";
-import i18n from "i18next";
 
 const Clock = () => {
 
-    const [time, setTime] = useState(i18n.language === "fa" ? moment().format("jYYYY/jM/jD - HH:mm:ss") : moment().format("HH:mm:ss - YYYY/M/D"))
+    const calendar = () => {
+        const type = window.env.REACT_APP_CALENDAR_TYPE
+        switch (type) {
+            case "Jalali":
+                return moment().format("jYYYY/jMM/jDD - HH:mm:ss");
+            case "Hijri":
+                return moment().format("YYYY/MM/DD - HH:mm:ss");
+            case "Georgian":
+                return moment().format("iYYYY/iMM/iDD - HH:mm:ss");
+            default:
+                return moment().format("YYYY/MM/DD - HH:mm:ss");
+        }
+    };
+
+    const [time, setTime] = useState(calendar())
 
     useInterval(() => {
-        setTime(i18n.language === "fa" ? moment().format("jYYYY/jM/jD - HH:mm:ss") : moment().format("HH:mm:ss - YYYY/M/D"))
+        setTime(calendar())
     }, 1000);
 
     return (
