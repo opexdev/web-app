@@ -76,14 +76,14 @@ const OrdersHistory = () => {
                         <tr style={{
                             display: openOrder === index ? "revert" : "none",
                         }}>
-                            <td colSpan="8" className={`py-1 px-2`}>
+                            <td colSpan="8" className={`py-1 px-1 fs-0-9`}>
                                 <div
-                                    className="row jc-between  ai-center"
+                                    className="row jc-between ai-center"
                                     style={{width: "100%", textAlign: "start"}}>
-                                    <p className="col-46 row jc-between">
+                                    <p className="width-47 row jc-between">
                                         {t("myOrders.orderId")} : <span>{tr.orderId}</span>
                                     </p>
-                                    <p className="col-46 row jc-between">
+                                    <p className="width-47 row jc-between">
                                         {t("orderType")} :{" "}
                                         <span>
                                             {t(tr.side.toLowerCase()) + " " + t("orderTypes." + tr.type)}
@@ -92,16 +92,16 @@ const OrdersHistory = () => {
                                 </div>
                                 <div className="row  jc-between ai-center"
                                      style={{width: "100%", textAlign: "start"}}>
-                                    <p className="col-46 row jc-between">
+                                    <p className="width-47 row jc-between">
                                         {t("myOrders.stopOrderTime")} :{" "}
                                         <span>
-                                            {moment(tr.updateTime).format("jYY/jMM/jDD HH:mm:ss",)}
+                                            <Date date={tr.updateTime}/> - {moment(tr.updateTime).format("HH:mm:ss")}
                                         </span>
                                     </p>
-                                    <p className="col-46 row jc-between">
+                                    <p className="width-47 row jc-between">
                                         {t("myOrders.startOrderTime")} :{" "}
                                         <span>
-                                            {moment(tr.time).format("jYY/jMM/jDD HH:mm:ss",)}
+                                            <Date date={tr.time}/> - {moment(tr.time).format("HH:mm:ss")}
                                         </span>
                                     </p>
                                 </div>

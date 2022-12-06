@@ -278,7 +278,7 @@ const BuyOrder = () => {
                 }}>
                     {t("orders.availableAmount")}:{" "}
                     <span className="cursor-pointer">
-              {quote.toLocaleString()}{" "}
+              {new BN(quote).toFormat()}{" "}
                         {t("currency." + activePair.quoteAsset)}
             </span>
                 </p>
@@ -287,7 +287,7 @@ const BuyOrder = () => {
                 }}>
                     {t("orders.bestOffer")}:{" "}
                     <span className="cursor-pointer">
-                        {bestBuyPrice.toLocaleString()}{" "}{t("currency." + activePair.quoteAsset)}
+                        {new BN(bestBuyPrice).toFormat()}{" "}{t("currency." + activePair.quoteAsset)}
                     </span>
                 </p>
             </div>

@@ -71,7 +71,7 @@ const AllMarketInfTable = ({data, activeCurrency}) => {
                                 alt={""}
                                 title={""}
                             />
-                            <span className={`fs-0-6 position-absolute`} style={{left:"45%"}}>{t("comingSoon")}</span>
+                            <span className={`fs-0-6 position-absolute`} style={{left:`${i18n.language !== "fa" ? "20%" : "48%"}`}}>{t("comingSoon")}</span>
                         </span>
 
                         <span className="width-8 flex jc-end ai-center">

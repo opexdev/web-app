@@ -72,6 +72,8 @@ const Footer = () => {
                                           onClick={() => i18n.changeLanguage("en")}>{t("Languages.English")}</span>
                                 </>
                             }
+
+
                         </div>
                     </div>
                 </div>

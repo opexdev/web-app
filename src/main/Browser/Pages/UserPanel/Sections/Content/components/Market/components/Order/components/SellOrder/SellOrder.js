@@ -268,17 +268,13 @@ const SellOrder = () => {
     return (
         <div className={`column jc-between ${classes.content}`}>
             <div className="column jc-center">
-                <p onClick={() => fillSellByWallet()}>
-                    {t("orders.availableAmount")}:{" "}
-                    <span className="cursor-pointer">
-            {base.toLocaleString()}{" "}
-                        {t("currency." + activePair.baseAsset)}
-          </span>
+                <p onClick={() => fillSellByWallet()}>{t("orders.availableAmount")}:{" "}
+                    <span className="cursor-pointer">{new BN(base).toFormat()}{" "}{t("currency." + activePair.baseAsset)}</span>
                 </p>
                 <p onClick={() => fillSellByBestPrice()}>
                     {t("orders.bestOffer")}:{" "}
                     <span className="cursor-pointer">
-                        {bestSellPrice.toLocaleString()}{" "}{t("currency." + activePair.quoteAsset)}
+                        {new BN(bestSellPrice).toFormat()}{" "}{t("currency." + activePair.quoteAsset)}
                     </span>
                 </p>
             </div>

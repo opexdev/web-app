@@ -104,26 +104,25 @@ const OpenOrders = () => {
                                 )}
                             </tr>
                             <tr style={{display: openOrder === index ? "revert" : "none"}}>
-                                <td colSpan="8" className={`py-1 px-2`}>
-                                    <div
-                                        className="row jc-around  ai-center"
+                                <td colSpan="8" className={`py-1 px-1 fs-0-9`}>
+                                    <div className="row jc-between  ai-center"
                                         style={{width: "100%"}}>
-                                        <p className="col-46 row jc-between">
+                                        <p className="width-47 row jc-between">
                                             {t("myOrders.orderId")} : <span>{tr.orderId}</span>
                                         </p>
-                                        <p className="col-46 row jc-between">
+                                        <p className="width-47 row jc-between">
                                             {t("myOrders.tradedAmount")} :{" "}
                                             <span>{executedQty.decimalPlaces(activePair.baseAssetPrecision).toFormat()}</span>
                                         </p>
                                     </div>
                                     <div
-                                        className="row jc-around  ai-center"
+                                        className="row jc-between ai-center"
                                         style={{width: "100%"}}>
-                                        <p className="col-46 row jc-between">
+                                        <p className="width-47 row jc-between">
                                             {t("myOrders.avgTradedAmount")} :{" "}
                                             <span>-</span>
                                         </p>
-                                        <p className="col-46 row jc-between">
+                                        <p className="width-47 row jc-between">
                                             {t("myOrders.tradedPrice")} :{" "}
                                             <span>{executedQty.multipliedBy(pricePerUnit).decimalPlaces(activePair.baseAssetPrecision).toFormat()}</span>
                                         </p>

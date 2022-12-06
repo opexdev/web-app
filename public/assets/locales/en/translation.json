@@ -46,6 +46,7 @@
   "unit": "Unit",
   "offline": "Check your connection!",
   "improperMobileView ": "Not optimized for mobile view.",
+  "home": "Home",
   "country": {
     "iran" : "I. R. IRAN",
     "germany" : "Germany",
@@ -557,7 +558,7 @@
     "serverError": "Server error, please try again."
   },
   "Landing": {
-    "title": "Cryptocurrency Exchange Platform"
+    "title": "Crypto Exchange Platform"
   },
   "MarketTitle": {
     "content": "Designed specifically to meet your needs.",

@@ -19,7 +19,7 @@ const LastTrades = () => {
     const {data: lastTrades, isLoading, error} = useLastTrades(activePair.symbol, onSuccess)
 
     const content = () => {
-        if (error) return <Error/>
+        if (error) return <span className={`width-100`}><Error/></span>
         if (isLoading) return <Loading/>
         if (lastTrades.length > 0) return <LastTradesTable data={lastTrades}/>
         return <div className="width-100 column ai-center jc-center" style={{height: "100%"}}>
