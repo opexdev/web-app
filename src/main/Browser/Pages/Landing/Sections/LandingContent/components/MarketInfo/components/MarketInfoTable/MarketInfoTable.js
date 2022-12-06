@@ -54,7 +54,7 @@ const MarketInfoTable = ({data, activeCurrency}) => {
                             alt={""}
                             title={""}
                         />
-                        <span className={`fs-0-6 position-absolute`} style={{left:"13%"}}>{t("comingSoon")}</span>
+                        <span className={`fs-0-6 position-absolute`} style={{left:`${i18n.language !== "fa" ? "68%" : "13%"}`}}>{t("comingSoon")}</span>
                     </span>
                 </div>
             )

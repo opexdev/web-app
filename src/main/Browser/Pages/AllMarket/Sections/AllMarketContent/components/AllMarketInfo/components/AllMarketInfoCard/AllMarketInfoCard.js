@@ -8,6 +8,7 @@ import {setActivePairInitiate} from "../../../../../../../../../../store/actions
 import {Panel} from "../../../../../../../../Routes/routes";
 import {useNavigate} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
+import i18n from "i18next";
 
 const AllMarketInfoCard = ({data, activeCurrency}) => {
 
@@ -44,7 +45,6 @@ const AllMarketInfoCard = ({data, activeCurrency}) => {
     }
 
 
-
     return (
         <div className={`${classes.container} my-1 px-1`}>
 
@@ -52,9 +52,7 @@ const AllMarketInfoCard = ({data, activeCurrency}) => {
                 return (
                     <div key={index} className={`${classes.item} card-border card-bg column cursor-pointer`} style={backgroundBar(tr.priceChange.toString())}
                          onMouseEnter={()=>MouseEnterEventHandler(index)} onMouseLeave={MouseLeaveEventHandler}>
-
                         <div className={`column jc-between ai-center pt-2 pb-3`} style={{height:"80%"}}>
-
                             <div className={`row jc-between ai-center width-100 px-1`}>
                                 <div className={`row jc-center ai-center`}>
                                     <img  src={images[tr?.base]} alt={tr?.base}
@@ -62,13 +60,10 @@ const AllMarketInfoCard = ({data, activeCurrency}) => {
 
                                     <span className={`fs-01`}>{activeCurrency ? t("currency." + tr?.base) : tr?.base + " / " + tr?.quote}</span>
                                 </div>
-
                                 <div className={`flex jc-end ai-center fs-0-6`}>
                                         <span className={`${tr.priceChange > 0 ? "text-green" : "text-red"} direction-ltr mr-05`}>{new BN(tr.priceChange).toFormat()} %</span>
-
                                 </div>
                             </div>
-
                             <div className={`column px-1 width-100 fs-0-7`}>
                                 <div className={`row jc-between ai-center`}>
                                     <span className={``}>{t("MarketInfo.lastPrice")}:</span>
@@ -87,8 +82,6 @@ const AllMarketInfoCard = ({data, activeCurrency}) => {
                                     <span>{new BN(tr.volume).toFormat()}</span>
                                 </div>
                             </div>
-
-
                         </div>
                         <div className={`flex jc-center ai-center`} style={{height:"20%"}}>
                             { showButton === index ?
@@ -114,18 +107,10 @@ const AllMarketInfoCard = ({data, activeCurrency}) => {
                                         alt={""}
                                         title={""}
                                     />
-                                    <span className={`fs-0-6 position-absolute`} style={{left:"35%"}}>{t("comingSoon")}</span>
+                                    <span className={`fs-0-6 position-absolute`} style={{left:`${i18n.language !== "fa" ? "20%" : "40%"}`}}>{t("comingSoon")}</span>
                                 </div>
                             }
                         </div>
-
-
-
-
-
-
-
-
                     </div>
                 )
             })}

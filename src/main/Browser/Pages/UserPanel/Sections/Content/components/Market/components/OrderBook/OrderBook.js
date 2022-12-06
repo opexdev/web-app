@@ -21,7 +21,7 @@ const OrderBook = () => {
     }, lastTransaction)
 
     const tableRender = () => {
-        if (error) return <Error/>
+        if (error) return <span className={`width-100`}><Error/></span>
         if (isLoading) return <Loading/>
 
         if (isSafari) {

@@ -14,7 +14,7 @@ const GeneralInfo = () => {
 
     const content = () => {
         if (isLoading) return <Loading/>
-        if (error) return <Error/>
+        if (error) return <span className={`width-100`}><Error/></span>
         else return <>
             <div className={`column jc-center ai-center`}>
                 <span className={`fs-02`}>{data.activeUsers} </span>

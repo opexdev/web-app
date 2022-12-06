@@ -29,6 +29,20 @@ const MainMenu = () => {
                 </div>
                 <div className={`column jc-between ai-center ${classes.content} pt-1 pb-2`}>
                     <div className={`column jc-start ai-center ${classes.topSection}`}>
+                        {/*<NavLink
+                            to={Routes.Landing}
+                            className={({ isActive }) =>
+                                isActive ? classes.selected : undefined
+                            }
+                            onClick={() => setShowMessages(false)}
+                            data-html={true}
+                            data-place="left"
+                            data-effect="float"
+                            data-tip={`<span class="column jc-between col-100">${t(
+                                "home",
+                            )}</span>`}>
+                            <Icon iconName="icon-overview fs-21"/>
+                        </NavLink>*/}
                         <NavLink
                             to={Routes.Panel}
                             end

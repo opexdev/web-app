@@ -9,6 +9,7 @@ import Icon from "../../../../../../../../../../../../components/Icon/Icon";
 import Error from "../../../../../../../../../../../../components/Error/Error";
 import {useMyTrades} from "../../../../../../../../../../../../queries";
 import Date from "../../../../../../../../../../../../components/Date/Date";
+import {BN} from "../../../../../../../../../../../../utils/utils";
 
 const Trades = () => {
 
@@ -78,15 +79,15 @@ const Trades = () => {
                         </tr>
                         <tr
                             style={{display: openOrder === index ? "revert" : "none"}}>
-                            <td colSpan="6" className={`py-1 px-2`}>
+                            <td colSpan="6" className={`py-1 px-1 fs-0-9`}>
                                 <div
-                                    className="row jc-around  ai-center"
+                                    className="row jc-between  ai-center"
                                     style={{width: "100%"}}>
-                                    <p className="col-46 row jc-between">
+                                    <p className="width-47 row jc-between">
                                         {t("myOrders.orderId")} : <span>{tr.orderId}</span>
                                     </p>
-                                    <p className="col-46 row jc-between">
-                                        {t("commission")} : <span>{tr.commission} <span>{t("currency." + tr.commissionAsset.toUpperCase())}</span></span>
+                                    <p className="width-47 row jc-between">
+                                        {t("commission")} : <span>{new BN(tr.commission).toFormat()} <span>{t("currency." + tr.commissionAsset.toUpperCase())}</span></span>
                                     </p>
                                 </div>
                             </td>
