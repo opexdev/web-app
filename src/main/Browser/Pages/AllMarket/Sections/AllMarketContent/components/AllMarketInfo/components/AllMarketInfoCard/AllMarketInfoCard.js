@@ -50,7 +50,7 @@ const AllMarketInfoCard = ({data, activeCurrency}) => {
 
             {data.map((tr, index) => {
                 return (
-                    <div key={index} className={`${classes.item} card-border card-bg column cursor-pointer`} style={backgroundBar(tr.priceChange.toString())}
+                    <div key={index} className={`${classes.item} card-border card-bg column cursor-pointer`} style={backgroundBar(tr.priceChangePercent.toString())}
                          onMouseEnter={()=>MouseEnterEventHandler(index)} onMouseLeave={MouseLeaveEventHandler}>
                         <div className={`column jc-between ai-center pt-2 pb-3`} style={{height:"80%"}}>
                             <div className={`row jc-between ai-center width-100 px-1`}>
@@ -61,13 +61,13 @@ const AllMarketInfoCard = ({data, activeCurrency}) => {
                                     <span className={`fs-01`}>{activeCurrency ? t("currency." + tr?.base) : tr?.base + " / " + tr?.quote}</span>
                                 </div>
                                 <div className={`flex jc-end ai-center fs-0-6`}>
-                                        <span className={`${tr.priceChange > 0 ? "text-green" : "text-red"} direction-ltr mr-05`}>{new BN(tr.priceChange).toFormat()} %</span>
+                                        <span className={`${tr.priceChangePercent > 0 ? "text-green" : "text-red"} direction-ltr mr-05`}>{new BN(tr.priceChangePercent).toFormat(2)} %</span>
                                 </div>
                             </div>
                             <div className={`column px-1 width-100 fs-0-7`}>
                                 <div className={`row jc-between ai-center`}>
                                     <span className={``}>{t("MarketInfo.lastPrice")}:</span>
-                                    <span className={`${tr.priceChange > 0 ? "text-green" : "text-red"} fs-01`}>{new BN(tr.lastPrice).toFormat()} <span className={`fs-0-7 mr-025`}>{t("currency." + tr?.quote)}</span></span>
+                                    <span className={`${tr.priceChangePercent > 0 ? "text-green" : "text-red"} fs-01`}>{new BN(tr.lastPrice).toFormat()} <span className={`fs-0-7 mr-025`}>{t("currency." + tr?.quote)}</span></span>
                                 </div>
                                 <div className={`row jc-between ai-center`}>
                                     <span className={`text-gray`}>{t("MarketInfo.lowPrice")}:</span>

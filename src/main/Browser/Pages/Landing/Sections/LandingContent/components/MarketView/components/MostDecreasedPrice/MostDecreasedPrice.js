@@ -22,12 +22,12 @@ const MostDecreasedPrice = ({mostDecreasedPrice}) => {
                     />
                     <span className={`mr-05`}>{t("currency." + mostDecreasedPrice.pairInfo.baseAsset)}</span>
                 </div>
-                <div className={`column ai-end text-red`}>
+                <div className={`column ai-end`}>
                     <div className={`${i18n.language !== "fa" ? 'row-reverse' : 'row'}`}>
                         <span className={`fs-0-6 ${i18n.language !== "fa" ? 'mr-05' : 'ml-05'}`}>{mostDecreasedPrice.pairInfo.quoteAsset}</span>
                         <span> {new BN(mostDecreasedPrice?.lastPrice).toFormat()} </span>
                     </div>
-                    <span className={`direction-ltr`}>{new BN(mostDecreasedPrice?.priceChangePercent).toFormat(2)} %</span>
+                    <span className={`${mostDecreasedPrice?.priceChangePercent > 0 ? "text-green" : "text-red"} direction-ltr`}>{new BN(mostDecreasedPrice?.priceChangePercent).toFormat(2)} %</span>
                 </div>
             </div>
         </div>

@@ -17,13 +17,12 @@ const VolumeInfo = () => {
     const interval = useSelector((state) => state.global.marketInterval)
     const {data:stats, isLoading, error} = useGetMarketStats(interval)
     const allSymbols = useSelector((state) => state.exchange.symbols)
-    const mostDecreasedPrice = stats?.mostDecreasedPrice[0]
     const mostVolume = stats?.mostVolume
     const mostTrades = stats?.mostTrades
 
     if(!isLoading && !error && mostVolume) {
-        mostVolume.pairInfo = allSymbols.find(s => s.symbol === (mostDecreasedPrice?.symbol))
-        mostTrades.pairInfo = allSymbols.find(s => s.symbol === (mostDecreasedPrice?.symbol))
+        mostVolume.pairInfo = allSymbols.find(s => s.symbol === (mostVolume?.symbol))
+        mostTrades.pairInfo = allSymbols.find(s => s.symbol === (mostTrades?.symbol))
     }
 
     const mostVolumeContent = () => {

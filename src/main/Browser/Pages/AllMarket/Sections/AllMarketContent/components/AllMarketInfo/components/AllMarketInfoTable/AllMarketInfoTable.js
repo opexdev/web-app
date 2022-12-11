@@ -12,8 +12,6 @@ import {useDispatch, useSelector} from "react-redux";
 
 const AllMarketInfTable = ({data, activeCurrency}) => {
 
-    console.log("data" , data)
-
     const {t} = useTranslation();
     const navigate = useNavigate();
     const dispatch = useDispatch();
@@ -28,7 +26,7 @@ const AllMarketInfTable = ({data, activeCurrency}) => {
     let head = (
         <div className="row text-gray px-2 py-2" style={{backgroundColor:"var(--tableHeader)"}}>
             <span className="width-15 flex jc-start ai-center">{t("MarketInfo.name")}</span>
-            <span className="width-11 flex jc-start ai-center">{t("MarketInfo.lastPrice")}</span>
+            <span className="width-11 flex  jc-start ai-center">{t("MarketInfo.lastPrice")}</span>
             <span className="width-9 flex jc-start ai-center">{t("MarketInfo.priceChange")}</span>
             <span className="width-12 flex jc-start ai-center">{t("MarketInfo.lowPrice")}</span>
             <span className="width-12 flex jc-start ai-center">{t("MarketInfo.highPrice")}</span>
@@ -51,10 +49,10 @@ const AllMarketInfTable = ({data, activeCurrency}) => {
                                   title={tr?.base} className={`img-md-plus ml-05`}/>
                                  <span className={`fs-01 mr-05`}>{activeCurrency ? t("currency." + tr?.base) : tr?.base + " / " + tr?.quote}</span>
                          </span>
-                        <span className={`width-11 flex jc-start ai-center ${tr?.priceChange > 0 ? "text-green" : "text-red"}`}>{new BN(tr.lastPrice).toFormat()} <span className={`fs-0-7 mr-05`}>{t("currency." + tr?.quote)}</span></span>
+                        <span className={`width-11 flex jc-start ai-center ${tr?.priceChangePercent > 0 ? "text-green" : "text-red"}`}>{new BN(tr.lastPrice).toFormat()} <span className={`fs-0-7 mr-05`}>{t("currency." + tr?.quote)}</span></span>
 
 
-                        <span className={`width-9 flex ${i18n.language !== "fa" ? 'jc-start' : 'jc-end'} ai-center ${tr?.priceChange > 0 ? "text-green" : "text-red"} direction-ltr`}>{new BN(tr?.priceChange).toFormat()} %</span>
+                        <span className={`width-9 flex ${i18n.language !== "fa" ? 'jc-start' : 'jc-end'} ai-center ${tr?.priceChangePercent > 0 ? "text-green" : "text-red"} direction-ltr`}>{new BN(tr?.priceChangePercent).toFormat(2)} %</span>
                         <span className="width-12 flex jc-start ai-center">{new BN(tr?.lowPrice).toFormat()}</span>
 
                         <span className={`width-12 flex jc-start ai-center`}>{new BN(tr?.highPrice).toFormat()}</span>

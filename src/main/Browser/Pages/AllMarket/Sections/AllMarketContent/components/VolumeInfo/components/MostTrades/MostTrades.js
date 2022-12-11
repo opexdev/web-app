@@ -15,7 +15,7 @@ const MostTrades = ({mostTrades}) => {
                  title={mostTrades?.pairInfo?.baseAsset}
                  className={`img-md-plus`}/>
             <span>{t("currency." + mostTrades?.pairInfo?.baseAsset)}</span>
-            <div className={`${i18n.language !== "fa" ? 'row-reverse' : 'row'} jc-center ai-center width-100 text-green`}>
+            <div className={`${i18n.language !== "fa" ? 'row-reverse' : 'row'} jc-center ai-center width-100`}>
                 <span className={`${i18n.language !== "fa" ? 'mL-025' : 'mr-025'} fs-01`}>{new BN(mostTrades?.tradeCount).toFormat()} </span>
             </div>
 
