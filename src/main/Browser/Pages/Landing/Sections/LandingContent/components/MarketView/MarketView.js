@@ -26,8 +26,8 @@ const MarketView = () => {
     if (!isLoading && !error && mostIncreasedPrice) {
         mostIncreasedPrice.pairInfo = allSymbols.find(s => s.symbol === (mostIncreasedPrice?.symbol))
         mostDecreasedPrice.pairInfo = allSymbols.find(s => s.symbol === (mostDecreasedPrice?.symbol))
-        mostVolume.pairInfo = allSymbols.find(s => s.symbol === (mostDecreasedPrice?.symbol))
-        mostTrades.pairInfo = allSymbols.find(s => s.symbol === (mostDecreasedPrice?.symbol))
+        mostVolume.pairInfo = allSymbols.find(s => s.symbol === (mostVolume?.symbol))
+        mostTrades.pairInfo = allSymbols.find(s => s.symbol === (mostTrades?.symbol))
     }
 
 

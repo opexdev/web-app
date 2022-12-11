@@ -11,8 +11,6 @@ import {useNavigate} from "react-router-dom";
 
 const MarketInfoTable = ({data, activeCurrency}) => {
 
-    console.log("data" , data)
-
     const {t} = useTranslation();
     const navigate = useNavigate();
     const dispatch = useDispatch();
@@ -44,8 +42,8 @@ const MarketInfoTable = ({data, activeCurrency}) => {
                              title={tr?.base} className={`img-lg ml-05`}/>
                         <span className={`fs-01 mr-05`}>{activeCurrency ? t("currency." + tr?.base) : tr?.base + " / " + tr?.quote}</span>
                     </span>
-                    <span className={`width-30 flex jc-start ai-center ${tr.priceChange > 0 ? "text-green" : "text-red"}`}>{new BN(tr.lastPrice).toFormat()} <span className={`fs-0-7 mr-05`}>{t("currency." + tr?.quote)}</span></span>
-                    <span className={`width-25 flex ${i18n.language !== "fa" ? 'jc-start' : 'jc-end'} ai-center ${tr.priceChange > 0 ? "text-green" : "text-red"} direction-ltr`}>{new BN(tr.priceChange).toFormat()} %</span>
+                    <span className={`width-30 flex jc-start ai-center ${tr.priceChangePercent > 0 ? "text-green" : "text-red"}`}>{new BN(tr.lastPrice).toFormat()} <span className={`fs-0-7 mr-05`}>{t("currency." + tr?.quote)}</span></span>
+                    <span className={`width-25 flex ${i18n.language !== "fa" ? 'jc-start' : 'jc-end'} ai-center ${tr.priceChangePercent > 0 ? "text-green" : "text-red"} direction-ltr`}>{new BN(tr.priceChangePercent).toFormat(2)} %</span>
                     <span className="width-20 flex jc-start ai-center">{new BN(tr.volume).toFormat()}</span>
                     <span className="width-25 flex jc-end ai-center position-relative">
                         <img
