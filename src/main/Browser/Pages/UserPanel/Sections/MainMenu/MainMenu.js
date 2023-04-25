@@ -27,7 +27,7 @@ const MainMenu = () => {
                         </span>
                     </Link>
                 </div>
-                <div className={`column jc-between ai-center ${classes.content} pt-1 pb-2`}>
+                <div className={`column jc-between ai-center ${classes.content}  pb-2`}>
                     <div className={`column jc-start ai-center ${classes.topSection}`}>
                         {/*<NavLink
                             to={Routes.Landing}
