@@ -6,10 +6,21 @@ import FullWidthLoading from "../../components/FullWidthLoading/FullWidthLoading
 import i18n from "i18next";
 import Radium from "radium";
 import {useTranslation} from "react-i18next";
-import {toAbsoluteUrl} from "../../utils/utils";
 
 
 const Mobile = () => {
+
+
+
+    const redirectURL = window.env.REACT_APP_MOBILE_URL
+
+    const redirectFunc = () => {
+        window.location.replace(redirectURL);
+    };
+
+    useEffect(()=>{
+        redirectFunc()
+    }, [])
 
     const {t} = useTranslation();
     const isLoading = useSelector((state) => state.global.isLoading)
@@ -36,21 +47,15 @@ const Mobile = () => {
 
     return (
         <div className={`mobile-container flex jc-center ai-center`} style={Style}>
-
             <div className={`width-70 height-40 card-bg rounded-8 card-border column jc-center ai-center px-2`}>
-                <img src={toAbsoluteUrl('/assets/logo/logo.svg')} alt={t("title")} title={t("title")} className={`mb-2`}
+                {/*<img src={toAbsoluteUrl('/assets/logo/logo.svg')} alt={t("title")} title={t("title")} className={`mb-2`}
                      style={{width: "50vw"}}/>
                 <p className={`fs-01 mt-2 text-center`}>
                     <span className={`text-orange fs-02`}>{t("title")} </span>
                     {t("improperMobileView ")}
-                </p>
+                </p>*/}
+               <span className={`direction-ltr`}>Loading...</span>
             </div>
-
-            {/*<Button
-                buttonClass={`mobile-button`}
-                buttonTitle="Click To Open Mobile APP"
-            />*/}
-
         </div>
     );
 };
