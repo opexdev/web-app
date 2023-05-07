@@ -1,7 +1,7 @@
 import React from "react";
 import Icon from "../Icon/Icon";
 import Select from "react-select";
-import * as classes from "./TextInput.module.css";
+import classes from "./TextInput.module.css";
 
 const TextInput = (props) => {
     const {
@@ -54,10 +54,10 @@ const TextInput = (props) => {
     if (alerts){
         alertSection =<div
             className={`${classes.inputGroupHint} inputGroupHint `}
-            data-html={true}
-            data-place="left"
-            data-effect="float"
-            data-tip={props.hint}>
+            data-tooltip-id="opex-tooltip"
+            data-tooltip-place="left"
+            data-tooltip-float={true}
+            data-tooltip-html={props.hint}>
             <Icon
                 iconName={`${classes.iconInfo} text-white fs-0-7 flex`}
                 customClass="hint-icon"

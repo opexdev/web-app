@@ -1,7 +1,6 @@
 import React, {Fragment, useEffect, useState} from "react";
 import classes from "./UserAccountStatus.module.css";
 import {Trans, useTranslation} from "react-i18next";
-import ReactTooltip from "react-tooltip";
 import {AccountStatusData} from "../../../../../../../../../../../../FakeData/FakeData";
 import Icon from "../../../../../../../../../../../../components/Icon/Icon";
 import ScrollBar from "../../../../../../../../../../../../components/ScrollBar";
@@ -18,9 +17,7 @@ const UserAccountStatus = () => {
         });
     }, []);
 
-    useEffect(() => {
-        ReactTooltip.rebuild();
-    });
+
 
     return (
         <div
@@ -30,10 +27,10 @@ const UserAccountStatus = () => {
                 <div className="row jc-between ai-center">
                     <h3>{t("UserAccountStatus.title")}</h3>
                     <span
-                        data-html={true}
-                        data-place="right"
-                        data-effect="float"
-                        data-tip={`<span class="column jc-between col-100">...info</span>`}
+                        data-tooltip-id="opex-tooltip"
+                        data-tooltip-place="right"
+                        data-tooltip-float={true}
+                        data-tooltip-html={`<span class="column jc-between col-100">...info</span>`}
                     >
             <Icon iconName="icon-help-circled-2 fs-04 flex" customClass={classes.iconCustomClasss}
             />

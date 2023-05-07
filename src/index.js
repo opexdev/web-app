@@ -17,6 +17,7 @@ import exchangeReducer from "./store/reducers/exchangeReducer";
 import {StyleRoot} from "radium";
 import {QueryClient, QueryClientProvider} from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
+import 'react-tooltip/dist/react-tooltip.css';
 
 const sagaMiddleware = createSagaMiddleware();
 const rootReducer = combineReducers({

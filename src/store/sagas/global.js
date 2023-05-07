@@ -1,4 +1,4 @@
-import {call, put} from "redux-saga/effects";
+import {call, put, delay} from "redux-saga/effects";
 import * as actions from "../actions/index";
 import jwtDecode from "jwt-decode";
 import axios from "axios";
@@ -37,6 +37,22 @@ export function* getExchangeLastPrice() {
     }
 }
 
+function* getExchangeInfo() {
+
+    for (let i = 0; i < 3; i++) {
+        try {
+            const {data: {symbols}} = yield call(axios.get, '/api/v3/exchangeInfo')
+            return symbols
+        } catch (err) {
+            if (i < 2) {
+                yield delay(500)
+            }
+        }
+
+        throw new Error('getExchangeInfo failed!')
+    }
+}
+
 export function* loadConfig(action) {
 
     yield put(actions.setLoading(true))
@@ -49,7 +65,9 @@ export function* loadConfig(action) {
     const lastPrice = {};
 
     try {
-        const {data: {symbols}} = yield call(axios.get, '/api/v3/exchangeInfo')
+
+        const symbols = yield call(getExchangeInfo)
+
         for (const symbol of symbols) {
             if (symbol.symbol.toUpperCase().includes("NLN")) continue
             if (!assets.includes(symbol.baseAsset)) {
@@ -65,7 +83,7 @@ export function* loadConfig(action) {
             if (!pairs.includes(symbol.symbol)) pairs.push(symbol.symbol)
             symbol.baseRange = {min: 0.000001, max: 100000, step: 0.00001}
             symbol.quoteRange = {min: 0.000001, max: 100000, step: 0.00001}
-            symbol.name = symbol.baseAsset+"/"+symbol.quoteAsset
+            symbol.name = symbol.baseAsset + "/" + symbol.quoteAsset
             lastPrice[symbol.symbol] = 0
         }
         yield put(actions.setExchange({pairs, assets, symbols, lastPrice}));
@@ -84,7 +102,7 @@ export function* loadConfig(action) {
     if (isDark) yield put(actions.setTheme(JSON.parse(isDark)));
 
     if (action.token) {
-        yield put(actions.setUserTokens({refreshToken : null, accessToken: action.token}));
+        yield put(actions.setUserTokens({refreshToken: null, accessToken: action.token}));
         yield call([localStorage, 'removeItem'], "refreshToken")
         const jwt = jwtDecode(action.token)
         yield put(actions.setUserInfo(jwt));
