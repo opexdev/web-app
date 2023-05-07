@@ -2,7 +2,6 @@ import React, {useEffect, useState} from "react";
 import classes from "./OrderBookTableSafari.module.css";
 import {useTranslation} from "react-i18next";
 import i18n from "i18next";
-import ReactTooltip from "react-tooltip";
 import {connect} from "react-redux";
 import {BN} from "../../../../../../../../../../../../utils/utils";
 import ScrollBar from "../../../../../../../../../../../../components/ScrollBar";
@@ -29,10 +28,6 @@ const OrderBookTableSafari = (props) => {
     start = "left";
     end = "right";
   }
-
-  useEffect(() => {
-    ReactTooltip.rebuild();
-  });
 
 
   if (props.type === "buy") {
@@ -113,11 +108,11 @@ const OrderBookTableSafari = (props) => {
                   style={backgroundBar(percent.toString())}
                   onMouseEnter={() => setSelected({...selected, sell: index})}
                   onMouseLeave={() => setSelected({...selected, sell: -1})}
-                  data-html={true}
+                  data-tooltip-id="opex-tooltip"
                   className={`${selected.sell >= index ? `${classes.selected}` : ""} cursor-pointer row jc-between ${classes.tbodyRow}`}
-                  data-place="bottom"
-                  data-effect="float"
-                  data-tip={toolTipHandler(avg , index)}
+                  data-tooltip-place="bottom"
+                  data-tooltip-float={true}
+                  data-tooltip-html={toolTipHandler(avg , index)}
                   data-amount={avg.amount.toString()}
                   onClick={(e) =>
                       onSetSellOrder({
@@ -135,11 +130,11 @@ const OrderBookTableSafari = (props) => {
                   style={backgroundBar(percent.toString())}
                   onMouseEnter={() => setSelected({...selected, buy: index})}
                   onMouseLeave={() => setSelected({...selected, buy: -1})}
-                  data-html={true}
+                  data-tooltip-id="opex-tooltip"
                   className={`${selected.buy >= index ? `${classes.selected}` : ""} cursor-pointer row jc-between ${classes.tbodyRow}`}
-                  data-place="bottom"
-                  data-effect="float"
-                  data-tip={toolTipHandler(avg , index)}
+                  data-tooltip-place="bottom"
+                  data-tooltip-float={true}
+                  data-tooltip-html={toolTipHandler(avg , index)}
                   data-amount={avg.amount.toString()}
                   onClick={(e) =>
                       onSetBuyOrder({

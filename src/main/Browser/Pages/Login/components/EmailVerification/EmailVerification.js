@@ -3,7 +3,6 @@ import classes from "../../Login.module.css";
 import Button from "../../../../../../components/Button/Button";
 import {useTranslation} from "react-i18next";
 import {getCaptchaImage, getPanelToken, requestForVerifyEmail} from "js-api-client";
-import ReactTooltip from "react-tooltip";
 import LoginFormLoading from "../LoginLoading/LoginFormLoading";
 import {validateEmail} from "../../../../../../utils/utils";
 import {images} from "../../../../../../assets/images";
@@ -63,9 +62,7 @@ const EmailVerification = ({returnFunc, email, disable, returnFuncDisableFalse, 
     }, [])
 
 
-    useEffect(() => {
-        ReactTooltip.rebuild();
-    });
+
 
     if (loading) return <LoginFormLoading/>
 
@@ -89,7 +86,7 @@ const EmailVerification = ({returnFunc, email, disable, returnFuncDisableFalse, 
         }
         setLoading(true);
 
-        const {data: {access_token: panelToken}} = await getPanelToken(clientId, clientSecret);
+        //const {data: {access_token: panelToken}} = await getPanelToken(clientId, clientSecret);
         const captchaValue = `${captcha.SessionKey.value}-${activeEmail.captchaAnswer.value}`
         requestForVerifyEmail(activeEmail.email.value, captchaValue)
             .then(() => {
@@ -99,7 +96,6 @@ const EmailVerification = ({returnFunc, email, disable, returnFuncDisableFalse, 
             })
             .catch((err) => {
                 if (err?.response?.data?.code === 10001 && err?.response?.data?.message === "Captcha is not valid") {
-                    console.log("in captcha erro")
                     return setActiveEmail({...activeEmail, captchaAnswer: {value: "", error: [t("login.InvalidCaptcha")]}})
                 }
                 if (err?.response?.data?.code === 1002 && err?.response?.data?.message === "User already verified") {
@@ -157,8 +153,8 @@ const EmailVerification = ({returnFunc, email, disable, returnFuncDisableFalse, 
             />
             <TextInput
                 lead={LeadCaptchaHandler()}
-                after={<span data-html={true} data-place="left" data-effect="float"
-                             data-tip={`<span class="column jc-between col-100">${t("login.refreshCaptcha")}</span>`}><Icon
+                after={<span data-tooltip-id="opex-tooltip" data-tooltip-place="left" data-tooltip-float={true}
+                             data-tooltip-html={`<span class="column jc-between col-100">${t("login.refreshCaptcha")}</span>`}><Icon
                     iconName="icon-arrows-cw flex fs-01"
                     onClick={captchaReq}
                     customClass={`hover-text cursor-pointer`}

@@ -3,14 +3,10 @@ import {useDropzone} from "react-dropzone";
 import classes from "../../main/Browser/Pages/UserPanel/Sections/Content/components/Settings/components/Authentication/components/SendPhotosStep/SendPhotosStep.module.css";
 import Icon from "../Icon/Icon";
 import {useTranslation} from "react-i18next";
-import ReactTooltip from "react-tooltip";
 
 const ImageInput = (props) => {
   const {t} = useTranslation();
 
-  useEffect(() => {
-    ReactTooltip.rebuild();
-  });
 
   const [files, setFiles] = useState([]);
   const {getRootProps, getInputProps, fileRejections} = useDropzone({
@@ -60,10 +56,10 @@ const ImageInput = (props) => {
           onClick={(e) => {
             e.stopPropagation();
           }}
-          data-html={true}
-          data-place="bottom"
-          data-effect="float"
-          data-tip={`<span class="column jc-between col-100">${t(
+          data-tooltip-id="opex-tooltip"
+          data-tooltip-place="bottom"
+          data-tooltip-float={true}
+          data-tooltip-html={`<span class="column jc-between col-100">${t(
             "ImageInput.iconErrorText",
           )}</span>`}>
           <Icon

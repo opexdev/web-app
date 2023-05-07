@@ -4,7 +4,6 @@ import TextInput from "../../../../../../components/TextInput/TextInput";
 import LoginFormLoading from "../LoginLoading/LoginFormLoading";
 import {useTranslation} from "react-i18next";
 import Button from "../../../../../../components/Button/Button";
-import ReactTooltip from "react-tooltip";
 import Icon from "../../../../../../components/Icon/Icon";
 import {images} from "../../../../../../assets/images";
 import {validateEmail} from "../../../../../../utils/utils";
@@ -53,9 +52,7 @@ const ForgetPassword = ({returnFunc}) => {
         captchaReq()
     }, [])
 
-    useEffect(() => {
-        ReactTooltip.rebuild();
-    });
+
 
     if (loading) return <LoginFormLoading/>
 
@@ -79,7 +76,7 @@ const ForgetPassword = ({returnFunc}) => {
         }
         setLoading(true);
 
-        const {data: {access_token: panelToken}} = await getPanelToken(clientId, clientSecret);
+        //const {data: {access_token: panelToken}} = await getPanelToken(clientId, clientSecret);
         const captchaValue = `${captcha.SessionKey.value}-${forgetPass.captchaAnswer.value}`
         requestForForgetPassword(forgetPass.email.value, captchaValue)
             .then(() => {
@@ -130,8 +127,8 @@ const ForgetPassword = ({returnFunc}) => {
             />
             <TextInput
                 lead={LeadCaptchaHandler()}
-                after={<span data-html={true} data-place="left" data-effect="float"
-                             data-tip={`<span class="column jc-between col-100">${t("login.refreshCaptcha")}</span>`}><Icon
+                after={<span data-tooltip-id="opex-tooltip" data-tooltip-place="left" data-tooltip-float={true}
+                             data-tooltip-html={`<span class="column jc-between col-100">${t("login.refreshCaptcha")}</span>`}><Icon
                     iconName="icon-arrows-cw flex fs-01"
                     onClick={captchaReq}
                     customClass={`hover-text cursor-pointer`}

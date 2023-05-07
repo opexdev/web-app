@@ -1,4 +1,4 @@
-import React, {useEffect} from "react";
+import React from "react";
 import classes from "./Header.module.css";
 import {useTranslation} from "react-i18next";
 import {useDispatch, useSelector} from "react-redux";
@@ -7,7 +7,6 @@ import * as RoutesName from "../../../../Routes/routes";
 import {Login} from "../../../../Routes/routes";
 import MarketHeader from "./components/MarketHeader/MarketHeader";
 import WalletHeader from "./components/WalletHeader/WalletHeader";
-import ReactTooltip from "react-tooltip";
 import SettingHeader from "./components/SettingsHeader/SettingsHeader";
 import ProtectedRoute from "../../../../../../components/ProtectedRoute/ProtectedRoute";
 import {images} from "../../../../../../assets/images";
@@ -25,9 +24,7 @@ const Header = () => {
     const lastName = useSelector((state) => state.auth.lastName)
     let location = useLocation();
 
-    useEffect(() => {
-        ReactTooltip.rebuild();
-    });
+
 
     const logOutHandler = () => {
         logout().then(()=>{
@@ -71,10 +68,10 @@ const Header = () => {
                         src={images.signOut}
                         alt={t("signOut")}
                         onClick={logOutHandler}
-                        data-html={true}
-                        data-place="right"
-                        data-effect="float"
-                        data-tip={`<span class="column jc-between col-100">${t("signOut")}</span>`}
+                        data-tooltip-id="opex-tooltip"
+                        data-tooltip-place="right"
+                        data-tooltip-float={true}
+                        data-tooltip-html={`<span class="column jc-between col-100">${t("signOut")}</span>`}
                     />
                 ) : (
                     <Link to={Login} state={{from: location}} className="flex">
@@ -82,10 +79,10 @@ const Header = () => {
                             className="img-md-plus"
                             src={images.signIn}
                             alt={t("signIn")}
-                            data-html={true}
-                            data-place="right"
-                            data-effect="float"
-                            data-tip={`<span class="column jc-between col-100">${t("signIn")}</span>`}
+                            data-tooltip-id="opex-tooltip"
+                            data-tooltip-place="right"
+                            data-tooltip-float={true}
+                            data-tooltip-html={`<span class="column jc-between col-100">${t("signIn")}</span>`}
                         />
                     </Link>
                 )}

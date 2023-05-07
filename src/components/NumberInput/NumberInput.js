@@ -1,6 +1,6 @@
 import React from "react";
 import NumberFormat from "react-number-format";
-import * as classes from "./NumberInput.module.css";
+import classes from "./NumberInput.module.css";
 import Icon from "../Icon/Icon";
 
 const NumberInput = (props) => {
@@ -38,10 +38,10 @@ const NumberInput = (props) => {
     if (alert){
         alertSection =<div
             className={`${classes.inputGroupHint} inputGroupHint fs-0-7`}
-            data-html={true}
-            data-place="left"
-            data-effect="float"
-            data-tip={hint}>
+            data-tooltip-id="opex-tooltip"
+            data-tooltip-place="left"
+            data-tooltip-float={true}
+            data-tooltip-html={hint}>
             <Icon
                 iconName="icon-info text-white fs-0-7 flex"
                 customClass={classes.hintIcon}
@@ -53,10 +53,10 @@ const NumberInput = (props) => {
     if (alerts){
         alertSection =<div
             className={`${classes.inputGroupHint} inputGroupHint jc-start`}
-            data-html={true}
-            data-place="left"
-            data-effect="float"
-            data-tip={props.hint}>
+            data-tooltip-id="opex-tooltip"
+            data-tooltip-place="left"
+            data-tooltip-float={true}
+            data-tooltip-html={props.hint}>
             <Icon
                 iconName={`${classes.iconInfo} text-white fs-0-7 flex`}
                 customClass="hint-icon"

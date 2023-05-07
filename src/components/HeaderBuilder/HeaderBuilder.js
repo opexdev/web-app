@@ -1,11 +1,10 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import classes from './HeaderBuilder.module.css'
 import {Link, NavLink, useLocation} from "react-router-dom";
 import * as Routes from "../../main/Browser/Routes/routes";
-import {Login, Panel} from "../../main/Browser/Routes/routes";
+import {Login} from "../../main/Browser/Routes/routes";
 import {useDispatch, useSelector} from "react-redux";
 import {useTranslation} from "react-i18next";
-import ReactTooltip from "react-tooltip";
 import {toast} from "react-hot-toast";
 import {images} from "../../assets/images";
 import {setLogoutInitiate} from "../../store/actions";
@@ -22,10 +21,6 @@ const HeaderBuilder = ({children}) => {
     const firstName = useSelector((state) => state.auth.firstName)
     const lastName = useSelector((state) => state.auth.lastName)
     let location = useLocation();
-
-    useEffect(() => {
-        ReactTooltip.rebuild();
-    });
 
     const logOutHandler = async () => {
         logout().then(() => {
@@ -67,9 +62,6 @@ const HeaderBuilder = ({children}) => {
                         className={({ isActive }) => isActive ? 'text-orange mx-1 cursor-pointer hover-text' : 'mx-1 cursor-pointer hover-text'}
                     >{t("market.title")}</NavLink>
 
-
-
-
                 </div>
                 <div className={`column ai-end width-15`}>
                     {firstName === null ? (
@@ -94,21 +86,20 @@ const HeaderBuilder = ({children}) => {
                         src={images.signOut}
                         alt={t("signOut")}
                         onClick={logOutHandler}
-                        data-html={true}
-                        data-place="right"
-                        data-effect="float"
-                        data-tip={`<span class="column jc-between col-100">${t("signOut")}</span>`}
+                        data-tooltip-place="right"
+                        data-tooltip-id="opex-tooltip"
+                        data-tooltip-float={true}
+                        data-tooltip-html={`<span class="column jc-between col-100">${t("signOut")}</span>`}
                     />
                 ) : (
                     <Link to={Login} state={{from: location}} className="flex">
                         <img
                             className="img-md-plus cursor-pointer"
                             src={images.signIn}
+                            data-tooltip-html={`<span class="column jc-between col-100">${t("signIn")}</span>`}
                             alt={t("signIn")}
-                            data-html={true}
-                            data-place="right"
-                            data-effect="float"
-                            data-tip={`<span class="column jc-between col-100">${t("signIn")}</span>`}
+                            data-tooltip-id="opex-tooltip"
+                            data-tooltip-place="right"
                         />
                     </Link>
                 )}

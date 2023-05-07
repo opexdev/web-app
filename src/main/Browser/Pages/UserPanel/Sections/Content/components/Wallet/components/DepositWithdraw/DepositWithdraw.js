@@ -1,7 +1,6 @@
-import React, {useEffect} from "react";
+import React from "react";
 import classes from "./DepositWithdraw.module.css";
 import {useTranslation} from "react-i18next";
-import ReactTooltip from "react-tooltip";
 import AccordionBox from "../../../../../../../../../../components/AccordionBox/AccordionBox";
 import Withdrawal from "./components/Withdrawal";
 import Deposit from "./components/Deposit/Deposit";
@@ -9,10 +8,6 @@ import Deposit from "./components/Deposit/Deposit";
 
 const DepositWithdraw = () => {
   const {t} = useTranslation();
-
-  useEffect(() => {
-    ReactTooltip.rebuild();
-  });
 
   const data = [
     {id: 1, title: t("deposit"), body: <Deposit/>},

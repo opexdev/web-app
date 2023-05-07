@@ -1,7 +1,6 @@
-import React, {Fragment, useEffect, useState} from "react";
+import React, {Fragment, useState} from "react";
 import classes from "./MainMenu.module.css";
 import {Link, NavLink} from "react-router-dom";
-import ReactTooltip from "react-tooltip";
 import * as Routes from "../../../../Routes/routes";
 import {useTranslation} from "react-i18next";
 import MessagesSubMenu from "../SubMenu/components/MessagesSubMenu/MessagesSubMenu";
@@ -12,10 +11,6 @@ import {toAbsoluteUrl} from "../../../../../../utils/utils";
 const MainMenu = () => {
     const {t} = useTranslation();
     const [showMessages, setShowMessages] = useState(false);
-
-    useEffect(() => {
-        ReactTooltip.rebuild();
-    });
 
     return (
         <Fragment>
@@ -35,10 +30,10 @@ const MainMenu = () => {
                                 isActive ? classes.selected : undefined
                             }
                             onClick={() => setShowMessages(false)}
-                            data-html={true}
-                            data-place="left"
-                            data-effect="float"
-                            data-tip={`<span class="column jc-between col-100">${t(
+                            data-tooltip-id="opex-tooltip"
+                            data-tooltip-place="left"
+                            data-tooltip-float={true}
+                            data-tooltip-html={`<span class="column jc-between col-100">${t(
                                 "home",
                             )}</span>`}>
                             <Icon iconName="icon-overview fs-21"/>
@@ -50,12 +45,13 @@ const MainMenu = () => {
                                 isActive ? classes.selected : undefined
                             }
                             onClick={() => setShowMessages(false)}
-                            data-html={true}
-                            data-place="left"
-                            data-effect="float"
-                            data-tip={`<span class="column jc-between col-100">${t(
+                            data-tooltip-id="opex-tooltip"
+                            data-tooltip-place="left"
+                            data-tooltip-float={true}
+                            data-tooltip-html={`<span class="column jc-between col-100">${t(
                                 "market.title",
-                            )}</span>`}>
+                            )}</span>`}
+                        >
                             <Icon iconName="icon-market fs-21"/>
                         </NavLink>
                         <NavLink
@@ -64,10 +60,10 @@ const MainMenu = () => {
                                 isActive ? classes.selected : undefined
                             }
                             onClick={() => setShowMessages(false)}
-                            data-html={true}
-                            data-place="left"
-                            data-effect="float"
-                            data-tip={`<span class="column jc-between col-100">${t(
+                            data-tooltip-id="opex-tooltip"
+                            data-tooltip-place="left"
+                            data-tooltip-float={true}
+                            data-tooltip-html={`<span class="column jc-between col-100">${t(
                                 "wallet.title",
                             )}</span>`}>
                             <Icon iconName="icon-safe fs-21"/>
@@ -78,10 +74,10 @@ const MainMenu = () => {
                                 isActive ? classes.selected : undefined
                             }
                             onClick={() => setShowMessages(false)}
-                            data-html={true}
-                            data-place="left"
-                            data-effect="float"
-                            data-tip={`
+                            data-tooltip-id="opex-tooltip"
+                            data-tooltip-place="left"
+                            data-tooltip-float={true}
+                            data-tooltip-html={`
                          <span class="column jc-between col-100">${t(
                                 "technical.title",
                             )}</span>`}>
@@ -93,7 +89,7 @@ const MainMenu = () => {
                          className={`text-color ${classes.messages} 
                          ${showMessages ? classes.selected : ""}`}
                          onClick={() => setShowMessages((prevState) => !prevState)}
-                         data-html={true} data-place="left" data-effect="float" data-tip={`<span class="column jc-between col-100">${t("messages.title")}</span>`}><Icon iconName="icon-messages-dotted fs-21"/>
+                         data-tooltip-id="opex-tooltip" data-tooltip-place="left" data-tooltip-float={true} data-tooltip-html={`<span class="column jc-between col-100">${t("messages.title")}</span>`}><Icon iconName="icon-messages-dotted fs-21"/>
                      </span>*/}
                         <NavLink
                             to={Routes.Security}
@@ -101,10 +97,10 @@ const MainMenu = () => {
                                 isActive ? classes.selected : undefined
                             }
                             onClick={() => setShowMessages(false)}
-                            data-html={true}
-                            data-place="left"
-                            data-effect="float"
-                            data-tip={`
+                            data-tooltip-id="opex-tooltip"
+                            data-tooltip-place="left"
+                            data-tooltip-float={true}
+                            data-tooltip-html={`
                          <span class="column jc-between col-100">${t(
                                 "settings.title",
                             )}</span>`}>
