@@ -1,6 +1,5 @@
 import React from 'react';
 import classes from './ResultPage.module.css'
-import {images} from "../../../../../../../../../../../../../../assets/images";
 import {useNavigate} from "react-router-dom";
 import Button from "../../../../../../../../../../../../../../components/Button/Button";
 import {useTranslation} from "react-i18next";
@@ -11,9 +10,7 @@ import QRCode from "react-qr-code";
 
 const ResultPage = ({data, returnFunc}) => {
 
-    let navigate = useNavigate();
     const {t} = useTranslation();
-
 
     const copyToClipboard = (value, e) => {
         e.preventDefault();
