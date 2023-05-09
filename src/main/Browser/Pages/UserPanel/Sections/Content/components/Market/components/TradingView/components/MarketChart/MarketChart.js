@@ -1,12 +1,11 @@
 import React, {useEffect, useRef} from "react";
 import classes from "../../TradingView.module.css";
-import * as LightweightCharts from "lightweight-charts";
+import { createChart } from 'lightweight-charts';
 import {useSelector} from "react-redux";
 import moment from "moment-jalaali";
 import {
     candleColors,
     darkTheme,
-    histogramColors,
     lightTheme
 } from "../../../../../../../../../../../../constants/chart";
 import i18n from "i18next";
@@ -26,6 +25,7 @@ const MarketChart = ({type}) => {
     const chartContainerRef = useRef();
     const resizeObserver = useRef();
 
+    console.log(data)
     const timeScale = {
         tickMarkFormatter: (time) => {
             if (i18n.language === undefined || i18n.language === "fa") return moment(time * 1000).format("jYYYY/jM/jD")
@@ -74,16 +74,28 @@ const MarketChart = ({type}) => {
         if (chart.current !== null) {
             chart.current = null;
         }
-        chart.current = LightweightCharts.createChart(
+        chart.current = createChart(
             chartContainerRef.current,
             chartProperties,
         );
         candleSeries = chart.current.addCandlestickSeries(isDark ? darkTheme : candleColors);
-        volumeSeries = chart.current.addHistogramSeries(histogramColors);
+        volumeSeries = chart.current.addHistogramSeries({
+            priceFormat: {
+                type: 'volume',
+            },
+            priceScaleId: '',
+        });
+        volumeSeries.priceScale().applyOptions({
+            scaleMargins: {
+                top: 0.8,
+                bottom: 0,
+            },
+        });
 
         candleSeries.setData(data);
         volumeSeries.setData(data);
 
+        chart.current .timeScale().fitContent();
         return () => {
             if (chart.current !== null) {
                 chart.current.remove();

@@ -1,5 +1,5 @@
 import {useQuery} from "@tanstack/react-query";
-import {getAPIKeyList, getLastPrices} from "js-api-client";
+import {getAPIKeyList} from "js-api-client";
 
 export const useGetAPIKeyList = () => {
     return useQuery(

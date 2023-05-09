@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import classes from "../../Login.module.css";
 import Button from "../../../../../../components/Button/Button";
 import {useTranslation} from "react-i18next";
-import {getCaptchaImage, getPanelToken, requestForVerifyEmail} from "js-api-client";
+import {getCaptchaImage, requestForVerifyEmail} from "js-api-client";
 import LoginFormLoading from "../LoginLoading/LoginFormLoading";
 import {validateEmail} from "../../../../../../utils/utils";
 import {images} from "../../../../../../assets/images";
@@ -13,9 +13,6 @@ import {useDispatch, useSelector} from "react-redux";
 import {setVerifyEmailLockInitiate} from "../../../../../../store/actions";
 
 const EmailVerification = ({returnFunc, email, disable, returnFuncDisableFalse, returnFuncDisableTrue}) => {
-
-    const clientSecret = window.env.REACT_APP_CLIENT_SECRET
-    const clientId = window.env.REACT_APP_CLIENT_ID
 
     const {t} = useTranslation();
     const dispatch = useDispatch();
@@ -86,7 +83,6 @@ const EmailVerification = ({returnFunc, email, disable, returnFuncDisableFalse, 
         }
         setLoading(true);
 
-        //const {data: {access_token: panelToken}} = await getPanelToken(clientId, clientSecret);
         const captchaValue = `${captcha.SessionKey.value}-${activeEmail.captchaAnswer.value}`
         requestForVerifyEmail(activeEmail.email.value, captchaValue)
             .then(() => {
