@@ -1,3 +1,5 @@
+import {ColorType} from "lightweight-charts";
+
 export const candleColors = {
     upColor: "#18a979",
     downColor: "#d73e36",
@@ -12,6 +14,7 @@ export const histogramColors = {
     priceFormat: {
         type: "volume",
     },
+    priceScaleId: '',
     overlay: true,
     scaleMargins: {
         top: 0.8,
@@ -20,7 +23,7 @@ export const histogramColors = {
 };
 export const darkTheme = {
     layout: {
-        backgroundColor: "#282a36",
+        background: { type: ColorType.Solid, color: '#282a36' },
         textColor: "rgba(255, 255, 255, 0.9)",
     },
     grid: {
@@ -40,7 +43,7 @@ export const darkTheme = {
 };
 export const lightTheme = {
     layout: {
-        backgroundColor: "#ffffff",
+        background: { type: ColorType.Solid, color: '#ffffff' },
         textColor: "#191919",
     },
     grid: {

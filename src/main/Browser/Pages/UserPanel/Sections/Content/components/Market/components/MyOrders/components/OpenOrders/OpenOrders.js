@@ -77,10 +77,10 @@ const OpenOrders = () => {
                                 <td>{executedQty.dividedBy(origQty).multipliedBy(100).toFormat(0)}</td>
                                 <td
                                     onClick={() => cancelOrder(tr.orderId)}
-                                    data-html={true}
-                                    data-place="bottom"
-                                    data-effect="float"
-                                    data-tip={t("myOrders.cancelOrder")}
+                                    data-tooltip-id="opex-tooltip"
+                                    data-tooltip-place="bottom"
+                                    data-tooltip-float={true}
+                                    data-tooltip-html={t("myOrders.cancelOrder")}
                                 >
                                     <Icon
                                         iconName="icon-cancel text-red fs-0-7"

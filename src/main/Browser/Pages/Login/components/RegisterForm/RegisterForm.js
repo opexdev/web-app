@@ -7,7 +7,6 @@ import {validateEmail} from "../../../../../../utils/utils";
 import Button from "../../../../../../components/Button/Button";
 import Icon from "../../../../../../components/Icon/Icon";
 import {images} from "../../../../../../assets/images";
-import ReactTooltip from "react-tooltip";
 import {getCaptchaImage, getPanelToken, userRegister} from "js-api-client";
 import EmailVerification from "../EmailVerification/EmailVerification";
 import {setVerifyEmailLockInitiate} from "../../../../../../store/actions";
@@ -69,9 +68,7 @@ const RegisterForm = () => {
         captchaReq()
     }, [])
 
-    useEffect(() => {
-        ReactTooltip.rebuild();
-    });
+
 
     useEffect(() => {
         if (verifyEmailLock && new Date().getTime() < verifyEmailLock) setDisable(true)
@@ -288,8 +285,8 @@ const RegisterForm = () => {
                 />
                 <TextInput
                     lead={LeadCaptchaHandler()}
-                    after={<span data-html={true} data-place="left" data-effect="float"
-                                 data-tip={`<span class="column jc-between col-100">${t("login.refreshCaptcha")}</span>`}><Icon
+                    after={<span data-tooltip-id="opex-tooltip" data-tooltip-place="left" data-tooltip-float={true}
+                                 data-tooltip-html={`<span class="column jc-between col-100">${t("login.refreshCaptcha")}</span>`}><Icon
                         iconName="icon-arrows-cw flex fs-01"
                         onClick={captchaReq}
                         customClass={`hover-text cursor-pointer`}

@@ -18,10 +18,10 @@ const MarketTitle = () => {
                 <span className={`text-orange fs-02`}>{t("title")}</span> {t("MarketTitle.content")}
             </p>
             <div className={`column`}>
-                <div className={`row jc-start ai-center mb-1`}>
+                {/*<div className={`row jc-start ai-center mb-1`}>
                     <span className={`${classes.arrow} ml-05`}></span>
                     <Link to={"#"} className={`mr-05 cursor-pointer hover-text hover-scale-01`}>{t("MarketTitle.easyTrading")}</Link>
-                </div>
+                </div>*/}
                 <div className={`row jc-start ai-center mt-1 ${classes.flashit}`}>
                     <span className={`${classes.arrow} ml-05`}></span>
                     <Link to={Panel} className={`mr-05 cursor-pointer hover-text hover-scale-01`}>{t("MarketTitle.advancedTrading")}</Link>

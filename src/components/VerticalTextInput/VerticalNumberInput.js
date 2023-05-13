@@ -1,6 +1,6 @@
 import React from "react";
 import NumberFormat from "react-number-format";
-import * as classes from "./VerticalNumberInput.module.css";
+import classes from "./VerticalNumberInput.module.css";
 import Icon from "../Icon/Icon";
 
 const VerticalNumberInput = (props) => {
@@ -38,10 +38,10 @@ const VerticalNumberInput = (props) => {
     if (alert){
         alertSection =<div
             className={`${classes.inputGroupHint} inputGroupHint `}
-            data-html={true}
-            data-place="left"
-            data-effect="float"
-            data-tip={hint}>
+            data-tooltip-id="opex-tooltip"
+            data-tooltip-place="left"
+            data-tooltip-float={true}
+            data-tooltip-html={hint}>
             <Icon
                 iconName="icon-info text-white fs-0-7 flex"
                 customClass={classes.hintIcon}

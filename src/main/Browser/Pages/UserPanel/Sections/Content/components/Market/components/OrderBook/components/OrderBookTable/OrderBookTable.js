@@ -1,7 +1,6 @@
 import React, {useEffect, useState} from "react";
 import classes from "./OrderBookTable.module.css";
 import {useTranslation} from "react-i18next";
-import ReactTooltip from "react-tooltip";
 import {connect} from "react-redux";
 import i18n from "i18next";
 import {BN} from "../../../../../../../../../../../../utils/utils";
@@ -31,9 +30,7 @@ const OrderBookTable = (props) => {
     end = "right";
   }
 
-  useEffect(() => {
-    ReactTooltip.rebuild();
-  });
+
 
   if (type === "buy") {
     header = (
@@ -113,11 +110,11 @@ const OrderBookTable = (props) => {
                 style={backgroundBar(percent.toString())}
                 onMouseEnter={() => setSelected({...selected, sell: index})}
                 onMouseLeave={() => setSelected({...selected, sell: -1})}
-                data-html={true}
+                data-tooltip-id="opex-tooltip"
                 className={`${selected.sell >= index ? `${classes.selected}` : ""} cursor-pointer`}
-                data-place="bottom"
-                data-effect="float"
-                data-tip={toolTipHandler(avg , index)}
+                data-tooltip-place="bottom"
+                data-tooltip-float={true}
+                data-tooltip-html={toolTipHandler(avg , index)}
                 data-amount={avg.amount.toString()}
                 onClick={(e) =>
                   onSetSellOrder({
@@ -135,11 +132,11 @@ const OrderBookTable = (props) => {
                 style={backgroundBar(percent.toString())}
                 onMouseEnter={() => setSelected({...selected, buy: index})}
                 onMouseLeave={() => setSelected({...selected, buy: -1})}
-                data-html={true}
+                data-tooltip-id="opex-tooltip"
                 className={`${selected.buy >= index ? `${classes.selected}` : ""} cursor-pointer`}
-                data-place="bottom"
-                data-effect="float"
-                data-tip={toolTipHandler(avg , index)}
+                data-tooltip-place="bottom"
+                data-tooltip-float={true}
+                data-tooltip-html={toolTipHandler(avg , index)}
                 data-amount={avg.amount.toString()}
                 onClick={(e) =>
                   onSetBuyOrder({

@@ -1,11 +1,10 @@
-import React, {Fragment, useEffect, useState} from "react";
+import React, {Fragment, useState} from "react";
 import classes from "./MessagesSubMenu.module.css";
 import {useTranslation} from "react-i18next";
 import moment from "moment-jalaali";
 import ScrollBar from "../../../../../../../../components/ScrollBar";
 import Icon from "../../../../../../../../components/Icon/Icon";
 import AccordionBox from "../../../../../../../../components/AccordionBox/AccordionBox";
-import {MyMessagesData, newsData} from "../../../../../../../../FakeData/FakeData";
 import {useNavigate} from "react-router-dom";
 import {Login as LoginRoute} from "../../../../../../Routes/routes";
 import i18n from "i18next";
@@ -20,12 +19,12 @@ const MessagesSubMenu = () => {
     myMessages: [],
     news: [],
   });
-  useEffect(() => {
+/*  useEffect(() => {
     setCustomData({
       myMessages: MyMessagesData(),
       news: newsData(),
     });
-  }, []);
+  }, []);*/
 
   const navigate = useNavigate();
 

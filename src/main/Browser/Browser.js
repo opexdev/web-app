@@ -2,7 +2,6 @@ import React, {useEffect} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {Route, Routes} from "react-router-dom";
 import i18n from "i18next";
-import ReactTooltip from "react-tooltip";
 import * as RoutesName from "./Routes/routes";
 import {Toaster} from "react-hot-toast";
 import Login from "./Pages/Login/Login";
@@ -16,6 +15,7 @@ import User from "./Pages/User/User";
 import Landing from "./Pages/Landing/Landing";
 import AllMarket from "./Pages/AllMarket/AllMarket";
 import UserPanel from "./Pages/UserPanel/UserPanel";
+import {Tooltip} from "react-tooltip";
 
 const Browser = () => {
     const query = useQuery();
@@ -86,7 +86,7 @@ const Browser = () => {
                 <Route path={RoutesName.Guide} element={<Guide/>}/>
                 <Route path={RoutesName.Panel + "/*"} element={<UserPanel/>}/>
             </Routes>
-            <ReactTooltip data-html={true} data-effect="float"/>
+            <Tooltip  id="opex-tooltip"/>
             <Toast/>
         </>
 

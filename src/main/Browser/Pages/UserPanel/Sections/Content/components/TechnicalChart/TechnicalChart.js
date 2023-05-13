@@ -3,7 +3,7 @@ import classes from "./TechnicalChart.module.css";
 import {connect} from "react-redux";
 import {isSafari} from "react-device-detect";
 import i18n from "i18next";
-import ReactTooltip from "react-tooltip";
+import { Tooltip as ReactTooltip } from 'react-tooltip'
 import MainMenu from "../../../MainMenu/MainMenu";
 import AdvanceTradingView from "../../../../../../../../components/AdvanceTradingView/AdvanceTradingView";
 
@@ -21,7 +21,7 @@ const TechnicalChart = (props) => {
             className={`row  ${props.isDark ? "dark" : ""} ${ltr ? "ltr" : "rtl"} ${
                 isSafari ? "" : "user-select"
             }`}>
-            <ReactTooltip data-html={true} data-effect="float"/>
+            <ReactTooltip data-tooltip-id="opex-tooltip" data-tooltip-float={true}/>
             <MainMenu/>
             <div className={`column ${classes.content}`}>
                 <AdvanceTradingView/>

@@ -7,7 +7,6 @@ import Loading from "../../../../../../../../components/Loading/Loading";
 import Error from "../../../../../../../../components/Error/Error";
 import MostIncreasedPrice from "./components/MostIncreasedPrice/MostIncreasedPrice";
 import MostDecreasedPrice from "./components/MostDecreasedPrice/MostDecreasedPrice";
-import NullMarketStats from "../../../../../../../../components/NullMarketStats/NullMarketStats";
 
 const PriceInfo = () => {
 
@@ -27,14 +26,12 @@ const PriceInfo = () => {
     const mostIncreasedPriceContent = () => {
         if (isLoading) return <Loading/>
         if (error) return <Error/>
-        // if (mostIncreasedPrice?.lastPrice === 0) return <NullMarketStats interval={interval}/>
         else return <MostIncreasedPrice mostIncreasedPrice={mostIncreasedPrice}/>
     }
 
     const mostDecreasedPriceContent = () => {
         if (isLoading) return <Loading/>
         if (error) return <Error/>
-        // if (mostDecreasedPrice?.lastPrice === 0) return <NullMarketStats interval={interval}/>
         else return <MostDecreasedPrice mostDecreasedPrice={mostDecreasedPrice}/>
     }
 
