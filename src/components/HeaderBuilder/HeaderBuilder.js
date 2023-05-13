@@ -49,10 +49,10 @@ const HeaderBuilder = ({children}) => {
                         to={Routes.Landing}
                         className={({ isActive }) => isActive ? 'text-orange mx-1 cursor-pointer hover-text' : 'mx-1 cursor-pointer hover-text'}
                     >{t("home")}</NavLink>
-                    <NavLink
+                   {/* <NavLink
                         to="#"
                         className={`mx-1 cursor-pointer hover-text`}
-                    >{t("MarketTitle.easyTrading")}</NavLink>
+                    >{t("MarketTitle.easyTrading")}</NavLink>*/}
                     <NavLink
                         to={Routes.Panel}
                         className={({ isActive }) => isActive ? 'text-orange mx-1 cursor-pointer hover-text' : 'mx-1 cursor-pointer hover-text'}
