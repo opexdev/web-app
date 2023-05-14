@@ -84,6 +84,7 @@ const MarketChart = ({type}) => {
                 type: 'volume',
             },
             priceScaleId: '',
+            lastValueVisible:false,
         });
         volumeSeries.priceScale().applyOptions({
             scaleMargins: {
