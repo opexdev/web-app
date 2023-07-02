@@ -8,6 +8,7 @@ import Icon from "../../../../../../components/Icon/Icon";
 import {images} from "../../../../../../assets/images";
 import {validateEmail} from "../../../../../../utils/utils";
 import {getCaptchaImage, requestForForgetPassword} from "js-api-client";
+import {Buffer} from 'buffer';
 
 const ForgetPassword = ({returnFunc}) => {
 

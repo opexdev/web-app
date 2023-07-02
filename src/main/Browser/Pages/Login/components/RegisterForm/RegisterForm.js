@@ -11,7 +11,7 @@ import {getCaptchaImage, getPanelToken, userRegister} from "js-api-client";
 import EmailVerification from "../EmailVerification/EmailVerification";
 import {setVerifyEmailLockInitiate} from "../../../../../../store/actions";
 import {useDispatch, useSelector} from "react-redux";
-
+import {Buffer} from 'buffer';
 
 const RegisterForm = () => {
     const {t} = useTranslation();
@@ -43,9 +43,9 @@ const RegisterForm = () => {
     const clientSecret = window.env.REACT_APP_CLIENT_SECRET
     const clientId = window.env.REACT_APP_CLIENT_ID
 
-    const captchaReq = () => {
+    const captchaReq = async () => {
         setIsLoading(true)
-        getCaptchaImage()
+        await getCaptchaImage()
             .then((res) => {
                 setCaptcha({
                     image: {
@@ -67,8 +67,6 @@ const RegisterForm = () => {
     useEffect(() => {
         captchaReq()
     }, [])
-
-
 
     useEffect(() => {
         if (verifyEmailLock && new Date().getTime() < verifyEmailLock) setDisable(true)
