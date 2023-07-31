@@ -244,7 +244,7 @@
     "DepositTETHContentBefore": "Ropsten network ETH test Only accepted! For free download",
     "DepositTETHContentAfter": "go to send a test ETH to this address. You must change your wallet Etherium network to Ropsten. This network is on the Metamask wallet network list by default. Any transaction with an amount equal to or greater than 0.001 ETH to the above address will be added to your account.",
     "minDeposit": "The minimum acceptable amount {{min}} {{currency}}",
-    "minDepositText": "Any transaction with a value greater than {{min}} {{currency}} will be added to your account at the following address.",
+    "minDepositText": "Any transaction will be added to your account at the following address.",
     "DepositTBTCContentBefore": "Only BTC test accepted! For free download",
     "DepositTBTCContentAfter": "go to any transaction with an amount equal to or greater than 0.001 BTC to the above address will be added to your account.",
     "DepositTUSDTContentBefore": "Only USDT Ropsten Network Test is accepted! To learn how to get free,",
@@ -252,7 +252,9 @@
     "depositTime": "* Your balance will increase {{time}} minutes after depositing to the above address.",
     "securityConsiderations": "Due to security considerations, the transfer to the account may be delayed slightly. You can see the withdrawal status on the same page in the Deposit / Withdrawal Transactions section.",
     "network": "Network",
-    "selectNetwork": "Select Network"
+    "selectNetwork": "Select Network",
+    "gettingAddress": "Getting address...",
+    "errorGettingAddress": "Failed to get address"
   },
   "CallbackPage": {
     "ok": "The deposit was successful.",

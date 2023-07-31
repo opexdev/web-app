@@ -43,7 +43,7 @@ const TextInput = (props) => {
             options={options}
             ref={customRef}
             classNamePrefix="select"
-            className={classes.selectBox}
+            className={`${classes.selectBox} selectExternalClass`}
             {...other}
         />
     }
