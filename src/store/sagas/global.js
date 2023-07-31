@@ -46,6 +46,7 @@ function* getExchangeInfo() {
         } catch (err) {
             if (i < 2) {
                 yield delay(500)
+                continue
             }
         }
 

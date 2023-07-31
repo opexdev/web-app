@@ -15,6 +15,8 @@ import litecoin from "./images/src/litecoin.svg";
 import tether from "./images/src/tether.svg";
 import binance from "./images/src/binance.svg";
 import binanceUSD from "./images/src/binanceUSD.svg";
+import tron from "./images/src/tron.svg";
+import testTron from "./images/src/testTron.svg";
 import ethereumLight from "./images/src/ethereumLight.svg";
 import toman from "./images/src/toman.svg";
 import spaceStar from "./images/src/spaceStar.png";
@@ -56,6 +58,8 @@ export const images = {
   USDT: tether,
   BNB: binance,
   BUSD: binanceUSD,
+  TRX: tron,
+  TTRX: testTron,
   ETH: ethereumLight,
   IRT: toman,
   spaceStar: spaceStar,

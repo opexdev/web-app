@@ -11,6 +11,8 @@ import Icon from "../../../../../../components/Icon/Icon";
 import Countdown from "react-countdown";
 import {useDispatch, useSelector} from "react-redux";
 import {setVerifyEmailLockInitiate} from "../../../../../../store/actions";
+import {Buffer} from 'buffer';
+
 
 const EmailVerification = ({returnFunc, email, disable, returnFuncDisableFalse, returnFuncDisableTrue}) => {
 
