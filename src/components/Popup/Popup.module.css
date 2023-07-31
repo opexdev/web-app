@@ -2,7 +2,7 @@
     position: fixed;
     top: 11vh;
     width: 30%;
-    height: 35vh;
+    height: 40vh;
     background-color: var(--popupAlpha);
     z-index: 3;
     box-shadow: -1px 5px 8px -2px #101010ad;
@@ -55,4 +55,11 @@
     width: 90% !important;
     cursor: not-allowed;
     font-family: 'Roboto', sans-serif;
+}
+
+.thisInput :global(.lead) {
+    width: 30%;
+}
+.thisInput :global(.selectExternalClass) {
+    width: 70% !important;
 }

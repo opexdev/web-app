@@ -21,14 +21,7 @@ const Deposit = () => {
     const [networkName, setNetworkName] = useState({value: 0, error: []});
 
     const selectRef = useRef()
-
-
-
     const {data: currencyInfo, isLoading: CILoading, error: CIError, refetch: refetchCI} = useGetCurrencyInfo(id)
-
-    console.log("currencyInfo", currencyInfo)
-    console.log("currencyInfo length", currencyInfo?.length)
-    console.log("currencyInfo bool", !currencyInfo)
 
     useEffect(() => {
         setNetworkName({value: 0, error: []})
