@@ -40,7 +40,12 @@
 .depositIRTInput :global(.after) {
   width: 20%;
 }
-
+.thisInput :global(.lead) {
+  width: 18%;
+}
+.thisInput :global(.selectExternalClass) {
+  width: 82% !important;
+}
 
 .thisButton {
   width: 100%;

@@ -1,4 +1,4 @@
-import React, {useEffect, useRef} from "react";
+import React, {useEffect, useRef, useState} from "react";
 import classes from "../../DepositWithdraw.module.css";
 import TextInput from "../../../../../../../../../../../../components/TextInput/TextInput";
 import Icon from "../../../../../../../../../../../../components/Icon/Icon";
@@ -8,170 +8,72 @@ import QRCode from "react-qr-code";
 import {toast} from "react-hot-toast";
 import Error from "../../../../../../../../../../../../components/Error/Error";
 import Loading from "../../../../../../../../../../../../components/Loading/Loading";
-import {useGetDepositAddress} from "../../../../../../../../../../../../queries";
+import {useGetCurrencyInfo, useGetDepositAddress} from "../../../../../../../../../../../../queries";
 import IRTDeposit from "./components/IRT/IRTDeposit";
+import {BN} from "../../../../../../../../../../../../utils/utils";
+import Address from "./components/Address/Address";
 
 const Deposit = () => {
 
     const {id} = useParams();
     const {t} = useTranslation();
-    const addressRef = useRef(null);
 
-    const copyToClipboard = () => {
-        addressRef.current.select();
-        document.execCommand("copy");
-        toast.success(<Trans
-            i18nKey="DepositWithdraw.success"
-        />);
-    };
+    const [networkName, setNetworkName] = useState({value: 0, error: []});
 
-    const {data: address, isLoading, error, refetch} = useGetDepositAddress(id)
+    const selectRef = useRef()
+
+
+
+    const {data: currencyInfo, isLoading: CILoading, error: CIError, refetch: refetchCI} = useGetCurrencyInfo(id)
+
+    console.log("currencyInfo", currencyInfo)
+    console.log("currencyInfo length", currencyInfo?.length)
+    console.log("currencyInfo bool", !currencyInfo)
 
     useEffect(() => {
-        if (id !== "IRT") refetch()
+        setNetworkName({value: 0, error: []})
+
     }, [id]);
 
-    const helpText = () => {
-        if (id === "TETH") {
-            return <div>
-                <span className={`text-red font-weight-bold`}>{t("DepositWithdraw.important")}: </span>
-                <div className={`mt-1`}>
-                    <span>{t("DepositWithdraw.DepositTETHContentBefore")}</span>
-                    <span className={`hover-text cursor-pointer`}
-                          onClick={() => window.open('https://faucet.dimensions.network/')}>https://faucet.ropsten.be</span>
-                    <span>{t("DepositWithdraw.DepositTETHContentAfter")}</span>
-                </div>
-                <div>
-                    <Trans
-                        i18nKey="DepositWithdraw.minDeposit"
-                        values={{
-                            min: 0.001,
-                            currency: t("currency." + id)
-                        }}
-                    />
-                </div>
-                <div>
-                    <Trans
-                        i18nKey="DepositWithdraw.depositTime"
-                        values={{
-                            time: 2
-                        }}
-                    />
-                </div>
-            </div>
-        }
-        if (id === "TBTC") {
-            return <div>
-                <span className={`text-red font-weight-bold`}>{t("DepositWithdraw.important")}: </span>
-                <div className={`mt-1`}>
-                    <span>{t("DepositWithdraw.DepositTBTCContentBefore")}</span>
-                    <span className={`hover-text cursor-pointer`}
-                          onClick={() => window.open('https://testnet-faucet.com/btc-testnet')}>https://testnet-faucet.com/btc-testnet</span>
-                    <span>{t("DepositWithdraw.DepositTBTCContentAfter")}</span>
-                </div>
-                <div>
-                    <Trans
-                        i18nKey="DepositWithdraw.minDeposit"
-                        values={{
-                            min: 0.001,
-                            currency: t("currency." + id)
-                        }}
-                    />
-                </div>
-                <div>
-                    <Trans
-                        i18nKey="DepositWithdraw.depositTime"
-                        values={{
-                            time: 10
-                        }}
-                    />
-                </div>
-            </div>
-        }
-        if (id === "TUSDT") {
-            return <div>
-                <span className={`text-red font-weight-bold`}>{t("DepositWithdraw.important")}: </span>
-                <div className={`mt-1`}>
-                    <span>{t("DepositWithdraw.DepositTUSDTContentBefore")}</span>
-                    <span className={`hover-text cursor-pointer`}
-                          onClick={() => window.open('https://bit.ly/ROPTokens')}>https://bit.ly/ROPTokens</span>
-                    <span>{t("DepositWithdraw.DepositTUSDTContentAfter")}</span>
-                </div>
-                <div>
-                    <Trans
-                        i18nKey="DepositWithdraw.minDeposit"
-                        values={{
-                            min: 10,
-                            currency: t("currency." + id)
-                        }}
-                    />
-                </div>
-                <div>
-                    <Trans
-                        i18nKey="DepositWithdraw.depositTime"
-                        values={{
-                            time: 2
-                        }}
-                    />
-                </div>
-            </div>
-        }
-    }
 
-    const lowestPrice = (id) => {
-        switch (id) {
-            case "BTC":
-                return 0.001;
-            case "ETH":
-                return 0.001;
-            case "USDT":
-                return 10;
-            default:
-                return 0;
+
+    useEffect(() => {
+        if (id !== "IRT") {
+            refetchCI()
         }
-    };
+    }, [id]);
+
 
     if (id === "IRT") return <IRTDeposit/>
-    if (isLoading) return <Loading/>
-    if (error) return <Error retryFunc={refetch}/>
+    if (CILoading) return <Loading/>
+    if (CIError) return <Error/>
+
+    console.log("currencyInfo?.chains[networkName.value].network", currencyInfo?.chains[networkName?.value]?.network)
 
     return (
-        <div className={`px-1 py-3 row jc-between ${classes.content}`}>
-            <div className="col-80 column jc-between">
-                    <span className={`mb-2`}>
-                        <Trans
-                            i18nKey="DepositWithdraw.minDepositText"
-                            values={{
-                                min: lowestPrice(id),
-                                currency: t("currency." + id)
-                            }}
-                        />
-                    </span>
-                <TextInput
-                    after={
-                        <Icon
-                            iconName="icon-copy fs-02"
-                            onClick={() => copyToClipboard()}
-                            customClass={`hover-text cursor-pointer`}
-                        />
-                    }
-                    customClass={classes.depositInput}
-                    readOnly={true}
-                    type="text"
-                    customRef={addressRef}
-                    value={address.address}
-                />
-                <span className={`mt-2`}>{helpText()}</span>
-            </div>
-            <div className={`col-20 py-1 flex ai-center jc-center`}>
-                <QRCode
-                    value={address.address}
-                    bgColor="var(--cardBody)"
-                    fgColor="var(--textColor)"
-                    level='L'
-                    size={140}
-                />
-            </div>
+        <div className={`px-1 py-3 column ${classes.content}`}>
+            <TextInput
+                select={true}
+                placeholder={t('DepositWithdraw.selectNetwork')}
+                options={currencyInfo?.chains.map((chain, index) => {
+                    return {value: index, label: `${chain.network} - ${chain.currency}`}
+                })}
+                lead={t('DepositWithdraw.network')}
+                type="select"
+                value={currencyInfo?.chains[networkName.value] && {
+                    value: networkName.value,
+                    label: `${currencyInfo?.chains[networkName.value].network} - ${currencyInfo?.chains[networkName.value].currency}`
+                }}
+                onchange={(e) => setNetworkName({value: e?.value || 0, error: []})}
+                customRef={selectRef}
+                alerts={networkName.error}
+                customClass={`width-64 ${classes.thisInput}`}
+            />
+
+            { currencyInfo && <Address network={currencyInfo?.chains[networkName?.value]?.network}/>}
+
+
+
         </div>
     )
 }
