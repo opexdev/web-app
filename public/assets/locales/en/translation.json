@@ -69,7 +69,8 @@
     "LTC": "LTC",
     "TBNB": "TBUSD",
     "TBUSD": "TBUSD",
-    "BCH": "BCH"
+    "BCH": "BCH",
+    "TRX": "TRX"
   },
   "marketInterval": {
     "24h": "24 hours",
