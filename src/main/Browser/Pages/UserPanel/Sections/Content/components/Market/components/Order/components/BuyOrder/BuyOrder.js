@@ -191,20 +191,31 @@ const BuyOrder = () => {
 
 
     const fillBuyByWallet = () => {
-        if(order.pricePerUnit.isEqualTo(0) && bestBuyPrice === 0 ) return toast.error(t("orders.hasNoOffer"));
+        if (order.pricePerUnit.isEqualTo(0) && bestBuyPrice === 0) return toast.error(t("orders.hasNoOffer"));
         if (order.pricePerUnit.isEqualTo(0)) {
-            const totalPrice = new BN(quote);
+            const pricePerUnit = new BN(bestBuyPrice)
+            let totalPrice = new BN(quote);
+            let reqAmount = totalPrice.dividedBy(pricePerUnit).decimalPlaces(activePair.baseAssetPrecision)
+            if (!reqAmount.mod(activePair.baseRange.step).isZero()) {
+                reqAmount = reqAmount.minus(reqAmount.mod(activePair.baseRange.step));
+                totalPrice = reqAmount.multipliedBy(pricePerUnit);
+            }
             setOrder({
                 ...order,
-                reqAmount: totalPrice.dividedBy(bestBuyPrice).decimalPlaces(activePair.baseAssetPrecision),
-                pricePerUnit: new BN(bestBuyPrice),
+                reqAmount,
+                pricePerUnit,
                 totalPrice,
-                tradeFee: totalPrice.multipliedBy(tradeFee[activePair.quoteAsset]).decimalPlaces(activePair.baseAssetPrecision),
+                tradeFee: reqAmount.multipliedBy(tradeFee[activePair.quoteAsset]).decimalPlaces(activePair.baseAssetPrecision),
             });
         } else {
+            let totalPrice = new BN(quote);
+            let reqAmount = totalPrice.dividedBy(order.pricePerUnit).decimalPlaces(activePair.baseAssetPrecision)
+            if (!reqAmount.mod(activePair.baseRange.step).isZero()) {
+                reqAmount = reqAmount.minus(reqAmount.mod(activePair.baseRange.step));
+            }
             buyPriceHandler(
-                quote.toString(),
-                "totalPrice",
+                reqAmount.toString(),
+                "reqAmount",
             );
         }
     };
@@ -257,15 +268,10 @@ const BuyOrder = () => {
         })
     }
     const submitButtonTextHandler = () => {
-        if (isLoading) {
-            return <img className={`${classes.thisLoading}`} src={images.linearLoading} alt="linearLoading"/>
-        }
-        if (alert.submit) {
-            return <span>{t("login.loginError")}</span>
-        }
-        if (isLogin) {
-            return t("buy")
-        }
+        if (isLoading) return <img className={`${classes.thisLoading}`} src={images.linearLoading} alt="linearLoading"/>
+
+        if (isLogin) return t("buy")
+
         return t("pleaseLogin")
     }
 
