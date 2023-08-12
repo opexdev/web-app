@@ -595,7 +595,7 @@
     "mostVolume": "Most Volume",
     "nullResponse": "No transactions in the last {{interval}}"
   },
-  "footer": {
+  "Footer": {
     "darkMode": "Dark Mode",
     "aboutUs" : "About Us",
     "contactUS" : "Contact Us",
@@ -606,7 +606,7 @@
     "addCoin": "Add Coin",
     "demo": "Market Demo",
     "errorReport": "Error Report",
-    "copyright": "© 2021 OPEX. All rights reserved."
+    "copyright": "© {{year}} OPEX. All rights reserved."
   },
   "ImageInput": {
     "title": "",
