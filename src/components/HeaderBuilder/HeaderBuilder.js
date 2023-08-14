@@ -61,6 +61,11 @@ const HeaderBuilder = ({children}) => {
                         to={Routes.AllMarket}
                         className={({ isActive }) => isActive ? 'text-orange mx-1 cursor-pointer hover-text' : 'mx-1 cursor-pointer hover-text'}
                     >{t("market.title")}</NavLink>
+                    <NavLink
+                        to={Routes.Info}
+                        className={({ isActive }) => isActive ? 'text-orange mx-1 cursor-pointer hover-text' : 'mx-1 cursor-pointer hover-text'}
+                    >{t("info.title")}
+                    </NavLink>
 
                 </div>
                 <div className={`column ai-end width-15`}>

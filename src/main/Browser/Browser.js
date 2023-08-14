@@ -5,7 +5,6 @@ import i18n from "i18next";
 import * as RoutesName from "./Routes/routes";
 import {Toaster} from "react-hot-toast";
 import Login from "./Pages/Login/Login";
-import Guide from "./Pages/Guide/Guide";
 import FullWidthLoading from "../../components/FullWidthLoading/FullWidthLoading";
 import {loadConfig, setInfoMessage} from "../../store/actions";
 import "./Styles/Browser.css"
@@ -16,6 +15,13 @@ import Landing from "./Pages/Landing/Landing";
 import AllMarket from "./Pages/AllMarket/AllMarket";
 import UserPanel from "./Pages/UserPanel/UserPanel";
 import {Tooltip} from "react-tooltip";
+import Layout from "../../components/Layout/Layout";
+import AboutUs from "./Pages/Info/AboutUs/AboutUs";
+import Commission from "./Pages/Info/Commission/Commission";
+import TransferFees from "./Pages/Info/TransferFees/TransferFees";
+import Guide from "./Pages/Info/Guide/Guide";
+import Rules from "./Pages/Info/Rules/Rules";
+import ContactUs from "./Pages/Info/ContactUs/ContactUs";
 
 const Browser = () => {
     const query = useQuery();
@@ -81,10 +87,20 @@ const Browser = () => {
             <Routes>
                 <Route path={RoutesName.Login} element={<Login/>}/>
                 <Route path={RoutesName.User + "/*"} element={<User/>}/>
-                <Route path={RoutesName.Landing} element={<Landing/>}/>
-                <Route path={RoutesName.AllMarket} element={<AllMarket/>}/>
-                <Route path={RoutesName.Guide} element={<Guide/>}/>
+
+
                 <Route path={RoutesName.Panel + "/*"} element={<UserPanel/>}/>
+
+                <Route element={<Layout/>}>
+                    <Route path={RoutesName.Landing} element={<Landing/>}/>
+                    <Route path={RoutesName.AllMarket} element={<AllMarket/>}/>
+                    <Route path={RoutesName.AboutUs} element={<AboutUs/>}/>
+                    <Route path={RoutesName.Commission} element={<Commission/>}/>
+                    <Route path={RoutesName.TransferFees} element={<TransferFees/>}/>
+                    <Route path={RoutesName.Guide} element={<Guide/>}/>
+                    <Route path={RoutesName.Rules} element={<Rules/>}/>
+                    <Route path={RoutesName.ContactUs} element={<ContactUs/>}/>
+                </Route>
             </Routes>
             <Tooltip  id="opex-tooltip"/>
             <Toast/>
