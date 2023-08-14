@@ -9,6 +9,7 @@ import {setThemeInitiate} from "../../../../../../store/actions";
 import {Link} from "react-router-dom";
 import packageJson from "../../../../../../../package.json"
 import {toAbsoluteUrl} from "../../../../../../utils/utils";
+import {Commission} from "../../../../Routes/routes";
 
 const Footer = () => {
     const {t} = useTranslation();
@@ -16,44 +17,41 @@ const Footer = () => {
     const dispatch = useDispatch()
 
     return (
-        <div className={`width-100 column ${classes.container} fs-0-8 mt-1 py-2 px-4`}>
-            <div className={`width-100 row jc-between ai-center`}>
+        <div className={`width-100 column jc-center ai-center ${classes.container} fs-0-8 mt-1 py-2`}>
+            <div className={`width-90 row jc-between ai-center`}>
                 <div className="row">
-                    <div className="column px-1">
-                        <Link to={Routes.Guide + "#about-us"}>
-                            <span className="hover-text">{t("footer.aboutUs")}</span>
+                    <div className="column">
+                        <Link to={Routes.Landing}>
+                            <span className="hover-text">{t("home")}</span>
                         </Link>
-                        <Link to={Routes.Guide + "#contact-us"}>
-                            <span className="hover-text">{t("footer.contactUS")}</span>
+                        <Link to={Routes.Panel}>
+                            <span className="hover-text">{t("MarketTitle.advancedTrading")}</span>
                         </Link>
-                        <Link to={Routes.Guide + "#blog"}>
-                            <span className="hover-text">{t("footer.blog")}</span>
+                        <Link to={Routes.AllMarket}>
+                            <span className="hover-text">{t("market.title")}</span>
                         </Link>
-                        <Link to={Routes.Guide + "#guides"}>
-                            <span className="hover-text">{t("footer.guide")}</span>
-                        </Link>
-                        <Link to={Routes.Guide + "#rules"}>
-                            <span className="hover-text">{t("footer.rules")}</span>
-                        </Link>
-                    </div>
-                    <div className="column px-1">
-                        <Link to={Routes.Guide + "#commission"}>
-                            <span className="hover-text">{t("commission")}</span>
-                        </Link>
-                        <Link to={Routes.Guide + "#api"}>
-                            <span className="hover-text">{t("footer.api")}</span>
-                        </Link>
-                        <Link to={Routes.Guide + "#addCoin"}>
-                            <span className="hover-text">{t("footer.addCoin")}</span>
-                        </Link>
-                        <Link to={Routes.Guide + "#demo"}>
-                            <span className="hover-text">{t("footer.demo")}</span>
-                        </Link>
-                        <Link to={Routes.Guide + "#errorReport"}>
-                            <span className="hover-text">{t("footer.errorReport")}</span>
-                        </Link>
-                    </div>
 
+                        <Link to={Routes.Commission}>
+                            <span className="hover-text">{t("commissions.title")}</span>
+                        </Link>
+                        <Link to={Routes.TransferFees}>
+                            <span className="hover-text">{t("transferFees.title")}</span>
+                        </Link>
+                    </div>
+                    <div className="column px-2">
+                        <Link to={Routes.AboutUs}>
+                            <span className="hover-text">{t("aboutUs.title")}</span>
+                        </Link>
+                        <Link to={Routes.ContactUs}>
+                            <span className="hover-text">{t("contactUs.title")}</span>
+                        </Link>
+                        <Link to={Routes.Guide}>
+                            <span className="hover-text">{t("guide.title")}</span>
+                        </Link>
+                        <Link to={Routes.Rules}>
+                            <span className="hover-text">{t("rules.title")}</span>
+                        </Link>
+                    </div>
                 </div>
 
                 <div className={`column ai-center jc-center`}>
@@ -82,7 +80,7 @@ const Footer = () => {
                     <span className={`mt-1`}>{packageJson.version}</span>
                 </div>
             </div>
-            <div className={`width-100 flex jc-center ai-center mt-1`}>
+            <div className={`width-90 flex jc-center ai-center mt-1`}>
                 <p>{t("footer.copyright")}</p>
             </div>
         </div>
