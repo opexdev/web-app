@@ -9,6 +9,7 @@ export const useLastTrades = (symbol, onSuccess) => {
             retry: 1,
             staleTime: 5000,
             refetchInterval: 10000,
+            keepPreviousData: true,
             onSuccess
         });
 }

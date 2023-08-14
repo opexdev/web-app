@@ -6,9 +6,10 @@ export const useOrderBook = (symbol, onSuccess) => {
         ['orderBook', symbol],
         () => getOrderBookFunc(symbol),
         {
-            retry: 1,
+            retry: 2,
             staleTime: 5000,
             refetchInterval: 10000,
+            keepPreviousData: true,
             onSuccess
         });
 }

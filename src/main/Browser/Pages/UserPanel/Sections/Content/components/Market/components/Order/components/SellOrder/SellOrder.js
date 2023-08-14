@@ -26,7 +26,6 @@ const SellOrder = () => {
 
     const {data: userAccount} = useGetUserAccount()
     const base = userAccount?.wallets[activePair.baseAsset]?.free || 0;
-    const quote = userAccount?.wallets[activePair.quoteAsset]?.free || 0;
 
     const [alert, setAlert] = useState({
         reqAmount: null,
@@ -119,7 +118,7 @@ const SellOrder = () => {
                     ...order,
                     reqAmount,
                     totalPrice: reqAmount.multipliedBy(order.pricePerUnit).decimalPlaces(activePair.quoteAssetPrecision),
-                    tradeFee: reqAmount.multipliedBy(order.pricePerUnit).multipliedBy(tradeFee[activePair.quoteAsset]).decimalPlaces(activePair.baseAssetPrecision),
+                    tradeFee: reqAmount.multipliedBy(order.pricePerUnit).multipliedBy(tradeFee[activePair.quoteAsset]).decimalPlaces(activePair.quoteAssetPrecision),
                 });
                 break;
             case "pricePerUnit":
@@ -128,7 +127,7 @@ const SellOrder = () => {
                     ...order,
                     pricePerUnit: pricePerUnit,
                     totalPrice: pricePerUnit.multipliedBy(order.reqAmount).decimalPlaces(activePair.quoteAssetPrecision),
-                    tradeFee: pricePerUnit.multipliedBy(order.reqAmount).multipliedBy(tradeFee[activePair.quoteAsset]).decimalPlaces(activePair.baseAssetPrecision),
+                    tradeFee: pricePerUnit.multipliedBy(order.reqAmount).multipliedBy(tradeFee[activePair.quoteAsset]).decimalPlaces(activePair.quoteAssetPrecision),
                 });
                 break;
             case "totalPrice":
@@ -138,7 +137,7 @@ const SellOrder = () => {
                     ...order,
                     reqAmount: req.isFinite() ? req : new BN(0),
                     totalPrice,
-                    tradeFee: req.isFinite() ? totalPrice.multipliedBy(tradeFee[activePair.quoteAsset]).decimalPlaces(activePair.baseAssetPrecision) : new BN(0),
+                    tradeFee: req.isFinite() ? totalPrice.multipliedBy(tradeFee[activePair.quoteAsset]).decimalPlaces(activePair.quoteAssetPrecision) : new BN(0),
                 });
                 currencyValidator("reqAmount", req, activePair.baseRange);
                 break;
@@ -174,20 +173,21 @@ const SellOrder = () => {
     }, [selectedSellOrder]);
 
     const fillSellByWallet = () => {
-        if(order.pricePerUnit.isEqualTo(0) && bestSellPrice === 0 ) return toast.error(t("orders.hasNoOffer"));
+        if (order.pricePerUnit.isEqualTo(0) && bestSellPrice === 0) return toast.error(t("orders.hasNoOffer"));
         if (order.pricePerUnit.isEqualTo(0)) {
-            const totalPrice = new BN(quote);
+            const reqAmount = new BN(base).decimalPlaces(activePair.baseAssetPrecision);
+            const pricePerUnit = new BN(bestSellPrice);
             setOrder({
                 ...order,
-                reqAmount: totalPrice.dividedBy(bestSellPrice).decimalPlaces(activePair.baseAssetPrecision),
-                pricePerUnit: new BN(bestSellPrice),
-                totalPrice,
-                tradeFee: totalPrice.multipliedBy(tradeFee[activePair.quoteAsset]).decimalPlaces(activePair.baseAssetPrecision),
+                reqAmount: reqAmount,
+                pricePerUnit: pricePerUnit,
+                totalPrice: reqAmount.multipliedBy(pricePerUnit).decimalPlaces(activePair.quoteAssetPrecision),
+                tradeFee: reqAmount.multipliedBy(pricePerUnit).multipliedBy(tradeFee[activePair.quoteAsset]).decimalPlaces(activePair.baseAssetPrecision),
             });
         } else {
             sellPriceHandler(
-                quote.toString(),
-                "totalPrice",
+                base.toString(),
+                "reqAmount",
             );
         }
     };
@@ -213,12 +213,10 @@ const SellOrder = () => {
     }, [order.reqAmount]);
 
     const submit = () => {
-        if (!isLogin) {
-            return false
-        }
-        if (isLoading) {
-            return false
-        }
+        if (!isLogin) return false
+
+        if (isLoading) return false
+
         setIsLoading(true)
         createOrder(activePair.symbol, "SELL", order)
             .then((res) => {
@@ -253,15 +251,10 @@ const SellOrder = () => {
 
     }
     const submitButtonTextHandler = () => {
-        if (isLoading) {
-            return <img className={`${classes.thisLoading}`} src={images.linearLoading} alt="linearLoading"/>
-        }
-        if (alert.submit) {
-            return <span>{t("login.loginError")}</span>
-        }
-        if (isLogin) {
-            return t("sell")
-        }
+        if (isLoading) return <img className={`${classes.thisLoading}`} src={images.linearLoading} alt="linearLoading"/>
+
+        if (isLogin) return t("sell")
+
         return t("pleaseLogin")
     }
 
@@ -269,7 +262,8 @@ const SellOrder = () => {
         <div className={`column jc-between ${classes.content}`}>
             <div className="column jc-center">
                 <p onClick={() => fillSellByWallet()}>{t("orders.availableAmount")}:{" "}
-                    <span className="cursor-pointer">{new BN(base).toFormat()}{" "}{t("currency." + activePair.baseAsset)}</span>
+                    <span
+                        className="cursor-pointer">{new BN(base).toFormat()}{" "}{t("currency." + activePair.baseAsset)}</span>
                 </p>
                 <p onClick={() => fillSellByBestPrice()}>
                     {t("orders.bestOffer")}:{" "}
@@ -358,7 +352,7 @@ const SellOrder = () => {
                 </p>
                 <p>
                     {t("orders.getAmount")}:{" "}
-                    {order.totalPrice.minus(order.tradeFee).decimalPlaces(activePair.baseAssetPrecision).toNumber()}{" "}
+                    {order.totalPrice.minus(order.tradeFee).decimalPlaces(activePair.quoteAssetPrecision).toFormat()}{" "}
                     {t("currency." + activePair.quoteAsset)}
                 </p>
             </div>

@@ -25,7 +25,6 @@ const MarketChart = ({type}) => {
     const chartContainerRef = useRef();
     const resizeObserver = useRef();
 
-    console.log(data)
     const timeScale = {
         tickMarkFormatter: (time) => {
             if (i18n.language === undefined || i18n.language === "fa") return moment(time * 1000).format("jYYYY/jM/jD")
