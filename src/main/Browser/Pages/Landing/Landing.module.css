@@ -1,7 +1,5 @@
-.container{
-    height: 100vh;
-    background-color: var(--mainContent);
-    position: relative;
+.container {
+
     background-repeat: repeat;
     background-position: center center;
     background-size: 600px 1200px;

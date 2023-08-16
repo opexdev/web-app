@@ -1,0 +1,8 @@
+.container {
+    height: 100vh;
+    background-color: var(--mainContent);
+    position: relative;
+}
+.content {
+    height: 88vh;
+}
