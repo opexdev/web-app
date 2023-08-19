@@ -3,8 +3,6 @@ import classes from "./OrderBook.module.css";
 import OrderBookTable from "./components/OrderBookTable/OrderBookTable";
 import {useTranslation} from "react-i18next";
 import {useSelector} from "react-redux";
-import OrderBookTableSafari from "./components/OrderBookTableSafari/OrderBookTableSafari";
-import {isSafari} from "react-device-detect";
 import Error from "../../../../../../../../../../components/Error/Error";
 import Loading from "../../../../../../../../../../components/Loading/Loading";
 import {useOrderBook} from "../../../../../../../../../../queries";
@@ -23,18 +21,10 @@ const OrderBook = () => {
     const tableRender = () => {
         if (error) return <span className={`width-100`}><Error/></span>
         if (isLoading) return <Loading/>
-
-        if (isSafari) {
-            return <>
-                <OrderBookTableSafari data={data.asks}/>
-                <OrderBookTableSafari data={data.bids} type="buy"/>
-            </>
-        } else {
-            return <>
-                <OrderBookTable data={data.asks}/>
-                <OrderBookTable data={data.bids} type="buy"/>
-            </>
-        }
+        return <>
+            <OrderBookTable data={data.asks}/>
+            <OrderBookTable data={data.bids} type="buy"/>
+        </>
     }
 
     return (

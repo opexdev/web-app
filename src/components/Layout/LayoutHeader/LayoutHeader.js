@@ -1,17 +1,15 @@
 import React from 'react';
 import classes from './LayoutHeader.module.css';
 import {useTranslation} from "react-i18next";
-import {Link, NavLink, Route, Routes, useLocation, useParams} from "react-router-dom";
+import {Link, NavLink, Route, Routes, useLocation} from "react-router-dom";
 import * as RoutesName from "../../../main/Browser/Routes/routes";
-import {Commission, Login} from "../../../main/Browser/Routes/routes";
+import {Login} from "../../../main/Browser/Routes/routes";
 import {toAbsoluteUrl} from "../../../utils/utils";
-import Clock from "../../../main/Browser/Pages/UserPanel/Sections/Header/components/Clock/Clock";
 import {images} from "../../../assets/images";
 import {useDispatch, useSelector} from "react-redux";
 import {logout} from "js-api-client";
 import {toast} from "react-hot-toast";
 import {setLogoutInitiate} from "../../../store/actions";
-import AboutUs from "../../../main/Browser/Pages/Info/AboutUs/AboutUs";
 
 const LayoutHeader = () => {
     const {t} = useTranslation();

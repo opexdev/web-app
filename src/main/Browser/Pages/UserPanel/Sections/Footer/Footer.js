@@ -9,7 +9,6 @@ import {setThemeInitiate} from "../../../../../../store/actions";
 import {Link} from "react-router-dom";
 import packageJson from "../../../../../../../package.json"
 import {toAbsoluteUrl} from "../../../../../../utils/utils";
-import {Commission} from "../../../../Routes/routes";
 
 const Footer = () => {
     const {t} = useTranslation();
