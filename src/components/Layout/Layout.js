@@ -1,6 +1,5 @@
 import React from 'react';
 import classes from './Layout.module.css'
-import {images} from "../../assets/images";
 import LayoutHeader from "./LayoutHeader/LayoutHeader";
 import {Outlet} from "react-router-dom";
 import Footer from "../../main/Browser/Pages/UserPanel/Sections/Footer/Footer";
