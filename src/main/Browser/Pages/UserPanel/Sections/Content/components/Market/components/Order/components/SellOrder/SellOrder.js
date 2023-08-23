@@ -78,7 +78,7 @@ const SellOrder = () => {
                     <Trans
                         i18nKey="orders.minOrder"
                         values={{
-                            min: activePair.baseRange.min.toLocaleString(),
+                            min: activePair.baseRange.min.toString(),
                             currency: t("currency." + activePair.baseAsset),
                         }}
                     />
@@ -103,7 +103,7 @@ const SellOrder = () => {
                 ...alert,
                 [key]: (<Trans
                     i18nKey="orders.divisibility"
-                    values={{mod: rule.step.toFormat()}}
+                    values={{mod: rule.step.toString()}}
                 />)
             })
         }

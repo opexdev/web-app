@@ -100,7 +100,7 @@ const ForgetPassword = () => {
 
         return <>
             <TextInput
-                customClass={`${classes.passwordInput}`}
+                customClass={`${classes.passwordInput} width-100`}
                 lead={t("ChangePassword.newPassword")}
                 after={
                     <Icon
@@ -108,7 +108,7 @@ const ForgetPassword = () => {
                         onClick={() => setIsInputVisible({ ...isInputVisible, newPassword: !isInputVisible.newPassword })}
                     />
                 }
-                autoComplete="off"
+                autocomplete="new-password"
                 type={isInputVisible.newPassword ? "text" : "password"}
                 value={changePassword.newPassword.value}
                 data-name="newPassword"
@@ -118,7 +118,7 @@ const ForgetPassword = () => {
                 alerts={changePassword.newPassword.error}
             />
             <TextInput
-                customClass={`${classes.passwordInput}`}
+                customClass={`${classes.passwordInput} width-100`}
                 lead={t("ChangePassword.confirmation")}
                 after={
                     <Icon
@@ -126,7 +126,7 @@ const ForgetPassword = () => {
                         onClick={() => setIsInputVisible({ ...isInputVisible, confirmation: !isInputVisible.confirmation })}
                     />
                 }
-                autoComplete="off"
+                autocomplete="new-password"
                 type={isInputVisible.confirmation ? "text" : "password"}
                 value={changePassword.confirmation.value}
                 data-name="confirmation"
@@ -164,7 +164,7 @@ const ForgetPassword = () => {
             <div className={`${classes.forgetPassWordHeader} card-header-bg text-orange flex jc-center ai-center`}>
                 <h3>{t("ChangePassword.title")}</h3>
             </div>
-            <div className={`${classes.forgetPassWordContent} column jc-center ai-center  m-auto`}>
+            <div className={`${classes.forgetPassWordContent} column jc-center ai-center m-auto width-90 fs-0-9`}>
                 {content()}
             </div>
             <div className={`${classes.forgetPassWordFooter} width-35 m-auto`}>

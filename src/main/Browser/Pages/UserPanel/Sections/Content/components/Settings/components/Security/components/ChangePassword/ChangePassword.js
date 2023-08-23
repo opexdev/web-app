@@ -162,7 +162,6 @@ const ChangePassword = () => {
                                                 })}
                                             />
                                         }
-                                        autoComplete="off"
                                         type={isInputVisible.newPassword ? "text" : "password"}
                                         value={userInputs.newPassword.value}
                                         data-name="newPassword"
@@ -185,7 +184,6 @@ const ChangePassword = () => {
                                             })}
                                         />
                                     }
-                                    autoComplete="off"
                                     type={isInputVisible.confirmation ? "text" : "password"}
                                     value={userInputs.confirmation.value}
                                     data-name="confirmation"
