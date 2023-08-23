@@ -44,16 +44,16 @@ const OpenOrders = () => {
 
     return (
         <ScrollBar>
-            <table className="text-center double-striped" cellSpacing="0" cellPadding="0">
+            <table className="text-center double-striped fs-0-9" cellSpacing="0" cellPadding="0">
                 <thead className="th-border-y">
                 <tr>
-                    <th>{t("date")}</th>
+                    <th className={`pr-05`}>{t("date")}</th>
                     <th>{t("time")}</th>
                     <th>
-                        {t("volume")}({activePair.baseAsset})
+                        {t("volume")} <span className={`fs-0-7`}>({activePair.baseAsset})</span>
                     </th>
                     <th>
-                        {t("pricePerUnit")}({activePair.quoteAsset})
+                        {t("pricePerUnit")} <span className={`fs-0-7`}>({activePair.quoteAsset})</span>
                     </th>
                     <th>{t("totalPrice")}</th>
                     <th>{t("myOrders.donePercentage")}</th>
@@ -68,14 +68,15 @@ const OpenOrders = () => {
                         const pricePerUnit = new BN(tr.price)
                         const totalPrice = pricePerUnit.multipliedBy(origQty)
                         return (<Fragment key={index}>
-                            <tr className={tr.side === "BUY" ? "text-green" : "text-red"}>
-                                <td><Date date={tr.time}/></td>
+                            <tr className={`${tr.side === "BUY" ? "text-green" : "text-red"}`}>
+                                <td className={`pr-05`}><Date date={tr.time}/></td>
                                 <td>{moment(tr.time).format("HH:mm:ss")}</td>
                                 <td>{origQty.decimalPlaces(activePair.baseAssetPrecision).toFormat()}</td>
                                 <td>{pricePerUnit.decimalPlaces(activePair.quoteAssetPrecision).toFormat()}</td>
                                 <td>{totalPrice.decimalPlaces(activePair.quoteAssetPrecision).toFormat()}</td>
                                 <td>{executedQty.dividedBy(origQty).multipliedBy(100).toFormat(0)}</td>
                                 <td
+                                    className={`width-5`}
                                     onClick={() => cancelOrder(tr.orderId)}
                                     data-tooltip-id="opex-tooltip"
                                     data-tooltip-place="bottom"
@@ -88,14 +89,14 @@ const OpenOrders = () => {
                                     />
                                 </td>
                                 {openOrder === index ? (
-                                    <td onClick={() => setOpenOrder(null)}>
+                                    <td className={`width-7`} onClick={() => setOpenOrder(null)}>
                                         <Icon
                                             iconName="icon-up-open text-blue fs-0-7"
                                             customClass={`${classes.iconBG} cursor-pointer`}
                                         />
                                     </td>
                                 ) : (
-                                    <td onClick={() => setOpenOrder(index)}>
+                                    <td className={`width-7`} onClick={() => setOpenOrder(index)}>
                                         <Icon
                                             iconName="icon-down-open text-blue fs-0-7"
                                             customClass={`${classes.iconBG} cursor-pointer`}
@@ -104,7 +105,7 @@ const OpenOrders = () => {
                                 )}
                             </tr>
                             <tr style={{display: openOrder === index ? "revert" : "none"}}>
-                                <td colSpan="8" className={`py-1 px-1 fs-0-9`}>
+                                <td colSpan="8" className={`pb-1 px-1 fs-0-8`}>
                                     <div className="row jc-between  ai-center"
                                         style={{width: "100%"}}>
                                         <p className="width-47 row jc-between">

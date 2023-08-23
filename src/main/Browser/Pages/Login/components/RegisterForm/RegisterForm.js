@@ -247,6 +247,7 @@ const RegisterForm = () => {
                     data-name="password"
                     customClass={`${classes.loginInput} ${classes.passwordInput}`}
                     ltr={true}
+                    autocomplete="new-password"
                     value={userData.password.value}
                     onchange={(e) => inputHandler(e)}
                     alerts={userData.password.error}
@@ -267,6 +268,7 @@ const RegisterForm = () => {
                     data-name="confirmPassword"
                     customClass={`${classes.loginInput} ${classes.passwordInput}`}
                     ltr={true}
+                    autocomplete="new-password"
                     value={userData.confirmPassword.value}
                     onchange={(e) => inputHandler(e)}
                     alerts={userData.confirmPassword.error}

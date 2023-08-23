@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const defaultAxios = axios.create({
-    timeout :15000,
+    timeout :30000,
     baseURL:window.env.REACT_APP_API_BASE_URL,
     headers : {
         Accept : 'application/json'
@@ -11,7 +11,7 @@ const defaultAxios = axios.create({
 export default function setupAxios(axios , store) {
     axios.defaults.baseURL = window.env.REACT_APP_API_BASE_URL;
     axios.defaults.headers.Accept = 'application/json';
-    axios.defaults.timeout = 15000;
+    axios.defaults.timeout = 30000;
     axios.interceptors.request.use(
         (config) => {
             const {auth: {accessToken}} = store.getState()

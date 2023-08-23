@@ -23,7 +23,7 @@ const DepositWithdrawTxTables = ({txs, id}) => {
             case 0:
                 return t("orderStatus.NEW");
             case 1:
-                return t("orderStatus.FILLED");
+                return t("orderStatus.DONE");
             case 2:
                 return t("orderStatus.REJECTED");
             default:

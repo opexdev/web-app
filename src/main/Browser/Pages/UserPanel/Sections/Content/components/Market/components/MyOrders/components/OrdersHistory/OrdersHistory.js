@@ -31,16 +31,16 @@ const OrdersHistory = () => {
 
     return (
         <ScrollBar>
-            <table className="text-center double-striped" cellSpacing="0" cellPadding="0">
+            <table className="text-center double-striped fs-0-9" cellSpacing="0" cellPadding="0">
                 <thead className="th-border-y">
                 <tr>
-                    <th>{t("date")}</th>
+                    <th className={`pr-05`}>{t("date")}</th>
                     <th>{t("time")}</th>
                     <th>
-                        {t("volume")}({activePair.baseAsset})
+                        {t("volume")} <span className={`fs-0-7`}>({activePair.baseAsset})</span>
                     </th>
                     <th>
-                        {t("pricePerUnit")}({activePair.quoteAsset})
+                        {t("pricePerUnit")} <span className={`fs-0-7`}>({activePair.quoteAsset})</span>
                     </th>
                     <th>{t("totalPrice")}</th>
                     <th>{t("status")}</th>
@@ -51,21 +51,21 @@ const OrdersHistory = () => {
                 {data.map((tr, index) => (
                     <Fragment key={index}>
                         <tr className={tr.side === "BUY" ? "text-green" : "text-red"}>
-                            <td><Date date={tr.time}/></td>
+                            <td className={`pr-05`}><Date date={tr.time}/></td>
                             <td>{moment(tr.time).format("HH:mm:ss")}</td>
                             <td>{tr.origQty}</td>
                             <td>{tr.price.toLocaleString()}</td>
                             <td>{(tr.origQty * tr.price).toLocaleString()}</td>
                             <td>{t("orderStatus." + tr.status)}</td>
                             {openOrder === index ? (
-                                <td onClick={() => setOpenOrder(null)}>
+                                <td className={`width-7`} onClick={() => setOpenOrder(null)}>
                                     <Icon
                                         iconName="icon-up-open text-blue fs-0-7"
                                         customClass={`${classes.iconBG} cursor-pointer`}
                                     />
                                 </td>
                             ) : (
-                                <td onClick={() => setOpenOrder(index)}>
+                                <td className={`width-7`} onClick={() => setOpenOrder(index)}>
                                     <Icon
                                         iconName="icon-down-open text-blue fs-0-7"
                                         customClass={`${classes.iconBG} cursor-pointer`}
@@ -76,7 +76,7 @@ const OrdersHistory = () => {
                         <tr style={{
                             display: openOrder === index ? "revert" : "none",
                         }}>
-                            <td colSpan="8" className={`py-1 px-1 fs-0-9`}>
+                            <td colSpan="8" className={`pb-1 px-1 fs-0-8`}>
                                 <div
                                     className="row jc-between ai-center"
                                     style={{width: "100%", textAlign: "start"}}>
@@ -93,14 +93,14 @@ const OrdersHistory = () => {
                                 <div className="row  jc-between ai-center"
                                      style={{width: "100%", textAlign: "start"}}>
                                     <p className="width-47 row jc-between">
-                                        {t("myOrders.stopOrderTime")} :{" "}
-                                        <span>
+                                        {t("myOrders.startOrderTime")} :{" "}
+                                        <span className={`direction-ltr`}>
                                             <Date date={tr.updateTime}/> - {moment(tr.updateTime).format("HH:mm:ss")}
                                         </span>
                                     </p>
                                     <p className="width-47 row jc-between">
-                                        {t("myOrders.startOrderTime")} :{" "}
-                                        <span>
+                                        {t("myOrders.stopOrderTime")} :{" "}
+                                        <span className={`direction-ltr`}>
                                             <Date date={tr.time}/> - {moment(tr.time).format("HH:mm:ss")}
                                         </span>
                                     </p>

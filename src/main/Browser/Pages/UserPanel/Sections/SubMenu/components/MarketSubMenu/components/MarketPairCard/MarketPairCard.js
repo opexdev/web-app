@@ -11,9 +11,11 @@ const MarketPairCard = ({id, pair, favPair, addFav}) => {
     const activePair = useSelector((state) => state.exchange.activePair.symbol)
     const {data: prices} = useGetLastPrices()
     const dispatch = useDispatch();
-
+    const changeActivePair = () =>{
+        if (activePair !== pair.symbol) dispatch(setActivePairInitiate(pair, id))
+    }
     return (
-        <div onClick={() => dispatch(setActivePairInitiate(pair, id))}
+        <div onClick={changeActivePair}
              className={`width-100 row jc-between ai-center px-1 py-05 cursor-pointer double-striped ${classes.container} ${activePair === pair.symbol ? classes.selected : ""} `}>
             <div className={` row jc-between ai-center ${classes.marketCardImage}`}>
                 <img

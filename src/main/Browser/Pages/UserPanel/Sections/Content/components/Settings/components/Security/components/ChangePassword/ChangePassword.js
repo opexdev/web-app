@@ -162,12 +162,12 @@ const ChangePassword = () => {
                                                 })}
                                             />
                                         }
-                                        autoComplete="off"
                                         type={isInputVisible.newPassword ? "text" : "password"}
                                         value={userInputs.newPassword.value}
                                         data-name="newPassword"
                                         data-type="input"
                                         data-min={8}
+                                        autocomplete="new-password"
                                         onchange={(e) => inputHandler(e)}
                                         alerts={userInputs.newPassword.error}
                                     />
@@ -184,12 +184,12 @@ const ChangePassword = () => {
                                             })}
                                         />
                                     }
-                                    autoComplete="off"
                                     type={isInputVisible.confirmation ? "text" : "password"}
                                     value={userInputs.confirmation.value}
                                     data-name="confirmation"
                                     data-type="input"
                                     data-min={8}
+                                    autocomplete="new-password"
                                     onchange={(e) => inputHandler(e)}
                                     alerts={userInputs.confirmation.error}
                                 />

@@ -35,18 +35,18 @@ const Trades = () => {
     return (
         <ScrollBar>
             <table
-                className="text-center double-striped"
+                className="text-center double-striped fs-0-9"
                 cellSpacing="0"
                 cellPadding="0">
                 <thead className="th-border-y">
                 <tr>
-                    <th>{t("date")}</th>
+                    <th className={`pr-05`}>{t("date")}</th>
                     <th>{t("time")}</th>
                     <th>
-                        {t("volume")}({activePair.baseAsset})
+                        {t("volume")} <span className={`fs-0-7`}>({activePair.baseAsset})</span>
                     </th>
                     <th>
-                        {t("pricePerUnit")}({activePair.quoteAsset})
+                        {t("pricePerUnit")} <span className={`fs-0-7`}>({activePair.quoteAsset})</span>
                     </th>
                     <th>{t("totalPrice")}</th>
                     <th/>
@@ -56,20 +56,20 @@ const Trades = () => {
                 {data.map((tr, index) => (
                     <Fragment key={index}>
                         <tr className={tr.isBuyer === false ? "text-green" : "text-red"}>
-                            <td><Date date={tr.time}/></td>
+                            <td className={`pr-05`}><Date date={tr.time}/></td>
                             <td>{moment(tr.time).format("HH:mm:ss")}</td>
                             <td>{tr.qty}</td>
-                            <td>{tr.price}</td>
+                            <td>{tr.price.toLocaleString()}</td>
                             <td>{(tr.qty * tr.price).toLocaleString()}</td>
                             {openOrder === index ? (
-                                <td onClick={() => setOpenOrder(null)}>
+                                <td className={`width-7`} onClick={() => setOpenOrder(null)}>
                                     <Icon
                                         iconName="icon-up-open text-blue fs-0-7"
                                         customClass={`${classes.iconBG} cursor-pointer`}
                                     />
                                 </td>
                             ) : (
-                                <td onClick={() => setOpenOrder(index)}>
+                                <td className={`width-7`} onClick={() => setOpenOrder(index)}>
                                     <Icon
                                         iconName="icon-down-open text-blue fs-0-7"
                                         customClass={`${classes.iconBG} cursor-pointer`}
@@ -79,7 +79,7 @@ const Trades = () => {
                         </tr>
                         <tr
                             style={{display: openOrder === index ? "revert" : "none"}}>
-                            <td colSpan="6" className={`py-1 px-1 fs-0-9`}>
+                            <td colSpan="6" className={`pb-1 px-1 fs-0-8`}>
                                 <div
                                     className="row jc-between  ai-center"
                                     style={{width: "100%"}}>

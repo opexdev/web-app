@@ -8,10 +8,10 @@
 
 .content{
     position: fixed;
-    top: 27.5%;
-    left: 37.5%;
-    width: 25%;
-    height: 45%;
+    top: 20%;
+    left: 32.5%;
+    width: 35%;
+    height: 60%;
     background-color: var(--cardBodyAlpha);
     z-index: 7;
 }

@@ -1,4 +1,4 @@
-.container tr:nth-child(even) td {
+.container .tbody .tbodyRow:nth-child(even) span{
   background-color: var(--tableRow);
   transition: background-color 0.4s;
 }
@@ -24,7 +24,17 @@
 :global .place-top::after {
   border-top-color: var(--toolTipBG) !important;
 }
-
 .selected {
   background: var(--orangeAlpha) !important;
+}
+.tbody{
+  line-height: 3.7vh;
+}
+.thead{
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  font-weight: normal;
+  background-color: var(--tableHeader);
+  line-height: 3.7vh;
 }
