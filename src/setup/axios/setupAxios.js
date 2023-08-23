@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const defaultAxios = axios.create({
-    timeout :15000,
+    timeout :30000,
     baseURL:window.env.REACT_APP_API_BASE_URL,
     headers : {
         Accept : 'application/json'

@@ -78,7 +78,7 @@ const BuyOrder = () => {
                     <Trans
                         i18nKey="orders.minOrder"
                         values={{
-                            min: activePair.baseRange.min,
+                            min: activePair.baseRange.min.toLocaleString(),
                             currency: t("currency." + activePair.baseAsset),
                         }}
                     />
@@ -92,7 +92,7 @@ const BuyOrder = () => {
                     <Trans
                         i18nKey="orders.maxOrder"
                         values={{
-                            max: activePair.baseRange.max,
+                            max: activePair.baseRange.max.toLocaleString(),
                             currency: t("currency." + activePair.baseAsset),
                         }}
                     />
@@ -104,7 +104,7 @@ const BuyOrder = () => {
                 ...alert,
                 [key]: (<Trans
                     i18nKey="orders.divisibility"
-                    values={{mod: rule.step.toString()}}
+                    values={{mod: rule.step.toFormat()}}
                 />)
             })
         }
@@ -214,7 +214,7 @@ const BuyOrder = () => {
                 reqAmount = reqAmount.minus(reqAmount.mod(activePair.baseRange.step));
             }
             buyPriceHandler(
-                reqAmount.toString(),
+                reqAmount.toFormat(),
                 "reqAmount",
             );
         }
@@ -275,6 +275,10 @@ const BuyOrder = () => {
         return t("pleaseLogin")
     }
 
+    const isAllowed = ({floatValue}) => {
+        return floatValue < 10 ** 12;
+    }
+
 
     return (
         <div className={`column jc-between ${classes.content}`}>
@@ -324,30 +328,32 @@ const BuyOrder = () => {
             <NumberInput
                 lead={t("orders.amount")}
                 after={t("currency." + activePair.baseAsset)}
-                value={order.reqAmount.toString()}
+                value={order.reqAmount.toFormat()}
                 maxDecimal={activePair.baseAssetPrecision}
                 onchange={(e) => buyPriceHandler(e.target.value, "reqAmount")}
                 alert={alert.reqAmount}
+                isAllowed={isAllowed}
             />
 
             {order.stopMarket ? (
                 <NumberInput
                     customClass={classes.stopMarket}
                     lead={t("orders.pricePerUnit")}
-                    isAllowed={false}
                     prefix="~"
                     after={t("currency." + activePair.quoteAsset)}
-                    value={order.pricePerUnit.toString()}
+                    value={order.pricePerUnit.toFormat()}
                     maxDecimal={activePair.quoteAssetPrecision}
                     onchange={(e) => buyPriceHandler(e.target.value, "pricePerUnit")}
+                    isAllowed={isAllowed}
                 />
             ) : (
                 <NumberInput
                     lead={t("orders.pricePerUnit")}
                     after={t("currency." + activePair.quoteAsset)}
-                    value={order.pricePerUnit.toString()}
+                    value={order.pricePerUnit.toFormat()}
                     maxDecimal={activePair.quoteAssetPrecision}
                     onchange={(e) => buyPriceHandler(e.target.value, "pricePerUnit")}
+                    isAllowed={isAllowed}
                 />
             )}
 
@@ -363,11 +369,12 @@ const BuyOrder = () => {
 
             <NumberInput
                 lead={t("orders.totalPrice")}
-                value={order.totalPrice.toString()}
+                value={order.totalPrice.toFormat()}
                 maxDecimal={activePair.quoteAssetPrecision}
                 after={t("currency." + activePair.quoteAsset)}
                 onchange={(e) => buyPriceHandler(e.target.value, "totalPrice")}
                 alert={alert.totalPrice}
+                isAllowed={isAllowed}
             />
 
             <div className="column jc-between">
@@ -378,12 +385,12 @@ const BuyOrder = () => {
                 </p>
                 <p>
                     {t("orders.getAmount")}:{" "}
-                    {order.reqAmount.minus(order.tradeFee).decimalPlaces(activePair.baseAssetPrecision).toNumber()}{" "}
+                    {order.reqAmount.minus(order.tradeFee).decimalPlaces(activePair.baseAssetPrecision).toFormat()}{" "}
                     {t("currency." + activePair.baseAsset)}
                 </p>
             </div>
             <Button
-                buttonClass={`${classes.thisButton} ${alert.submit ? classes.alertSubmit : classes.buyOrder} ${isLoading ? "cursor-not-allowed" : "cursor-pointer"} flex jc-center ai-center`}
+                buttonClass={`${classes.thisButton} ${classes.buyOrder} ${isLoading ? "cursor-not-allowed" : "cursor-pointer"} flex jc-center ai-center`}
                 type="submit"
                 onClick={submit}
                 disabled={alert.reqAmount || order.reqAmount.isZero() || order.pricePerUnit.isZero() || !isLogin || alert.totalPrice}

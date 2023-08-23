@@ -39,13 +39,13 @@ export function* getExchangeLastPrice() {
 
 function* getExchangeInfo() {
 
-    for (let i = 0; i < 3; i++) {
+    for (let i = 0; i < 10; i++) {
         try {
             const {data: {symbols}} = yield call(axios.get, '/api/v3/exchangeInfo')
             return symbols
         } catch (err) {
             if (i < 2) {
-                yield delay(500)
+                yield delay(1000)
                 continue
             }
         }

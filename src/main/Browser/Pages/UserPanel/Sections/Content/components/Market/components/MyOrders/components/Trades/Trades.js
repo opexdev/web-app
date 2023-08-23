@@ -59,7 +59,7 @@ const Trades = () => {
                             <td><Date date={tr.time}/></td>
                             <td>{moment(tr.time).format("HH:mm:ss")}</td>
                             <td>{tr.qty}</td>
-                            <td>{tr.price}</td>
+                            <td>{tr.price.toLocaleString()}</td>
                             <td>{(tr.qty * tr.price).toLocaleString()}</td>
                             {openOrder === index ? (
                                 <td onClick={() => setOpenOrder(null)}>
