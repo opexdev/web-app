@@ -142,7 +142,7 @@ const EmailVerification = ({returnFunc, email, disable, returnFuncDisableFalse, 
                 type="text"
                 data-name="email"
                 data-type="email"
-                customClass={`${classes.forgetPasswordInput} ${classes.loginInput}`}
+                customClass={`${classes.loginInput}`}
                 value={activeEmail.email.value}
                 onchange={(e) =>
                     setActiveEmail({...activeEmail, email: {value: e.target.value, error: []}})

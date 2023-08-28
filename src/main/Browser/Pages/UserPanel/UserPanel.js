@@ -9,27 +9,28 @@ import Header from "./Sections/Header/Header";
 import Info from "../../../../components/Info/Info";
 import Content from "./Sections/Content/Content";
 import {useSelector} from "react-redux";
+import classes from "./UserPanel.module.css"
 
 const UserPanel = () => {
     const isLogin = useSelector((state) => state.auth.isLogin)
 
     return (
-        <Routes>
-            <Route element={<ProtectedRoute/>}>
-                <Route path={RoutesName.TechnicalRelative} element={<TechnicalChart/>}/>
-            </Route>
-            <Route path="*" element={<div className="row">
-                <MainMenu isLogin={isLogin}/>
-                <SubMenu isLogin={isLogin}/>
-                <div className="column content">
-                    <Header/>
-                    <Info/>
-                    <div style={{display: "flex", flex: 1}}>
+        <div className={`${classes.container} width-100`}>
+            <Routes>
+                <Route element={<ProtectedRoute/>}>
+                    <Route path={RoutesName.TechnicalRelative} element={<TechnicalChart/>}/>
+                </Route>
+                <Route path="*" element={<div className="row width-100 height-100" style={{backgroundColor:"red"}}>
+                    <MainMenu isLogin={isLogin}/>
+                    <SubMenu isLogin={isLogin}/>
+                    <div className="column content">
+                        <Header/>
+                        <Info/>
                         <Content/>
                     </div>
-                </div>
-            </div>}/>
-        </Routes>
+                </div>}/>
+            </Routes>
+        </div>
     );
 };
 

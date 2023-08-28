@@ -11,6 +11,7 @@ const OTPForm = ({initialVal, setOTP}) => {
         const userInput = value.replace(/[^0-9]+/g, "").slice(0, 6)
         setOTP(userInput)
     }
+
     return (
         <>
             <TextInput

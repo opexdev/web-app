@@ -17,8 +17,7 @@ const TechnicalChart = (props) => {
     }, []);
 
     return (
-        <div
-            className={`row  ${props.isDark ? "dark" : ""} ${ltr ? "ltr" : "rtl"} ${
+        <div className={`row height-100  ${props.isDark ? "dark" : ""} ${ltr ? "ltr" : "rtl"} ${
                 isSafari ? "" : "user-select"
             }`}>
             <ReactTooltip data-tooltip-id="opex-tooltip" data-tooltip-float={true}/>

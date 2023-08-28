@@ -1,11 +1,12 @@
 .container {
   width: 22%;
-  height: 100vh;
+  height: 100%;
+ /* height: 100vh;*/
   /*background-color: #fcfeff;*/
-  right: 5%;
-  position: fixed;
+  /*right: 5%;*/
+  /*position: fixed;*/
 }
 :global(.ltr) .container {
-  left: 5%;
-  right: initial;
+  /*left: 5%;
+  right: initial;*/
 }

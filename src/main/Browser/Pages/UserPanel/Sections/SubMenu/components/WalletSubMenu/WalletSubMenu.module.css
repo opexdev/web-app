@@ -1,6 +1,6 @@
 .container {
   width: 100%;
-  height: 100vh;
+  height: 100%;
 }
 .header {
   height: 10%;
@@ -56,6 +56,7 @@
   transition: 0.4s background-color;
   width: 97% !important;
   margin-right: 3% !important;
+  z-index: 6;
 }
 :global(.ltr) .selected {
   border-radius: 10px 0 0 10px;

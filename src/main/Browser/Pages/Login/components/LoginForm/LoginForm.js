@@ -67,6 +67,7 @@ const LoginForm = () => {
             setLoading(false);
             return;
         }
+
         setLoading(true);
         setLoginError(false);
 

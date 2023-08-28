@@ -1,8 +1,10 @@
 .container {
-    height: 100vh;
+    /*height: 100%;*/
+    top: 0;
+    bottom: 0;
     background-color: var(--mainContent);
-    position: relative;
+    position: absolute;
 }
 .content {
-    height: 88vh;
+    height: 88%;
 }
