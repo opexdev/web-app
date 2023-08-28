@@ -96,8 +96,7 @@ const ForgetPassword = ({returnFunc}) => {
     }
 
     const LeadCaptchaHandler = () => {
-        if (isLoading) return <img className={`${classes.thisLoading}`} src={images.linearLoadingBgOrange}
-                                   alt="linearLoading"/>
+        if (isLoading) return <img className={`${classes.thisLoading}`} src={images.linearLoadingBgOrange} alt="linearLoading"/>
 
         if (captcha.image.value === undefined) return <span>{t('captchaAnswer')}</span>
 
@@ -115,7 +114,7 @@ const ForgetPassword = ({returnFunc}) => {
                 type="text"
                 data-name="email"
                 data-type="email"
-                customClass={`${classes.forgetPasswordInput} ${classes.loginInput}`}
+                customClass={`${classes.loginInput}`}
                 value={forgetPass.email.value}
                 onchange={(e) =>
                     setForgetPass({...forgetPass, email: {value: e.target.value, error: []}})

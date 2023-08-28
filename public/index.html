@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <link rel="icon" href="%PUBLIC_URL%/assets/favicon.ico" />
-    <meta name="viewport" content="width=device-width, initial-scale=1 , maximum-scale=1.0, user-scalable=no" />
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1 , maximum-scale=1.0, user-scalable=no" />
     <meta name="theme-color" content="#000000" />
 
     <meta name="description"/>
@@ -39,4 +39,16 @@
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
   </body>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      setTimeout(function () {
+        document.getElementById("root").setAttribute("style",`width:${window.screen.width.toString()}px;height:${window.innerHeight.toString()}px;position:relative;`);
+        let viewHeight = window.innerHeight.toString();
+        let viewWidth = window.screen.width.toString();
+        let viewport = document.querySelector("meta[name=viewport]");
+        viewport.setAttribute("content", "height=" + viewHeight + ", width=" + viewWidth + ", user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0");
+      }, 500);
+    })
+  </script>
 </html>

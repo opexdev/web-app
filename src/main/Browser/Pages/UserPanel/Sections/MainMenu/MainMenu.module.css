@@ -1,10 +1,10 @@
 .container {
     width: 5%;
-    height: 100vh;
+    height: 100%;
     font-size: 2vw;
-    position: fixed;
+    /*position: fixed;*/
     z-index: 6;
-    overflow-x: hidden;
+    /*overflow-x: hidden;*/
     background-color: var(--menu);
     -webkit-transition: background-color 0.4s;
     -o-transition: background-color 0.4s;
@@ -12,11 +12,11 @@
 }
 
 .header {
-    height: 12vh;
+    height: 12%;
 }
 
 .content {
-    height: 88vh;
+    height: 88%;
 }
 
 .container a, .messages {
@@ -102,7 +102,7 @@
     height: 100vh;
     background-color: var(--cardBody);
     margin-right: -27%;
-    z-index: 5;
+    z-index: 7;
     /*display: none;*/
     position: absolute;
 }
@@ -117,7 +117,7 @@
     height: 100vh;
     background-color: rgba(0, 0, 0, 0);
     right: 5%;
-    z-index: 4;
+    z-index: 5;
     /* display: none;*/
     position: absolute;
     /*transition: all 0.5s;*/

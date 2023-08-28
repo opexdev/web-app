@@ -106,7 +106,7 @@ html, body {
     font-family: iranyekan, serif !important;
     font-weight: 500;
     direction: rtl;
-    overflow-x: hidden;
+
 }
 
 .ltr {
@@ -116,14 +116,14 @@ html, body {
 }
 
 :root {
-    --menu: #d9d8d8;
+    --menu: #ececec;
     --subMenu: #f2f2f2;
     --mainContent: #f6f6f6;
     --activeTitle: #f2f5f9;
-    --footer: #e5e9ef;
+    --footer: #efefef;
     --cardBody: #fff;
     --cardBodyAlpha: #ffffff8f;
-    --cardHeader: #e7e7e7;
+    --cardHeader: #f1f1f1;
     --cardHeaderAlpha: #e7e7e78a;
     --container: #eafbff;
     --activeTab: #007bff;
@@ -446,8 +446,8 @@ a {
 
 .content {
     width: 73%;
-    height: 100vh;
-    margin-right: 27%;
+    /*height: 100vh;*/
+    /*margin-right: 27%;*/
     background-color: var(--mainContent);
     color: var(--textColor);
     -webkit-transition: color 0.7s, background-color 0.4s;
@@ -456,8 +456,8 @@ a {
 }
 
 .ltr .content {
-    margin-left: 27%;
-    margin-right: initial;
+   /* margin-left: 27%;*/
+   /* margin-right: initial;*/
 }
 
 .col-04 {

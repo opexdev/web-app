@@ -59,11 +59,11 @@ const root = createRoot(container);
 
 root.render(
     <Provider store={store}>
-        <StyleRoot>
+        {/*<StyleRoot>*/}
             <QueryClientProvider client={queryClient}>
                 <Main baseURL={PUBLIC_URL}/>
                 <ReactQueryDevtools initialIsOpen={false}/>
             </QueryClientProvider>
-        </StyleRoot>
+        {/*</StyleRoot>*/}
     </Provider>
 );

@@ -348,7 +348,7 @@ const SellOrder = () => {
                 maxDecimal={activePair.quoteAssetPrecision}
                 after={t("currency." + activePair.quoteAsset)}
                 onchange={(e) => sellPriceHandler(e.target.value, "totalPrice")}
-                isAllowed
+                isAllowed={isAllowed}
             />
 
             <div className="column jc-center">

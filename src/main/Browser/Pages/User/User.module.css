@@ -1,5 +1,5 @@
 .container{
-    height: 100vh;
+    /*height: 100vh;*/
     background-color: var(--mainContent);
     background-repeat: repeat;
     background-position: center center;
@@ -7,7 +7,7 @@
 }
 
 .content{
-    position: fixed;
+
     top: 20%;
     left: 32.5%;
     width: 35%;

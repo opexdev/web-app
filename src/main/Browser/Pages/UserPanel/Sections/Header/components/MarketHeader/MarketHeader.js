@@ -49,7 +49,7 @@ const MarketHeader = () => {
                 <p className="mb-05">{t("header.availableBalance")}</p>
                 <div className={`width-100 row ai-center ${classes.inventory} mt-05`}>
                     <div className="col-50 flex ai-center jc-end">
-                        <Icon iconName="icon-plus text-white fs-0-7 flex" customClass={`mx-05 cursor-pointer ${classes.iconBG}`} onClick={()=>ClickHandler(activePair.baseAsset)}/>
+                        <Icon iconName="icon-plus-circle fs-03 flex" customClass={`cursor-pointer ${classes.iconBG}`} onClick={()=>ClickHandler(activePair.baseAsset)}/>
                         {/*<span>{ new BN (base).decimalPlaces(activePair.baseAssetPrecision).toFormat()}</span>*/}
                         <span>{ new BN (base).toFormat()}</span>
                         <span>{t("currency." + activePair.baseAsset)}</span>
@@ -57,7 +57,7 @@ const MarketHeader = () => {
                     <div className="col-50 flex ai-center  jc-start">
                         <span>{ new BN(quote).toFormat()}</span>
                         <span>{t("currency." + activePair.quoteAsset)}</span>
-                        <Icon iconName="icon-plus text-white fs-0-7 flex" customClass={`mx-05 cursor-pointer ${classes.iconBG}`} onClick={()=>ClickHandler(activePair.quoteAsset)}/>
+                        <Icon iconName="icon-plus-circle fs-03 flex" customClass={`cursor-pointer ${classes.iconBG}`} onClick={()=>ClickHandler(activePair.quoteAsset)}/>
                     </div>
                 </div>
             </div>

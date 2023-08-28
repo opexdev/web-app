@@ -49,7 +49,7 @@ const ForgetPassword = () => {
         }
 
         if (e.target.dataset?.name === "confirmation" && e.target.value !== changePassword.newPassword.value) {
-            errorMessage.push([t('login.wrongPasswordConfirmation')])
+            errorMessage.push([t('ChangePassword.confirmationError')])
         }
 
         let prevState = {
@@ -126,7 +126,7 @@ const ForgetPassword = () => {
                         onClick={() => setIsInputVisible({ ...isInputVisible, confirmation: !isInputVisible.confirmation })}
                     />
                 }
-                autocomplete="new-password"
+                autocomplete="off"
                 type={isInputVisible.confirmation ? "text" : "password"}
                 value={changePassword.confirmation.value}
                 data-name="confirmation"

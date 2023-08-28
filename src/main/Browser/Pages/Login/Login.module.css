@@ -1,99 +1,91 @@
 .container {
-  height: 100vh;
+  height: 100%;
   background-repeat: repeat;
   background-position: center center;
   background-size: 600px 1200px;
-  /*background-color: var(--mainContent);*/
   background-color: var(--mainContent);
   color: var(--textColor);
 }
+
 .row {
-  height: 100vh;
+  height: 100%;
 }
+
 .intro {
-  height: 100vh;
+  height: 100%;
   background-repeat: no-repeat repeat;
   background-position: center center;
   background-size: 600px 1200px;
 }
+
 .intro img {
   width: 20vw;
 }
+
 .intro h1 {
   line-height: 4.5vh;
   text-align: center;
-  /*color: #f2f2f2;*/
 }
+
 .content {
   width: 65%;
-  /*height: 65%;*/
   background-color: var(--cardBodyAlpha);
   border-radius: 9px;
   color: var(--textColor);
   box-shadow: 0px 0px 1px 0px #000;
 }
 
-.content :global(.accordion-header) > div{
+.content :global(.accordion-header) > div {
   justify-content: center;
 }
-.content :global(.accordion-header){
-  /*background-color: #242633fa;*/
+
+.content :global(.accordion-header) {
   background-color: var(--cardHeaderAlpha);
   padding-top: 3vh;
-  /*color: #ecececc7;*/
-}
-/*.content :global(.accordion-body){
-  background-color: rgba(206, 223, 255, 0.83);
-}*/
-.forgetPasswordInput{
-  width: 75%;
 }
 
-.loginInput{
-  width: 75%;
+.loginInput {
+  width: 83%;
   margin-bottom: 1vh;
 }
-.loginInput > div{
+
+.loginInput > div {
   border-color: var(--cardHeader);
 
 }
-.loginInput :global(.lead){
-  /*background-color: #242633fa;
-  border-color: #242633fa;
-  color: #ecececc7;*/
+
+.loginInput :global(.lead) {
   background-color: var(--cardHeader);
   border-color: var(--cardHeader);
   color: var(--textColor);
 }
 
 
-.loginInput.passwordInput :global(.before){
-  width: 50%;
+.loginInput :global(.lead) {
+  width: 40% !important;
 }
-.loginInput.passwordInput :global(input){
-  width: 40%;
+.loginInput :global(input) {
+  width: 60% !important;
 }
-.loginInput.passwordInput :global(.after){
-  width: 10%;
+
+.loginInput.passwordInput :global(.lead) {
+  width: 40% !important;
+}
+.loginInput.passwordInput :global(input) {
+  width: 47% !important;
+}
+.loginInput.passwordInput :global(.after) {
+  width: 13% !important;
 }
 
 .loginInput.captcha :global(.lead){
-  width: 50%;
-}
-
-.loginInput.captcha :global(.lead) span{
-  width: 100%;
-  height: 100%;
-  background-position: center;
-  background-repeat: no-repeat;
-  /*background-size: cover;*/
-
+  width: 40% !important;
 }
 .loginInput.captcha :global(input){
-  width: 40%;
+  width: 47% !important;
 }
 .loginInput.captcha :global(.after){
-  width: 10%;
+  width: 13% !important;
 }
 
 .thisLoading{

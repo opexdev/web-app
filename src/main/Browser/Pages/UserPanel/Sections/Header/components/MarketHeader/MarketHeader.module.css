@@ -38,10 +38,7 @@
   cursor: pointer;
 }
 .iconBG {
-  width: 1.3vw;
-  height: 1.3vw;
-  border-radius: 50vw;
-  background-color: var(--darkGreen);
+  color: var(--darkGreen);
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;

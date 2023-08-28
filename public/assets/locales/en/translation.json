@@ -392,13 +392,13 @@
   "ChangePassword": {
     "title": "Change Password",
     "newPassword": "New Password",
-    "confirmation": "New Password Confirmation",
+    "confirmation": "Confirm New Password",
     "currentPassword": "Current Password",
     "success": "Password changed successfully.",
     "error": "Password change failed.",
     "minInput": "{{name}} must be at least {{min}} characters.",
     "emptyInput": "You must enter the {{name}} field.",
-    "confirmationError": "New password and confirm password don't match.",
+    "confirmationError": "New password and confirm new password don't match.",
     "currentPasswordError": "Current password has been entered incorrectly."
   },
   "SetTwoStepVerification": {
@@ -537,7 +537,7 @@
     "register": "Register",
     "wrongEmail": "The entered email is invalid!",
     "emptyEmail": "Enter your email.",
-    "emptyInput": "Username and Password field is required.",
+    "emptyInput": "{{name}} field is required.",
     "emptyCredentialError": "Entering username and password is required.",
     "minInput": "{{name}} must be at least {{min}} characters.",
     "finishedWithError": "Error creating new user!",
