@@ -108,7 +108,7 @@ const ForgetPassword = () => {
                         onClick={() => setIsInputVisible({ ...isInputVisible, newPassword: !isInputVisible.newPassword })}
                     />
                 }
-                autocomplete="new-password"
+                autoComplete="new-password"
                 type={isInputVisible.newPassword ? "text" : "password"}
                 value={changePassword.newPassword.value}
                 data-name="newPassword"
@@ -126,7 +126,7 @@ const ForgetPassword = () => {
                         onClick={() => setIsInputVisible({ ...isInputVisible, confirmation: !isInputVisible.confirmation })}
                     />
                 }
-                autocomplete="off"
+                autoComplete="new-password"
                 type={isInputVisible.confirmation ? "text" : "password"}
                 value={changePassword.confirmation.value}
                 data-name="confirmation"

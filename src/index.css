@@ -2580,10 +2580,12 @@ h6 {
 
 input {
     direction: rtl;
+    font-family: "IRANYekan", sans-serif;
 }
 
 .ltr input {
     direction: ltr;
+    font-family: 'Poppins', 'Roboto', sans-serif !important;
 }
 
 /*

@@ -1,8 +1,8 @@
 .container {
-    position: fixed;
+    position: absolute;
     top: 11vh;
     width: 30%;
-    height: 40vh;
+    height: 50vh;
     background-color: var(--popupAlpha);
     z-index: 3;
     box-shadow: -1px 5px 8px -2px #101010ad;
@@ -30,7 +30,6 @@
 
 .thisButton {
     width: 30%;
-    height: 3.5vh !important;
 }
 
 .walletButton {

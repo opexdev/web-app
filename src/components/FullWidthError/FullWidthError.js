@@ -18,15 +18,8 @@ const FullWidthError = () => {
     }
 
     return (
-        <div className={`container ${classes.container} move-image flex jc-center ai-center text-red`} style={{backgroundImage: `url("${images.spaceStar}")`}}>
-            <div className={`column jc-around ai-center card-border py-1`} style={{
-                position: 'fixed',
-                top: '27.5%',
-                left: '37.5%',
-                width: '25%',
-                height: '45%',
-                backgroundColor: 'var(--cardBodyAlpha)',
-            }}>
+        <div className={`${classes.container} width-100 move-image flex jc-center ai-center text-red`} style={{backgroundImage: `url("${images.spaceStar}")`}}>
+            <div className={`column jc-around ai-center card-border py-1 ${classes.content}`}>
                 <img src={images.reject} alt="error" className={`img-lg-plus floating`}/>
                 <span>{t("errorPage.errorText")}</span>
                 <Button
