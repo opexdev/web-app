@@ -18,6 +18,8 @@ const DepositWithdrawTxTables = ({txs, id}) => {
         />);
     }
 
+    console.log("txs", txs.hasOwnProperty('withdrawOrderId'))
+
     const txStatus = (status) => {
         switch (status) {
             case 0:
@@ -47,6 +49,7 @@ const DepositWithdrawTxTables = ({txs, id}) => {
         </tr>
         </thead>
         <tbody>{txs.map((tr, index) => (
+
             <Fragment key={index}>
                 <tr className={tr.hasOwnProperty('withdrawOrderId') ? "text-red" :  "text-green"}>
                     <td><Date date={tr.time}/></td>
@@ -84,13 +87,13 @@ const DepositWithdrawTxTables = ({txs, id}) => {
                         <div className="row jc-around ai-center" style={{width: "100%"}}>
                             <p className="col-94 row jc-between">
                                 {t("DepositWithdrawTx.transactionId")} :
-                                <span>{id === "BTC" ? tr.txId.slice(0, tr.txId.indexOf("_")) : tr.txId}</span>
+                                <span>{id === "BTC" && !tr.hasOwnProperty('withdrawOrderId') ? tr.txId.slice(0, tr.txId.indexOf("_")) : tr.txId}</span>
                             </p>
                             <p className="col-03 row jc-end">
                                 <Icon
                                     iconName="icon-copy fs-01"
                                     customClass={`hover-text cursor-pointer`}
-                                    onClick={() => copyAddressToClipboard(tr.txId)}
+                                    onClick={() => copyAddressToClipboard(id === "BTC" && !tr.hasOwnProperty('withdrawOrderId') ? tr.txId.slice(0, tr.txId.indexOf("_")) : tr.txId)}
                                 />
                             </p>
                         </div>
