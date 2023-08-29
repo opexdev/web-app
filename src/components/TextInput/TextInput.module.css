@@ -48,14 +48,13 @@
     border: none;
     /*direction: ltr;*/
     text-align: center;
-    font-family: iranyekan, serif;
     background: none;
     color: var(--textColor) !important;
 }
 
-:global(.ltr) .inputGroup input {
+/*:global(.ltr) .inputGroup input {
     font-family: 'Poppins', 'Roboto', sans-serif !important;
-}
+}*/
 
 .inputGroup .lead {
     border-radius: 0 4px 4px 0;

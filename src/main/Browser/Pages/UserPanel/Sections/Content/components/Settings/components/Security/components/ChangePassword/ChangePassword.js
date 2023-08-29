@@ -167,7 +167,7 @@ const ChangePassword = () => {
                                         data-name="newPassword"
                                         data-type="input"
                                         data-min={8}
-                                        autocomplete="new-password"
+                                        autoComplete="new-password"
                                         onchange={(e) => inputHandler(e)}
                                         alerts={userInputs.newPassword.error}
                                     />
@@ -189,7 +189,7 @@ const ChangePassword = () => {
                                     data-name="confirmation"
                                     data-type="input"
                                     data-min={8}
-                                    autocomplete="off"
+                                    autoComplete="new-password"
                                     onchange={(e) => inputHandler(e)}
                                     alerts={userInputs.confirmation.error}
                                 />

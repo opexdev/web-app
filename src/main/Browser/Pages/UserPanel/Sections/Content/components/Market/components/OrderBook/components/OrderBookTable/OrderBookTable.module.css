@@ -28,7 +28,7 @@
   background: var(--orangeAlpha) !important;
 }
 .tbody{
-  line-height: 3.7vh;
+  line-height: 4.7vh;
 }
 .thead{
   position: sticky;
@@ -36,5 +36,5 @@
   z-index: 1;
   font-weight: normal;
   background-color: var(--tableHeader);
-  line-height: 3.7vh;
+  line-height: 4.7vh;
 }

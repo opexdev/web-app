@@ -286,7 +286,7 @@
     "maxWithdraw": "Your daily withdrawal limit",
     "maxMonthWithdraw": "Your monthly withdrawal limit",
     "withdrawWarn": "Please note! Incorrect entry of address can result in loss of capital.",
-    "withdrawReqSubmit": "withdraw withdrawal request",
+    "withdrawReqSubmit": "withdraw request",
     "destAddress": "Receive Address",
     "reqAmount": "Your Receipt",
     "network": "Network",

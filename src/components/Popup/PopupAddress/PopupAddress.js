@@ -32,7 +32,7 @@ const PopupAddress = ({currency, network}) => {
 
     return (
         <>
-            <span className={`my-1`}>
+            <span className={`mt-3 mb-2`}>
                 <QRCode
                     value={address.address}
                     bgColor="var(--cardBody)"
