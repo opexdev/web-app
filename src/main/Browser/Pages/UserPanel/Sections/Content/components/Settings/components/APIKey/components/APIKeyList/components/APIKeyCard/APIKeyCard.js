@@ -92,8 +92,6 @@ const APIKeyCard = ({data}) => {
     }
 
     const copyToClipboard = (value, e) => {
-
-        console.log("v" , value)
         e.preventDefault();
         navigator.clipboard.writeText(value)
         toast.success(t('APIKey.copied'));
