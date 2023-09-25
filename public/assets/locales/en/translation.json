@@ -49,14 +49,21 @@
   "noTx": "There is no transaction!",
   "close": "Close",
   "unit": "Unit",
+  "from": "from",
+  "row": "Row",
+  "until": "until",
+  "withPrice": "with price",
+  "description": "Description",
+  "first": "First",
   "offline": "Check your connection!",
-  "improperMobileView ": "Not optimized for mobile view.",
+  "improperMobileView": "Not optimized for mobile view.",
   "home": "Home",
   "country": {
-    "iran": "I. R. IRAN",
+    "iran": "IRAN",
     "germany": "Germany",
     "uk": "United Kingdom",
-    "turkey": "Turkey"
+    "turkey": "Turkey",
+    "uzbekistan": "Uzbekistan"
   },
   "currency": {
     "IRT": "IRT",
@@ -149,6 +156,9 @@
   "technical": {
     "title": "Technical"
   },
+  "txHistory": {
+    "title": "Transactions History"
+  },
   "messages": {
     "title": "Messages"
   },
@@ -158,7 +168,8 @@
   "Languages": {
     "Persian": "فارسی",
     "English": "English",
-    "Arabic": "عربي"
+    "Arabic": "عربي",
+    "Uzbek": "Oʻzbekcha"
   },
   "Theme": {
     "Light": "Light",
@@ -176,7 +187,7 @@
     "title": "Order",
     "minOrder": "Minimum allowed order is {{min}} {{currency}}",
     "maxOrder": "Maximum allowed order is {{max}} {{currency}}",
-    "divisibility": "Divisibility !",
+    "divisibility": "The entered value must be divisible by {{mod}} !",
     "notEnoughBalance": "Insufficient Balance ",
     "availableAmount": "Available Amount",
     "bestOffer": "Best Offer",
@@ -235,7 +246,8 @@
   "TransactionHistory": {
     "coin": "Coins",
     "category": "Categories",
-    "size": "Per page"
+    "size": "Per page",
+    "period" : "Period"
   },
   "TransactionCategory": {
     "DEPOSIT": "Deposit",

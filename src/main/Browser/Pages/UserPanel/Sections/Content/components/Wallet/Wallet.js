@@ -5,7 +5,6 @@ import classes from "./components/DepositWithdrawTx/DepositWithdrawTx.module.css
 import {useTranslation} from "react-i18next";
 import {useParams} from "react-router-dom";
 import IRTTx from "./components/DepositWithdrawTx/components/IRTTx/IRTTx";
-import TransactionHistory from "./components/TransactionHistory/TransactionHistory";
 
 
 const Wallet = () => {
@@ -16,8 +15,6 @@ const Wallet = () => {
             <div className="px-1 py-1">
                 <div className="row">
                     <DepositWithdraw/>
-                </div><div className="row">
-                    <TransactionHistory/>
                 </div>
                 <div className="row">
                     <div className={`width-100 card-bg card-border column ${classes.container} my-2`}>

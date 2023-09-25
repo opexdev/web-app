@@ -15,6 +15,11 @@ export const User = "/user";
 export const UserVerifyRelative = "verify";
 export const UserForgetPasswordRelative = "forget-password";
 
+export const TxHistory = "/panel/transaction-history";
+export const TxHistoryRelative = "/transaction-history";
+
+
+
 export const Wallet = "/panel/wallet";
 export const WalletRelative = "/wallet";
 export const Technical = "/panel/technical";

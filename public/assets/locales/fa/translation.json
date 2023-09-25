@@ -49,14 +49,21 @@
   "noTx": "تراکنشی وجود ندارد.",
   "close": "بستن",
   "unit": "واحد",
+  "from": "از",
+  "row": "ردیف",
+  "until": "تا",
+  "withPrice": "با قیمت",
+  "description": "توضیحات",
+  "first": "ابتدا",
   "offline": "اتصال اینترنت را بررسی کنید!",
-  "improperMobileView ": "فعلاً برای موبایل بهینه نشده است.",
+  "improperMobileView": "فعلاً برای موبایل بهینه نشده است.",
   "home": "صفحه اصلی",
   "country": {
-    "iran": "جمهوری اسلامی ایران",
+    "iran": "ایران",
     "germany": "آلمان",
     "uk": "انگلستان",
-    "turkey": "ترکیه"
+    "turkey": "ترکیه",
+    "uzbekistan": "ازبکستان"
   },
   "currency": {
     "IRT": "تومان",
@@ -149,6 +156,9 @@
   "technical": {
     "title": "تکنیکال"
   },
+  "txHistory": {
+    "title": "تاریخچه تراکنش‌ ها"
+  },
   "messages": {
     "title": "پیام ها"
   },
@@ -235,7 +245,8 @@
   "TransactionHistory": {
     "coin" : "ارز",
     "category" : "نوع تراکنش",
-    "size" : "تعداد"
+    "size" : "تعداد",
+    "period" : "بازه زمانی"
   },
   "TransactionCategory": {
     "DEPOSIT" : "واریز",
