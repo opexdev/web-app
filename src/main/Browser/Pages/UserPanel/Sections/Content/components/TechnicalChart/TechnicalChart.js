@@ -1,38 +1,12 @@
-import React, {useEffect, useState} from "react";
-import classes from "./TechnicalChart.module.css";
-import {connect} from "react-redux";
-import {isSafari} from "react-device-detect";
-import i18n from "i18next";
-import { Tooltip as ReactTooltip } from 'react-tooltip'
-import MainMenu from "../../../MainMenu/MainMenu";
+import React from "react";
 import AdvanceTradingView from "../../../../../../../../components/AdvanceTradingView/AdvanceTradingView";
 
-const TechnicalChart = (props) => {
-    const [ltr, setLtr] = useState(false);
-    useEffect(() => {
-        i18n.language !== "fa" ? setLtr(true) : setLtr(false);
-        i18n.on("languageChanged", (lng) => {
-            lng !== "fa" ? setLtr(true) : setLtr(false);
-        });
-    }, []);
+const TechnicalChart = () => {
+
 
     return (
-        <div className={`row height-100  ${props.isDark ? "dark" : ""} ${ltr ? "ltr" : "rtl"} ${
-                isSafari ? "" : "user-select"
-            }`}>
-            <ReactTooltip data-tooltip-id="opex-tooltip" data-tooltip-float={true}/>
-            <MainMenu/>
-            <div className={`column ${classes.content}`}>
-                <AdvanceTradingView/>
-            </div>
-        </div>
+        <AdvanceTradingView/>
     );
 };
-const mapStateToProps = (state) => {
-    return {
-        isLoading: state.global.isLoading,
-        isDark: state.global.isDark,
-        isLogin: state.auth.isLogin,
-    };
-};
-export default connect(mapStateToProps, null)(TechnicalChart);
+
+export default TechnicalChart;

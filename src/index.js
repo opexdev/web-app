@@ -2,7 +2,7 @@ import React from "react";
 import {createRoot} from 'react-dom/client';
 import "./i18n/i18n";
 import {Provider} from "react-redux";
-import {createStore, applyMiddleware, combineReducers, compose} from "redux";
+import {applyMiddleware, combineReducers, compose, createStore} from "redux";
 import createSagaMiddleware from "redux-saga";
 import globalReducer from "./store/reducers/globalReducer";
 import "normalize.css";
@@ -14,7 +14,6 @@ import Main from "./main/main";
 import setupAxios from "./setup/axios/setupAxios";
 import axios from "axios";
 import exchangeReducer from "./store/reducers/exchangeReducer";
-import {StyleRoot} from "radium";
 import {QueryClient, QueryClientProvider} from '@tanstack/react-query';
 import {ReactQueryDevtools} from '@tanstack/react-query-devtools'
 import 'react-tooltip/dist/react-tooltip.css';

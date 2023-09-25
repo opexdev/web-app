@@ -83,6 +83,23 @@ const MainMenu = () => {
                             )}</span>`}>
                             <Icon iconName="icon-account fs-21"/>
                         </NavLink>
+
+                        <NavLink
+                            to={Routes.TxHistory}
+                            className={({ isActive }) =>
+                                isActive ? classes.selected : undefined
+                            }
+                            onClick={() => setShowMessages(false)}
+                            data-tooltip-id="opex-tooltip"
+                            data-tooltip-place="left"
+                            data-tooltip-float={true}
+                            data-tooltip-html={`
+                         <span class="column jc-between col-100">${t(
+                                "txHistory.title",
+                            )}</span>`}>
+                            <Icon iconName="icon-clock fs-21"/>
+                        </NavLink>
+
                     </div>
                     <div className={`column jc-end ai-center ${classes.bottomSection}`}>
                      {/*<span

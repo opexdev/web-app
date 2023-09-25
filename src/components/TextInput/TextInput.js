@@ -2,6 +2,12 @@ import React from "react";
 import Icon from "../Icon/Icon";
 import Select from "react-select";
 import classes from "./TextInput.module.css";
+import i18n from "../../i18n/i18n";
+import persian_fa from "react-date-object/locales/persian_fa";
+import persian from "react-date-object/calendars/persian";
+import DatePicker from "react-multi-date-picker";
+import "react-multi-date-picker/styles/backgrounds/bg-dark.css"
+import {useSelector} from "react-redux";
 
 const TextInput = (props) => {
     const {
@@ -17,8 +23,24 @@ const TextInput = (props) => {
         max,
         ltr,
         info,
+        datePicker,
         ...other
     } = props
+
+    const isDark = useSelector((state) => state.global.isDark)
+
+
+    const optionClassHandler = (state) => {
+        let className = classes.selectOptions
+            if (state.isFocused) {
+                className = className + " " + classes.isFocused
+            }
+            if (state.isSelected) {
+                className = className + " " + classes.isSelected
+            }
+        console.log("className", className)
+        return className;
+    }
 
     let leadSection = null
     let afterSection = null
@@ -29,6 +51,7 @@ const TextInput = (props) => {
         readOnly={readOnly}
         onChange={onchange}
         max={max}
+        className={`${classes.input}`}
         style={{direction: ltr && 'ltr'}}
         {...other}
     />
@@ -37,8 +60,14 @@ const TextInput = (props) => {
         leadSection = <span className={`lead ${classes.lead}`}>{lead}</span>
     }
 
+
     if ( select ){
         inputSection = <Select
+            classNames={{
+                option: (state) => optionClassHandler(state),
+                menuList: () => `${classes.menuList}`,
+                menu: () => `${classes.menu}`,
+            }}
             onChange={onchange}
             options={options}
             ref={customRef}
@@ -46,6 +75,27 @@ const TextInput = (props) => {
             className={`${classes.selectBox} selectExternalClass`}
             {...other}
         />
+    }
+    if ( datePicker ){
+        inputSection = <DatePicker
+
+            className={`${isDark && "bg-dark"}`}
+
+            locale={i18n.language === "fa" ? persian_fa : null}
+            calendar={i18n.language === "fa" ? persian : null}
+            onChange={onchange}
+            render={<input className={`${classes.datePicker}`}/>}
+            {...other}
+        >
+
+            {/*<button
+                style={{ margin: "5px 0" }}
+                onClick={() => alert("clicked")}
+            >
+                click me
+            </button>*/}
+
+        </DatePicker>
     }
     if(after){
         afterSection = <span className={`after ${classes.after}`}>{after}</span>

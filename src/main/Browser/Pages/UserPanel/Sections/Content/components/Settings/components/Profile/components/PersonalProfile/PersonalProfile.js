@@ -21,6 +21,7 @@ const PersonalProfile = () => {
         {value: "germany", label: t('country.germany')},
         {value: "uk", label: t('country.uk')},
         {value: "turkey", label: t('country.turkey')},
+        {value: "uzbekistan", label: t('country.uzbekistan')},
     ]
 
     return (

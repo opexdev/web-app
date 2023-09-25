@@ -1,16 +1,12 @@
 import React, {useEffect, useRef, useState} from "react";
 import classes from "../../DepositWithdraw.module.css";
 import TextInput from "../../../../../../../../../../../../components/TextInput/TextInput";
-import Icon from "../../../../../../../../../../../../components/Icon/Icon";
 import {useParams} from "react-router-dom";
-import {Trans, useTranslation} from "react-i18next";
-import QRCode from "react-qr-code";
-import {toast} from "react-hot-toast";
+import {useTranslation} from "react-i18next";
 import Error from "../../../../../../../../../../../../components/Error/Error";
 import Loading from "../../../../../../../../../../../../components/Loading/Loading";
-import {useGetCurrencyInfo, useGetDepositAddress} from "../../../../../../../../../../../../queries";
+import {useGetCurrencyInfo} from "../../../../../../../../../../../../queries";
 import IRTDeposit from "./components/IRT/IRTDeposit";
-import {BN} from "../../../../../../../../../../../../utils/utils";
 import Address from "./components/Address/Address";
 
 const Deposit = () => {
@@ -28,8 +24,6 @@ const Deposit = () => {
 
     }, [id]);
 
-
-
     useEffect(() => {
         if (id !== "IRT") {
             refetchCI()
@@ -40,8 +34,6 @@ const Deposit = () => {
     if (id === "IRT") return <IRTDeposit/>
     if (CILoading) return <Loading/>
     if (CIError) return <Error/>
-
-    console.log("currencyInfo?.chains[networkName.value].network", currencyInfo?.chains[networkName?.value]?.network)
 
     return (
         <div className={`px-1 py-3 column ${classes.content}`}>
@@ -64,8 +56,6 @@ const Deposit = () => {
             />
 
             { currencyInfo && <Address network={currencyInfo?.chains[networkName?.value]?.network}/>}
-
-
 
         </div>
     )

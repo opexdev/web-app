@@ -1,8 +1,6 @@
 import React from 'react';
-import {Route, Routes} from "react-router-dom";
-import ProtectedRoute from "../../../../components/ProtectedRoute/ProtectedRoute";
+import {Route, Routes, useMatch} from "react-router-dom";
 import * as RoutesName from "../../Routes/routes";
-import TechnicalChart from "./Sections/Content/components/TechnicalChart/TechnicalChart";
 import MainMenu from "./Sections/MainMenu/MainMenu";
 import SubMenu from "./Sections/SubMenu/SubMenu";
 import Header from "./Sections/Header/Header";
@@ -14,17 +12,20 @@ import classes from "./UserPanel.module.css"
 const UserPanel = () => {
     const isLogin = useSelector((state) => state.auth.isLogin)
 
+    const isTxHistoryPage = useMatch(RoutesName.TxHistory)
+    const isTechnicalPage = useMatch(RoutesName.Technical)
+
+    const hasSubMenu = !(isTxHistoryPage || isTechnicalPage);
+
+
     return (
         <div className={`${classes.container} width-100`}>
             <Routes>
-                <Route element={<ProtectedRoute/>}>
-                    <Route path={RoutesName.TechnicalRelative} element={<TechnicalChart/>}/>
-                </Route>
                 <Route path="*" element={<div className="row width-100 height-100" style={{backgroundColor:"red"}}>
                     <MainMenu isLogin={isLogin}/>
-                    <SubMenu isLogin={isLogin}/>
-                    <div className="column content">
-                        <Header/>
+                    {hasSubMenu && <SubMenu isLogin={isLogin}/>}
+                    <div className={`${hasSubMenu ? "width-73" : "width-95 z-index-6" } column content`}>
+                        {!isTechnicalPage && <Header/>}
                         <Info/>
                         <Content/>
                     </div>

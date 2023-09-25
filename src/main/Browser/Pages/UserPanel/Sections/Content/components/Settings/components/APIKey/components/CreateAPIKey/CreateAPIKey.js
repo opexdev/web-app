@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import classes from "./CreateAPIKey.module.css";
-import {Trans, useTranslation} from "react-i18next";
+import {useTranslation} from "react-i18next";
 import TextInput from "../../../../../../../../../../../../components/TextInput/TextInput";
 import {images} from "../../../../../../../../../../../../assets/images";
 import Button from "../../../../../../../../../../../../components/Button/Button";
@@ -24,8 +24,6 @@ const CreateAPIKey = () => {
         expiration: {value: "", error: []},
     });
 
-    console.log("setApikeyResult", apiKeyResult)
-
     const dates = [
         {value: "ONE_MONTH", label: t('APIKey.ONE_MONTH')},
         {value: "THREE_MONTHS", label: t('APIKey.THREE_MONTHS')},
@@ -38,13 +36,13 @@ const CreateAPIKey = () => {
         if (isLoading) return
 
         if (apiKey.label.value === "") {
-            return setApiKey({...apiKey, label : { ...apiKey.label, error: [t('APIKey.emptyLabel')]}})
+            return setApiKey({...apiKey, label: {...apiKey.label, error: [t('APIKey.emptyLabel')]}})
         }
 
         setIsLoading(true)
         const apiKeyData = {
             label: apiKey.label.value.length <= 0 ? null : apiKey.label.value,
-            expiration: apiKey.expiration.value.length <= 0 ? null : apiKey.expiration.value ,
+            expiration: apiKey.expiration.value.length <= 0 ? null : apiKey.expiration.value,
             allowedIPs: apiKey.allowedIPs.value.length <= 0 ? null : apiKey.allowedIPs.value
         }
         createAPIKey(apiKeyData).then((res) => {
@@ -56,14 +54,10 @@ const CreateAPIKey = () => {
                 expiration: {value: "", error: []},
             })
         }).catch((error) => {
-
-            console.log("e" , error.response.data.code)
-
             if (error.response.data.code === 7007) {
                 return toast.error(t('APIKey.reachedLimit'));
             }
-
-                toast.error(t('error'));
+            toast.error(t('error'));
         }).finally(() => setIsLoading(false))
     }
 
@@ -72,7 +66,6 @@ const CreateAPIKey = () => {
                                    alt="linearLoading"/>
         return t('submit')
     }
-
 
     return (
         <>
@@ -107,7 +100,10 @@ const CreateAPIKey = () => {
                                     options={dates}
                                     onchange={(e) => setApiKey({...apiKey, expiration: {value: e.value, error: []}})}
                                     alerts={apiKey.expiration.error}
-                                    value={apiKey.expiration.value && {value: apiKey.expiration.value , label: t('APIKey.'+apiKey.expiration.value)}}
+                                    value={apiKey.expiration.value && {
+                                        value: apiKey.expiration.value,
+                                        label: t('APIKey.' + apiKey.expiration.value)
+                                    }}
                                 />
                             </div>
                             <div className={`row jc-between my-1`}>
@@ -118,7 +114,10 @@ const CreateAPIKey = () => {
                                     ltr={true}
                                     lead={t('APIKey.allowedIPs')}
                                     type="text"
-                                    onchange={(e) => setApiKey({...apiKey, allowedIPs: {value: e.target.value, error: []}})}
+                                    onchange={(e) => setApiKey({
+                                        ...apiKey,
+                                        allowedIPs: {value: e.target.value, error: []}
+                                    })}
                                     alerts={apiKey.allowedIPs.error}
 
                                 />
