@@ -1,16 +1,16 @@
 {
   "title": "OPEX",
-  "signIn": "Sign In",
-  "signUp": "Sign Up",
-  "signOut": "Sign Out",
-  "date": "Date",
-  "time": "Time",
+  "signIn": "kirish",
+  "signUp": "o'tish",
+  "signOut": "Tizimdan chiqish",
+  "date": "Sana",
+  "time": "Vaqt",
   "volume": "Volume",
   "totalVolume": "Total Volume",
-  "price": "Price",
-  "pricePerUnit": "Price Per Unit",
-  "totalPrice": "Total Price",
-  "averagePrice": "Average Price",
+  "price": "Narxi",
+  "pricePerUnit": "Birlik narxi",
+  "totalPrice": "umumiy narx",
+  "averagePrice": "o'rtacha narx",
   "min": "Min",
   "max": "Max",
   "buy": "Buy",
@@ -57,7 +57,7 @@
   "first": "First",
   "offline": "Check your connection!",
   "improperMobileView": "Not optimized for mobile view.",
-  "home": "Home",
+  "home": "Uy",
   "country": {
     "iran": "IRAN",
     "germany": "Germany",
@@ -85,9 +85,9 @@
     "TRX": "TRX"
   },
   "marketInterval": {
-    "24h": "24 hours",
-    "7d": "7 days",
-    "1M": "30 days"
+    "24h": "24 Soat",
+    "7d": "7 Kunlar",
+    "1M": "30 Kunlar"
   },
   "routes": {
     "/panel/settings/profile": "User Profile",
@@ -148,16 +148,16 @@
     "lastMonth": "30 Days"
   },
   "market": {
-    "title": "Market"
+    "title": "Bozor"
   },
   "wallet": {
-    "title": "Wallet"
+    "title": "Hamyon"
   },
   "technical": {
-    "title": "Technical"
+    "title": "Texnik"
   },
   "txHistory": {
-    "title": "Transactions History"
+    "title": "Tranzaktsiyalar tarixi"
   },
   "messages": {
     "title": "Messages"
@@ -166,10 +166,10 @@
     "title": "Settings"
   },
   "Languages": {
-    "fa": "فارسی",
-    "en": "English",
-    "ar": "عربي",
-    "uzb": "Oʻzbekcha"
+    "Persian": "فارسی",
+    "English": "English",
+    "Arabic": "عربي",
+    "Uzbek": "Oʻzbekcha"
   },
   "Theme": {
     "Light": "Light",
@@ -593,20 +593,20 @@
     "serverError": "Server error, please try again."
   },
   "Landing": {
-    "title": "Crypto Exchange Platform"
+    "title": "Kripto almashinuv platformasi"
   },
   "MarketTitle": {
-    "content": "Designed specifically to meet your needs.",
-    "advancedTrading": "Advanced Trading",
-    "easyTrading": "Easy Trading"
+    "content": "Sizning ehtiyojlaringizni qondirish uchun maxsus ishlab chiqilgan.",
+    "advancedTrading": "Kengaytirilgan savdo",
+    "easyTrading": "Oson savdo"
   },
   "GeneralInfo": {
-    "activeUsers": "Active Users",
-    "totalOrders": "Total Orders",
-    "totalTrades": "Total Trades"
+    "activeUsers": "Faol foydalanuvchilar",
+    "totalOrders": "Jami buyurtmalar",
+    "totalTrades": "Jami savdolar"
   },
   "MarketInfo": {
-    "viewAllMarket": "View All Market",
+    "viewAllMarket": "Barcha bozorni ko'rish",
     "name": "Name",
     "cryptocurrency": "Cryptocurrency",
     "lastPrice": "Last Price",
@@ -620,12 +620,12 @@
     "marketCap": "Market Cap"
   },
   "MarketView": {
-    "title": "Market Stats ( 24H )",
-    "mostIncreased": "Most Increased",
-    "mostDecreased": "Most Decreased",
-    "mostTrades": "Most Trades",
-    "mostVolume": "Most Volume",
-    "nullResponse": "No transactions in the last {{interval}}"
+    "title": "Bozor statistikasi ( 24 Soat )",
+    "mostIncreased": "Eng ko'p ko'tarilgan",
+    "mostDecreased": "Eng kamaygan",
+    "mostTrades": "Aksariyat savdolar",
+    "mostVolume": "Eng katta hajm",
+    "nullResponse": "Oxirgi vaqtda hech qanday tranzaksiya yo'q {{interval}}"
   },
   "Footer": {
     "darkMode": "Dark Mode",

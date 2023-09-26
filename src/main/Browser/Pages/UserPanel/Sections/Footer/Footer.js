@@ -15,6 +15,8 @@ const Footer = () => {
     const isDark = useSelector((state) => state.global.isDark)
     const dispatch = useDispatch()
 
+    const languages = window.env.REACT_APP_LANGS_SUPPORT
+
     return (
         <div className={`width-100 column jc-center ai-center ${classes.container} fs-0-8 mt-1 py-2`}>
             <div className={`width-90 row jc-between ai-center`}>
@@ -60,14 +62,7 @@ const Footer = () => {
                     </div>
                     <div className={`row ai-center jc-between`}>
                         <div className={`row ai-center ${classes.languages}`}>
-                            {
-                                window.env.REACT_APP_MULTI_LANGS_SUPPORT === 'TRUE' && <>
-                                <span className="cursor-pointer pl-1"
-                                      onClick={() => i18n.changeLanguage("fa")}>{t("Languages.Persian")}</span>
-                                    <span className="cursor-pointer pr-1"
-                                          onClick={() => i18n.changeLanguage("en")}>{t("Languages.English")}</span>
-                                </>
-                            }
+                            {languages?.map((lang, index) => <span className="cursor-pointer px-1" onClick={() => i18n.changeLanguage(lang)} key={index}>{t("Languages."+ lang)}</span>)}
                         </div>
                     </div>
                 </div>

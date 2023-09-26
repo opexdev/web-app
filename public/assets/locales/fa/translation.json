@@ -166,9 +166,10 @@
     "title": "تنظیمات"
   },
   "Languages": {
-    "Persian": "فارسی",
-    "English": "English",
-    "Arabic": "عربي"
+    "fa": "فارسی",
+    "en": "English",
+    "ar": "عربي",
+    "uzb": "Oʻzbekcha"
   },
   "Theme": {
     "Light": "روشن",
