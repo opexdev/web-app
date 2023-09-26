@@ -15,7 +15,7 @@ const Footer = () => {
     const isDark = useSelector((state) => state.global.isDark)
     const dispatch = useDispatch()
 
-    const languages = window.env.REACT_APP_LANGS_SUPPORT
+    const languages = window.env.REACT_APP_LANGS_SUPPORT.split(",")
 
     return (
         <div className={`width-100 column jc-center ai-center ${classes.container} fs-0-8 mt-1 py-2`}>
