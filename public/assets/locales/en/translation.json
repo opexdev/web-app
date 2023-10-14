@@ -246,7 +246,7 @@
   "TransactionHistory": {
     "coin": "Coins",
     "category": "Categories",
-    "size": "Per page",
+    "size": "Number",
     "period" : "Period"
   },
   "TransactionCategory": {

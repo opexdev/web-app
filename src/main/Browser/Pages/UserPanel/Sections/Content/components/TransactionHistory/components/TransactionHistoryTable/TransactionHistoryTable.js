@@ -37,8 +37,8 @@ const TransactionHistoryTable = ({txs, offset}) => {
             <span className="width-6 flex jc-start ai-center">{t("row")}</span>
             <span className="width-9 flex jc-start ai-center">{t("date")}</span>
             <span className="width-9 flex  jc-start ai-center">{t("time")}</span>
-            <span className="width-11 flex jc-start ai-center">{t("TransactionHistory.category")}</span>
-            <span className="width-15 flex jc-start ai-center">{t("TransactionHistory.coin")}</span>
+            <span className="width-15 flex jc-start ai-center">{t("TransactionHistory.category")}</span>
+            <span className="width-11 flex jc-start ai-center">{t("TransactionHistory.coin")}</span>
             <span className="width-13 flex jc-start ai-center">{t("volume")}</span>
             {/*<span className="width-12 flex jc-end ai-center">{t("details")}</span>*/}
             <span className="width-31 flex jc-start ai-center">{t("description")}</span>
@@ -63,10 +63,10 @@ const TransactionHistoryTable = ({txs, offset}) => {
                             <span className="width-9 row jc-start ai-center">
                              {moment(tr.date).format("HH:mm:ss")}
                          </span>
-                            <span className="width-11 row jc-start ai-center">
+                            <span className="width-15 row jc-start ai-center">
                              {t('TransactionCategory.'+tr.category)}
                          </span>
-                            <span className="width-15 row jc-start ai-center">
+                            <span className="width-11 row jc-start ai-center">
                              <span className={`ml-05`}>{t("currency." + tr.currency )}</span>
                              {/*<span className={`fs-0-9 text-gray mr-05`}>{tr.currency}</span>*/}
                          </span>

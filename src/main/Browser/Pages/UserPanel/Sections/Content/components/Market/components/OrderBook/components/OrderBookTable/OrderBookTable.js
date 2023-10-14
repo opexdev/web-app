@@ -25,7 +25,7 @@ const OrderBookTable = ({data, type}) => {
     let start = "right";
     let end = "left";
 
-    if (i18n.language === "en") {
+    if (i18n.language !== "fa") {
         start = "left";
         end = "right";
     }

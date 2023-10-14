@@ -35,10 +35,10 @@ const LayoutHeader = () => {
     return (
         <div className={`width-100 flex jc-center ai-center ${classes.container}`}>
             <div className={`${classes.content} width-90 height-100 row jc-center ai-center`}>
-                <Link to={RoutesName.Landing} className={`flex jc-start ai-center width-20`}>
+                <Link to={RoutesName.Landing} className={`flex jc-start ai-center width-15`}>
                     <img src={toAbsoluteUrl('/assets/logo/logo.svg')} alt={t("title")} title={t("title")} className={`img-lg-plus`}/>
                 </Link>
-                <div className={`width-45 `}>
+                <div className={`width-30 `}>
                     <Routes>
                         <Route path={RoutesName.Landing} element={<h2>{t("Landing.title")}</h2>}/>
                         <Route path={RoutesName.Commission} element={<h2>{t("commissions.title")}</h2>}/>
@@ -53,7 +53,7 @@ const LayoutHeader = () => {
                         </div>}/>
                     </Routes>
                 </div>
-                <div className={`width-45 text-center row jc-end ai-center`}>
+                <div className={`width-35 text-center row jc-end ai-center`}>
 
                     <NavLink
                         to={RoutesName.Landing}
@@ -79,7 +79,7 @@ const LayoutHeader = () => {
                             <p>{t("signIn")} | {t("signUp")}</p>
                         </Link>
                     ) : (
-                        <p className="mb-05">
+                        <p className="">
                             {firstName + " " + lastName}
                         </p>
                     )}

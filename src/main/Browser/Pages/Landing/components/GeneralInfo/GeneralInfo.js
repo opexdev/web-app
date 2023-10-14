@@ -16,15 +16,15 @@ const GeneralInfo = () => {
         if (isLoading) return <Loading/>
         if (error) return <span className={`width-100`}><Error/></span>
         else return <>
-            <div className={`column jc-center ai-center`}>
+            <div className={`column jc-center ai-center width-33`}>
                 <span className={`fs-02`}>{data.activeUsers.toLocaleString()} </span>
                 <span className={`fs-0-7`}>{t("GeneralInfo.activeUsers")}</span>
             </div>
-            <div className={`column jc-center ai-center`}>
+            <div className={`column jc-center ai-center width-33`}>
                 <span className={`fs-02`}>{data.totalOrders.toLocaleString()} </span>
                 <span className={`fs-0-7`}>{t("GeneralInfo.totalOrders")}</span>
             </div>
-            <div className={`column jc-center ai-center`}>
+            <div className={`column jc-center ai-center width-33`}>
                 <span className={`fs-02`}>{data.totalTrades.toLocaleString()} </span>
                 <span className={`fs-0-7`}>{t("GeneralInfo.totalTrades")}</span>
             </div>
@@ -32,7 +32,7 @@ const GeneralInfo = () => {
     }
 
     return (
-        <div className={`${classes.container} row jc-between ai-center card-bg card-border px-2 py-1`}>
+        <div className={`${classes.container} row jc-between ai-center card-bg card-border px-05 py-1`}>
             {content()}
         </div>
     );
