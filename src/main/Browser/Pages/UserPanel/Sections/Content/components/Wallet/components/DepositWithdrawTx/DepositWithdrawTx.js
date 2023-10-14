@@ -15,9 +15,6 @@ const DepositWithdrawTx = () => {
     const {data: deposit, isLoading: depositIsLoading, error: depositError} = useDepositTxs(id);
     const {data: withdraw, isLoading: withdrawIsLoading, error: withdrawError} = useWithdrawTxs(id);
 
-    console.log("deposit", deposit)
-    console.log("withdraw", withdraw)
-
     useLayoutEffect(() => {
         if (!deposit || !withdraw) {
             return

@@ -24,8 +24,6 @@ const Header = () => {
     const lastName = useSelector((state) => state.auth.lastName)
     let location = useLocation();
 
-
-
     const logOutHandler = () => {
         logout().then(()=>{
             toast.success(t("header.logOutSuccess"))
@@ -39,11 +37,12 @@ const Header = () => {
         <div className={`width-100 row jc-between ai-center px-1 py-1 ${classes.container}`}>
             <div className={`row jc-between ai-center ${classes.content}`}>
                 <Routes>
-                    <Route path="/" element={<MarketHeader/>}/>
                     <Route element={<ProtectedRoute/>}>
+                        <Route path={RoutesName.TxHistoryRelative} element={<h3 className={``}>{t("txHistory.title")}</h3>}/>
                         <Route path={RoutesName.WalletRelative + "/:id"} element={<WalletHeader/>}/>
                         <Route path={RoutesName.SettingsRelative+"/*"} element={<SettingHeader/>}/>
                     </Route>
+                    <Route path="/" element={<MarketHeader/>}/>
                     <Route path="*" element={<h4>{t("comingSoon")}</h4>}/>
                 </Routes>
                 <div className={`col-25 column ai-end`}>

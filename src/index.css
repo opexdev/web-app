@@ -445,9 +445,6 @@ a {
 }
 
 .content {
-    width: 73%;
-    /*height: 100vh;*/
-    /*margin-right: 27%;*/
     background-color: var(--mainContent);
     color: var(--textColor);
     -webkit-transition: color 0.7s, background-color 0.4s;
@@ -1729,7 +1726,6 @@ a {
     visibility: hidden;
 }
 
-
 .alert-box {
     background-color: var(--redAlpha);
     /*border: 0.1vh solid var(----darkRed);*/
@@ -1737,12 +1733,15 @@ a {
     /*background-color: var(--cardHeader);*/
 }
 
-
 table {
     width: 100%;
     max-height: 100%;
 }
 
+
+.z-index-6 {
+    z-index: 6;
+}
 
 .mb-025 {
     margin-bottom: 0.25vh;

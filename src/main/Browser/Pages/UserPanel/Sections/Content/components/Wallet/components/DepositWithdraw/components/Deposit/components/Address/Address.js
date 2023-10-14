@@ -1,26 +1,17 @@
 import React, {useEffect, useRef} from 'react';
-import className from '../../../../DepositWithdraw.module.css'
+import classes from '../../../../DepositWithdraw.module.css'
 import {useParams} from "react-router-dom";
 import {Trans, useTranslation} from "react-i18next";
 import {toast} from "react-hot-toast";
 import {useGetDepositAddress} from "../../../../../../../../../../../../../../queries";
-import Loading from "../../../../../../../../../../../../../../components/Loading/Loading";
-import Error from "../../../../../../../../../../../../../../components/Error/Error";
 import Icon from "../../../../../../../../../../../../../../components/Icon/Icon";
-import classes from "../../../../DepositWithdraw.module.css";
 import TextInput from "../../../../../../../../../../../../../../components/TextInput/TextInput";
 import QRCode from "react-qr-code";
 
 const Address = ({network}) => {
-
-    console.log("network", network)
-
     const {id} = useParams();
     const {t} = useTranslation();
     const addressRef = useRef(null);
-
-
-
     const copyToClipboard = () => {
         addressRef.current.select();
         document.execCommand("copy");

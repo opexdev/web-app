@@ -1,8 +1,8 @@
 {
   "title": "OPEX",
-  "signIn":"Sign In",
+  "signIn": "Sign In",
   "signUp": "Sign Up",
-  "signOut":"Sign Out",
+  "signOut": "Sign Out",
   "date": "Date",
   "time": "Time",
   "volume": "Volume",
@@ -15,11 +15,10 @@
   "max": "Max",
   "buy": "Buy",
   "sell": "Sell",
-  "all": "All",
   "orderType": "Order Type",
-  "status" : "Status",
-  "pleaseLogin" : "Please Log In!",
-  "comingSoon" : "Coming Soon!",
+  "status": "Status",
+  "pleaseLogin": "Please Log In!",
+  "comingSoon": "Coming Soon!",
   "deposit": "Deposit",
   "withdrawal": "Withdrawal",
   "transfer": "Transfer",
@@ -28,6 +27,12 @@
   "commission": "Commission",
   "nextStep": "Next Step",
   "prevStep": "Prev Step",
+  "next": "next",
+  "all": "all",
+  "prev": "prev",
+  "ask": "ask",
+  "bid": "bid",
+  "to": "to",
   "submit": "Submit",
   "username": "Username",
   "password": "Password",
@@ -44,21 +49,28 @@
   "noTx": "There is no transaction!",
   "close": "Close",
   "unit": "Unit",
+  "from": "from",
+  "row": "Row",
+  "until": "until",
+  "withPrice": "with price",
+  "description": "Description",
+  "first": "First",
   "offline": "Check your connection!",
-  "improperMobileView ": "Not optimized for mobile view.",
+  "improperMobileView": "Not optimized for mobile view.",
   "home": "Home",
   "country": {
-    "iran" : "I. R. IRAN",
-    "germany" : "Germany",
+    "iran": "IRAN",
+    "germany": "Germany",
     "uk": "United Kingdom",
-    "turkey" : "Turkey"
+    "turkey": "Turkey",
+    "uzbekistan": "Uzbekistan"
   },
   "currency": {
-    "IRT" : "IRT",
-    "Euro" : "Euro",
-    "USD" : "USD",
-    "BTC" : "BTC",
-    "ETH" : "ETH",
+    "IRT": "IRT",
+    "Euro": "Euro",
+    "USD": "USD",
+    "BTC": "BTC",
+    "ETH": "ETH",
     "USDT": "USDT",
     "TBTC": "TBTC",
     "TETH": "TETH",
@@ -119,8 +131,8 @@
     "LIMIT_MAKER": "Limit Maker"
   },
   "header": {
-    "lastPrice" : "Last Price",
-    "availableBalance" : "Available Balance",
+    "lastPrice": "Last Price",
+    "availableBalance": "Available Balance",
     "free": "Available",
     "locked": "Locked",
     "inWithdrawalProcess": "Pending Withdrawal",
@@ -144,6 +156,9 @@
   "technical": {
     "title": "Technical"
   },
+  "txHistory": {
+    "title": "Transactions History"
+  },
   "messages": {
     "title": "Messages"
   },
@@ -151,9 +166,10 @@
     "title": "Settings"
   },
   "Languages": {
-    "Persian": "فارسی",
-    "English": "English",
-    "Arabic": "عربي"
+    "fa": "فارسی",
+    "en": "English",
+    "ar": "عربي",
+    "uzb": "Oʻzbekcha"
   },
   "Theme": {
     "Light": "Light",
@@ -165,13 +181,13 @@
   },
   "TimeZone": {
     "THR": "Asia / Tehran / UTC+3:30",
-    "UTC" : "UTC"
+    "UTC": "UTC"
   },
   "orders": {
     "title": "Order",
-    "minOrder":  "Minimum allowed order is {{min}} {{currency}}",
-    "maxOrder":  "Maximum allowed order is {{max}} {{currency}}",
-    "divisibility": "Divisibility !",
+    "minOrder": "Minimum allowed order is {{min}} {{currency}}",
+    "maxOrder": "Maximum allowed order is {{max}} {{currency}}",
+    "divisibility": "The entered value must be divisible by {{mod}} !",
     "notEnoughBalance": "Insufficient Balance ",
     "availableAmount": "Available Amount",
     "bestOffer": "Best Offer",
@@ -227,6 +243,21 @@
     "showZeroBalance": "Do not show zero balance.",
     "estimateAlert": "The equivalent amount is calculated based on the highest buy offer"
   },
+  "TransactionHistory": {
+    "coin": "Coins",
+    "category": "Categories",
+    "size": "Number",
+    "period" : "Period"
+  },
+  "TransactionCategory": {
+    "DEPOSIT": "Deposit",
+    "FEE": "Fee",
+    "TRADE": "Trade",
+    "WITHDRAW": "Withdraw",
+    "ORDER_CANCEL": "Cancel Order",
+    "ORDER_CREATE": "Create Order",
+    "ORDER_FINALIZED": "Finalized Order"
+  },
   "DepositWithdraw": {
     "title": "Deposit / Withdraw",
     "success": "The Address is copied.",
@@ -266,7 +297,7 @@
   },
   "IPGErrorCode": {
     "13003": "You are not allowed to pay.",
-    "13004":"You have an unpaid request.",
+    "13004": "You have an unpaid request.",
     "13005": "Request locked.",
     "13007": "Unknown Error"
   },
@@ -598,9 +629,9 @@
   },
   "Footer": {
     "darkMode": "Dark Mode",
-    "aboutUs" : "About Us",
-    "contactUS" : "Contact Us",
-    "blog" : "Blog",
+    "aboutUs": "About Us",
+    "contactUS": "Contact Us",
+    "blog": "Blog",
     "guide": "Guide",
     "rules": "Rules",
     "api": "API",
@@ -618,10 +649,10 @@
     "tooManyFiles": "Uploading more than one photo is not allowed!",
     "errorMsgDefault": "Uploaded photo is not valid!"
   },
-  "errorPage" : {
-    "needKYC" : "Access denied for KYC status",
-    "reload" : "Try Again",
-    "errorText" : "Server connection error"
+  "errorPage": {
+    "needKYC": "Access denied for KYC status",
+    "reload": "Try Again",
+    "errorText": "Server connection error"
   },
   "aboutUs": {
     "title": "About US",
@@ -663,7 +694,6 @@
     "p8": "",
     "p9": "",
     "text4": ""
-
   },
   "transferFees": {
     "title": "Transfer Fees",

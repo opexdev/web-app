@@ -90,18 +90,18 @@ const OrdersHistory = () => {
                                         </span>
                                     </p>
                                 </div>
-                                <div className="row  jc-between ai-center"
+                                <div className="row  jc-between ai-center fs-0-7"
                                      style={{width: "100%", textAlign: "start"}}>
                                     <p className="width-47 row jc-between">
                                         {t("myOrders.startOrderTime")} :{" "}
                                         <span className={`direction-ltr`}>
-                                            <Date date={tr.updateTime}/> - {moment(tr.updateTime).format("HH:mm:ss")}
+                                            <Date date={tr.updateTime}/>-{moment(tr.updateTime).format("HH:mm:ss")}
                                         </span>
                                     </p>
                                     <p className="width-47 row jc-between">
                                         {t("myOrders.stopOrderTime")} :{" "}
                                         <span className={`direction-ltr`}>
-                                            <Date date={tr.time}/> - {moment(tr.time).format("HH:mm:ss")}
+                                            <Date date={tr.time}/>-{moment(tr.time).format("HH:mm:ss")}
                                         </span>
                                     </p>
                                 </div>

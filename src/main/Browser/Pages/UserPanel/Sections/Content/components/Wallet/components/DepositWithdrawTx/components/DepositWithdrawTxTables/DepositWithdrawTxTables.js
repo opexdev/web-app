@@ -18,8 +18,6 @@ const DepositWithdrawTxTables = ({txs, id}) => {
         />);
     }
 
-    console.log("txs", txs.hasOwnProperty('withdrawOrderId'))
-
     const txStatus = (status) => {
         switch (status) {
             case 0:
