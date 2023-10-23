@@ -49,6 +49,7 @@
   "noTx": "There is no transaction!",
   "close": "Close",
   "unit": "Unit",
+  "with": "With",
   "from": "from",
   "row": "Row",
   "until": "until",
@@ -583,6 +584,7 @@
     "emptyCaptcha": "Captcha required!",
     "forgetPassServerError": "Error recovering password, try again!",
     "UserAlreadyExists": "User with this email is already registered",
+    "RegisterIsLimited": "It is not possible to register for you at this time.",
     "forgetPassEmailForgetError": "Email format is incorrect!",
     "forDemoLogin": "Click here for a testing login!"
   },

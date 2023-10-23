@@ -1,0 +1,61 @@
+.container {
+    min-height: 78vh;
+    margin: 5vh auto;
+}
+
+
+.thisInput :global(.lead) {
+    width: 30%;
+}
+.thisInput :global(.selectExternalClass) {
+    width: 70% !important;
+}
+
+
+
+.thisButton {
+    width: 90%;
+}
+.alertSubmit{
+    background-color: var(--orange);
+}
+.thisButton.buyOrder {
+    background-color: var(--darkGreen);
+}
+.thisButton.sellOrder {
+    background-color: var(--darkRed);
+}
+.thisButton:disabled,.button[disabled] {
+    border: 0.3vh solid var(--cardHeader);
+    background: var(--cardHeader);
+    color: var(--textColor);
+    cursor: not-allowed;
+}
+.thisLoading{
+    width: 5vw;
+}
+
+.hide {
+    visibility: hidden;
+}
+
+
+.avatar {
+    width: 2.7vw;
+    height: 2.7vw;
+    /*background-color: #dfdfdf;*/
+    border-radius: 100%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.backImg {
+    left: 75%;
+
+}
+:global(.ltr) .backImg {
+    left: initial;
+    right: 75%;
+
+}
