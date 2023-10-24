@@ -4,11 +4,12 @@ import {useTranslation} from "react-i18next";
 import {images} from "../../../../../../../../../../assets/images";
 import {BN} from "../../../../../../../../../../utils/utils";
 import {useGetUserAssetsEstimatedValue} from "../../../../../../../../../../queries";
+import {useSelector} from "react-redux";
 
 const WalletBalance = () => {
 
     const {t} = useTranslation();
-    const refCurrency = window.env.REACT_APP_REFERENCE_FIAT_CURRENCY
+    const refCurrency = useSelector((state) => state.exchange.baseCurrency)
     const {data , isLoading, error} = useGetUserAssetsEstimatedValue(refCurrency)
     const totalValue = (isLoading || error) ?  0 : data.value
 

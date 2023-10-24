@@ -20,3 +20,14 @@ export function* getUserKYCStatus() {
         console.log(e)
     }
 }
+
+export function* setFavPair(action) {
+    try {
+        yield put(actions.setFavPair(action.favoritePairs));
+        yield call(axios.post, '/config/user/v1', {
+            favoritePairs: action.favoritePairs
+        })
+    } catch (e) {
+        console.log(e)
+    }
+}

@@ -1,10 +1,11 @@
 import React from 'react';
 import moment from "moment-jalaali";
+import {useSelector} from "react-redux";
 
 const Date = ({date}) => {
-
+    const type = useSelector((state) => state.exchange.dateType)
     const calendar = () => {
-        const type = window.env.REACT_APP_CALENDAR_TYPE
+
         switch (type) {
             case "Jalali":
                 return moment(date).format("jYY/jMM/jDD");
@@ -17,7 +18,7 @@ const Date = ({date}) => {
         }
     };
 
-    return calendar();
+    return (<>{calendar()}</>);
 };
 
 export default Date;

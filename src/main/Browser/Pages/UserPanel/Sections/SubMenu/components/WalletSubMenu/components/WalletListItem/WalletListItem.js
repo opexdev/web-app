@@ -7,10 +7,11 @@ import * as Routes from "../../../../../../../../Routes/routes";
 import {BN} from "../../../../../../../../../../utils/utils";
 import {useGetUserAccount} from "../../../../../../../../../../queries/hooks/useGetUserAccount";
 import {useGetUserAssets} from "../../../../../../../../../../queries";
+import {useSelector} from "react-redux";
 
 const WalletListItem = ({assetName, showZero}) => {
     const {t} = useTranslation();
-    const refCurrency = window.env.REACT_APP_REFERENCE_FIAT_CURRENCY
+    const refCurrency = useSelector((state) => state.exchange.baseCurrency)
     const {data: userAccount} = useGetUserAccount()
     const free = userAccount?.wallets[assetName]?.free || 0
 

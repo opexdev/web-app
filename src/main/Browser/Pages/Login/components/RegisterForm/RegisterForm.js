@@ -17,6 +17,7 @@ const RegisterForm = () => {
     const {t} = useTranslation();
     const dispatch = useDispatch();
     const verifyEmailLock = useSelector((state) => state.exchange.verifyEmailLock)
+    const supportEmail = useSelector((state) => state.exchange.supportEmail)
 
     const [registerStatus, setRegisterStatus] = useState("")
     const [verifyEmail, setVerifyEmail] = useState(false);
@@ -89,7 +90,7 @@ const RegisterForm = () => {
             </span>
             <span className={`fs-0-8 border-top-dotted pt-1 mt-1`}><Trans
                 i18nKey="login.registerFinishedSpamMail"
-                values={{email: window.env.REACT_APP_SYSTEM_EMAIL_ADDRESS,}}
+                values={{email: supportEmail}}
             /></span>
 
             <div className={`column mt-3 hover-text text-orange`}>
@@ -133,6 +134,9 @@ const RegisterForm = () => {
                 setRegisterStatus("")
             } else if (e?.response?.data?.error === "UserAlreadyExists") {
                 setUserData({...userData, email: {...userData.email, error: [t("login.UserAlreadyExists")]}})
+                setRegisterStatus("")
+            } else if (e?.response?.data?.error === "RegisterIsLimited") {
+                setUserData({...userData, email: {...userData.email, error: [t("login.RegisterIsLimited")]}})
                 setRegisterStatus("")
             } else {
                 setRegisterStatus("finishedWithError");

@@ -12,10 +12,12 @@ import {toAbsoluteUrl} from "../../../../../../utils/utils";
 
 const Footer = () => {
     const {t} = useTranslation();
-    const isDark = useSelector((state) => state.global.isDark)
+    const theme = useSelector((state) => state.global.theme)
     const dispatch = useDispatch()
-
-    const languages = window.env.REACT_APP_LANGS_SUPPORT.split(",")
+    const languages = useSelector((state) => state.exchange.supportedLanguages)
+    const changeLanguage = (lang) =>{
+        i18n.changeLanguage(lang)
+    }
 
     return (
         <div className={`width-100 column jc-center ai-center ${classes.container} fs-0-8 mt-1 py-2`}>
@@ -58,11 +60,11 @@ const Footer = () => {
                 <div className={`column ai-center jc-center`}>
                     <div className={`row ai-center py-2`}>
                         <span className={`pl-1`}>{t("Footer.darkMode")}:</span>
-                        <ToggleSwitch onchange={(e) => dispatch(setThemeInitiate(e.target.checked))} checked={isDark}/>
+                        <ToggleSwitch onchange={(e) => dispatch(setThemeInitiate(e.target.checked ? "DARK" : "LIGHT"))} checked={theme === "DARK"}/>
                     </div>
                     <div className={`row ai-center jc-between`}>
                         <div className={`row ai-center ${classes.languages}`}>
-                            {languages?.map((lang, index) => <span className="cursor-pointer px-1" onClick={() => i18n.changeLanguage(lang)} key={index}>{t("Languages."+ lang)}</span>)}
+                            {languages?.map((lang, index) => <span className="cursor-pointer px-1" onClick={() => changeLanguage(lang)} key={index}>{t("Languages."+ lang)}</span>)}
                         </div>
                     </div>
                 </div>

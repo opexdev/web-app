@@ -2,12 +2,12 @@ import React from "react";
 import Icon from "../Icon/Icon";
 import Select from "react-select";
 import classes from "./TextInput.module.css";
-import i18n from "../../i18n/i18n";
 import persian_fa from "react-date-object/locales/persian_fa";
 import persian from "react-date-object/calendars/persian";
 import DatePicker from "react-multi-date-picker";
 import "react-multi-date-picker/styles/backgrounds/bg-dark.css"
 import {useSelector} from "react-redux";
+import i18n from "i18next";
 
 const TextInput = (props) => {
     const {
@@ -27,18 +27,16 @@ const TextInput = (props) => {
         ...other
     } = props
 
-    const isDark = useSelector((state) => state.global.isDark)
-
+    const theme = useSelector((state) => state.global.theme)
 
     const optionClassHandler = (state) => {
         let className = classes.selectOptions
-            if (state.isFocused) {
-                className = className + " " + classes.isFocused
-            }
-            if (state.isSelected) {
-                className = className + " " + classes.isSelected
-            }
-        console.log("className", className)
+        if (state.isFocused) {
+            className = className + " " + classes.isFocused
+        }
+        if (state.isSelected) {
+            className = className + " " + classes.isSelected
+        }
         return className;
     }
 
@@ -56,12 +54,11 @@ const TextInput = (props) => {
         {...other}
     />
 
-    if(lead){
+    if (lead) {
         leadSection = <span className={`lead ${classes.lead}`}>{lead}</span>
     }
 
-
-    if ( select ){
+    if (select) {
         inputSection = <Select
             classNames={{
                 option: (state) => optionClassHandler(state),
@@ -76,33 +73,23 @@ const TextInput = (props) => {
             {...other}
         />
     }
-    if ( datePicker ){
+    if (datePicker) {
         inputSection = <DatePicker
-
-            className={`${isDark && "bg-dark"}`}
-
+            className={`${theme === "DARK" ? "bg-dark" : ""}`}
             locale={i18n.language === "fa" ? persian_fa : null}
             calendar={i18n.language === "fa" ? persian : null}
             onChange={onchange}
             render={<input className={`${classes.datePicker}`}/>}
             {...other}
         >
-
-            {/*<button
-                style={{ margin: "5px 0" }}
-                onClick={() => alert("clicked")}
-            >
-                click me
-            </button>*/}
-
         </DatePicker>
     }
-    if(after){
+    if (after) {
         afterSection = <span className={`after ${classes.after}`}>{after}</span>
     }
 
-    if (alerts){
-        alertSection =<div
+    if (alerts) {
+        alertSection = <div
             className={`${classes.inputGroupHint} inputGroupHint `}
             data-tooltip-id="opex-tooltip"
             data-tooltip-place="left"
@@ -113,21 +100,21 @@ const TextInput = (props) => {
                 customClass="hint-icon"
             />
             <div className="column pt-05">
-                { alerts.map((alert , index) => <span key={index} className={`${classes.alert} pr-05 `}>{alert}</span>) }
+                {alerts.map((alert, index) => <span key={index} className={`${classes.alert} pr-05 `}>{alert}</span>)}
             </div>
         </div>
     }
 
     return (
-    <div className={customClass ?? ""}>
-      <div className={classes.inputGroup}>
-          {leadSection}
-          {inputSection}
-          {afterSection}
-      </div>
-        {alertSection}
-    </div>
-  );
+        <div className={customClass ?? ""}>
+            <div className={classes.inputGroup}>
+                {leadSection}
+                {inputSection}
+                {afterSection}
+            </div>
+            {alertSection}
+        </div>
+    );
 };
 
 
