@@ -13,7 +13,7 @@ import {setLastTransaction} from "../../../../../../../../store/actions/auth";
 import {images} from "../../../../../../../../assets/images";
 import Button from "../../../../../../../../components/Button/Button";
 
-const EasyBuyOrder = ({setOutPutSelected}) => {
+const EasyBuyOrder = () => {
 
     const {t} = useTranslation();
     const dispatch = useDispatch();
@@ -40,13 +40,6 @@ const EasyBuyOrder = ({setOutPutSelected}) => {
         "base": [],
         "quote": [],
     })
-
-    useEffect(() => {
-        setOutPutSelected({
-            "base": selected?.base,
-            "quote": selected?.quote,
-        })
-    }, [selected]);
 
     const {data} = useOrderBook(selected?.base + selected?.quote)
 
