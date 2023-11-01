@@ -1,6 +1,10 @@
 .container {
-    min-height: 78vh;
+
     margin: 5vh auto;
+}
+
+.content {
+    min-height: 68vh;
 }
 
 

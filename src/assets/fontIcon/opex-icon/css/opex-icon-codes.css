@@ -75,6 +75,7 @@
 .icon-trash-1:before { content: '\0207'; } /* 'ȇ' */
 .icon-trash-2:before { content: '\0208'; } /* 'Ȉ' */
 .icon-cicle-plus-01:before { content: '\0209'; } /* 'ȉ' */
+.icon-exchange-arrow:before { content: '\0210'; } /* 'Ȑ' */
 .icon-market:before { content: '\e800'; } /* '' */
 .icon-cancel-circled2:before { content: '\e801'; } /* '' */
 .icon-settings:before { content: '\e802'; } /* '' */
