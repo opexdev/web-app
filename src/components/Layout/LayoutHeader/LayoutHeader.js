@@ -41,6 +41,7 @@ const LayoutHeader = () => {
                 <div className={`width-30 `}>
                     <Routes>
                         <Route path={RoutesName.Landing} element={<h2>{t("Landing.title")}</h2>}/>
+                        <Route path={RoutesName.EasyTrading} element={<h2>{t("MarketTitle.easyTrading")}</h2>}/>
                         <Route path={RoutesName.Commission} element={<h2>{t("commissions.title")}</h2>}/>
                         <Route path={RoutesName.AboutUs} element={<h2>{t("aboutUs.title")}</h2>}/>
                         <Route path={RoutesName.TransferFees} element={<h2>{t("transferFees.title")}</h2>}/>
@@ -59,10 +60,10 @@ const LayoutHeader = () => {
                         to={RoutesName.Landing}
                         className={({ isActive }) => isActive ? 'text-orange mx-1 cursor-pointer hover-text' : 'mx-1 cursor-pointer hover-text'}
                     >{t("home")}</NavLink>
-                    {/* <NavLink
-                        to="#"
-                        className={`mx-1 cursor-pointer hover-text`}
-                    >{t("MarketTitle.easyTrading")}</NavLink>*/}
+                     <NavLink
+                        to={RoutesName.EasyTrading}
+                        className={({ isActive }) => isActive ? 'text-orange mx-1 cursor-pointer hover-text' : 'mx-1 cursor-pointer hover-text'}
+                    >{t("MarketTitle.easyTrading")}</NavLink>
                     <NavLink
                         to={RoutesName.Panel}
                         className={({ isActive }) => isActive ? 'text-orange mx-1 cursor-pointer hover-text' : 'mx-1 cursor-pointer hover-text'}

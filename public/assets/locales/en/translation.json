@@ -52,6 +52,7 @@
   "from": "from",
   "row": "Row",
   "until": "until",
+  "with": "With",
   "withPrice": "with price",
   "description": "Description",
   "first": "First",
@@ -583,6 +584,7 @@
     "emptyCaptcha": "Captcha required!",
     "forgetPassServerError": "Error recovering password, try again!",
     "UserAlreadyExists": "User with this email is already registered",
+    "RegisterIsLimited": "It is not possible to register for you at this time.",
     "forgetPassEmailForgetError": "Email format is incorrect!",
     "forDemoLogin": "Click here for a testing login!"
   },
