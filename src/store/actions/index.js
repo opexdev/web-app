@@ -35,6 +35,7 @@ export {
     changeUserInfo,
     setUserAccountInfo,
     setUserAccountInfoInitiate,
+    getUserConfigsInitiate,
     setKYCStatus,
     setUserConfig,
     setFavPairInitiate,
