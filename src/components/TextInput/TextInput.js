@@ -38,7 +38,6 @@ const TextInput = (props) => {
             if (state.isSelected) {
                 className = className + " " + classes.isSelected
             }
-        console.log("className", className)
         return className;
     }
 

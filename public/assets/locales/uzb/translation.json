@@ -52,12 +52,14 @@
   "from": "dan",
   "row": "Qator",
   "until": "gacha",
+  "with": "Bilan",
   "withPrice": "narx bilan",
   "description": "Tavsif",
   "first": "Birinchi",
   "offline": "Internetga ulanganligini tekshiring!",
   "improperMobileView": "Mobil versiya uchun optimallashtirilmagan.",
   "home": "Bosh sahifa",
+  "convert": "Konvertatsiya",
   "country": {
     "iran": "IRAN",
     "germany": "Germany",
@@ -583,6 +585,7 @@
     "emptyCaptcha": "Captcha talab qilinadi!",
     "forgetPassServerError": "Parolni tiklashda xatolik yuz berdi, qaytadan urinib ko'ring!",
     "UserAlreadyExists": "Ushbu email manziliga ega foydalanuvchi allaqachon ro'yxatdan o'tgan",
+    "RegisterIsLimited": "Ayni paytda siz uchun ro'yxatdan o'tish mumkin emas.",
     "forgetPassEmailForgetError": "Email manzili formati noto'g'ri!",
     "forDemoLogin": "Sinov uchun kirish uchun bu yerni bosing!"
   },
