@@ -9,6 +9,7 @@ import {setThemeInitiate} from "../../../../../../store/actions";
 import {Link} from "react-router-dom";
 import packageJson from "../../../../../../../package.json"
 import {toAbsoluteUrl} from "../../../../../../utils/utils";
+import {EasyTrading} from "../../../../Routes/routes";
 
 const Footer = () => {
     const {t} = useTranslation();
@@ -28,6 +29,9 @@ const Footer = () => {
                         <Link to={Routes.Panel}>
                             <span className="hover-text">{t("MarketTitle.advancedTrading")}</span>
                         </Link>
+                        <Link to={Routes.EasyTrading}>
+                            <span className="hover-text">{t("MarketTitle.easyTrading")}</span>
+                        </Link>
                         <Link to={Routes.AllMarket}>
                             <span className="hover-text">{t("market.title")}</span>
                         </Link>
@@ -35,11 +39,12 @@ const Footer = () => {
                         <Link to={Routes.Commission}>
                             <span className="hover-text">{t("commissions.title")}</span>
                         </Link>
+
+                    </div>
+                    <div className="column px-2">
                         <Link to={Routes.TransferFees}>
                             <span className="hover-text">{t("transferFees.title")}</span>
                         </Link>
-                    </div>
-                    <div className="column px-2">
                         <Link to={Routes.AboutUs}>
                             <span className="hover-text">{t("aboutUs.title")}</span>
                         </Link>

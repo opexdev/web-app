@@ -248,7 +248,7 @@ const EasyOrder = () => {
 
     const submitButtonTextHandler = () => {
         if (isLoading) return <img className={`${classes.thisLoading}`} src={images.linearLoading} alt="linearLoading"/>
-        if (isLogin) return t("buy")
+        if (isLogin) return t("convert")
         return t("pleaseLogin")
     }
 
