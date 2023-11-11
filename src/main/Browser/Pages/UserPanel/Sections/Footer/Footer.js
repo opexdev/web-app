@@ -65,11 +65,11 @@ const Footer = () => {
                         <span className={`pl-1`}>{t("Footer.darkMode")}:</span>
                         <ToggleSwitch onchange={(e) => dispatch(setThemeInitiate(e.target.checked))} checked={isDark}/>
                     </div>
-                    <div className={`row ai-center jc-between`}>
+                    {languages?.length > 1 && <div className={`row ai-center jc-between`}>
                         <div className={`row ai-center ${classes.languages}`}>
                             {languages?.map((lang, index) => <span className="cursor-pointer px-1" onClick={() => i18n.changeLanguage(lang)} key={index}>{t("Languages."+ lang)}</span>)}
                         </div>
-                    </div>
+                    </div>}
                 </div>
                 <div className={`column jc-center ai-center`}>
                     <img src={toAbsoluteUrl('/assets/logo/logo.svg')} alt={t("title")} title={t("title")}
