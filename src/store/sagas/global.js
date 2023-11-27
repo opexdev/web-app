@@ -8,9 +8,11 @@ export function* setThemeSaga(action) {
     try {
         yield put(actions.setTheme(action.theme));
         yield call([localStorage, 'setItem'], "theme", action.theme)
-        yield call(axios.post, '/config/user/v1', {
-            theme: action.theme
-        })
+        if (action.isLogin) {
+            yield call(axios.post, '/config/user/v1', {
+                theme: action.theme
+            })
+        }
     } catch (e) {
         console.log(e)
     }

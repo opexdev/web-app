@@ -9,14 +9,21 @@ import {setThemeInitiate} from "../../../../../../store/actions";
 import {Link} from "react-router-dom";
 import packageJson from "../../../../../../../package.json"
 import {toAbsoluteUrl} from "../../../../../../utils/utils";
+import {setUserConfig} from "js-api-client";
 
 const Footer = () => {
     const {t} = useTranslation();
     const theme = useSelector((state) => state.global.theme)
+    const isLogin = useSelector((state) => state.auth.isLogin)
     const dispatch = useDispatch()
     const languages = useSelector((state) => state.exchange.supportedLanguages)
-    const changeLanguage = (lang) =>{
+    const changeLanguage = (lang) => {
         i18n.changeLanguage(lang)
+        if (isLogin) {
+            setUserConfig({
+                language: lang
+            })
+        }
     }
 
     return (
@@ -60,11 +67,15 @@ const Footer = () => {
                 <div className={`column ai-center jc-center`}>
                     <div className={`row ai-center py-2`}>
                         <span className={`pl-1`}>{t("Footer.darkMode")}:</span>
-                        <ToggleSwitch onchange={(e) => dispatch(setThemeInitiate(e.target.checked ? "DARK" : "LIGHT"))} checked={theme === "DARK"}/>
+                        <ToggleSwitch
+                            onchange={(e) => dispatch(setThemeInitiate(e.target.checked ? "DARK" : "LIGHT", isLogin))}
+                            checked={theme === "DARK"}/>
                     </div>
                     <div className={`row ai-center jc-between`}>
                         <div className={`row ai-center ${classes.languages}`}>
-                            {languages?.map((lang, index) => <span className="cursor-pointer px-1" onClick={() => changeLanguage(lang)} key={index}>{t("Languages."+ lang)}</span>)}
+                            {languages?.map((lang, index) => <span className="cursor-pointer px-1"
+                                                                   onClick={() => changeLanguage(lang)}
+                                                                   key={index}>{t("Languages." + lang)}</span>)}
                         </div>
                     </div>
                 </div>
@@ -75,14 +86,14 @@ const Footer = () => {
                 </div>
             </div>
             <div className={`width-90 flex jc-center ai-center mt-1`}>
-              <p>
-                <Trans
+                <p>
+                    <Trans
                         i18nKey="Footer.copyright"
                         values={{
-                            year: new Intl.DateTimeFormat(i18n.language , {year: 'numeric'}).format(new Date()),
+                            year: new Intl.DateTimeFormat(i18n.language, {year: 'numeric'}).format(new Date()),
                         }}
                     />
-              </p>
+                </p>
             </div>
         </div>
     );

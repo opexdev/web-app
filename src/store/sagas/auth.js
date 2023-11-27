@@ -2,7 +2,6 @@ import {call, put} from "redux-saga/effects";
 import * as actions from "../actions/index";
 import axios from "axios";
 import i18n from "i18next";
-import jwtDecode from "jwt-decode";
 
 export function* logout() {
     yield call([localStorage, 'removeItem'], "refreshToken")
