@@ -5,12 +5,14 @@ import {useParams} from "react-router-dom";
 import {BN} from "../../../../../../../../utils/utils";
 import {useGetUserAccount} from "../../../../../../../../queries/hooks/useGetUserAccount";
 import {useGetUserAssets} from "../../../../../../../../queries";
+import {useSelector} from "react-redux";
 
 const WalletHeader = () => {
     const {id} = useParams()
     const {t} = useTranslation()
-    const refCurrency = window.env.REACT_APP_REFERENCE_FIAT_CURRENCY
+
     const {data: userAccount} = useGetUserAccount()
+    const refCurrency = useSelector((state) => state.exchange.baseCurrency)
 
     const {data: estimateValue , isLoading, error} = useGetUserAssets(refCurrency)
     const allEstimateValue = (isLoading || error) ?  0 : (estimateValue?.find( q => q.asset === id ))

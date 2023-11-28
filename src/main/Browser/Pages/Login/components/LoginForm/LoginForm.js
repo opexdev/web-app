@@ -11,7 +11,7 @@ import OTPForm from "../OTPForm/OTPForm";
 import {browserName, deviceType, fullBrowserVersion} from "react-device-detect";
 import {validateEmail} from "../../../../../../utils/utils";
 import ForgetPassword from "../ForgetPassword/ForgetPassword";
-import {setUserAccountInfoInitiate, setUserInfo, setUserTokensInitiate} from "../../../../../../store/actions";
+import {getUserConfigsInitiate, setUserInfo, setUserTokensInitiate} from "../../../../../../store/actions";
 import {useGetKycStatus} from "../../../../../../queries";
 import {login, parseToken} from "js-api-client";
 import Icon from "../../../../../../components/Icon/Icon";
@@ -75,9 +75,9 @@ const LoginForm = () => {
             .then(async (res) => {
                 const userToken = parseToken(res.data);
                 const jwt = jwtDecode(userToken.accessToken)
-                await dispatch(setUserInfo(jwt));
-                await dispatch(setUserTokensInitiate(userToken));
-                await dispatch(setUserAccountInfoInitiate())
+                dispatch(setUserInfo(jwt));
+                dispatch(setUserTokensInitiate(userToken));
+                dispatch(getUserConfigsInitiate());
                 await getKycStatus()
                 return navigate(from, {replace: true});
             })

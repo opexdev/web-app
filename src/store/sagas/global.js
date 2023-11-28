@@ -1,11 +1,21 @@
-import {call, put, delay} from "redux-saga/effects";
+import {call, delay, put} from "redux-saga/effects";
 import * as actions from "../actions/index";
 import jwtDecode from "jwt-decode";
 import axios from "axios";
+import i18n from "i18next";
 
 export function* setThemeSaga(action) {
-    yield call([localStorage, 'setItem'], "isDark", action.isDark)
-    yield put(actions.setTheme(action.isDark));
+    try {
+        yield put(actions.setTheme(action.theme));
+        yield call([localStorage, 'setItem'], "theme", action.theme)
+        if (action.isLogin) {
+            yield call(axios.post, '/config/user/v1', {
+                theme: action.theme
+            })
+        }
+    } catch (e) {
+        console.log(e)
+    }
 }
 
 export function* setActivePair(action) {
@@ -59,6 +69,8 @@ export function* loadConfig(action) {
     yield put(actions.setLoading(true))
     yield put(actions.setError(false))
 
+    let appTheme;
+
     const pairs = [];
     const assets = [];
     const wallets = {};
@@ -66,9 +78,21 @@ export function* loadConfig(action) {
     const lastPrice = {};
 
     try {
+        const {
+            data: {
+                defaultTheme,
+                ...configs
+            }
+        } = yield call(axios.get, '/config/web/v1')
+
+        yield put(actions.setExchangeConfigs(configs));
+
+        appTheme = defaultTheme;
+
+        const localTheme = yield call([localStorage, 'getItem'], 'theme')
+        if (localTheme) appTheme = localTheme;
 
         const symbols = yield call(getExchangeInfo)
-
         for (const symbol of symbols) {
             if (symbol.symbol.toUpperCase().includes("NLN")) continue
             if (!assets.includes(symbol.baseAsset)) {
@@ -99,9 +123,6 @@ export function* loadConfig(action) {
         return yield put(actions.setLoading(false));
     }
 
-    const isDark = yield call([localStorage, 'getItem'], 'isDark')
-    if (isDark) yield put(actions.setTheme(JSON.parse(isDark)));
-
     if (action.token) {
         yield put(actions.setUserTokens({refreshToken: null, accessToken: action.token}));
         yield call([localStorage, 'removeItem'], "refreshToken")
@@ -118,16 +139,24 @@ export function* loadConfig(action) {
     if (verifyEmailLockTime) yield put(actions.setVerifyEmailLock(verifyEmailLockTime));
 
     const refreshToken = localStorage.getItem("refreshToken")
-
     if (refreshToken) {
         const params = new URLSearchParams();
         params.append('client_id', window.env.REACT_APP_CLIENT_ID);
         params.append('client_secret', window.env.REACT_APP_CLIENT_SECRET);
         params.append('grant_type', 'refresh_token');
         params.append('refresh_token', refreshToken);
-
         try {
             const {data: {access_token}} = yield call(axios.post, '/auth/realms/opex/protocol/openid-connect/token', params)
+            const {
+                data: {
+                    theme: userTheme,
+                    language,
+                    ...userConfigs
+                }
+            } = yield call(axios.get, '/config/user/v1', {headers: {Authorization: `Bearer ${access_token}`}})
+            i18n.changeLanguage(language)
+            yield put(actions.setUserConfig(userConfigs));
+            if (userTheme) appTheme = userTheme
             const jwt = jwtDecode(access_token)
             yield call([localStorage, 'setItem'], "refreshToken", refreshToken)
             yield put(actions.setUserTokens({refreshToken, accessToken: access_token}));
@@ -136,7 +165,8 @@ export function* loadConfig(action) {
         } catch (e) {
             yield put(actions.setLogoutInitiate());
         }
-    }
 
+    }
+    yield put(actions.setTheme(appTheme));
     yield put(actions.setLoading(false));
 }

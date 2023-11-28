@@ -12,7 +12,7 @@ const removeTestCoin = (pair) => {
 }
 
 const AdvanceTradingView = () => {
-    const isDark = useSelector((state) => state.global.isDark)
+    const theme = useSelector((state) => state.global.theme)
     const activePair = useSelector((state) => state.exchange.activePair)
     const widgetOptions = {
         symbol: removeTestCoin(activePair.baseAsset+"/"+activePair.quoteAsset),
@@ -32,13 +32,13 @@ const AdvanceTradingView = () => {
 
     useLayoutEffect(() => {
         const widget = (window.tvWidget = new window.TradingView.widget(
-            {...widgetOptions, theme: isDark ? "dark" : "light"},
+            {...widgetOptions, theme: theme.toLowerCase()},
         ));
 
         widget.onChartReady(() => {
             console.log("Chart has loaded!");
         });
-    }, [isDark]);
+    }, [theme]);
 
     return (
         <div

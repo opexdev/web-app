@@ -1,6 +1,6 @@
 import React, {useEffect, useRef} from "react";
 import classes from "../../TradingView.module.css";
-import { createChart } from 'lightweight-charts';
+import {createChart} from 'lightweight-charts';
 import {useSelector} from "react-redux";
 import moment from "moment-jalaali";
 import {
@@ -18,7 +18,7 @@ const MarketChart = ({type}) => {
     let chartProperties, candleSeries, volumeSeries;
     const chart = useRef();
 
-    const isDark = useSelector((state) => state.global.isDark)
+    const theme = useSelector((state) => state.global.theme)
     const activePairSymbol = useSelector((state) => state.exchange.activePair.symbol)
 
     const {data, error} = useGetChartCandlesticks(activePairSymbol, type)
@@ -56,7 +56,7 @@ const MarketChart = ({type}) => {
         priceScale: lightTheme.priceScale,
         timeScale: {...lightTheme.timeScale, ...timeScale}
     };
-    if (isDark) {
+    if (theme === "DARK") {
         chartProperties = {
             ...chartProperties,
             layout: {
@@ -77,13 +77,13 @@ const MarketChart = ({type}) => {
             chartContainerRef.current,
             chartProperties,
         );
-        candleSeries = chart.current.addCandlestickSeries(isDark ? darkTheme : candleColors);
+        candleSeries = chart.current.addCandlestickSeries(theme === "DARK" ? darkTheme : candleColors);
         volumeSeries = chart.current.addHistogramSeries({
             priceFormat: {
                 type: 'volume',
             },
             priceScaleId: '',
-            lastValueVisible:false,
+            lastValueVisible: false,
         });
         volumeSeries.priceScale().applyOptions({
             scaleMargins: {
@@ -95,7 +95,7 @@ const MarketChart = ({type}) => {
         candleSeries.setData(data);
         volumeSeries.setData(data);
 
-        chart.current .timeScale().fitContent();
+        chart.current.timeScale().fitContent();
         return () => {
             if (chart.current !== null) {
                 chart.current.remove();
@@ -133,7 +133,7 @@ const MarketChart = ({type}) => {
     }, [])
 
     useEffect(() => {
-        if (isDark) {
+        if (theme === "DARK") {
             chart.current.applyOptions({
                 ...chartProperties,
                 layout: {
@@ -154,7 +154,7 @@ const MarketChart = ({type}) => {
                 timeScale: lightTheme.timeScale,
             });
         }
-    }, [isDark]);
+    }, [theme]);
 
     return (
         <div ref={chartContainerRef} className={`container  ${classes.chartContainer}`}>
