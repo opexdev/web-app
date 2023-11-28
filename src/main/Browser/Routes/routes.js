@@ -2,6 +2,7 @@ export const Landing = "/";
 export const Panel = "/panel";
 export const Login = "/login";
 export const AllMarket = "/all-market";
+export const EasyTrading = "/easy-trading";
 export const AboutUs = "/about-us";
 export const Commission = "/commission";
 export const TransferFees = "/transfer-fees";

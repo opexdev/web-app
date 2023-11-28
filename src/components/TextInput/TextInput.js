@@ -31,12 +31,14 @@ const TextInput = (props) => {
 
     const optionClassHandler = (state) => {
         let className = classes.selectOptions
+
         if (state.isFocused) {
             className = className + " " + classes.isFocused
         }
         if (state.isSelected) {
             className = className + " " + classes.isSelected
         }
+
         return className;
     }
 

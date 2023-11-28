@@ -86,6 +86,7 @@
 .icon-trash-1 { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#x0207;&nbsp;'); }
 .icon-trash-2 { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#x0208;&nbsp;'); }
 .icon-cicle-plus-01 { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#x0209;&nbsp;'); }
+.icon-exchange-arrow { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#x0210;&nbsp;'); }
 .icon-market { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xe800;&nbsp;'); }
 .icon-cancel-circled2 { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xe801;&nbsp;'); }
 .icon-settings { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xe802;&nbsp;'); }

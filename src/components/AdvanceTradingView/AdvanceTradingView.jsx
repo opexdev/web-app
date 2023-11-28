@@ -21,7 +21,7 @@ const AdvanceTradingView = () => {
         datafeed: DataFeed,
         library_path: "/charting_library/",
         interval: "3",
-        locale:  i18n.language,
+        locale:  i18n.language === "fa" ? "fa" : "en",
         drawings_access: {type: "black", tools: [{name: "Regression Trend"}]},
         disabled_features: [],
         enabled_features: [],

@@ -10,6 +10,8 @@ import {Link} from "react-router-dom";
 import packageJson from "../../../../../../../package.json"
 import {toAbsoluteUrl} from "../../../../../../utils/utils";
 import {setUserConfig} from "js-api-client";
+import {EasyTrading} from "../../../../Routes/routes";
+
 
 const Footer = () => {
     const {t} = useTranslation();
@@ -37,6 +39,9 @@ const Footer = () => {
                         <Link to={Routes.Panel}>
                             <span className="hover-text">{t("MarketTitle.advancedTrading")}</span>
                         </Link>
+                        <Link to={Routes.EasyTrading}>
+                            <span className="hover-text">{t("MarketTitle.easyTrading")}</span>
+                        </Link>
                         <Link to={Routes.AllMarket}>
                             <span className="hover-text">{t("market.title")}</span>
                         </Link>
@@ -44,11 +49,12 @@ const Footer = () => {
                         <Link to={Routes.Commission}>
                             <span className="hover-text">{t("commissions.title")}</span>
                         </Link>
+
+                    </div>
+                    <div className="column px-2">
                         <Link to={Routes.TransferFees}>
                             <span className="hover-text">{t("transferFees.title")}</span>
                         </Link>
-                    </div>
-                    <div className="column px-2">
                         <Link to={Routes.AboutUs}>
                             <span className="hover-text">{t("aboutUs.title")}</span>
                         </Link>
@@ -71,13 +77,13 @@ const Footer = () => {
                             onchange={(e) => dispatch(setThemeInitiate(e.target.checked ? "DARK" : "LIGHT", isLogin))}
                             checked={theme === "DARK"}/>
                     </div>
-                    <div className={`row ai-center jc-between`}>
+                    {languages?.length > 1 && <div className={`row ai-center jc-between`}>
                         <div className={`row ai-center ${classes.languages}`}>
                             {languages?.map((lang, index) => <span className="cursor-pointer px-1"
                                                                    onClick={() => changeLanguage(lang)}
                                                                    key={index}>{t("Languages." + lang)}</span>)}
                         </div>
-                    </div>
+                    </div>}
                 </div>
                 <div className={`column jc-center ai-center`}>
                     <img src={toAbsoluteUrl('/assets/logo/logo.svg')} alt={t("title")} title={t("title")}

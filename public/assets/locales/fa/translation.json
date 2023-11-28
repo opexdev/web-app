@@ -52,12 +52,14 @@
   "from": "از",
   "row": "ردیف",
   "until": "تا",
+  "with": "با",
   "withPrice": "با قیمت",
   "description": "توضیحات",
   "first": "ابتدا",
   "offline": "اتصال اینترنت را بررسی کنید!",
   "improperMobileView": "فعلاً برای موبایل بهینه نشده است.",
   "home": "صفحه اصلی",
+  "convert": "تبدیل",
   "country": {
     "iran": "ایران",
     "germany": "آلمان",
@@ -247,7 +249,8 @@
     "coin" : "ارز",
     "category" : "نوع تراکنش",
     "size" : "تعداد",
-    "period" : "بازه زمانی"
+    "period" : "بازه زمانی",
+    "ascendingByTime" : "نمایش براساس جدیدترین"
   },
   "TransactionCategory": {
     "DEPOSIT" : "واریز",
@@ -256,7 +259,8 @@
     "WITHDRAW" : "برداشت",
     "ORDER_CANCEL" : "لغو سفارش",
     "ORDER_CREATE" : "ثبت سفارش",
-    "ORDER_FINALIZED" : "اتمام سفارش"
+    "ORDER_FINALIZED" : "اتمام سفارش",
+    "ETC" : "نامشخص"
   },
   "DepositWithdraw": {
     "title": "واریز/برداشت",
@@ -582,7 +586,8 @@
     "minCaptcha": "Captcha باید ۵ کاراکتر باشد!",
     "emptyCaptcha": "وارد کردن Captcha الزامی است",
     "forgetPassServerError": "خطا در بازیابی رمز، دوباره تلاش کنید",
-    "UserAlreadyExists": "ایمل واردشده تکراری است",
+    "UserAlreadyExists": "ایمیل واردشده تکراری است.",
+    "RegisterIsLimited": "در حال حاضر امکان ثبت نام برای شما وجود ندارد.",
     "forgetPassEmailForgetError": "فرمت ایمیل صحیح نیست.",
     "forDemoLogin": "برای ورود آزمایشی، اینجا کلیک کنید!"
   },

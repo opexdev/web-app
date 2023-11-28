@@ -52,12 +52,14 @@
   "from": "dan",
   "row": "Qator",
   "until": "gacha",
+  "with": "Bilan",
   "withPrice": "narx bilan",
   "description": "Tavsif",
   "first": "Birinchi",
   "offline": "Internetga ulanganligini tekshiring!",
   "improperMobileView": "Mobil versiya uchun optimallashtirilmagan.",
   "home": "Bosh sahifa",
+  "convert": "Konvertatsiya",
   "country": {
     "iran": "IRAN",
     "germany": "Germany",
@@ -169,7 +171,7 @@
     "fa": "فارسی",
     "en": "English",
     "ar": "عربي",
-    "uzb": "Oʻzbek"
+    "uzb": "Oʻzbekcha"
   },
   "Theme": {
     "Light": "yorug'lik",
@@ -247,7 +249,8 @@
     "coin": "Koins",
     "category": "Toifalar",
     "size": "Raqam",
-    "period" : "Davr"
+    "period" : "Davr",
+    "ascendingByTime" : "Eng so'nggisiga asoslangan ko'rsatish"
   },
   "TransactionCategory": {
     "DEPOSIT": "Depozit",
@@ -256,7 +259,8 @@
     "WITHDRAW": "Olib chiqish",
     "ORDER_CANCEL": "Buyurtmani bekor qilish",
     "ORDER_CREATE": "Buyurtma yaratish",
-    "ORDER_FINALIZED": "Buyurtma yakunlandi"
+    "ORDER_FINALIZED": "Buyurtma yakunlandi",
+    "ETC" : "Noma'lum"
   },
   "DepositWithdraw": {
     "title": "Depozit / Pul olish",
@@ -583,6 +587,7 @@
     "emptyCaptcha": "Captcha talab qilinadi!",
     "forgetPassServerError": "Parolni tiklashda xatolik yuz berdi, qaytadan urinib ko'ring!",
     "UserAlreadyExists": "Ushbu email manziliga ega foydalanuvchi allaqachon ro'yxatdan o'tgan",
+    "RegisterIsLimited": "Ayni paytda siz uchun ro'yxatdan o'tish mumkin emas.",
     "forgetPassEmailForgetError": "Email manzili formati noto'g'ri!",
     "forDemoLogin": "Sinov uchun kirish uchun bu yerni bosing!"
   },
