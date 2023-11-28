@@ -11,26 +11,35 @@ import DatePanel from "react-multi-date-picker/plugins/date_panel";
 import Button from "../../../../../../../../components/Button/Button";
 import Date from "../../../../../../../../components/Date/Date";
 import TransactionHistoryTable from "./components/TransactionHistoryTable/TransactionHistoryTable";
+import ToggleSwitch from "../../../../../../../../components/ToggleSwitch/ToggleSwitch";
 
 const TransactionHistory = () => {
 
     const {t} = useTranslation();
     const user_id = useSelector((state) => state.auth.id)
     const coins = useSelector((state) => state.exchange.assets)
+
+    /*const [ascending, setAscending] = useState(true);*/
+
     const [query, setQuery] = useState({
         "coin": null, // optional
         "category": null, // optional [DEPOSIT, FEE, TRADE, WITHDRAW, ORDER_CANCEL, ORDER_CREATE, ORDER_FINALIZED]
         "startTime": moment().subtract(1, 'months').startOf("day").valueOf(),
         "endTime": moment().endOf("day").valueOf(),
+        "ascendingByTime": true,
         "limit": 10,
         "offset": 0
     });
 
-    const {data, isLoading, error} = useTransactionHistory(user_id, query);
+    const {data, isLoading, error, refetch} = useTransactionHistory(user_id, query);
     const pagination = {
         page: (query.offset / query.limit) + 1,
         isLastPage: data?.length < query.limit
     }
+
+    /*useEffect(()=>{
+        refetch()
+    },[query?.ascendingByTime])*/
 
     const isFirst = useRef(true);
 
@@ -186,11 +195,27 @@ const TransactionHistory = () => {
                     </div>
                 </div>
 
-                {/*<div className={`row jc-center ai-center mr-1 fs-0-8`}>
-                    <span className={`px-1 py-1 rounded-5 cursor-pointer hover-text ${interval === "24h" && classes.active}`} onClick={()=>dispatch(setMarketInterval("24h"))}>{t("marketInterval.24h")}</span>
-                    <span className={`px-1 py-1 rounded-5 cursor-pointer hover-text ${interval === "7d" && classes.active}`} onClick={()=>dispatch(setMarketInterval("7d"))}>{t("marketInterval.7d")}</span>
-                    <span className={`px-1 py-1 rounded-5 cursor-pointer hover-text ${interval === "1M" && classes.active}`} onClick={()=>dispatch(setMarketInterval("1M"))}>{t("marketInterval.1M")}</span>
+
+                {/*<div className={`width-100 row jc-around ai-center py-2 border-bottom`}>
+
                 </div>*/}
+
+
+                <div className={`row jc-center ai-center mr-1 fs-0-8`}>
+                    <span className={`fs-0-8 ml-1`}>{t("TransactionHistory.ascendingByTime")}</span>
+                    <ToggleSwitch
+
+                        onchange={ () => setQuery(prevState => {return {
+                            ...prevState,
+                            ascendingByTime: !prevState.ascendingByTime
+                        }}) }
+
+                        /*onchange={()=> setQuery({
+                            ...query,
+                            ascendingByTime: (prevState => !prevState)}
+                        )}*/
+                        checked={query?.ascendingByTime}/>
+                </div>
             </div>
             <div>
                 {content()}

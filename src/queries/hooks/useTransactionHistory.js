@@ -4,7 +4,7 @@ import axios from "axios";
 export const useTransactionHistory = (user_id, query) => {
 
     return useQuery(
-        ['allTxHistory', user_id, query.coin, query.category, query.endTime, query.startTime, query.limit, query.offset],
+        ['allTxHistory', user_id, query.coin, query.category, query.endTime, query.startTime, query.limit, query.offset, query.ascendingByTime],
         () => getWithdrawTxsFunc(user_id, query),
         {
             retry: 1,

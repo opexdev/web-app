@@ -249,7 +249,8 @@
     "coin": "Coins",
     "category": "Categories",
     "size": "Number",
-    "period" : "Period"
+    "period" : "Period",
+    "ascendingByTime" : "Ascending By Time"
   },
   "TransactionCategory": {
     "DEPOSIT": "Deposit",
@@ -258,7 +259,8 @@
     "WITHDRAW": "Withdraw",
     "ORDER_CANCEL": "Cancel Order",
     "ORDER_CREATE": "Create Order",
-    "ORDER_FINALIZED": "Finalized Order"
+    "ORDER_FINALIZED": "Finalized Order",
+    "ETC" : "Unknown"
   },
   "DepositWithdraw": {
     "title": "Deposit / Withdraw",

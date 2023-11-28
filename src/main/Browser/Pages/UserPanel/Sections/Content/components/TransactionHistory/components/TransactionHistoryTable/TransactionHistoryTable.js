@@ -18,16 +18,24 @@ const TransactionHistoryTable = ({txs, offset}) => {
         />);
     }
 
-    const txStatus = (status) => {
-        switch (status) {
-            case 0:
-                return t("orderStatus.NEW");
-            case 1:
-                return t("orderStatus.DONE");
-            case 2:
-                return t("orderStatus.REJECTED");
+    const txCategory = (category) => {
+        switch (category) {
+            case "DEPOSIT":
+                return t("TransactionCategory.DEPOSIT");
+            case "FEE":
+                return t("TransactionCategory.FEE");
+            case "TRADE":
+                return t("TransactionCategory.TRADE");
+            case "WITHDRAW":
+                return t("TransactionCategory.WITHDRAW");
+            case "ORDER_CANCEL":
+                return t("TransactionCategory.ORDER_CANCEL");
+            case "ORDER_CREATE":
+                return t("TransactionCategory.ORDER_CREATE");
+            case "ORDER_FINALIZED":
+                return t("TransactionCategory.ORDER_FINALIZED");
             default:
-                return status;
+                return t("TransactionCategory.ETC");
         }
     };
 
@@ -37,11 +45,11 @@ const TransactionHistoryTable = ({txs, offset}) => {
             <span className="width-6 flex jc-start ai-center">{t("row")}</span>
             <span className="width-9 flex jc-start ai-center">{t("date")}</span>
             <span className="width-9 flex  jc-start ai-center">{t("time")}</span>
-            <span className="width-15 flex jc-start ai-center">{t("TransactionHistory.category")}</span>
-            <span className="width-11 flex jc-start ai-center">{t("TransactionHistory.coin")}</span>
-            <span className="width-13 flex jc-start ai-center">{t("volume")}</span>
+            <span className="width-13 flex jc-start ai-center">{t("TransactionHistory.category")}</span>
+            <span className="width-10 flex jc-start ai-center">{t("TransactionHistory.coin")}</span>
+            <span className="width-10 flex jc-start ai-center">{t("volume")}</span>
             {/*<span className="width-12 flex jc-end ai-center">{t("details")}</span>*/}
-            <span className="width-31 flex jc-start ai-center">{t("description")}</span>
+            <span className="width-43 flex jc-start ai-center">{t("description")}</span>
         </div>
     );
 
@@ -63,27 +71,31 @@ const TransactionHistoryTable = ({txs, offset}) => {
                             <span className="width-9 row jc-start ai-center">
                              {moment(tr.date).format("HH:mm:ss")}
                          </span>
-                            <span className="width-15 row jc-start ai-center">
-                             {t('TransactionCategory.'+tr.category)}
+                            <span className="width-13 row jc-start ai-center">
+                             {txCategory(tr.category)}
                          </span>
-                            <span className="width-11 row jc-start ai-center">
+                            <span className="width-10 row jc-start ai-center">
                              <span className={`ml-05`}>{t("currency." + tr.currency )}</span>
                              {/*<span className={`fs-0-9 text-gray mr-05`}>{tr.currency}</span>*/}
                          </span>
-                            <span className="width-13 row jc-start ai-center">
+                            <span className="width-10 row jc-start ai-center">
                             {new BN(tr?.amount).toFormat()}
                          </span>
-                         <span className="width-37 row jc-start ai-center">
-                             {(tr?.category === "DEPOSIT" || tr?.category === "WITHDRAW") ? "----" :
-                                 <>
-                                     <span> {t('TransactionCategory.'+tr.category)}</span>
-                                     <span className={`mr-05`}>{tr?.additionalData?.ask && t('sell')} {tr?.additionalData?.bid && t('buy')}</span>
-                                     <span className={`mr-05`}>{new BN(tr?.additionalData?.origQuantity).toFormat()}</span>
-                                     <span className={`mr-05`}>{t("currency." + tr?.additionalData?.pair?.leftSideName )}</span>
-                                     <span className={`mr-05`}>{t("withPrice")}</span>
-                                     <span className={`mr-05`}>{new BN(tr?.additionalData?.origPrice).toFormat()}</span>
-                                     <span className={`mr-05`}>{t("currency." + tr?.additionalData?.pair?.rightSideName )}</span>
-                                 </>
+                         <span className="width-43 row jc-start ai-center">
+                             {( tr?.category === "FEE" ||
+                                 tr?.category === "TRADE" ||
+                                 tr?.category === "ORDER_CANCEL" ||
+                                 tr?.category === "ORDER_CREATE"  ||
+                             tr?.category === "ORDER_FINALIZED" ) ? <>
+                                 <span> {t('TransactionCategory.'+tr.category)}</span>
+                                 <span className={`mr-05`}>{tr?.additionalData?.ask && t('sell')} {tr?.additionalData?.bid && t('buy')}</span>
+                                 <span className={`mr-05`}>{new BN(tr?.additionalData?.origQuantity).toFormat()}</span>
+                                 <span className={`mr-05`}>{t("currency." + tr?.additionalData?.pair?.leftSideName )}</span>
+                                 <span className={`mr-05`}>{t("withPrice")}</span>
+                                 <span className={`mr-05`}>{new BN(tr?.additionalData?.origPrice).toFormat()}</span>
+                                 <span className={`mr-05`}>{t("currency." + tr?.additionalData?.pair?.rightSideName )}</span>
+                             </>  : "----"
+
                              }
                          </span>
                          {/*<span className="width-31 row jc-end ai-center" onClick={() => openItem === index ? setOpenItem(null) : setOpenItem(index)}>
@@ -103,7 +115,7 @@ const TransactionHistoryTable = ({txs, offset}) => {
                                 <span>{txStatus(tr?.additionalData?.status)}</span>
                                 <span>{tr?.additionalData?.ask && t('ask')} {tr?.additionalData?.bid && t('bid')}</span>
                             </div>*/}
-                            <div className={`row `}>
+                            {/*<div className={`row `}>
                                 <span> {t('TransactionCategory.'+tr.category)}</span>
                                 <span className={`mr-05`}>{tr?.additionalData?.ask && t('ask')} {tr?.additionalData?.bid && t('bid')}</span>
                                 <span className={`mr-05`}>{new BN(tr?.additionalData?.origQuantity).toFormat()}</span>
@@ -111,7 +123,7 @@ const TransactionHistoryTable = ({txs, offset}) => {
                                 <span className={`mr-05`}>{t("withPrice")}</span>
                                 <span className={`mr-05`}>{new BN(tr?.additionalData?.origPrice).toFormat()}</span>
                                 <span className={`mr-05`}>{t("currency." + tr?.additionalData?.pair?.rightSideName )}</span>
-                            </div>
+                            </div>*/}
 
                         </div>
 

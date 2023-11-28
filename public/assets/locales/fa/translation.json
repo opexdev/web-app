@@ -249,7 +249,8 @@
     "coin" : "ارز",
     "category" : "نوع تراکنش",
     "size" : "تعداد",
-    "period" : "بازه زمانی"
+    "period" : "بازه زمانی",
+    "ascendingByTime" : "نمایش براساس جدیدترین"
   },
   "TransactionCategory": {
     "DEPOSIT" : "واریز",
@@ -258,7 +259,8 @@
     "WITHDRAW" : "برداشت",
     "ORDER_CANCEL" : "لغو سفارش",
     "ORDER_CREATE" : "ثبت سفارش",
-    "ORDER_FINALIZED" : "اتمام سفارش"
+    "ORDER_FINALIZED" : "اتمام سفارش",
+    "ETC" : "نامشخص"
   },
   "DepositWithdraw": {
     "title": "واریز/برداشت",
