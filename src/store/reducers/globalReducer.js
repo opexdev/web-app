@@ -1,7 +1,7 @@
 import * as actionTypes from "../actions/actionTypes";
 
 const initialState = {
-    theme: "LIGHT",
+    theme: "DARK",
     isLoading: true,
     hasError: false,
     marketInterval: "24h",

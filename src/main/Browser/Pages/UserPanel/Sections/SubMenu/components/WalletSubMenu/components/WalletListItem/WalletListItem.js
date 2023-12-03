@@ -42,7 +42,7 @@ const WalletListItem = ({assetName, showZero}) => {
                 <div className="column ai-end">
                     <span>{new BN(free).toFormat() + " "} <span className="fs-0-7">{t("currency." + assetName)}</span></span>
                     <span className="fs-0-7 text-gray" >
-                        <span>{t("WalletSubMenu.equivalent")} </span> {refCurrency === assetName ? new BN(free).toFormat() : new BN(freeEstimateValue).toFormat()}<span> {t("currency."+refCurrency)}</span>
+                        <span>~ </span> {refCurrency === assetName ? new BN(free).toFormat() : new BN(freeEstimateValue).toFormat()}<span> {t("currency."+refCurrency)}</span>
                     </span>
                 </div>
             </div>

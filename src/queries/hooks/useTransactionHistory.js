@@ -1,5 +1,6 @@
 import {useQuery} from "@tanstack/react-query";
 import axios from "axios";
+import {getTransactionHistory} from "js-api-client/client/txs";
 
 export const useTransactionHistory = (user_id, query) => {
 
@@ -16,8 +17,4 @@ export const useTransactionHistory = (user_id, query) => {
 const getWithdrawTxsFunc = async (user_id, query) => {
     const {data} = await getTransactionHistory(user_id, query)
     return data;
-}
-
-const getTransactionHistory = (user_id, query) => {
-    return axios.post(`/wallet/transaction/${user_id}`, query)
 }

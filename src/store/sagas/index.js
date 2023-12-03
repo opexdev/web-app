@@ -16,6 +16,5 @@ export function* watchGlobal() {
   yield takeEvery(actionTypes.SET_KYC_STATUS_INITIATE, getUserKYCStatus);
   yield takeEvery(actionTypes.SET_LAST_PRICE_INITIATE, getExchangeLastPrice);
   yield takeEvery(actionTypes.SET_FAV_PAIR_INITIATE, setFavPair);
-
   yield takeEvery(actionTypes.GET_USER_CONFIGS_INITIATE, getUserConfigs);
 }

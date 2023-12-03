@@ -97,10 +97,7 @@ const Browser = () => {
             <Routes>
                 <Route path={RoutesName.Login} element={<Login/>}/>
                 <Route path={RoutesName.User + "/*"} element={<User/>}/>
-
-
                 <Route path={RoutesName.Panel + "/*"} element={<UserPanel/>}/>
-
                 <Route element={<Layout/>}>
                     <Route path={RoutesName.Landing} element={<Landing/>}/>
                     <Route path={RoutesName.AllMarket} element={<AllMarket/>}/>
@@ -116,7 +113,6 @@ const Browser = () => {
             <Tooltip id="opex-tooltip"/>
             <Toast/>
         </>
-
     );
 };
 

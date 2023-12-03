@@ -182,7 +182,6 @@ const TransactionHistory = () => {
 
         </div>
 
-
         <div className={`card-bg card-border width-100 my-4`} ref={scrollRef}>
             <div className={`card-header-bg row jc-between ai-center px-2 py-5`}>
                 <div className={`row jc-center ai-center`}>
@@ -194,11 +193,6 @@ const TransactionHistory = () => {
                         <span><Date date={query?.endTime}/></span>
                     </div>
                 </div>
-
-
-                {/*<div className={`width-100 row jc-around ai-center py-2 border-bottom`}>
-
-                </div>*/}
 
 
                 <div className={`row jc-center ai-center mr-1 fs-0-8`}>
@@ -222,7 +216,7 @@ const TransactionHistory = () => {
             </div>
         </div>
 
-        <div className={`row jc-start ai-center width-100 mb-5`}>
+        <div className={`row jc-start ai-center width-100 mb-5 width-100 border card-bg px-2 py-3 rounded-8`}>
             <Button
                 buttonClass={`${classes.thisButton} px-3`}
                 buttonTitle={t('first')}
@@ -231,7 +225,7 @@ const TransactionHistory = () => {
                 onClick={firstPage}
             />
             <Button
-                buttonClass={`${classes.thisButton} px-3 mx-1`}
+                buttonClass={`${classes.thisButton} px-3 mx-2`}
                 buttonTitle={t('prev')}
                 disabled={pagination.page === 1}
                 type="button"
