@@ -32,15 +32,11 @@ const LoginForm = () => {
     const {refetch: getKycStatus} = useGetKycStatus();
 
     const from = location.state?.from?.pathname || "/";
-    const isLogin = useSelector((state) => state.auth.isLogin)
 
     const agent = [deviceType, browserName, fullBrowserVersion]
     const clientSecret = window.env.REACT_APP_CLIENT_SECRET
     const clientId = window.env.REACT_APP_CLIENT_ID
 
-    useEffect(() => {
-        if (isLogin) navigate(from, {replace: true});
-    }, [])
 
     useEffect(() => {
         setNeedOTP(undefined)
