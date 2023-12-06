@@ -26,7 +26,7 @@ const TransactionHistory = () => {
         "category": null, // optional [DEPOSIT, FEE, TRADE, WITHDRAW, ORDER_CANCEL, ORDER_CREATE, ORDER_FINALIZED]
         "startTime": moment().subtract(1, 'months').startOf("day").valueOf(),
         "endTime": moment().endOf("day").valueOf(),
-        "ascendingByTime": true,
+        "ascendingByTime": false,
         "limit": 10,
         "offset": 0
     });
@@ -208,7 +208,7 @@ const TransactionHistory = () => {
                             ...query,
                             ascendingByTime: (prevState => !prevState)}
                         )}*/
-                        checked={query?.ascendingByTime}/>
+                        checked={!query?.ascendingByTime}/>
                 </div>
             </div>
             <div>
