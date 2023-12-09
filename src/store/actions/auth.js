@@ -1,4 +1,5 @@
 import * as actionTypes from "./actionTypes";
+import {GET_USER_CONFIGS_INITIATE} from "./actionTypes";
 
 
 export const setUserTokens = (token) => {
@@ -77,5 +78,31 @@ export const logout = () => {
 export const setLogoutInitiate = () => {
     return {
         type: actionTypes.LOGOUT_INITIATE,
+    };
+};
+
+export const setFavPairInitiate = (favoritePairs) => {
+    return {
+        type: actionTypes.SET_FAV_PAIR_INITIATE,
+        favoritePairs
+    };
+};
+export const setFavPair = (favoritePairs) => {
+    return {
+        type: actionTypes.SET_FAV_PAIR,
+        favoritePairs
+    };
+};
+export const setUserConfig = (configs) => {
+    return {
+        type: actionTypes.SET_USER_CONFIG,
+        configs
+    };
+};
+
+export const getUserConfigsInitiate = (configs) => {
+    return {
+        type: actionTypes.GET_USER_CONFIGS_INITIATE,
+        configs
     };
 };

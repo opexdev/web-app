@@ -21,7 +21,8 @@ export {
     setIPG,
     setIPGInitiate,
     setVerifyEmailLock,
-    setVerifyEmailLockInitiate
+    setVerifyEmailLockInitiate,
+    setExchangeConfigs
 
 } from "./exchange";
 
@@ -35,7 +36,9 @@ export {
     setUserAccountInfo,
     setUserAccountInfoInitiate,
     setKYCStatus,
-    setKYCStatusInitiate
+    setKYCStatusInitiate,
+    setUserConfig,
+    getUserConfigsInitiate,
+    setFavPair,
+    setFavPairInitiate
 } from "./auth";
-
-

@@ -249,7 +249,8 @@
     "coin": "Koins",
     "category": "Toifalar",
     "size": "Raqam",
-    "period" : "Davr"
+    "period" : "Davr",
+    "ascendingByTime" : "Eng so'nggisiga asoslangan ko'rsatish"
   },
   "TransactionCategory": {
     "DEPOSIT": "Depozit",
@@ -258,7 +259,8 @@
     "WITHDRAW": "Olib chiqish",
     "ORDER_CANCEL": "Buyurtmani bekor qilish",
     "ORDER_CREATE": "Buyurtma yaratish",
-    "ORDER_FINALIZED": "Buyurtma yakunlandi"
+    "ORDER_FINALIZED": "Buyurtma yakunlandi",
+    "ETC" : "Noma'lum"
   },
   "DepositWithdraw": {
     "title": "Depozit / Pul olish",

@@ -11,7 +11,7 @@ import OTPForm from "../OTPForm/OTPForm";
 import {browserName, deviceType, fullBrowserVersion} from "react-device-detect";
 import {validateEmail} from "../../../../../../utils/utils";
 import ForgetPassword from "../ForgetPassword/ForgetPassword";
-import {setUserAccountInfoInitiate, setUserInfo, setUserTokensInitiate} from "../../../../../../store/actions";
+import {getUserConfigsInitiate, setUserInfo, setUserTokensInitiate} from "../../../../../../store/actions";
 import {useGetKycStatus} from "../../../../../../queries";
 import {login, parseToken} from "js-api-client";
 import Icon from "../../../../../../components/Icon/Icon";
@@ -32,15 +32,11 @@ const LoginForm = () => {
     const {refetch: getKycStatus} = useGetKycStatus();
 
     const from = location.state?.from?.pathname || "/";
-    const isLogin = useSelector((state) => state.auth.isLogin)
 
     const agent = [deviceType, browserName, fullBrowserVersion]
     const clientSecret = window.env.REACT_APP_CLIENT_SECRET
     const clientId = window.env.REACT_APP_CLIENT_ID
 
-    useEffect(() => {
-        if (isLogin) navigate(from, {replace: true});
-    }, [])
 
     useEffect(() => {
         setNeedOTP(undefined)
@@ -75,9 +71,9 @@ const LoginForm = () => {
             .then(async (res) => {
                 const userToken = parseToken(res.data);
                 const jwt = jwtDecode(userToken.accessToken)
-                await dispatch(setUserInfo(jwt));
-                await dispatch(setUserTokensInitiate(userToken));
-                await dispatch(setUserAccountInfoInitiate())
+                dispatch(setUserInfo(jwt));
+                dispatch(setUserTokensInitiate(userToken));
+                dispatch(getUserConfigsInitiate());
                 await getKycStatus()
                 return navigate(from, {replace: true});
             })

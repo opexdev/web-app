@@ -3,7 +3,7 @@ import * as actionTypes from "../actions/actionTypes";
 
 import {getExchangeLastPrice, loadConfig, setActivePair, setIPGLock, setThemeSaga, setVerifyEmailLock} from "./global";
 
-import {getUserKYCStatus, logout, setUserTokens} from "./auth";
+import {getUserConfigs, getUserKYCStatus, logout, setFavPair, setUserTokens} from "./auth";
 
 export function* watchGlobal() {
   yield takeEvery(actionTypes.LOGOUT_INITIATE, logout);
@@ -15,4 +15,6 @@ export function* watchGlobal() {
   yield takeEvery(actionTypes.SET_VERIFY_EMAIL_LOCK_INITIATE, setVerifyEmailLock);
   yield takeEvery(actionTypes.SET_KYC_STATUS_INITIATE, getUserKYCStatus);
   yield takeEvery(actionTypes.SET_LAST_PRICE_INITIATE, getExchangeLastPrice);
+  yield takeEvery(actionTypes.SET_FAV_PAIR_INITIATE, setFavPair);
+  yield takeEvery(actionTypes.GET_USER_CONFIGS_INITIATE, getUserConfigs);
 }

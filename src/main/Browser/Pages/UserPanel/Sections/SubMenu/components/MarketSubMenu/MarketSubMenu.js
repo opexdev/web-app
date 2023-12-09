@@ -1,28 +1,26 @@
-import React, {useEffect, useState} from "react";
+import React, {useState} from "react";
 import classes from "./MarketSubMenu.module.css";
 import MarketCard from "./components/MarketCard/MarketCard";
 import {useTranslation} from "react-i18next";
 import Icon from "../../../../../../../../components/Icon/Icon";
 import AccordionBox from "../../../../../../../../components/AccordionBox/AccordionBox";
-import {useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
+import {setFavPairInitiate} from "../../../../../../../../store/actions";
 
 const MarketSubMenu = () => {
 
     const {t} = useTranslation();
     const [activeTab] = useState(JSON.parse(localStorage.getItem("activeMarketTab")) || 1);
-    const [fav, setFav] = useState(JSON.parse(localStorage.getItem("favPair")) || []);
     const symbols = useSelector((state) => state.exchange.symbols)
-
-    useEffect(() => {
-        localStorage.setItem("favPair", JSON.stringify(fav))
-    }, [fav])
+    const fav = useSelector((state) => state.auth.favoritePairs)
+    const dispatch = useDispatch();
 
     const addToFav = (selected) => {
         if (fav.includes(selected)) {
             const newFav = fav.filter((item) => item !== selected);
-            setFav(newFav);
+            dispatch(setFavPairInitiate(newFav))
         } else {
-            setFav((prev) => [...prev, selected]);
+            dispatch(setFavPairInitiate([...fav, selected]))
         }
     };
 

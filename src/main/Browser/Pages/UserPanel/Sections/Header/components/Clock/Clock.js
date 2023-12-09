@@ -1,11 +1,11 @@
-import React, {useState} from "react";
 import moment from "moment-jalaali";
+import React, {useState} from "react";
+import {useSelector} from "react-redux";
 import useInterval from "../../../../../../../../Hooks/useInterval";
 
 const Clock = () => {
-
+    const type = useSelector((state) => state.exchange.dateType)
     const calendar = () => {
-        const type = window.env.REACT_APP_CALENDAR_TYPE
         switch (type) {
             case "Jalali":
                 return moment().format("jYYYY/jMM/jDD - HH:mm:ss");
@@ -24,9 +24,7 @@ const Clock = () => {
         setTime(calendar())
     }, 1000);
 
-    return (
-        <>{time}</>
-    );
+    return (<>{time}</>);
 };
 
 export default Clock;

@@ -7,10 +7,11 @@ import * as Routes from "../../../../../../../../Routes/routes";
 import {BN} from "../../../../../../../../../../utils/utils";
 import {useGetUserAccount} from "../../../../../../../../../../queries/hooks/useGetUserAccount";
 import {useGetUserAssets} from "../../../../../../../../../../queries";
+import {useSelector} from "react-redux";
 
 const WalletListItem = ({assetName, showZero}) => {
     const {t} = useTranslation();
-    const refCurrency = window.env.REACT_APP_REFERENCE_FIAT_CURRENCY
+    const refCurrency = useSelector((state) => state.exchange.baseCurrency)
     const {data: userAccount} = useGetUserAccount()
     const free = userAccount?.wallets[assetName]?.free || 0
 
@@ -41,7 +42,7 @@ const WalletListItem = ({assetName, showZero}) => {
                 <div className="column ai-end">
                     <span>{new BN(free).toFormat() + " "} <span className="fs-0-7">{t("currency." + assetName)}</span></span>
                     <span className="fs-0-7 text-gray" >
-                        <span>{t("WalletSubMenu.equivalent")} </span> {refCurrency === assetName ? new BN(free).toFormat() : new BN(freeEstimateValue).toFormat()}<span> {t("currency."+refCurrency)}</span>
+                        <span>~ </span> {refCurrency === assetName ? new BN(free).toFormat() : new BN(freeEstimateValue).toFormat()}<span> {t("currency."+refCurrency)}</span>
                     </span>
                 </div>
             </div>

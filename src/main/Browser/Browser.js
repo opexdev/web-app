@@ -28,11 +28,14 @@ const Browser = () => {
     const query = useQuery();
     const dispatch = useDispatch();
 
-    const isDark = useSelector((state) => state.global.isDark)
+    const theme = useSelector((state) => state.global.theme)
     const isLoading = useSelector((state) => state.global.isLoading)
     const hasError = useSelector((state) => state.global.hasError)
+    const title = useSelector((state) => state.exchange.title)
+    const description = useSelector((state) => state.exchange.description)
 
-    isDark ? document.body.classList.add('dark') : document.body.classList.remove('dark');
+
+    theme === "DARK" ? document.body.classList.add('dark') : document.body.classList.remove('dark');
 
     useEffect(() => {
         const impersonate = query.get("impersonate");
@@ -49,6 +52,12 @@ const Browser = () => {
             window.removeEventListener('online', () => dispatch(setInfoMessage(null, null)));
         }
     }, []);
+
+    useEffect(() => {
+        const meta = document.getElementsByTagName('meta')
+        document.title = title ? title : " ";
+        meta.description.content = description ? description : " "
+    }, [title, description])
 
     const Toast = () => <Toaster position="bottom-right" toastOptions={
         {
@@ -88,10 +97,7 @@ const Browser = () => {
             <Routes>
                 <Route path={RoutesName.Login} element={<Login/>}/>
                 <Route path={RoutesName.User + "/*"} element={<User/>}/>
-
-
                 <Route path={RoutesName.Panel + "/*"} element={<UserPanel/>}/>
-
                 <Route element={<Layout/>}>
                     <Route path={RoutesName.Landing} element={<Landing/>}/>
                     <Route path={RoutesName.AllMarket} element={<AllMarket/>}/>
@@ -104,10 +110,9 @@ const Browser = () => {
                     <Route path={RoutesName.ContactUs} element={<ContactUs/>}/>
                 </Route>
             </Routes>
-            <Tooltip  id="opex-tooltip"/>
+            <Tooltip id="opex-tooltip"/>
             <Toast/>
         </>
-
     );
 };
 

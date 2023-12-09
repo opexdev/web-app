@@ -11,26 +11,35 @@ import DatePanel from "react-multi-date-picker/plugins/date_panel";
 import Button from "../../../../../../../../components/Button/Button";
 import Date from "../../../../../../../../components/Date/Date";
 import TransactionHistoryTable from "./components/TransactionHistoryTable/TransactionHistoryTable";
+import ToggleSwitch from "../../../../../../../../components/ToggleSwitch/ToggleSwitch";
 
 const TransactionHistory = () => {
 
     const {t} = useTranslation();
     const user_id = useSelector((state) => state.auth.id)
     const coins = useSelector((state) => state.exchange.assets)
+
+    /*const [ascending, setAscending] = useState(true);*/
+
     const [query, setQuery] = useState({
         "coin": null, // optional
         "category": null, // optional [DEPOSIT, FEE, TRADE, WITHDRAW, ORDER_CANCEL, ORDER_CREATE, ORDER_FINALIZED]
         "startTime": moment().subtract(1, 'months').startOf("day").valueOf(),
         "endTime": moment().endOf("day").valueOf(),
+        "ascendingByTime": false,
         "limit": 10,
         "offset": 0
     });
 
-    const {data, isLoading, error} = useTransactionHistory(user_id, query);
+    const {data, isLoading, error, refetch} = useTransactionHistory(user_id, query);
     const pagination = {
         page: (query.offset / query.limit) + 1,
         isLastPage: data?.length < query.limit
     }
+
+    /*useEffect(()=>{
+        refetch()
+    },[query?.ascendingByTime])*/
 
     const isFirst = useRef(true);
 
@@ -173,7 +182,6 @@ const TransactionHistory = () => {
 
         </div>
 
-
         <div className={`card-bg card-border width-100 my-4`} ref={scrollRef}>
             <div className={`card-header-bg row jc-between ai-center px-2 py-5`}>
                 <div className={`row jc-center ai-center`}>
@@ -186,18 +194,29 @@ const TransactionHistory = () => {
                     </div>
                 </div>
 
-                {/*<div className={`row jc-center ai-center mr-1 fs-0-8`}>
-                    <span className={`px-1 py-1 rounded-5 cursor-pointer hover-text ${interval === "24h" && classes.active}`} onClick={()=>dispatch(setMarketInterval("24h"))}>{t("marketInterval.24h")}</span>
-                    <span className={`px-1 py-1 rounded-5 cursor-pointer hover-text ${interval === "7d" && classes.active}`} onClick={()=>dispatch(setMarketInterval("7d"))}>{t("marketInterval.7d")}</span>
-                    <span className={`px-1 py-1 rounded-5 cursor-pointer hover-text ${interval === "1M" && classes.active}`} onClick={()=>dispatch(setMarketInterval("1M"))}>{t("marketInterval.1M")}</span>
-                </div>*/}
+
+                <div className={`row jc-center ai-center mr-1 fs-0-8`}>
+                    <span className={`fs-0-8 ml-1`}>{t("TransactionHistory.ascendingByTime")}</span>
+                    <ToggleSwitch
+
+                        onchange={ () => setQuery(prevState => {return {
+                            ...prevState,
+                            ascendingByTime: !prevState.ascendingByTime
+                        }}) }
+
+                        /*onchange={()=> setQuery({
+                            ...query,
+                            ascendingByTime: (prevState => !prevState)}
+                        )}*/
+                        checked={!query?.ascendingByTime}/>
+                </div>
             </div>
             <div>
                 {content()}
             </div>
         </div>
 
-        <div className={`row jc-start ai-center width-100 mb-5`}>
+        <div className={`row jc-start ai-center width-100 mb-5 width-100 border card-bg px-2 py-3 rounded-8`}>
             <Button
                 buttonClass={`${classes.thisButton} px-3`}
                 buttonTitle={t('first')}
@@ -206,7 +225,7 @@ const TransactionHistory = () => {
                 onClick={firstPage}
             />
             <Button
-                buttonClass={`${classes.thisButton} px-3 mx-1`}
+                buttonClass={`${classes.thisButton} px-3 mx-2`}
                 buttonTitle={t('prev')}
                 disabled={pagination.page === 1}
                 type="button"
