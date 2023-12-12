@@ -7,6 +7,10 @@
 
     }
 
+    /*.rc-dropdown {
+        font-size: 0.9vw !important;
+    }*/
+
     .button {
         height: 5vh;
         font-size: 0.8vw;

@@ -21,6 +21,8 @@
     "moment-jalaali": "^0.10.0",
     "normalize.css": "^8.0.1",
     "radium": "^0.26.2",
+    "rc-dropdown": "^4.1.0",
+    "rc-menu": "^9.12.4",
     "rc-scrollbars": "^1.1.5",
     "react": "^18.2.0",
     "react-countdown": "^2.3.5",
