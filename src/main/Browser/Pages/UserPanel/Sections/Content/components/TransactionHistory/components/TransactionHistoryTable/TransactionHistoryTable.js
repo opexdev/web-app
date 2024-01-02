@@ -62,9 +62,6 @@
             <>
                 {txs.map((tr, index) => {
 
-                    console.log("makerUuid", tr?.additionalData?.makerUuid)
-                    console.log("takerUuid", tr?.additionalData?.takerUuid)
-
                     const isMaker = tr?.additionalData?.makerUuid === id
                     const isTaker = tr?.additionalData?.takerUuid === id
 
@@ -86,7 +83,7 @@
                                     {txCategory(tr.category)}
                                 </span>
                                 <span className="width-12 row jc-start ai-center">
-                                     {(tr?.wallet === "main") && (tr?.withdraw === false) && (tr?.category === "TRADE") ? "+ " :""}
+                                    {(tr?.wallet === "main") && (tr?.withdraw === false) && (tr?.category === "TRADE") ? "+ " :""}
                                     {(tr?.wallet === "exchange") && (tr?.withdraw === true) && (tr?.category === "TRADE") ? "- " :""}
                                     {(tr?.category === "FEE") ? "- " :""}
                                     {new BN(tr?.amount).toFormat()}
@@ -123,12 +120,12 @@
                                          <span className={`mr-05`}>{t("currency." + tr?.additionalData?.pair?.rightSideName )}</span>
                                      </div>
 
-                                     <div className={`row jc-end text-orange`}>
+                                     <div className={`row jc-end text-orange fs-0-9`}>
 
                                          { (tr?.wallet === "main") && (tr?.withdraw === true) && (tr?.category !== "FEE") ? <span>{t("TransactionHistory.assetBlock")}</span> : ""}
                                          { (tr?.wallet === "exchange") && (tr?.withdraw === false) ? <span>{t("TransactionHistory.readyToExchange")}</span> : ""}
-                                         { (tr?.wallet === "main") && (tr?.withdraw === false) && (tr?.category === "TRADE") ? <span className={`text-green`}>{t("TransactionHistory.increaseWallwt")}</span> : ""}
-                                         { (tr?.wallet === "exchange") && (tr?.withdraw === true) && (tr?.category === "TRADE") ? <span className={`text-red`}>{t("TransactionHistory.decreaseWllet")}</span> : ""}
+                                         { (tr?.wallet === "main") && (tr?.withdraw === false) && (tr?.category === "TRADE") ? <span className={`text-green`}>{t("TransactionHistory.increaseWallet")}</span> : ""}
+                                         { (tr?.wallet === "exchange") && (tr?.withdraw === true) && (tr?.category === "TRADE") ? <span className={`text-red`}>{t("TransactionHistory.decreaseWallet")}</span> : ""}
                                          { (tr?.category === "FEE") ? <span className={`text-red`}>{t("TransactionHistory.decreaseWllet")}</span> : ""}
                                          { (tr?.wallet === "main") && (tr?.withdraw === false) && (tr?.category === "ORDER_CANCEL") ? <span>{t("TransactionHistory.assetUnBlocked")}</span> : ""}
                                          { (tr?.wallet === "exchange") && (tr?.withdraw === true) && (tr?.category === "ORDER_CANCEL") ? <span>{t("TransactionHistory.cancelExchange")}</span> : ""}

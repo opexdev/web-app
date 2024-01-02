@@ -255,8 +255,8 @@
     "finished" : "پایان‌یافته",
     "cancelExchange" : "لغو شده",
     "readyToExchange" : "آماده تبادل",
-    "decreaseWllet" : "کاهش موجودی",
-    "increaseWallwt" : "افزایش موجودی",
+    "decreaseWallet" : "کاهش موجودی",
+    "increaseWallet" : "افزایش موجودی",
     "ascendingByTime" : "نمایش براساس جدیدترین"
   },
   "TransactionCategory": {

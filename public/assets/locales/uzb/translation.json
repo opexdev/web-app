@@ -255,8 +255,8 @@
     "finished" : "Tugallandi",
     "cancelExchange" : "Bekor qilindi",
     "readyToExchange" : "Almashtirishga tayyor",
-    "decreaseWllet" : "Inventarizatsiyani qisqartirish",
-    "increaseWallwt" : "Inventarning ko'payishi",
+    "decreaseWallet" : "Inventarizatsiyani qisqartirish",
+    "increaseWallet" : "Inventarning ko'payishi",
     "ascendingByTime" : "Eng so'nggisiga asoslangan ko'rsatish"
   },
   "TransactionCategory": {

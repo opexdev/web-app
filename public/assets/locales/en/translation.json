@@ -255,8 +255,8 @@
     "finished" : "Finished",
     "cancelExchange" : "Canceled",
     "readyToExchange" : "Ready To Exchange",
-    "decreaseWllet" : "Decrease Wllet",
-    "increaseWallwt" : "Increase Wallwt",
+    "decreaseWallet" : "Decrease Wallet",
+    "increaseWallet" : "Increase Wallet",
     "ascendingByTime" : "Ascending By Time"
   },
   "TransactionCategory": {
