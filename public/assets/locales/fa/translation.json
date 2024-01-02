@@ -250,6 +250,13 @@
     "category" : "نوع تراکنش",
     "size" : "تعداد",
     "period" : "بازه زمانی",
+    "assetBlock" : "مسدودسازی موقت",
+    "assetUnBlocked" : "رفع مسدودی",
+    "finished" : "پایان‌یافته",
+    "cancelExchange" : "لغو شده",
+    "readyToExchange" : "آماده تبادل",
+    "decreaseWllet" : "کاهش موجودی",
+    "increaseWallwt" : "افزایش موجودی",
     "ascendingByTime" : "نمایش براساس جدیدترین"
   },
   "TransactionCategory": {

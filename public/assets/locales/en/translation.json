@@ -81,7 +81,7 @@
     "BUSD": "BUSD",
     "DOGE": "DOGE",
     "LTC": "LTC",
-    "TBNB": "TBUSD",
+    "TBNB": "TBNB",
     "TBUSD": "TBUSD",
     "BCH": "BCH",
     "TRX": "TRX"
@@ -250,6 +250,13 @@
     "category": "Categories",
     "size": "Number",
     "period" : "Period",
+    "assetBlock" : "Asset Blocked",
+    "assetUnBlocked" : "Asset UnBlocked",
+    "finished" : "Finished",
+    "cancelExchange" : "Canceled",
+    "readyToExchange" : "Ready To Exchange",
+    "decreaseWllet" : "Decrease Wllet",
+    "increaseWallwt" : "Increase Wallwt",
     "ascendingByTime" : "Ascending By Time"
   },
   "TransactionCategory": {

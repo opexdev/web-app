@@ -81,7 +81,7 @@
     "BUSD": "BUSD",
     "DOGE": "DOGE",
     "LTC": "LTC",
-    "TBNB": "TBUSD",
+    "TBNB": "TBNB",
     "TBUSD": "TBUSD",
     "BCH": "BCH",
     "TRX": "TRX"
@@ -250,6 +250,13 @@
     "category": "Toifalar",
     "size": "Raqam",
     "period" : "Davr",
+    "assetBlock" : "Asset Bloklangan",
+    "assetUnBlocked" : "Blokdan chiqarish",
+    "finished" : "Tugallandi",
+    "cancelExchange" : "Bekor qilindi",
+    "readyToExchange" : "Almashtirishga tayyor",
+    "decreaseWllet" : "Inventarizatsiyani qisqartirish",
+    "increaseWallwt" : "Inventarning ko'payishi",
     "ascendingByTime" : "Eng so'nggisiga asoslangan ko'rsatish"
   },
   "TransactionCategory": {
