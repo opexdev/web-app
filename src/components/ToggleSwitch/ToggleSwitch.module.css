@@ -17,7 +17,7 @@
     right: 0;
     bottom: 0;
     border-radius: 34px;
-    background-color: var(--menu);
+    background-color: var(--textColor);
     -webkit-transition: .4s;
     transition: .4s;
 }

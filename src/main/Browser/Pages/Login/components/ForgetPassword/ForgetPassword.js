@@ -80,7 +80,7 @@ const ForgetPassword = ({returnFunc}) => {
                 setSuccess(true)
             })
             .catch((err) => {
-                if (err?.status === 400 && err?.data?.error === "InvalidCaptcha") {
+                if (err?.response?.data?.error === "InvalidCaptcha") {
                     setForgetPass({...forgetPass, captchaAnswer: {value: "", error: [t("login.InvalidCaptcha")]}})
                 } else {
                     setForgetPass({

@@ -4,3 +4,27 @@
 }
 .content {
 }
+
+.thisButton {
+    background-color: var(--menu);
+    color: var(--textColor);
+}
+
+.name {
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.icon {
+    font-size: 2.5rem !important;
+}
+
+.dropBox {
+    border-bottom: 0.5px solid var(--orange);
+}
+
+.title {
+    line-height: 2em;
+}

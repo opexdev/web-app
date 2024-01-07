@@ -109,10 +109,48 @@ html, body {
 
 }
 
+
 .ltr {
     direction: ltr;
     font-weight: 400;
     font-family: 'Poppins', 'Roboto', sans-serif !important;
+}
+
+
+
+.rc-dropdown {
+    font-family: iranyekan, serif !important;
+    display: flex;
+    justify-content: start;
+    align-items: start;
+    text-align: start;
+    direction: rtl;
+    font-size: 0.9vw !important;
+    max-width: 12vw;
+
+}
+
+.rc-dropdown .rc-menu {
+    background-color: var(--popupAlpha) !important;
+    color: var(--textColor);
+    text-align: start;
+    box-shadow: none !important;
+    border: 0.3vh solid var(--cardBorder) !important;
+    border-radius: 9px !important;
+    margin-top: 4vh!important;
+}
+
+.menuItem {
+    background-color: var(--popupAlpha) !important;
+    color: var(--textColor);
+    text-align: start;
+}
+
+.ltr .rc-dropdown {
+    font-family: 'Poppins', 'Roboto', sans-serif !important;
+}
+.ltr .menuItem {
+    text-align: end;
 }
 
 :root {

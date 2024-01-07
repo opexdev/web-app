@@ -250,6 +250,16 @@
     "category" : "نوع تراکنش",
     "size" : "تعداد",
     "period" : "بازه زمانی",
+    "assetBlock" : "رزرو",
+    "assetUnBlocked" : "رفع مسدودی",
+    "refund" : "بازگشت وجه",
+    "startRefund" : "شروع بازگردانی",
+    "cancelExchange" : "لغو شده",
+    "readyToExchange" : "آماده مبادله",
+    "decreaseWallet" : "کاهش",
+    "increaseWallet" : "افزایش",
+    "balanceStatus" : "وضعیت موجودی",
+    "selfTrade" : "جیب به جیب",
     "ascendingByTime" : "نمایش براساس جدیدترین"
   },
   "TransactionCategory": {
@@ -259,7 +269,7 @@
     "WITHDRAW" : "برداشت",
     "ORDER_CANCEL" : "لغو سفارش",
     "ORDER_CREATE" : "ثبت سفارش",
-    "ORDER_FINALIZED" : "اتمام سفارش",
+    "ORDER_FINALIZED" : "بازگشت وجه",
     "ETC" : "نامشخص"
   },
   "DepositWithdraw": {

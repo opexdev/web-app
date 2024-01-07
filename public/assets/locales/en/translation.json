@@ -81,7 +81,7 @@
     "BUSD": "BUSD",
     "DOGE": "DOGE",
     "LTC": "LTC",
-    "TBNB": "TBUSD",
+    "TBNB": "TBNB",
     "TBUSD": "TBUSD",
     "BCH": "BCH",
     "TRX": "TRX"
@@ -250,6 +250,16 @@
     "category": "Categories",
     "size": "Number",
     "period" : "Period",
+    "assetBlock" : "Reservation",
+    "assetUnBlocked" : "Asset UnBlocked",
+    "refund" : "Refund",
+    "startRefund" : "Start Refund",
+    "cancelExchange" : "Canceled",
+    "readyToExchange" : "Awaiting",
+    "decreaseWallet" : "Deduction",
+    "increaseWallet" : "Addition",
+    "balanceStatus" : "Balance Status",
+    "selfTrade" : "Self Trade",
     "ascendingByTime" : "Ascending By Time"
   },
   "TransactionCategory": {
@@ -259,7 +269,7 @@
     "WITHDRAW": "Withdraw",
     "ORDER_CANCEL": "Cancel Order",
     "ORDER_CREATE": "Create Order",
-    "ORDER_FINALIZED": "Finalized Order",
+    "ORDER_FINALIZED": "Refund",
     "ETC" : "Unknown"
   },
   "DepositWithdraw": {
