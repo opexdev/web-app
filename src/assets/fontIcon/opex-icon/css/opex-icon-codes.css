@@ -76,6 +76,10 @@
 .icon-trash-2:before { content: '\0208'; } /* 'Ȉ' */
 .icon-cicle-plus-01:before { content: '\0209'; } /* 'ȉ' */
 .icon-exchange-arrow:before { content: '\0210'; } /* 'Ȑ' */
+.icon-down:before { content: '\0211'; } /* 'ȑ' */
+.icon-left:before { content: '\0212'; } /* 'Ȓ' */
+.icon-right:before { content: '\0213'; } /* 'ȓ' */
+.icon-up:before { content: '\0214'; } /* 'Ȕ' */
 .icon-market:before { content: '\e800'; } /* '' */
 .icon-cancel-circled2:before { content: '\e801'; } /* '' */
 .icon-settings:before { content: '\e802'; } /* '' */

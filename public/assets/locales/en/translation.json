@@ -250,13 +250,16 @@
     "category": "Categories",
     "size": "Number",
     "period" : "Period",
-    "assetBlock" : "Asset Blocked",
+    "assetBlock" : "Reservation",
     "assetUnBlocked" : "Asset UnBlocked",
-    "finished" : "Finished",
+    "refund" : "Refund",
+    "startRefund" : "Start Refund",
     "cancelExchange" : "Canceled",
-    "readyToExchange" : "Ready To Exchange",
-    "decreaseWallet" : "Decrease Wallet",
-    "increaseWallet" : "Increase Wallet",
+    "readyToExchange" : "Awaiting",
+    "decreaseWallet" : "Deduction",
+    "increaseWallet" : "Addition",
+    "balanceStatus" : "Balance Status",
+    "selfTrade" : "Self Trade",
     "ascendingByTime" : "Ascending By Time"
   },
   "TransactionCategory": {
@@ -266,7 +269,7 @@
     "WITHDRAW": "Withdraw",
     "ORDER_CANCEL": "Cancel Order",
     "ORDER_CREATE": "Create Order",
-    "ORDER_FINALIZED": "Finalized Order",
+    "ORDER_FINALIZED": "Refund",
     "ETC" : "Unknown"
   },
   "DepositWithdraw": {
