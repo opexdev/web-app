@@ -37,6 +37,12 @@ const TransactionHistory = () => {
         isLastPage: data?.length < query.limit
     }
 
+    /*console.log("Math.max", Math.max())*/
+
+    /*console.log("Math.max", Math.max(...data.map(o => o.y)))
+    console.log("data", data[data?.length-1]?.id)
+    console.log("data", data?.length)
+*/
     /*useEffect(()=>{
         refetch()
     },[query?.ascendingByTime])*/
