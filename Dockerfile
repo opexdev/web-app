@@ -1,4 +1,4 @@
-FROM node:lts-fermium AS build
+FROM node:lts-gallium AS build
 COPY . /web-app
 WORKDIR /web-app
 ENV NODE_ENV production
