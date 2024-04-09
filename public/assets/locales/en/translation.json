@@ -260,6 +260,7 @@
     "increaseWallet" : "Addition",
     "balanceStatus" : "Balance Status",
     "selfTrade" : "Self Trade",
+    "forFee" : "Fee for",
     "ascendingByTime" : "Ascending By Time"
   },
   "TransactionCategory": {
@@ -267,9 +268,13 @@
     "FEE": "Fee",
     "TRADE": "Trade",
     "WITHDRAW": "Withdraw",
+    "WITHDRAW_REQUEST" : "Withdraw Request",
+    "WITHDRAW_ACCEPT" : "Withdraw Accept",
+    "WITHDRAW_REJECT" : "Withdraw Reject",
     "ORDER_CANCEL": "Cancel Order",
     "ORDER_CREATE": "Create Order",
     "ORDER_FINALIZED": "Refund",
+    "PURCHASE_FINALIZED" : "Purchase Finalized",
     "ETC" : "Unknown"
   },
   "DepositWithdraw": {

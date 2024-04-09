@@ -260,6 +260,7 @@
     "increaseWallet" : "Inventarning ko'payishi",
     "balanceStatus" : "Muvozanat holati",
     "selfTrade" : "O'z-o'zidan savdo",
+    "forFee" : "Haq uchun",
     "ascendingByTime" : "Eng so'nggisiga asoslangan ko'rsatish"
   },
   "TransactionCategory": {
@@ -267,9 +268,13 @@
     "FEE": "haq",
     "TRADE": "Savdo",
     "WITHDRAW": "Olib chiqish",
+    "WITHDRAW_REQUEST" : "Olib chiqish So'rov ",
+    "WITHDRAW_ACCEPT" : "Olib chiqish Qabul qilish",
+    "WITHDRAW_REJECT" : "Olib chiqish Rad etish",
     "ORDER_CANCEL": "Buyurtmani bekor qilish",
     "ORDER_CREATE": "Buyurtma yaratish",
     "ORDER_FINALIZED": "Qaytarish",
+    "PURCHASE_FINALIZED" : "Sotib olish yakunlandi",
     "ETC" : "Noma'lum"
   },
   "DepositWithdraw": {

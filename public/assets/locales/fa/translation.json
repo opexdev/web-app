@@ -260,6 +260,7 @@
     "increaseWallet" : "افزایش",
     "balanceStatus" : "وضعیت موجودی",
     "selfTrade" : "جیب به جیب",
+    "forFee" : "کارمزد برای",
     "ascendingByTime" : "نمایش براساس جدیدترین"
   },
   "TransactionCategory": {
@@ -267,9 +268,13 @@
     "FEE" : "کارمزد",
     "TRADE" : "معامله",
     "WITHDRAW" : "برداشت",
+    "WITHDRAW_REQUEST" : "درخواست برداشت",
+    "WITHDRAW_ACCEPT" : "برداشت موفق",
+    "WITHDRAW_REJECT" : "رد درخواست برداشت",
     "ORDER_CANCEL" : "لغو سفارش",
     "ORDER_CREATE" : "ثبت سفارش",
     "ORDER_FINALIZED" : "بازگشت وجه",
+    "PURCHASE_FINALIZED" : "انجام معامله",
     "ETC" : "نامشخص"
   },
   "DepositWithdraw": {

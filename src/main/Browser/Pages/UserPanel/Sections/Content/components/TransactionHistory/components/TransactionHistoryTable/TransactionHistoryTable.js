@@ -7,6 +7,7 @@
     import {BN} from "../../../../../../../../../../utils/utils";
     import {useSelector} from "react-redux";
     import Icon from "../../../../../../../../../../components/Icon/Icon";
+    import i18n from "i18next";
 
 
     const TransactionHistoryTable = ({txs, offset}) => {
@@ -33,12 +34,20 @@
                     return t("TransactionCategory.TRADE");
                 case "WITHDRAW":
                     return t("TransactionCategory.WITHDRAW");
+                case "WITHDRAW_REQUEST":
+                    return t("TransactionCategory.WITHDRAW_REQUEST");
+                case "WITHDRAW_ACCEPT":
+                    return t("TransactionCategory.WITHDRAW_ACCEPT");
+                case "WITHDRAW_REJECT":
+                    return t("TransactionCategory.WITHDRAW_REJECT");
                 case "ORDER_CANCEL":
                     return t("TransactionCategory.ORDER_CANCEL");
                 case "ORDER_CREATE":
                     return t("TransactionCategory.ORDER_CREATE");
                 case "ORDER_FINALIZED":
                     return t("TransactionCategory.ORDER_FINALIZED");
+                case "PURCHASE_FINALIZED":
+                    return t("TransactionCategory.PURCHASE_FINALIZED");
                 default:
                     return t("TransactionCategory.ETC");
             }
@@ -46,33 +55,29 @@
 
         const sideHandler = (category, takerDirection, makerDirection, isTaker, isMaker, ask, bid, num) => {
 
-            /*console.log("num", num, category, takerDirection, makerDirection, isTaker, isMaker, ask, bid )*/
-/*
-            console.log("num : ", num, "category : ", category, "takerDirection : ", takerDirection, "makerDirection : ", makerDirection, "isTaker : ", isTaker, "isMaker : ", isMaker, "ask : ", ask, "bid : ", bid )
-*/
 
 
             if (category === "ORDER_CREATE" || category === "ORDER_CANCEL") {
-                return  <span className={`mr-05`}>{ask && t('sell')} {bid && t('buy')}</span>
+                return  <span className={``}>{ask && t('sell')} {bid && t('buy')}</span>
             }
 
             if (((takerDirection === "ASK") || (makerDirection === "BID")) && isTaker && isMaker) {
-                return <span className={`mr-05`}>{t('TransactionHistory.selfTrade')}</span>
+                return <span className={``}>{t('TransactionHistory.selfTrade')}</span>
             }
 
             if (takerDirection === "ASK" && isTaker) {
-                return <span className={`mr-05`}>{t('sell')}</span>
+                return <span className={``}>{t('sell')}</span>
             }
             if (makerDirection === "BID" && isMaker) {
-                return <span className={`mr-05`}>{t('buy')}</span>
+                return <span className={``}>{t('buy')}</span>
             }
 
 
             if (makerDirection === "ASK" && isTaker) {
-                return <span className={`mr-05`}>{t('buy')}</span>
+                return <span className={``}>{t('buy')}</span>
             }
             if (takerDirection === "BID" && isMaker) {
-                return <span className={`mr-05`}>{t('sell')}</span>
+                return <span className={``}>{t('sell')}</span>
             }
 
             else {
@@ -107,6 +112,10 @@
                     const isMaker = tr?.additionalData?.makerUuid === id
                     const isTaker = tr?.additionalData?.takerUuid === id
 
+                    const isSelfTrade = (((tr?.additionalData?.takerDirection === "ASK") || ( tr?.additionalData?.makerDirection === "BID")) && isTaker && isMaker)
+
+                    console.log("isSelfTrade", index , isSelfTrade)
+
                     return (
 
                         <div className={`column ${classes.striped}`} key={index}>
@@ -124,16 +133,23 @@
                                     <span className="width-13 row jc-start ai-center">
                                     {txCategory(tr.category)}
                                 </span>
-                                <span className="width-12 row jc-start ai-center">
-                                    {(tr?.wallet === "main") && (tr?.withdraw === false) && (tr?.category === "TRADE") ? "+ " :""}
-                                    {(tr?.wallet === "exchange") && (tr?.withdraw === true) && (tr?.category === "TRADE") ? "- " :""}
-                                    {(tr?.category === "FEE") ? "- " :""}
-                                    {new BN(tr?.amount).toFormat()}
+                                <span className={`width-12 ${i18n.language !== "fa" ? 'row-reverse jc-end' : 'row jc-start'}  ai-center`}>
+                                    <span className={`fs-0-8 text-gray`}>{tr.currency}</span>
+                                    <span className={`mx-05`}>{new BN(tr?.amount).toFormat() }</span>
+
+                                    {
+                                        ( (tr?.category === "TRADE") && isSelfTrade) ? "" : <>
+                                            {
+                                                (tr?.category !== "WITHDRAW_REQUEST" && tr?.category !== "WITHDRAW_REJECT" && tr?.category !== "WITHDRAW_ACCEPT" && tr?.category !== "ORDER_CREATE" && tr?.category !== "ORDER_CANCEL" )
+                                                && <div className={`row`}>{tr?.withdraw ? '-' : '+'}</div>
+                                            }
+                                        </>
+                                    }
+
                                 </span>
 
                                 <span className="width-10 row jc-start ai-center">
                                     <span className={`ml-05`}>{t("currency." + tr.currency )}</span>
-                                    {/*<span className={`fs-0-9 text-gray mr-05`}>{tr.currency}</span>*/}
                                 </span>
 
                                 <span className="width-46 row jc-between ai-center">
@@ -144,25 +160,14 @@
                                      tr?.category === "ORDER_FINALIZED" ) ? <>
 
                                      <div className={`row jc-start`}>
-                                         {/*<span> {t('TransactionCategory.'+tr.category)}</span>*/}
 
-                                         { (tr?.wallet === "main") && (tr?.withdraw === true) && (tr?.category !== "FEE") ? <span>{t("TransactionHistory.assetBlock")} <span className={`mr-025`}>-</span></span> : ""}
-                                         { (tr?.wallet === "exchange") && (tr?.withdraw === false) ? <span>{t("TransactionHistory.readyToExchange")} <span className={`mr-025`}>-</span></span> : ""}
-                                         { (tr?.wallet === "main") && (tr?.withdraw === false) && (tr?.category === "TRADE") ? <span className={``}>{t("TransactionHistory.increaseWallet")} <span className={`mr-025`}>-</span></span> : ""}
-                                         { (tr?.wallet === "exchange") && (tr?.withdraw === true) && (tr?.category === "TRADE") ? <span className={``}>{t("TransactionHistory.decreaseWallet")} <span className={`mr-025`}>-</span></span> : ""}
-                                         { (tr?.category === "FEE") ? <span className={``}>{t("TransactionHistory.decreaseWallet")} <span className={`mr-025`}>-</span></span> : ""}
-                                         { (tr?.wallet === "main") && (tr?.withdraw === false) && (tr?.category === "ORDER_CANCEL") ? <span>{t("TransactionHistory.assetUnBlocked")} <span className={`mr-025`}>-</span></span> : ""}
-                                         { (tr?.wallet === "exchange") && (tr?.withdraw === true) && (tr?.category === "ORDER_CANCEL") ? <span>{t("TransactionHistory.cancelExchange")} <span className={`mr-025`}>-</span></span> : ""}
-                                         { (tr?.category === "ORDER_FINALIZED") && (tr?.wallet === "main") ? <span>{t("TransactionHistory.refund")} <span className={`mr-025`}>-</span></span> : ""}
-                                         { (tr?.category === "ORDER_FINALIZED") && (tr?.wallet === "exchange") ? <span>{t("TransactionHistory.startRefund")} <span className={`mr-025`}>-</span></span> : ""}
+
+                                         { (tr?.category === "FEE") ? <span className={`ml-05`}>{t("TransactionHistory.forFee")}</span> : ""}
+
 
                                          {
                                              sideHandler(tr?.category, tr?.additionalData?.takerDirection, tr?.additionalData?.makerDirection, isTaker, isMaker, tr?.additionalData?.ask, tr?.additionalData?.bid, (index + offset + 1))
                                          }
-
-                                         {/*{((tr?.additionalData?.takerDirection === "ASK") || (tr?.additionalData?.makerDirection === "BID")) && isTaker && isMaker ? <span className={`mr-05`}>self trade</span> : ""}
-*/}
-
 
                                          <span className={`mr-05`}>{new BN(tr?.additionalData?.origQuantity).toFormat()}</span>
                                          <span className={`mr-05`}>{t("currency." + tr?.additionalData?.pair?.leftSideName )}</span>
@@ -173,56 +178,23 @@
 
                                      <div className={`row jc-end  fs-0-9`}>
 
-                                         {/*{ (tr?.wallet === "main") && (tr?.withdraw === true) && (tr?.category !== "FEE") ? <span>{t("TransactionHistory.assetBlock")}</span> : ""}*/}
-                                         {/*{ (tr?.wallet === "exchange") && (tr?.withdraw === false) ? <span>{t("TransactionHistory.readyToExchange")}</span> : ""}*/}
-                                         { (tr?.wallet === "main") && (tr?.withdraw === false) && (tr?.category === "TRADE") ? <div className={`row text-green`}><span className={`ml-05`}>{t("currency." + tr.currency )}</span><Icon iconName="icon-up flex" customClass={`flex jc-center ai-center`}/></div> : ""}
-                                         { (tr?.wallet === "exchange") && (tr?.withdraw === true) && (tr?.category === "TRADE") ? <div className={`row text-red`}><span className={`ml-05`}>{t("currency." + tr.currency )}</span><Icon iconName="icon-down flex" customClass={`flex jc-center ai-center`}/></div>: ""}
-                                         { (tr?.category === "FEE") ? <div className={`row text-red`}><span className={`ml-05`}>{t("currency." + tr.currency )}</span><Icon iconName="icon-down flex" customClass={`flex jc-center ai-center`}/></div> : ""}
-                                         {/*{ (tr?.wallet === "main") && (tr?.withdraw === false) && (tr?.category === "ORDER_CANCEL") ? <span>{t("TransactionHistory.assetUnBlocked")}</span> : ""}
-                                         { (tr?.wallet === "exchange") && (tr?.withdraw === true) && (tr?.category === "ORDER_CANCEL") ? <span>{t("TransactionHistory.cancelExchange")}</span> : ""}*/}
-                                        {/* { (tr?.category === "ORDER_FINALIZED") && (tr?.wallet === "main") ? <span>{t("TransactionHistory.refund")}</span> : ""}
-                                         { (tr?.category === "ORDER_FINALIZED") && (tr?.wallet === "exchange") ? <span>{t("TransactionHistory.startRefund")}</span> : ""}*/}
+                                         {
+                                             (tr?.category === "TRADE" && !isSelfTrade) || (tr?.category === "FEE") || (tr?.category === "ORDER_FINALIZED") ? <div className={`row ${tr?.withdraw ? 'text-red' : 'text-green'}`}><span className={`ml-05`}>{t("currency." + tr.currency )}</span><Icon iconName={`${tr?.withdraw ? 'icon-down' : 'icon-up'} flex`} customClass={`flex jc-center ai-center`}/></div> : ""
+                                         }
 
-                                         {/*<span className={`text-gray`}>{tr?.additionalData?.ouid.slice(0,5)}</span>*/}
 
                                      </div>
 
-                                     {/*  <span className={`ml-05`}>{isTaker && "isTaker"}</span>
-                                     <span className={`ml-05`}>{isMaker && "isMaker"}</span>
-
-                                     <span className={`text-red ml-05 text-orange width-12`}>{tr?.additionalData?.takerDirection === "ASK" && isTaker ? t('ask') : ""} {tr?.additionalData?.makerDirection === "BID" && isMaker ? t('bid') :""}</span>
-                                     */}
 
                                  </>  : "----"
 
                                  }
                              </span>
-                                {/*<span className="width-31 row jc-end ai-center" onClick={() => openItem === index ? setOpenItem(null) : setOpenItem(index)}>
-                                <Icon iconName={`${openItem === index ? "icon-up-open" : "icon-down-open"} text-blue fs-0-9 cursor-pointer`}
-                                      customClass={classes.iconBG}
-                                />
-                             </span>*/}
+
                             </div>
 
                             <div className={`width-100 px-2 py-2`} style={{display: openItem === index ? "revert" : "none"}}>
-                             {/*   <div className={`column`}>
-                                    <span><span>price: {new BN(tr?.additionalData?.origPrice).toFormat()}</span></span>
-                                    <span>quantity: <span>{new BN(tr?.additionalData?.origQuantity).toFormat()}</span></span>
-                                    <span>Remained Quantity: <span> {new BN(tr?.additionalData?.remainedQuantity).toFormat()}</span></span>
-                                    <span>{tr?.additionalData?.pair?.rightSideName}</span>
-                                    <span>{tr?.additionalData?.pair?.leftSideName}</span>
-                                    <span>{txStatus(tr?.additionalData?.status)}</span>
-                                    <span>{tr?.additionalData?.ask && t('ask')} {tr?.additionalData?.bid && t('bid')}</span>
-                                </div>*/}
-                                {/*<div className={`row `}>
-                                    <span> {t('TransactionCategory.'+tr.category)}</span>
-                                    <span className={`mr-05`}>{tr?.additionalData?.ask && t('ask')} {tr?.additionalData?.bid && t('bid')}</span>
-                                    <span className={`mr-05`}>{new BN(tr?.additionalData?.origQuantity).toFormat()}</span>
-                                    <span className={`mr-05`}>{t("currency." + tr?.additionalData?.pair?.leftSideName )}</span>
-                                    <span className={`mr-05`}>{t("withPrice")}</span>
-                                    <span className={`mr-05`}>{new BN(tr?.additionalData?.origPrice).toFormat()}</span>
-                                    <span className={`mr-05`}>{t("currency." + tr?.additionalData?.pair?.rightSideName )}</span>
-                                </div>*/}
+
 
                             </div>
 
