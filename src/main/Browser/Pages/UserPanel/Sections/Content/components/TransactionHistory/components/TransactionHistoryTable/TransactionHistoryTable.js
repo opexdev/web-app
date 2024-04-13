@@ -54,37 +54,27 @@
         };
 
         const sideHandler = (category, takerDirection, makerDirection, isTaker, isMaker, ask, bid, num) => {
-
-
-
             if (category === "ORDER_CREATE" || category === "ORDER_CANCEL") {
                 return  <span className={``}>{ask && t('sell')} {bid && t('buy')}</span>
             }
-
             if (((takerDirection === "ASK") || (makerDirection === "BID")) && isTaker && isMaker) {
                 return <span className={``}>{t('TransactionHistory.selfTrade')}</span>
             }
-
             if (takerDirection === "ASK" && isTaker) {
                 return <span className={``}>{t('sell')}</span>
             }
             if (makerDirection === "BID" && isMaker) {
                 return <span className={``}>{t('buy')}</span>
             }
-
-
             if (makerDirection === "ASK" && isTaker) {
                 return <span className={``}>{t('buy')}</span>
             }
             if (takerDirection === "BID" && isMaker) {
                 return <span className={``}>{t('sell')}</span>
             }
-
             else {
 
-
             }
-
         }
 
 
@@ -114,8 +104,6 @@
 
                     const isSelfTrade = (((tr?.additionalData?.takerDirection === "ASK") || ( tr?.additionalData?.makerDirection === "BID")) && isTaker && isMaker)
 
-                    console.log("isSelfTrade", index , isSelfTrade)
-
                     return (
 
                         <div className={`column ${classes.striped}`} key={index}>
@@ -134,8 +122,7 @@
                                     {txCategory(tr.category)}
                                 </span>
                                 <span className={`width-12 ${i18n.language !== "fa" ? 'row-reverse jc-end' : 'row jc-start'}  ai-center`}>
-                                    <span className={`fs-0-8 text-gray`}>{tr.currency}</span>
-                                    <span className={`mx-05`}>{new BN(tr?.amount).toFormat() }</span>
+                                    <span className={`${i18n.language !== "fa" ? 'mr-05' : 'ml-05'}`}>{new BN(tr?.amount).toFormat() }</span>
 
                                     {
                                         ( (tr?.category === "TRADE") && isSelfTrade) ? "" : <>
@@ -160,14 +147,8 @@
                                      tr?.category === "ORDER_FINALIZED" ) ? <>
 
                                      <div className={`row jc-start`}>
-
-
                                          { (tr?.category === "FEE") ? <span className={`ml-05`}>{t("TransactionHistory.forFee")}</span> : ""}
-
-
-                                         {
-                                             sideHandler(tr?.category, tr?.additionalData?.takerDirection, tr?.additionalData?.makerDirection, isTaker, isMaker, tr?.additionalData?.ask, tr?.additionalData?.bid, (index + offset + 1))
-                                         }
+                                         { sideHandler(tr?.category, tr?.additionalData?.takerDirection, tr?.additionalData?.makerDirection, isTaker, isMaker, tr?.additionalData?.ask, tr?.additionalData?.bid, (index + offset + 1))}
 
                                          <span className={`mr-05`}>{new BN(tr?.additionalData?.origQuantity).toFormat()}</span>
                                          <span className={`mr-05`}>{t("currency." + tr?.additionalData?.pair?.leftSideName )}</span>
