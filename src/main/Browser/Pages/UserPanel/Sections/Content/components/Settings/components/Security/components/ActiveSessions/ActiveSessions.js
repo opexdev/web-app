@@ -10,6 +10,7 @@ import Icon from "../../../../../../../../../../../../components/Icon/Icon";
 import {toast} from "react-hot-toast";
 import {useGetUserActiveSessions} from "../../../../../../../../../../../../queries";
 import {expireAllSessionsExceptCurrent} from "js-api-client";
+import Date from "../../../../../../../../../../../../components/Date/Date";
 
 const ActiveSessions = () => {
     const {t} = useTranslation();
@@ -39,7 +40,7 @@ const ActiveSessions = () => {
                       style={{backgroundColor: 'var(--tableHeader)'}}>{t("ActiveSessions.thisSession")}</span>
                 <div className={`row jc-between width-100 py-05 px-1`}>
                     <div className={`col-40 column jc-center ai-center`}>
-                        <span>{moment(current?.lastAccess * 1000).format("HH:mm:ss , jYY/jMM/jDD")}</span>
+                        <span>{moment(current?.lastAccess * 1000).format("HH:mm:ss")} , <Date date={current?.lastAccess * 1000}/></span>
                         {other.length > 0 ?
                             <span className={`cursor-pointer text-red fs-0-7`} onClick={expireAllSessions}>
                             {t("ActiveSessions.closeOtherSessions")}</span> : ""}
