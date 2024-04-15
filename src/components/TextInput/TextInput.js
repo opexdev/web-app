@@ -28,6 +28,7 @@ const TextInput = (props) => {
     } = props
 
     const theme = useSelector((state) => state.global.theme)
+    const type = useSelector((state) => state.exchange.dateType)
 
     const optionClassHandler = (state) => {
         let className = classes.selectOptions
@@ -79,7 +80,7 @@ const TextInput = (props) => {
         inputSection = <DatePicker
             className={`${theme === "DARK" ? "bg-dark" : ""}`}
             locale={i18n.language === "fa" ? persian_fa : null}
-            calendar={i18n.language === "fa" ? persian : null}
+            calendar={type === "Jalali" ? persian : null}
             onChange={onchange}
             render={<input className={`${classes.datePicker}`}/>}
             {...other}

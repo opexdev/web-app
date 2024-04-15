@@ -24,8 +24,8 @@ const TransactionHistory = () => {
     const [query, setQuery] = useState({
         "coin": null, // optional
         "category": null, // optional [DEPOSIT, FEE, TRADE, WITHDRAW, ORDER_CANCEL, ORDER_CREATE, ORDER_FINALIZED]
-        "startTime": moment().subtract(1, 'months').startOf("day").valueOf(),
-        "endTime": moment().endOf("day").valueOf(),
+        "startTime": null,
+        "endTime": null,
         "ascendingByTime": false,
         "limit": 10,
         "offset": 0
@@ -36,16 +36,6 @@ const TransactionHistory = () => {
         page: (query.offset / query.limit) + 1,
         isLastPage: data?.length < query.limit
     }
-
-    /*console.log("Math.max", Math.max())*/
-
-    /*console.log("Math.max", Math.max(...data.map(o => o.y)))
-    console.log("data", data[data?.length-1]?.id)
-    console.log("data", data?.length)
-*/
-    /*useEffect(()=>{
-        refetch()
-    },[query?.ascendingByTime])*/
 
     const isFirst = useRef(true);
 
@@ -99,13 +89,13 @@ const TransactionHistory = () => {
         })
     }
     const startDateHandler = (dateRange) => {
-        if (dateRange.length === 2) {
-            setQuery({
-                ...query,
-                startTime: moment.unix(dateRange[0].toUnix()).startOf("day").valueOf(),
-                endTime: moment.unix(dateRange[1].toUnix()).endOf("day").valueOf()
-            })
-        }
+        const start = dateRange[0]  ? moment.unix(dateRange[0].toUnix()).startOf("day").valueOf() : null;
+        const end = dateRange[1]  ? moment.unix(dateRange[1].toUnix()).endOf("day").valueOf() : null;
+        setQuery({
+            ...query,
+            startTime: start,
+            endTime: end
+        })
     }
 
 
@@ -113,10 +103,23 @@ const TransactionHistory = () => {
         if (isLoading) return <div style={{height: "40vh"}}><Loading/></div>
         if (error) return <div style={{height: "40vh"}}><Error/></div>
         if (data?.length === 0) return <div style={{height: "40vh"}} className={`flex jc-center ai-center`}>{t("noTx")}</div>
-
-
         else return <>
             <TransactionHistoryTable txs={data} offset={query?.offset} />
+        </>
+    }
+
+    const periodTextHandler = () => {
+        if (query?.startTime && query?.endTime) return <>
+            <span className={`mx-05`}>{t("from")}</span>
+            <span><Date date={query?.startTime}/></span>
+            <span className={`mx-05`}>{t("until")}</span>
+            <span><Date date={query?.endTime}/></span>
+        </>
+        if (query?.startTime) return <>
+            <span className={`mx-05`}>{t("from")}</span>
+            <span><Date date={query?.startTime}/></span>
+            <span className={`mx-05`}>{t("until")}</span>
+            <span><Date date={moment().endOf("day").valueOf()}/></span>
         </>
     }
 
@@ -136,7 +139,7 @@ const TransactionHistory = () => {
                     value: query?.coin,
                     label:  query?.coin ? t('currency.'+ query?.coin) : t('all'),
                 }}
-                onchange={(e) => setQuery({...query, coin: e.value})}
+                onchange={(e) => setQuery({...query, coin: e.value, offset:0})}
                 customClass={`width-24 ${classes.thisInput}`}
             />
             <TextInput
@@ -149,7 +152,7 @@ const TransactionHistory = () => {
                     value: query?.category,
                     label: query?.category ? t('TransactionCategory.'+ query?.category) : t('all'),
                 }}
-                onchange={(e) => setQuery({...query, category: e.value})}
+                onchange={(e) => setQuery({...query, category: e.value, offset:0})}
                 customClass={`width-24 ${classes.thisInput}`}
             />
             <TextInput
@@ -178,10 +181,11 @@ const TransactionHistory = () => {
                 lead={t('TransactionHistory.period')}
                 type="input"
                 onChange={startDateHandler}
+                /*value={[query.startTime, query.endTime]}*/
                 value={[query.startTime, query.endTime]}
-
                 dateSeparator={" " + t('to') + " "}
                 range
+                hideOnScroll
                 customClass={`width-24 ${classes.thisInput}`}
             />
 
@@ -193,10 +197,7 @@ const TransactionHistory = () => {
                 <div className={`row jc-center ai-center`}>
                     <h3 className={``}>{t("txHistory.title")}</h3>
                     <div className={`row mr-1 text-gray`}>
-                        <span className={`mx-05`}>{t("from")}</span>
-                        <span><Date date={query?.startTime}/></span>
-                        <span className={`mx-05`}>{t("until")}</span>
-                        <span><Date date={query?.endTime}/></span>
+                        {periodTextHandler()}
                     </div>
                 </div>
 
