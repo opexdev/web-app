@@ -12,6 +12,7 @@ import Button from "../../../../../../../../components/Button/Button";
 import Date from "../../../../../../../../components/Date/Date";
 import TransactionHistoryTable from "./components/TransactionHistoryTable/TransactionHistoryTable";
 import ToggleSwitch from "../../../../../../../../components/ToggleSwitch/ToggleSwitch";
+import i18n from "i18next";
 
 const TransactionHistory = () => {
 
@@ -186,6 +187,8 @@ const TransactionHistory = () => {
                 dateSeparator={" " + t('to') + " "}
                 range
                 hideOnScroll
+                dataPanelPosition="Bottom"
+                position={`${i18n.language === "fa" ? "bottom-left" : "bottom-right" }`}
                 customClass={`width-24 ${classes.thisInput}`}
             />
 
