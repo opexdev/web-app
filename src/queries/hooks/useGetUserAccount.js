@@ -3,8 +3,8 @@ import {getUserAccount, parseWalletsResponse} from "js-api-client";
 import {useSelector} from "react-redux";
 
 export const useGetUserAccount = () => {
-    const isLogin = useSelector((state) => state.auth.isLogin)
-    return useQuery(['userAccount'], () => getUserAccountFunc(isLogin),
+    const userId = useSelector((state) => state.auth.id)
+    return useQuery(['userAccount', userId], () => getUserAccountFunc(userId),
         {
             retry: 1,
             refetchInterval: 10000
@@ -12,8 +12,8 @@ export const useGetUserAccount = () => {
     );
 }
 
-export const getUserAccountFunc = async (isLogin) => {
-    if (!isLogin) return  null
+export const getUserAccountFunc = async (userId) => {
+    if (!userId) return null
     const params = new URLSearchParams();
     params.append('timestamp', Date.now().toString());
     const {data} = await getUserAccount()

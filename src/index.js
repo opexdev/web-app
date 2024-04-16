@@ -20,6 +20,9 @@ import i18n from "i18next";
 import LanguageDetector from "i18next-browser-languagedetector";
 import Backend from "i18next-http-backend";
 import {initReactI18next} from "react-i18next";
+import toast, {ToastBar, Toaster} from "react-hot-toast";
+import Icon from "./components/Icon/Icon";
+
 
 const sagaMiddleware = createSagaMiddleware();
 const rootReducer = combineReducers({
@@ -73,6 +76,59 @@ i18n
     });
 
 
+const Toast = () => {
+    return <Toaster position="top-right" toastOptions={
+        {
+            className: `${i18n.language !== "fa" ? "ltr" : "rtl"}`,
+            style: {
+                width: "100%",
+                padding: "0.3vh 0.8vw 0.3vh 0.8vw",
+                color: "white",
+                lineHeight: "3vh",
+                fontSize: "0.8vw",
+                borderRadius: "4px",
+                background: "var(--mainContent)",
+
+            },
+            success: {
+                style: {
+                    background: "var(--darkGreen)",
+                    border: "2px solid var(--darkGreen)"
+                },
+            },
+            error: {
+                style: {
+                    background: "var(--darkRed)",
+                    border: "2px solid var(--darkRed)"
+                },
+            },
+            custom: {
+                style: {
+                    background: "var(--Orange)",
+                },
+            },
+        }} containerStyle={{}}>
+        {(t) => {
+            return <ToastBar toast={t}>
+                {({ icon, message }) => (
+                    <>
+                        {t.type !== 'loading' && (
+                            /*<button >بستن</button>*/
+                            <Icon
+                                iconName="icon-cancel-circle-1 fs-03 flex "
+                                iconClass={`toastIcon cursor-pointer mx-2`}
+                                onClick={() => toast.dismiss(t.id)}
+                            />
+                        )}
+                        {message}
+                    </>
+                )}
+            </ToastBar>
+        }
+        }
+    </Toaster>;
+}
+
 
 //React query client
 const queryClient = new QueryClient()
@@ -85,6 +141,7 @@ root.render(
         {/*<StyleRoot>*/}
         <QueryClientProvider client={queryClient}>
             <Main baseURL={PUBLIC_URL}/>
+            <Toast/>
             <ReactQueryDevtools initialIsOpen={false}/>
         </QueryClientProvider>
         {/*</StyleRoot>*/}

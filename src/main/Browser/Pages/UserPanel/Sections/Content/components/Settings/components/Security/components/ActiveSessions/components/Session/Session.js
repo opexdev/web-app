@@ -6,6 +6,7 @@ import {Trans, useTranslation} from "react-i18next";
 import {images} from "../../../../../../../../../../../../../../assets/images";
 import {toast} from "react-hot-toast";
 import {expireSessionById} from "js-api-client";
+import Date from "../../../../../../../../../../../../../../components/Date/Date";
 
 const Session = ({list, reloadSessionsList}) => {
     const {t} = useTranslation();
@@ -36,7 +37,7 @@ const Session = ({list, reloadSessionsList}) => {
             <div className={`column ai-end`}>
                 <div className={`row jc-between width-100`}>
                     <div className={`col-40 column jc-center ai-center`}>
-                        <span>{moment(list?.lastAccess * 1000).format("HH:mm:ss , jYY/jMM/jDD")}</span>
+                        <span>{moment(list?.lastAccess * 1000).format("HH:mm:ss")} , <Date date={list?.lastAccess * 1000}/></span>
                         <span className={`cursor-pointer text-red fs-0-7`} onClick={expireSession}>
                             {isLoading ?
                                 <img className={`${classes.thisLoading}`}

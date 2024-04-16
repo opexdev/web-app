@@ -2,8 +2,12 @@ import React from "react";
 import Icon from "../Icon/Icon";
 import Select from "react-select";
 import classes from "./TextInput.module.css";
-import persian_fa from "react-date-object/locales/persian_fa";
+import gregorian from "react-date-object/calendars/gregorian";
 import persian from "react-date-object/calendars/persian";
+import englishGregorian from "react-date-object/locales/gregorian_en";
+import farsiGregorian from "react-date-object/locales/gregorian_fa";
+import englishJalali from "react-date-object/locales/persian_en";
+import farsiJalali from "react-date-object/locales/persian_fa";
 import DatePicker from "react-multi-date-picker";
 import "react-multi-date-picker/styles/backgrounds/bg-dark.css"
 import {useSelector} from "react-redux";
@@ -28,6 +32,7 @@ const TextInput = (props) => {
     } = props
 
     const theme = useSelector((state) => state.global.theme)
+    const type = useSelector((state) => state.exchange.dateType)
 
     const optionClassHandler = (state) => {
         let className = classes.selectOptions
@@ -41,6 +46,21 @@ const TextInput = (props) => {
 
         return className;
     }
+
+    const calenderTypeHandler = () => {
+        if (type === "Hijri" && i18n.language === "en") {
+            return englishGregorian
+        }
+        if (type === "Hijri" && i18n.language === "fa") {
+            return farsiGregorian
+        }
+        if (type === "Jalali" && i18n.language === "en") {
+            return englishJalali
+        }
+        if (type === "Jalali" && i18n.language === "fa") {
+            return farsiJalali
+        }
+    };
 
     let leadSection = null
     let afterSection = null
@@ -78,8 +98,8 @@ const TextInput = (props) => {
     if (datePicker) {
         inputSection = <DatePicker
             className={`${theme === "DARK" ? "bg-dark" : ""}`}
-            locale={i18n.language === "fa" ? persian_fa : null}
-            calendar={i18n.language === "fa" ? persian : null}
+            locale={calenderTypeHandler()}
+            calendar={type === "Jalali" ? persian : gregorian}
             onChange={onchange}
             render={<input className={`${classes.datePicker}`}/>}
             {...other}
@@ -121,3 +141,6 @@ const TextInput = (props) => {
 
 
 export default TextInput;
+
+
+

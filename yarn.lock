@@ -10793,7 +10793,7 @@ __metadata:
     react-dropzone: ^11.3.1
     react-hot-toast: ^2.4.1
     react-i18next: ^12.2.2
-    react-multi-date-picker: ^4.3.1
+    react-multi-date-picker: ^4.4.1
     react-number-format: ^4.9.3
     react-qr-code: ^2.0.11
     react-redux: ^8.0.5
@@ -12334,10 +12334,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-date-object@npm:^2.1.5":
-  version: 2.1.7
-  resolution: "react-date-object@npm:2.1.7"
-  checksum: f8e16484a16a56251697b52cb6c78c2aaa89ba33694c5f2032a967a68b70446cdb6ff9f4357e6e2a7ad50d48f1518f7b1b49ed7ca111542a8a32902c080a3c8a
+"react-date-object@npm:^2.1.8":
+  version: 2.1.8
+  resolution: "react-date-object@npm:2.1.8"
+  checksum: 8c4ecc7f849efccc483fd78411d88971b48b2e695f1fe331ff83a0e1d87299f3c9d073bd7efba0dd542f5500923ed05dc65af0ea03e1bb344918e3e9e998d703
   languageName: node
   linkType: hard
 
@@ -12478,16 +12478,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-multi-date-picker@npm:^4.3.1":
-  version: 4.3.1
-  resolution: "react-multi-date-picker@npm:4.3.1"
+"react-multi-date-picker@npm:^4.4.1":
+  version: 4.4.1
+  resolution: "react-multi-date-picker@npm:4.4.1"
   dependencies:
-    react-date-object: ^2.1.5
+    react-date-object: ^2.1.8
     react-element-popper: ^2.1.6
   peerDependencies:
     react: ">=16.8.0"
     react-dom: ">=16.8.0"
-  checksum: 1b8352c355dd68be256f503cf02ab1ac059b8479a1bccea1ddfe180e93a028421ad9989bccac58798b2cddf985828f53fe7535e44a395b4c31143886de2c14e0
+  checksum: fb225006e24f90ac1283f0e51339b941c17fcdf92418b55c7c51619a17e6f8786bed663187ef24b5f657c20d3bf178bb1ba56e593c314a9add30c43a491a0c6a
   languageName: node
   linkType: hard
 

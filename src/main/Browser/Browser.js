@@ -59,35 +59,6 @@ const Browser = () => {
         meta.description.content = description ? description : " "
     }, [title, description])
 
-    const Toast = () => <Toaster position="bottom-right" toastOptions={
-        {
-            className: "rtl",
-            style: {
-                padding: "0.3vh 0.8vw 0.3vh 0.8vw",
-                color: "white",
-                lineHeight: "3vh",
-                fontSize: "0.8vw",
-                borderRadius: "4px",
-                background: "var(--mainContent)",
-            },
-            success: {
-                style: {
-                    background: "var(--darkGreen)",
-                },
-            },
-            error: {
-                style: {
-                    background: "var(--darkRed)",
-                },
-            },
-            custom: {
-                style: {
-                    background: "var(--Orange)",
-                },
-            },
-        }} containerStyle={{}}/>
-
-
     if (isLoading) return <FullWidthLoading/>
 
     if (hasError) return <FullWidthError/>
@@ -111,7 +82,6 @@ const Browser = () => {
                 </Route>
             </Routes>
             <Tooltip id="opex-tooltip"/>
-            <Toast/>
         </>
     );
 };

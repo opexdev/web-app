@@ -182,10 +182,12 @@ html, body {
     --greenAlpha: #18a97978;
     --greenAlphaGradient: #09a16e85;
     --darkGreen: #18a979;
+    --blackGreen: #123f30;
     --red: #d73e36;
     --redAlpha: #d73e3678;
     --redAlphaGradient: #e124175e;
     --darkRed: #d73e36;
+    --blackRed: #79150f;
     --orange: #ff8124;
     --orangeAlpha: #e97b50b0;
     --blue: #0e4095;
@@ -222,10 +224,12 @@ html, body {
     --greenAlpha: #18a97978;
     --greenAlphaGradient: #31cc6a4d;
     --darkGreen: #18a979;
+    --blackGreen: #123f30;
     --red: #ff5555;
     --redAlpha: #d73e3678;
     --redAlphaGradient: #e8201236;
     --darkRed: #d73e36;
+    --blackRed: #79150f;
     --orange: #ff8124;
     --orangeAlpha: #b16649d9;
     --blue: #6f9ffff5;
