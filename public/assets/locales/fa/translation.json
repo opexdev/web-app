@@ -774,6 +774,10 @@
   "contactUs": {
     "title": "تماس با ما",
     "subTitle1": "متن تماس با ما",
-    "text1": ""
+    "text1": "",
+    "businessEmailsValue": "",
+    "businessEmails": "ایمیل کسب و کار",
+    "supportRelated": "ایمیل پشتیبانی",
+    "supportRelatedValue": ""
   }
 }

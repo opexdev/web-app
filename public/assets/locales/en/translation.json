@@ -768,6 +768,10 @@
   "contactUs": {
     "title": "Contact Us",
     "subTitle1": "Contact Us content",
-    "text1": ""
+    "text1": "",
+    "businessEmailsValue": "",
+    "businessEmails": "Business Email",
+    "supportRelated": "Support Related",
+    "supportRelatedValue": ""
   }
 }
