@@ -19,6 +19,9 @@ export const UserForgetPasswordRelative = "forget-password";
 export const TxHistory = "/panel/transaction-history";
 export const TxHistoryRelative = "/transaction-history";
 
+export const Transactions = "/panel/transactions";
+export const TransactionsRelative = "/transactions";
+
 
 
 export const Wallet = "/panel/wallet";

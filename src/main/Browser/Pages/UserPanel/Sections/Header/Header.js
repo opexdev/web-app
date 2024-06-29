@@ -4,7 +4,7 @@ import {useTranslation} from "react-i18next";
 import {useDispatch, useSelector} from "react-redux";
 import {Link, Route, Routes, useLocation} from "react-router-dom";
 import * as RoutesName from "../../../../Routes/routes";
-import {Login} from "../../../../Routes/routes";
+import {Login, TransactionsRelative} from "../../../../Routes/routes";
 import MarketHeader from "./components/MarketHeader/MarketHeader";
 import WalletHeader from "./components/WalletHeader/WalletHeader";
 import SettingHeader from "./components/SettingsHeader/SettingsHeader";
@@ -38,7 +38,7 @@ const Header = () => {
             <div className={`row jc-between ai-center ${classes.content}`}>
                 <Routes>
                     <Route element={<ProtectedRoute/>}>
-                        <Route path={RoutesName.TxHistoryRelative} element={<h3 className={``}>{t("txHistory.title")}</h3>}/>
+                        <Route path={RoutesName.TransactionsRelative} element={<h3 className={``}>{t("txHistory.title")}</h3>}/>
                         <Route path={RoutesName.WalletRelative + "/:id"} element={<WalletHeader/>}/>
                         <Route path={RoutesName.SettingsRelative+"/*"} element={<SettingHeader/>}/>
                     </Route>

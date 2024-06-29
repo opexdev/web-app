@@ -246,6 +246,12 @@
     "estimateAlert": "مبلغ دارایی معادل براساس بالاترین پیشنهاد خرید محاسبه شده"
   },
   "TransactionHistory": {
+    "buyAndSell" : "خرید و فروش",
+    "buyAndSellTx" : "تاریخچه خرید و فروش",
+    "withdrawTx" : "تاریخچه برداشت",
+    "depositTx" : "تاریخچه واریز",
+    "destAddress" : "آدرس مقصد",
+    "txType" : "نوع تراکنش",
     "coin" : "ارز",
     "category" : "نوع تراکنش",
     "size" : "تعداد",

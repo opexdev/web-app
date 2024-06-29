@@ -9486,8 +9486,8 @@ __metadata:
 
 "js-api-client@https://github.com/opexdev/js-api-client.git#develop":
   version: 1.0.0-beta2
-  resolution: "js-api-client@https://github.com/opexdev/js-api-client.git#commit=754533374a6d8c61a80fe95122810b33229815d0"
-  checksum: a97c02196681a0538c164fb3e0c8348eeee1a8a0fd984441ab257b9187675a4d7b71b16153dfc4f7399c7554fc94d1bdbb29d6422fd9c783b34130f1acd882e2
+  resolution: "js-api-client@https://github.com/opexdev/js-api-client.git#commit=f656e7d42c77db27600a6715dd21247f42e46317"
+  checksum: 9a1466e5bdd5c99c17bdfadb829ec9f1363eef1824c9769423ffaed1c84d97bf83d12f8fee61c2e468c5abd100206a65086d2173dcb9220c316524c7a3bbfae3
   languageName: node
   linkType: hard
 

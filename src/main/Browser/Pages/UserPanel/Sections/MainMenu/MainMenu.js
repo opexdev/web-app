@@ -6,6 +6,7 @@ import {useTranslation} from "react-i18next";
 import MessagesSubMenu from "../SubMenu/components/MessagesSubMenu/MessagesSubMenu";
 import Icon from "../../../../../../components/Icon/Icon";
 import {toAbsoluteUrl} from "../../../../../../utils/utils";
+import {Transactions} from "../../../../Routes/routes";
 
 
 const MainMenu = () => {
@@ -85,7 +86,7 @@ const MainMenu = () => {
                         </NavLink>
 
                         <NavLink
-                            to={Routes.TxHistory}
+                            to={Routes.Transactions}
                             className={({ isActive }) =>
                                 isActive ? classes.selected : undefined
                             }
