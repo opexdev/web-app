@@ -251,7 +251,7 @@
     "withdrawTx" : "Withdraw History",
     "depositTx" : "Deposit History",
     "destAddress" : "Dest Address",
-    "txType" : "ُTransaction Type",
+    "txType" : "Transaction Type",
     "coin": "Coins",
     "category": "Categories",
     "size": "Number",

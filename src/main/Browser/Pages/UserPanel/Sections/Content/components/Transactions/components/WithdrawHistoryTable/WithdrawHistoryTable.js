@@ -32,13 +32,11 @@ const WithdrawHistoryTable = ({txs, offset}) => {
             <span className="width-6 flex  jc-start ai-center">{t("time")}</span>
             <span className="width-8 flex jc-start ai-center">{t("TransactionHistory.category")}</span>
             <span className="width-10 flex jc-start ai-center">{t("TransactionHistory.coin")}</span>
-            <span className="width-12 flex jc-start ai-center">{t("DepositWithdraw.network")}</span>
+            <span className="width-13 flex jc-start ai-center">{t("DepositWithdraw.network")}</span>
             <span className="width-7 flex jc-start ai-center">{t("volume")}</span>
             <span className="width-8 flex jc-start ai-center">{t("status")}</span>
             <span className="width-19 flex jc-start ai-center">{t("TransactionHistory.destAddress")}</span>
             <span className="width-19 flex jc-end ai-center">{t("DepositWithdrawTx.transactionId")}</span>
-            <span className="width-19 flex jc-end ai-center">{t("TransactionHistory.type")}</span>
-            {/*<span className="width-12 flex jc-end ai-center">{t("details")}</span>*/}
 
         </div>
     );
@@ -73,7 +71,7 @@ const WithdrawHistoryTable = ({txs, offset}) => {
                                 {t("currency." + tr.coin )}
                             </span>
 
-                            <span className="width-12 row jc-start ai-center">
+                            <span className="width-13 row jc-start ai-center">
                                 {tr.network}
                             </span>
 

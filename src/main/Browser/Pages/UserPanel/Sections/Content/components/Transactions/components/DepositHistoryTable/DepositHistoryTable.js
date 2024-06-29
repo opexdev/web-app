@@ -12,19 +12,6 @@ const DepositHistoryTable = ({txs, offset}) => {
 
     const id = useSelector(state => state.auth.id);
 
-    const txStatus = (status) => {
-        switch (status) {
-            case 0:
-                return t("orderStatus.NEW");
-            case 1:
-                return t("orderStatus.DONE");
-            case 2:
-                return t("orderStatus.REJECTED");
-            default:
-                return t("orderStatus.NEW");
-        }
-    };
-
     let head = (
         <div className="row text-gray px-2 py-2" style={{backgroundColor:"var(--tableHeader)"}}>
             <span className="width-6 flex jc-start ai-center">{t("row")}</span>
@@ -80,7 +67,7 @@ const DepositHistoryTable = ({txs, offset}) => {
                             </span>
 
                             <span className="width-13 row jc-start ai-center">
-                                {txStatus(tr.status)}
+                                {t("orderStatus.DONE")}
                             </span>
                             <span className="width-11 row jc-end ai-center">
                                 {tr.depositType}
