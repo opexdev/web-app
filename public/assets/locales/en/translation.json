@@ -246,6 +246,12 @@
     "estimateAlert": "The equivalent amount is calculated based on the highest buy offer"
   },
   "TransactionHistory": {
+    "buyAndSell" : "Buy And Sell",
+    "buyAndSellTx" : "Buy And Sell History",
+    "withdrawTx" : "Withdraw History",
+    "depositTx" : "Deposit History",
+    "destAddress" : "Dest Address",
+    "txType" : "Transaction Type",
     "coin": "Coins",
     "category": "Categories",
     "size": "Number",
@@ -768,6 +774,10 @@
   "contactUs": {
     "title": "Contact Us",
     "subTitle1": "Contact Us content",
-    "text1": ""
+    "text1": "",
+    "businessEmailsValue": "",
+    "businessEmails": "Business Email",
+    "supportRelated": "Support Related",
+    "supportRelatedValue": ""
   }
 }

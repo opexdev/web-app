@@ -9,7 +9,7 @@ import Footer from "../Footer/Footer";
 import Settings from "./components/Settings/Settings";
 import {useSelector} from "react-redux";
 import TechnicalChart from "./components/TechnicalChart/TechnicalChart";
-import TransactionHistory from "./components/TransactionHistory/TransactionHistory";
+import Transactions from "./components/Transactions/Transactions";
 
 const Content = () => {
 
@@ -24,7 +24,7 @@ const Content = () => {
                     <Route path={RoutesName.WalletRelative+"/:id"} element={<Wallet/>}/>
                     <Route path={RoutesName.SettingsRelative+"/*"} element={<Settings/>}/>
                     <Route path={RoutesName.TechnicalRelative} element={<TechnicalChart/>}/>
-                    <Route path={RoutesName.TxHistoryRelative} element={<TransactionHistory/>}/>
+                    <Route path={RoutesName.TransactionsRelative} element={<Transactions/>}/>
                 </Route>
                 <Route
                     path={RoutesName.WalletRelative}

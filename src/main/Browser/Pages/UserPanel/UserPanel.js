@@ -8,11 +8,12 @@ import Info from "../../../../components/Info/Info";
 import Content from "./Sections/Content/Content";
 import {useSelector} from "react-redux";
 import classes from "./UserPanel.module.css"
+import {Transactions} from "../../Routes/routes";
 
 const UserPanel = () => {
     const isLogin = useSelector((state) => state.auth.isLogin)
 
-    const isTxHistoryPage = useMatch(RoutesName.TxHistory)
+    const isTxHistoryPage = useMatch(RoutesName.Transactions)
     const isTechnicalPage = useMatch(RoutesName.Technical)
 
     const hasSubMenu = !(isTxHistoryPage || isTechnicalPage);
