@@ -18,7 +18,6 @@ import WithdrawHistoryTable from "../WithdrawHistoryTable/WithdrawHistoryTable";
 const WithdrawHistory = () => {
 
     const {t} = useTranslation();
-    const user_id = useSelector((state) => state.auth.id)
     const coins = useSelector((state) => state.exchange.assets)
 
     const [query, setQuery] = useState({
@@ -31,7 +30,7 @@ const WithdrawHistory = () => {
         "offset": 0
     });
 
-    const {data, isLoading, error, refetch} = useGetWithdrawHistory(user_id, query);
+    const {data, isLoading, error, refetch} = useGetWithdrawHistory(query);
 
     const pagination = {
         page: (query.offset / query.limit) + 1,

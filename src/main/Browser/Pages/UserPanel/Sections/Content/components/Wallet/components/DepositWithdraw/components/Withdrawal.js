@@ -177,19 +177,21 @@ const Withdrawal = () => {
                         className={`hover-text cursor-pointer`} onClick={() => {
                         fillByMinWithdraw()
                     }}> {new BN(currencyInfo?.chains[networkName.value]?.minWithdraw).plus(withdrawFee).toString()} {t("currency." + id)} </span></span>
-                    <span className={`my-05`}>{t('DepositWithdrawTx.maxWithdraw')}: <span>2 {t("currency." + id)}</span></span>
-                    <span
-                        className={`my-05`}>{t('DepositWithdrawTx.maxMonthWithdraw')}: <span>2 {t("currency." + id)}</span></span>
+
+                    {/* toDo */}
+
+                    {/*<span className={`my-05`}>{t('DepositWithdrawTx.maxWithdraw')}: <span>2 {t("currency." + id)}</span></span>
+                    <span className={`my-05`}>{t('DepositWithdrawTx.maxMonthWithdraw')}: <span>2 {t("currency." + id)}</span></span>*/}
                 </div>
                 <div className="col-50 pr-1 column jc-end">
                     <div className="row jc-between ai-center">
                         <div className="column">
-                            <span>
+                            <span className={`my-05`}>
                                 {t('commission')}: <span
                                 className={`text-orange`}>{amount.value ? withdrawFee : 0} </span>
                                 <span>{t("currency." + id)}</span>
                             </span>
-                            <span>
+                            <span className={`my-05`}>
                                 {t('DepositWithdrawTx.reqAmount')}: <span className={`text-green`}>
                                 {new BN(amount.value).minus(withdrawFee).isGreaterThan(0) ? new BN(amount.value).minus(withdrawFee).toFormat() : 0}
                             </span> <span>{t("currency." + id)}</span>
