@@ -106,8 +106,8 @@ export function* loadConfig(action) {
                 tradeFee[symbol.quoteAsset] = 0.01
             }
             if (!pairs.includes(symbol.symbol)) pairs.push(symbol.symbol)
-            symbol.baseRange = {min: 0.000001, max: 100000, step: 0.00001}
-            symbol.quoteRange = {min: 0.000001, max: 100000, step: 0.00001}
+            symbol.baseRange = {min: 0.000001, max: 100000, step: 0.000001}
+            symbol.quoteRange = {min: 0.000001, max: 100000, step: 0.000001}
             symbol.name = symbol.baseAsset + "/" + symbol.quoteAsset
             lastPrice[symbol.symbol] = 0
         }
