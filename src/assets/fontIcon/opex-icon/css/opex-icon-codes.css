@@ -5,13 +5,13 @@
 .icon-plus:before { content: '\0103'; } /* 'ă' */
 .icon-star:before { content: '\0104'; } /* 'Ą' */
 .icon-star-filled:before { content: '\0105'; } /* 'ą' */
-.icon-cancel:before { content: '\0106'; } /* 'Ć' */
+.icon-cancel-1:before { content: '\0106'; } /* 'Ć' */
 .icon-eye:before { content: '\0107'; } /* 'ć' */
 .icon-sun-filled:before { content: '\0108'; } /* 'Ĉ' */
 .icon-sun:before { content: '\0109'; } /* 'ĉ' */
 .icon-infinity:before { content: '\0110'; } /* 'Đ' */
-.icon-down-open-1:before { content: '\0111'; } /* 'đ' */
-.icon-up-open-1:before { content: '\0112'; } /* 'Ē' */
+.icon-down-open-2:before { content: '\0111'; } /* 'đ' */
+.icon-up-open-2:before { content: '\0112'; } /* 'Ē' */
 .icon-envelope-open:before { content: '\0113'; } /* 'ē' */
 .icon-star-1:before { content: '\0120'; } /* 'Ġ' */
 .icon-chat:before { content: '\0121'; } /* 'ġ' */
@@ -40,7 +40,7 @@
 .icon-calendar-empty:before { content: '\0146'; } /* 'ņ' */
 .icon-calendar-2:before { content: '\0147'; } /* 'Ň' */
 .icon-calendar-3:before { content: '\0148'; } /* 'ň' */
-.icon-info-circled:before { content: '\0154'; } /* 'Ŕ' */
+.icon-info-circled-1:before { content: '\0154'; } /* 'Ŕ' */
 .icon-help-circled:before { content: '\0156'; } /* 'Ŗ' */
 .icon-help-circled-1:before { content: '\0157'; } /* 'ŗ' */
 .icon-help-circled-2:before { content: '\0158'; } /* 'Ř' */
@@ -57,7 +57,7 @@
 .icon-eq:before { content: '\0182'; } /* 'Ƃ' */
 .icon-resize-vertical:before { content: '\0183'; } /* 'ƃ' */
 .icon-resize-vertical-1:before { content: '\0184'; } /* 'Ƅ' */
-.icon-down-open-2:before { content: '\0185'; } /* 'ƅ' */
+.icon-down-open-1:before { content: '\0185'; } /* 'ƅ' */
 .icon-braille:before { content: '\0186'; } /* 'Ɔ' */
 .icon-left-open:before { content: '\0187'; } /* 'Ƈ' */
 .icon-right-open:before { content: '\0188'; } /* 'ƈ' */
@@ -80,6 +80,7 @@
 .icon-left:before { content: '\0212'; } /* 'Ȓ' */
 .icon-right:before { content: '\0213'; } /* 'ȓ' */
 .icon-up:before { content: '\0214'; } /* 'Ȕ' */
+.icon-sheets:before { content: '\0215'; } /* 'ȕ' */
 .icon-market:before { content: '\e800'; } /* '' */
 .icon-cancel-circled2:before { content: '\e801'; } /* '' */
 .icon-settings:before { content: '\e802'; } /* '' */

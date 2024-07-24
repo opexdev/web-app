@@ -40,6 +40,22 @@ const MainMenu = () => {
                             <Icon iconName="icon-overview fs-21"/>
                         </NavLink>*/}
                         <NavLink
+                            to={Routes.Landing}
+                            end
+                            className={({ isActive }) =>
+                                isActive ? classes.selected : undefined
+                            }
+                            onClick={() => setShowMessages(false)}
+                            data-tooltip-id="opex-tooltip"
+                            data-tooltip-place="left"
+                            data-tooltip-float={true}
+                            data-tooltip-html={`<span class="column jc-between col-100">${t(
+                                "home",
+                            )}</span>`}
+                        >
+                            <Icon iconName="icon-sheets fs-06"/>
+                        </NavLink>
+                        <NavLink
                             to={Routes.Panel}
                             end
                             className={({ isActive }) =>
