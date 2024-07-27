@@ -55,3 +55,10 @@
 .iconBG i:before {
   vertical-align: middle;
 }
+
+.name {
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
