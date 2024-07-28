@@ -85,20 +85,6 @@ const BuyOrder = () => {
                 ),
             });
         }
-        if (val.isGreaterThan(rule.max)) {
-            return setAlert({
-                ...alert,
-                [key]: (
-                    <Trans
-                        i18nKey="orders.maxOrder"
-                        values={{
-                            max: activePair.baseRange.max.toLocaleString(),
-                            currency: t("currency." + activePair.baseAsset),
-                        }}
-                    />
-                ),
-            });
-        }
         if (!val.mod(rule.step).isZero()) {
             return setAlert({
                 ...alert,

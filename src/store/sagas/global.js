@@ -106,8 +106,10 @@ export function* loadConfig(action) {
                 tradeFee[symbol.quoteAsset] = 0.01
             }
             if (!pairs.includes(symbol.symbol)) pairs.push(symbol.symbol)
-            symbol.baseRange = {min: 0.000001, max: 100000, step: 0.000001}
-            symbol.quoteRange = {min: 0.000001, max: 100000, step: 0.000001}
+
+            symbol.baseRange = assetsScope[symbol.baseAsset] ?? {min: 0.000001, step: 0.000001}
+            symbol.quoteRange = assetsScope[symbol.quoteAsset] ?? {min: 0.000001, step: 0.000001}
+
             symbol.name = symbol.baseAsset + "/" + symbol.quoteAsset
             lastPrice[symbol.symbol] = 0
         }
@@ -169,4 +171,16 @@ export function* loadConfig(action) {
     }
     yield put(actions.setTheme(appTheme));
     yield put(actions.setLoading(false));
+}
+
+const assetsScope = {
+    TBTC: {min: 0.000001, step: 0.000001},
+    BTC: {min: 0.000001, step: 0.000001},
+    TETH: {min: 0.00001, step: 0.00001},
+    ETH: {min: 0.00001, step: 0.00001},
+    TBNB: {min: 0.001, step: 0.001},
+    BNB: {min: 0.001, step: 0.001},
+    USDT: {min: 0.01, step: 0.01},
+    IRT: {min: 50000, step: 1000},
+    TRX: {min: 0.1, step: 0.1},
 }

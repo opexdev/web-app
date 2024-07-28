@@ -118,17 +118,6 @@ const EasyOrder = () => {
                     currency: t("currency." + selected.buy),
                 }}
             />
-
-        }
-
-        if (reqAmount.isGreaterThan(selected.pair[range].max)) {
-            newAlert = <Trans
-                i18nKey="orders.maxOrder"
-                values={{
-                    max: selected.pair[range].max?.toLocaleString(),
-                    currency: t("currency." + selected.buy),
-                }}
-            />
         }
 
         if (!reqAmount.mod(selected.pair[range].step).isZero()) {
@@ -165,15 +154,6 @@ const EasyOrder = () => {
 
         }
 
-        if (totalPrice.isGreaterThan(selected.pair[range].max)) {
-            newAlert = <Trans
-                i18nKey="orders.maxOrder"
-                values={{
-                    max: selected.pair[range].max?.toLocaleString(),
-                    currency: t("currency." + selected.sell),
-                }}
-            />
-        }
 
         if (!totalPrice.mod(selected.pair[range].step).isZero()) {
             newAlert = <Trans
