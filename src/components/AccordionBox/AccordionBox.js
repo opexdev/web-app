@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from "react";
+import React, {useEffect, useState} from "react";
 import classes from "./AccordionBox.module.css";
 import {isMobile, isSafari} from "react-device-detect";
 
@@ -11,7 +11,7 @@ const AccordionBox = ({title, customClass, content, activeTab, setActiveTab ,...
     };
 
     useEffect(() => {
-        if (activeTab !== undefined) setActive(activeTab)
+        if (activeTab !== undefined && content[activeTab] !== undefined) setActive(activeTab)
     }, [activeTab]);
 
     useEffect(() => {

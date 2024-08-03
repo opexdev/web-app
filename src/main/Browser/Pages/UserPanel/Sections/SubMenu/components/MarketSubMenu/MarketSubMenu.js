@@ -63,11 +63,11 @@ const MarketSubMenu = () => {
             ),
         },
         {
-            id: 4,
+            id: 3,
             title: t("currency.USDT"),
             body: (
                 <MarketCard
-                    id="4"
+                    id="3"
                     type="USDT"
                     favPair={fav}
                     pairs={symbols.filter(p => (p.baseAsset === "USDT" || p.quoteAsset === "USDT"))}
