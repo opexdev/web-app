@@ -53,7 +53,7 @@ const MainMenu = () => {
                                 "home",
                             )}</span>`}
                         >
-                            <Icon iconName="icon-sheets fs-06"/>
+                            <Icon iconName="icon-home fs-06"/>
                         </NavLink>
                         <NavLink
                             to={Routes.Panel}

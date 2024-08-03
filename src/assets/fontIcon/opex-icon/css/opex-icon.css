@@ -1,11 +1,11 @@
 @font-face {
   font-family: 'opex-icon';
-  src: url('../font/opex-icon.eot?73286072');
-  src: url('../font/opex-icon.eot?73286072#iefix') format('embedded-opentype'),
-       url('../font/opex-icon.woff2?73286072') format('woff2'),
-       url('../font/opex-icon.woff?73286072') format('woff'),
-       url('../font/opex-icon.ttf?73286072') format('truetype'),
-       url('../font/opex-icon.svg?73286072#opex-icon') format('svg');
+  src: url('../font/opex-icon.eot?82533528');
+  src: url('../font/opex-icon.eot?82533528#iefix') format('embedded-opentype'),
+       url('../font/opex-icon.woff2?82533528') format('woff2'),
+       url('../font/opex-icon.woff?82533528') format('woff'),
+       url('../font/opex-icon.ttf?82533528') format('truetype'),
+       url('../font/opex-icon.svg?82533528#opex-icon') format('svg');
   font-weight: normal;
   font-style: normal;
 }
@@ -15,7 +15,7 @@
 @media screen and (-webkit-min-device-pixel-ratio:0) {
   @font-face {
     font-family: 'opex-icon';
-    src: url('../font/opex-icon.svg?73286072#opex-icon') format('svg');
+    src: url('../font/opex-icon.svg?82533528#opex-icon') format('svg');
   }
 }
 */
@@ -129,13 +129,11 @@
 .icon-trash:before { content: '\0206'; } /* 'Ȇ' */
 .icon-trash-1:before { content: '\0207'; } /* 'ȇ' */
 .icon-trash-2:before { content: '\0208'; } /* 'Ȉ' */
-.icon-cicle-plus-01:before { content: '\0209'; } /* 'ȉ' */
-.icon-exchange-arrow:before { content: '\0210'; } /* 'Ȑ' */
 .icon-down:before { content: '\0211'; } /* 'ȑ' */
 .icon-left:before { content: '\0212'; } /* 'Ȓ' */
 .icon-right:before { content: '\0213'; } /* 'ȓ' */
 .icon-up:before { content: '\0214'; } /* 'Ȕ' */
-.icon-sheets:before { content: '\0215'; } /* 'ȕ' */
+.icon-home:before { content: '\0830'; } /* '࠰' */
 .icon-market:before { content: '\e800'; } /* '' */
 .icon-cancel-circled2:before { content: '\e801'; } /* '' */
 .icon-settings:before { content: '\e802'; } /* '' */
@@ -170,3 +168,6 @@
 .icon-op-03:before { content: '\e81f'; } /* '' */
 .icon-row:before { content: '\e820'; } /* '' */
 .icon-grid:before { content: '\e821'; } /* '' */
+.icon-cicle-plus-01:before { content: '\e822'; } /* '' */
+.icon-exchange-arrow:before { content: '\e823'; } /* '' */
+.icon-sheets:before { content: '\e824'; } /* '' */
