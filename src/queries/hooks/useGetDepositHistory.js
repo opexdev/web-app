@@ -3,8 +3,6 @@ import {getBuyAndSellHistory, getDepositHistory, getWithdrawHistory} from "js-ap
 
 export const useGetDepositHistory = (user_id, query) => {
 
-    console.log("first query", query)
-
     return useQuery(
         ['depositHistory', user_id, query.coin, query.category, query.endTime, query.startTime, query.limit, query.offset, query.ascendingByTime],
         () => getDepositHistoryFunc(user_id, query),
@@ -16,8 +14,6 @@ export const useGetDepositHistory = (user_id, query) => {
 }
 
 const getDepositHistoryFunc = async (user_id, query) => {
-
-    console.log("second query", query)
     const {data} = await getDepositHistory(user_id, query)
     return data?.deposits;
 }
