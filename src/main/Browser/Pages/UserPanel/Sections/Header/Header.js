@@ -51,7 +51,7 @@ const Header = () => {
                             <p>{t("pleaseLogin")}</p>
                         </Link>
                     ) : (
-                        <p className="mb-05">
+                        <p className={`mb-05 ${classes.name}`}>
                             {firstName + " " + lastName}
                         </p>
                     )}
