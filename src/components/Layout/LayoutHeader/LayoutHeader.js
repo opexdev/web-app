@@ -97,7 +97,7 @@ const LayoutHeader = () => {
                 <Link to={RoutesName.Landing} className={`flex jc-start ai-center width-15`}>
                     <img src={toAbsoluteUrl('/assets/logo/logo.svg')} alt={t("title")} title={t("title")} className={`img-lg-plus`}/>
                 </Link>
-                <div className={`width-30 `}>
+                <div className={`width-25`}>
                     <Routes>
                         <Route path={RoutesName.Landing} element={<h2>{t("Landing.title")}</h2>}/>
                         <Route path={RoutesName.EasyTrading} element={<h2>{t("MarketTitle.easyTrading")}</h2>}/>
@@ -133,7 +133,7 @@ const LayoutHeader = () => {
                     >{t("market.title")}</NavLink>
 
                 </div>
-                <div className={`column ai-end width-15`}>
+                <div className={`column ai-end width-20`}>
                     {firstName === null ? (
                         <Link to={Login} state={{from: location}} className="hover-text">
                             <p>{t("signIn")} | {t("signUp")}</p>
@@ -153,8 +153,8 @@ const LayoutHeader = () => {
                                 overlay={menu}
                                 animation="slide-up"
                             >
-                                <button className={`button ${classes.thisButton} flex jc-end ai-center cursor-pointer width-85 fs-01`}>
-                                    <p className={`ml-1 ${classes.name}`}>
+                                <button className={`button ${classes.thisButton} row jc-end ai-center cursor-pointer width-100 fs-01`}>
+                                    <p className={`${classes.name} ml-05`}>
                                         {firstName + " " + lastName}
                                     </p>
                                     <Icon

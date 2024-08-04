@@ -21,8 +21,8 @@ const BuyAndSellTable = ({txs, offset}) => {
             <span className="width-9 flex  jc-start ai-center">{t("time")}</span>
             <span className="width-11 flex jc-start ai-center">{t("TransactionHistory.category")}</span>
             <span className="width-15 flex jc-start ai-center">{t("TransactionHistory.coin")}</span>
-            <span className="width-13 flex jc-start ai-center">{t("pricePerUnit")}</span>
             <span className="width-11 flex jc-start ai-center">{t("volume")}</span>
+            <span className="width-13 flex jc-start ai-center">{t("pricePerUnit")}</span>
             <span className="width-13 flex jc-start ai-center">{t("totalPrice")}</span>
             <span className="width-11 flex jc-end ai-center">{t("TransactionCategory.FEE")}</span>
             {/*<span className="width-12 flex jc-end ai-center">{t("details")}</span>*/}
@@ -60,12 +60,15 @@ const BuyAndSellTable = ({txs, offset}) => {
                             <span className="width-15 row jc-start ai-center">
                                 {t("currency." + tr.symbol )}
                             </span>
-                            <span className="width-13 row jc-start ai-center">
-                                {new BN(tr?.matchedPrice).toFormat()}
-                            </span>
+
                             <span className="width-11 row jc-start ai-center">
                                 {new BN(tr?.volume).toFormat()}
                             </span>
+
+                            <span className="width-13 row jc-start ai-center">
+                                {new BN(tr?.matchedPrice).toFormat()}
+                            </span>
+
                             <span className="width-13 row jc-start ai-center">
                                 {new BN(tr?.transactionPrice).toFormat()}
                             </span>
