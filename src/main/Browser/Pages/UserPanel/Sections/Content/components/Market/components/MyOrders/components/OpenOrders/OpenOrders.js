@@ -84,7 +84,7 @@ const OpenOrders = () => {
                                     data-tooltip-html={t("myOrders.cancelOrder")}
                                 >
                                     <Icon
-                                        iconName="icon-cancel text-red fs-0-7"
+                                        iconName="icon-cancel-1 text-red fs-0-8"
                                         customClass={`${classes.iconBG} cursor-pointer`}
                                     />
                                 </td>
