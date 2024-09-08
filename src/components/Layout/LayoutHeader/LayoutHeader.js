@@ -84,7 +84,7 @@ const LayoutHeader = () => {
             </div>
 
             <div className={`my-3 px-1 menuItem cursor-pointer hover-text fs-0-8`} onClick={()=>navigate(RoutesName.Wallet)}>{t("wallet.title")}</div>
-            <div className={`my-3 px-1 menuItem cursor-pointer hover-text fs-0-8`} onClick={()=>navigate(RoutesName.History)}>{t("history.title")}</div>
+            <div className={`my-3 px-1 menuItem cursor-pointer hover-text fs-0-8`} onClick={()=>navigate(RoutesName.Transactions)}>{t("txHistory.title")}</div>
             <div className={`my-3 px-1 menuItem cursor-pointer hover-text fs-0-8`} onClick={()=>navigate(RoutesName.Settings)}>{t("settings.title")}</div>
             <div className={`my-3 px-1 menuItem cursor-pointer hover-text fs-0-8 text-red`} onClick={logOutHandler}>{t("signOut")}</div>
         </Menu>
