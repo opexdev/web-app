@@ -1,26 +1,23 @@
 import React, {useEffect, useRef, useState} from 'react';
-import classes from './BuyAndSell.module.css';
+import classes from './WithdrawHistory.module.css'
 import {useTranslation} from "react-i18next";
 import {useSelector} from "react-redux";
-import {useTransactionHistory} from "../../../../../../../../../../queries/hooks/useGetTransactionsHistory";
-import {useGetBuyAndSellHistory} from "../../../../../../../../../../queries";
-import TextInput from "../../../../../../../../../../components/TextInput/TextInput";
-import DatePanel from "react-multi-date-picker/plugins/date_panel";
-import i18n from "i18next";
+import {useGetBuyAndSellHistory, useGetWithdrawHistory} from "../../../../../../../../../../queries";
 import moment from "moment-jalaali";
 import Loading from "../../../../../../../../../../components/Loading/Loading";
 import Error from "../../../../../../../../../../components/Error/Error";
-import TransactionHistoryTable
-    from "../../../TransactionHistory/components/TransactionHistoryTable/TransactionHistoryTable";
-import Date from "../../../../../../../../../../components/Date/Date";
-import ToggleSwitch from "../../../../../../../../../../components/ToggleSwitch/ToggleSwitch";
 import BuyAndSellTable from "../BuyAndSellTable/BuyAndSellTable";
+import Date from "../../../../../../../../../../components/Date/Date";
+import TextInput from "../../../../../../../../../../components/TextInput/TextInput";
+import DatePanel from "react-multi-date-picker/plugins/date_panel";
+import i18n from "i18next";
+import ToggleSwitch from "../../../../../../../../../../components/ToggleSwitch/ToggleSwitch";
 import Button from "../../../../../../../../../../components/Button/Button";
+import WithdrawHistoryTable from "../WithdrawHistoryTable/WithdrawHistoryTable";
 
-const BuyAndSell = () => {
+const WithdrawHistory = () => {
 
     const {t} = useTranslation();
-    const user_id = useSelector((state) => state.auth.id)
     const coins = useSelector((state) => state.exchange.assets)
 
     const [query, setQuery] = useState({
@@ -33,7 +30,7 @@ const BuyAndSell = () => {
         "offset": 0
     });
 
-    const {data, isLoading, error, refetch} = useGetBuyAndSellHistory(user_id, query);
+    const {data, isLoading, error, refetch} = useGetWithdrawHistory(query);
 
     const pagination = {
         page: (query.offset / query.limit) + 1,
@@ -107,7 +104,7 @@ const BuyAndSell = () => {
         if (error) return <div style={{height: "40vh"}}><Error/></div>
         if (data?.length === 0) return <div style={{height: "40vh"}} className={`flex jc-center ai-center`}>{t("noTx")}</div>
         else return <>
-            <BuyAndSellTable txs={data} offset={query?.offset} />
+            <WithdrawHistoryTable txs={data} offset={query?.offset} />
         </>
     }
 
@@ -125,6 +122,7 @@ const BuyAndSell = () => {
             <span><Date date={moment().endOf("day").valueOf()}/></span>
         </>
     }
+
 
 
     return (
@@ -214,7 +212,7 @@ const BuyAndSell = () => {
             <div className={`card-bg card-border width-100 my-4`} >
                 <div className={`card-header-bg row jc-between ai-center px-2 py-5`}>
                     <div className={`row jc-center ai-center`}>
-                        <h3 className={``}>{t("TransactionHistory.buyAndSellTx")}</h3>
+                        <h3 className={``}>{t("TransactionHistory.withdrawTx")}</h3>
                         <div className={`row mr-1 text-gray`}>
                             {periodTextHandler()}
                         </div>
@@ -278,4 +276,4 @@ const BuyAndSell = () => {
     );
 };
 
-export default BuyAndSell;
+export default WithdrawHistory;

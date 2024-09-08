@@ -1,0 +1,31 @@
+.thisButton {
+    background-color: var(--orange);
+    color: #000;
+}
+.disable:disabled,.button[disabled] {
+    border: 0.3vh solid var(--cardBodyAlpha);
+    background: var(--cardBodyAlpha);
+    color: var(--textColor);
+    cursor: not-allowed;
+}
+
+.thisButton:disabled,.button[disabled] {
+    border: 0.3vh solid var(--cardBodyAlpha);
+    background: var(--cardBodyAlpha);
+    color: var(--textColor);
+    cursor: not-allowed;
+}
+
+
+.thisInput :global(.lead) {
+    width: 30%;
+}
+.thisInput :global(.selectExternalClass) {
+    width: 70%;
+}
+.thisInput :global(.rmdp-container ) {
+    width: 70%;
+}
+.thisInput.datePicker :global(.rmdp-container ) {
+    font-size: 0.85rem;
+}

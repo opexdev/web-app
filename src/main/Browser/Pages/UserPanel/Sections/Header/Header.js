@@ -39,6 +39,7 @@ const Header = () => {
                 <Routes>
                     <Route element={<ProtectedRoute/>}>
                         <Route path={RoutesName.TransactionsRelative} element={<h3 className={``}>{t("txHistory.title")}</h3>}/>
+                        <Route path={RoutesName.HistoryRelative} element={<h3 className={``}>{t("history.title")}</h3>}/>
                         <Route path={RoutesName.WalletRelative + "/:id"} element={<WalletHeader/>}/>
                         <Route path={RoutesName.SettingsRelative+"/*"} element={<SettingHeader/>}/>
                     </Route>
