@@ -75,7 +75,7 @@ const LayoutHeader = () => {
             onDeselect={()=>saveSelected()}
         >
 
-            <div className={`${classes.dropBox} column jc-center ai-center py-3  width-92 m-auto`}>
+            <div className={`${classes.dropBox} width-92 column jc-center ai-center py-3 m-auto`}>
                 <Icon
                     iconName={`text-white flex`}
                     customClass={`${classes.icon}  icon-user-circle-o flex mb-1`}
@@ -85,7 +85,8 @@ const LayoutHeader = () => {
                 </p>
             </div>
 
-            <div className={`my-3 px-1 menuItem cursor-pointer hover-text fs-0-8`} onClick={()=>navigate(RoutesName.Transactions)}>{t("txHistory.title")}</div>
+            <div className={`my-3 px-1 menuItem cursor-pointer hover-text fs-0-8`} onClick={()=>navigate(RoutesName.Wallet)}>{t("wallet.title")}</div>
+            <div className={`my-3 px-1 menuItem cursor-pointer hover-text fs-0-8`} onClick={()=>navigate(RoutesName.History)}>{t("history.title")}</div>
             <div className={`my-3 px-1 menuItem cursor-pointer hover-text fs-0-8`} onClick={()=>navigate(RoutesName.Settings)}>{t("settings.title")}</div>
             <div className={`my-3 px-1 menuItem cursor-pointer hover-text fs-0-8 text-red`} onClick={logOutHandler}>{t("signOut")}</div>
         </Menu>

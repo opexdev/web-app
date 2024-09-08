@@ -71,7 +71,7 @@ const TextInput = (props) => {
         readOnly={readOnly}
         onChange={onchange}
         max={max}
-        className={`${classes.input}`}
+        className={`${classes.input} input`}
         style={{direction: ltr && 'ltr'}}
         {...other}
     />

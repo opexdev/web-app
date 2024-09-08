@@ -21,10 +21,10 @@ const MyOrders = () => {
   </div>
 
   const data = [
-    {id: 1, title: t("myOrders.aliveOrder"), body: isLogin ? <OpenOrders/> : LoginText},
+    {id: 1, title: t("myOrders.liveOrders"), body: isLogin ? <OpenOrders/> : LoginText},
     //{id: 2, title: t("myOrders.stoppedOrder"), body: props.auth.isLogin ? StopTable : LoginText},
     {id: 3, title: t("myOrders.orderHistory"), body: isLogin ? <OrdersHistory/> : LoginText},
-    {id: 4, title: t("myOrders.orders"), body: isLogin ? <Trades/> : LoginText},
+    {id: 4, title: t("myOrders.tradeHistory"), body: isLogin ? <Trades/> : LoginText},
   ];
 
   return (

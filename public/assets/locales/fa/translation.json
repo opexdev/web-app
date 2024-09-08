@@ -227,13 +227,13 @@
     "tradedAmount": "مقدار معامله شده",
     "avgTradedAmount": "میانگین قیمت معامله",
     "tradedPrice": "مبلغ معامله شده",
-    "aliveOrder": "سفارش‌های جاری",
-    "stoppedOrder": "متوقف",
+    "liveOrders": "سفارش‌های جاری",
     "orderHistory": "تاریخچه سفارش‌ها",
+    "tradeHistory": " تاریخچه معامله‌ها",
+    "stoppedOrder": "متوقف",
     "stopOrderTime": "زمان آخرین معامله",
     "startOrderTime": "زمان ثبت سفارش",
     "cancelOrder": "لغو سفارش",
-    "orders": "معامله‌ها",
     "cancelSuccess": "سفارش با موفقیت لغو شد!",
     "cancelError": "خطا در لغو سفارش"
   },
@@ -244,6 +244,21 @@
     "equivalent": "معادل",
     "showZeroBalance": "عدم نمایش موجودی صفر",
     "estimateAlert": "مبلغ دارایی معادل براساس بالاترین پیشنهاد خرید محاسبه شده"
+  },
+  "history": {
+    "title": "تاریخچه",
+    "transactions": "تراکنش ها",
+    "transactionsHistory": "تاریخچه تراکنش ها",
+    "deposit": "واریز",
+    "withdraw": "برداشت",
+    "balance": "موجودی",
+    "balanceChange": "تغییر موجودی",
+    "currency" : "ارز",
+    "category" : "نوع تراکنش",
+    "size" : "تعداد",
+    "period" : "بازه زمانی",
+    "ascendingByTime" : "نمایش براساس جدیدترین",
+    "page": "صفحه {{page}}"
   },
   "TransactionHistory": {
     "buyAndSell" : "خرید و فروش",
@@ -270,10 +285,12 @@
     "ascendingByTime" : "نمایش براساس جدیدترین"
   },
   "TransactionCategory": {
-    "DEPOSIT" : "واریز",
-    "FEE" : "کارمزد",
     "TRADE" : "معامله",
+    "FEE" : "کارمزد",
+    "DEPOSIT" : "واریز",
     "WITHDRAW" : "برداشت",
+    "SYSTEM" : "سیستم",
+
     "WITHDRAW_REQUEST" : "درخواست برداشت",
     "WITHDRAW_ACCEPT" : "برداشت موفق",
     "WITHDRAW_REJECT" : "رد درخواست برداشت",

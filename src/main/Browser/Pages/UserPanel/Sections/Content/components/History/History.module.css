@@ -1,0 +1,46 @@
+.thisInput :global(.lead) {
+    width: 30%;
+}
+.thisInput :global(.selectExternalClass) {
+    width: 70% !important;
+}
+
+.thisInput :global(.rmdp-container ) {
+    width: 70%;
+    height: 100%;
+}
+
+
+
+.thisButton {
+    background-color: var(--orange);
+    color: #000;
+}
+.disable:disabled,.button[disabled] {
+    border: 0.3vh solid var(--cardHeader);
+    background: var(--cardHeader);
+    color: var(--textColor);
+    cursor: not-allowed;
+}
+
+.thisButton:disabled,.button[disabled] {
+    border: 0.3vh solid var(--cardHeader);
+    background: var(--cardHeader);
+    color: var(--textColor);
+    cursor: not-allowed;
+}
+
+
+
+.header {
+    height: 10vh;
+}
+
+/*.title {
+    background-color: var(--cardBodyAlpha);
+}*/
+
+.active {
+    background-color: var(--activeTitle);
+    color: var(--activeTab);
+}

@@ -10,6 +10,8 @@ import Settings from "./components/Settings/Settings";
 import {useSelector} from "react-redux";
 import TechnicalChart from "./components/TechnicalChart/TechnicalChart";
 import Transactions from "./components/Transactions/Transactions";
+import {HistoryRelative} from "../../../../Routes/routes";
+import History from "./components/History/History";
 
 const Content = () => {
 
@@ -25,6 +27,7 @@ const Content = () => {
                     <Route path={RoutesName.SettingsRelative+"/*"} element={<Settings/>}/>
                     <Route path={RoutesName.TechnicalRelative} element={<TechnicalChart/>}/>
                     <Route path={RoutesName.TransactionsRelative} element={<Transactions/>}/>
+                    <Route path={RoutesName.HistoryRelative} element={<History/>}/>
                 </Route>
                 <Route
                     path={RoutesName.WalletRelative}

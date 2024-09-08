@@ -13,7 +13,7 @@ import {Transactions} from "../../Routes/routes";
 const UserPanel = () => {
     const isLogin = useSelector((state) => state.auth.isLogin)
 
-    const isTxHistoryPage = useMatch(RoutesName.Transactions)
+    const isTxHistoryPage = useMatch(RoutesName.History || RoutesName.History)
     const isTechnicalPage = useMatch(RoutesName.Technical)
 
     const hasSubMenu = !(isTxHistoryPage || isTechnicalPage);
