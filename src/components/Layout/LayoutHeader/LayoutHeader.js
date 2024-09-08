@@ -53,7 +53,6 @@ const LayoutHeader = () => {
         });*/
     }
 
-
     const logOutHandler = async () => {
         logout().then(() => {
             toast.success(t("header.logOutSuccess"))
@@ -62,7 +61,6 @@ const LayoutHeader = () => {
             toast.error(t("header.logOutError"));
         })
     }
-
 
     const menu = (
         <Menu
