@@ -32,8 +32,6 @@ const Transactions = () => {
 
     const {data, isLoading, error, refetch} = useGetTransactionsHistory(query);
 
-    console.log("data:  ", data)
-
     const pagination = {
         page: (query.offset / query.limit) + 1,
         isLastPage: data?.length < query.limit
