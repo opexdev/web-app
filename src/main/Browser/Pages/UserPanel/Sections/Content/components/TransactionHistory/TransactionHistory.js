@@ -3,7 +3,7 @@ import classes from './TransactionHistory.module.css';
 import {useSelector} from "react-redux";
 import {useTranslation} from "react-i18next";
 import moment from "moment-jalaali";
-import {useTransactionHistory} from "../../../../../../../../queries/hooks/useTransactionHistory";
+import {useTransactionHistory} from "../../../../../../../../queries/hooks/useGetTransactionsHistory";
 import Loading from "../../../../../../../../components/Loading/Loading";
 import Error from "../../../../../../../../components/Error/Error";
 import TextInput from "../../../../../../../../components/TextInput/TextInput";

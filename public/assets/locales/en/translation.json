@@ -227,13 +227,13 @@
     "tradedAmount": "Traded",
     "avgTradedAmount": "Avg Traded Amount",
     "tradedPrice": "Traded Price",
-    "aliveOrder": "Live",
+    "liveOrders": "Live Orders",
+    "orderHistory": "Order History",
+    "tradeHistory": "Trade History",
     "stoppedOrder": "Stopped",
-    "orderHistory": "History",
     "stopOrderTime": "Stop Order Time",
     "startOrderTime": "Start Order Time",
     "cancelOrder": "Cancel Order",
-    "orders": "Orders",
     "cancelSuccess": "Order successfully canceled!",
     "cancelError": "Order not canceled"
   },
@@ -244,6 +244,21 @@
     "equivalent": "Equivalent",
     "showZeroBalance": "Do not show zero balance.",
     "estimateAlert": "The equivalent amount is calculated based on the highest buy offer"
+  },
+  "history": {
+    "title": "History",
+    "transactions": "Transactions",
+    "transactionsHistory": "Transactions History",
+    "deposit": "Deposit",
+    "withdraw": "Withdraw",
+    "balance": "Balance",
+    "balanceChange": "Balance Change",
+    "currency" : "Currency",
+    "category" : "Category",
+    "size" : "Size",
+    "period" : "Period",
+    "ascendingByTime" : "Ascending By Time",
+    "page": "Page {{page}}"
   },
   "TransactionHistory": {
     "buyAndSell" : "Buy And Sell",
@@ -270,10 +285,12 @@
     "ascendingByTime" : "Ascending By Time"
   },
   "TransactionCategory": {
-    "DEPOSIT": "Deposit",
-    "FEE": "Fee",
-    "TRADE": "Trade",
-    "WITHDRAW": "Withdraw",
+    "TRADE" : "Trade",
+    "FEE" : "Fee",
+    "DEPOSIT" : "Deposit",
+    "WITHDRAW" : "Withdraw",
+    "SYSTEM" : "System",
+
     "WITHDRAW_REQUEST" : "Withdraw Request",
     "WITHDRAW_ACCEPT" : "Withdraw Accept",
     "WITHDRAW_REJECT" : "Withdraw Reject",

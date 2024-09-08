@@ -22,6 +22,9 @@ export const TxHistoryRelative = "/transaction-history";
 export const Transactions = "/panel/transactions";
 export const TransactionsRelative = "/transactions";
 
+export const History = "/panel/history";
+export const HistoryRelative = "/history";
+
 
 
 export const Wallet = "/panel/wallet";

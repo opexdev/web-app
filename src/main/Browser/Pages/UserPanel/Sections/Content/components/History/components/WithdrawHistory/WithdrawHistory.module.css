@@ -1,0 +1,17 @@
+.thisButton {
+    background-color: var(--orange);
+    color: #000;
+}
+.disable:disabled,.button[disabled] {
+    border: 0.3vh solid var(--cardBodyAlpha);
+    background: var(--cardBodyAlpha);
+    color: var(--textColor);
+    cursor: not-allowed;
+}
+
+.thisButton:disabled,.button[disabled] {
+    border: 0.3vh solid var(--cardBodyAlpha);
+    background: var(--cardBodyAlpha);
+    color: var(--textColor);
+    cursor: not-allowed;
+}
