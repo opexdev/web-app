@@ -12,7 +12,6 @@ const History = () => {
 
     const [activeTx, setActiveTx] = useState("transactions")
 
-
     const content = () => {
         if (activeTx === "transactions") return <Transactions/>
         if (activeTx === "deposit") return <DepositHistory/>

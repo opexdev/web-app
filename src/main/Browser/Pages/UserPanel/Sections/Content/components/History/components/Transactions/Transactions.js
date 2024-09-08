@@ -17,7 +17,6 @@ import {useGetTransactionsHistory} from "../../../../../../../../../../queries";
 const Transactions = () => {
 
     const {t} = useTranslation();
-    const user_id = useSelector((state) => state.auth.id)
     const coins = useSelector((state) => state.exchange.assets)
 
     const [query, setQuery] = useState({
@@ -57,9 +56,7 @@ const Transactions = () => {
         currenciesOptions.push({value: o, label: t('currency.' + o)})
     })
 
-
     const scrollRef = useRef(null);
-
 
     const pageSizeHandler = (e) => {
         setQuery({
@@ -98,7 +95,6 @@ const Transactions = () => {
         })
     }
 
-
     const content = () => {
         if (isLoading) return <div style={{height: "40vh"}}><Loading/></div>
         if (error) return <div style={{height: "40vh"}}><Error/></div>
@@ -126,7 +122,6 @@ const Transactions = () => {
 
     return (
         <div className={`width-100 column my-3`} ref={scrollRef}>
-
             <div className={`width-100 row jc-between ai-center wrap fs-0-9`}>
                 <TextInput
                     select={true}
@@ -169,7 +164,6 @@ const Transactions = () => {
                     onchange={pageSizeHandler}
                     customClass={`width-20 ${classes.thisInput}`}
                 />
-
                 <TextInput
                     datePicker={true}
                     //placeholder={t('history.size')}
@@ -189,7 +183,6 @@ const Transactions = () => {
                     position={`${i18n.language === "fa" ? "bottom-left" : "bottom-right" }`}
                     customClass={`width-20 ${classes.thisInput} ${classes.datePicker} `}
                 />
-
                 <div className={`width-15 row jc-end ai-center fs-0-8`}>
                     <span className={`fs-0-8 ml-1`}>{t("history.ascendingByTime")}</span>
                     <ToggleSwitch
@@ -198,14 +191,8 @@ const Transactions = () => {
                             ...prevState,
                             ascendingByTime: !prevState.ascendingByTime
                         }}) }
-
-                        /*onchange={()=> setQuery({
-                            ...query,
-                            ascendingByTime: (prevState => !prevState)}
-                        )}*/
                         checked={!query?.ascendingByTime}/>
                 </div>
-
             </div>
 
             <div className={`card-bg card-border width-100 my-4`} >
@@ -224,9 +211,6 @@ const Transactions = () => {
                             />
                         </span>}
                     </div>
-
-
-
 
                     <div className={`row jc-start ai-center `}>
                         <Button
@@ -251,7 +235,6 @@ const Transactions = () => {
                             onClick={nextPage}
                         />
                     </div>
-
                 </div>
                 <div>
                     {content()}
@@ -279,9 +262,7 @@ const Transactions = () => {
                         onClick={nextPage}
                     />
                 </div>
-
             </div>
-
         </div>
     );
 };
