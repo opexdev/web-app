@@ -63,11 +63,25 @@ const Withdrawal = () => {
         }
     }
 
+    console.log("currencyInfo?.chains[networkName.value]?.network", currencyInfo?.chains[networkName.value]?.network)
+    console.log("currencyInfo?.chains[networkName.value]?.currency", currencyInfo?.chains[networkName.value]?.currency)
+
     const sendWithdrawHandler = async (e) => {
         e.preventDefault()
         if (isLoading) return
         setIsLoading(true)
-        sendWithdrawReq(amount.value, id, address.value, withdrawFee, `${currencyInfo?.chains[networkName.value]?.network} - ${currencyInfo?.chains[networkName.value]?.currency}`)
+
+        const withdrawRequestData = {
+            "currency": currencyInfo?.chains[networkName.value]?.currency,
+            "amount": amount.value,
+            "destSymbol": currencyInfo?.chains[networkName.value]?.currency,
+            "destAddress": address.value,
+            "destNetwork": currencyInfo?.chains[networkName.value]?.network,
+            /*"destNote": "Personal wallet", //Optional
+            "description": "Withdrawal to personal wallet" //Optional*/
+        }
+
+        sendWithdrawReq(withdrawRequestData)
             .then(() => {
                 setNetworkName({value: 0, error: []})
                 setAmount({value: 0, error: []})
@@ -84,7 +98,9 @@ const Withdrawal = () => {
                 getUserAssets()
                 getUserAssetsEstimatedValue()
             })
-            .catch(() => {
+            .catch((error) => {
+
+                console.log("error", error)
                 toast.error(t('error'));
             })
             .finally(() => setIsLoading(false))
@@ -188,7 +204,7 @@ const Withdrawal = () => {
                         <div className="column">
                             <span className={`my-05`}>
                                 {t('commission')}: <span
-                                className={`text-orange`}>{amount.value ? withdrawFee : 0} </span>
+                                className={`text-orange`}>{withdrawFee ? withdrawFee : 0} </span>
                                 <span>{t("currency." + id)}</span>
                             </span>
                             <span className={`my-05`}>
