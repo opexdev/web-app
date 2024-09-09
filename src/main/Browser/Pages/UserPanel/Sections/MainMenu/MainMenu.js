@@ -101,7 +101,7 @@ const MainMenu = () => {
                             <Icon iconName="icon-account fs-21"/>
                         </NavLink>
 
-                        <NavLink
+                       {/* <NavLink
                             to={Routes.Transactions}
                             className={({ isActive }) =>
                                 isActive ? classes.selected : undefined
@@ -115,9 +115,9 @@ const MainMenu = () => {
                                 "txHistory.title",
                             )}</span>`}>
                             <Icon iconName="icon-clock fs-21"/>
-                        </NavLink>
+                        </NavLink>*/}
 
-                        {/*<NavLink
+                        <NavLink
                             to={Routes.History}
                             className={({ isActive }) =>
                                 isActive ? classes.selected : undefined
@@ -131,7 +131,7 @@ const MainMenu = () => {
                                 "history.title",
                             )}</span>`}>
                             <Icon iconName="icon-clock fs-21"/>
-                        </NavLink>*/}
+                        </NavLink>
 
                     </div>
                     <div className={`column jc-end ai-center ${classes.bottomSection}`}>
