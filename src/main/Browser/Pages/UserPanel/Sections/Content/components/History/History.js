@@ -2,8 +2,8 @@ import React, {useState} from 'react';
 import classes from './History.module.css';
 import {useTranslation} from "react-i18next";
 import Transactions from "./components/Transactions/Transactions";
-import DepositHistory from "../Transactions/components/DepositHistory/DepositHistory";
-import WithdrawHistory from "../Transactions/components/WithdrawHistory/WithdrawHistory";
+import DepositHistory from "./components/DepositHistory/DepositHistory";
+import WithdrawHistory from "./components/WithdrawHistory/WithdrawHistory";
 
 
 const History = () => {

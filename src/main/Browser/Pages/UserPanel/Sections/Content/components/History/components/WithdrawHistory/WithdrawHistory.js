@@ -1,12 +1,11 @@
 import React, {useEffect, useRef, useState} from 'react';
 import classes from './WithdrawHistory.module.css'
-import {useTranslation} from "react-i18next";
+import {Trans, useTranslation} from "react-i18next";
 import {useSelector} from "react-redux";
-import {useGetBuyAndSellHistory, useGetWithdrawHistory} from "../../../../../../../../../../queries";
+import {useGetWithdrawHistory} from "../../../../../../../../../../queries";
 import moment from "moment-jalaali";
 import Loading from "../../../../../../../../../../components/Loading/Loading";
 import Error from "../../../../../../../../../../components/Error/Error";
-import BuyAndSellTable from "../BuyAndSellTable/BuyAndSellTable";
 import Date from "../../../../../../../../../../components/Date/Date";
 import TextInput from "../../../../../../../../../../components/TextInput/TextInput";
 import DatePanel from "react-multi-date-picker/plugins/date_panel";
@@ -21,16 +20,18 @@ const WithdrawHistory = () => {
     const coins = useSelector((state) => state.exchange.assets)
 
     const [query, setQuery] = useState({
-        "coin": null, // optional
+        "currency": null, // optional
         "category": null, // optional [DEPOSIT, FEE, TRADE, WITHDRAW, ORDER_CANCEL, ORDER_CREATE, ORDER_FINALIZED]
         "startTime": null,
         "endTime": null,
         "ascendingByTime": false,
         "limit": 10,
-        "offset": 0
+        "offset": 0,
     });
 
     const {data, isLoading, error, refetch} = useGetWithdrawHistory(query);
+
+    console.log("data in withdraw:" , data)
 
     const pagination = {
         page: (query.offset / query.limit) + 1,
@@ -45,8 +46,9 @@ const WithdrawHistory = () => {
 
     const categories = ['DEPOSIT', 'FEE', 'TRADE', 'WITHDRAW', 'ORDER_CANCEL', 'ORDER_CREATE', 'ORDER_FINALIZED'];
 
-    const coinsOptions = [{value: null, label: t('all')}]
+    const currenciesOptions = [{value: null, label: t('all')}]
     const categoryOptions = [{value: null, label: t('all')}]
+
     const size = [10, 20, 30, 40, 50]
 
     categories.forEach((o) => {
@@ -54,7 +56,7 @@ const WithdrawHistory = () => {
     })
 
     coins.forEach((o) => {
-        coinsOptions.push({value: o, label: t('currency.' + o)})
+        currenciesOptions.push({value: o, label: t('currency.' + o)})
     })
 
 
@@ -129,56 +131,42 @@ const WithdrawHistory = () => {
         <div className={`width-100 column my-3`} ref={scrollRef}>
 
             <div className={`width-100 row jc-between ai-center`}>
-                {/*<TextInput
+                <TextInput
                     select={true}
-                    placeholder={t('TransactionHistory.coin')}
-                    options={coinsOptions}
-                    lead={t('TransactionHistory.coin')}
+                    placeholder={t('history.currency')}
+                    options={currenciesOptions}
+                    lead={t('history.currency')}
                     type="select"
                     value={{
-                        value: query?.coin,
-                        label:  query?.coin ? t('currency.'+ query?.coin) : t('all'),
+                        value: query?.currency,
+                        label:  query?.currency ? t('currency.'+ query?.currency) : t('all'),
                     }}
-                    onchange={(e) => setQuery({...query, coin: e.value, offset:0})}
-                    customClass={`width-24 ${classes.thisInput}`}
+                    onchange={(e) => setQuery({...query, currency: e.value, offset:0})}
+                    customClass={`width-20 ${classes.thisInput}`}
                 />
                 <TextInput
                     select={true}
-                    placeholder={t('TransactionHistory.category')}
-                    options={categoryOptions}
-                    lead={t('TransactionHistory.category')}
-                    type="select"
-                    value={{
-                        value: query?.category,
-                        label: query?.category ? t('TransactionCategory.'+ query?.category) : t('all'),
-                    }}
-                    onchange={(e) => setQuery({...query, category: e.value, offset:0})}
-                    customClass={`width-24 ${classes.thisInput}`}
-                />*/}
-                <TextInput
-                    select={true}
-                    placeholder={t('TransactionHistory.size')}
+                    placeholder={t('history.size')}
                     options={size?.map(s => {
                         return {label: s, value: s}
                     })}
-                    lead={t('TransactionHistory.size')}
+                    lead={t('history.size')}
                     type="select"
                     value={{
                         value: query?.limit,
                         label: query?.limit,
                     }}
                     onchange={pageSizeHandler}
-                    customClass={`width-30 ${classes.thisInput}`}
+                    customClass={`width-20 ${classes.thisInput}`}
                 />
-
                 <TextInput
                     datePicker={true}
-                    //placeholder={t('TransactionHistory.size')}
+                    //placeholder={t('history.size')}
                     //numberOfMonths={2}
                     plugins={[
                         <DatePanel />
                     ]}
-                    lead={t('TransactionHistory.period')}
+                    lead={t('history.period')}
                     type="input"
                     onChange={startDateHandler}
                     /*value={[query.startTime, query.endTime]}*/
@@ -188,34 +176,35 @@ const WithdrawHistory = () => {
                     hideOnScroll
                     dataPanelPosition="Bottom"
                     position={`${i18n.language === "fa" ? "bottom-left" : "bottom-right" }`}
-                    customClass={`width-30 ${classes.thisInput}`}
+                    customClass={`width-20 ${classes.thisInput} ${classes.datePicker} `}
                 />
-
-                <div className={`width-30 row jc-end ai-center fs-0-8`}>
-                    <span className={`fs-0-8 ml-1`}>{t("TransactionHistory.ascendingByTime")}</span>
+                <div className={`width-15 row jc-end ai-center fs-0-8`}>
+                    <span className={`fs-0-8 ml-1`}>{t("history.ascendingByTime")}</span>
                     <ToggleSwitch
 
                         onchange={ () => setQuery(prevState => {return {
                             ...prevState,
                             ascendingByTime: !prevState.ascendingByTime
                         }}) }
-
-                        /*onchange={()=> setQuery({
-                            ...query,
-                            ascendingByTime: (prevState => !prevState)}
-                        )}*/
                         checked={!query?.ascendingByTime}/>
                 </div>
-
             </div>
 
             <div className={`card-bg card-border width-100 my-4`} >
                 <div className={`card-header-bg row jc-between ai-center px-2 py-5`}>
                     <div className={`row jc-center ai-center`}>
                         <h3 className={``}>{t("TransactionHistory.withdrawTx")}</h3>
-                        <div className={`row mr-1 text-gray`}>
+                        <div className={`row mx-1 text-gray`}>
                             {periodTextHandler()}
                         </div>
+                        { data?.length !== 0 && <span className={`fs-0-9 flx jc-center ai-center text-gray`}>
+                            <Trans
+                                i18nKey="history.page"
+                                values={{
+                                    page: (query?.offset / query?.limit) + 1,
+                                }}
+                            />
+                        </span>}
                     </div>
 
                     <div className={`row jc-start ai-center `}>

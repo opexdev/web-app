@@ -1,13 +1,14 @@
 import {useQuery} from "@tanstack/react-query";
 import {getBuyAndSellHistory, getWithdrawHistory} from "js-api-client/client/txs";
 import {useSelector} from "react-redux";
+import axios from "axios";
 
 export const useGetWithdrawHistory = (query) => {
 
     const user_id = useSelector((state) => state.auth.id)
 
     return useQuery(
-        ['withdrawHistory', user_id, query.coin, query.category, query.endTime, query.startTime, query.limit, query.offset, query.ascendingByTime],
+        ['withdrawHistory', user_id, query.currency, query.category, query.endTime, query.startTime, query.limit, query.offset, query.ascendingByTime],
         () => getWithdrawHistoryFunc(query),
         {
             retry: 1,
@@ -17,6 +18,6 @@ export const useGetWithdrawHistory = (query) => {
 }
 
 const getWithdrawHistoryFunc = async (query) => {
-    const {data} = await getWithdrawHistory(query)
+    const {data} = await axios.post(`/wallet/withdraw/history`, query)
     return data;
 }

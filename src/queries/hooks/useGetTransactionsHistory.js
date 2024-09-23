@@ -2,6 +2,8 @@ import {useQuery} from "@tanstack/react-query";
 import {getTransactionsHistory} from "js-api-client";
 
 export const useGetTransactionsHistory = (query) => {
+
+    console.log("query", query)
     return useQuery(
         ['transactionsHistory', query.currency, query.category, query.endTime, query.startTime, query.limit, query.offset, query.ascendingByTime],
         () => getTransactionsHistoryFunc(query),
