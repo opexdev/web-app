@@ -31,8 +31,6 @@ const WithdrawHistory = () => {
 
     const {data, isLoading, error, refetch} = useGetWithdrawHistory(query);
 
-    console.log("data in withdraw:" , data)
-
     const pagination = {
         page: (query.offset / query.limit) + 1,
         isLastPage: data?.length < query.limit
@@ -193,7 +191,7 @@ const WithdrawHistory = () => {
             <div className={`card-bg card-border width-100 my-4`} >
                 <div className={`card-header-bg row jc-between ai-center px-2 py-5`}>
                     <div className={`row jc-center ai-center`}>
-                        <h3 className={``}>{t("TransactionHistory.withdrawTx")}</h3>
+                        <h3 className={``}>{t("history.withdrawHistory")}</h3>
                         <div className={`row mx-1 text-gray`}>
                             {periodTextHandler()}
                         </div>

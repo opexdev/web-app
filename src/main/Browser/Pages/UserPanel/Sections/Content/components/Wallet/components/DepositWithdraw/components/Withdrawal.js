@@ -63,9 +63,6 @@ const Withdrawal = () => {
         }
     }
 
-    console.log("currencyInfo?.chains[networkName.value]?.network", currencyInfo?.chains[networkName.value]?.network)
-    console.log("currencyInfo?.chains[networkName.value]?.currency", currencyInfo?.chains[networkName.value]?.currency)
-
     const sendWithdrawHandler = async (e) => {
         e.preventDefault()
         if (isLoading) return
@@ -99,8 +96,6 @@ const Withdrawal = () => {
                 getUserAssetsEstimatedValue()
             })
             .catch((error) => {
-
-                console.log("error", error)
                 toast.error(t('error'));
             })
             .finally(() => setIsLoading(false))

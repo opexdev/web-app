@@ -251,6 +251,8 @@
     "transactionsHistory": "تاریخچه تراکنش ها",
     "deposit": "واریز",
     "withdraw": "برداشت",
+    "withdrawHistory" : "تاریخچه برداشت",
+    "depositHistory" : "تاریخچه واریز",
     "balance": "موجودی",
     "amount": "مقدار",
     "network": "شبکه",
@@ -261,6 +263,7 @@
     "acceptDate": "تاریخ و زمان بررسی درخواست",
     "transactionRef": "شناسه تراکنش",
     "statusReason": "توضیح وضعیت",
+    "type": "نوع واریز",
     "balanceChange": "تغییر موجودی",
     "currency" : "ارز",
     "category" : "نوع تراکنش",
@@ -269,6 +272,9 @@
     "status" : "وضعیت",
     "ascendingByTime" : "نمایش براساس جدیدترین",
     "page": "صفحه {{page}}"
+  },
+  "depositStatus": {
+    "DONE": "انجام شده"
   },
   "withdrawStatus": {
     "CREATED": "جاری شده",

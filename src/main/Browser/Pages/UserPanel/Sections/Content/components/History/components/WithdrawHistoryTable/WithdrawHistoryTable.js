@@ -1,7 +1,6 @@
 import React, {useState} from 'react';
 import classes from './WithdrawHistoryTable.module.css'
 import {useTranslation} from "react-i18next";
-import {useSelector} from "react-redux";
 import Date from "../../../../../../../../../../components/Date/Date";
 import moment from "moment-jalaali";
 import {BN} from "../../../../../../../../../../utils/utils";
@@ -11,21 +10,17 @@ const WithdrawHistoryTable = ({txs, offset}) => {
 
     const [isOpen, setIsOpen] = useState(false);
 
-
     const {t} = useTranslation();
 
     let head = (
         <div className="row text-gray px-2 py-2" style={{backgroundColor:"var(--tableHeader)"}}>
             <span className="width-6 flex jc-start ai-center">{t("date")}</span>
             <span className="width-6 flex  jc-start ai-center">{t("time")}</span>
-
             <span className="width-10 flex jc-start ai-center">{t("history.currency")}</span>
-
             <span className="width-10 flex jc-start ai-center">{t("DepositWithdraw.network")}</span>
             <span className="width-9 flex jc-start ai-center">{t("history.amount")}</span>
             <span className="width-9 flex jc-start ai-center">{t("history.fee")}</span>
             <span className="width-9 flex jc-start ai-center">{t("history.status")}</span>
-
             <span className="width-29 flex jc-start ai-center">{t("history.destAddress")}</span>
             <span className="width-7 flex jc-start ai-center">{t("history.withdrawId")}</span>
             <span className="width-5 flex jc-end ai-center">{t("history.details")}</span>
@@ -35,11 +30,8 @@ const WithdrawHistoryTable = ({txs, offset}) => {
     let body = (
         <>
             {txs.map((tr, index) => {
-
                 return (
-
                     <div className={`column ${classes.striped}`} key={index}>
-
                         <div className={`${classes.row} row rounded-5 border-bottom px-2 py-2`} key={index} onDoubleClick={() => isOpen === index ? setIsOpen(null) : setIsOpen(index)}>
                             <span className="width-6 row jc-start ai-center">
                                 <Date date={tr.createDate}/>
@@ -49,7 +41,7 @@ const WithdrawHistoryTable = ({txs, offset}) => {
                             </span>
 
                             <span className="width-10 row jc-start ai-center">
-                                {t("currency." + tr.destSymbol )}
+                                {t("currency." + tr.currency )}
                             </span>
 
                             <span className="width-10 row jc-start ai-center">
@@ -80,7 +72,6 @@ const WithdrawHistoryTable = ({txs, offset}) => {
                             </span>
 
                         </div>
-
                         {isOpen === index && <div className={`width-90 column jc-start ai-start px-2 py-2 fs-0-9 ${classes.rectangle}`}>
                             <div className={`row width-50 my-05`}>
                                 <span className={`width-50`}>{t("history.acceptDate")}</span>
@@ -91,7 +82,6 @@ const WithdrawHistoryTable = ({txs, offset}) => {
                                             <span className={``}> - {moment.utc(tr.acceptDate).local().format("HH:mm:ss")}</span>
                                         </> : "- - -"
                                     }
-
                                 </span>
                             </div>
                             <div className={`row width-50 my-05`}>
@@ -106,21 +96,12 @@ const WithdrawHistoryTable = ({txs, offset}) => {
                                     {tr?.statusReason ?? "- - -"}
                                 </span>
                             </div>
-
                         </div>}
-
                     </div>
-
-
-
                 )
             })}
         </>
     );
-
-
-
-
 
     return (
         <>

@@ -16,7 +16,6 @@
     cursor: not-allowed;
 }
 
-
 .thisInput :global(.lead) {
     width: 30%;
 }

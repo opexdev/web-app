@@ -15,3 +15,16 @@
     color: var(--textColor);
     cursor: not-allowed;
 }
+
+.thisInput :global(.lead) {
+    width: 30%;
+}
+.thisInput :global(.selectExternalClass) {
+    width: 70%;
+}
+.thisInput :global(.rmdp-container ) {
+    width: 70%;
+}
+.thisInput.datePicker :global(.rmdp-container ) {
+    font-size: 0.85rem;
+}
