@@ -1,0 +1,11 @@
+.striped:nth-child(even) {
+    background-color: var(--tableRow);
+    -webkit-transition: background-color 0.4s;
+    -o-transition: background-color 0.4s;
+    transition: background-color 0.4s;
+}
+
+.thisButton {
+    width: 100%;
+    background-color: var(--darkRed);
+}

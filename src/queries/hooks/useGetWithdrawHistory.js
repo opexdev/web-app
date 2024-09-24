@@ -18,6 +18,6 @@ export const useGetWithdrawHistory = (query) => {
 }
 
 const getWithdrawHistoryFunc = async (query) => {
-    const {data} = await axios.post(`/wallet/withdraw/history`, query)
+    const {data} = await getWithdrawHistory(query)
     return data;
 }

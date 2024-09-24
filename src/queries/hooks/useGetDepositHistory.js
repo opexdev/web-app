@@ -18,6 +18,6 @@ export const useGetDepositHistory = (query) => {
 }
 
 const getDepositHistoryFunc = async (query) => {
-    const {data} = await axios.post(`/wallet/v1/deposit/history`, query)
+    const {data} = await getDepositHistory(query)
     return data;
 }

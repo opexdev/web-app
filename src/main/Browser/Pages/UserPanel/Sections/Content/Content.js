@@ -26,14 +26,17 @@ const Content = () => {
                     <Route path={RoutesName.WalletRelative+"/:id"} element={<Wallet/>}/>
                     <Route path={RoutesName.SettingsRelative+"/*"} element={<Settings/>}/>
                     <Route path={RoutesName.TechnicalRelative} element={<TechnicalChart/>}/>
-                    <Route path={RoutesName.TransactionsRelative} element={<Transactions/>}/>
-                    <Route path={RoutesName.HistoryRelative} element={<History/>}/>
+                    <Route path={RoutesName.HistoryRelative+"/*"} element={<History/>}/>
                 </Route>
                 <Route
                     path={RoutesName.WalletRelative}
                     element={<Navigate to={RoutesName.Wallet + "/" + defaultWallet} replace />}
                 />
 
+                <Route
+                    path={RoutesName.HistoryRelative}
+                    element={<Navigate to={RoutesName.Transactions} replace />}
+                />
                 <Route
                     path={RoutesName.SettingsRelative}
                     element={<Navigate to={RoutesName.Security} replace />}
