@@ -25,20 +25,6 @@ const MainMenu = () => {
                 </div>
                 <div className={`column jc-between ai-center ${classes.content}  pb-2`}>
                     <div className={`column jc-start ai-center ${classes.topSection}`}>
-                        {/*<NavLink
-                            to={Routes.Landing}
-                            className={({ isActive }) =>
-                                isActive ? classes.selected : undefined
-                            }
-                            onClick={() => setShowMessages(false)}
-                            data-tooltip-id="opex-tooltip"
-                            data-tooltip-place="left"
-                            data-tooltip-float={true}
-                            data-tooltip-html={`<span class="column jc-between col-100">${t(
-                                "home",
-                            )}</span>`}>
-                            <Icon iconName="icon-overview fs-21"/>
-                        </NavLink>*/}
                         <NavLink
                             to={Routes.Landing}
                             end
@@ -100,23 +86,6 @@ const MainMenu = () => {
                             )}</span>`}>
                             <Icon iconName="icon-account fs-21"/>
                         </NavLink>
-
-                       {/* <NavLink
-                            to={Routes.Transactions}
-                            className={({ isActive }) =>
-                                isActive ? classes.selected : undefined
-                            }
-                            onClick={() => setShowMessages(false)}
-                            data-tooltip-id="opex-tooltip"
-                            data-tooltip-place="left"
-                            data-tooltip-float={true}
-                            data-tooltip-html={`
-                         <span class="column jc-between col-100">${t(
-                                "txHistory.title",
-                            )}</span>`}>
-                            <Icon iconName="icon-clock fs-21"/>
-                        </NavLink>*/}
-
                         <NavLink
                             to={Routes.History}
                             className={({ isActive }) =>
@@ -142,7 +111,7 @@ const MainMenu = () => {
                          data-tooltip-id="opex-tooltip" data-tooltip-place="left" data-tooltip-float={true} data-tooltip-html={`<span class="column jc-between col-100">${t("messages.title")}</span>`}><Icon iconName="icon-messages-dotted fs-21"/>
                      </span>*/}
                         <NavLink
-                            to={Routes.Security}
+                            to={Routes.Settings}
                             className={({ isActive }) =>
                                 isActive ? classes.selected : undefined
                             }

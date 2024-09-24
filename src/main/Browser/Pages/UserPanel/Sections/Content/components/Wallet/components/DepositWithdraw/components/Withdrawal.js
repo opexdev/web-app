@@ -13,7 +13,7 @@ import {useGetUserAccount} from "../../../../../../../../../../../queries/hooks/
 import {
     useGetCurrencyInfo,
     useGetUserAssets,
-    useGetUserAssetsEstimatedValue,
+    useGetUserAssetsEstimatedValue, useGetWithdrawHistory,
     useWithdrawTxs
 } from "../../../../../../../../../../../queries";
 import Loading from "../../../../../../../../../../../components/Loading/Loading";
@@ -36,9 +36,21 @@ const Withdrawal = () => {
     }, [id]);
 
     const {refetch: getUserAccount} = useGetUserAccount();
-    const {refetch: getWithdrawTxs} = useWithdrawTxs(id);
+    /*const {refetch: getWithdrawTxs} = useWithdrawTxs(id);*/
     const {refetch: getUserAssets} = useGetUserAssets("IRT");
     const {refetch: getUserAssetsEstimatedValue} = useGetUserAssetsEstimatedValue("IRT");
+
+    const query = {
+        "currency": id, // optional
+        "category": null, // optional [DEPOSIT, FEE, TRADE, WITHDRAW, ORDER_CANCEL, ORDER_CREATE, ORDER_FINALIZED]
+        "startTime": null,
+        "endTime": null,
+        "ascendingByTime": false,
+        "limit": 10,
+        "offset": 0,
+    }
+
+    const {refetch: getWithdrawHistory} = useGetWithdrawHistory(query);
 
     const {data: userAccount} = useGetUserAccount()
     const freeAmount = userAccount?.wallets[id]?.free || 0
@@ -62,9 +74,6 @@ const Withdrawal = () => {
             return t('DepositWithdraw.fillAddress')
         }
     }
-
-    console.log("currencyInfo?.chains[networkName.value]?.network", currencyInfo?.chains[networkName.value]?.network)
-    console.log("currencyInfo?.chains[networkName.value]?.currency", currencyInfo?.chains[networkName.value]?.currency)
 
     const sendWithdrawHandler = async (e) => {
         e.preventDefault()
@@ -94,13 +103,12 @@ const Withdrawal = () => {
                     }}
                 />);
                 getUserAccount()
-                getWithdrawTxs()
+                /*getWithdrawTxs()*/
+                getWithdrawHistory()
                 getUserAssets()
                 getUserAssetsEstimatedValue()
             })
             .catch((error) => {
-
-                console.log("error", error)
                 toast.error(t('error'));
             })
             .finally(() => setIsLoading(false))

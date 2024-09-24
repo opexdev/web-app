@@ -1,3 +1,5 @@
+import WithdrawTx from "../Pages/UserPanel/Sections/Content/components/Wallet/components/WithdrawTx/WithdrawTx";
+
 export const Landing = "/";
 export const Panel = "/panel";
 export const Login = "/login";
@@ -19,11 +21,16 @@ export const UserForgetPasswordRelative = "forget-password";
 export const TxHistory = "/panel/transaction-history";
 export const TxHistoryRelative = "/transaction-history";
 
-export const Transactions = "/panel/transactions";
-export const TransactionsRelative = "/transactions";
+
 
 export const History = "/panel/history";
 export const HistoryRelative = "/history";
+export const Transactions = "/panel/history/transactions";
+export const TransactionsRelative = "/transactions";
+export const Withdraw = "/panel/history/withdraw";
+export const WithdrawRelative = "/withdraw";
+export const Deposit = "/panel/history/deposit";
+export const DepositRelative = "/deposit";
 
 
 
