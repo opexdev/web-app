@@ -135,7 +135,7 @@ const WithdrawTxTable = ({txs}) => {
                             </div>
                             <div className={`row width-100 my-05`}>
                                 <span className={`width-40`}>{t("history.transactionRef")}</span>
-                                <span className={`width-60 text-end fs-0-8`}>
+                                <span className={`width-60 text-end break-word`}>
                                     {tr?.destTransactionRef ?? "- - -"}
                                 </span>
                             </div>

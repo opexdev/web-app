@@ -57,7 +57,7 @@ const DepositTxTable = ({txs}) => {
                         {isOpen === index && <div className={`width-100 column jc-start ai-start px-1 py-2 fs-0-9`}>
                             <div className={`row width-100 my-05`}>
                                 <span className={`width-30`}>{t("history.transactionRef")}</span>
-                                <span className={`width-70 text-end`}>
+                                <span className={`width-70 text-end break-word`}>
                                     {tr?.transactionRef ?? "- - -"}
                                 </span>
                             </div>
