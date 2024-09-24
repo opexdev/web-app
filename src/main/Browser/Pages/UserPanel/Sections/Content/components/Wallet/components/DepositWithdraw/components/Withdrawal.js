@@ -13,7 +13,7 @@ import {useGetUserAccount} from "../../../../../../../../../../../queries/hooks/
 import {
     useGetCurrencyInfo,
     useGetUserAssets,
-    useGetUserAssetsEstimatedValue,
+    useGetUserAssetsEstimatedValue, useGetWithdrawHistory,
     useWithdrawTxs
 } from "../../../../../../../../../../../queries";
 import Loading from "../../../../../../../../../../../components/Loading/Loading";
@@ -36,9 +36,21 @@ const Withdrawal = () => {
     }, [id]);
 
     const {refetch: getUserAccount} = useGetUserAccount();
-    const {refetch: getWithdrawTxs} = useWithdrawTxs(id);
+    /*const {refetch: getWithdrawTxs} = useWithdrawTxs(id);*/
     const {refetch: getUserAssets} = useGetUserAssets("IRT");
     const {refetch: getUserAssetsEstimatedValue} = useGetUserAssetsEstimatedValue("IRT");
+
+    const query = {
+        "currency": id, // optional
+        "category": null, // optional [DEPOSIT, FEE, TRADE, WITHDRAW, ORDER_CANCEL, ORDER_CREATE, ORDER_FINALIZED]
+        "startTime": null,
+        "endTime": null,
+        "ascendingByTime": false,
+        "limit": 10,
+        "offset": 0,
+    }
+
+    const {refetch: getWithdrawHistory} = useGetWithdrawHistory(query);
 
     const {data: userAccount} = useGetUserAccount()
     const freeAmount = userAccount?.wallets[id]?.free || 0
@@ -67,7 +79,18 @@ const Withdrawal = () => {
         e.preventDefault()
         if (isLoading) return
         setIsLoading(true)
-        sendWithdrawReq(amount.value, id, address.value, withdrawFee, `${currencyInfo?.chains[networkName.value]?.network} - ${currencyInfo?.chains[networkName.value]?.currency}`)
+
+        const withdrawRequestData = {
+            "currency": currencyInfo?.chains[networkName.value]?.currency,
+            "amount": amount.value,
+            "destSymbol": currencyInfo?.chains[networkName.value]?.currency,
+            "destAddress": address.value,
+            "destNetwork": currencyInfo?.chains[networkName.value]?.network,
+            /*"destNote": "Personal wallet", //Optional
+            "description": "Withdrawal to personal wallet" //Optional*/
+        }
+
+        sendWithdrawReq(withdrawRequestData)
             .then(() => {
                 setNetworkName({value: 0, error: []})
                 setAmount({value: 0, error: []})
@@ -80,11 +103,12 @@ const Withdrawal = () => {
                     }}
                 />);
                 getUserAccount()
-                getWithdrawTxs()
+                /*getWithdrawTxs()*/
+                getWithdrawHistory()
                 getUserAssets()
                 getUserAssetsEstimatedValue()
             })
-            .catch(() => {
+            .catch((error) => {
                 toast.error(t('error'));
             })
             .finally(() => setIsLoading(false))
@@ -188,7 +212,7 @@ const Withdrawal = () => {
                         <div className="column">
                             <span className={`my-05`}>
                                 {t('commission')}: <span
-                                className={`text-orange`}>{amount.value ? withdrawFee : 0} </span>
+                                className={`text-orange`}>{withdrawFee ? withdrawFee : 0} </span>
                                 <span>{t("currency." + id)}</span>
                             </span>
                             <span className={`my-05`}>

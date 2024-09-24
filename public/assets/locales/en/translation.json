@@ -251,14 +251,37 @@
     "transactionsHistory": "Transactions History",
     "deposit": "Deposit",
     "withdraw": "Withdraw",
+    "withdrawHistory" : "Withdraw History",
+    "depositHistory" : "Deposit History",
     "balance": "Balance",
     "balanceChange": "Balance Change",
     "currency" : "Currency",
     "category" : "Category",
     "size" : "Size",
     "period" : "Period",
+    "status" : "Status",
     "ascendingByTime" : "Ascending By Time",
-    "page": "Page {{page}}"
+    "page": "Page {{page}}",
+    "amount": "Amount",
+    "network": "Network",
+    "details": "Details",
+    "fee": "Fee",
+    "destAddress": "Dest Address",
+    "withdrawId": "Withdraw ID",
+    "acceptDate": "Date and time of request review",
+    "transactionRef": "Transaction Ref",
+    "statusReason": "Status Reason",
+    "type": "Type"
+  },
+  "depositStatus": {
+    "DONE": "Done"
+  },
+  "withdrawStatus": {
+    "CREATED": "Created",
+    "PROCESSING": "Processing",
+    "CANCELED": "Canceled",
+    "REJECTED": "Rejected",
+    "DONE": "Done"
   },
   "TransactionHistory": {
     "buyAndSell" : "Buy And Sell",
@@ -367,6 +390,15 @@
     "IRTsuccess": "Deposit request {{amount}} Tomans is successfully registered",
     "cancel": "cancel",
     "cancelPayment": "Payment operation canceled!"
+  },
+  "DepositTx": {
+    "title": "Last 10 {{currency}} deposit transactions.",
+    "showAll": "Show All"
+  },
+  "WithdrawTx": {
+    "title": "Last 10 {{currency}} withdraw transactions.",
+    "cancelWithdrawReq": "Cancel withdrawal request",
+    "cancelWithdrawReqSuccess": "Withdrawal request has been successfully canceled"
   },
   "transactionType": {
     "deposit": "Deposit",

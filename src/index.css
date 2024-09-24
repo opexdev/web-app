@@ -285,6 +285,10 @@ html, body {
     background-color: var(--orange);
 }
 
+.break-word {
+    word-break: break-word;
+}
+
 .text-start {
     text-align: start;
 }

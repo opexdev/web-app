@@ -17,12 +17,12 @@ const Wallet = () => {
                     <DepositWithdraw/>
                 </div>
                 <div className="row">
-                    <div className={`width-100 card-bg card-border column ${classes.container} my-2`}>
+                    {id === "IRT" ? <div className={`width-100 card-bg card-border column ${classes.container} my-2`}>
                         <div className="flex jc-between card-header-bg py-2 px-1">
                             <h3>{t("DepositWithdrawTx.title")}</h3>
                         </div>
-                        {id === "IRT" ? <IRTTx/> : <DepositWithdrawTx/>}
-                    </div>
+                        <IRTTx/>
+                    </div> : <DepositWithdrawTx/>}
                 </div>
             </div>
         </>

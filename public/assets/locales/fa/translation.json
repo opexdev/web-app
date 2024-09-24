@@ -251,14 +251,37 @@
     "transactionsHistory": "تاریخچه تراکنش ها",
     "deposit": "واریز",
     "withdraw": "برداشت",
+    "withdrawHistory" : "تاریخچه برداشت",
+    "depositHistory" : "تاریخچه واریز",
     "balance": "موجودی",
     "balanceChange": "تغییر موجودی",
     "currency" : "ارز",
     "category" : "نوع تراکنش",
     "size" : "تعداد",
     "period" : "بازه زمانی",
+    "status" : "وضعیت",
     "ascendingByTime" : "نمایش براساس جدیدترین",
-    "page": "صفحه {{page}}"
+    "page": "صفحه {{page}}",
+    "amount": "مقدار",
+    "network": "شبکه",
+    "details": "جزئیات",
+    "fee": "کارمزد",
+    "destAddress": "آدرس مقصد",
+    "withdrawId": "شناسه برداشت",
+    "acceptDate": "تاریخ و زمان بررسی درخواست",
+    "transactionRef": "شناسه تراکنش",
+    "statusReason": "توضیح وضعیت",
+    "type": "نوع واریز"
+  },
+  "depositStatus": {
+    "DONE": "انجام شده"
+  },
+  "withdrawStatus": {
+    "CREATED": "جاری شده",
+    "PROCESSING": "در حال انجام",
+    "CANCELED": "لغو شده",
+    "REJECTED": "رد شده",
+    "DONE": "انجام شده"
   },
   "TransactionHistory": {
     "buyAndSell" : "خرید و فروش",
@@ -367,6 +390,15 @@
     "IRTsuccess": "درخواست واریز {{amount}} تومان با موفقیت ثبت شد",
     "cancel": "لغو",
     "cancelPayment": "عملیات واریز لغو شد!"
+  },
+  "DepositTx": {
+    "title": "10 تراکنش آخر واریز {{currency}}",
+    "showAll": "نمایش همه"
+  },
+  "WithdrawTx": {
+    "title": "10 تراکنش آخر برداشت {{currency}}",
+    "cancelWithdrawReq": "لغو درخواست برداشت",
+    "cancelWithdrawReqSuccess": "درخواست برداشت با موفقیت لغو شد"
   },
   "transactionType": {
     "deposit": "واریز",
