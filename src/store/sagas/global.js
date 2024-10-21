@@ -3,6 +3,8 @@ import * as actions from "../actions/index";
 import jwtDecode from "jwt-decode";
 import axios from "axios";
 import i18n from "i18next";
+import {defaultConfigs} from "../../setup/configs/configs";
+
 
 export function* setThemeSaga(action) {
     try {
@@ -81,13 +83,22 @@ export function* loadConfig(action) {
         const {
             data: {
                 defaultTheme,
+                language,
                 ...configs
             }
         } = yield call(axios.get, '/config/web/v1')
 
         yield put(actions.setExchangeConfigs(configs));
-
+        i18n.changeLanguage(language)
         appTheme = defaultTheme;
+
+    } catch (e) {
+        i18n.changeLanguage(defaultConfigs?.defaultLanguage)
+        appTheme = defaultConfigs?.defaultTheme;
+        yield put(actions.setExchangeConfigs(defaultConfigs));
+    }
+
+    try {
 
         const localTheme = yield call([localStorage, 'getItem'], 'theme')
         if (localTheme) appTheme = localTheme;
