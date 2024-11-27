@@ -19,6 +19,8 @@ import tron from "./images/src/tron.svg";
 import testTron from "./images/src/testTron.svg";
 import ethereumLight from "./images/src/ethereumLight.svg";
 import toman from "./images/src/toman.svg";
+import toncoin from "./images/src/toncoin.svg";
+import solana from "./images/src/solana.svg";
 import spaceStar from "./images/src/spaceStar.png";
 import astronaut from "./images/src/astronaut.svg";
 import astronautAlone from "./images/src/astronautAlone.svg";
@@ -62,6 +64,8 @@ export const images = {
   TTRX: testTron,
   ETH: ethereumLight,
   IRT: toman,
+  TON: toncoin,
+  SOL: solana,
   spaceStar: spaceStar,
   astronaut: astronaut,
   astronautAlone: astronautAlone,

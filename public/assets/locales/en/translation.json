@@ -84,7 +84,9 @@
     "TBNB": "TBNB",
     "TBUSD": "TBUSD",
     "BCH": "BCH",
-    "TRX": "TRX"
+    "TRX": "TRX",
+    "SOL": "SOL",
+    "TON": "TON"
   },
   "marketInterval": {
     "24h": "24 hours",
