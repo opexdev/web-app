@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 27.5.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 2499.6 2500" style="enable-background:new 0 0 2499.6 2500;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:#0E0E0E;}
+	.st1{fill:url(#SVGID_1_);}
+	.st2{fill:url(#SVGID_00000021834792655739791350000017812679319390934171_);}
+	.st3{fill:url(#SVGID_00000148630987111574291310000007624911039926599052_);}
+</style>
+<path class="st0" d="M2499.6,1250c0,690.2-559.6,1249.8-1250.1,1249.9c-690,0-1249.6-559.7-1249.5-1250C-0.2,559.6,559.4,0,1249.7,0
+	S2499.6,559.7,2499.6,1250L2499.6,1250z"/>
+<g>
+	
+		<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="1866.2711" y1="700.5444" x2="1030.5182" y2="2301.3472" gradientTransform="matrix(1 0 0 1 0 -186)">
+		<stop  offset="0" style="stop-color:#00FFA3"/>
+		<stop  offset="1" style="stop-color:#DC1FFF"/>
+	</linearGradient>
+	<path class="st1" d="M739,1562.2c9.1-9.1,21.7-14.5,35-14.5h1207.6c22.1,0,33.1,26.6,17.5,42.2l-238.6,238.6
+		c-9.1,9.1-21.7,14.5-35,14.5H518c-22.1,0-33.1-26.6-17.5-42.2L739,1562.2z"/>
+	
+		<linearGradient id="SVGID_00000013165162665847192720000006682728064259598750_" gradientUnits="userSpaceOnUse" x1="1500.8663" y1="509.7726" x2="665.1135" y2="2110.5757" gradientTransform="matrix(1 0 0 1 0 -186)">
+		<stop  offset="0" style="stop-color:#00FFA3"/>
+		<stop  offset="1" style="stop-color:#DC1FFF"/>
+	</linearGradient>
+	<path style="fill:url(#SVGID_00000013165162665847192720000006682728064259598750_);" d="M739,671.5c9.5-9.1,22.1-14.5,35-14.5
+		h1207.6c22.1,0,33.1,26.6,17.5,42.2l-238.6,238.6c-9.1,9.1-21.7,14.5-35,14.5H518c-22.1,0-33.1-26.6-17.5-42.2L739,671.5z"/>
+	
+		<linearGradient id="SVGID_00000134932396305448332280000002874291342403482283_" gradientUnits="userSpaceOnUse" x1="1682.3982" y1="604.5472" x2="846.6449" y2="2205.3503" gradientTransform="matrix(1 0 0 1 0 -186)">
+		<stop  offset="0" style="stop-color:#00FFA3"/>
+		<stop  offset="1" style="stop-color:#DC1FFF"/>
+	</linearGradient>
+	<path style="fill:url(#SVGID_00000134932396305448332280000002874291342403482283_);" d="M1760.6,1114c-9.1-9.1-21.7-14.5-35-14.5
+		H518c-22.1,0-33.1,26.6-17.5,42.2L739,1380.3c9.1,9.1,21.7,14.5,35,14.5h1207.6c22.1,0,33.1-26.6,17.5-42.2L1760.6,1114z"/>
+</g>
+</svg>
