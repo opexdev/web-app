@@ -13,7 +13,10 @@ const WalletSubMenu = () => {
     const {t} = useTranslation();
     const [showZero, setShowZero] = useState(false);
     const assets = useSelector((state) => state.exchange.assets)
+
+    console.log("assets", assets)
     const {data: data, isLoading} = useGetUserAccount()
+    console.log("data", data)
 
     return (
         <div className={`width-100 card-bg column ${classes.container}`}>
@@ -32,8 +35,8 @@ const WalletSubMenu = () => {
                             </div>
                             <WalletBalance/>
                             <ScrollBar customClass={`column`}>
-                                {assets.filter(asset => data.wallets[asset].free > 0)
-                                    .concat(assets.filter(asset => data.wallets[asset].free === 0))
+                                {assets?.filter(asset => data?.wallets?.[asset]?.free > 0)
+                                    .concat(assets.filter(asset => data?.wallets?.[asset]?.free === 0))
                                     .map((name) => <WalletListItem key={name} assetName={name} showZero={showZero}/>)}
                             </ScrollBar>
                         </div>
