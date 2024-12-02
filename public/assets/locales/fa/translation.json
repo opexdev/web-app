@@ -677,6 +677,12 @@
     "advancedTrading": "معامله حرفه‌ای",
     "easyTrading": "معامله آسان"
   },
+  "Campaign": {
+    "hasCampaign":"false",
+    "title": "",
+    "content": "",
+    "link": ""
+  },
   "GeneralInfo": {
     "activeUsers": "کاربر فعال",
     "totalOrders": "سفارش ثبت شده",

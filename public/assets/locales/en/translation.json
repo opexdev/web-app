@@ -677,6 +677,12 @@
     "advancedTrading": "Advanced Trading",
     "easyTrading": "Easy Trading"
   },
+  "Campaign": {
+    "hasCampaign":"false",
+    "title": "",
+    "content": "",
+    "link": ""
+  },
   "GeneralInfo": {
     "activeUsers": "Active Users",
     "totalOrders": "Total Orders",
