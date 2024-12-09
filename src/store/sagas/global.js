@@ -194,4 +194,7 @@ const assetsScope = {
     USDT: {min: 0.01, step: 0.01},
     IRT: {min: 50000, step: 1000},
     TRX: {min: 0.1, step: 0.1},
+    SOL: {min: 0.00001, step: 0.00001},
+    TON: {min: 0.0001, step: 0.0001},
+    DOGE: {min: 0.0001, step: 0.0001},
 }
