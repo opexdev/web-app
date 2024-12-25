@@ -335,6 +335,7 @@ const SellOrder = () => {
                 maxDecimal={activePair.quoteAssetPrecision}
                 after={t("currency." + activePair.quoteAsset)}
                 onchange={(e) => sellPriceHandler(e.target.value, "totalPrice")}
+                alert={alert.totalPrice}
                 isAllowed={isAllowed}
             />
 
