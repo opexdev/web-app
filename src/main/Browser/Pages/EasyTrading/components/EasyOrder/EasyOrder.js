@@ -133,7 +133,7 @@ const EasyOrder = () => {
         if (!reqAmount.mod(selected.pair[range].step).isZero()) {
             newAlert = <Trans
                 i18nKey="orders.divisibility"
-                values={{mod: selected.pair[range].step.toString()}}
+                values={{mod: new BN(selected.pair[range].step).toFormat()}}
             />
         }
         setAlert({...alert, reqAmount: newAlert});
