@@ -185,16 +185,16 @@ export function* loadConfig(action) {
 }
 
 const assetsScope = {
-    TBTC: {min: 0.0000001, step: 0.0000001},
-    BTC: {min: 0.0000001, step: 0.0000001},
-    TETH: {min: 0.0000001, step: 0.0000001},
-    ETH: {min: 0.0000001, step: 0.0000001},
-    TBNB: {min: 0.00001, step: 0.00001},
-    BNB: {min: 0.00001, step: 0.00001},
+    TBTC: {min: 0.000001, step: 0.000001},
+    BTC: {min: 0.000001, step: 0.000001},
+    TETH: {min: 0.000001, step: 0.000001},
+    ETH: {min: 0.000001, step: 0.000001},
+    TBNB: {min: 0.0001, step: 0.0001},
+    BNB: {min: 0.0001, step: 0.0001},
     USDT: {min: 0.01, step: 0.01},
     IRT: {min: 50000, step: 1000},
-    TRX: {min: 0.0000001, step: 0.0000001},
-    SOL: {min: 0.000001, step: 0.000001},
-    TON: {min: 0.00001, step: 0.00001},
-    DOGE: {min: 0.00001, step: 0.00001},
+    TRX: {min: 0.000001, step: 0.000001},
+    SOL: {min: 0.00001, step: 0.00001},
+    TON: {min: 0.0001, step: 0.0001},
+    DOGE: {min: 0.0001, step: 0.0001},
 }
