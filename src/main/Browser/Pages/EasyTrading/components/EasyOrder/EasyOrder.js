@@ -30,6 +30,8 @@ const EasyOrder = () => {
         totalPrice: null,
     });
 
+
+
     const [order, setOrder] = useState({
         tradeFee: new BN(0),
         stopLimit: false,
@@ -76,6 +78,12 @@ const EasyOrder = () => {
             type: selected?.type ==="ask" ? "bid" : "ask"
         })
 
+        setAlert({
+            submit: false,
+            reqAmount: null,
+            totalPrice: null,
+        })
+
     }
 
     const [options, setOptions] = useState({
@@ -99,6 +107,7 @@ const EasyOrder = () => {
             pricePerUnit: new BN(bestPrice)
         })
     }
+
     useEffect(() => {
         bestPriceHandler()
     }, [orderBook, selected])
@@ -110,11 +119,12 @@ const EasyOrder = () => {
         const reqAmount = new BN(value);
         let range = "baseRange"
         if (selected.type === "bid") range = "quoteRange"
+
         if (reqAmount.isZero() && reqAmount.isLessThan(selected.pair[range].min)) {
             newAlert = <Trans
                 i18nKey="orders.minOrder"
                 values={{
-                    min: selected.pair[range].min?.toString(),
+                    min: new BN(selected.pair[range].min).toFormat(),
                     currency: t("currency." + selected.buy),
                 }}
             />
@@ -123,7 +133,7 @@ const EasyOrder = () => {
         if (!reqAmount.mod(selected.pair[range].step).isZero()) {
             newAlert = <Trans
                 i18nKey="orders.divisibility"
-                values={{mod: selected.pair[range].step.toString()}}
+                values={{mod: new BN(selected.pair[range].step).toFormat()}}
             />
         }
         setAlert({...alert, reqAmount: newAlert});
@@ -147,18 +157,17 @@ const EasyOrder = () => {
             newAlert = <Trans
                 i18nKey="orders.minOrder"
                 values={{
-                    min: selected.pair[range].min?.toString(),
+                    min: new BN(selected.pair[range].min).toFormat(),
                     currency: t("currency." + selected.sell),
                 }}
             />
 
         }
 
-
         if (!totalPrice.mod(selected.pair[range].step).isZero()) {
             newAlert = <Trans
                 i18nKey="orders.divisibility"
-                values={{mod: selected.pair[range].step.toString()}}
+                values={{mod: new BN(selected.pair[range].min).toFormat()}}
             />
         }
         setAlert({...alert, totalPrice: newAlert});
@@ -262,6 +271,11 @@ const EasyOrder = () => {
             pricePerUnit: new BN(0),
             totalPrice: new BN(0),
         })
+        setAlert({
+            submit: false,
+            reqAmount: null,
+            totalPrice: null,
+        })
     }
     const sellOnChangeHandler = (e) => {
         const newSell = e.value;
@@ -281,6 +295,11 @@ const EasyOrder = () => {
             pricePerUnit: new BN(0),
             totalPrice: new BN(0),
         })
+        setAlert({
+            submit: false,
+            reqAmount: null,
+            totalPrice: null,
+        })
     }
     const showBestPrice = () => {
         if (order.pricePerUnit.isZero()) return 0
@@ -288,18 +307,14 @@ const EasyOrder = () => {
         return new BN(1).dividedBy(order.pricePerUnit).decimalPlaces(selected.pair?.baseAssetPrecision).toFormat()
     }
 
-    useEffect(() => {
+/*    useEffect(() => {
         if (order.totalPrice.isGreaterThan(userAccount?.wallets[selected?.sell]?.free)) {
             return setAlert({
                 ...alert,
                 totalPrice: t('orders.notEnoughBalance')
             })
         }
-        return setAlert({
-            ...alert,
-            totalPrice: null
-        })
-    }, [order.totalPrice])
+    }, [order.totalPrice])*/
 
 
     return (
