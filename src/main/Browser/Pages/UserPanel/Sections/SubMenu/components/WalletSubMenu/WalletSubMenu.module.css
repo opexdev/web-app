@@ -106,3 +106,9 @@
 .selected:last-child:before{
   width: 0;
 }
+
+.iconDisabled {
+  filter: grayscale(0.75);
+  opacity: 0.9;/*
+    background-color: var(--lightGray)*/
+}
