@@ -8,6 +8,6 @@ export const defaultConfigs = {
     ],
     "defaultTheme": "DARK",
     "supportEmail": "supportEmail@gmail.com",
-    "baseCurrency": "TUSDT",
+    "baseCurrency": "USDT",
     "dateType": "Hijri"
 }
