@@ -49,7 +49,7 @@ const WalletListItem = ({symbol, data, assetName, freeWallet, showZero}) => {
                 <div className="column ai-end">
                     <span>{new BN(freeWallet).decimalPlaces(currencies[symbol]?.precision ?? 0).toFormat() + " "} <span className="fs-0-7">{getCurrencyNameOrAlias(currencies[symbol], language)}</span></span>
                     <span className="fs-0-7 text-gray" >
-                        <span>~ </span> {refCurrency === assetName ? new BN(free).toFormat() : new BN(freeEstimateValue).toFormat()}<span> {t("currency."+refCurrency)}</span>
+                        <span>~ </span> {refCurrency === assetName ? new BN(free).decimalPlaces(currencies[refCurrency]?.precision ?? 0).toFormat() : new BN(freeEstimateValue).decimalPlaces(currencies[refCurrency]?.precision ?? 0).toFormat()}<span> {t("currency."+refCurrency)}</span>
                     </span>
                 </div>
             </div>

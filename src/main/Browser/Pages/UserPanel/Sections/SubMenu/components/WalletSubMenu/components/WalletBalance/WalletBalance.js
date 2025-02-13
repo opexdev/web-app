@@ -33,7 +33,7 @@ const WalletBalance = () => {
                     <span className="fs-0-7">{t("WalletSubMenu.approximate")}</span>
                 </div>
                 <div className="column ai-end">
-                    <span>{new BN(totalValue).toFormat()}{" "}<span className="fs-0-7">{getCurrencyNameOrAlias(currencies[refCurrency], language)}</span></span>
+                    <span>{new BN(totalValue).decimalPlaces(currencies[refCurrency]?.precision ?? 0).toFormat()}{" "}<span className="fs-0-7">{getCurrencyNameOrAlias(currencies[refCurrency], language)}</span></span>
                 </div>
             </div>
         </div>
