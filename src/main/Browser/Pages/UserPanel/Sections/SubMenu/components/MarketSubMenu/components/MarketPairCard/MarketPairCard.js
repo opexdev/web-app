@@ -15,9 +15,6 @@ const MarketPairCard = ({id, pair, favPair, addFav}) => {
     const language = i18n.language
     const currencies = useSelector((state) => state.exchange.currencies)
 
-    console.log("pair", pair)
-    console.log("activePair in submenu", activePair)
-
     const dispatch = useDispatch();
     /*const changeActivePair = () =>{
         if (activePair !== pair.symbol) dispatch(setActivePairInitiate(pair, id))

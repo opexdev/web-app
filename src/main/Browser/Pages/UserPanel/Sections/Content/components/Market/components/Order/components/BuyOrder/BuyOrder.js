@@ -76,13 +76,6 @@ const BuyOrder = () => {
 
     const currencyValidator = (key, val, rule) => {
 
-        console.log("activePair.baseRange", activePair.baseRange)
-
-        console.log("rule", rule)
-
-        console.log("currencies?.[rule].step", currencies?.[rule]?.step)
-
-
         if (!val.isZero() && val.isLessThan(currencies[rule].minOrder)) {
             return setAlert({
                 ...alert,

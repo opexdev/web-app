@@ -4,9 +4,6 @@ import MarketPairCard from "../MarketPairCard/MarketPairCard";
 
 const MarketCard = ({type, ...props}) => {
 
-
-    console.log("props?.pairs", props?.pairs)
-
     return (
         <div style={{height: "100%"}}>
             <ScrollBar>

@@ -37,10 +37,6 @@ const Browser = () => {
 
     const currencies = useSelector((state) => state.exchange.currencies)
     const fees = useSelector((state) => state.exchange.fees)
-    console.log("currencies from redux", currencies)
-
-    console.log("fees from redux", fees)
-
 
     theme === "DARK" ? document.body.classList.add('dark') : document.body.classList.remove('dark');
 

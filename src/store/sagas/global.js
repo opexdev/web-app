@@ -211,12 +211,6 @@ export function* loadConfig(action) {
 
         /*const lastActivePair = symbols.find(symbol => symbol.symbol === activePair)*/
 
-        console.log("symbols[0]", symbols[0])
-        console.log("activePair localStorage", activePair)
-        console.log("lastActivePair -------------------------------------------------------- >>>>>>>>>>", lastActivePair)
-        console.log("exchangeInfo.symbols", exchangeInfo.symbols)
-        console.log("pairsListMap", pairsListMap)
-        console.log("pairsListMap 0", Object.keys(pairsListMap)[0])
 
 
         yield put(actions.setActivePair(lastActivePair || Object.keys(pairsListMap)[0]));

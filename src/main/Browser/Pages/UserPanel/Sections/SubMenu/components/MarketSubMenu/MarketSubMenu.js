@@ -13,14 +13,10 @@ const MarketSubMenu = () => {
     const [activeTab] = useState(JSON.parse(localStorage.getItem("activeMarketTab")) || 1);
     const symbols = useSelector((state) => state.exchange.symbols)
 
-    console.log("symbols", symbols)
-
     const pairsList = useSelector((state) => state.exchange.pairsList)
-    console.log("pairsList from redux", pairsList)
 
     const fav = useSelector((state) => state.auth.favoritePairs)
     const dispatch = useDispatch();
-    console.log("fav", fav)
 
     const addToFav = (selected) => {
         if (fav.includes(selected)) {
