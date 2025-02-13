@@ -23,21 +23,15 @@ const EasyOrder = () => {
     const [isLoading, setIsLoading] = useState(false)
     const isLogin = useSelector((state) => state.auth.isLogin)
 
-
     const language = i18n.language
     const currencies = useSelector((state) => state.exchange.currencies)
-
     const pairsList = useSelector((state) => state.exchange.pairsList)
-
-    const symbols = useSelector((state) => state.exchange.symbols)
 
     const [alert, setAlert] = useState({
         submit: false,
         reqAmount: null,
         totalPrice: null,
     });
-
-
 
     const [order, setOrder] = useState({
         tradeFee: new BN(0),
@@ -49,31 +43,13 @@ const EasyOrder = () => {
         totalPrice: new BN(0),
     });
 
-    /* const handleAvailableAssets = () => {
-         const availableAssets = [];
-         for (const symbol of symbols) {
-             if (!availableAssets.includes(symbol.baseAsset)) availableAssets.push(symbol.baseAsset)
-             if (!availableAssets.includes(symbol.quoteAsset)) availableAssets.push(symbol.quoteAsset)
-         }
-         return availableAssets;
-     }
-
-     const handleAvailableDest = (buy) => {
-         const dest = []
-         for (const symbol of symbols) {
-             if (symbol.baseAsset === buy) dest.push(symbol.quoteAsset)
-             if (symbol.quoteAsset === buy) dest.push(symbol.baseAsset)
-         }
-         return dest
-     }*/
-
     const handleAvailableAssets = () => {
-        const availableAssets = new Set(); // استفاده از Set برای جلوگیری از مقادیر تکراری
+        const availableAssets = new Set();
         Object.values(pairsList).forEach(pair => {
             availableAssets.add(pair.baseAsset);
             availableAssets.add(pair.quoteAsset);
         });
-        return Array.from(availableAssets); // تبدیل Set به آرایه
+        return Array.from(availableAssets);
     };
 
     const handleAvailableDest = (buy) => {
@@ -82,7 +58,7 @@ const EasyOrder = () => {
             if (pair.baseAsset === buy) dest.add(pair.quoteAsset);
             if (pair.quoteAsset === buy) dest.add(pair.baseAsset);
         });
-        return Array.from(dest); // تبدیل Set به آرایه
+        return Array.from(dest);
     };
 
 
@@ -92,10 +68,10 @@ const EasyOrder = () => {
             (pair.baseAsset === sell && pair.quoteAsset === buy)
         );
 
-    const pairsArray = Object.values(pairsList); // تبدیل آبجکت به آرایه
+    const pairsArray = Object.values(pairsList);
 
     const [selected, setSelected] = useState({
-        buy: pairsArray[0]?.baseAsset,  // مقدار اولیه بر اساس اولین جفت موجود در لیست
+        buy: pairsArray[0]?.baseAsset,
         sell: pairsArray[0]?.quoteAsset,
         pair: findPair(pairsArray[0]?.baseAsset, pairsArray[0]?.quoteAsset),
         type: "ask"
@@ -149,8 +125,6 @@ const EasyOrder = () => {
         let newAlert = null
         value = parsePriceString(value);
         const reqAmount = new BN(value);
-        /*let range = "baseRange"
-        if (selected.type === "bid") range = "quoteRange"*/
 
         let selectedCurrency = "baseAsset"
         if (selected.type === "bid") selectedCurrency = "quoteAsset"
@@ -164,16 +138,6 @@ const EasyOrder = () => {
                 }}
             />
         }
-
-        /*if (reqAmount.isZero() && reqAmount.isLessThan(selected.pair[range].min)) {
-            newAlert = <Trans
-                i18nKey="orders.minOrder"
-                values={{
-                    min: new BN(selected.pair[range].min).toFormat(),
-                    currency: t("currency." + selected.buy),
-                }}
-            />
-        }*/
 
         if (!reqAmount.mod(currencies[selected.pair[selectedCurrency]].step).isZero()) {
             newAlert = <Trans
@@ -196,8 +160,6 @@ const EasyOrder = () => {
         let newAlert = null
         value = parsePriceString(value);
         const totalPrice = new BN(value);
-       /* let range = "quoteRange"
-        if (selected.type === "bid") range = "baseRange"*/
 
         let selectedCurrency = "quoteAsset"
         if (selected.type === "bid") selectedCurrency = "baseAsset"
@@ -212,17 +174,6 @@ const EasyOrder = () => {
             />
 
         }
-
-       /* if (totalPrice.isZero() && totalPrice.isLessThan(selected.pair[range].min)) {
-            newAlert = <Trans
-                i18nKey="orders.minOrder"
-                values={{
-                    min: new BN(selected.pair[range].min).toFormat(),
-                    currency: t("currency." + selected.sell),
-                }}
-            />
-
-        }*/
 
         if (!totalPrice.mod(currencies[selected.pair[selectedCurrency]].step).isZero()) {
             newAlert = <Trans
@@ -253,8 +204,6 @@ const EasyOrder = () => {
         );
 
     };
-
-
 
     const submit = () => {
         if (!isLogin) return
@@ -318,8 +267,7 @@ const EasyOrder = () => {
         }));
 
         const sell = sellOptions.includes(selected.sell) ? selected.sell : sellOptions[0];
-        const pair = findPair(newBuy, sell) || {}; // اطمینان از مقداردهی پیش‌فرض
-
+        const pair = findPair(newBuy, sell) || {};
         setSelected({
             buy: newBuy,
             sell,
@@ -346,7 +294,7 @@ const EasyOrder = () => {
 
     const sellOnChangeHandler = (e) => {
         const newSell = e.value;
-        const pair = findPair(selected.buy, newSell) || {}; // مقدار پیش‌فرض برای جلوگیری از خطا
+        const pair = findPair(selected.buy, newSell) || {};
 
         setSelected(prevSelected => ({
             ...prevSelected,
@@ -377,22 +325,11 @@ const EasyOrder = () => {
         return new BN(1).dividedBy(order.pricePerUnit).decimalPlaces(currencies[selected?.pair?.baseAsset].precision).toFormat()
     }
 
-    /*    useEffect(() => {
-            if (order.totalPrice.isGreaterThan(userAccount?.wallets[selected?.sell]?.free)) {
-                return setAlert({
-                    ...alert,
-                    totalPrice: t('orders.notEnoughBalance')
-                })
-            }
-        }, [order.totalPrice])*/
-
-
     return (
         <div className={`container card-bg card-border ${classes.container} width-30 column jc-start ai-center`}>
 
             <div className={`${classes.header} card-header-bg row jc-between ai-center px-2 py-3 width-100 fs-02`}>
                 <span>{t("MarketTitle.easyTrading")}</span>
-
             </div>
 
             <div className={`width-100 column jc-between ai-center py-2 ${classes.content}`} >
@@ -477,6 +414,7 @@ const EasyOrder = () => {
                     customClass={`width-90 mb-1 mt-5`}
                     isAllowed={isAllowed}
                 />
+
                 <NumberInput
                     lead={t("orders.totalPrice")}
                     value={order?.totalPrice?.toFormat(selected.type === "ask" ? selected.pair?.quoteAssetPrecision : selected.pair?.baseAssetPrecision)}
