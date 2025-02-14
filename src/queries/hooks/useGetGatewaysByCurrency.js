@@ -6,7 +6,7 @@ export const useGetGatewaysByCurrency = (currency = "", config = {}) => {
         queryKey: ['gateways', currency, config],
         queryFn: async () => {
             const { data } = await getGatewaysByCurrency(currency, config);
-            return data[0];
+            return data?.gateways;
         },
         enabled: !!currency,
     });
