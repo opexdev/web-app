@@ -68,10 +68,59 @@ function* getExchangeInfo() {
         throw new Error('getExchangeInfo failed!')
     }
 }
-function* fetchCurrencies() {
+/*function* fetchCurrencies() {
     for (let i = 0; i < 10; i++) {
         try {
             const response = yield call(axios.get, '/wallet/currency');
+            const { currencies } = response.data;
+            return currencies;
+        } catch (err) {
+            if (i < 9) {
+                yield delay(1000);
+            } else {
+                throw new Error('Failed to fetch currencies after 10 attempts.');
+            }
+        }
+    }
+}*/
+
+/*function* fetchCurrencies() {
+    const formData = new URLSearchParams();
+    formData.append('includeManualGateways', 'true');
+    formData.append('includeOffChainGateways', 'true');
+    formData.append('includeOnChainGateways', 'true');
+
+    for (let i = 0; i < 10; i++) {
+        try {
+            const response = yield call(axios.post, '/wallet/currency', formData, {
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                }
+            });
+
+            const { currencies } = response.data;
+            return currencies;
+        } catch (err) {
+            if (i < 9) {
+                yield delay(1000);
+            } else {
+                throw new Error('Failed to fetch currencies after 10 attempts.');
+            }
+        }
+    }
+}*/
+
+function* fetchCurrencies() {
+    const params = {
+        includeManualGateways: false,
+        includeOffChainGateways: true,
+        includeOnChainGateways: true
+    };
+
+    for (let i = 0; i < 10; i++) {
+        try {
+            const response = yield call(axios.get, '/wallet/currency', { params });
+
             const { currencies } = response.data;
             return currencies;
         } catch (err) {
