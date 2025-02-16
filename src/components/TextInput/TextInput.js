@@ -35,17 +35,21 @@ const TextInput = (props) => {
     const type = useSelector((state) => state.exchange.dateType)
 
     const optionClassHandler = (state) => {
-        let className = classes.selectOptions
+        let className = classes.selectOptions;
 
         if (state.isFocused) {
-            className = className + " " + classes.isFocused
+            className += " " + classes.isFocused;
         }
         if (state.isSelected) {
-            className = className + " " + classes.isSelected
+            className += " " + classes.isSelected;
+        }
+        if (state.isDisabled) {
+            className += " " + classes.disabledOption; // اضافه کردن کلاس برای گزینه‌های غیرفعال
         }
 
         return className;
-    }
+    };
+
 
     const calenderTypeHandler = () => {
         if (type === "Hijri" && i18n.language === "en") {

@@ -209,4 +209,10 @@
     /*width: 1px !important;*/
 }
 
+.disabledOption {
+    color: var(--gray) !important;
+    background-color: var(--deActive) !important;
+    cursor: not-allowed !important;
+}
+
 

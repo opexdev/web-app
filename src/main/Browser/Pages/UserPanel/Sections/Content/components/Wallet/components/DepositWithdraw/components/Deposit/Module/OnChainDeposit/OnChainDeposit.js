@@ -84,16 +84,18 @@ const OnChainDeposit = ({gateways}) => {
             <TextInput
                 select={true}
                 placeholder={t('DepositWithdraw.selectNetwork')}
-                options={gateways.map((chain, index) => {
-                    return {value: index, label: `${chain.chain} - ${chain.implementationSymbol}`}
-                })}
+                options={gateways.map((chain, index) => ({
+                    value: index,
+                    label: `${chain.chain} - ${chain.implementationSymbol}`,
+                    isDisabled: !chain.isActive // غیرفعال کردن در صورت عدم اجازه‌ی واریز
+                }))}
                 lead={t('DepositWithdraw.network')}
                 type="select"
                 value={gateways[networkName.value] && {
                     value: networkName.value,
                     label: `${gateways[networkName.value].chain} - ${gateways[networkName.value].implementationSymbol}`
                 }}
-                onchange={(e) => setNetworkName({value: e?.value || 0, error: []})}
+                onchange={(e) => setNetworkName({ value: e?.value || 0, error: [] })}
                 customRef={selectRef}
                 alerts={networkName.error}
                 customClass={`width-64 ${classes.thisInput}`}
