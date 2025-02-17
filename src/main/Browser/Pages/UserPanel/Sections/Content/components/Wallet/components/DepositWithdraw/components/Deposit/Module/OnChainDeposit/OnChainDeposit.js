@@ -10,20 +10,12 @@ import {toast} from "react-hot-toast";
 
 const OnChainDeposit = ({gateways}) => {
 
-    console.log("gateways", gateways)
-
     const {t} = useTranslation();
     const {id} = useParams();
 
-
     const [networkName, setNetworkName] = useState({value: 0, error: []})
 
-    console.log("networkName", networkName)
-
-
     const {data: address, isLoading, error, refetch: refetchAddress} = useGetDepositAddress(id, gateways[networkName.value].chain)
-
-    console.log("address",address)
 
     const selectRef = useRef()
 

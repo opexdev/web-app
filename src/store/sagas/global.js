@@ -21,8 +21,6 @@ export function* setThemeSaga(action) {
 }
 
 export function* setActivePair(action) {
-
-    console.log("action.pair.symbol ------------------------------------>", action.pair)
     yield call([localStorage, 'setItem'], "activePair", action.pair)
     yield call([localStorage, 'setItem'], "activeMarketTab", action.activeTab)
     yield put(actions.setActivePair(action.pair));

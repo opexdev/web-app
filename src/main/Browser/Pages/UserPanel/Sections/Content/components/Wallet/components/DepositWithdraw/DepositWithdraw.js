@@ -2,8 +2,9 @@ import React from "react";
 import classes from "./DepositWithdraw.module.css";
 import {useTranslation} from "react-i18next";
 import AccordionBox from "../../../../../../../../../../components/AccordionBox/AccordionBox";
-import Withdrawal from "./components/Withdrawal";
+
 import Deposit from "./components/Deposit/Deposit";
+import Withdrawal from "./components/Withdrawal/Withdrawal";
 
 
 const DepositWithdraw = () => {
