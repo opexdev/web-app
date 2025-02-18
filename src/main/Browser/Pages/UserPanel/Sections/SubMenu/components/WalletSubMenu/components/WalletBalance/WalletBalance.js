@@ -2,7 +2,7 @@ import React from 'react';
 import classes from '../../WalletSubMenu.module.css'
 import {useTranslation} from "react-i18next";
 import {images} from "../../../../../../../../../../assets/images";
-import {BN, getCurrencyNameOrAlias} from "../../../../../../../../../../utils/utils";
+import {BN, formatWithPrecision, getCurrencyNameOrAlias} from "../../../../../../../../../../utils/utils";
 import {useGetUserAssetsEstimatedValue} from "../../../../../../../../../../queries";
 import {useSelector} from "react-redux";
 import i18n from "i18next";
@@ -33,7 +33,7 @@ const WalletBalance = () => {
                     <span className="fs-0-7">{t("WalletSubMenu.approximate")}</span>
                 </div>
                 <div className="column ai-end">
-                    <span>{new BN(totalValue).decimalPlaces(currencies[refCurrency]?.precision ?? 0).toFormat()}{" "}<span className="fs-0-7">{getCurrencyNameOrAlias(currencies[refCurrency], language)}</span></span>
+                    <span>{formatWithPrecision(totalValue, currencies[refCurrency]?.precision ?? 0)}{" "}<span className="fs-0-7">{getCurrencyNameOrAlias(currencies[refCurrency], language)}</span></span>
                 </div>
             </div>
         </div>

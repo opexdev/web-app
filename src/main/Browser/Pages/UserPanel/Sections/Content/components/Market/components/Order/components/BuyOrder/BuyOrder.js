@@ -3,7 +3,12 @@ import {toast} from "react-hot-toast";
 import classes from "../../Order.module.css";
 import React, {useEffect, useState} from "react";
 import {Trans, useTranslation} from "react-i18next";
-import {BN, getCurrencyNameOrAlias, parsePriceString} from "../../../../../../../../../../../../utils/utils";
+import {
+    BN,
+    formatWithPrecision,
+    getCurrencyNameOrAlias,
+    parsePriceString
+} from "../../../../../../../../../../../../utils/utils";
 import NumberInput from "../../../../../../../../../../../../components/NumberInput/NumberInput";
 import Button from "../../../../../../../../../../../../components/Button/Button";
 import {setLastTransaction} from "../../../../../../../../../../../../store/actions/auth";
@@ -293,7 +298,7 @@ const BuyOrder = () => {
                 }}>
                     {t("orders.bestOffer")}:{" "}
                     <span className="cursor-pointer">
-                        {new BN(bestBuyPrice).toFormat()}{" "}{getCurrencyNameOrAlias(currencies[activePair.quoteAsset], language)}
+                        {formatWithPrecision(bestBuyPrice, currencies[activePair.quoteAsset]?.precision ?? 0)}{" "}{getCurrencyNameOrAlias(currencies[activePair.quoteAsset], language)}
                     </span>
                 </p>
             </div>
@@ -376,7 +381,7 @@ const BuyOrder = () => {
             <div className="column jc-between">
                 <p>
                     {t("orders.tradeFee")}:{" "}
-                    {order.tradeFee.toFormat()}{" "}
+                    {formatWithPrecision(order.tradeFee, currencies[activePair.baseAsset]?.precision ?? 0)}{" "}
                     {getCurrencyNameOrAlias(currencies[activePair.baseAsset], language)}
                 </p>
                 <p>

@@ -2,7 +2,7 @@ import React from "react";
 import classes from "./WalletHeader.module.css";
 import {useTranslation} from "react-i18next";
 import {useParams} from "react-router-dom";
-import {BN, getCurrencyNameOrAlias} from "../../../../../../../../utils/utils";
+import {BN, formatWithPrecision, getCurrencyNameOrAlias} from "../../../../../../../../utils/utils";
 import {useGetUserAccount} from "../../../../../../../../queries/hooks/useGetUserAccount";
 import {useGetUserAssets} from "../../../../../../../../queries";
 import {useSelector} from "react-redux";
@@ -31,21 +31,21 @@ const WalletHeader = () => {
                 <span className={`mb-05`}>{t("header.free")}</span>
                 <span className={`mt-05`}>
                     {new BN(userAccount?.wallets[id]?.free || 0).decimalPlaces(currencies[id]?.precision ?? 0).toFormat()}
-                    <span className={`fs-0-7 text-gray`}> ({ refCurrency === id ? new BN(userAccount?.wallets[id]?.free || 0).decimalPlaces(currencies[id]?.precision ?? 0).toFormat() : new BN(allEstimateValue?.free || 0).decimalPlaces(currencies[refCurrency]?.precision ?? 0).toFormat()} {refCurrency} )</span>
+                    <span className={`fs-0-7 text-gray`}> ({ refCurrency === id ? formatWithPrecision(userAccount?.wallets[id]?.free || 0, currencies[id]?.precision ?? 0) : formatWithPrecision(allEstimateValue?.free || 0, currencies[refCurrency]?.precision ?? 0)} {refCurrency} )</span>
                 </span>
             </div>
             <div className={`col-35 column ai-center ${classes.border}`}>
                 <span className={`mb-05`}>{t("header.locked")}</span>
                 <span className={`mt-05`}>
                     {new BN(userAccount?.wallets[id]?.locked || 0).decimalPlaces(currencies[id]?.precision ?? 0).toFormat()}
-                    <span className={`fs-0-7 text-gray`}> ({ refCurrency === id ? new BN(userAccount?.wallets[id]?.locked || 0).decimalPlaces(currencies[id]?.precision ?? 0).toFormat() : new BN(allEstimateValue?.locked || 0).decimalPlaces(currencies[refCurrency]?.precision ?? 0).toFormat()} {refCurrency} )</span>
+                    <span className={`fs-0-7 text-gray`}> ({ refCurrency === id ? formatWithPrecision(userAccount?.wallets[id]?.locked || 0, currencies[id]?.precision ?? 0) : formatWithPrecision(allEstimateValue?.locked || 0, currencies[refCurrency]?.precision ?? 0)} {refCurrency} )</span>
                 </span>
             </div>
             <div className={`col-35 column ai-center`}>
                 <span className={`mb-05`}>{t("header.inWithdrawalProcess")}</span>
                 <span className={`mt-05`}>
                     {new BN(userAccount?.wallets[id]?.withdraw || 0).decimalPlaces(currencies[id]?.precision ?? 0).toFormat()}
-                    <span className={`fs-0-7 text-gray`}> ({ refCurrency === id ? new BN(userAccount?.wallets[id]?.withdraw || 0).decimalPlaces(currencies[id]?.precision ?? 0).toFormat() : new BN(allEstimateValue?.withdrawing || 0).decimalPlaces(currencies[refCurrency]?.precision ?? 0).toFormat()} {refCurrency} )</span>
+                    <span className={`fs-0-7 text-gray`}> ({ refCurrency === id ? formatWithPrecision(userAccount?.wallets[id]?.withdraw || 0, currencies[id]?.precision ?? 0) : formatWithPrecision(allEstimateValue?.withdrawing || 0, currencies[refCurrency]?.precision ?? 0)} {refCurrency} )</span>
                 </span>
             </div>
         </>

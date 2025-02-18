@@ -9,7 +9,7 @@ import Icon from "../../../../../../../../../../../../components/Icon/Icon";
 import Error from "../../../../../../../../../../../../components/Error/Error";
 import {useMyTrades} from "../../../../../../../../../../../../queries";
 import Date from "../../../../../../../../../../../../components/Date/Date";
-import {BN, getCurrencyNameOrAlias} from "../../../../../../../../../../../../utils/utils";
+import {BN, formatWithPrecision, getCurrencyNameOrAlias} from "../../../../../../../../../../../../utils/utils";
 import i18n from "i18next";
 
 const Trades = () => {
@@ -92,7 +92,7 @@ const Trades = () => {
                                         {t("myOrders.orderId")} : <span>{tr.orderId}</span>
                                     </p>
                                     <p className="width-47 row jc-between">
-                                        {t("commission")} : <span>{new BN(tr.commission).decimalPlaces(currencies[tr.commissionAsset.toUpperCase()].precision).toFormat()}
+                                        {t("commission")} : <span>{formatWithPrecision(tr.commission, currencies[tr.commissionAsset.toUpperCase()].precision)}
                                         <span className={`mr-05`}>{getCurrencyNameOrAlias(currencies[tr.commissionAsset.toUpperCase()], language)}</span></span>
                                     </p>
                                 </div>
