@@ -22,8 +22,10 @@ export {
     setIPGInitiate,
     setVerifyEmailLock,
     setVerifyEmailLockInitiate,
-    setExchangeConfigs
-
+    setExchangeConfigs,
+    getCurrencies,
+    getPairs,
+    getFees
 } from "./exchange";
 
 export {

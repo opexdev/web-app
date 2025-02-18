@@ -32,6 +32,10 @@ export const encodeQueryData = (params) => {
 }
 
 export const BN = BigNumber.clone({
+
+    DECIMAL_PLACES: 8,
+    ROUNDING_MODE: BigNumber.ROUND_DOWN,
+
     FORMAT: {
         groupSize: 3,
         groupSeparator: ',',
@@ -73,3 +77,18 @@ export const timeValidator = str => {
 }
 
 export const toAbsoluteUrl = (path) => process.env.PUBLIC_URL + path
+
+export function getCurrencyNameOrAlias(currency, lang) {
+
+    const languagesConfig = { fa: "alias", en: "name", ar: "alias" };
+    const langOption = languagesConfig[lang] || 'name';
+
+    if (!currency || typeof currency !== 'object') {
+        return '-';
+    }
+
+    const name = currency.name || '-';
+    const alias = currency.alias || '-';
+
+    return langOption === 'alias' ? alias : name;
+}

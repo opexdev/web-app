@@ -1,4 +1,5 @@
 import * as actionTypes from "./actionTypes";
+import {GET_FEES} from "./actionTypes";
 
 export const setActivePairInitiate = (pair, activeTab) => {
     return {
@@ -96,5 +97,24 @@ export const setExchangeConfigs = configs => {
     return {
         type: actionTypes.SET_EXCHANGE_CONFIG,
         configs: configs
+    };
+};
+
+export const getCurrencies = currencies => {
+    return {
+        type: actionTypes.GET_CURRENCIES,
+        currencies,
+    };
+};
+export const getPairs = pairs => {
+    return {
+        type: actionTypes.GET_PAIRS,
+        pairs,
+    };
+};
+export const getFees = fees => {
+    return {
+        type: actionTypes.GET_FEES,
+        fees,
     };
 };

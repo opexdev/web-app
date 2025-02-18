@@ -23,6 +23,7 @@ import Guide from "./Pages/Info/Guide/Guide";
 import Rules from "./Pages/Info/Rules/Rules";
 import ContactUs from "./Pages/Info/ContactUs/ContactUs";
 import EasyTrading from "./Pages/EasyTrading/EasyTrading";
+import axios from "axios";
 
 const Browser = () => {
     const query = useQuery();
@@ -34,6 +35,8 @@ const Browser = () => {
     const title = useSelector((state) => state.exchange.title)
     const description = useSelector((state) => state.exchange.description)
 
+    const currencies = useSelector((state) => state.exchange.currencies)
+    const fees = useSelector((state) => state.exchange.fees)
 
     theme === "DARK" ? document.body.classList.add('dark') : document.body.classList.remove('dark');
 
