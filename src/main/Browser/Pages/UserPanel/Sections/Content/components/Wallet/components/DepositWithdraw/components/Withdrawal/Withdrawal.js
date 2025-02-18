@@ -1,13 +1,14 @@
-import React, {useMemo} from "react";
-import {useParams} from "react-router-dom";
+import React, {useMemo} from 'react';
 import {useTranslation} from "react-i18next";
-import Error from "../../../../../../../../../../../../components/Error/Error";
-import Loading from "../../../../../../../../../../../../components/Loading/Loading";
-import {useGetGatewaysByCurrency} from "../../../../../../../../../../../../queries";
-import OnChainDeposit from "./Module/OnChainDeposit/OnChainDeposit";
+import {useParams} from "react-router-dom";
 import {useSelector} from "react-redux";
+import {useGetGatewaysByCurrency} from "../../../../../../../../../../../../queries";
+import Loading from "../../../../../../../../../../../../components/Loading/Loading";
+import Error from "../../../../../../../../../../../../components/Error/Error";
+import OnChainDeposit from "../Deposit/Module/OnChainDeposit/OnChainDeposit";
+import OnChainWithdraw from "./Module/OnChainWithdraw/OnChainWithdraw";
 
-const Deposit = () => {
+const Withdrawal = () => {
 
     const {t} = useTranslation();
     const {id} = useParams();
@@ -24,7 +25,7 @@ const Deposit = () => {
         hasOffChain: data?.some(gateway => gateway.type === "OffChain")
     }), [data]);
 
-    if (!currencies[id]?.depositAllowed) return <div className={`flex jc-center ai-center height-100`}>
+    if (!currencies[id]?.withdrawAllowed) return <div className={`flex jc-center ai-center height-100`}>
         <span>{t("noData")}</span>
     </div>
     if (isLoading) return <Loading/>
@@ -39,7 +40,7 @@ const Deposit = () => {
                 <span>{t("comingSoon")}</span>
             </div>;
         case hasOnChain:
-            return <OnChainDeposit gateways={data}/>;
+            return <OnChainWithdraw gateways={data}/>;
         case hasOffChain:
             return <div className="flex jc-center ai-center height-100">
                 <span>{t("comingSoon")}</span>
@@ -51,5 +52,6 @@ const Deposit = () => {
                 </div>
             );
     }
-}
-export default Deposit;
+};
+
+export default Withdrawal;

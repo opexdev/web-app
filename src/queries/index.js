@@ -26,3 +26,4 @@ export {useGetBuyAndSellHistory} from "./hooks/useGetBuyAndSellHistory";
 export {useGetWithdrawHistory} from "./hooks/useGetWithdrawHistory";
 export {useGetDepositHistory} from "./hooks/useGetDepositHistory";
 export {useGetTransactionsHistory} from "./hooks/useGetTransactionsHistory";
+export {useGetGatewaysByCurrency} from "./hooks/useGetGatewaysByCurrency";

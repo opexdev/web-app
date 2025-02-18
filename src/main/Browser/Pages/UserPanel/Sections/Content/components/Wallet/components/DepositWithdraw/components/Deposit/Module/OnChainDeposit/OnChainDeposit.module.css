@@ -1,0 +1,18 @@
+.thisInput :global(.lead) {
+    width: 18%;
+}
+.thisInput :global(.selectExternalClass) {
+    width: 82% !important;
+}
+.depositInput {
+    width: 80%;
+}
+.depositInput :global(.after) {
+    width: 15%;
+    cursor: pointer;
+}
+.depositInput :global(input) {
+    width: 85% !important;
+    cursor: not-allowed;
+    font-family: 'Roboto', sans-serif;
+}

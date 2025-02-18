@@ -1,0 +1,44 @@
+.thisInput :global(.lead) {
+    width: 28%;
+}
+.thisInput :global(.selectExternalClass) {
+    width: 78% !important;
+}
+
+.thisInput :global(input) {
+    width: 78% !important;
+}
+
+.addressInput :global(.lead) {
+    width: 18% !important;
+}
+.addressInput :global(input) {
+    width: 82% !important;
+}
+
+.withdrawalInput :global(.lead) {
+    width: 24%;
+}
+.withdrawalInput :global(input) {
+    width: 76% !important;
+}
+.withdrawNumberInput :global(.lead) {
+    width: 50%;
+}
+.withdrawNumberInput :global(input) {
+    width: 50% !important;
+}
+
+
+.thisButton.withdrawal{
+    background-color: var(--orange);
+    color: #000;
+    border: 1px solid var(--cardBorder);
+}
+
+.thisButton:disabled,.button[disabled] {
+    /*border: 0.3vh solid var(--cardBodyAlpha);*/
+    background: var(--cardBodyAlpha);
+    color: var(--textColor);
+    cursor: not-allowed;
+}

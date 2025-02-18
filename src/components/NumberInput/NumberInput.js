@@ -62,7 +62,7 @@ const NumberInput = (props) => {
                 customClass="hint-icon"
             />
             <div className="column pt-05">
-                { alerts.map((alert , index) => <span key={index} className={`${classes.alert} pr-05 `}>{alert}</span>) }
+                { alerts?.map((alert , index) => <span key={index} className={`${classes.alert} pr-05 `}>{alert}</span>) }
             </div>
         </div>
     }

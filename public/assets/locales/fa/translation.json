@@ -337,8 +337,6 @@
     "cancel": "لغو",
     "seconds": "ثانیه",
     "submitPaymentReq": "ثبت درخواست واریز",
-    "noInventory": "موجودی کافی نیست !",
-    "allowableWithdraw": "حداقل مقدار مجاز برداشت رعایت نشده است.",
     "fillAddress": "وارد کردن آدرس الزامیست.",
     "important": "مهم",
     "DepositTETHContentBefore": "فقط ETH تستی شبکه Ropsten مورد قبول قرار می گیرد! برای دریافت رایگان به ",
@@ -354,7 +352,11 @@
     "network": "شبکه",
     "selectNetwork": " شبکه را انتخاب کنید",
     "gettingAddress": "درحال گرفتن آدرس...",
-    "errorGettingAddress": "خطا در گرفتن آدرس"
+    "errorGettingAddress": "خطا در گرفتن آدرس",
+
+    "noInventory": "موجودی کافی نیست !",
+    "noInventorywithdrawFee": "با احتساب کارمزد، موجودی کافی نیست !",
+    "allowableWithdraw": "حداقل مقدار مجاز برداشت رعایت نشده است."
   },
   "CallbackPage": {
     "ok": "واریز وجه با موفقیت انجام شد.",
@@ -380,6 +382,7 @@
     "inventory": "موجودی بعد  از تراکنش",
     "freeWallet": "موجودی قابل برداشت",
     "minWithdraw": "حداقل مقدار برداشت",
+    "maxWithdrawal": "حداکثر مقدار برداشت",
     "minDeposit": "حداقل مقدار واریز",
     "maxWithdraw": "سقف برداشت روزانه شما",
     "maxMonthWithdraw": "سقف برداشت ماهانه شما",
