@@ -3,7 +3,7 @@ import classes from "./MarketCard.module.css";
 import {useDispatch, useSelector} from "react-redux";
 import {images} from "../../../../../../../../../../assets/images";
 import Icon from "../../../../../../../../../../components/Icon/Icon";
-import {BN, getCurrencyNameOrAlias} from "../../../../../../../../../../utils/utils";
+import {BN, formatWithPrecision, getCurrencyNameOrAlias} from "../../../../../../../../../../utils/utils";
 import {setActivePairInitiate} from "../../../../../../../../../../store/actions";
 import {useGetLastPrices} from "../../../../../../../../../../queries/hooks/useGetLastPrices";
 import i18n from "i18next";
@@ -44,7 +44,7 @@ const MarketPairCard = ({id, pair, favPair, addFav}) => {
                     <span className={``}>{pair?.baseAsset + " / " + pair?.quoteAsset }</span>
                 </div>
                 <div className={`${language !== "fa" ? 'row-reverse' : 'row'} jc-center`}>
-                    <span>{new BN(prices[pair?.symbol] || 0).decimalPlaces(currencies[pair?.quoteAsset]?.precision ?? 0).toFormat()}</span>
+                    <span>{formatWithPrecision(prices[pair?.symbol] || 0, currencies[pair?.quoteAsset]?.precision ?? 0)}</span>
                 </div>
             </div>
         </div>

@@ -3,7 +3,7 @@ import classes from './TransactionsTable.module.css';
 import {useTranslation} from "react-i18next";
 import Date from "../../../../../../../../../../components/Date/Date";
 import moment from "moment-jalaali";
-import {BN, getCurrencyNameOrAlias} from "../../../../../../../../../../utils/utils";
+import {BN, formatWithPrecision, getCurrencyNameOrAlias} from "../../../../../../../../../../utils/utils";
 import i18n from "i18next";
 import {useSelector} from "react-redux";
 
@@ -43,12 +43,10 @@ const TransactionsTable = ({txs}) => {
                                 {getCurrencyNameOrAlias(currencies[tr.currency], language)}
                             </span>
                             <span className="width-18 row jc-start ai-center">
-                                <span className={`direction-ltr ${new BN(tr?.balanceChange).isLessThan(0) ? "text-red" : "text-green"}`}>{new BN(tr?.balanceChange).toFormat()}</span>
-                                <span className={`direction-ltr mr-2 ${new BN(tr?.balanceChange).isLessThan(0) ? "text-red" : "text-green"}`}>{new BN(tr?.balanceChange).decimalPlaces(currencies[tr.currency].precision).toFormat()}</span>
+                                <span className={`direction-ltr ${new BN(tr?.balanceChange).isLessThan(0) ? "text-red" : "text-green"}`}>{formatWithPrecision(tr.balanceChange, currencies[tr.currency].precision)}</span>
                             </span>
                             <span className="width-24 row jc-end ai-center">
-                                <span className={`direction-ltr`}>{new BN(tr?.balance).toFormat()}</span>
-                                <span className={`direction-ltr mr-2`}>{new BN(tr?.balance).decimalPlaces(currencies[tr.currency].precision).toFormat()}</span>
+                                <span className={`direction-ltr`}>{formatWithPrecision(tr.balance, currencies[tr.currency].precision)}</span>
                             </span>
                         </div>
                     </div>

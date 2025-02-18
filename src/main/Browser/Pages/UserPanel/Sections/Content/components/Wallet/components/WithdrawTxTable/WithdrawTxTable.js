@@ -3,7 +3,7 @@ import classes from './WithdrawTxTable.module.css';
 import {useTranslation} from "react-i18next";
 import Date from "../../../../../../../../../../components/Date/Date";
 import moment from "moment-jalaali";
-import {BN} from "../../../../../../../../../../utils/utils";
+import {BN, formatWithPrecision} from "../../../../../../../../../../utils/utils";
 import Icon from "../../../../../../../../../../components/Icon/Icon";
 import Button from "../../../../../../../../../../components/Button/Button";
 import {images} from "../../../../../../../../../../assets/images";
@@ -95,7 +95,7 @@ const WithdrawTxTable = ({txs}) => {
                             </span>
 
                             <span className="width-23 row jc-start ai-center text-red">
-                                {new BN(tr?.amount).decimalPlaces(currencies[tr.currency].precision).toFormat()}
+                                {formatWithPrecision(tr?.amount, currencies[tr.currency].precision)}
                             </span>
 
                             <span className="width-18 row jc-start ai-center">
@@ -111,7 +111,7 @@ const WithdrawTxTable = ({txs}) => {
                             <div className={`row width-100 my-05`}>
                                 <span className={`width-40`}>{t("history.fee")}</span>
                                 <span className={`width-60 text-end`}>
-                                    {new BN(tr?.appliedFee).decimalPlaces(currencies[tr.currency].precision).toFormat()}
+                                    {formatWithPrecision(tr?.appliedFee, currencies[tr.currency].precision)}
                                 </span>
                             </div>
                             <div className={`row width-100 my-05`}>

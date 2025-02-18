@@ -3,7 +3,7 @@ import classes from './WithdrawHistoryTable.module.css'
 import {useTranslation} from "react-i18next";
 import Date from "../../../../../../../../../../components/Date/Date";
 import moment from "moment-jalaali";
-import {BN, getCurrencyNameOrAlias} from "../../../../../../../../../../utils/utils";
+import {BN, formatWithPrecision, getCurrencyNameOrAlias} from "../../../../../../../../../../utils/utils";
 import Icon from "../../../../../../../../../../components/Icon/Icon";
 import i18n from "i18next";
 import {useSelector} from "react-redux";
@@ -14,10 +14,7 @@ const WithdrawHistoryTable = ({txs, offset}) => {
     const language = i18n.language
     const currencies = useSelector((state) => state.exchange.currencies)
 
-
     const [isOpen, setIsOpen] = useState(false);
-
-
 
     let head = (
         <div className="row text-gray px-2 py-2" style={{backgroundColor:"var(--tableHeader)"}}>
@@ -46,23 +43,18 @@ const WithdrawHistoryTable = ({txs, offset}) => {
                             <span className="width-6 row jc-start ai-center">
                                 {moment.utc(tr.createDate).local().format("HH:mm:ss")}
                             </span>
-
                             <span className="width-10 row jc-start ai-center">
                                 {getCurrencyNameOrAlias(currencies[tr.currency], language)}
                             </span>
-
                             <span className="width-10 row jc-start ai-center">
                                 {tr.destNetwork}
                             </span>
-
                             <span className="width-9 row jc-start ai-center text-red">
-                                {new BN(tr?.amount).decimalPlaces(currencies[tr.currency].precision).toFormat()}
+                                {formatWithPrecision(tr?.amount, currencies[tr.currency].precision)}
                             </span>
-
                             <span className="width-9 row jc-start ai-center">
-                                {new BN(tr?.appliedFee).decimalPlaces(currencies[tr.currency].precision).toFormat()}
+                                {formatWithPrecision(tr?.appliedFee, currencies[tr.currency].precision)}
                             </span>
-
                             <span className="width-9 row jc-start ai-center">
                                 {t("withdrawStatus." + tr.status )}
                             </span>
@@ -73,11 +65,8 @@ const WithdrawHistoryTable = ({txs, offset}) => {
                                 {tr.withdrawId}
                             </span>
                             <span className="width-5 row jc-end ai-center fs-0-8" onClick={() => isOpen === index ? setIsOpen(null) : setIsOpen(index)}>
-                                <Icon iconName={`${isOpen === index ? 'icon-up-open' : 'icon-down-open'}  text-blue fs-0-7 cursor-pointer`}
-                                      customClass={classes.iconBG}
-                                />
+                                <Icon iconName={`${isOpen === index ? 'icon-up-open' : 'icon-down-open'}  text-blue fs-0-7 cursor-pointer`} customClass={classes.iconBG}/>
                             </span>
-
                         </div>
                         {isOpen === index && <div className={`width-100 column jc-start ai-start px-2 py-2 fs-0-9 ${classes.rectangle}`}>
                             <div className={`row width-50 my-05`}>

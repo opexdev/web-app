@@ -7,10 +7,13 @@ import {useGetGatewaysByCurrency} from "../../../../../../../../../../../../quer
 import OnChainDeposit from "./Module/OnChainDeposit/OnChainDeposit";
 import {useSelector} from "react-redux";
 
-const Deposit = () => {
+const Deposit = ({currency}) => {
 
     const {t} = useTranslation();
-    const {id} = useParams();
+    let  {id} = useParams();
+    if (currency) {
+        id = currency;
+    }
     const currencies = useSelector((state) => state.exchange.currencies)
 
     const { data, isLoading, error } = useGetGatewaysByCurrency(id, {
@@ -39,7 +42,7 @@ const Deposit = () => {
                 <span>{t("comingSoon")}</span>
             </div>;
         case hasOnChain:
-            return <OnChainDeposit gateways={data}/>;
+            return <OnChainDeposit gateways={data} currency={currency}/>;
         case hasOffChain:
             return <div className="flex jc-center ai-center height-100">
                 <span>{t("comingSoon")}</span>

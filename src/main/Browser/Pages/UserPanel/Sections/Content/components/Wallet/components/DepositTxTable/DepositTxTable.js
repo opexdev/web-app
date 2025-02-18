@@ -3,7 +3,7 @@ import classes from './DepositTxTable.module.css';
 import {useTranslation} from "react-i18next";
 import Date from "../../../../../../../../../../components/Date/Date";
 import moment from "moment-jalaali";
-import {BN} from "../../../../../../../../../../utils/utils";
+import {BN, formatWithPrecision} from "../../../../../../../../../../utils/utils";
 import Icon from "../../../../../../../../../../components/Icon/Icon";
 import {useSelector} from "react-redux";
 import i18n from "i18next";
@@ -47,7 +47,7 @@ const DepositTxTable = ({txs}) => {
                             </span>
 
                             <span className="width-23 row jc-start ai-center text-green">
-                                {new BN(tr?.amount).decimalPlaces(currencies[tr.currency].precision).toFormat()}
+                                {formatWithPrecision(tr?.amount, currencies[tr.currency].precision)}
                             </span>
 
                             <span className="width-18 row jc-start ai-center">

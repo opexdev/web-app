@@ -92,3 +92,25 @@ export function getCurrencyNameOrAlias(currency, lang) {
 
     return langOption === 'alias' ? alias : name;
 }
+
+export const formatWithPrecision = (value, precision, maxAttempts = 2) => {
+
+    if (!value || isNaN(value) || value === Infinity || value === -Infinity) {
+        return "0";
+    }
+
+    let bnValue = new BN(value);
+    if (bnValue.isNaN()) return "0";
+
+    let currentPrecision = precision;
+    let formatted = bnValue.decimalPlaces(currentPrecision).toNumber();
+
+    let attempts = 0;
+    while (formatted === 0 && attempts < maxAttempts) {
+        currentPrecision += 1;
+        formatted = bnValue.decimalPlaces(currentPrecision).toNumber();
+        attempts++;
+    }
+
+    return bnValue.decimalPlaces(currentPrecision).toFormat();
+};

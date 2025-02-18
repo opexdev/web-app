@@ -3,7 +3,12 @@ import {Trans, useTranslation} from "react-i18next";
 import classes from "../../Order.module.css";
 import {useDispatch, useSelector} from "react-redux";
 import {toast} from "react-hot-toast";
-import {BN, getCurrencyNameOrAlias, parsePriceString} from "../../../../../../../../../../../../utils/utils";
+import {
+    BN,
+    formatWithPrecision,
+    getCurrencyNameOrAlias,
+    parsePriceString
+} from "../../../../../../../../../../../../utils/utils";
 import NumberInput from "../../../../../../../../../../../../components/NumberInput/NumberInput";
 import Button from "../../../../../../../../../../../../components/Button/Button";
 import {setLastTransaction} from "../../../../../../../../../../../../store/actions/auth";
@@ -263,7 +268,7 @@ const SellOrder = () => {
                 <p onClick={() => fillSellByBestPrice()}>
                     {t("orders.bestOffer")}:{" "}
                     <span className="cursor-pointer">
-                        {new BN(bestSellPrice).toFormat()}{" "}{getCurrencyNameOrAlias(currencies[activePair.quoteAsset], language)}
+                        {formatWithPrecision(bestSellPrice, currencies[activePair.quoteAsset]?.precision ?? 0)}{" "}{getCurrencyNameOrAlias(currencies[activePair.quoteAsset], language)}
                     </span>
                 </p>
             </div>
@@ -347,6 +352,7 @@ const SellOrder = () => {
                 <p>
                     {t("orders.tradeFee")}:{" "}
                     {order.tradeFee.toFormat()}{" "}
+                    {formatWithPrecision(order.tradeFee, currencies[activePair.quoteAsset]?.precision ?? 0)}{" "}
                     {getCurrencyNameOrAlias(currencies[activePair.quoteAsset], language)}
                 </p>
                 <p>

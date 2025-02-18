@@ -1,12 +1,12 @@
 .container {
     position: absolute;
     top: 11vh;
-    width: 30%;
+    width: 40%;
     height: 50vh;
     background-color: var(--popupAlpha);
     z-index: 3;
     box-shadow: -1px 5px 8px -2px #101010ad;
-    right: 47.5%;
+    right: 43%;
     border-radius: 9px;
 }
 
@@ -29,7 +29,7 @@
 }
 
 .thisButton {
-    width: 30%;
+    width: 20%;
 }
 
 .walletButton {

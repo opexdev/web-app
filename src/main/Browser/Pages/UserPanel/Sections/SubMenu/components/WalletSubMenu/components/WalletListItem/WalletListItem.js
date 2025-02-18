@@ -4,7 +4,7 @@ import {NavLink} from "react-router-dom";
 import {useTranslation} from "react-i18next";
 import {images} from "../../../../../../../../../../assets/images";
 import * as Routes from "../../../../../../../../Routes/routes";
-import {BN, getCurrencyNameOrAlias} from "../../../../../../../../../../utils/utils";
+import {BN, formatWithPrecision, getCurrencyNameOrAlias} from "../../../../../../../../../../utils/utils";
 import {useGetUserAccount} from "../../../../../../../../../../queries/hooks/useGetUserAccount";
 import {useGetUserAssets} from "../../../../../../../../../../queries";
 import {useSelector} from "react-redux";
@@ -49,7 +49,7 @@ const WalletListItem = ({symbol, data, assetName, freeWallet, showZero}) => {
                 <div className="column ai-end">
                     <span>{new BN(freeWallet).decimalPlaces(currencies[symbol]?.precision ?? 0).toFormat() + " "} <span className="fs-0-7">{getCurrencyNameOrAlias(currencies[symbol], language)}</span></span>
                     <span className="fs-0-7 text-gray" >
-                        <span>~ </span> {refCurrency === assetName ? new BN(free).decimalPlaces(currencies[refCurrency]?.precision ?? 0).toFormat() : new BN(freeEstimateValue).decimalPlaces(currencies[refCurrency]?.precision ?? 0).toFormat()}<span> {t("currency."+refCurrency)}</span>
+                        <span>~ </span> {refCurrency === assetName ? formatWithPrecision(free, currencies[refCurrency]?.precision ?? 0) : formatWithPrecision(freeEstimateValue, currencies[refCurrency]?.precision ?? 0)}<span> {t("currency."+refCurrency)}</span>
                     </span>
                 </div>
             </div>
