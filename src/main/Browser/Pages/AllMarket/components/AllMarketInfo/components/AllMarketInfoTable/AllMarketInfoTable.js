@@ -9,8 +9,9 @@ import {setActivePairInitiate} from "../../../../../../../../store/actions";
 import {Panel} from "../../../../../../Routes/routes";
 import {useNavigate} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
+import {useGetChartData} from "../../../../../../../../queries";
 
-const AllMarketInfTable = ({data, activeCurrency}) => {
+const AllMarketInfTable = ({data, activeCurrency, interval}) => {
 
     const {t} = useTranslation();
     const navigate = useNavigate();
@@ -19,6 +20,12 @@ const AllMarketInfTable = ({data, activeCurrency}) => {
 
     const language = i18n.language
     const currencies = useSelector((state) => state.exchange.currencies)
+
+    const pairsList = useSelector((state) => state.exchange.pairsList)
+    const symbols = Object.keys(pairsList);
+
+    const { data: ChartData, isLoading: ChartDataIsLoading, error: ChartDataError } = useGetChartData(symbols, interval);
+
 
     const navigateToPanel = (symbol) => {
         const selectedPair = allExchangeSymbols.find( s => s.symbol === symbol)
@@ -42,9 +49,20 @@ const AllMarketInfTable = ({data, activeCurrency}) => {
         </div>
     );
 
+    const chartView = (chartInfo) => {
+        if (ChartDataIsLoading) {
+            return <span className="flashit ">-----</span>
+        }
+        if (ChartDataError || !(chartInfo?.svgData)) {
+            return
+        }
+        return <img src={`data:image/svg+xml;base64,${chartInfo?.svgData}`} alt={chartInfo?.symbol} className={`${classes.chart} ${chartInfo?.isTrendUp ? classes.filterUp : classes.filterDown }`}/>
+    }
+
     let body = (
         <>
             {data.map((tr, index) => {
+                const chartInfo = ChartData?.find(chart => chart.symbol.replace("_", "") === tr.symbol);
                 return (
                     <div className={`${classes.row} row rounded-5 border-bottom px-2 py-2`} key={index}>
                         <span className="width-20 row jc-start ai-center">
@@ -77,13 +95,7 @@ const AllMarketInfTable = ({data, activeCurrency}) => {
                         <span className="width-10 flex jc-start ai-center">{tr.highPrice}</span>*/}
 
                         <span className="width-9 flex jc-start ai-center position-relative">
-                            <img
-                                className={`img-lg-2 ${classes.filter}`}
-                                src={images.chart}
-                                alt={""}
-                                title={""}
-                            />
-                            <span className={`fs-0-6 position-absolute`} style={{left:`${i18n.language !== "fa" ? "20%" : "48%"}`}}>{t("comingSoon")}</span>
+                            {chartView(chartInfo)}
                         </span>
 
                         <span className="width-8 flex jc-end ai-center">

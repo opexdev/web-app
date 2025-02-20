@@ -9,8 +9,9 @@ import {Panel} from "../../../../../../Routes/routes";
 import {useNavigate} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 import i18n from "i18next";
+import {useGetChartData} from "../../../../../../../../queries";
 
-const AllMarketInfoCard = ({data, activeCurrency}) => {
+const AllMarketInfoCard = ({data, activeCurrency, interval}) => {
 
 
     const {t} = useTranslation();
@@ -21,6 +22,11 @@ const AllMarketInfoCard = ({data, activeCurrency}) => {
     const allExchangeSymbols = useSelector((state) => state.exchange.symbols)
 
     const [showButton, setShowButton] = useState(null)
+
+    const pairsList = useSelector((state) => state.exchange.pairsList)
+    const symbols = Object.keys(pairsList);
+
+    const { data: ChartData, isLoading: ChartDataIsLoading, error: ChartDataError } = useGetChartData(symbols, interval);
 
     const backgroundBar = (percent) => {
         if (percent > 0) {
@@ -46,11 +52,20 @@ const AllMarketInfoCard = ({data, activeCurrency}) => {
         navigate(Panel)
     }
 
+    const chartView = (chartInfo) => {
+        if (ChartDataIsLoading) {
+            return <span className="flashit ">-----</span>
+        }
+        if (ChartDataError || !(chartInfo?.svgData)) {
+            return
+        }
+        return <img src={`data:image/svg+xml;base64,${chartInfo?.svgData}`} alt={chartInfo?.symbol} className={`${classes.chart} ${chartInfo?.isTrendUp ? classes.filterUp : classes.filterDown }`}/>
+    }
 
     return (
         <div className={`${classes.container} my-1 px-1`}>
-
             {data.map((tr, index) => {
+                const chartInfo = ChartData?.find(chart => chart.symbol.replace("_", "") === tr.symbol);
                 return (
                     <div key={index} className={`${classes.item} card-border card-bg column cursor-pointer`} style={backgroundBar(tr.priceChangePercent.toString())}
                          onMouseEnter={()=>MouseEnterEventHandler(index)} onMouseLeave={MouseLeaveEventHandler}>
@@ -108,13 +123,7 @@ const AllMarketInfoCard = ({data, activeCurrency}) => {
                                 </div>
                                 :
                                 <div className={`column jc-center ai-center position-relative`}>
-                                    <img
-                                        className={`img-lg-2 mb-05 ${classes.filter}`}
-                                        src={images.chart}
-                                        alt={""}
-                                        title={""}
-                                    />
-                                    <span className={`fs-0-6 position-absolute`} style={{left:`${i18n.language !== "fa" ? "20%" : "40%"}`}}>{t("comingSoon")}</span>
+                                    {chartView(chartInfo)}
                                 </div>
                             }
                         </div>

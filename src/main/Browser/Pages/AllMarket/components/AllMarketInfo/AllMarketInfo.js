@@ -41,9 +41,9 @@ const AllMarketInfo = () => {
         if (error || quoteCurrenciesError) return <div style={{height: "40vh"}}><Error/></div>
         else return <>
             {card ?
-                <AllMarketInfoCard data={overview} activeCurrency={activeCurrency}/>
+                <AllMarketInfoCard data={overview} activeCurrency={activeCurrency} interval={interval}/>
                 :
-                <AllMarketInfoTable data={overview} activeCurrency={activeCurrency}/>
+                <AllMarketInfoTable data={overview} activeCurrency={activeCurrency} interval={interval}/>
             }
         </>
     }

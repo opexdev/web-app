@@ -8,8 +8,9 @@ import {Panel} from "../../../../../../Routes/routes";
 import {useNavigate} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 import i18n from "i18next";
+import {useGetChartData} from "../../../../../../../../queries";
 
-const MarketInfoCard = ({data, activeCurrency}) => {
+const MarketInfoCard = ({data, activeCurrency, interval}) => {
 
     const {t} = useTranslation();
     const navigate = useNavigate();
@@ -17,6 +18,12 @@ const MarketInfoCard = ({data, activeCurrency}) => {
     const language = i18n.language
     const currencies = useSelector((state) => state.exchange.currencies)
     const allExchangeSymbols = useSelector((state) => state.exchange.symbols)
+
+    const pairsList = useSelector((state) => state.exchange.pairsList)
+    const symbols = Object.keys(pairsList);
+
+    const { data: ChartData, isLoading: ChartDataIsLoading, error: ChartDataError } = useGetChartData(symbols, interval);
+
 
     const backgroundBar = (percent) => {
         if (percent > 0) {
@@ -35,9 +42,20 @@ const MarketInfoCard = ({data, activeCurrency}) => {
         navigate(Panel)
     }
 
+    const chartView = (chartInfo) => {
+        if (ChartDataIsLoading) {
+            return <span className="flashit ">-----</span>
+        }
+        if (ChartDataError || !(chartInfo?.svgData)) {
+            return
+        }
+        return <img src={`data:image/svg+xml;base64,${chartInfo?.svgData}`} alt={chartInfo?.symbol} className={`${classes.chart} ${chartInfo?.isTrendUp ? classes.filterUp : classes.filterDown }`}/>
+    }
+
     return (
         <div className={`${classes.container} my-3 px-1`}>
             {data.map((tr, index) => {
+                const chartInfo = ChartData?.find(chart => chart.symbol.replace("_", "") === tr.symbol);
                 return (
                     <div className={`${classes.item} card-border card-bg column jc-between ai-center py-3 cursor-pointer`} style={backgroundBar(tr.priceChangePercent.toString())} key={index} onClick={() => navigateToPanel(tr.symbol)}>
                         <div className={`row jc-center ai-center width-100`}>
@@ -60,14 +78,7 @@ const MarketInfoCard = ({data, activeCurrency}) => {
                             <span className={`mr-05`}>{new BN(tr.volume).decimalPlaces(currencies[tr?.base]?.precision ?? 0).toFormat()} <span className={`text-gray fs-0-8 mr-05`}>{tr?.base}</span></span>
                         </div>
                         <div className={`column jc-center ai-center position-relative`}>
-                            <img
-                                className={`img-lg-2 mb-05 ${classes.filter}`}
-                                src={images.chart}
-                                alt={""}
-                                title={""}
-                            />
-                            <span className={`fs-0-6 position-absolute`}
-                                  style={{left: "35%"}}>{t("comingSoon")}</span>
+                            {chartView(chartInfo)}
                         </div>
                     </div>
                 )
