@@ -68,7 +68,7 @@ const MarketInfoTable = ({data, activeCurrency, interval}) => {
                             : tr?.base + " / " + tr?.quote}</span>
                     </span>
 
-                    <span className={`width-25 flex jc-start ai-center ${tr.priceChangePercent > 0 ? "text-green" : "text-red"}`}>{new BN(tr.lastPrice).decimalPlaces(currencies[tr?.quote]?.precision ?? 0).toFormat()} <span className={`fs-0-7 mr-05`}>{tr?.quote}</span></span>
+                    <span className={`width-25 flex jc-start ai-center ${tr.priceChangePercent > 0 ? "text-green" : tr.priceChangePercent < 0 ? "text-red" : ""}`}>{new BN(tr.lastPrice).decimalPlaces(currencies[tr?.quote]?.precision ?? 0).toFormat()} <span className={`fs-0-7 mr-05`}>{tr?.quote}</span></span>
 
                     <span className={`width-25 flex ${i18n.language !== "fa" ? 'jc-start' : 'jc-end'} ai-center ${tr.priceChangePercent > 0 ? "text-green" : tr.priceChangePercent < 0 ? "text-red" : ""} direction-ltr`}>{tr.priceChangePercent === 0 ? "0 %" : `${new BN(tr.priceChangePercent).toFormat(2)} %`}</span>
 

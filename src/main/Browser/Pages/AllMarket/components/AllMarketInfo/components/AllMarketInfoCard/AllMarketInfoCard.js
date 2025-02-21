@@ -89,7 +89,7 @@ const AllMarketInfoCard = ({data, activeCurrency, interval}) => {
                             <div className={`column px-1 width-100 fs-0-7`}>
                                 <div className={`row jc-between ai-center`}>
                                     <span className={``}>{t("MarketInfo.lastPrice")}:</span>
-                                    <span className={`${tr.priceChangePercent > 0 ? "text-green" : "text-red"} fs-01`}>{new BN(tr.lastPrice).toFormat()} <span className={`fs-0-7 mr-025`}>{tr?.quote}</span></span>
+                                    <span className={`${tr.priceChangePercent > 0 ? "text-green" : tr.priceChangePercent < 0 ? "text-red" : ""} fs-01`}>{new BN(tr.lastPrice).toFormat()} <span className={`fs-0-7 mr-025`}>{tr?.quote}</span></span>
                                 </div>
                                 <div className={`row jc-between ai-center`}>
                                     <span className={`text-gray`}>{t("MarketInfo.lowPrice")}:</span>

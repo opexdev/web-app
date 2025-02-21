@@ -72,7 +72,7 @@ const MarketInfoCard = ({data, activeCurrency, interval}) => {
 
                             </div>
                         </div>
-                        <span className={`${tr.priceChangePercent > 0 ? "text-green" : "text-red"} fs-02`}>{new BN(tr.lastPrice).decimalPlaces(currencies[tr?.quote]?.precision ?? 0).toFormat()} <span className={`fs-0-7 mr-05`}>{tr?.quote}</span></span>
+                        <span className={`${tr.priceChangePercent > 0 ? "text-green" : tr.priceChangePercent < 0 ? "text-red" : ""} fs-02`}>{new BN(tr.lastPrice).decimalPlaces(currencies[tr?.quote]?.precision ?? 0).toFormat()} <span className={`fs-0-7 mr-05`}>{tr?.quote}</span></span>
                         <div className={`row jc-center ai-center width-100`}>
                             <span className={`text-gray ml-05`}>{t("MarketInfo.volume")}:</span>
                             <span className={`mr-05`}>{new BN(tr.volume).decimalPlaces(currencies[tr?.base]?.precision ?? 0).toFormat()} <span className={`text-gray fs-0-8 mr-05`}>{tr?.base}</span></span>

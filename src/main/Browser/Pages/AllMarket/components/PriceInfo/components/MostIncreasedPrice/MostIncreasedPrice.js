@@ -1,13 +1,10 @@
 import React from 'react';
-import {images} from "../../../../../../../../assets/images";
 import i18n from "i18next";
 import {BN, getCurrencyNameOrAlias} from "../../../../../../../../utils/utils";
-import {useTranslation} from "react-i18next";
 import {useSelector} from "react-redux";
 
 const MostIncreasedPrice = ({mostIncreasedPrice}) => {
 
-    const {t} = useTranslation();
     const language = i18n.language
     const currencies = useSelector((state) => state.exchange.currencies)
 
