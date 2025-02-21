@@ -9,8 +9,13 @@
 .row:hover {
     background-color: var(--container);
 }
+.chart {
+    width: 55%;
+}
+.filterUp {
+    filter: invert(51%) sepia(94%) saturate(370%) hue-rotate(109deg) brightness(87%) contrast(92%);
 
-.filter {
-    /*filter: invert(51%) sepia(94%) saturate(370%) hue-rotate(109deg) brightness(87%) contrast(92%);*/
-    filter: invert(38%) sepia(77%) saturate(5872%) hue-rotate(347deg) brightness(93%) contrast(79%);
+}
+.filterDown {
+    filter: invert(50%) sepia(53%) saturate(2527%) hue-rotate(337deg) brightness(68%) contrast(175%);
 }

@@ -32,6 +32,8 @@ const MarketView = () => {
 
 
     const content = () => {
+
+
         if (isLoading) return <Loading/>
         if (error) return <Error/>
         if ( mostVolume === null && mostTrades === null) return <span className={`column height-100 py-5 jc-around ai-center`}>

@@ -5,7 +5,7 @@ import MarketInfoTable from "./components/MarketInfoTable/MarketInfoTable";
 import MarketInfoCard from "./components/MarketInfoCard/MarketInfoCard";
 import * as Routes from "../../../../Routes/routes";
 import {Link} from "react-router-dom";
-import {useGetQuoteCurrencies, useOverview} from "../../../../../../queries";
+import {useGetChartData, useGetQuoteCurrencies, useOverview} from "../../../../../../queries";
 import Loading from "../../../../../../components/Loading/Loading";
 import Error from "../../../../../../components/Error/Error";
 import {useTranslation} from "react-i18next";
@@ -23,11 +23,10 @@ const MarketInfo = () => {
 
     const interval = "24h"
 
-
-
     const quote = activeCurrency === "" ? null : activeCurrency
 
     const currencies = useSelector((state) => state.exchange.currencies)
+
     const language = i18n.language
 
     const {data: overview, isLoading, error} = useOverview(null, interval, quote)
@@ -46,12 +45,13 @@ const MarketInfo = () => {
         if (error || quoteCurrenciesError) return <div style={{height: "40vh"}}><Error/></div>
         else return <>
             {card ?
-                <MarketInfoCard data={overview.slice(0, 5)} activeCurrency={activeCurrency}/>
+                <MarketInfoCard data={overview.slice(0, 5)} activeCurrency={activeCurrency} interval={interval}/>
                 :
-                <MarketInfoTable data={overview.slice(0, 5)} activeCurrency={activeCurrency}/>
+                <MarketInfoTable data={overview.slice(0, 5)} activeCurrency={activeCurrency} interval={interval}/>
             }
         </>
     }
+
 
 
     return (
