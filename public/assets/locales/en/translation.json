@@ -337,8 +337,6 @@
     "cancel": "Cancel",
     "seconds": "Seconds",
     "submitPaymentReq": "Submit Payment Request",
-    "noInventory": "Your balance is not enough.",
-    "allowableWithdraw": "Minimum allowable withdrawal amount has not been observed.",
     "fillAddress": "You must enter an address.",
     "important": "Important",
     "DepositTETHContentBefore": "Ropsten network ETH test Only accepted! For free download",
@@ -354,7 +352,10 @@
     "network": "Network",
     "selectNetwork": "Select Network",
     "gettingAddress": "Getting address...",
-    "errorGettingAddress": "Failed to get address"
+    "errorGettingAddress": "Failed to get address",
+    "noInventory": "Your balance is not enough.",
+    "noInventorywithdrawFee": "Insufficient balance, including the fee!",
+    "allowableWithdraw": "Minimum allowable withdrawal amount has not been observed."
   },
   "CallbackPage": {
     "ok": "The deposit was successful.",
@@ -379,8 +380,10 @@
     "destination": "Origin / Destination",
     "inventory": "Inventory after transaction",
     "freeWallet": "Free Asset",
-    "minWithdraw": "Minimum withdrawal amount",
+    "minWithdraw": "Minimum Withdrawal Amount",
+    "maxWithdrawal": "Maximum Withdrawal Amount",
     "minDeposit": "Minimum Deposit Amount",
+    "maxDeposit": "Maximum Deposit Amount",
     "maxWithdraw": "Your daily withdrawal limit",
     "maxMonthWithdraw": "Your monthly withdrawal limit",
     "withdrawWarn": "Please note! Incorrect entry of address can result in loss of capital.",

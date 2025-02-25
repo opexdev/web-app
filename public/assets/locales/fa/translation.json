@@ -353,7 +353,6 @@
     "selectNetwork": " شبکه را انتخاب کنید",
     "gettingAddress": "درحال گرفتن آدرس...",
     "errorGettingAddress": "خطا در گرفتن آدرس",
-
     "noInventory": "موجودی کافی نیست !",
     "noInventorywithdrawFee": "با احتساب کارمزد، موجودی کافی نیست !",
     "allowableWithdraw": "حداقل مقدار مجاز برداشت رعایت نشده است."
