@@ -351,7 +351,6 @@ const SellOrder = () => {
             <div className="column jc-center">
                 <p>
                     {t("orders.tradeFee")}:{" "}
-                    {order.tradeFee.toFormat()}{" "}
                     {formatWithPrecision(order.tradeFee, currencies[activePair.quoteAsset]?.precision ?? 0)}{" "}
                     {getCurrencyNameOrAlias(currencies[activePair.quoteAsset], language)}
                 </p>
