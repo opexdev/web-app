@@ -262,8 +262,7 @@ const SellOrder = () => {
         <div className={`column jc-between ${classes.content}`}>
             <div className="column jc-center">
                 <p onClick={() => fillSellByWallet()}>{t("orders.availableAmount")}:{" "}
-                    <span
-                        className="cursor-pointer">{new BN(base).toFormat()}{" "}{getCurrencyNameOrAlias(currencies[activePair.baseAsset], language)}</span>
+                    <span className="cursor-pointer">{new BN(base).toFormat()}{" "}{getCurrencyNameOrAlias(currencies[activePair.baseAsset], language)}</span>
                 </p>
                 <p onClick={() => fillSellByBestPrice()}>
                     {t("orders.bestOffer")}:{" "}
