@@ -36,10 +36,10 @@ const MarketInfoCard = ({data, activeCurrency, interval}) => {
         };
     }
 
-    const navigateToPanel = (symbol) => {
-        const selectedPair = allExchangeSymbols.find( s => s.symbol === symbol)
-        dispatch(setActivePairInitiate(selectedPair, 0))
-        navigate(Panel)
+    const navigateToPanel = (baseAsset, quoteAsset) => {
+        const pairSymbolFormatted = `${baseAsset}_${quoteAsset}`;
+        dispatch(setActivePairInitiate(`${baseAsset}_${quoteAsset}`, 0));
+        navigate(Order)
     }
 
     const chartView = (chartInfo) => {
@@ -57,7 +57,7 @@ const MarketInfoCard = ({data, activeCurrency, interval}) => {
             {data.map((tr, index) => {
                 const chartInfo = ChartData?.find(chart => chart.symbol.replace("_", "") === tr.symbol);
                 return (
-                    <div className={`${classes.item} card-border card-bg column jc-between ai-center py-3 cursor-pointer`} style={backgroundBar(tr.priceChangePercent.toString())} key={index} onClick={() => navigateToPanel(tr.symbol)}>
+                    <div className={`${classes.item} card-border card-bg column jc-between ai-center py-3 cursor-pointer`} style={backgroundBar(tr.priceChangePercent.toString())} key={index} onClick={() => navigateToPanel(tr?.base, tr?.quote)}>
                         <div className={`row jc-center ai-center width-100`}>
                             <img src={currencies[tr?.base]?.icon} alt={tr?.base}
                                  title={tr?.base} className={`img-lg ml-05`}/>

@@ -25,10 +25,10 @@ const MarketInfoTable = ({data, activeCurrency, interval}) => {
     const { data: ChartData, isLoading: ChartDataIsLoading, error: ChartDataError } = useGetChartData(symbols, interval);
 
 
-    const navigateToPanel = (symbol) => {
-        const selectedPair = allExchangeSymbols.find( s => s.symbol === symbol)
-        dispatch(setActivePairInitiate(selectedPair, 0))
-        navigate(Panel)
+    const navigateToPanel = (baseAsset, quoteAsset) => {
+        const pairSymbolFormatted = `${baseAsset}_${quoteAsset}`;
+        dispatch(setActivePairInitiate(`${baseAsset}_${quoteAsset}`, 0));
+        navigate(Order)
     }
 
     let head = (
@@ -56,7 +56,7 @@ const MarketInfoTable = ({data, activeCurrency, interval}) => {
          {data.map((tr, index) => {
             const chartInfo = ChartData?.find(chart => chart.symbol.replace("_", "") === tr.symbol);
             return (
-                <div className={`${classes.row} row fs-01 rounded-5 border-bottom cursor-pointer px-2 py-2`}  key={index} onClick={() => navigateToPanel(tr.symbol)}>
+                <div className={`${classes.row} row fs-01 rounded-5 border-bottom cursor-pointer px-2 py-2`}  key={index} onClick={() => navigateToPanel(tr?.base, tr?.quote)}>
                     <span className="width-30 row jc-start ai-center">
                         <img src={currencies[tr?.base]?.icon} alt={tr?.base}
                              title={tr?.base} className={`img-lg ml-05`}/>

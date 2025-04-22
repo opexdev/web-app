@@ -27,10 +27,10 @@ const AllMarketInfTable = ({data, activeCurrency, interval}) => {
     const { data: ChartData, isLoading: ChartDataIsLoading, error: ChartDataError } = useGetChartData(symbols, interval);
 
 
-    const navigateToPanel = (symbol) => {
-        const selectedPair = allExchangeSymbols.find( s => s.symbol === symbol)
-        dispatch(setActivePairInitiate(selectedPair, 0))
-        navigate(Panel)
+    const navigateToPanel = (baseAsset, quoteAsset) => {
+        const pairSymbolFormatted = `${baseAsset}_${quoteAsset}`;
+        dispatch(setActivePairInitiate(`${baseAsset}_${quoteAsset}`, 0));
+        navigate(Order)
     }
 
     let head = (
@@ -110,7 +110,7 @@ const AllMarketInfTable = ({data, activeCurrency, interval}) => {
                             <Button
                                 buttonClass={classes.thisButton}
                                 type="button"
-                                onClick={() => navigateToPanel(tr.symbol)}
+                                onClick={() => navigateToPanel(tr?.base, tr?.quote)}
                                 buttonTitle={t("MarketInfo.trade")}
                             />
                         </span>

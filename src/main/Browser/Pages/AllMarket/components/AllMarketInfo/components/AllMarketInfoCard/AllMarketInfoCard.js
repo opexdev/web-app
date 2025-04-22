@@ -46,10 +46,10 @@ const AllMarketInfoCard = ({data, activeCurrency, interval}) => {
         setShowButton(null)
     }
 
-    const navigateToPanel = (symbol) => {
-        const selectedPair = allExchangeSymbols.find( s => s.symbol === symbol)
-        dispatch(setActivePairInitiate(selectedPair, 0))
-        navigate(Panel)
+    const navigateToPanel = (baseAsset, quoteAsset) => {
+        const pairSymbolFormatted = `${baseAsset}_${quoteAsset}`;
+        dispatch(setActivePairInitiate(`${baseAsset}_${quoteAsset}`, 0));
+        navigate(Order)
     }
 
     const chartView = (chartInfo) => {
@@ -117,7 +117,7 @@ const AllMarketInfoCard = ({data, activeCurrency, interval}) => {
                                     <Button
                                         buttonClass={`${classes.thisButton} mx-05`}
                                         type="button"
-                                        onClick={() => navigateToPanel(tr.symbol)}
+                                        onClick={() => navigateToPanel(tr?.base, tr?.quote)}
                                         buttonTitle={t("MarketInfo.trade")}
                                     />
                                 </div>
