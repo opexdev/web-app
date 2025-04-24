@@ -48,7 +48,7 @@ const OnChainDeposit = ({gateways, currency}) => {
     const content = () => {
         if (isLoading) return <span className={`flashit width-100 flex jc-center ai-center mt-6`}>{t('DepositWithdraw.gettingAddress')}</span>
         if (error) return <span className={` width-100 flex jc-center ai-center mt-6`}>{t('DepositWithdraw.errorGettingAddress')}</span>
-        return  <div className={`row jc-between`}>
+        return <div className={`row jc-between`}>
             <div className={`column width-80`}>
                  <span className={`my-2`}>
                         <Trans
@@ -96,14 +96,14 @@ const OnChainDeposit = ({gateways, currency}) => {
         </div>
     }
     return (
-        <div  className={`px-1 py-3 column height-100`}>
+        <div className={`px-1 py-3 column height-100`}>
             <TextInput
                 select={true}
                 placeholder={t('DepositWithdraw.selectNetwork')}
                 options={gateways.map((chain, index) => ({
                     value: index,
                     label: `${chain.chain} - ${chain.implementationSymbol}`,
-                    isDisabled: !chain.isActive // غیرفعال کردن در صورت عدم اجازه‌ی واریز
+                    isDisabled: !chain.isActive
                 }))}
                 lead={t('DepositWithdraw.network')}
                 type="select"

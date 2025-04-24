@@ -178,7 +178,7 @@ const OnChainWithdraw = ({gateways}) => {
                 options={gateways.map((chain, index) => ({
                     value: index,
                     label: `${chain.chain} - ${chain.implementationSymbol}`,
-                    isDisabled: !chain.isActive // غیرفعال کردن در صورت عدم اجازه‌ی واریز
+                    isDisabled: !chain.isActive
                 }))}
                 lead={t('DepositWithdraw.network')}
                 type="select"
